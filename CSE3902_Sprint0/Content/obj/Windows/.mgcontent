@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>V:/Documents/visual studio 2015/Projects/CSE3902_Sprint0/CSE3902_Sprint0/Content/mariostanding.jpg</File>
+    <File>V:/Documents/visual studio 2015/Projects/CSE3902_Sprint0/CSE3902_Sprint0/Content/mariorunningright.jpg</File>
+    <File>V:/Documents/visual studio 2015/Projects/CSE3902_Sprint0/CSE3902_Sprint0/Content/mariodead.jpg</File>
+  </SourceFiles>
+</SourceFileCollection>
