@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>V:/Documents/visual studio 2015/Projects/CSE3902_Sprint0/CSE3902_Sprint0/Content/mariodead.jpg</SourceFile>
-  <SourceTime>2016-08-30T23:17:34.7006194-04:00</SourceTime>
-  <DestFile>V:/Documents/visual studio 2015/Projects/CSE3902_Sprint0/CSE3902_Sprint0/Content/bin/Windows/mariodead.xnb</DestFile>
-  <DestTime>2016-09-01T19:17:51.4938717-04:00</DestTime>
+  <SourceFile>C:/Users/John/Source/Repos/MarioLopez/CSE3902_Sprint0/Content/mariodead.jpg</SourceFile>
+  <SourceTime>2016-09-13T14:02:16.9982897-04:00</SourceTime>
+  <DestFile>C:/Users/John/Source/Repos/MarioLopez/CSE3902_Sprint0/Content/bin/Windows/mariodead.xnb</DestFile>
+  <DestTime>2016-09-13T14:04:18.0021875-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-30T02:36:08-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

@@ -7,9 +7,9 @@ using Microsoft.Xna.Framework.Input;
 
 namespace CSE3902_Sprint0.Core
 {
-    /// <summary>
-    ///     This is the main type for your game.
-    /// </summary>
+    /*
+     * @authors John Simerlink,
+     * */
     public class Game1 : Game
     {
         private readonly int _scene;
