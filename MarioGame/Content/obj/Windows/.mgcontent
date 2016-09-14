@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/cyriac/Source/Repos/MarioLopez/MarioGame/Content/mariostanding.jpg</File>
+    <File>C:/Users/cyriac/Source/Repos/MarioLopez/MarioGame/Content/mariorunningright.jpg</File>
+    <File>C:/Users/cyriac/Source/Repos/MarioLopez/MarioGame/Content/mariodead.jpg</File>
+  </SourceFiles>
+</SourceFileCollection>

@@ -1,0 +1,63 @@
+V:\Documents\visual studio 2015\Projects\CSE3902_Sprint0\CSE3902_Sprint0\bin\Windows\x86\Debug\Content\mariodead.xnb
+V:\Documents\visual studio 2015\Projects\CSE3902_Sprint0\CSE3902_Sprint0\bin\Windows\x86\Debug\Content\mariorunningright.xnb
+V:\Documents\visual studio 2015\Projects\CSE3902_Sprint0\CSE3902_Sprint0\bin\Windows\x86\Debug\Content\mariostanding.xnb
+V:\Documents\visual studio 2015\Projects\CSE3902_Sprint0\CSE3902_Sprint0\bin\Windows\x86\Debug\Content\mariodead.jpg
+V:\Documents\visual studio 2015\Projects\CSE3902_Sprint0\CSE3902_Sprint0\bin\Windows\x86\Debug\Content\mariorunningright.jpg
+V:\Documents\visual studio 2015\Projects\CSE3902_Sprint0\CSE3902_Sprint0\bin\Windows\x86\Debug\Content\mariostanding.jpg
+V:\Documents\visual studio 2015\Projects\CSE3902_Sprint0\CSE3902_Sprint0\bin\Windows\x86\Debug\CSE3902_Sprint0.exe
+V:\Documents\visual studio 2015\Projects\CSE3902_Sprint0\CSE3902_Sprint0\bin\Windows\x86\Debug\CSE3902_Sprint0.pdb
+V:\Documents\visual studio 2015\Projects\CSE3902_Sprint0\CSE3902_Sprint0\bin\Windows\x86\Debug\MonoGame.Framework.dll
+V:\Documents\visual studio 2015\Projects\CSE3902_Sprint0\CSE3902_Sprint0\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+V:\Documents\visual studio 2015\Projects\CSE3902_Sprint0\CSE3902_Sprint0\bin\Windows\x86\Debug\SharpDX.dll
+V:\Documents\visual studio 2015\Projects\CSE3902_Sprint0\CSE3902_Sprint0\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+V:\Documents\visual studio 2015\Projects\CSE3902_Sprint0\CSE3902_Sprint0\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+V:\Documents\visual studio 2015\Projects\CSE3902_Sprint0\CSE3902_Sprint0\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+V:\Documents\visual studio 2015\Projects\CSE3902_Sprint0\CSE3902_Sprint0\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+V:\Documents\visual studio 2015\Projects\CSE3902_Sprint0\CSE3902_Sprint0\bin\Windows\x86\Debug\SharpDX.XInput.dll
+V:\Documents\visual studio 2015\Projects\CSE3902_Sprint0\CSE3902_Sprint0\bin\Windows\x86\Debug\SharpDX.RawInput.dll
+V:\Documents\visual studio 2015\Projects\CSE3902_Sprint0\CSE3902_Sprint0\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
+V:\Documents\visual studio 2015\Projects\CSE3902_Sprint0\CSE3902_Sprint0\bin\Windows\x86\Debug\MonoGame.Framework.xml
+V:\Documents\visual studio 2015\Projects\CSE3902_Sprint0\CSE3902_Sprint0\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+V:\Documents\visual studio 2015\Projects\CSE3902_Sprint0\CSE3902_Sprint0\bin\Windows\x86\Debug\SharpDX.xml
+V:\Documents\visual studio 2015\Projects\CSE3902_Sprint0\CSE3902_Sprint0\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+V:\Documents\visual studio 2015\Projects\CSE3902_Sprint0\CSE3902_Sprint0\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+V:\Documents\visual studio 2015\Projects\CSE3902_Sprint0\CSE3902_Sprint0\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+V:\Documents\visual studio 2015\Projects\CSE3902_Sprint0\CSE3902_Sprint0\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+V:\Documents\visual studio 2015\Projects\CSE3902_Sprint0\CSE3902_Sprint0\bin\Windows\x86\Debug\SharpDX.XInput.xml
+V:\Documents\visual studio 2015\Projects\CSE3902_Sprint0\CSE3902_Sprint0\bin\Windows\x86\Debug\SharpDX.RawInput.xml
+V:\Documents\visual studio 2015\Projects\CSE3902_Sprint0\CSE3902_Sprint0\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+V:\Documents\visual studio 2015\Projects\CSE3902_Sprint0\CSE3902_Sprint0\obj\x86\Debug\CSE3902_Sprint0.exe
+V:\Documents\visual studio 2015\Projects\CSE3902_Sprint0\CSE3902_Sprint0\obj\x86\Debug\CSE3902_Sprint0.pdb
+V:\Documents\visual studio 2015\Projects\MarioLopez\CSE3902_Sprint0\CSE3902_Sprint0\obj\x86\Debug\CSE3902_Sprint0.exe
+V:\Documents\visual studio 2015\Projects\MarioLopez\CSE3902_Sprint0\CSE3902_Sprint0\obj\x86\Debug\CSE3902_Sprint0.pdb
+C:\Users\John\Source\Repos\MarioLopez\CSE3902_Sprint0\obj\x86\Debug\CSE3902_Sprint0.exe
+C:\Users\John\Source\Repos\MarioLopez\CSE3902_Sprint0\obj\x86\Debug\CSE3902_Sprint0.pdb
+C:\Users\John\Source\Repos\MarioLopez\CSE3902_Sprint0\bin\Windows\x86\Debug\Content\mariodead.xnb
+C:\Users\John\Source\Repos\MarioLopez\CSE3902_Sprint0\bin\Windows\x86\Debug\Content\mariorunningright.xnb
+C:\Users\John\Source\Repos\MarioLopez\CSE3902_Sprint0\bin\Windows\x86\Debug\Content\mariostanding.xnb
+C:\Users\John\Source\Repos\MarioLopez\CSE3902_Sprint0\bin\Windows\x86\Debug\Content\mariodead.jpg
+C:\Users\John\Source\Repos\MarioLopez\CSE3902_Sprint0\bin\Windows\x86\Debug\Content\mariorunningright.jpg
+C:\Users\John\Source\Repos\MarioLopez\CSE3902_Sprint0\bin\Windows\x86\Debug\Content\mariostanding.jpg
+C:\Users\John\Source\Repos\MarioLopez\CSE3902_Sprint0\bin\Windows\x86\Debug\CSE3902_Sprint0.exe
+C:\Users\John\Source\Repos\MarioLopez\CSE3902_Sprint0\bin\Windows\x86\Debug\CSE3902_Sprint0.pdb
+C:\Users\John\Source\Repos\MarioLopez\CSE3902_Sprint0\bin\Windows\x86\Debug\MonoGame.Framework.dll
+C:\Users\John\Source\Repos\MarioLopez\CSE3902_Sprint0\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+C:\Users\John\Source\Repos\MarioLopez\CSE3902_Sprint0\bin\Windows\x86\Debug\SharpDX.dll
+C:\Users\John\Source\Repos\MarioLopez\CSE3902_Sprint0\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+C:\Users\John\Source\Repos\MarioLopez\CSE3902_Sprint0\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+C:\Users\John\Source\Repos\MarioLopez\CSE3902_Sprint0\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+C:\Users\John\Source\Repos\MarioLopez\CSE3902_Sprint0\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+C:\Users\John\Source\Repos\MarioLopez\CSE3902_Sprint0\bin\Windows\x86\Debug\SharpDX.XInput.dll
+C:\Users\John\Source\Repos\MarioLopez\CSE3902_Sprint0\bin\Windows\x86\Debug\SharpDX.RawInput.dll
+C:\Users\John\Source\Repos\MarioLopez\CSE3902_Sprint0\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
+C:\Users\John\Source\Repos\MarioLopez\CSE3902_Sprint0\bin\Windows\x86\Debug\MonoGame.Framework.xml
+C:\Users\John\Source\Repos\MarioLopez\CSE3902_Sprint0\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+C:\Users\John\Source\Repos\MarioLopez\CSE3902_Sprint0\bin\Windows\x86\Debug\SharpDX.xml
+C:\Users\John\Source\Repos\MarioLopez\CSE3902_Sprint0\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+C:\Users\John\Source\Repos\MarioLopez\CSE3902_Sprint0\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+C:\Users\John\Source\Repos\MarioLopez\CSE3902_Sprint0\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+C:\Users\John\Source\Repos\MarioLopez\CSE3902_Sprint0\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+C:\Users\John\Source\Repos\MarioLopez\CSE3902_Sprint0\bin\Windows\x86\Debug\SharpDX.XInput.xml
+C:\Users\John\Source\Repos\MarioLopez\CSE3902_Sprint0\bin\Windows\x86\Debug\SharpDX.RawInput.xml
+C:\Users\John\Source\Repos\MarioLopez\CSE3902_Sprint0\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+C:\Users\John\Source\Repos\MarioLopez\CSE3902_Sprint0\obj\x86\Debug\CSE3902_Sprint0.csprojResolveAssemblyReference.cache
