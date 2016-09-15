@@ -29,3 +29,5 @@ C:\Users\cyriac\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\SharpDX.
 C:\Users\cyriac\Source\Repos\MarioLopez\MarioGame\obj\x86\Debug\MarioGame.csprojResolveAssemblyReference.cache
 C:\Users\cyriac\Source\Repos\MarioLopez\MarioGame\obj\x86\Debug\MarioGame.exe
 C:\Users\cyriac\Source\Repos\MarioLopez\MarioGame\obj\x86\Debug\MarioGame.pdb
+V:\Documents\visual studio 2015\Projects\MarioLopez\clones\MarioGame\obj\x86\Debug\MarioGame.exe
+V:\Documents\visual studio 2015\Projects\MarioLopez\clones\MarioGame\obj\x86\Debug\MarioGame.pdb

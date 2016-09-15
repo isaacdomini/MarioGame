@@ -76,6 +76,7 @@
     <Content Include="Content\mariostanding.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Feedback.txt" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
