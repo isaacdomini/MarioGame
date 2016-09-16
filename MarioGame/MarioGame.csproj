@@ -38,8 +38,11 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Commands\GameCommand.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Commands\QuitCommand.cs" />
+    <Compile Include="Commands\SceneCommand.cs" />
+    <Compile Include="Commands\ScriptCommand.cs" />
     <Compile Include="Commands\SwitchToAnimatedMovingCommand.cs" />
     <Compile Include="Commands\SwitchToAnimatedStillCommand.cs" />
     <Compile Include="Commands\SwitchToStaticMovingCommand.cs" />
