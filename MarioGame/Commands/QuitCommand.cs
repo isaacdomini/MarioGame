@@ -2,16 +2,14 @@
 
 namespace MarioGame.Commands
 {
-    public class QuitCommand : ICommand
+    public class QuitCommand : GameCommand
     {
-        public QuitCommand(Game1 game)
+        public QuitCommand(Game1 game) : base(game)
         {
-            Game = game;
+            
         }
 
-        private Game1 Game { get; }
-
-        public void Execute()
+        public override void Execute()
         {
             Game.ExitCommand();
         }

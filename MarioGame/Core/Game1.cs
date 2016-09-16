@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Input;
 namespace MarioGame.Core
 {
     /*
-     * @authors John Simerlink,
+     * @authors John Simerlink, Adam Roller
      * */
     public class Game1 : Game
     {
