@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using MarioGame.Commands;
-using MarioGame.Theming;
 using Microsoft.Xna.Framework.Input;
 
 namespace MarioGame.Controllers
@@ -14,9 +14,14 @@ namespace MarioGame.Controllers
             _previousState = Keyboard.GetState();
         }
 
-        public KeyboardController(Dictionary<Keys, ICommand> dictionary) : this()
+        public void AddCommand(int key, ICommand command)
         {
-            Dictionary = dictionary;
+            var keyList = (Keys[])Enum.GetValues(typeof(Keys));
+            foreach (var keys in keyList)
+            {
+                if ((int) keys == key) Dictionary.Add(keys, command);
+            }
+
         }
 
         public Dictionary<Keys, ICommand> Dictionary { get; set; }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using MarioGame.Commands;
 using MarioGame.Theming;
 using Microsoft.Xna.Framework;
@@ -15,9 +16,13 @@ namespace MarioGame.Controllers
             _previousState = GamePad.GetState(PlayerIndex.One);
         }
 
-        public GamepadController(Dictionary<Buttons, ICommand> dictionary) : this()
+        public void AddCommand(int key, ICommand command)
         {
-            Dictionary = dictionary;
+            var keyList = (Buttons[])Enum.GetValues(typeof(Buttons));
+            foreach (var keys in keyList)
+            {
+                if ((int)keys == key) Dictionary.Add(keys, command);
+            }
         }
 
         public Dictionary<Buttons, ICommand> Dictionary { get; set; }

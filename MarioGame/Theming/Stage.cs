@@ -27,24 +27,10 @@ namespace MarioGame.Theming
 
         public void Initialize()
         {
-            var keyboarddictionary = new Dictionary<Keys, ICommand>
-            {
-                {Keys.Q, new QuitCommand(Game1)},
-                {Keys.W, new SwitchToStaticStillCommand(Game1.Scene)},
-                {Keys.R, new SwitchToStaticMovingCommand(Game1.Scene)},
-                {Keys.E, new SwitchToAnimatedStillCommand(Game1.Scene)},
-                {Keys.T, new SwitchToAnimatedMovingCommand(Game1.Scene)}
-            };
-            _controllers.Add(new KeyboardController(keyboarddictionary));
-            var gamepaddictionary = new Dictionary<Buttons, ICommand>
-            {
-                {Buttons.Start, new QuitCommand(Game1)},
-                {Buttons.A, new SwitchToStaticStillCommand(Game1.Scene)},
-                {Buttons.X, new SwitchToStaticMovingCommand(Game1.Scene)},
-                {Buttons.B, new SwitchToAnimatedStillCommand(Game1.Scene)},
-                {Buttons.Y, new SwitchToAnimatedMovingCommand(Game1.Scene)}
-            };
-            _controllers.Add(new GamepadController(gamepaddictionary));
+            _controllers.Add(new KeyboardController());
+            _controllers.Add(new GamepadController());
+            _controllers[0].AddCommand((int)Keys.Q, new QuitCommand(Game1));
+            _controllers[1].AddCommand((int) Buttons.Start, new QuitCommand(Game1));
         }
 
         public void LoadContent()
