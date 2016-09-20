@@ -12,6 +12,7 @@ namespace MarioGame.Controllers
         public KeyboardController()
         {
             _previousState = Keyboard.GetState();
+            Dictionary = new Dictionary<Keys, ICommand>();
         }
 
         public void AddCommand(int key, ICommand command)

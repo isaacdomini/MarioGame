@@ -14,6 +14,7 @@ namespace MarioGame.Controllers
         public GamepadController()
         {
             _previousState = GamePad.GetState(PlayerIndex.One);
+            Dictionary = new Dictionary<Buttons, ICommand>();
         }
 
         public void AddCommand(int key, ICommand command)
