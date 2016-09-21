@@ -246,5 +246,5 @@ ModelManifest.xml
 
 
 #Custom
-.mgcontent
-.xml
+*.mgcontent
+*.xml
