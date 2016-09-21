@@ -5,11 +5,8 @@ using Microsoft.Xna.Framework;
 
 namespace MarioGame.Entities.PlayerEntities
 {
-    public class MarioEntity : IEntity
+    public class MarioEntity : Entity
     {
-        private MarioState _state;
-        public MarioSprite Sprite { get; set; }
-        public Vector2 Position { get; set; }
 
         public MarioEntity()
         {

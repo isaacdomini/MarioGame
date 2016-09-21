@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MarioGame.Entities
 {
-    interface IEntity
+    public interface IEntity
     {
         void Update();
     }
