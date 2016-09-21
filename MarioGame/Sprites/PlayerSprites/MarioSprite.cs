@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using MarioGame.Entities.PlayerEntities;
 
 namespace MarioGame.Sprites.PlayerSprites
 {
@@ -13,15 +14,17 @@ namespace MarioGame.Sprites.PlayerSprites
         private Texture2D _texture;
         public bool Visible { get; set; }
         public SpriteEffects Flipped { get; set; }
-        public Vector2 Position { get; set; }
+        private MarioEntity _entity;
 
-        public MarioSprite(Vector2 position)
+        public MarioSprite(MarioEntity entity) : this()
         {
-            Position = position;
-            Visible = true;
+            _entity = entity;
         }
 
-        public MarioSprite() : this(Vector2.Zero){}
+        public MarioSprite()
+        {
+            Visible = true;
+        }
 
         public void Load(ContentManager content, string asset, int frameCount = 1, int framesPerSecond = 1)
         {
@@ -64,7 +67,7 @@ namespace MarioGame.Sprites.PlayerSprites
             {
                 var sourceRect = new Rectangle(_sheetPosition.X, _sheetPosition.Y, _sheetPosition.X + _frameWidth,
                     _sheetPosition.Y + _frameHeight);
-                batch.Draw(_texture, Position, sourceRect, Color.White, Single.Epsilon, Vector2.Zero, Vector2.Zero,
+                batch.Draw(_texture, _entity.Position, sourceRect, Color.White, Single.Epsilon, Vector2.Zero, Vector2.Zero,
                     Flipped, Single.Epsilon);
             }
         }
