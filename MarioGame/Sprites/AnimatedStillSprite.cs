@@ -4,12 +4,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MarioGame.Sprites
 {
-    public class AnimatedStillSprite : ISprite
+    public class AnimatedStillSprite : Sprite
     {
         private int _frameCount, _frame;
         private float _totalElapsed, _timePerFrame;
-        private readonly Vector2 _position;
-        private Texture2D _texture;
 
         public AnimatedStillSprite(Vector2 spritePos)
         {

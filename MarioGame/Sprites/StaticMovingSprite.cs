@@ -4,11 +4,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MarioGame.Sprites
 {
-    public class StaticMovingSprite : ISprite
+    public class StaticMovingSprite : Sprite
     {
         private float _totalElapsed, _velocity;
-        private Vector2 _position;
-        private Texture2D _texture;
 
         public StaticMovingSprite(Vector2 spritePos)
         {
@@ -39,10 +37,5 @@ namespace MarioGame.Sprites
             }
         }
 
-        public void Draw(SpriteBatch batch)
-        {
-            if (Visible)
-                batch.Draw(_texture, _position);
-        }
     }
 }
