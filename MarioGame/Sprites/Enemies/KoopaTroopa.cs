@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MarioGame.Sprites
 {
-    public class KoopaTroopa : Sprite
+    public class KoopaTroopa : AnimatedSprite
     {
       public KoopaTroopa (IEntity entity) : base(entity)
         {
