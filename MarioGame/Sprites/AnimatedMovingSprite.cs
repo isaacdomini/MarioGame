@@ -5,13 +5,12 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MarioGame.Sprites
 {
-    public class AnimatedMovingSprite : ISprite
+    public class AnimatedMovingSprite : Sprite
     {
         private int _frameCount, _frame;
         private readonly Scene _scene;
         private float _totalElapsed, _velocity, _timePerFrame;
-        private Vector2 _position;
-        private Texture2D _texture;
+
 
         public AnimatedMovingSprite(Vector2 spritePos, Scene scene)
         {

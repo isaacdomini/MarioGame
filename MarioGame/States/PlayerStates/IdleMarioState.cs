@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MarioGame.Entities.PlayerEntities;
+using MarioGame.Entities;
 
 namespace MarioGame.States.PlayerStates
 {
     class IdleMarioState : MarioState
     {
-        public IdleMarioState(MarioEntity entity) : base(entity)
+        public IdleMarioState(IEntity entity) : base(entity)
         {
             
         }

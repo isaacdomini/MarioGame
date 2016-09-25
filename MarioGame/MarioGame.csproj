@@ -53,6 +53,7 @@
     <Compile Include="Controllers\KeyboardController.cs" />
     <Compile Include="Core\Game1.cs" />
     <Compile Include="Core\Program.cs" />
+    <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\IEntity.cs" />
     <Compile Include="Entities\PlayerEntities\MarioEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Sprites\ISprite.cs" />
     <Compile Include="Sprites\AnimatedStillSprite.cs" />
     <Compile Include="Sprites\PlayerSprites\MarioSprite.cs" />
+    <Compile Include="Sprites\Sprite.cs" />
     <Compile Include="Sprites\StaticMovingSprite.cs" />
     <Compile Include="Sprites\StaticStillSprite.cs" />
     <Compile Include="States\IState.cs" />
@@ -67,6 +69,7 @@
     <Compile Include="States\PlayerStates\IdleMarioState.cs" />
     <Compile Include="States\PlayerStates\JumpState.cs" />
     <Compile Include="States\PlayerStates\MarioState.cs" />
+    <Compile Include="States\State.cs" />
     <Compile Include="Theming\Scenes\Scene.cs" />
     <Compile Include="Theming\Script.cs" />
     <Compile Include="Theming\Stage.cs" />

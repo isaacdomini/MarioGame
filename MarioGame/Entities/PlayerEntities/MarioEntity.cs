@@ -1,21 +1,21 @@
 ﻿
 using MarioGame.Sprites.PlayerSprites;
+using MarioGame.States;
 using MarioGame.States.PlayerStates;
 using Microsoft.Xna.Framework;
 
 namespace MarioGame.Entities.PlayerEntities
 {
-    public class MarioEntity : IEntity
+    public class MarioEntity : Entity
     {
-        private MarioState _state;
-        public MarioSprite Sprite { get; set; }
-        public Vector2 Position { get; set; }
+        protected MarioState state;
+
 
         public MarioEntity()
         {
-            _state = new IdleMarioState(this);
+            state = new IdleMarioState(this);
         }
-        public void Update()
+        public override void Update()
         {
             
         }
@@ -25,7 +25,7 @@ namespace MarioGame.Entities.PlayerEntities
         }
         public void Jump()
         {
-            _state.Jump();
+            state.Jump();
         }
     }
 }

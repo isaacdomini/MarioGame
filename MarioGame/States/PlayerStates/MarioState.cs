@@ -1,27 +1,16 @@
 ﻿
+using System;
 using MarioGame.Entities.PlayerEntities;
+using MarioGame.Entities;
 
 namespace MarioGame.States.PlayerStates
 {
-    public class MarioState : IState
+    public class MarioState : State
     {
-        protected MarioState _prevState;
-        protected MarioEntity _entity;
-
-        public MarioState() {}
-
-        public MarioState(MarioEntity entity)
+        public MarioState(IEntity entity) : base(entity)
         {
-            _entity = entity;
+ 
         }
-
-        public virtual void Begin(MarioState prevState)
-        {
-            _prevState = prevState;
-            _prevState.End();
-        }
-
-        public virtual void End() {}
 
         public virtual void Jump() {}
 

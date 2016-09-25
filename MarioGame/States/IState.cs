@@ -1,7 +1,9 @@
 ﻿
 namespace MarioGame.States
 {
-    interface IState
+    public interface IState
     {
+        void Begin(IState previousState);
+        void End();
     }
 }
