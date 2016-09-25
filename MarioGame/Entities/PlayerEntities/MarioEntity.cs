@@ -1,5 +1,6 @@
 ﻿
 using MarioGame.Sprites.PlayerSprites;
+using MarioGame.States;
 using MarioGame.States.PlayerStates;
 using Microsoft.Xna.Framework;
 
@@ -7,18 +8,20 @@ namespace MarioGame.Entities.PlayerEntities
 {
     public class MarioEntity : Entity
     {
+        protected MarioState state;
+
 
         public MarioEntity()
         {
-            _state = new IdleMarioState(this);
+            state = new IdleMarioState(this);
         }
-        public void Update()
+        public override void Update()
         {
             
         }
         public void Jump()
         {
-            _state.Jump();
+            state.Jump();
         }
     }
 }

@@ -12,8 +12,6 @@ namespace MarioGame.States.PlayerStates
  
         }
 
-        public virtual void End() {}
-
         public virtual void Jump() {}
 
         public virtual void MoveRight() {}

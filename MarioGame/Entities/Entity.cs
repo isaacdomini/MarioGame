@@ -14,7 +14,9 @@ namespace MarioGame.Entities
         protected IState _state;
         protected ISprite _sprite;
         protected Vector2 _position;
-        public void Update()
+        protected Vector2 _vertSpeed;
+        protected Vector2 _horSpeed;
+        public virtual void Update()
         {
             throw new NotImplementedException();
         }

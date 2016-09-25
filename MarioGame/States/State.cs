@@ -22,7 +22,7 @@ namespace MarioGame.States
             _prevState.End();
         }
 
-        public void End()
+        public virtual void End()
         {
             throw new NotImplementedException();
         }
