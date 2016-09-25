@@ -17,10 +17,7 @@ namespace MarioGame.Entities
         protected Vector2 _position;
         protected Vector2 _vertSpeed;
         protected Vector2 _horSpeed;
-        protected enum Directions {
-            Left = 1,
-            Right = 2
-        }
+
         public virtual void ChangeState(MarioState newstate)
         {
             throw new NotImplementedException();

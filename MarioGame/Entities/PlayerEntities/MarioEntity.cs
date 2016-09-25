@@ -12,19 +12,20 @@ namespace MarioGame.Entities.PlayerEntities
         {
             //frames are all facing left. Except DeadMario who is facing the computer user.
             DeadMario = 1,
-            FlyingMarioEnd = 2,
-            FlyingMarioBeforeEnd = 3,
-            FlyingMarioMiddle = 4,
-            FlyingMarioAfterStart = 5,
-            FlyingMarioStart = 6,
+            SwimmingMarioEnd = 2,
+            SwimmingMarioBeforeEnd = 3,
+            SwimmingMarioMiddle = 4,
+            SwimmingMarioAfterStart = 5,
+            SwimmingMarioStart = 6,
             SittingMario2 = 7,
             SittingMario1 = 8,
             JumpingMario = 9,
-            UnkownAction3 = 10,
-            WalkingMario3 = 11,
-            WalkingMario2 = 12,
-            WalkingMario1 = 13,
-            StandingMario = 14
+            DashingMario = 10,
+            RunningMario3 = 11,
+            RunningMario2 = 12,
+            RunningMario1 = 13,
+            StandingMario = 14,
+            HalfBigMario = 15
         }
         protected enum Directions
         {
