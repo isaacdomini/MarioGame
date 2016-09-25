@@ -18,7 +18,6 @@ namespace MarioGame.States.PlayerStates
             MarioState newstate = new IdleMarioState(_entity);
             _entity.ChangeState(newstate);
             newstate.Begin(this);
-
         }
     }
 }
