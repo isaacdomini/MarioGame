@@ -60,3 +60,5 @@ V:\Documents\visual studio 2015\Projects\MarioLopez\clones\MarioGame\bin\Windows
 V:\Documents\visual studio 2015\Projects\MarioLopez\clones\MarioGame\bin\Windows\x86\Debug\SharpDX.RawInput.xml
 V:\Documents\visual studio 2015\Projects\MarioLopez\clones\MarioGame\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
 V:\Documents\visual studio 2015\Projects\MarioLopez\clones\MarioGame\obj\x86\Debug\MarioGame.csprojResolveAssemblyReference.cache
+C:\Users\Ricky\Source\Repos\MarioLopez\MarioGame\obj\x86\Debug\MarioGame.exe
+C:\Users\Ricky\Source\Repos\MarioLopez\MarioGame\obj\x86\Debug\MarioGame.pdb
