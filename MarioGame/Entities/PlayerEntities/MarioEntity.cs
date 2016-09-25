@@ -26,6 +26,11 @@ namespace MarioGame.Entities.PlayerEntities
             WalkingMario1 = 13,
             StandingMario = 14
         }
+        protected enum Directions
+        {
+            Left = 1,
+            Right = 2
+        }
         public MarioEntity()
         {
             _state = new IdleMarioState(this);
