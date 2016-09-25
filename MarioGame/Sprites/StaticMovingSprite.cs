@@ -21,9 +21,9 @@ namespace MarioGame.Sprites
             _velocity = .5f;
         }
 
-        public bool Visible { get; set; }
+        public new bool Visible { get; set; }
 
-        public void Update(float elapsed)
+        public override void Update(float elapsed)
         {
             if (Visible)
             {

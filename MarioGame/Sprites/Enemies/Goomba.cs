@@ -5,41 +5,45 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MarioGame.Sprites
 {
-    public class AnimatedMovingSprite : Sprite
+    public class Goomba : Sprite
     {
         private int _frameCount, _frame;
         private readonly Scene _scene;
         private float _totalElapsed, _velocity, _timePerFrame;
 
 
-        public AnimatedMovingSprite(Vector2 spritePos, Scene scene)
+        public Goomba(Vector2 spritePos, Scene scene)
         {
             Visible = false;
             _position = spritePos;
             _scene = scene;
         }
 
-        public void Load(ContentManager content, string asset, int frameCount = 1, int framesPerSecond = 1)
+        public void Load(ContentManager content, string asset, int frameCount, int framesPerSecond = 1)
         {
             _texture = content.Load<Texture2D>(asset);
             _totalElapsed = 0;
             _velocity = 1f;
             _frameCount = frameCount;
             _frame = 0;
-            _timePerFrame = (float) 1/framesPerSecond;
+            _timePerFrame = (float)1 / framesPerSecond;
         }
 
-        public new bool Visible { get; set; }
 
         public override void Update(float elapsed)
         {
             if (Visible)
             {
+                
                 _totalElapsed += elapsed;
                 if (_totalElapsed > _timePerFrame)
                 {
+                    if (_frame == 2)
+                    {
+                        _frame = -1;
+                    }
                     _frame++;
-                    _frame = _frame%_frameCount;
+                    _frame = _frame % _frameCount;
                     _totalElapsed -= _timePerFrame;
                 }
                 _position.X += _velocity;
@@ -52,8 +56,8 @@ namespace MarioGame.Sprites
         {
             if (Visible)
             {
-                var frameWidth = _texture.Width/_frameCount;
-                var sourcerect = new Rectangle(frameWidth*_frame, 0, frameWidth, _texture.Height);
+                var frameWidth = _texture.Width / _frameCount;
+                var sourcerect = new Rectangle(frameWidth * _frame, 0, frameWidth, _texture.Height);
                 batch.Draw(_texture, _position, sourcerect, Color.White);
             }
         }

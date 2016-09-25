@@ -15,6 +15,19 @@ namespace MarioGame.Theming.Scenes
             AnimatedStill,
             AnimatedMoving
         }
+        public enum EnemyTypes
+        {
+            KoopaTroopa,
+            Goomba
+        }
+        public enum ItemTypes
+        {
+            Star,
+            Coins,
+            Mushroom1Up,
+            MushroomSuper,
+            FireFlower
+        }
 
         private readonly Script _script;
         private SpriteBatch _spriteBatch;
@@ -26,7 +39,8 @@ namespace MarioGame.Theming.Scenes
         }
 
         private List<ISprite> Sprites { get; set; }
-
+        private List<ISprite> Enemies { get; set; }
+        private List<ISprite> Items { get; set; }
         public Stage Stage { get; }
 
         public void Dispose()
@@ -46,6 +60,19 @@ namespace MarioGame.Theming.Scenes
             Sprites.Add(new StaticMovingSprite(middle));
             Sprites.Add(new AnimatedStillSprite(middle));
             Sprites.Add(new AnimatedMovingSprite(middle, this));
+
+            Enemies = new List<ISprite>();
+            Enemies.Add(new KoopaTroopa(middle, this));
+            Enemies.Add(new Goomba(middle, this));
+
+            Items = new List<ISprite>();
+            Items.Add(new Star(middle, this));
+            Items.Add(new Coins(middle, this));
+            Items.Add(new Mushroom1Up(middle, this));
+            Items.Add(new MushroomSuper(middle, this));
+            Items.Add(new FireFlower(middle, this));
+
+
         }
 
         public void LoadContent()
@@ -57,6 +84,14 @@ namespace MarioGame.Theming.Scenes
             Sprites[SpriteTypes.StaticMoving.GetHashCode()].Load(Stage.Game1.Content, "mariodead");
             Sprites[SpriteTypes.AnimatedStill.GetHashCode()].Load(Stage.Game1.Content, "mariorunningright", 3, 4);
             Sprites[SpriteTypes.AnimatedMoving.GetHashCode()].Load(Stage.Game1.Content, "mariorunningright", 3, 4);
+            Enemies[EnemyTypes.Goomba.GetHashCode()].Load(Stage.Game1.Content, "EnemySpriteSheet2", 13, 4);
+            Enemies[EnemyTypes.KoopaTroopa.GetHashCode()].Load(Stage.Game1.Content, "EnemySpriteSheet2", 13, 4);
+            Items[ItemTypes.Coins.GetHashCode()].Load(Stage.Game1.Content, "ItemSheet2", 9, 4);
+            Items[ItemTypes.FireFlower.GetHashCode()].Load(Stage.Game1.Content, "ItemSheet2", 9, 4);
+            Items[ItemTypes.Mushroom1Up.GetHashCode()].Load(Stage.Game1.Content, "ItemSheet2", 9, 4);
+            Items[ItemTypes.MushroomSuper.GetHashCode()].Load(Stage.Game1.Content, "ItemSheet2", 9, 4);
+            Items[ItemTypes.Star.GetHashCode()].Load(Stage.Game1.Content, "ItemSheet2", 9, 4);
+
         }
 
         public void Update(GameTime gameTime)
@@ -95,6 +130,13 @@ namespace MarioGame.Theming.Scenes
         {
             return this._script;
 
+        }
+        public void ShowItems(int sprite)
+        {
+            foreach(ISprite current in Enemies)
+                Enemies[sprite].Visible = true;
+            foreach (ISprite current in Items)
+                Items[sprite].Visible = true;
         }
     }
 }

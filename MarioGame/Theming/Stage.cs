@@ -34,8 +34,23 @@ namespace MarioGame.Theming
             // Adding jump command to controllers
             _controllers[0].AddCommand((int)Keys.W, new JumpCommand(Game1.Scene.getScript()));
             _controllers[0].AddCommand((int)Keys.Up, new JumpCommand(Game1.Scene.getScript()));
-
-
+            // Allows for Koopa Troopa to show up on screen at start time
+            ICommand KoopaTroopaCommand=new DisplayKoopaTroopa(Game1.Scene);
+            KoopaTroopaCommand.Execute();
+            // Allows for Enemies to show up on screen at start time
+            ICommand GoombaCommand = new DisplayGoomba(Game1.Scene);
+            GoombaCommand.Execute();
+            // Allows for Items to show up on screen at start time
+            ICommand StarCommand = new DisplayStar(Game1.Scene);
+            StarCommand.Execute();
+            ICommand CoinsCommand = new DisplayStar(Game1.Scene);
+            CoinsCommand.Execute();
+            ICommand Mushroom1UpCommand = new DisplayStar(Game1.Scene);
+            Mushroom1UpCommand.Execute();
+            ICommand MushroomSuperCommand = new DisplayStar(Game1.Scene);
+            MushroomSuperCommand.Execute();
+            ICommand FireFlowerCommand = new DisplayStar(Game1.Scene);
+            FireFlowerCommand.Execute();
         }
 
         public void LoadContent()
