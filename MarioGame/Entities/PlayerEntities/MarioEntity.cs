@@ -8,12 +8,9 @@ namespace MarioGame.Entities.PlayerEntities
 {
     public class MarioEntity : Entity
     {
-        protected MarioState state;
-
-
         public MarioEntity()
         {
-            state = new IdleMarioState(this);
+            _state = new IdleMarioState(this);
         }
         public override void Update()
         {
@@ -25,7 +22,7 @@ namespace MarioGame.Entities.PlayerEntities
         }
         public void Jump()
         {
-            state.Jump();
+            ((MarioState)_state).Jump();
         }
     }
 }

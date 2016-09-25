@@ -1,4 +1,5 @@
-﻿using MarioGame.Entities.PlayerEntities;
+﻿using MarioGame.Entities;
+using MarioGame.Entities.PlayerEntities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace MarioGame.States.PlayerStates
 {
-    class JumpState : MarioState
+    class JumpingMarioState : MarioState
     {
-        public JumpState(MarioEntity entity) : base(entity)
+        public JumpingMarioState(IEntity entity) : base(entity)
         {
 
         }
