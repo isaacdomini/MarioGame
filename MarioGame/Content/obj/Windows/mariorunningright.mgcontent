@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>V:/Documents/visual studio 2015/Projects/MarioLopez/clones/MarioGame/Content/mariorunningright.jpg</SourceFile>
-  <SourceTime>2016-09-14T23:09:48.6676982-04:00</SourceTime>
-  <DestFile>V:/Documents/visual studio 2015/Projects/MarioLopez/clones/MarioGame/Content/bin/Windows/mariorunningright.xnb</DestFile>
-  <DestTime>2016-09-19T21:00:09.654875-04:00</DestTime>
+  <SourceFile>C:/Users/Ricky/Source/Repos/MarioLopez/MarioGame/Content/mariorunningright.jpg</SourceFile>
+  <SourceTime>2016-09-17T15:55:26.5476879-04:00</SourceTime>
+  <DestFile>C:/Users/Ricky/Source/Repos/MarioLopez/MarioGame/Content/bin/Windows/mariorunningright.xnb</DestFile>
+  <DestTime>2016-09-25T14:55:28.3355574-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-30T02:36:08-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

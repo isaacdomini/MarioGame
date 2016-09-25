@@ -60,3 +60,34 @@ V:\Documents\visual studio 2015\Projects\MarioLopez\clones\MarioGame\bin\Windows
 V:\Documents\visual studio 2015\Projects\MarioLopez\clones\MarioGame\bin\Windows\x86\Debug\SharpDX.RawInput.xml
 V:\Documents\visual studio 2015\Projects\MarioLopez\clones\MarioGame\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
 V:\Documents\visual studio 2015\Projects\MarioLopez\clones\MarioGame\obj\x86\Debug\MarioGame.csprojResolveAssemblyReference.cache
+C:\Users\Ricky\Source\Repos\MarioLopez\MarioGame\obj\x86\Debug\MarioGame.exe
+C:\Users\Ricky\Source\Repos\MarioLopez\MarioGame\obj\x86\Debug\MarioGame.pdb
+C:\Users\Ricky\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\mariodead.xnb
+C:\Users\Ricky\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\mariorunningright.xnb
+C:\Users\Ricky\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\mariostanding.xnb
+C:\Users\Ricky\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\mariodead.jpg
+C:\Users\Ricky\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\mariorunningright.jpg
+C:\Users\Ricky\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\mariostanding.jpg
+C:\Users\Ricky\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\MarioGame.exe
+C:\Users\Ricky\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\MarioGame.pdb
+C:\Users\Ricky\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\MonoGame.Framework.dll
+C:\Users\Ricky\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+C:\Users\Ricky\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\SharpDX.dll
+C:\Users\Ricky\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+C:\Users\Ricky\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+C:\Users\Ricky\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+C:\Users\Ricky\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+C:\Users\Ricky\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\SharpDX.XInput.dll
+C:\Users\Ricky\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\SharpDX.RawInput.dll
+C:\Users\Ricky\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
+C:\Users\Ricky\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\MonoGame.Framework.xml
+C:\Users\Ricky\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+C:\Users\Ricky\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\SharpDX.xml
+C:\Users\Ricky\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+C:\Users\Ricky\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+C:\Users\Ricky\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+C:\Users\Ricky\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+C:\Users\Ricky\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\SharpDX.XInput.xml
+C:\Users\Ricky\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\SharpDX.RawInput.xml
+C:\Users\Ricky\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+C:\Users\Ricky\Source\Repos\MarioLopez\MarioGame\obj\x86\Debug\MarioGame.csprojResolveAssemblyReference.cache

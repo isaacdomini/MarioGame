@@ -6,12 +6,12 @@ namespace MarioGame.Commands
     {
         protected Script Script { get; set; }
 
-        protected ScriptCommand()
+        public ScriptCommand()
         {
             
         }
 
-        protected ScriptCommand(Script script)
+        public ScriptCommand(Script script)
         {
             Script = script;
         }

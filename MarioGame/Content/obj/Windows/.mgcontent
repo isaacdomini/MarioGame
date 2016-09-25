@@ -4,8 +4,8 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>V:/Documents/visual studio 2015/Projects/MarioLopez/clones/MarioGame/Content/mariostanding.jpg</File>
-    <File>V:/Documents/visual studio 2015/Projects/MarioLopez/clones/MarioGame/Content/mariorunningright.jpg</File>
-    <File>V:/Documents/visual studio 2015/Projects/MarioLopez/clones/MarioGame/Content/mariodead.jpg</File>
+    <File>C:/Users/Ricky/Source/Repos/MarioLopez/MarioGame/Content/mariostanding.jpg</File>
+    <File>C:/Users/Ricky/Source/Repos/MarioLopez/MarioGame/Content/mariorunningright.jpg</File>
+    <File>C:/Users/Ricky/Source/Repos/MarioLopez/MarioGame/Content/mariodead.jpg</File>
   </SourceFiles>
 </SourceFileCollection>
