@@ -249,3 +249,6 @@ ModelManifest.xml
 *.mgcontent
 *.xml
 *.csproj.FileListAbsolute.txt
+*.cache
+*.exe
+*.pdb
