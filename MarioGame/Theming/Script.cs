@@ -1,4 +1,5 @@
 ﻿using MarioGame.Core;
+using MarioGame.Entities.PlayerEntities;
 using MarioGame.Theming.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -8,6 +9,8 @@ namespace MarioGame.Theming
     public class Script
     {
         private readonly Scene _scene;
+
+        private MarioEntity mario;
 
         public Script(Scene scene)
         {
@@ -31,6 +34,11 @@ namespace MarioGame.Theming
 
         public void Initialize()
         {
+        }
+
+        public void MakeMarioJump()
+        {
+            mario.Jump();
         }
     }
 }

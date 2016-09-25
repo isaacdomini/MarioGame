@@ -90,5 +90,11 @@ namespace MarioGame.Theming.Scenes
                 current.Visible = false;
             Sprites[sprite].Visible = true;
         }
+
+        public Script getScript()
+        {
+            return this._script;
+
+        }
     }
 }

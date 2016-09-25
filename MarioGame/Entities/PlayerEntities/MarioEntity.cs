@@ -19,6 +19,10 @@ namespace MarioGame.Entities.PlayerEntities
         {
             
         }
+        public void ChangeState(MarioState marioState)
+        {
+            _state = marioState;
+        }
         public void Jump()
         {
             _state.Jump();

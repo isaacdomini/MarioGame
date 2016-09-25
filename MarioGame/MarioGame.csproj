@@ -38,6 +38,7 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Commands\JumpCommand.cs" />
     <Compile Include="Commands\GameCommand.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Commands\QuitCommand.cs" />
@@ -62,7 +63,9 @@
     <Compile Include="Sprites\StaticMovingSprite.cs" />
     <Compile Include="Sprites\StaticStillSprite.cs" />
     <Compile Include="States\IState.cs" />
+    <Compile Include="States\PlayerStates\CrouchState.cs" />
     <Compile Include="States\PlayerStates\IdleMarioState.cs" />
+    <Compile Include="States\PlayerStates\JumpState.cs" />
     <Compile Include="States\PlayerStates\MarioState.cs" />
     <Compile Include="Theming\Scenes\Scene.cs" />
     <Compile Include="Theming\Script.cs" />

@@ -248,3 +248,4 @@ ModelManifest.xml
 #Custom
 *.mgcontent
 *.xml
+*.csproj.FileListAbsolute.txt
