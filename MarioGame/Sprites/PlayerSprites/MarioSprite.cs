@@ -12,17 +12,12 @@ namespace MarioGame.Sprites.PlayerSprites
         private float _totalElapsed, _timePerFrame;
         private Point _sheetPosition;
         public SpriteEffects Flipped { get; set; }
-        private MarioEntity _entity;
 
-        public MarioSprite(MarioEntity entity) : this()
+        public MarioSprite(MarioEntity entity) : base(entity)
         {
             _entity = entity;
         }
 
-        public MarioSprite()
-        {
-            Visible = true;
-        }
 
         public void Load(ContentManager content, string asset, int frameCount = 1, int framesPerSecond = 1)
         {

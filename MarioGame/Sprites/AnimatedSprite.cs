@@ -8,16 +8,16 @@ namespace MarioGame.Sprites
 {
     public class AnimatedSprite : Sprite
     {
-        private int _frameCount, _frame;
-        private float _totalElapsed, _timePerFrame;
+        protected int _frameCount, _frame;
+        protected float _totalElapsed, _timePerFrame;
 
         public AnimatedSprite(IEntity entity) : base(entity)
         {
         }
 
-        public void Load(ContentManager content, string asset, int frameCount = 1, int framesPerSecond = 1)
+        public override void Load(ContentManager content,  int frameCount = 1, int framesPerSecond = 1)
         {
-            _texture = content.Load<Texture2D>(asset);
+            _texture = content.Load<Texture2D>(_assetName);
             _totalElapsed = 0;
             _frameCount = frameCount;
             _frame = 0;
