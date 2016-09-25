@@ -6,13 +6,11 @@ using MarioGame.Entities.PlayerEntities;
 
 namespace MarioGame.Sprites.PlayerSprites
 {
-    public class MarioSprite : ISprite
+    public class MarioSprite : Sprite
     {
         private int _frameCount, _frame, _frameWidth, _frameHeight;
         private float _totalElapsed, _timePerFrame;
         private Point _sheetPosition;
-        private Texture2D _texture;
-        public bool Visible { get; set; }
         public SpriteEffects Flipped { get; set; }
         private MarioEntity _entity;
 
@@ -47,7 +45,7 @@ namespace MarioGame.Sprites.PlayerSprites
             _sheetPosition = sheetPosition;
         }
 
-        public void Update(float elapsed)
+        public override void Update(float elapsed)
         {
             if (Visible)
             {
@@ -61,13 +59,13 @@ namespace MarioGame.Sprites.PlayerSprites
             }
         }
 
-        public void Draw(SpriteBatch batch)
+        public override void Draw(SpriteBatch batch)
         {
             if (Visible)
             {
                 var sourceRect = new Rectangle(_sheetPosition.X, _sheetPosition.Y, _sheetPosition.X + _frameWidth,
                     _sheetPosition.Y + _frameHeight);
-                batch.Draw(_texture, _entity.Position, sourceRect, Color.White, Single.Epsilon, Vector2.Zero, Vector2.Zero,
+                batch.Draw(_texture, _entity.getPosition(), sourceRect, Color.White, Single.Epsilon, Vector2.Zero, Vector2.Zero,
                     Flipped, Single.Epsilon);
             }
         }
