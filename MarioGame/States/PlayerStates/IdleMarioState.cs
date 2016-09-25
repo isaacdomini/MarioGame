@@ -14,6 +14,10 @@ namespace MarioGame.States.PlayerStates
         {
             
         }
+        public override void Begin(IState prevState)
+        {
+            base.Begin(prevState);
+        }
         public override void Jump()
         {
             MarioState newState = new JumpingMarioState(_entity);

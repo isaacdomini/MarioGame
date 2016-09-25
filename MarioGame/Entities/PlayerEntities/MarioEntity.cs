@@ -16,7 +16,7 @@ namespace MarioGame.Entities.PlayerEntities
         {
             
         }
-        public void ChangeState(MarioState marioState)
+        public override void ChangeState(MarioState marioState)
         {
             _state = marioState;
         }
