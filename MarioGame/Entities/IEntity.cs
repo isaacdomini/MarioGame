@@ -11,7 +11,7 @@ namespace MarioGame.Entities
     public interface IEntity
     {
         void Update();
-        void ChangeState(MarioState newstate);
+        void ChangeState(ActionState newstate);
 
         Vector2 getPosition();
     }

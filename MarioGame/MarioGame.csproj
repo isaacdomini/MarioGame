@@ -38,8 +38,13 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Commands\DisplayCoins.cs" />
+    <Compile Include="Commands\DisplayFireFlower.cs" />
     <Compile Include="Commands\DisplayGoomba.cs" />
     <Compile Include="Commands\DisplayKoopaTroopa.cs" />
+    <Compile Include="Commands\DisplayMushroom1Up.cs" />
+    <Compile Include="Commands\DisplayMushroomSuper.cs" />
+    <Compile Include="Commands\DisplayStar.cs" />
     <Compile Include="Commands\JumpCommand.cs" />
     <Compile Include="Commands\GameCommand.cs" />
     <Compile Include="Commands\ICommand.cs" />
@@ -67,10 +72,14 @@
     <Compile Include="Sprites\StaticMovingSprite.cs" />
     <Compile Include="Sprites\StaticStillSprite.cs" />
     <Compile Include="States\IState.cs" />
-    <Compile Include="States\PlayerStates\CrouchingMarioState.cs" />
-    <Compile Include="States\PlayerStates\IdleMarioState.cs" />
-    <Compile Include="States\PlayerStates\JumpingMarioState.cs" />
-    <Compile Include="States\PlayerStates\MarioState.cs" />
+    <Compile Include="States\PlayerStates\ActionStates\CrouchingMarioState.cs" />
+    <Compile Include="States\PlayerStates\ActionStates\IdleMarioState.cs" />
+    <Compile Include="States\PlayerStates\ActionStates\JumpingMarioState.cs" />
+    <Compile Include="States\PlayerStates\ActionState.cs" />
+    <Compile Include="States\PlayerStates\PowerUpState.cs" />
+    <Compile Include="States\PlayerStates\PowerUpStates\FireState.cs" />
+    <Compile Include="States\PlayerStates\PowerUpStates\StandardState.cs" />
+    <Compile Include="States\PlayerStates\PowerUpStates\SuperState.cs" />
     <Compile Include="States\State.cs" />
     <Compile Include="Sprites\Enemies\KoopaTroopa.cs" />
     <Compile Include="Sprites\Enemies\Goomba.cs" />
@@ -86,9 +95,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\characters.gif" />
     <Content Include="Content\EnemySpriteSheet2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\ItemSheet2.png" />
     <Content Include="Content\mariodead.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -98,6 +109,7 @@
     <Content Include="Content\mariostanding.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\regularMario.png" />
     <Content Include="Feedback.txt" />
     <Content Include="Icon.ico" />
   </ItemGroup>

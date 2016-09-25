@@ -32,21 +32,27 @@ namespace MarioGame.Entities.PlayerEntities
             Left = 1,
             Right = 2
         }
+
+        private ActionState aState;
+        private PowerUpState pState;
+
         public MarioEntity() : base()
         {
-            _state = new IdleMarioState(this);
+            _state = aState;
+            aState = new IdleMarioState(this);
+            pState = new StandardState(this);
         }
         public override void Update()
         {
             
         }
-        public override void ChangeState(MarioState marioState)
+        public override void ChangeState(ActionState marioState)
         {
             _state = marioState;
         }
         public void Jump()
         {
-            ((MarioState)_state).Jump();
+            ((ActionState)_state).Jump();
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MarioGame.States.PlayerStates
 {
-    class CrouchingMarioState  : MarioState
+    class CrouchingMarioState  : ActionState
     {
         public CrouchingMarioState(MarioEntity entity) : base(entity)
         {
@@ -15,7 +15,7 @@ namespace MarioGame.States.PlayerStates
         }
         public override void Jump()
         {
-            MarioState newState = new IdleMarioState(_entity);
+            ActionState newState = new IdleMarioState(_entity);
             _entity.ChangeState(newState);
             newState.Begin(this);
         }

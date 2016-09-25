@@ -5,9 +5,9 @@ using MarioGame.Entities;
 
 namespace MarioGame.States.PlayerStates
 {
-    public class MarioState : State
+    public class ActionState : State
     {
-        public MarioState(IEntity entity) : base(entity)
+        public ActionState(IEntity entity) : base(entity)
         {
  
         }

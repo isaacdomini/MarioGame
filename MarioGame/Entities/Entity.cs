@@ -22,7 +22,7 @@ namespace MarioGame.Entities
             _velocity = new Vector2(xVelocity, yVelocity);
             _position = position;
         }
-        public virtual void ChangeState(MarioState newstate)
+        public virtual void ChangeState(ActionState newstate)
         {
             throw new NotImplementedException();
         }

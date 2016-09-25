@@ -8,7 +8,7 @@ using MarioGame.Entities;
 
 namespace MarioGame.States.PlayerStates
 {
-    class IdleMarioState : MarioState
+    class IdleMarioState : ActionState
     {
         public IdleMarioState(IEntity entity) : base(entity)
         {
@@ -20,7 +20,7 @@ namespace MarioGame.States.PlayerStates
         }
         public override void Jump()
         {
-            MarioState newState = new JumpingMarioState(_entity);
+            ActionState newState = new JumpingMarioState(_entity);
             //_entity.ChangeState(newState);
             newState.Begin(this);
 

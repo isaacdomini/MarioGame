@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MarioGame.States.PlayerStates
 {
-    class JumpingMarioState : MarioState
+    class JumpingMarioState : ActionState
     {
         public JumpingMarioState(IEntity entity) : base(entity)
         {
