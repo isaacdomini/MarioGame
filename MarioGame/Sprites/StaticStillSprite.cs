@@ -1,15 +1,14 @@
-﻿using Microsoft.Xna.Framework;
+﻿using MarioGame.Entities;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace MarioGame.Sprites
 {
-    public class StaticStillSprite : Sprite
+    public class StillSprite : Sprite
     {
-        public StaticStillSprite(Vector2 spritePos)
+        public StillSprite(IEntity entity) : base(entity)
         {
-            Visible = false;
-            _position = spritePos;
         }
     }
 }
