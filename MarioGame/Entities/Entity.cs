@@ -15,9 +15,13 @@ namespace MarioGame.Entities
         protected IState _state;
         protected ISprite _sprite;
         protected Vector2 _position;
-        protected Vector2 _vertSpeed;
-        protected Vector2 _horSpeed;
+        protected Vector2 _velocity;
 
+        public Entity(Vector2 position, float xVelocity = 0, float yVelocity = 0)
+        {
+            _velocity = new Vector2(xVelocity, yVelocity);
+            _position = position;
+        }
         public virtual void ChangeState(MarioState newstate)
         {
             throw new NotImplementedException();
@@ -25,7 +29,12 @@ namespace MarioGame.Entities
 
         public virtual void Update()
         {
-            throw new NotImplementedException();
+            _position += _velocity;
+        }
+
+        public Vector2 getPosition()
+        {
+            return _position;
         }
     }
 }

@@ -1,18 +1,18 @@
-﻿using Microsoft.Xna.Framework;
+﻿using MarioGame.Entities;
+using MarioGame.Theming.Scenes;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace MarioGame.Sprites
 {
-    public class AnimatedStillSprite : Sprite
+    public class AnimatedSprite : Sprite
     {
         private int _frameCount, _frame;
         private float _totalElapsed, _timePerFrame;
 
-        public AnimatedStillSprite(Vector2 spritePos)
+        public AnimatedSprite(IEntity entity) : base(entity)
         {
-            Visible = false;
-            _position = spritePos;
         }
 
         public void Load(ContentManager content, string asset, int frameCount = 1, int framesPerSecond = 1)
@@ -23,8 +23,6 @@ namespace MarioGame.Sprites
             _frame = 0;
             _timePerFrame = (float) 1/framesPerSecond;
         }
-
-        public new bool Visible { get; set; }
 
         public override void Update(float elapsed)
         {

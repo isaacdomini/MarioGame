@@ -6,15 +6,28 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using MarioGame.Entities;
 
 namespace MarioGame.Sprites
 {
     public class Sprite : ISprite //TODO: Should we make this class abstract?
     {
-        protected Vector2 _position;
         protected Texture2D _texture;
+        protected IEntity _entity;
         protected string _assetName;
 
+        protected Vector2 _position
+        {
+            get
+            {
+                return _entity.getPosition();
+            }
+        }
+
+        public Sprite(IEntity entity)
+        {
+            _entity = entity;
+        }
         public bool Visible
         {
             get

@@ -32,7 +32,7 @@ namespace MarioGame.Entities.PlayerEntities
             Left = 1,
             Right = 2
         }
-        public MarioEntity()
+        public MarioEntity() : base()
         {
             _state = new IdleMarioState(this);
         }
