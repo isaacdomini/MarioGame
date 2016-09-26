@@ -34,8 +34,20 @@ namespace MarioGame.Theming
             // Adding jump command to controllers
             _controllers[0].AddCommand((int)Keys.W, new JumpCommand(Game1.Scene.getScript()));
             _controllers[0].AddCommand((int)Keys.Up, new JumpCommand(Game1.Scene.getScript()));
+            // Adding movement commands (Needs updated with actual commands)
+            _controllers[0].AddCommand((int)Keys.Left, new JumpCommand(Game1.Scene.getScript()));
+            _controllers[0].AddCommand((int)Keys.Right, new JumpCommand(Game1.Scene.getScript()));
+            _controllers[0].AddCommand((int)Keys.Down, new JumpCommand(Game1.Scene.getScript()));
+            _controllers[0].AddCommand((int)Keys.Space, new JumpCommand(Game1.Scene.getScript()));
+            _controllers[1].AddCommand((int)Buttons.DPadLeft, new JumpCommand(Game1.Scene.getScript()));
+            _controllers[1].AddCommand((int)Buttons.DPadDown, new JumpCommand(Game1.Scene.getScript()));
+            _controllers[1].AddCommand((int)Buttons.DPadRight, new JumpCommand(Game1.Scene.getScript()));
+            _controllers[1].AddCommand((int)Buttons.B, new JumpCommand(Game1.Scene.getScript()));
+            _controllers[1].AddCommand((int)Buttons.A, new JumpCommand(Game1.Scene.getScript()));
+
+
             // Allows for Koopa Troopa to show up on screen at start time
-            ICommand KoopaTroopaCommand=new DisplayKoopaTroopa(Game1.Scene);
+            ICommand KoopaTroopaCommand =new DisplayKoopaTroopa(Game1.Scene);
             KoopaTroopaCommand.Execute();
             // Allows for Enemies to show up on screen at start time
             ICommand GoombaCommand = new DisplayGoomba(Game1.Scene);
