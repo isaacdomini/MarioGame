@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections;
 using System.Collections.Generic;
+using static MarioGame.Sprites.PlayerSprites.MarioSprite;
 
 namespace MarioGame.Sprites
 {
@@ -17,7 +18,7 @@ namespace MarioGame.Sprites
         protected int _numberOfFrames; //number of frames in the row
 
         //each action state uses a set of frames (e.g. frame numbers 7, 8, 9 on the specific row on the sprite sheet
-        protected List<int> _frameSet;
+        protected List<Frames> _frameSet;
         protected int _frameSetPosition; //this refers to the position in the frameset. e.g. if our frameSet was <7,8,9> if _frameSetPosition = 1 then _frameSet[_frameSetPosition] would equal 8
 
         private int _frameWidth;
@@ -39,7 +40,8 @@ namespace MarioGame.Sprites
         }
 
 
-        protected IDictionary _frameSets;
+        protected IDictionary _frameSets; //TODO: somehow figure out how to declare the type of the dictionary as <String, Frames> . . .it gave me an error when doing that. This should also get rid of the pesky casting on line 81
+
 
         public AnimatedSprite(IEntity entity, ContentManager content, Viewport viewport) : base(entity, content, viewport)
         {
@@ -76,8 +78,12 @@ namespace MarioGame.Sprites
                 return;
             }
 
-            var sourceRect = new Rectangle(_frameSet[_frameSetPosition] * _frameWidth, _spriteRowYPosition, _frameWidth, _spriteRowHeight);
+            var sourceRect = new Rectangle( ((int)_frameSet[_frameSetPosition]) * _frameWidth, _spriteRowYPosition, _frameWidth, _spriteRowHeight);
             batch.Draw(texture: _texture, position: _position, sourceRectangle: sourceRect, color: Color.White, effects : _flipped);
+        }
+        public void changeFrameSet(MarioActionState marioActionState)
+        {
+            _frameSet = (List <Frames>) _frameSets[marioActionState];
         }
     }
 }

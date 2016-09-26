@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace MarioGame.States.PlayerStates
 {
-    class CrouchingMarioState  : MarioActionState
+    class DyingMarioState  : MarioActionState
     {
         //TODO: Shouldn't this state only be able to be called when in Giant Mario Power State?
-        public CrouchingMarioState(MarioEntity entity) : base(entity)
+        public DyingMarioState(MarioEntity entity) : base(entity)
         {
-            actionState = MarioActionStates.Crouching;
+            actionState = MarioActionStates.Dead;
         }
         public override void Jump()
         {

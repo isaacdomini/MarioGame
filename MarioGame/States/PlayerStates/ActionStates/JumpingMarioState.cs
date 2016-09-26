@@ -8,11 +8,12 @@ using System.Threading.Tasks;
 
 namespace MarioGame.States.PlayerStates
 {
-    class JumpingMarioState : ActionState
+    class JumpingMarioState : MarioActionState
     {
         public JumpingMarioState(MarioEntity entity) : base(entity)
         {
-
+            actionState = MarioActionStates.Jumping;
         }
+        //TODO: need to add in behavior for jumping higher if you hold the jump button down.
     }
 }

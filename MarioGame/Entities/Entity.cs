@@ -19,7 +19,7 @@ namespace MarioGame.Entities
         }
 
         IState _state;
-        protected ISprite _sprite;
+        public ISprite _sprite;
         protected Vector2 _position;
         protected Vector2 _velocity;
 

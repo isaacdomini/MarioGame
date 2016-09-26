@@ -5,13 +5,14 @@ using Microsoft.Xna.Framework.Graphics;
 using MarioGame.Entities.PlayerEntities;
 using MarioGame.Entities;
 using System.Collections.Generic;
+using System.Collections;
 
 namespace MarioGame.Sprites.PlayerSprites
 {
     public class MarioSprite : AnimatedSprite
     {
 
-        protected enum Frames
+        public enum Frames
         {
             //frames are all facing left. Except DeadMario who is facing the computer user.
             DeadMario = 1,
@@ -36,16 +37,16 @@ namespace MarioGame.Sprites.PlayerSprites
         public MarioSprite(IEntity entity, ContentManager content, Viewport viewport) : base(entity, content, viewport)
         {
             _numberOfFrames = 15;
-
+            //TODO: instead of strings for the keys use an enum or something
             _frameSets = new Dictionary<String, List<Frames>> {
                 { "Idle", new List<Frames> { Frames.StandingMario } },
                 { "Moving", new List<Frames> {Frames.MovingMario1, Frames.MovingMario2, Frames.MovingMario3 } },//TODO: instead of {1, 2, 3} may have to do {1, 2, 3, 2} or something like that
-                { "JumpingMario", new List<Frames> {Frames.JumpingMario } },
-                { "SittingMario", new List<Frames> {Frames.SittingMario1, Frames.SittingMario2} },
-                { "SwimmingMario", new List<Frames> {Frames.SwimmingMarioStart, Frames.SwimmingMarioAfterStart, Frames.SwimmingMarioMiddle, Frames.SwimmingMarioBeforeEnd, Frames.SwimmingMarioEnd  } },
-                { "DeadMario", new List<Frames> {Frames.DeadMario } }
+                { "Jumping", new List<Frames> {Frames.JumpingMario } },
+                { "Sitting", new List<Frames> {Frames.SittingMario1, Frames.SittingMario2} },
+                { "Swimming", new List<Frames> {Frames.SwimmingMarioStart, Frames.SwimmingMarioAfterStart, Frames.SwimmingMarioMiddle, Frames.SwimmingMarioBeforeEnd, Frames.SwimmingMarioEnd  } },
+                { "Dead", new List<Frames> {Frames.DeadMario } }
             };
-}
+        }
 
     }
 }

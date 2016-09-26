@@ -5,15 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using MarioGame.Entities.PlayerEntities;
 using MarioGame.Entities;
+using MarioGame.Sprites;
 
 namespace MarioGame.States.PlayerStates
 {
-    class IdleMarioState : ActionState
+    class IdleMarioState : MarioActionState
     {
         public IdleMarioState(MarioEntity entity) : base(entity)
         {
-            
+            actionState = MarioActionStates.Idle;
         }
+
         public override void Jump()
         {
             ActionState jumpState = new JumpingMarioState(marioEntity);
@@ -23,7 +25,7 @@ namespace MarioGame.States.PlayerStates
         }
         public override void Crouch()
         {
-            ActionState crouchState = new CrouchingMarioState(marioEntity);
+            ActionState crouchState = new DyingMarioState(marioEntity);
             marioEntity.ChangeActionState(crouchState);
             crouchState.Begin(this);
         }
