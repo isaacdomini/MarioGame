@@ -3,41 +3,17 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using MarioGame.Entities.PlayerEntities;
+using MarioGame.Entities;
 
 namespace MarioGame.Sprites.PlayerSprites
 {
-    public class MarioSprite : Sprite
+    public class MarioSprite : AnimatedSprite
     {
-        private int _frameCount, _frame, _frameWidth, _frameHeight;
-        private float _totalElapsed, _timePerFrame;
-        private Point _sheetPosition;
-        public SpriteEffects Flipped { get; set; }
+        
 
-        public MarioSprite(MarioEntity entity) : base(entity)
+        public MarioSprite(IEntity entity, ContentManager content, Viewport viewport) : base(entity, content, viewport)
         {
-            _entity = entity;
-        }
-
-
-        public void Load(ContentManager content, string asset, int frameCount = 1, int framesPerSecond = 1)
-        {
-            _texture = content.Load<Texture2D>(asset);
-            _totalElapsed = 0;
-            _frameCount = frameCount;
-            _frame = 0;
-            _timePerFrame = (float)1 / framesPerSecond;
-            Flipped = SpriteEffects.None;
-            _sheetPosition = Point.Zero;
-            _frameWidth = 1;
-            _frameHeight = 1;
-        }
-
-        public void ChangeSheet(int frameCount, int frameWidth, int frameHeight, Point sheetPosition)
-        {
-            _frameCount = frameCount;
-            _frameWidth = frameWidth;
-            _frameHeight = frameHeight;
-            _sheetPosition = sheetPosition;
+            _numberOfFrames = 15;
         }
 
         public override void Update(float elapsed)
