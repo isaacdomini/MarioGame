@@ -7,7 +7,7 @@ using MarioGame.Entities;
 
 namespace MarioGame.States.PlayerStates
 {
-    class PowerUpState : State
+    public class PowerUpState : State
     {
         public PowerUpState(IEntity entity) : base(entity)
         {

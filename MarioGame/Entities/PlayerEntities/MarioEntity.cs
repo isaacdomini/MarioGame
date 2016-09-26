@@ -2,6 +2,7 @@
 using MarioGame.Sprites.PlayerSprites;
 using MarioGame.States;
 using MarioGame.States.PlayerStates;
+using MarioGame.States.PlayerStates.PowerUpStates;
 using Microsoft.Xna.Framework;
 
 namespace MarioGame.Entities.PlayerEntities
@@ -46,13 +47,45 @@ namespace MarioGame.Entities.PlayerEntities
         {
             
         }
-        public override void ChangeState(ActionState marioState)
+        public void ChangeActionState(ActionState state)
         {
-            _state = marioState;
+            aState = state;
+        }
+        public void ChangePowerUpState(PowerUpState state)
+        {
+            pState = state;
         }
         public void Jump()
         {
             ((ActionState)_state).Jump();
+        }
+        public void Crouch()
+        {
+
+        }
+        public void WalkLeft()
+        {
+
+        }
+        public void WalkRight()
+        {
+
+        }
+        public void ChangeToFireState()
+        {
+
+        }
+        public void ChangeToStandardState()
+        {
+
+        }
+        public void ChangeToSuperState()
+        {
+
+        }
+        public void ChangeToDeadState()
+        {
+
         }
     }
 }
