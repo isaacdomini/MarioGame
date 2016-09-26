@@ -24,18 +24,16 @@ namespace MarioGame.Sprites
 
         protected float _totalElapsed, _timePerFrame;
 
-        public SpriteEffects _flipped {
+        protected SpriteEffects _flipped {
             get
             {
                 switch (((Entity)this._entity).ActionState.direction)
                 {
                     case ActionState.Directions.Right:
                         return SpriteEffects.FlipHorizontally;
-                        break;
                     case ActionState.Directions.Left:
                     default:
                         return SpriteEffects.None;
-                        break;
                 }
             }
         }
@@ -79,7 +77,7 @@ namespace MarioGame.Sprites
             }
 
             var sourceRect = new Rectangle(_frameSet[_frameSetPosition] * _frameWidth, _spriteRowYPosition, _frameWidth, _spriteRowHeight);
-            batch.Draw(texture =_texture, position =_position, sourceRectangle = sourceRect, color = Color.White, effects = _flipped);
+            batch.Draw(texture: _texture, position: _position, sourceRectangle: sourceRect, color: Color.White, effects : _flipped);
         }
     }
 }
