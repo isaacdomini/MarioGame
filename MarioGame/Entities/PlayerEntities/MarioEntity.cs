@@ -9,19 +9,6 @@ namespace MarioGame.Entities.PlayerEntities
 {
     public class MarioEntity : Entity
     {
-        public Directions direction { get; protected set; }
-        public enum Directions
-        {
-            Left = 1,
-            Right = 2
-        }
-        protected void setDirection(Directions newDir)
-        {
-            direction = newDir;
-        }
-
-
-        private ActionState aState;
         private PowerUpState pState;
 
         public MarioEntity(Vector2 position) : base(position)

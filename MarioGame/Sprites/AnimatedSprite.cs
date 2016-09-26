@@ -1,4 +1,5 @@
 ﻿using MarioGame.Entities;
+using MarioGame.States.PlayerStates;
 using MarioGame.Theming.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -23,7 +24,22 @@ namespace MarioGame.Sprites
 
         protected float _totalElapsed, _timePerFrame;
 
-        public SpriteEffects _flipped { get; set; }
+        public SpriteEffects _flipped {
+            get
+            {
+                switch (((Entity)this._entity).ActionState.direction)
+                {
+                    case ActionState.Directions.Right:
+                        return SpriteEffects.FlipHorizontally;
+                        break;
+                    case ActionState.Directions.Left:
+                    default:
+                        return SpriteEffects.None;
+                        break;
+                }
+            }
+        }
+
 
         protected IDictionary _frameSets;
 
@@ -63,7 +79,7 @@ namespace MarioGame.Sprites
             }
 
             var sourceRect = new Rectangle(_frameSet[_frameSetPosition] * _frameWidth, _spriteRowYPosition, _frameWidth, _spriteRowHeight);
-            batch.Draw(_texture, _position, sourceRect, Color.White);
+            batch.Draw(texture =_texture, position =_position, sourceRectangle = sourceRect, color = Color.White, effects = _flipped);
         }
     }
 }

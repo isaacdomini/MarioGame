@@ -12,10 +12,17 @@ namespace MarioGame.Entities
 {
     public abstract class Entity : IEntity
     {
-        protected IState _state;
+        protected ActionState aState;
+        public ActionState ActionState
+        {
+            get { return this.aState; }
+        }
+
+        IState _state;
         protected ISprite _sprite;
         protected Vector2 _position;
         protected Vector2 _velocity;
+
 
         public Entity(Vector2 position, float xVelocity = 0, float yVelocity = 0)
         {
@@ -36,5 +43,7 @@ namespace MarioGame.Entities
         {
             return _position;
         }
+
+
     }
 }

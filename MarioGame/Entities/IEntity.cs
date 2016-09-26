@@ -14,5 +14,6 @@ namespace MarioGame.Entities
         void ChangeState(ActionState newstate);
 
         Vector2 getPosition();
+
     }
 }

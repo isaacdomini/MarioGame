@@ -7,10 +7,19 @@ namespace MarioGame.States.PlayerStates
 {
     public class ActionState : State
     {
-        protected MarioEntity marioEntity;
-        public ActionState(MarioEntity entity) : base(entity)
+        public Directions direction { get; protected set; }
+        public enum Directions
         {
-            marioEntity = (MarioEntity)_entity;
+            Left = 1,
+            Right = 2
+        }
+        protected void setDirection(Directions newDir)
+        {
+            direction = newDir;
+        }
+        protected IEntity marioEntity;
+        public ActionState(IEntity entity) : base(entity)
+        {
         }
         public override void Begin(IState prevState)
         {
