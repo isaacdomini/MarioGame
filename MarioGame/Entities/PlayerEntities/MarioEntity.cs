@@ -9,25 +9,6 @@ namespace MarioGame.Entities.PlayerEntities
 {
     public class MarioEntity : Entity
     {
-        protected enum Frames
-        {
-            //frames are all facing left. Except DeadMario who is facing the computer user.
-            DeadMario = 1,
-            SwimmingMarioEnd = 2,
-            SwimmingMarioBeforeEnd = 3,
-            SwimmingMarioMiddle = 4,
-            SwimmingMarioAfterStart = 5,
-            SwimmingMarioStart = 6,
-            SittingMario2 = 7,
-            SittingMario1 = 8,
-            JumpingMario = 9,
-            DashingMario = 10,
-            RunningMario3 = 11,
-            RunningMario2 = 12,
-            RunningMario1 = 13,
-            StandingMario = 14,
-            HalfBigMario = 15
-        }
         public Directions direction { get; protected set; }
         public enum Directions
         {

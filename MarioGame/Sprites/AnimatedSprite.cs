@@ -3,6 +3,7 @@ using MarioGame.Theming.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace MarioGame.Sprites
@@ -23,6 +24,8 @@ namespace MarioGame.Sprites
         protected float _totalElapsed, _timePerFrame;
 
         public SpriteEffects _flipped { get; set; }
+
+        protected IDictionary _frameSets;
 
         public AnimatedSprite(IEntity entity, ContentManager content, Viewport viewport) : base(entity, content, viewport)
         {
