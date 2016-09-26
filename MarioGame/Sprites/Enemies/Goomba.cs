@@ -10,7 +10,7 @@ namespace MarioGame.Sprites
     {
         public Goomba(IEntity entity) : base(entity)
         {
-            _assetName = "putTheSpriteSheetNameHereErin";
+            _assetName = "EnemySpriteSheet2";
         }
     }
 }
