@@ -4,13 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MarioGame.Entities;
+using MarioGame.Entities.PlayerEntities;
 
 namespace MarioGame.States.PlayerStates.ActionStates
 {
     class WalkingState : ActionState
     {
-        public WalkingState(IEntity entity) : base(entity)
+
+        public WalkingState(MarioEntity entity) : base(entity)
         {
+
         }
     }
 }

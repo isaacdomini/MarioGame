@@ -28,18 +28,23 @@ namespace MarioGame.Entities.PlayerEntities
             StandingMario = 14,
             HalfBigMario = 15
         }
-        protected enum Directions
+        public Directions direction { get; protected set; }
+        public enum Directions
         {
             Left = 1,
             Right = 2
         }
+        protected void setDirection(Directions newDir)
+        {
+            direction = newDir;
+        }
+
 
         private ActionState aState;
         private PowerUpState pState;
 
-        public MarioEntity() : base()
+        public MarioEntity(Vector2 position) : base(position)
         {
-            _state = aState;
             aState = new IdleMarioState(this);
             pState = new StandardState(this);
         }
@@ -50,6 +55,7 @@ namespace MarioGame.Entities.PlayerEntities
         public void ChangeActionState(ActionState state)
         {
             aState = state;
+            
         }
         public void ChangePowerUpState(PowerUpState state)
         {
@@ -57,35 +63,35 @@ namespace MarioGame.Entities.PlayerEntities
         }
         public void Jump()
         {
-            ((ActionState)_state).Jump();
+            aState.Jump();
         }
         public void Crouch()
         {
-
+            aState.Crouch();
         }
         public void WalkLeft()
         {
-
+            aState.MoveLeft();
         }
         public void WalkRight()
         {
-
+            aState.MoveRight();
         }
         public void ChangeToFireState()
         {
-
+            pState.ChangeToFire();
         }
         public void ChangeToStandardState()
         {
-
+            pState.ChangeToStandard();
         }
         public void ChangeToSuperState()
         {
-
+            pState.ChangeToSuper();
         }
         public void ChangeToDeadState()
         {
-
+            pState.ChangeToDead();
         }
     }
 }

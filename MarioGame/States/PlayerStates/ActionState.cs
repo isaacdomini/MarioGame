@@ -7,9 +7,11 @@ namespace MarioGame.States.PlayerStates
 {
     public class ActionState : State
     {
-        public ActionState(IEntity entity) : base(entity)
+        
+        protected MarioEntity marioEntity;
+        public ActionState(MarioEntity entity) : base(entity)
         {
- 
+            marioEntity = (MarioEntity)_entity;
         }
 
         public virtual void Jump() {}

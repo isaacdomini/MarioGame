@@ -10,20 +10,26 @@ namespace MarioGame.States.PlayerStates
 {
     class IdleMarioState : ActionState
     {
-        public IdleMarioState(IEntity entity) : base(entity)
+        public IdleMarioState(MarioEntity entity) : base(entity)
         {
             
         }
-        public override void Begin(IState prevState)
-        {
-            base.Begin(prevState);
-        }
         public override void Jump()
         {
-            ActionState newState = new JumpingMarioState(_entity);
-            //_entity.ChangeState(newState);
-            newState.Begin(this);
+            ActionState jumpState = new JumpingMarioState(marioEntity);
+            marioEntity.ChangeActionState(jumpState);
+            jumpState.Begin(this);
 
+        }
+        public override void Crouch()
+        {
+            ActionState crouchState = new CrouchingMarioState(marioEntity);
+            marioEntity.ChangeActionState(crouchState);
+            crouchState.Begin(this);
+        }
+        public override void MoveLeft()
+        {
+            
         }
     }
 }

@@ -10,7 +10,7 @@ namespace MarioGame.States.PlayerStates
 {
     class JumpingMarioState : ActionState
     {
-        public JumpingMarioState(IEntity entity) : base(entity)
+        public JumpingMarioState(MarioEntity entity) : base(entity)
         {
 
         }
