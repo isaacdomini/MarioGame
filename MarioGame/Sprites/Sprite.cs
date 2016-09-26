@@ -15,6 +15,8 @@ namespace MarioGame.Sprites
         protected Texture2D _texture;
         protected IEntity _entity;
         protected string _assetName;
+        protected ContentManager _content;
+        protected Viewport _viewport;
 
         protected Vector2 _position
         {
@@ -24,9 +26,11 @@ namespace MarioGame.Sprites
             }
         }
 
-        public Sprite(IEntity entity)
+        public Sprite(IEntity entity, ContentManager content, Viewport viewport)
         {
             _entity = entity;
+            _content = content;
+            _viewport = viewport;
         }
         public bool Visible
         {
@@ -44,12 +48,14 @@ namespace MarioGame.Sprites
         public virtual void Draw(SpriteBatch batch)
         {
             if (Visible)
+            {
                 batch.Draw(_texture, _position);
+            }
         }
 
-        public virtual void Load(ContentManager content, int frameCount = 1, int framesPerSecond = 1)
+        public virtual void Load(int framesPerSecond = 1)
         {
-            _texture = content.Load<Texture2D>(_assetName);
+            _texture = _content.Load<Texture2D>(_assetName);
         }
 
         public virtual void Update(float elapsed)

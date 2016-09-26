@@ -3,38 +3,52 @@ using MarioGame.Theming.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace MarioGame.Sprites
 {
-    public class AnimatedSprite : Sprite
+    public abstract class AnimatedSprite : Sprite
     {
-        protected int _frameCount, _frame;
+       
+        //each row on the sprite sheet is a different Power up state - e.g. row 1 is large mario, row 2 is regular mario, row 3 is fire mario.
+        private int _spriteRowYPosition, _spriteRowHeight;
+        protected int _numberOfFrames; //number of frames in the row
+
+        //each action state uses a set of frames (e.g. frame numbers 7, 8, 9 on the specific row on the sprite sheet
+        protected List<int> _frameSet;
+        protected int _frameSetPosition; //this refers to the position in the frameset. e.g. if our frameSet was <7,8,9> if _frameSetPosition = 1 then _frameSet[_frameSetPosition] would equal 8
+
+        private int _frameWidth;
+
         protected float _totalElapsed, _timePerFrame;
 
-        public AnimatedSprite(IEntity entity) : base(entity)
+        public SpriteEffects _flipped { get; set; }
+
+        public AnimatedSprite(IEntity entity, ContentManager content, Viewport viewport) : base(entity, content, viewport)
         {
         }
 
-        public override void Load(ContentManager content,  int frameCount = 1, int framesPerSecond = 1)
+        //NOTE: Child class must set _numberOfChildren
+        public override void Load(int framesPerSecond = 1)
         {
-            _texture = content.Load<Texture2D>(_assetName);
+            _texture = _content.Load<Texture2D>(_assetName);
+
+            _frameWidth = _texture.Width / _numberOfFrames;
+            _frameSetPosition = 0;
+
             _totalElapsed = 0;
-            _frameCount = frameCount;
-            _frame = 0;
             _timePerFrame = (float) 1/framesPerSecond;
         }
 
         public override void Update(float elapsed)
         {
-            if (Visible)
+            _totalElapsed += elapsed;
+            if (_totalElapsed > _timePerFrame)
             {
-                _totalElapsed += elapsed;
-                if (_totalElapsed > _timePerFrame)
-                {
-                    _frame++;
-                    _frame = _frame%_frameCount;
-                    _totalElapsed -= _timePerFrame;
-                }
+                _frameSetPosition++;
+                _frameSetPosition = _frameSetPosition % _frameSetPosition;
+
+                _totalElapsed -= _timePerFrame;
             }
         }
 
@@ -42,10 +56,11 @@ namespace MarioGame.Sprites
         {
             if (Visible)
             {
-                var frameWidth = _texture.Width/_frameCount;
-                var sourcerect = new Rectangle(frameWidth*_frame, 0, frameWidth, _texture.Height);
-                batch.Draw(_texture, _position, sourcerect, Color.White);
+                return;
             }
+
+            var sourceRect = new Rectangle(_frameSet[_frameSetPosition] * _frameWidth, _spriteRowYPosition, _frameWidth, _spriteRowHeight);
+            batch.Draw(_texture, _position, sourceRect, Color.White);
         }
     }
 }
