@@ -86,7 +86,7 @@ namespace MarioGame.Sprites
             _frameSet = (List <Frames>) _frameSets[marioActionState];
         }
 
-        public void changeSpriteRow(MarioTransformations marioTransformations)
+        public void changePowerUp(MarioPowerUpStates marioPowerUpState)
         {
 
         }
