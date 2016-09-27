@@ -14,7 +14,6 @@ namespace MarioGame.Sprites.ItemSprites
         public QuestionBlock(IEntity entity, ContentManager content, Viewport viewport) : base(entity, content, viewport)
         {
             _numberOfFrames = 3;
-            //TODO: instead of strings for the keys use an enum or something
         }
     }
 }
