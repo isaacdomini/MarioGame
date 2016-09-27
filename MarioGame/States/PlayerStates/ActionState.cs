@@ -18,7 +18,6 @@ namespace MarioGame.States.PlayerStates
         {
             direction = newDir;
         }
-        protected IEntity marioEntity;
         public ActionState(IEntity entity) : base(entity)
         {
 

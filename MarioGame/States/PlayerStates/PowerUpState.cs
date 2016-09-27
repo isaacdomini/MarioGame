@@ -10,10 +10,10 @@ namespace MarioGame.States.PlayerStates
 {
     public class PowerUpState : State
     {
-        MarioEntity marioEntity;
+        protected MarioEntity marioEntity;
         public PowerUpState(MarioEntity entity) : base(entity)
         {
-            marioEntity = (MarioEntity)_entity;
+            marioEntity = entity;
         }
         public virtual void ChangeToSuper() {}
         public virtual void ChangeToStandard() {}

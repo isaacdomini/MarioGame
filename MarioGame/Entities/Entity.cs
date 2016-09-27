@@ -12,6 +12,7 @@ namespace MarioGame.Entities
 {
     public abstract class Entity : IEntity
     {
+        // Ricky: What is the difference between aState and ActionState and _state?
         protected ActionState aState;
         public ActionState ActionState
         {
@@ -29,7 +30,7 @@ namespace MarioGame.Entities
             _velocity = new Vector2(xVelocity, yVelocity);
             _position = position;
         }
-        public virtual void ChangeState(State newstate)
+        public virtual void ChangeState(IState newstate)
         {
             throw new NotImplementedException();
         }

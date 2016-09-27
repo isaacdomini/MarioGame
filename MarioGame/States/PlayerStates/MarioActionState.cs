@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MarioGame.Entities;
 using MarioGame.Sprites;
+using MarioGame.Entities.PlayerEntities;
 
 namespace MarioGame.States.PlayerStates
 {
@@ -12,14 +13,17 @@ namespace MarioGame.States.PlayerStates
     {
         protected MarioActionStates actionState; //TODO: make this read from some shared enum with Sprites
 
-        public MarioActionState(IEntity entity) : base(entity)
+        protected MarioEntity marioEntity;
+
+        public MarioActionState(MarioEntity entity) : base(entity)
         {
+            marioEntity = entity;
         }
 
         public override void Begin(IState prevState)
         {
             base.Begin(prevState);
-            ((AnimatedSprite)((Entity)_entity)._sprite).changeFrameSet(actionState); //TODO: make it so we don't have to do this casts
+            marioEntity.mSprite.changeFrameSet(actionState); //TODO: make it so we don't have to do this casts
         }
     }
 }

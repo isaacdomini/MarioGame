@@ -81,7 +81,7 @@ namespace MarioGame.Sprites
             var sourceRect = new Rectangle( ((int)_frameSet[_frameSetPosition]) * _frameWidth, _spriteRowYPosition, _frameWidth, _spriteRowHeight);
             batch.Draw(texture: _texture, position: _position, sourceRectangle: sourceRect, color: Color.White, effects : _flipped);
         }
-        public void changeFrameSet(MarioActionState marioActionState)
+        public void changeFrameSet(MarioActionStates marioActionState)
         {
             _frameSet = (List <Frames>) _frameSets[marioActionState];
         }

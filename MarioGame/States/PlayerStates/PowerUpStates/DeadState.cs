@@ -15,17 +15,22 @@ namespace MarioGame.States.PlayerStates.PowerUpStates
         }
         public override void ChangeToFire()
         {
-            PowerUpState fire = new FireState(_entity);
+            PowerUpState fire = new FireState(marioEntity);
             marioEntity.ChangePowerUpState(fire);
+            fire.Begin(this);
                         
         }
         public override void ChangeToStandard()
         {
-            base.ChangeToStandard();
+            PowerUpState standard = new StandardState(marioEntity);
+            marioEntity.ChangePowerUpState(standard);
+            standard.Begin(this);
         }
         public override void ChangeToSuper()
         {
-            base.ChangeToSuper();
+            PowerUpState super = new SuperState(marioEntity);
+            marioEntity.ChangePowerUpState(super);
+            super.Begin(this);
         }
     }
 }

@@ -18,8 +18,8 @@ namespace MarioGame.States.PlayerStates
         }
         public override void Jump()
         {
-            ActionState newState = new IdleMarioState(_entity);
-            _entity.ChangeState(newState);
+            ActionState newState = new IdleMarioState(marioEntity);
+            marioEntity.ChangeState(newState);
             newState.Begin(this);
         }
     }

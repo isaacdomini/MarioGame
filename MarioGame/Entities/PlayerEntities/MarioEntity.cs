@@ -10,11 +10,15 @@ namespace MarioGame.Entities.PlayerEntities
     public class MarioEntity : Entity
     {
         private PowerUpState pState;
+        // Could be useful for casting in certain circumstances
+        public MarioSprite mSprite;
 
         public MarioEntity(Vector2 position) : base(position)
         {
             aState = new IdleMarioState(this);
             pState = new StandardState(this);
+            // Now only cast once
+            mSprite = (MarioSprite)_sprite;
         }
         public override void Update()
         {
@@ -27,6 +31,7 @@ namespace MarioGame.Entities.PlayerEntities
         }
         public void ChangePowerUpState(PowerUpState state)
         {
+            // TODO Is this all we need? Or do we need below methods
             pState = state;
         }
         public void Jump()

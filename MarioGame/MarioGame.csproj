@@ -38,13 +38,23 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Commands\DisplayCoins.cs" />
-    <Compile Include="Commands\DisplayFireFlower.cs" />
     <Compile Include="Commands\DisplayGoomba.cs" />
     <Compile Include="Commands\DisplayKoopaTroopa.cs" />
-    <Compile Include="Commands\DisplayMushroom1Up.cs" />
-    <Compile Include="Commands\DisplayMushroomSuper.cs" />
-    <Compile Include="Commands\DisplayStar.cs" />
+    <Compile Include="Commands\ItemCommands\DisplayCoins.cs" />
+    <Compile Include="Commands\ItemCommands\DisplayFireFlower.cs" />
+    <Compile Include="Commands\ItemCommands\DisplayMushroom1Up.cs" />
+    <Compile Include="Commands\ItemCommands\DisplayMushroomSuper.cs" />
+    <Compile Include="Commands\ItemCommands\DisplayStar.cs" />
+    <Compile Include="Commands\ItemsCommands\DisplayCoins.cs" />
+    <Compile Include="Commands\ItemsCommands\DisplayFireFlower.cs" />
+    <Compile Include="Commands\ItemsCommands\DisplayMushroom1Up.cs" />
+    <Compile Include="Commands\ItemsCommands\DisplayMushroomSuper.cs" />
+    <Compile Include="Commands\ItemsCommands\DisplayStar.cs" />
+    <Compile Include="Commands\Items\DisplayCoins.cs" />
+    <Compile Include="Commands\Items\DisplayFireFlower.cs" />
+    <Compile Include="Commands\Items\DisplayMushroom1Up.cs" />
+    <Compile Include="Commands\Items\DisplayMushroomSuper.cs" />
+    <Compile Include="Commands\Items\DisplayStar.cs" />
     <Compile Include="Commands\JumpCommand.cs" />
     <Compile Include="Commands\GameCommand.cs" />
     <Compile Include="Commands\ICommand.cs" />
@@ -63,20 +73,43 @@
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\IEntity.cs" />
     <Compile Include="Entities\PlayerEntities\MarioEntity.cs" />
+    <Compile Include="obj\x86\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\x86\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\x86\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sprites\AnimatedMovingSprite.cs" />
+    <Compile Include="Sprites\AnimatedSprite.cs" />
     <Compile Include="Sprites\ISprite.cs" />
-    <Compile Include="Sprites\AnimatedStillSprite.cs" />
+    <Compile Include="Sprites\ItemSprites\Coins.cs" />
+    <Compile Include="Sprites\ItemSprites\FireFlower.cs" />
+    <Compile Include="Sprites\ItemSprites\Mushroom1Up.cs" />
+    <Compile Include="Sprites\ItemSprites\MushroomSuper.cs" />
+    <Compile Include="Sprites\ItemSprites\Star.cs" />
+    <Compile Include="Sprites\ItemsSprites\Coins.cs" />
+    <Compile Include="Sprites\ItemsSprites\FireFlower.cs" />
+    <Compile Include="Sprites\ItemsSprites\Mushroom1Up.cs" />
+    <Compile Include="Sprites\ItemsSprites\MushroomSuper.cs" />
+    <Compile Include="Sprites\ItemsSprites\Star.cs" />
+    <Compile Include="Sprites\Items\Coins.cs" />
+    <Compile Include="Sprites\Items\FireFlower.cs" />
+    <Compile Include="Sprites\Items\Mushroom1Up.cs" />
+    <Compile Include="Sprites\Items\MushroomSuper.cs" />
+    <Compile Include="Sprites\Items\Star.cs" />
     <Compile Include="Sprites\PlayerSprites\MarioSprite.cs" />
     <Compile Include="Sprites\Sprite.cs" />
-    <Compile Include="Sprites\StaticMovingSprite.cs" />
     <Compile Include="Sprites\StaticStillSprite.cs" />
     <Compile Include="States\IState.cs" />
     <Compile Include="States\PlayerStates\ActionStates\CrouchingMarioState.cs" />
+    <Compile Include="States\PlayerStates\ActionStates\DyingMarioState.cs" />
+    <Compile Include="States\PlayerStates\ActionStates\FallingMarioState.cs" />
     <Compile Include="States\PlayerStates\ActionStates\IdleMarioState.cs" />
     <Compile Include="States\PlayerStates\ActionStates\JumpingMarioState.cs" />
     <Compile Include="States\PlayerStates\ActionState.cs" />
+    <Compile Include="States\PlayerStates\ActionStates\RunningMarioState.cs" />
+    <Compile Include="States\PlayerStates\ActionStates\WalkingMarioState.cs" />
+    <Compile Include="States\PlayerStates\MarioActionState.cs" />
+    <Compile Include="States\PlayerStates\MarioActionStates.cs" />
     <Compile Include="States\PlayerStates\PowerUpState.cs" />
+    <Compile Include="States\PlayerStates\PowerUpStates\DeadState.cs" />
     <Compile Include="States\PlayerStates\PowerUpStates\FireState.cs" />
     <Compile Include="States\PlayerStates\PowerUpStates\StandardState.cs" />
     <Compile Include="States\PlayerStates\PowerUpStates\SuperState.cs" />
@@ -95,6 +128,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Windows\x86\Debug\Content\mariodead.jpg" />
+    <Content Include="bin\Windows\x86\Debug\Content\mariorunningright.jpg" />
+    <Content Include="bin\Windows\x86\Debug\Content\mariostanding.jpg" />
+    <Content Include="bin\Windows\x86\Debug\CSE3902_Sprint0.exe" />
+    <Content Include="bin\Windows\x86\Debug\CSE3902_Sprint0.pdb" />
+    <Content Include="bin\Windows\x86\Debug\CSE3902_Sprint0.vshost.exe" />
+    <Content Include="bin\Windows\x86\Debug\MarioGame.exe" />
+    <Content Include="bin\Windows\x86\Debug\MarioGame.pdb" />
+    <Content Include="bin\Windows\x86\Debug\MarioGame.vshost.exe" />
+    <Content Include="bin\Windows\x86\Debug\MonoGame.Framework.dll" />
+    <Content Include="bin\Windows\x86\Debug\MonoGame.Framework.xml" />
+    <Content Include="bin\Windows\x86\Debug\SharpDX.Direct2D1.dll" />
+    <Content Include="bin\Windows\x86\Debug\SharpDX.Direct2D1.xml" />
+    <Content Include="bin\Windows\x86\Debug\SharpDX.Direct3D11.dll" />
+    <Content Include="bin\Windows\x86\Debug\SharpDX.Direct3D11.xml" />
+    <Content Include="bin\Windows\x86\Debug\SharpDX.Direct3D9.dll" />
+    <Content Include="bin\Windows\x86\Debug\SharpDX.Direct3D9.xml" />
+    <Content Include="bin\Windows\x86\Debug\SharpDX.dll" />
+    <Content Include="bin\Windows\x86\Debug\SharpDX.DXGI.dll" />
+    <Content Include="bin\Windows\x86\Debug\SharpDX.DXGI.xml" />
+    <Content Include="bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll" />
+    <Content Include="bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml" />
+    <Content Include="bin\Windows\x86\Debug\SharpDX.RawInput.dll" />
+    <Content Include="bin\Windows\x86\Debug\SharpDX.RawInput.xml" />
+    <Content Include="bin\Windows\x86\Debug\SharpDX.XAudio2.dll" />
+    <Content Include="bin\Windows\x86\Debug\SharpDX.XAudio2.xml" />
+    <Content Include="bin\Windows\x86\Debug\SharpDX.XInput.dll" />
+    <Content Include="bin\Windows\x86\Debug\SharpDX.XInput.xml" />
+    <Content Include="bin\Windows\x86\Debug\SharpDX.xml" />
     <Content Include="Content\characters.gif" />
     <Content Include="Content\EnemySpriteSheet2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -116,7 +178,16 @@
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="bin\Windows\x86\Debug\Content\mariodead.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\mariorunningright.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\mariostanding.xnb" />
+    <None Include="bin\Windows\x86\Debug\CSE3902_Sprint0.vshost.exe.manifest" />
+    <None Include="bin\Windows\x86\Debug\MarioGame.vshost.exe.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Windows\x86\Release\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
