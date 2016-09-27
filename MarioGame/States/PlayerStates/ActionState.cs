@@ -8,7 +8,7 @@ namespace MarioGame.States.PlayerStates
 {
     public class ActionState : State
     {
-        public Directions direction { get; protected set; }
+        public Directions direction;
         public enum Directions
         {
             Left = 1,
