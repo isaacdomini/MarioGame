@@ -13,6 +13,17 @@ namespace MarioGame.Entities.PlayerEntities
         // Could be useful for casting in certain circumstances
         public MarioSprite mSprite;
 
+        // Velocity variables
+        public readonly static int velocityConstant = 1;
+        public readonly static Vector2 walkingRightVelocity = new Vector2(velocityConstant*1, 0);
+        public readonly static Vector2 walkingLeftVelocity = new Vector2(velocityConstant *- 1, 0);
+        public readonly static Vector2 idleVelocity = new Vector2(0, 0);
+        public readonly static Vector2 jumpingUpVelocity = new Vector2(0, velocityConstant*1);
+        public readonly static Vector2 jumpingRightVelocity = new Vector2(velocityConstant*1, velocityConstant*1);
+        public readonly static Vector2 jumpingLeftVelocity = new Vector2(velocityConstant*- 1, velocityConstant*1);
+        public readonly static Vector2 FallingVelocity = new Vector2(0, velocityConstant*- 1);
+
+
         public MarioEntity(Vector2 position) : base(position)
         {
             aState = new IdleMarioState(this);

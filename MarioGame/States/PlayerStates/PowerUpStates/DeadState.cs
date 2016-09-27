@@ -12,6 +12,7 @@ namespace MarioGame.States.PlayerStates.PowerUpStates
     {
         public DeadState(MarioEntity entity) : base(entity)
         {
+            powerUpState = MarioPowerUpStates.Dead;
         }
         public override void ChangeToFire()
         {

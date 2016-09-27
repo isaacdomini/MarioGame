@@ -18,10 +18,19 @@ namespace MarioGame.States.PlayerStates
         }
         public override void Jump()
         {
-            ActionState newState = new IdleMarioState(marioEntity);
-            marioEntity.ChangeState(newState);
+            MarioActionState newState = new IdleMarioState(marioEntity);
+            marioEntity.ChangeActionState(newState);
             newState.setDirection(this.direction);
+            marioEntity.setVelocity(MarioEntity.idleVelocity);
             newState.Begin(this);
+        }
+        public override void Crouch()
+        {
+            MarioActionState fallingState = new FallingMarioState(marioEntity);
+            marioEntity.ChangeActionState(fallingState);
+            fallingState.setDirection(this.direction);
+            marioEntity.setVelocity(MarioEntity.FallingVelocity);
+            fallingState.Begin(this);
         }
     }
 }

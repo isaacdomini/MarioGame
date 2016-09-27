@@ -22,7 +22,9 @@ namespace MarioGame.Entities
         IState _state;
         public ISprite _sprite;
         protected Vector2 _position;
-        protected Vector2 _velocity;
+        public Vector2 _velocity { get; private set; }
+
+
 
 
         public Entity(Vector2 position, float xVelocity = 0, float yVelocity = 0)
@@ -43,6 +45,10 @@ namespace MarioGame.Entities
         public Vector2 getPosition()
         {
             return _position;
+        }
+        public void setVelocity(Vector2 newVelocity)
+        {
+            _velocity = newVelocity;
         }
 
 

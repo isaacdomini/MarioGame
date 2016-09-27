@@ -16,5 +16,53 @@ namespace MarioGame.States.PlayerStates
         {
             actionState = MarioActionStates.Idle; // what sprite should we use for falling?
         }
+        public override void Jump()
+        {
+            MarioActionState idleMario = new IdleMarioState(marioEntity);
+            marioEntity.ChangeActionState(idleMario);
+            marioEntity.setVelocity(MarioEntity.idleVelocity);
+            idleMario.setDirection(this.direction);
+            idleMario.Begin(this);
+        }
+        public override void MoveLeft()
+        {
+            if (this.direction == Directions.Right)
+            {
+                MarioActionState fallingFacingLeft = new FallingMarioState(marioEntity);
+                marioEntity.ChangeActionState(fallingFacingLeft);
+                fallingFacingLeft.setDirection(Directions.Left);
+                marioEntity.setVelocity(MarioEntity.FallingVelocity);
+                fallingFacingLeft.Begin(this);
+            }
+            else if (this.direction == Directions.Left)
+            {
+                MarioActionState walkingLeft = new WalkingMarioState(marioEntity);
+                marioEntity.ChangeActionState(walkingLeft);
+                walkingLeft.setDirection(Directions.Left);
+                marioEntity.setVelocity(MarioEntity.walkingLeftVelocity);
+                walkingLeft.Begin(this);
+
+            }
+        }
+        public override void MoveRight()
+        {
+            if (this.direction == Directions.Left)
+            {
+                MarioActionState fallingFacingRight = new FallingMarioState(marioEntity);
+                marioEntity.ChangeActionState(fallingFacingRight);
+                fallingFacingRight.setDirection(Directions.Right);
+                marioEntity.setVelocity(MarioEntity.FallingVelocity);
+                fallingFacingRight.Begin(this);
+            }
+            else if (this.direction == Directions.Right)
+            {
+                MarioActionState walkingRight = new WalkingMarioState(marioEntity);
+                marioEntity.ChangeActionState(walkingRight);
+                walkingRight.setDirection(Directions.Right);
+                marioEntity.setVelocity(MarioEntity.walkingRightVelocity);
+                walkingRight.Begin(this);
+
+            }
+        }
     }
 }

@@ -10,10 +10,17 @@ namespace MarioGame.States.PlayerStates
 {
     public class PowerUpState : State
     {
+        protected MarioPowerUpStates powerUpState;
         protected MarioEntity marioEntity;
         public PowerUpState(MarioEntity entity) : base(entity)
         {
             marioEntity = entity;
+        }
+        public void Begin(PowerUpState prevState)
+        {
+            marioEntity.mSprite.changePowerUp(this.powerUpState);
+            base.Begin(prevState);
+
         }
         public virtual void ChangeToSuper() {}
         public virtual void ChangeToStandard() {}
