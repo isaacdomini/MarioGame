@@ -6,9 +6,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MarioGame.Sprites
 {
-    public class Goomba : AnimatedSprite
+    public class GoombaSprite : AnimatedSprite
     {
-        public Goomba(IEntity entity) : base(entity)
+        public GoombaSprite(IEntity entity, ContentManager content, Viewport viewport) : base(entity, content, viewport)
         {
             _assetName = "EnemySpriteSheet2";
         }

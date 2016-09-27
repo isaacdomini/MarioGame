@@ -56,14 +56,10 @@ namespace MarioGame.Theming.Scenes
             Sprites = new List<ISprite>();
             var middle = new Vector2(Stage.Game1.GraphicsDevice.Viewport.Width/2f,
                 Stage.Game1.GraphicsDevice.Viewport.Height/2f);
-            Sprites.Add(new StaticStillSprite(middle));
-            Sprites.Add(new StaticMovingSprite(middle));
-            Sprites.Add(new AnimatedStillSprite(middle));
-            Sprites.Add(new AnimatedMovingSprite(middle, this));
 
             Enemies = new List<ISprite>();
-            Enemies.Add(new KoopaTroopa(middle, this));
-            Enemies.Add(new Goomba(middle, this));
+           // Enemies.Add(new KoopaTroopa(middle, this));
+          //  Enemies.Add(new Goomba(middle, this));
 
             Items = new List<ISprite>();
             Items.Add(new Star(middle, this));
@@ -80,12 +76,8 @@ namespace MarioGame.Theming.Scenes
             _spriteBatch = new SpriteBatch(Stage.Game1.GraphicsDevice);
 
             Stage.LoadContent();
-            Sprites[SpriteTypes.StaticStill.GetHashCode()].Load(Stage.Game1.Content, "mariostanding");
-            Sprites[SpriteTypes.StaticMoving.GetHashCode()].Load(Stage.Game1.Content, "mariodead");
-            Sprites[SpriteTypes.AnimatedStill.GetHashCode()].Load(Stage.Game1.Content, "mariorunningright", 3, 4);
-            Sprites[SpriteTypes.AnimatedMoving.GetHashCode()].Load(Stage.Game1.Content, "mariorunningright", 3, 4);
-            Enemies[EnemyTypes.Goomba.GetHashCode()].Load(Stage.Game1.Content, "EnemySpriteSheet2", 13, 4);
-            Enemies[EnemyTypes.KoopaTroopa.GetHashCode()].Load(Stage.Game1.Content, "EnemySpriteSheet2", 13, 4);
+            Enemies[EnemyTypes.Goomba.GetHashCode()].Load();
+            Enemies[EnemyTypes.KoopaTroopa.GetHashCode()].Load();
             Items[ItemTypes.Coins.GetHashCode()].Load(Stage.Game1.Content, "ItemSheet2", 9, 4);
             Items[ItemTypes.FireFlower.GetHashCode()].Load(Stage.Game1.Content, "ItemSheet2", 9, 4);
             Items[ItemTypes.Mushroom1Up.GetHashCode()].Load(Stage.Game1.Content, "ItemSheet2", 9, 4);

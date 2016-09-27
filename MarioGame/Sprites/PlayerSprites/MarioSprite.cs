@@ -53,7 +53,8 @@ namespace MarioGame.Sprites.PlayerSprites
             //Each state has a frameSet
             _frameSets = new Dictionary<MarioActionStates, List<Frames>> {
                 { MarioActionStates.Idle, new List<Frames> { Frames.StandingMario } },
-                { MarioActionStates.Moving, new List<Frames> {Frames.MovingMario1, Frames.MovingMario2, Frames.MovingMario3 } },//TODO: instead of {1, 2, 3} may have to do {1, 2, 3, 2} or something like that
+                { MarioActionStates.Walking, new List<Frames> {Frames.MovingMario1, Frames.MovingMario2, Frames.MovingMario3 } },//TODO: instead of {1, 2, 3} may have to do {1, 2, 3, 2} or something like that
+                { MarioActionStates.Running, new List<Frames> {Frames.MovingMario1, Frames.MovingMario2, Frames.MovingMario3 } },//TODO: instead of {1, 2, 3} may have to do {1, 2, 3, 2} or something like that
                 {MarioActionStates.Jumping, new List<Frames> {Frames.JumpingMario } },
                 {MarioActionStates.Sitting, new List<Frames> {Frames.SittingMario1, Frames.SittingMario2} },
                 { MarioActionStates.Swimming, new List<Frames> {Frames.SwimmingMarioStart, Frames.SwimmingMarioAfterStart, Frames.SwimmingMarioMiddle, Frames.SwimmingMarioBeforeEnd, Frames.SwimmingMarioEnd  } },

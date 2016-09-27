@@ -6,9 +6,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MarioGame.Sprites
 {
-    public class KoopaTroopa : AnimatedSprite
+    public class KoopaTroopaSprite : AnimatedSprite
     {
-      public KoopaTroopa (IEntity entity) : base(entity)
+      public KoopaTroopaSprite (IEntity entity, ContentManager content, Viewport viewport) : base(entity, content, viewport)
         {
             _assetName = "EnemySpriteSheet2";
         }

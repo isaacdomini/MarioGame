@@ -9,12 +9,12 @@ namespace MarioGame.States.PlayerStates
     public enum MarioActionStates
     {
         Idle,
-        Moving,
         Jumping,
         Sitting,
         Swimming,
         Dead,
         Crouching,
-        Walking
+        Walking,
+        Running
     }
 }

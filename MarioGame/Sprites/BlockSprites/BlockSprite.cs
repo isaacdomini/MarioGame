@@ -30,7 +30,7 @@ namespace MarioGame.Sprites.BlockSprite
 
         public BlockSprite(IEntity entity, ContentManager content, Viewport viewport) : base(entity, content, viewport)
         {
-            _numberOfFrames = 15;
+            _numberOfFramesPerRow = 15;
             //Each state has a frameSet
             _frameSets = new Dictionary<BlockStates, List<Frames>> {
                 { BlockStates.StandardBlock, new List<Frames> { Frames.StandardBlock } },
