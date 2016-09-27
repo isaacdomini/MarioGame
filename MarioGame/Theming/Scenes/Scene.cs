@@ -78,11 +78,11 @@ namespace MarioGame.Theming.Scenes
             Stage.LoadContent();
             Enemies[EnemyTypes.Goomba.GetHashCode()].Load();
             Enemies[EnemyTypes.KoopaTroopa.GetHashCode()].Load();
-            Items[ItemTypes.Coins.GetHashCode()].Load(Stage.Game1.Content, "ItemSheet2", 9, 4);
-            Items[ItemTypes.FireFlower.GetHashCode()].Load(Stage.Game1.Content, "ItemSheet2", 9, 4);
-            Items[ItemTypes.Mushroom1Up.GetHashCode()].Load(Stage.Game1.Content, "ItemSheet2", 9, 4);
-            Items[ItemTypes.MushroomSuper.GetHashCode()].Load(Stage.Game1.Content, "ItemSheet2", 9, 4);
-            Items[ItemTypes.Star.GetHashCode()].Load(Stage.Game1.Content, "ItemSheet2", 9, 4);
+            Items[ItemTypes.Coins.GetHashCode()].Load();
+            Items[ItemTypes.FireFlower.GetHashCode()].Load();
+            Items[ItemTypes.Mushroom1Up.GetHashCode()].Load();
+            Items[ItemTypes.MushroomSuper.GetHashCode()].Load();
+            Items[ItemTypes.Star.GetHashCode()].Load();
 
         }
 
