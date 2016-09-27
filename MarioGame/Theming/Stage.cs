@@ -35,14 +35,14 @@ namespace MarioGame.Theming
             _controllers[0].AddCommand((int)Keys.W, new JumpCommand(Game1.Scene.getScript()));
             _controllers[0].AddCommand((int)Keys.Up, new JumpCommand(Game1.Scene.getScript()));
             // Adding movement commands (Needs updated with actual commands)
-            _controllers[0].AddCommand((int)Keys.Left, new JumpCommand(Game1.Scene.getScript()));
-            _controllers[0].AddCommand((int)Keys.Right, new JumpCommand(Game1.Scene.getScript()));
-            _controllers[0].AddCommand((int)Keys.Down, new JumpCommand(Game1.Scene.getScript()));
-            _controllers[0].AddCommand((int)Keys.Space, new JumpCommand(Game1.Scene.getScript()));
-            _controllers[1].AddCommand((int)Buttons.DPadLeft, new JumpCommand(Game1.Scene.getScript()));
-            _controllers[1].AddCommand((int)Buttons.DPadDown, new JumpCommand(Game1.Scene.getScript()));
-            _controllers[1].AddCommand((int)Buttons.DPadRight, new JumpCommand(Game1.Scene.getScript()));
-            _controllers[1].AddCommand((int)Buttons.B, new JumpCommand(Game1.Scene.getScript()));
+            _controllers[0].AddCommand((int)Keys.Left, new MoveLeftCommand(Game1.Scene.getScript()));
+            _controllers[0].AddCommand((int)Keys.Right, new MoveRightCommand(Game1.Scene.getScript()));
+            _controllers[0].AddCommand((int)Keys.Down, new CrouchCommand(Game1.Scene.getScript()));
+            _controllers[0].AddCommand((int)Keys.Space, new DashOrThrowFireballCommand(Game1.Scene.getScript()));
+            _controllers[1].AddCommand((int)Buttons.DPadLeft, new MoveLeftCommand(Game1.Scene.getScript()));
+            _controllers[1].AddCommand((int)Buttons.DPadDown, new CrouchCommand(Game1.Scene.getScript()));
+            _controllers[1].AddCommand((int)Buttons.DPadRight, new MoveRightCommand(Game1.Scene.getScript()));
+            _controllers[1].AddCommand((int)Buttons.B, new DashOrThrowFireballCommand(Game1.Scene.getScript()));
             _controllers[1].AddCommand((int)Buttons.A, new JumpCommand(Game1.Scene.getScript()));
 
 
