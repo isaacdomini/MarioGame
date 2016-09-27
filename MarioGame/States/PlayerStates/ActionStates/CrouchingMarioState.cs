@@ -20,6 +20,7 @@ namespace MarioGame.States.PlayerStates
         {
             ActionState newState = new IdleMarioState(marioEntity);
             marioEntity.ChangeState(newState);
+            newState.setDirection(this.direction);
             newState.Begin(this);
         }
     }

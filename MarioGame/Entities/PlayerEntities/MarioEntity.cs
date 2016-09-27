@@ -16,6 +16,7 @@ namespace MarioGame.Entities.PlayerEntities
         public MarioEntity(Vector2 position) : base(position)
         {
             aState = new IdleMarioState(this);
+            aState.setDirection(ActionState.Directions.Right);
             pState = new StandardState(this);
             // Now only cast once
             mSprite = (MarioSprite)_sprite;
@@ -27,6 +28,7 @@ namespace MarioGame.Entities.PlayerEntities
         public void ChangeActionState(ActionState state)
         {
             aState = state;
+            aState.setDirection(state.direction);
             
         }
         public void ChangePowerUpState(PowerUpState state)
