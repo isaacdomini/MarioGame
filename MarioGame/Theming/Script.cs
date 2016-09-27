@@ -40,5 +40,21 @@ namespace MarioGame.Theming
         {
             mario.Jump();
         }
+        public void MakeMarioCrouch()
+        {
+            mario.Crouch();
+        }
+        public void MakeMarioDashOrThrowFireball()
+        {
+            mario.DashOrThrowFireball();
+        }
+        public void MakeMarioMoveLeft()
+        {
+            mario.WalkLeft();
+        }
+        public void MakeMarioMoveRight()
+        {
+            mario.WalkRight();
+        }
     }
 }
