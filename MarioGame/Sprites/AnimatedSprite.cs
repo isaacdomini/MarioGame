@@ -15,13 +15,19 @@ namespace MarioGame.Sprites
        
         //each row on the sprite sheet is a different Power up state - e.g. row 1 is large mario, row 2 is regular mario, row 3 is fire mario.
         private int _spriteRowYPosition, _spriteRowHeight;
-        protected int _numberOfFrames; //number of frames in the row
+        protected int _numberOfFramesPerRow; //number of frames in the row
 
         //each action state uses a set of frames (e.g. frame numbers 7, 8, 9 on the specific row on the sprite sheet
+        protected IDictionary _frameSets; //TODO: somehow figure out how to declare the type of the dictionary as <String, Frames> . . .it gave me an error when doing that. This should also get rid of the pesky casting on line 81
         protected List<Frames> _frameSet;
         protected int _frameSetPosition; //this refers to the position in the frameset. e.g. if our frameSet was <7,8,9> if _frameSetPosition = 1 then _frameSet[_frameSetPosition] would equal 8
 
+        protected IDictionary _powerUpRowSets;
+        protected List<Rows> _rowSet;
+        protected int _rowSetPosition;
+
         private int _frameWidth;
+        protected int _frameHeight;
 
         protected float _totalElapsed, _timePerFrame;
 
@@ -40,7 +46,6 @@ namespace MarioGame.Sprites
         }
 
 
-        protected IDictionary _frameSets; //TODO: somehow figure out how to declare the type of the dictionary as <String, Frames> . . .it gave me an error when doing that. This should also get rid of the pesky casting on line 81
 
 
         public AnimatedSprite(IEntity entity, ContentManager content, Viewport viewport) : base(entity, content, viewport)
@@ -52,7 +57,7 @@ namespace MarioGame.Sprites
         {
             _texture = _content.Load<Texture2D>(_assetName);
 
-            _frameWidth = _texture.Width / _numberOfFrames;
+            _frameWidth = _texture.Width / _numberOfFramesPerRow;
             _frameSetPosition = 0;
 
             _totalElapsed = 0;
@@ -65,7 +70,10 @@ namespace MarioGame.Sprites
             if (_totalElapsed > _timePerFrame)
             {
                 _frameSetPosition++;
-                _frameSetPosition = _frameSetPosition % _frameSetPosition;
+                _frameSetPosition = _frameSetPosition % _frameSet.Count;
+
+                _rowSetPosition++;
+                _rowSetPosition = _rowSetPosition % _rowSet.Count;
 
                 _totalElapsed -= _timePerFrame;
             }
@@ -88,7 +96,7 @@ namespace MarioGame.Sprites
 
         public void changePowerUp(MarioPowerUpStates marioPowerUpState)
         {
-
+            _rowSet = (List<Rows>) _powerUpRowSets[marioPowerUpState];
         }
     }
 }

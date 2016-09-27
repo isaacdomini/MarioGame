@@ -33,11 +33,23 @@ namespace MarioGame.Sprites.PlayerSprites
             HalfBigMario = 15
         }
 
+        public enum Rows
+        {
+            Super = 1,
+            Dead = 2, //When Mario is dead the sprite sheet will reference row 2 frame 1 where the dead mario sprite is
+            Standard = 2,
+            SuperLuigi = 3,
+            Luigi = 4,
+            Fire = 5
+        }
+
         //power up states - standard(small), super(big), fire ,start (invincible), Dead
 
         public MarioSprite(IEntity entity, ContentManager content, Viewport viewport) : base(entity, content, viewport)
         {
-            _numberOfFrames = 15;
+            _assetName = "characters_transparent.gif";
+            _numberOfFramesPerRow = 15;
+            _frameHeight = 40;
             //Each state has a frameSet
             _frameSets = new Dictionary<MarioActionStates, List<Frames>> {
                 { MarioActionStates.Idle, new List<Frames> { Frames.StandingMario } },
@@ -46,6 +58,15 @@ namespace MarioGame.Sprites.PlayerSprites
                 {MarioActionStates.Sitting, new List<Frames> {Frames.SittingMario1, Frames.SittingMario2} },
                 { MarioActionStates.Swimming, new List<Frames> {Frames.SwimmingMarioStart, Frames.SwimmingMarioAfterStart, Frames.SwimmingMarioMiddle, Frames.SwimmingMarioBeforeEnd, Frames.SwimmingMarioEnd  } },
                 {MarioActionStates.Dead, new List<Frames> {Frames.DeadMario } } //TODO: Is Dead an action state or power up state?
+            };
+
+            _powerUpRowSets = new Dictionary<MarioPowerUpStates, List<Rows>>
+            {
+                {MarioPowerUpStates.Standard, new List<Rows> {Rows.Standard } },
+                {MarioPowerUpStates.Super, new List<Rows> {Rows.Super } },
+                {MarioPowerUpStates.Fire, new List<Rows> {Rows.Fire } },
+                {MarioPowerUpStates.Invincible, new List<Rows> {Rows.Standard, Rows.Fire, Rows.Luigi } },  //Cycle between various types of mario sprite to give the flashing feel of invincibility
+                {MarioPowerUpStates.Dead, new List<Rows> {Rows.Standard} }
             };
         }
 
