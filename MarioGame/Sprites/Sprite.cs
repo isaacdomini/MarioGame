@@ -24,6 +24,7 @@ namespace MarioGame.Sprites
             {
                 return _entity.getPosition();
             }
+            set { }
         }
 
         public Sprite(IEntity entity, ContentManager content, Viewport viewport)

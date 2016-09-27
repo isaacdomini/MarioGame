@@ -1,16 +1,23 @@
-﻿using MarioGame.Theming.Scenes;
+﻿using MarioGame.Entities;
+using MarioGame.Theming.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace MarioGame.Sprites
 {
-    public class Coins : Sprite
+    public class Coins : ISprite
     {
         private int _frameCount, _frame;
         private readonly Scene _scene;
         private float _totalElapsed, _velocity, _timePerFrame;
-
+        Vector2 _position;
+        protected Texture2D _texture;
+        protected IEntity _entity;
+        protected string _assetName;
+        protected ContentManager _content;
+        protected Viewport _viewport;
+        public bool Visible { get; set; }
 
         public Coins(Vector2 spritePos, Scene scene)
         {
@@ -19,18 +26,18 @@ namespace MarioGame.Sprites
             _scene = scene;
         }
 
-        public void Load(ContentManager content, string asset, int frameCount, int framesPerSecond = 1)
+        public void Load(int framesPerSecond = 1)
         {
-            _texture = content.Load<Texture2D>(asset);
+            _texture = _content.Load<Texture2D>(_assetName);
             _totalElapsed = 0;
             _velocity = 1f;
-            _frameCount = frameCount;
+            _frameCount = 9;
             _frame = 4;
             _timePerFrame = (float)1 / framesPerSecond;
         }
 
 
-        public override void Update(float elapsed)
+        public void Update(float elapsed)
         {
             if (Visible)
             {
@@ -49,7 +56,7 @@ namespace MarioGame.Sprites
             }
         }
 
-        public override void Draw(SpriteBatch batch)
+        public void Draw(SpriteBatch batch)
         {
             if (Visible)
             {
