@@ -14,6 +14,7 @@ namespace MarioGame.States.PlayerStates
         Sitting,
         Swimming,
         Dead,
-        Crouching
+        Crouching,
+        Walking
     }
 }
