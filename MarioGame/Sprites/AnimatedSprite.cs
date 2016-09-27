@@ -13,8 +13,6 @@ namespace MarioGame.Sprites
     public abstract class AnimatedSprite : Sprite
     {
        
-        //each row on the sprite sheet is a different Power up state - e.g. row 1 is large mario, row 2 is regular mario, row 3 is fire mario.
-        private int _spriteRowYPosition, _spriteRowHeight;
         protected int _numberOfFramesPerRow; //number of frames in the row
 
         //each action state uses a set of frames (e.g. frame numbers 7, 8, 9 on the specific row on the sprite sheet
@@ -86,7 +84,7 @@ namespace MarioGame.Sprites
                 return;
             }
 
-            var sourceRect = new Rectangle( ((int)_frameSet[_frameSetPosition]) * _frameWidth, _spriteRowYPosition, _frameWidth, _spriteRowHeight);
+            var sourceRect = new Rectangle( ((int)_frameSet[_frameSetPosition]) * _frameWidth, ((int)_rowSet[_rowSetPosition]) * _frameHeight, _frameWidth, _frameHeight);
             batch.Draw(texture: _texture, position: _position, sourceRectangle: sourceRect, color: Color.White, effects : _flipped);
         }
         public void changeFrameSet(MarioActionStates marioActionState)

@@ -16,31 +16,31 @@ namespace MarioGame.Sprites.PlayerSprites
         public enum Frames
         {
             //frames are all facing left. Except DeadMario who is facing the computer user.
-            DeadMario = 1,
-            SwimmingMarioEnd = 2,
-            SwimmingMarioBeforeEnd = 3,
-            SwimmingMarioMiddle = 4,
-            SwimmingMarioAfterStart = 5,
-            SwimmingMarioStart = 6,
-            SittingMario2 = 7, //I know he's not sitting . . .I'm just not sure exactly what that section of the sprite sheet is
-            SittingMario1 = 8,
-            JumpingMario = 9,
-            DashingMario = 10,
-            MovingMario3 = 11, //moving is the same sprites for Running and Walking action states
-            MovingMario2 = 12,
-            MovingMario1 = 13,
-            StandingMario = 14,
-            HalfBigMario = 15
+            DeadMario = 0,
+            SwimmingMarioEnd = 1,
+            SwimmingMarioBeforeEnd = 2,
+            SwimmingMarioMiddle = 3,
+            SwimmingMarioAfterStart = 4,
+            SwimmingMarioStart = 5,
+            SittingMario2 = 6, //I know he's not sitting . . .I'm just not sure exactly what that section of the sprite sheet is
+            SittingMario1 = 7,
+            JumpingMario = 8,
+            DashingMario = 9,
+            MovingMario3 = 10, //moving is the same sprites for Running and Walking action states
+            MovingMario2 = 11,
+            MovingMario1 = 12,
+            StandingMario = 13,
+            HalfBigMario = 14
         }
 
         public enum Rows
         {
-            Super = 1,
-            Dead = 2, //When Mario is dead the sprite sheet will reference row 2 frame 1 where the dead mario sprite is
-            Standard = 2,
-            SuperLuigi = 3,
-            Luigi = 4,
-            Fire = 5
+            Super = 0,
+            Dead = 1, //When Mario is dead the sprite sheet will reference row 1 frame 0 where the dead mario sprite is
+            Standard = 1,
+            SuperLuigi = 2,
+            Luigi = 3,
+            Fire = 4
         }
 
         //power up states - standard(small), super(big), fire ,start (invincible), Dead
