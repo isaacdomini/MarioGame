@@ -79,5 +79,9 @@ namespace MarioGame.Entities.PlayerEntities
         {
             pState.ChangeToDead();
         }
+        public void DashOrThrowFireball()
+        {
+            //TODO: Ricky do this?
+        }
     }
 }

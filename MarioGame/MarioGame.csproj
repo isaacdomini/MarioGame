@@ -38,6 +38,8 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Commands\CrouchCommand.cs" />
+    <Compile Include="Commands\DashOrThrowFireballCommand.cs" />
     <Compile Include="Commands\DisplayGoomba.cs" />
     <Compile Include="Commands\DisplayKoopaTroopa.cs" />
     <Compile Include="Commands\ItemCommands\DisplayCoins.cs" />
@@ -48,6 +50,8 @@
     <Compile Include="Commands\JumpCommand.cs" />
     <Compile Include="Commands\GameCommand.cs" />
     <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Commands\MoveLeftCommand.cs" />
+    <Compile Include="Commands\MoveRightCommand.cs" />
     <Compile Include="Commands\QuitCommand.cs" />
     <Compile Include="Commands\SceneCommand.cs" />
     <Compile Include="Commands\ScriptCommand.cs" />

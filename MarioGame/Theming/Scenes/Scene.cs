@@ -57,16 +57,8 @@ namespace MarioGame.Theming.Scenes
             var middle = new Vector2(Stage.Game1.GraphicsDevice.Viewport.Width/2f,
                 Stage.Game1.GraphicsDevice.Viewport.Height/2f);
 
-            Enemies = new List<ISprite>();
-           // Enemies.Add(new KoopaTroopa(middle, this));
-          //  Enemies.Add(new Goomba(middle, this));
-
-            Items = new List<ISprite>();
-            Items.Add(new Star(middle, this));
-            Items.Add(new Coins(middle, this));
-            Items.Add(new Mushroom1Up(middle, this));
-            Items.Add(new MushroomSuper(middle, this));
-            Items.Add(new FireFlower(middle, this));
+            //TODO DRAW all Sprites
+            //TODO init all objects and give them some positions
 
 
         }
