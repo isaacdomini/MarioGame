@@ -51,6 +51,7 @@ namespace MarioGame.Sprites.PlayerSprites
             _numberOfFramesPerRow = 15;
             _frameHeight = 40;
             //Each state has a frameSet
+            
             _frameSets = new Dictionary<MarioActionStates, List<Frames>> {
                 { MarioActionStates.Idle, new List<Frames> { Frames.StandingMario } },
                 { MarioActionStates.Walking, new List<Frames> {Frames.MovingMario1, Frames.MovingMario2, Frames.MovingMario3 } },//TODO: instead of {1, 2, 3} may have to do {1, 2, 3, 2} or something like that
@@ -61,7 +62,7 @@ namespace MarioGame.Sprites.PlayerSprites
                 {MarioActionStates.Dead, new List<Frames> {Frames.DeadMario } } //TODO: Is Dead an action state or power up state?
             };
 
-            _powerUpRowSets = new Dictionary<MarioPowerUpStates, List<Rows>>
+            _rowSets = new Dictionary<MarioPowerUpStates, List<Rows>>
             {
                 {MarioPowerUpStates.Standard, new List<Rows> {Rows.Standard } },
                 {MarioPowerUpStates.Super, new List<Rows> {Rows.Super } },
@@ -69,6 +70,15 @@ namespace MarioGame.Sprites.PlayerSprites
                 {MarioPowerUpStates.Invincible, new List<Rows> {Rows.Standard, Rows.Fire, Rows.Luigi } },  //Cycle between various types of mario sprite to give the flashing feel of invincibility
                 {MarioPowerUpStates.Dead, new List<Rows> {Rows.Standard} }
             };
+        }
+        public void changeActionState(MarioActionStates marioActionState)
+        {
+            _frameSet = (List<int>)_frameSets[marioActionState];
+        }
+
+        public void changePowerUp(MarioPowerUpStates marioPowerUpState)
+        {
+            _rowSet = (List<int>)_rowSets[marioPowerUpState];
         }
 
     }

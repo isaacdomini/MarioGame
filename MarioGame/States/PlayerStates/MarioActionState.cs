@@ -23,7 +23,7 @@ namespace MarioGame.States.PlayerStates
         public void Begin(MarioActionState prevState)
         {
             base.Begin(prevState);
-            marioEntity.mSprite.changeFrameSet(actionState); //TODO: make it so we don't have to do this casts
+            marioEntity.mSprite.changeActionState(actionState); //TODO: make it so we don't have to do this casts
         }
     }
 }

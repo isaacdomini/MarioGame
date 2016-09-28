@@ -8,24 +8,23 @@ using System.Collections.Generic;
 
 namespace MarioGame.Sprites
 {
-    public class CoinsSprite : AnimatedSprite //TODO: refactor this class to use either ANimated Sprite or Sprite
+    public class FireFlowerSprite : AnimatedSprite //TODO: refactor this class to use either ANimated Sprite or Sprite
     {
         public enum Frames
         {
             //frames are all facing left. Except DeadMario who is facing the computer user.
-            Full = 0,
-            Waning = 1,
-            Sliver = 2,
-            Waxing = 3
+            Blue = 0,
+            Red = 1,
+            Purple = 2,
+            Halo = 3
         }
-
-        public CoinsSprite(ContentManager content) : base(content)
+        public FireFlowerSprite(IEntity entity, ContentManager content, Viewport viewport) : base(entity, content, viewport)
         {
             _assetName = "fireFlower.png";
             _numberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
 
             _frameSets = new Dictionary<int, List<Frames>> {
-                { 0, (Frames[])Enum.GetValues(typeof(Frames)) },
+                { 0, new List<Frames> { Frames.Blue, Frames.Red, Frames.Purple, Frames.Halo } },
             };
         }
 

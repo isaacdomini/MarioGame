@@ -1,34 +1,32 @@
 ﻿using MarioGame.Entities;
-using MarioGame.Theming.Scenes;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace MarioGame.Sprites
+namespace MarioGame.Sprites.ItemSprites
 {
-    public class CoinsSprite : AnimatedSprite //TODO: refactor this class to use either ANimated Sprite or Sprite
+    class QuestionBlockSprite : AnimatedSprite
     {
+
         public enum Frames
         {
             //frames are all facing left. Except DeadMario who is facing the computer user.
-            Full = 0,
-            Waning = 1,
-            Sliver = 2,
-            Waxing = 3
+            Light = 0,
+            Med = 1,
+            Dark = 2
         }
-
-        public CoinsSprite(ContentManager content) : base(content)
+        public QuestionBlockSprite(IEntity entity, ContentManager content, Viewport viewport) : base(entity, content, viewport)
         {
-            _assetName = "fireFlower.png";
+            _assetName = "questionblock.png";
             _numberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
 
             _frameSets = new Dictionary<int, List<Frames>> {
-                { 0, (Frames[])Enum.GetValues(typeof(Frames)) },
+                { 0, new List<Frames> { Frames.Light, Frames.Med, Frames.Dark } },
             };
         }
-
     }
 }
-
