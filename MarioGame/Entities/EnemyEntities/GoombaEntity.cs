@@ -1,12 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using MarioGame.Sprites;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
 
 namespace MarioGame.Entities.EnemyEntities
 {
-    class GoombaEntity
+    public class GoombaEntity : Entity
     {
+
+        // Velocity variables
+        public readonly static int velocityConstant = 1;
+        private GoombaSprite gSprite;
+        public Viewport viewport;
+        IEntity goomba;
+        ContentManager content;
+
+        public GoombaEntity(Vector2 position, ISprite sprite) : base(position, sprite)
+        {
+            gSprite = new GoombaSprite(goomba, content, viewport);
+        }
+        public override void Update(){}
     }
+
 }
