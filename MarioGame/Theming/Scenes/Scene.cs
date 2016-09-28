@@ -8,6 +8,7 @@ using MarioGame.Entities.ItemEntities;
 using MarioGame.Entities.PlayerEntities;
 using MarioGame.Sprites.BlockSprite;
 using MarioGame.Sprites.PlayerSprites;
+using MarioGame.Entities.EnemyEntities;
 
 namespace MarioGame.Theming.Scenes
 {
@@ -55,6 +56,10 @@ namespace MarioGame.Theming.Scenes
             _script.AddItem(new MushroomSuperEntity(new Vector2(300, 100), new MushroomSuperSprite(Stage.Game1.Content)));
             _script.AddItem(new StarEntity(new Vector2(350, 100), new StarSprite(Stage.Game1.Content)));
             _script.AddMario(new MarioEntity(new Vector2(100, 150), new MarioSprite(Stage.Game1.Content)));
+            _script.AddEnemy(new KoopaTroopaEntity(new Vector2(450, 100), new KoopaTroopaSprite(Stage.Game1.Content));
+            _script.AddEnemy(new GoombaEntity(new Vector2(450, 100), new GoombaSprite(Stage.Game1.Content));
+            _script.AddEnemy(new Block(new Vector2(450, 100), new KoopaTroopaSprite(Stage.Game1.Content));
+            _script.AddEnemy(new GoombaEntity(new Vector2(450, 100), new GoombaSprite(Stage.Game1.Content));
         }
 
         public void LoadContent()
