@@ -18,7 +18,7 @@ namespace MarioGame.Sprites
             Maroon = 2,
             Red = 3
         }
-        public StarSprite(IEntity entity, ContentManager content, Viewport viewport) : base(entity, content, viewport)
+        public StarSprite( Viewport viewport) : base(viewport)
         {
             _assetName = "star.png";
             _numberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
