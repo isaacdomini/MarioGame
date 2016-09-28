@@ -70,12 +70,20 @@ namespace MarioGame.Sprites.PlayerSprites
                 {MarioPowerUpStates.Invincible.GetHashCode(), new List<int> {Rows.Standard.GetHashCode(), Rows.Fire.GetHashCode(), Rows.Luigi.GetHashCode() } },  //Cycle between various types of mario sprite to give the flashing feel of invincibility
                 {MarioPowerUpStates.Dead.GetHashCode(), new List<int> {Rows.Standard.GetHashCode() } }
             };
+            this.changeActionState(MarioActionStates.Idle);
+            this.changePowerUp(MarioPowerUpStates.Standard);
         }
 
         public override void Load(int framesPerSecond = 5)
         {
             base.Load(framesPerSecond);
             _frameHeight = 40;
+            
+        }
+        public override void Update(float elapsed)
+        {
+            base.Update(elapsed);
+            Console.WriteLine("Mario sprite update");
         }
         public void changeActionState(MarioActionStates marioActionState)
         {
