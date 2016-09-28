@@ -19,17 +19,17 @@ namespace MarioGame.States.PlayerStates
         public override void Jump()
         {
             MarioActionState jumpState = new JumpingMarioState(marioEntity);
-            marioEntity.ChangeActionState(jumpState);
             jumpState.setDirection(this.direction);
-            marioEntity.setVelocity(MarioEntity.jumpingUpVelocity);
+            marioEntity.ChangeActionState(jumpState);
+            marioEntity.SetVelocityToJumpingStraight();
             jumpState.Begin(this);
 
         }
         public override void Crouch()
         {
             MarioActionState crouchState = new CrouchingMarioState(marioEntity);
-            marioEntity.ChangeActionState(crouchState);
             crouchState.setDirection(this.direction);
+            marioEntity.ChangeActionState(crouchState);
             marioEntity.setVelocity(MarioEntity.idleVelocity);
             crouchState.Begin(this);
         }

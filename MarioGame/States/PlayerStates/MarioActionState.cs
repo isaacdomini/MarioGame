@@ -25,5 +25,12 @@ namespace MarioGame.States.PlayerStates
             base.Begin(prevState);
             marioEntity.mSprite.changeActionState(actionState); //TODO: make it so we don't have to do this casts
         }
+        public virtual void Jump() { }
+
+        public virtual void MoveRight() { }
+
+        public virtual void MoveLeft() { }
+
+        public virtual void Crouch() { }
     }
 }

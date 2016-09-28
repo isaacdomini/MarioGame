@@ -19,7 +19,9 @@ namespace MarioGame.States.PlayerStates
         public override void Jump()
         {
             ActionState newState = new IdleMarioState(marioEntity);
-            _entity.ChangeState(newState);
+            newState.setDirection(this.direction);
+            marioEntity.ChangeState(newState);
+            marioEntity.SetVelocityToIdle();
             newState.Begin(this);
         }
     }
