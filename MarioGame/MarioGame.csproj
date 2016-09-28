@@ -80,10 +80,12 @@
     <Compile Include="Sprites\AnimatedSprite.cs" />
     <Compile Include="Sprites\BlockSprites\BlockSprite.cs" />
     <Compile Include="Sprites\ISprite.cs" />
+    <Compile Include="Sprites\ItemSprites\GroundBlockSprite.cs" />
     <Compile Include="Sprites\ItemSprites\CoinSprite.cs" />
     <Compile Include="Sprites\ItemSprites\FireFlowerSprite.cs" />
     <Compile Include="Sprites\ItemSprites\Mushroom1UpSprite.cs" />
     <Compile Include="Sprites\ItemSprites\MushroomSuperSprite.cs" />
+    <Compile Include="Sprites\ItemSprites\BrickBlockSprite.cs" />
     <Compile Include="Sprites\ItemSprites\QuestionBlockSprite.cs" />
     <Compile Include="Sprites\ItemSprites\StarSprite.cs" />
     <Compile Include="Sprites\PlayerSprites\MarioSprite.cs" />
