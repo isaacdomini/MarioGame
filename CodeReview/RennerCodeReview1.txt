@@ -1,0 +1,14 @@
+Author: Ricky Renner
+Date: 9/27/2016
+
+Sprint 1
+MarioActionState.cs
+Author: John Simerlink
+
+Code is organized and small and simple, but the logic behind the code does not really make sense. If MarioActionState is holding a variable called "actionState" it might make more sense for 
+when the specific action states are initialized that they set that variable to whatever it is.
+
+Also, begin calls the begin class which just switches state and also calls a method called "end" which all seems unnecessary and invalid. Confusing why it is doing this.
+
+Time to complete: 20 minutes.
+
