@@ -9,7 +9,7 @@ namespace MarioGame.Entities.ItemEntities
     public class Mushroom1UpEntity : Entity
     {
         // Could be useful for casting in certain circumstances
-        public Coins iSprite;
+        public Mushroom1Up iSprite;
         public Viewport viewport;
         IEntity mushroom;
         ContentManager content;
