@@ -52,6 +52,7 @@
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Commands\MoveLeftCommand.cs" />
     <Compile Include="Commands\MoveRightCommand.cs" />
+    <Compile Include="Commands\PauseCommand.cs" />
     <Compile Include="Commands\QuitCommand.cs" />
     <Compile Include="Commands\SceneCommand.cs" />
     <Compile Include="Commands\ScriptCommand.cs" />
