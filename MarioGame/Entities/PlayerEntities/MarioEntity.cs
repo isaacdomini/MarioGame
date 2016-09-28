@@ -38,8 +38,8 @@ namespace MarioGame.Entities.PlayerEntities
 
         public Vector2 position
         {
-            get { return mSprite._position; }
-            set { mSprite._position = value; }
+            get { return mSprite.Position; }
+            set { mSprite.Position = value; }
         }
 
 

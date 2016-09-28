@@ -95,7 +95,7 @@ namespace MarioGame.Sprites
             }
 
             var sourceRect = new Rectangle( ((int)_frameSet[_frameSetPosition]) * _frameWidth, ((int)_rowSet[_rowSetPosition]) * _frameHeight, _frameWidth, _frameHeight);
-            batch.Draw(texture: _texture, position: _position, sourceRectangle: sourceRect, color: Color.White, effects : _flipped);
+            batch.Draw(texture: _texture, position: Position, sourceRectangle: sourceRect, color: Color.White, effects : _flipped);
         }
     }
 }

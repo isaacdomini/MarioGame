@@ -16,7 +16,7 @@ namespace MarioGame.Sprites
         protected string _assetName;
         protected ContentManager _content;
 
-        public Vector2 _position
+        public Vector2 Position
         {
             get; set;
         }
@@ -32,7 +32,7 @@ namespace MarioGame.Sprites
         {
             if (Visible)
             {
-                batch.Draw(_texture, _position);
+                batch.Draw(_texture, Position);
             }
         }
 

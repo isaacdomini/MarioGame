@@ -29,6 +29,7 @@ namespace MarioGame.Entities
             _velocity = new Vector2(xVelocity, yVelocity);
             _position = position;
             _sprite = sprite;
+            ((Sprite)_sprite).Position = _position;
         }
         public virtual void ChangeState(IState newstate)
         {

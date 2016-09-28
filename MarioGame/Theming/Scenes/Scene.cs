@@ -87,10 +87,7 @@ namespace MarioGame.Theming.Scenes
             Stage.Draw(gameTime, _spriteBatch);
 
             _spriteBatch.Begin();
-
-            foreach (var current in Sprites)
-                current.Draw(_spriteBatch);
-
+            Sprites.ForEach(s => s.Draw(_spriteBatch));
             _spriteBatch.End();
         }
 

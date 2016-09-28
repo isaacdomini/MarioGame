@@ -53,8 +53,8 @@ namespace MarioGame.Sprites.PlayerSprites
             
             _frameSets = new Dictionary<int, List<int>> {
                 { MarioActionStates.Idle.GetHashCode(), new List<int> { Frames.StandingMario.GetHashCode() } },
-                { MarioActionStates.Walking.GetHashCode(), new List<int> {Frames.MovingMario1.GetHashCode(), Frames.MovingMario2.GetHashCode(), Frames.MovingMario3.GetHashCode() } },//TODO: instead of {1, 2, 3} may have to do {1, 2, 3, 2} or something like that
-                { MarioActionStates.Running.GetHashCode(), new List<int> {Frames.MovingMario1.GetHashCode(), Frames.MovingMario2.GetHashCode(), Frames.MovingMario3.GetHashCode() } },//TODO: instead of {1, 2, 3} may have to do {1, 2, 3, 2} or something like that
+                { MarioActionStates.Walking.GetHashCode(), new List<int> {Frames.MovingMario1.GetHashCode(), Frames.MovingMario2.GetHashCode(), Frames.MovingMario3.GetHashCode(), Frames.MovingMario2.GetHashCode() } },//TODO: instead of {1, 2, 3} may have to do {1, 2, 3, 2} or something like that
+                { MarioActionStates.Running.GetHashCode(), new List<int> {Frames.MovingMario1.GetHashCode(), Frames.MovingMario2.GetHashCode(), Frames.MovingMario3.GetHashCode(), Frames.MovingMario2.GetHashCode() } },//TODO: instead of {1, 2, 3} may have to do {1, 2, 3, 2} or something like that
                 {MarioActionStates.Crouching.GetHashCode(), new List<int> {Frames.StandingMario.GetHashCode() } },
                 {MarioActionStates.Jumping.GetHashCode(), new List<int> {Frames.JumpingMario.GetHashCode() } },
                 {MarioActionStates.Sitting.GetHashCode(), new List<int> {Frames.SittingMario1.GetHashCode(), Frames.SittingMario2.GetHashCode() } },
