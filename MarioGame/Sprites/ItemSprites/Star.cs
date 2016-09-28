@@ -1,53 +1,43 @@
-﻿using MarioGame.Theming.Scenes;
+﻿using MarioGame.Entities;
+using MarioGame.Theming.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace MarioGame.Sprites
 {
-    public class Star : ISprite
+    public class Star : AnimatedSprite //TODO: refactor this class to use either ANimated Sprite or Sprite
     {
-        private int _frameCount, _frame;
-        private readonly Scene _scene;
-        private float _totalElapsed, _velocity, _timePerFrame;
-        Vector2 _position;
-        protected Texture2D _texture;
-        protected string _assetName;
-        protected ContentManager _content;
-        protected Viewport _viewport;
-        public bool Visible { get; set; }
 
-
-        public Star(Vector2 spritePos, Scene scene)
+        public enum Frames
         {
-            Visible = false;
-            _position = spritePos;
-            _scene = scene;
+            //frames are all facing left. Except DeadMario who is facing the computer user.
+            FullCoin = 1,
+            PartialCoin = 2
+            // ??? === ???
+        }
+        //power up states - standard(small), super(big), fire ,start (invincible), Dead
+
+        public Star(IEntity entity, ContentManager content, Viewport viewport) : base(entity, content, viewport)
+        {
+            _assetName = "ItemSheet2";
+            // _numberOfFramesPerRow = 15;
+            // _frameHeight = 40;
+            //Each state has a frameSet
+            /* _frameSets = new Dictionary<MarioActionStates, List<Frames>> {
+             };
+
+             _powerUpRowSets = new Dictionary<MarioPowerUpStates, List<Rows>>
+             {
+                 {MarioPowerUpStates.Standard, new List<Rows> {Rows.Standard } },
+                 {MarioPowerUpStates.Super, new List<Rows> {Rows.Super } },
+                 {MarioPowerUpStates.Fire, new List<Rows> {Rows.Fire } },
+                 {MarioPowerUpStates.Invincible, new List<Rows> {Rows.Standard, Rows.Fire, Rows.Luigi } },  //Cycle between various types of mario sprite to give the flashing feel of invincibility
+                 {MarioPowerUpStates.Dead, new List<Rows> {Rows.Standard} }
+             }; */
         }
 
-        public void Load(int framesPerSecond = 1)
-        {
-            _texture = _content.Load<Texture2D>(_assetName);
-            _totalElapsed = 0;
-            _velocity = 1f;
-            _frameCount = 9;
-            _frame = 0;
-            _timePerFrame = (float)1 / framesPerSecond;
-        }
-
-
-        public void Update(float elapsed)
-        {
-        }
-
-        public void Draw(SpriteBatch batch)
-        {
-            if (Visible)
-            {
-                var frameWidth = _texture.Width / _frameCount;
-                var sourcerect = new Rectangle(frameWidth * _frame, _texture.Height *3/4, frameWidth, _texture.Height *1/4);
-                batch.Draw(_texture, _position, sourcerect, Color.White);
-            }
-        }
     }
 }
+
