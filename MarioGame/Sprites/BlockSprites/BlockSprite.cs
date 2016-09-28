@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Collections;
 using MarioGame.States.BlockStates;
 
-namespace MarioGame.Sprites.BlockSprite
+namespace MarioGame.Sprites.BlockSprites
 {
     public class BlockSprite : AnimatedSprite
     {
@@ -25,8 +25,6 @@ namespace MarioGame.Sprites.BlockSprite
             HiddenBlock = 0,
             UsedBlock = 1
         }
-
-        //power up states - standard(small), super(big), fire ,start (invincible), Dead
 
         public BlockSprite(ContentManager content) : base(content)
         {

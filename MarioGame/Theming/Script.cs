@@ -60,7 +60,7 @@ namespace MarioGame.Theming
 		    _items.Add(item);
 	    }
 
-	    public void AddBlocks(BlockEntity block)
+	    public void AddBlock(BlockEntity block)
 	    {
 		    _blocks.Add(block);
 	    }

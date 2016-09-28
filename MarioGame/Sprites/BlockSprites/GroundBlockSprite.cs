@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MarioGame.Sprites.ItemSprites
+namespace MarioGame.Sprites.BlockSprites
 {
     public class GroundBlockSprite : AnimatedSprite
     {

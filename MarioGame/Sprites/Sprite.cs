@@ -36,7 +36,7 @@ namespace MarioGame.Sprites
             }
         }
 
-        public virtual void Load(int framesPerSecond = 1)
+        public virtual void Load(int framesPerSecond = 5)
         {
 
             _texture = _content.Load<Texture2D>(_assetName);

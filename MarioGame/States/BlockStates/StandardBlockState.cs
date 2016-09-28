@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using MarioGame.Entities;
 using MarioGame.Sprites;
 using MarioGame.Entities.BlockEntities;
-using MarioGame.Sprites.BlockSprite;
+using MarioGame.Sprites.BlockSprites;
 
 namespace MarioGame.States.BlockStates
 {

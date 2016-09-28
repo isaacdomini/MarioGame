@@ -72,9 +72,9 @@ namespace MarioGame.Sprites.PlayerSprites
             };
         }
 
-        public override void Load(int framesPerSecond = 1)
+        public override void Load(int framesPerSecond = 5)
         {
-            base.Load();
+            base.Load(framesPerSecond);
             _frameHeight = 40;
         }
         public void changeActionState(MarioActionStates marioActionState)

@@ -4,12 +4,13 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using MarioGame.Entities.BlockEntities;
+using MarioGame.Sprites.BlockSprites;
 
 namespace MarioGame.Entities.BLockEntitiesEntities
 {
-    public class UsedEntity : BlockEntity
+    public class UsedBlockEntity : BlockEntity
     {
-        public UsedEntity(Vector2 position, CoinsSprite sprite) : base(position, sprite)
+        public UsedBlockEntity(Vector2 position, UsedBlockSprite sprite) : base(position, sprite)
         {
         }
     }
