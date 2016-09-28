@@ -71,8 +71,7 @@ namespace MarioGame.Theming
 
         public void Update(GameTime gameTime)
         {
-            foreach (var controller in _controllers)
-                controller.UpdateInput();
+            _controllers.ForEach(c => c.UpdateInput());
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
