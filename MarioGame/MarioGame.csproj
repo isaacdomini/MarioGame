@@ -55,10 +55,6 @@
     <Compile Include="Commands\QuitCommand.cs" />
     <Compile Include="Commands\SceneCommand.cs" />
     <Compile Include="Commands\ScriptCommand.cs" />
-    <Compile Include="Commands\SwitchToAnimatedMovingCommand.cs" />
-    <Compile Include="Commands\SwitchToAnimatedStillCommand.cs" />
-    <Compile Include="Commands\SwitchToStaticMovingCommand.cs" />
-    <Compile Include="Commands\SwitchToStaticStillCommand.cs" />
     <Compile Include="Controllers\IController.cs" />
     <Compile Include="Controllers\GamepadController.cs" />
     <Compile Include="Controllers\KeyboardController.cs" />
@@ -66,7 +62,7 @@
     <Compile Include="Core\Program.cs" />
     <Compile Include="Entities\BlockEntities\BlockEntity.cs" />
     <Compile Include="Entities\BlockEntities\BrickBlockEntity.cs" />
-    <Compile Include="Entities\BlockEntities\GroundBlock.cs" />
+    <Compile Include="Entities\BlockEntities\GroundBlockEntity.cs" />
     <Compile Include="Entities\BlockEntities\StepBlockEntity.cs" />
     <Compile Include="Entities\BlockEntities\UsedBlockEntity.cs" />
     <Compile Include="Entities\EnemyEntities\GoombaEntity.cs" />
