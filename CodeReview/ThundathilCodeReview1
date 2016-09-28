@@ -1,0 +1,11 @@
+Author: Cyriac Domini Thundathil
+Date: 9/27/2016
+Sprint: 1
+File: PowerUpState.cs
+Author of file: Ricky Renner with John
+Comments:
+Implementing the State class was a good plan that helped with making sure that all the state classes are implementing the same State class. It was also a wise decision to make the powerUpState and the the marioEntity protected and initialized in the constructor. The Begin method takes int he previous state and begins the previous state and changes the state to the new state. One thing that I would add is more checking of the the variables sent in and try to catch some null reference errors. This was a problem that I faced earlier in some of my methods. Also some sort of comments on the code to explain what each of the methods did would have been nice. With this class other states would be able to implement this class you have made and makes the code easier to read. 
+Approximate Number of minutes taken to complete the review: 30 mins
+Hypothetical Change: 
+Not really sure if this is a good change or not. How about each of the powerup state implement the State class instead of the PowerUpState? This may make the code more useable by other classes and reduces space used for more classes.
+
