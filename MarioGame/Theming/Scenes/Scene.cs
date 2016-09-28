@@ -58,6 +58,8 @@ namespace MarioGame.Theming.Scenes
             _script.AddMario(new MarioEntity(new Vector2(100, 150), new MarioSprite(Stage.Game1.Content)));
             _script.AddEnemy(new KoopaTroopaEntity(new Vector2(450, 100), new KoopaTroopaSprite(Stage.Game1.Content));
             _script.AddEnemy(new GoombaEntity(new Vector2(450, 100), new GoombaSprite(Stage.Game1.Content));
+            _script.AddEnemy(new Block(new Vector2(450, 100), new KoopaTroopaSprite(Stage.Game1.Content));
+            _script.AddEnemy(new GoombaEntity(new Vector2(450, 100), new GoombaSprite(Stage.Game1.Content));
         }
 
         public void LoadContent()

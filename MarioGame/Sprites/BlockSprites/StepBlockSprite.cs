@@ -9,20 +9,20 @@ using System.Threading.Tasks;
 
 namespace MarioGame.Sprites.ItemSprites
 {
-    class GroundBlockSprite : AnimatedSprite
+    public class StepBlockSprite : AnimatedSprite
     {
 
         public enum Frames
         {
-            Ground = 0,
+            Step = 0,
         }
-        public GroundBlockSprite(ContentManager content) : base(content)
+        public StepBlockSprite(ContentManager content) : base(content)
         {
-            _assetName = "groundblock.png";
+            _assetName = "stepblock.png";
             _numberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
 
             _frameSets = new Dictionary<int, List<int>> {
-                { 0, new List<int> { Frames.Ground.GetHashCode() } },
+                { 0, new List<int> { Frames.Step.GetHashCode() } },
             };
         }
     }
