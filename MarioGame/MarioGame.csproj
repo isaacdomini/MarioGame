@@ -65,6 +65,8 @@
     <Compile Include="Core\Game1.cs" />
     <Compile Include="Core\Program.cs" />
     <Compile Include="Entities\BlockEntities\BlockEntity.cs" />
+    <Compile Include="Entities\EnemyEntities\GoombaEntity.cs" />
+    <Compile Include="Entities\EnemyEntities\KoopaTroopaEntity.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\EntityBrick.cs" />
     <Compile Include="Entities\IEntity.cs" />
