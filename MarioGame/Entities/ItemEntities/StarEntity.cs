@@ -9,11 +9,11 @@ namespace MarioGame.Entities.ItemEntities
     public class StarEntity : Entity
     {
         // Could be useful for casting in certain circumstances
-        public Star iSprite;
+        public StarSprite iSprite;
         ContentManager content;
-        public StarEntity(Vector2 position, Star sprite) : base(position, sprite)
+        public StarEntity(Vector2 position, StarSprite sprite) : base(position, sprite)
         {
-            iSprite = new Star(content);
+            iSprite = new StarSprite(content);
         }
         public override void Update() { }
     }

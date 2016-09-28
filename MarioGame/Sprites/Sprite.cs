@@ -25,18 +25,8 @@ namespace MarioGame.Sprites
         {
             _content = content;
         }
-        public bool Visible
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+        public bool Visible { get; set; }
+       
 
         public virtual void Draw(SpriteBatch batch)
         {

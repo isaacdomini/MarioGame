@@ -18,7 +18,7 @@ namespace MarioGame.Sprites
             Purple = 2,
             Halo = 3
         }
-        public FireFlowerSprite(Viewport viewport) : base(viewport)
+        public FireFlowerSprite(ContentManager content) : base(content)
         {
             _assetName = "fireFlower.png";
             _numberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;

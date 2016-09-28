@@ -25,7 +25,7 @@ namespace MarioGame.Sprites
             _numberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
 
             _frameSets = new Dictionary<int, List<Frames>> {
-                { 0, (Frames[])Enum.GetValues(typeof(Frames)) },
+                { 0, new List<Frames>{Frames.Full, Frames.Waning, Frames.Sliver, Frames.Waxing } },
             };
         }
 

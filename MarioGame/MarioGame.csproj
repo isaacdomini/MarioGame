@@ -80,12 +80,12 @@
     <Compile Include="Sprites\AnimatedSprite.cs" />
     <Compile Include="Sprites\BlockSprites\BlockSprite.cs" />
     <Compile Include="Sprites\ISprite.cs" />
-    <Compile Include="Sprites\ItemSprites\Coins.cs" />
-    <Compile Include="Sprites\ItemSprites\FireFlower.cs" />
-    <Compile Include="Sprites\ItemSprites\Mushroom1Up.cs" />
-    <Compile Include="Sprites\ItemSprites\MushroomSuper.cs" />
-    <Compile Include="Sprites\ItemSprites\QuestionBlock.cs" />
-    <Compile Include="Sprites\ItemSprites\Star.cs" />
+    <Compile Include="Sprites\ItemSprites\CoinSprite.cs" />
+    <Compile Include="Sprites\ItemSprites\FireFlowerSprite.cs" />
+    <Compile Include="Sprites\ItemSprites\Mushroom1UpSprite.cs" />
+    <Compile Include="Sprites\ItemSprites\MushroomSuperSprite.cs" />
+    <Compile Include="Sprites\ItemSprites\QuestionBlockSprite.cs" />
+    <Compile Include="Sprites\ItemSprites\StarSprite.cs" />
     <Compile Include="Sprites\PlayerSprites\MarioSprite.cs" />
     <Compile Include="Sprites\Sprite.cs" />
     <Compile Include="States\BlockStates\BreakBlockState.cs" />
@@ -157,14 +157,48 @@
     <Content Include="bin\Windows\x86\Debug\SharpDX.XInput.dll" />
     <Content Include="bin\Windows\x86\Debug\SharpDX.XInput.xml" />
     <Content Include="bin\Windows\x86\Debug\SharpDX.xml" />
+    <Content Include="Content\blocks.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\brick1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Bricks.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\characters.gif" />
+    <Content Include="Content\characters.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\charactersTwoSided.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\characters_transparent.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\coin.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\EnemySpriteSheet2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\ItemSheet2.png" />
+    <Content Include="Content\fireFlower.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\groundblock.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\ItemSheet2 - Copy %282%29.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\ItemSheet2 - Copy %283%29.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\ItemSheet2 - Copy %284%29.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\ItemSheet2 - Copy.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\mariodead.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -174,12 +208,34 @@
     <Content Include="Content\mariostanding.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\regularMario.png" />
+    <Content Include="Content\mushroom1up.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\mushroomSuper.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\questionblock.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\regularMario.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\star.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\stepblock.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\usedblock.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Feedback.txt" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <MonoGameContentReference Include="Content\Content.mgcb" />
+    <MonoGameContentReference Include="Content\Content.mgcb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </MonoGameContentReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Windows\x86\Debug\Content\mariodead.xnb" />

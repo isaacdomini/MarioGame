@@ -10,7 +10,7 @@ namespace MarioGame.Entities.ItemEntities
     {
         // Could be useful for casting in certain circumstances
         ContentManager content;
-        public CoinEntity(Vector2 position, Coins sprite) : base(position, sprite)
+        public CoinEntity(Vector2 position, CoinsSprite sprite) : base(position, sprite)
         {
         }
         public override void Update() { }

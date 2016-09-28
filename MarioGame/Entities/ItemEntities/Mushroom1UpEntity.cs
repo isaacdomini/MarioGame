@@ -10,7 +10,7 @@ namespace MarioGame.Entities.ItemEntities
     {
         // Could be useful for casting in certain circumstances
         ContentManager content;
-        public Mushroom1UpEntity(Vector2 position, Mushroom1Up sprite) : base(position, sprite)
+        public Mushroom1UpEntity(Vector2 position, Mushroom1UpSprite sprite) : base(position, sprite)
         {
         }
         public override void Update() { }

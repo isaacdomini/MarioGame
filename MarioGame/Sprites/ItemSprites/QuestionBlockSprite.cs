@@ -19,7 +19,7 @@ namespace MarioGame.Sprites.ItemSprites
             Med = 1,
             Dark = 2
         }
-        public QuestionBlockSprite(Viewport viewport) : base(viewport)
+        public QuestionBlockSprite(ContentManager content) : base(content)
         {
             _assetName = "questionblock.png";
             _numberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
