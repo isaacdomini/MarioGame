@@ -19,7 +19,7 @@ namespace MarioGame.Sprites
         }
         //power up states - standard(small), super(big), fire ,start (invincible), Dead
 
-        public Mushroom1Up(IEntity entity, ContentManager content, Viewport viewport) : base(entity, content, viewport)
+        public Mushroom1Up(ContentManager content) : base(content)
         {
             _assetName = "ItemSheet2";
             // _numberOfFramesPerRow = 15;

@@ -9,13 +9,9 @@ namespace MarioGame.Entities.ItemEntities
     public class CoinEntity : Entity
     {
         // Could be useful for casting in certain circumstances
-        public Coins iSprite;
-        public Viewport viewport;
-        IEntity coins;
         ContentManager content;
-        public CoinEntity(Vector2 position) : base(position)
+        public CoinEntity(Vector2 position, Coins sprite) : base(position, sprite)
         {
-            iSprite = new Coins(coins, content, viewport);
         }
         public override void Update() { }
     }

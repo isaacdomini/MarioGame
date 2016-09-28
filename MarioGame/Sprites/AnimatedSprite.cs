@@ -32,21 +32,14 @@ namespace MarioGame.Sprites
         protected SpriteEffects _flipped {
             get
             {
-                switch (((Entity)this._entity).ActionState.direction)
-                {
-                    case ActionState.Directions.Right:
-                        return SpriteEffects.FlipHorizontally;
-                    case ActionState.Directions.Left:
-                    default:
-                        return SpriteEffects.None;
-                }
+                return SpriteEffects.None;
             }
         }
 
 
 
 
-        public AnimatedSprite(IEntity entity, ContentManager content, Viewport viewport) : base(entity, content, viewport)
+        public AnimatedSprite(ContentManager content) : base(content)
         {
         }
 

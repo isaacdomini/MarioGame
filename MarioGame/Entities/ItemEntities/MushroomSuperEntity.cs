@@ -10,12 +10,10 @@ namespace MarioGame.Entities.ItemEntities
     {
         // Could be useful for casting in certain circumstances
         public MushroomSuper iSprite;
-        public Viewport viewport;
-        IEntity mushroom;
         ContentManager content;
-        public MushroomSuperEntity(Vector2 position) : base(position)
+        public MushroomSuperEntity(Vector2 position, MushroomSuper sprite) : base(position, sprite)
         {
-            iSprite = new MushroomSuper(mushroom, content, viewport);
+            iSprite = sprite;
         }
         public override void Update() { }
     }

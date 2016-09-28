@@ -1,4 +1,5 @@
 ﻿
+using MarioGame.Sprites;
 using MarioGame.Sprites.PlayerSprites;
 using MarioGame.States;
 using MarioGame.States.BlockStates;
@@ -6,12 +7,12 @@ using Microsoft.Xna.Framework;
 
 namespace MarioGame.Entities.BlockEntities
 {
-    public class BlockEntity : EntityBrick
+    public class BlockEntity : Entity
     {
         // Could be useful for casting in certain circumstances
         public MarioSprite mSprite;
         public StandardState bState;
-        public BlockEntity(Vector2 position) : base(position)
+        public BlockEntity(Vector2 position, ISprite sprite) : base(position, sprite)
         {
             bState = new StandardBlockState(this);
             // Now only cast once

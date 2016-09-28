@@ -8,7 +8,7 @@ namespace MarioGame.Sprites
 {
     public class GoombaSprite : AnimatedSprite
     {
-        public GoombaSprite(IEntity entity, ContentManager content, Viewport viewport) : base(entity, content, viewport)
+        public GoombaSprite(ContentManager content) : base(content)
         {
             _assetName = "EnemySpriteSheet2";
         }

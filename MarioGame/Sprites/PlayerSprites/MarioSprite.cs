@@ -45,7 +45,7 @@ namespace MarioGame.Sprites.PlayerSprites
 
         //power up states - standard(small), super(big), fire ,start (invincible), Dead
 
-        public MarioSprite(IEntity entity, ContentManager content, Viewport viewport) : base(entity, content, viewport)
+        public MarioSprite(ContentManager content) : base(content)
         {
             _assetName = "characters_transparent.gif";
             _numberOfFramesPerRow = 15;

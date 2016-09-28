@@ -8,7 +8,7 @@ namespace MarioGame.Sprites
 {
     public class KoopaTroopaSprite : AnimatedSprite
     {
-      public KoopaTroopaSprite (IEntity entity, ContentManager content, Viewport viewport) : base(entity, content, viewport)
+      public KoopaTroopaSprite (ContentManager content) : base(content)
         {
             _assetName = "EnemySpriteSheet2";
         }

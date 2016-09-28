@@ -11,7 +11,7 @@ namespace MarioGame.Sprites.ItemSprites
 {
     class QuestionBlock : AnimatedSprite
     {
-        public QuestionBlock(IEntity entity, ContentManager content, Viewport viewport) : base(entity, content, viewport)
+        public QuestionBlock(ContentManager content) : base(content)
         {
             _numberOfFramesPerRow = 3;
         }

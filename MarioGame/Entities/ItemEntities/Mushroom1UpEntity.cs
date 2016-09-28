@@ -9,13 +9,9 @@ namespace MarioGame.Entities.ItemEntities
     public class Mushroom1UpEntity : Entity
     {
         // Could be useful for casting in certain circumstances
-        public Mushroom1Up iSprite;
-        public Viewport viewport;
-        IEntity mushroom;
         ContentManager content;
-        public Mushroom1UpEntity(Vector2 position) : base(position)
+        public Mushroom1UpEntity(Vector2 position, Mushroom1Up sprite) : base(position, sprite)
         {
-            iSprite = new Mushroom1Up(mushroom, content, viewport);
         }
         public override void Update() { }
     }

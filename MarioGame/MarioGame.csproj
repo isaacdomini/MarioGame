@@ -70,11 +70,6 @@
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\EntityBrick.cs" />
     <Compile Include="Entities\IEntity.cs" />
-    <Compile Include="Entities\ItemEntities\CoinEntity.cs" />
-    <Compile Include="Entities\ItemEntities\FireFlowerEntity.cs" />
-    <Compile Include="Entities\ItemEntities\Mushroom1UpEntity.cs" />
-    <Compile Include="Entities\ItemEntities\MushroomSuperEntity.cs" />
-    <Compile Include="Entities\ItemEntities\StarEntity.cs" />
     <Compile Include="Entities\PlayerEntities\MarioEntity.cs" />
     <Compile Include="obj\x86\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\x86\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />

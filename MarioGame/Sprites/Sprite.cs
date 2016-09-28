@@ -13,25 +13,17 @@ namespace MarioGame.Sprites
     public class Sprite : ISprite //TODO: Should we make this class abstract?
     {
         protected Texture2D _texture;
-        protected IEntity _entity;
         protected string _assetName;
         protected ContentManager _content;
-        protected Viewport _viewport;
 
-        protected Vector2 _position
+        public Vector2 _position
         {
-            get
-            {
-                return _entity.getPosition();
-            }
-            set { }
+            get; set;
         }
 
-        public Sprite(IEntity entity, ContentManager content, Viewport viewport)
+        public Sprite(ContentManager content)
         {
-            _entity = entity;
             _content = content;
-            _viewport = viewport;
         }
         public bool Visible
         {

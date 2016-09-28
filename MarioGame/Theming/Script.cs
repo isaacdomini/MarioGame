@@ -1,8 +1,11 @@
 ﻿using MarioGame.Core;
+using MarioGame.Entities;
+using MarioGame.Entities.BlockEntities;
 using MarioGame.Entities.PlayerEntities;
 using MarioGame.Theming.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace MarioGame.Theming
 {
@@ -11,9 +14,9 @@ namespace MarioGame.Theming
         private readonly Scene _scene;
 
         private MarioEntity mario;
-	private List<Entity> _enemies;
-	private List<Entity> _items;
-	private List<Entity> _blocks;
+	    private List<Entity> _enemies;
+	    private List<Entity> _items;
+	    private List<BlockEntity> _blocks;
 
         public Script(Scene scene)
         {
@@ -39,23 +42,29 @@ namespace MarioGame.Theming
         {
 		_enemies = new List<Entity>();
 		_items = new List<Entity>();
-		_blocks = new List<Entity>();
+		_blocks = new List<BlockEntity>();
+        }
+        
+        public void AddMario(MarioEntity marioEntity)
+        {
+            mario = marioEntity;
+            marioEntity.Load();
         }
 
-	public void AddEnemy(Entity enemy)
-	{
-		_enemies.add(enemy);
-	}
+	    public void AddEnemy(Entity enemy)
+	    {
+		    _enemies.Add(enemy);
+	    }
 
-	public void AddItem(Entity item)
-	{
-		_items.add(item);
-	}
+	    public void AddItem(Entity item)
+	    {
+		    _items.Add(item);
+	    }
 
-	public AddBlocks(Entity block)
-	{
-		_blocks.add(block);
-	}
+	    public void AddBlocks(BlockEntity block)
+	    {
+		    _blocks.Add(block);
+	    }
 
         public void MakeMarioJump()
         {

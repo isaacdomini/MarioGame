@@ -28,7 +28,7 @@ namespace MarioGame.Sprites.BlockSprite
 
         //power up states - standard(small), super(big), fire ,start (invincible), Dead
 
-        public BlockSprite(IEntity entity, ContentManager content, Viewport viewport) : base(entity, content, viewport)
+        public BlockSprite(ContentManager content) : base(content)
         {
             _numberOfFramesPerRow = 15;
             //Each state has a frameSet

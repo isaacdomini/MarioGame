@@ -1,9 +1,11 @@
 ﻿
+using System;
 using MarioGame.Sprites.PlayerSprites;
 using MarioGame.States;
 using MarioGame.States.PlayerStates;
 using MarioGame.States.PlayerStates.PowerUpStates;
 using Microsoft.Xna.Framework;
+using MarioGame.Sprites;
 
 namespace MarioGame.Entities.PlayerEntities
 {
@@ -24,7 +26,8 @@ namespace MarioGame.Entities.PlayerEntities
         public readonly static Vector2 FallingVelocity = new Vector2(0, velocityConstant*- 1);
 
 
-        public MarioEntity(Vector2 position) : base(position)
+
+        public MarioEntity(Vector2 position, ISprite sprite) : base(position, sprite)
         {
             aState = new IdleMarioState(this);
             aState.setDirection(ActionState.Directions.Right);
@@ -32,6 +35,17 @@ namespace MarioGame.Entities.PlayerEntities
             // Now only cast once
             mSprite = (MarioSprite)_sprite;
         }
+
+        public Vector2 position
+        {
+            get { return mSprite._position; }
+            set { mSprite._position = value; }
+        }
+
+        public void Load()
+        {
+        }
+
         public override void Update()
         {
             

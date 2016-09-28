@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using MarioGame.Sprites;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MarioGame.Entities.BlockEntities;
+using MarioGame.Entities.ItemEntities;
+using MarioGame.Entities.PlayerEntities;
+using MarioGame.Sprites.BlockSprite;
+using MarioGame.Sprites.PlayerSprites;
 
 namespace MarioGame.Theming.Scenes
 {
@@ -59,8 +64,12 @@ namespace MarioGame.Theming.Scenes
 
             //TODO DRAW all Sprites
             //TODO init all objects and give them some positions
-
-
+            _script.AddItem(new CoinEntity(new Vector2(150, 100), new Coins(Stage.Game1.Content)));
+            _script.AddItem(new FireFlowerEntity(new Vector2(200, 100), new FireFlower(Stage.Game1.Content)));
+            _script.AddItem(new Mushroom1UpEntity(new Vector2(250, 100), new Mushroom1Up(Stage.Game1.Content)));
+            _script.AddItem(new MushroomSuperEntity(new Vector2(300, 100), new MushroomSuper(Stage.Game1.Content)));
+            _script.AddItem(new StarEntity(new Vector2(350, 100), new Star(Stage.Game1.Content)));
+            _script.AddMario(new MarioEntity(new Vector2(100, 150), new MarioSprite(Stage.Game1.Content)));
         }
 
         public void LoadContent()
@@ -75,6 +84,9 @@ namespace MarioGame.Theming.Scenes
             Items[ItemTypes.Mushroom1Up.GetHashCode()].Load();
             Items[ItemTypes.MushroomSuper.GetHashCode()].Load();
             Items[ItemTypes.Star.GetHashCode()].Load();
+
+            
+
 
         }
 

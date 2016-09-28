@@ -19,7 +19,7 @@ namespace MarioGame.Sprites
         }
         //power up states - standard(small), super(big), fire ,start (invincible), Dead
 
-        public Star(IEntity entity, ContentManager content, Viewport viewport) : base(entity, content, viewport)
+        public Star(ContentManager content) : base(content)
         {
             _assetName = "ItemSheet2";
             // _numberOfFramesPerRow = 15;

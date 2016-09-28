@@ -9,13 +9,9 @@ namespace MarioGame.Entities.ItemEntities
     public class FireFlowerEntity : Entity
     {
         // Could be useful for casting in certain circumstances
-        public FireFlower iSprite;
-        public Viewport viewport;
-        IEntity fireFlower;
         ContentManager content;
-        public FireFlowerEntity(Vector2 position) : base(position)
+        public FireFlowerEntity(Vector2 position, FireFlower flowerSprite) : base(position, flowerSprite)
         {
-            iSprite = new FireFlower(fireFlower, content, viewport);
         }
         public override void Update() { }
     }
