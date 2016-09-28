@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace MarioGame.Entities.EnemyEntities
 {
-    class KoopaTroopaEntity
+    class KoopaTroopaEntity : Entity
     {
+	public KoopaTroopaEntity(Vector2 position, ISprite sprite) : base(position, sprite)
+	{
+	
+	}
     }
 }
