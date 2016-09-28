@@ -18,7 +18,6 @@ namespace MarioGame.Commands
 
         public void Execute()
         {
-            Scene.ShowItems(Scene.EnemyTypes.KoopaTroopa.GetHashCode());
         }
     }
 }

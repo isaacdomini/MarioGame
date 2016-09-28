@@ -44,8 +44,6 @@ namespace MarioGame.Theming.Scenes
         }
 
         private List<ISprite> Sprites { get; set; }
-        private List<ISprite> Enemies { get; set; }
-        private List<ISprite> Items { get; set; }
         public Stage Stage { get; }
 
         public void Dispose()
@@ -77,15 +75,14 @@ namespace MarioGame.Theming.Scenes
             _spriteBatch = new SpriteBatch(Stage.Game1.GraphicsDevice);
 
             Stage.LoadContent();
-            Enemies[EnemyTypes.Goomba.GetHashCode()].Load();
-            Enemies[EnemyTypes.KoopaTroopa.GetHashCode()].Load();
-            Items[ItemTypes.Coins.GetHashCode()].Load();
-            Items[ItemTypes.FireFlower.GetHashCode()].Load();
-            Items[ItemTypes.Mushroom1Up.GetHashCode()].Load();
-            Items[ItemTypes.MushroomSuper.GetHashCode()].Load();
-            Items[ItemTypes.Star.GetHashCode()].Load();
 
-            
+            Sprites.Add(_script.mario.mSprite);
+            foreach (var block in _script._blocks)
+                Sprites.Add(block._sprite);
+            foreach (var item in _script._items)
+                Sprites.Add(item._sprite);
+            foreach (var enemy in _script._enemies)
+                Sprites.Add(enemy._sprite);
 
 
         }
@@ -127,12 +124,6 @@ namespace MarioGame.Theming.Scenes
             return this._script;
 
         }
-        public void ShowItems(int sprite)
-        {
-            foreach(ISprite current in Enemies)
-                Enemies[sprite].Visible = true;
-            foreach (ISprite current in Items)
-                Items[sprite].Visible = true;
-        }
+
     }
 }

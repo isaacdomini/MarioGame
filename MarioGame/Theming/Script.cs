@@ -13,10 +13,10 @@ namespace MarioGame.Theming
     {
         private readonly Scene _scene;
 
-        private MarioEntity mario;
-	    private List<Entity> _enemies;
-	    private List<Entity> _items;
-	    private List<BlockEntity> _blocks;
+        public MarioEntity mario { get; private set; }
+	    public List<Entity> _enemies { get; private set; }
+	    public List<Entity> _items { get; private set; }
+	    public List<BlockEntity> _blocks { get; private set; }
 
         public Script(Scene scene)
         {
@@ -40,15 +40,14 @@ namespace MarioGame.Theming
 
         public void Initialize()
         {
-		_enemies = new List<Entity>();
-		_items = new List<Entity>();
-		_blocks = new List<BlockEntity>();
+		    _enemies = new List<Entity>();
+		    _items = new List<Entity>();
+		    _blocks = new List<BlockEntity>();
         }
         
         public void AddMario(MarioEntity marioEntity)
         {
             mario = marioEntity;
-            marioEntity.Load();
         }
 
 	    public void AddEnemy(Entity enemy)

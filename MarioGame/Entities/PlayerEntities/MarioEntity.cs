@@ -42,9 +42,7 @@ namespace MarioGame.Entities.PlayerEntities
             set { mSprite._position = value; }
         }
 
-        public void Load()
-        {
-        }
+
 
         public override void Update()
         {
