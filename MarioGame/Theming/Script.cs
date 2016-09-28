@@ -11,6 +11,9 @@ namespace MarioGame.Theming
         private readonly Scene _scene;
 
         private MarioEntity mario;
+	private List<Entity> _enemies;
+	private List<Entity> _items;
+	private List<Entity> _blocks;
 
         public Script(Scene scene)
         {
@@ -34,7 +37,25 @@ namespace MarioGame.Theming
 
         public void Initialize()
         {
+		_enemies = new List<Entity>();
+		_items = new List<Entity>();
+		_blocks = new List<Entity>();
         }
+
+	public void AddEnemy(Entity enemy)
+	{
+		_enemies.add(enemy);
+	}
+
+	public void AddItem(Entity item)
+	{
+		_items.add(item);
+	}
+
+	public AddBlocks(Entity block)
+	{
+		_blocks.add(block);
+	}
 
         public void MakeMarioJump()
         {
