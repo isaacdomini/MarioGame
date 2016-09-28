@@ -24,8 +24,8 @@ namespace MarioGame.Sprites.ItemSprites
             _assetName = "questionblock.png";
             _numberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
 
-            _frameSets = new Dictionary<int, List<Frames>> {
-                { 0, new List<Frames> { Frames.Light, Frames.Med, Frames.Dark } },
+            _frameSets = new Dictionary<int, List<int>> {
+                { 0, new List<int> { Frames.Light.GetHashCode(), Frames.Med.GetHashCode(), Frames.Dark.GetHashCode() } },
             };
         }
     }

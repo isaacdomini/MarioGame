@@ -49,36 +49,42 @@ namespace MarioGame.Sprites.PlayerSprites
         {
             _assetName = "characters_transparent.gif";
             _numberOfFramesPerRow = 15;
-            _frameHeight = 40;
             //Each state has a frameSet
             
-            _frameSets = new Dictionary<MarioActionStates, List<Frames>> {
-                { MarioActionStates.Idle, new List<Frames> { Frames.StandingMario } },
-                { MarioActionStates.Walking, new List<Frames> {Frames.MovingMario1, Frames.MovingMario2, Frames.MovingMario3 } },//TODO: instead of {1, 2, 3} may have to do {1, 2, 3, 2} or something like that
-                { MarioActionStates.Running, new List<Frames> {Frames.MovingMario1, Frames.MovingMario2, Frames.MovingMario3 } },//TODO: instead of {1, 2, 3} may have to do {1, 2, 3, 2} or something like that
-                {MarioActionStates.Jumping, new List<Frames> {Frames.JumpingMario } },
-                {MarioActionStates.Sitting, new List<Frames> {Frames.SittingMario1, Frames.SittingMario2} },
-                { MarioActionStates.Swimming, new List<Frames> {Frames.SwimmingMarioStart, Frames.SwimmingMarioAfterStart, Frames.SwimmingMarioMiddle, Frames.SwimmingMarioBeforeEnd, Frames.SwimmingMarioEnd  } },
-                {MarioActionStates.Dead, new List<Frames> {Frames.DeadMario } } //TODO: Is Dead an action state or power up state?
+            _frameSets = new Dictionary<int, List<int>> {
+                { MarioActionStates.Idle.GetHashCode(), new List<int> { Frames.StandingMario.GetHashCode() } },
+                { MarioActionStates.Walking.GetHashCode(), new List<int> {Frames.MovingMario1.GetHashCode(), Frames.MovingMario2.GetHashCode(), Frames.MovingMario3.GetHashCode() } },//TODO: instead of {1, 2, 3} may have to do {1, 2, 3, 2} or something like that
+                { MarioActionStates.Running.GetHashCode(), new List<int> {Frames.MovingMario1.GetHashCode(), Frames.MovingMario2.GetHashCode(), Frames.MovingMario3.GetHashCode() } },//TODO: instead of {1, 2, 3} may have to do {1, 2, 3, 2} or something like that
+                {MarioActionStates.Crouching.GetHashCode(), new List<int> {Frames.StandingMario.GetHashCode() } },
+                {MarioActionStates.Jumping.GetHashCode(), new List<int> {Frames.JumpingMario.GetHashCode() } },
+                {MarioActionStates.Sitting.GetHashCode(), new List<int> {Frames.SittingMario1.GetHashCode(), Frames.SittingMario2.GetHashCode() } },
+                { MarioActionStates.Swimming.GetHashCode(), new List<int> {Frames.SwimmingMarioStart.GetHashCode(), Frames.SwimmingMarioAfterStart.GetHashCode(), Frames.SwimmingMarioMiddle.GetHashCode(), Frames.SwimmingMarioBeforeEnd.GetHashCode(), Frames.SwimmingMarioEnd.GetHashCode() } },
+                {MarioActionStates.Dead.GetHashCode(), new List<int> {Frames.DeadMario.GetHashCode() } } //TODO: Is Dead an action state or power up state?
             };
 
-            _rowSets = new Dictionary<MarioPowerUpStates, List<Rows>>
+            _rowSets = new Dictionary<int, List<int>>
             {
-                {MarioPowerUpStates.Standard, new List<Rows> {Rows.Standard } },
-                {MarioPowerUpStates.Super, new List<Rows> {Rows.Super } },
-                {MarioPowerUpStates.Fire, new List<Rows> {Rows.Fire } },
-                {MarioPowerUpStates.Invincible, new List<Rows> {Rows.Standard, Rows.Fire, Rows.Luigi } },  //Cycle between various types of mario sprite to give the flashing feel of invincibility
-                {MarioPowerUpStates.Dead, new List<Rows> {Rows.Standard} }
+                {MarioPowerUpStates.Standard.GetHashCode(), new List<int> {Rows.Standard.GetHashCode() } },
+                {MarioPowerUpStates.Super.GetHashCode(), new List<int> {Rows.Super.GetHashCode() } },
+                {MarioPowerUpStates.Fire.GetHashCode(), new List<int> {Rows.Fire.GetHashCode() } },
+                {MarioPowerUpStates.Invincible.GetHashCode(), new List<int> {Rows.Standard.GetHashCode(), Rows.Fire.GetHashCode(), Rows.Luigi.GetHashCode() } },  //Cycle between various types of mario sprite to give the flashing feel of invincibility
+                {MarioPowerUpStates.Dead.GetHashCode(), new List<int> {Rows.Standard.GetHashCode() } }
             };
+        }
+
+        public override void Load(int framesPerSecond = 1)
+        {
+            base.Load();
+            _frameHeight = 40;
         }
         public void changeActionState(MarioActionStates marioActionState)
         {
-            _frameSet = (List<int>)_frameSets[marioActionState];
+            _frameSet = _frameSets[marioActionState.GetHashCode()];
         }
 
         public void changePowerUp(MarioPowerUpStates marioPowerUpState)
         {
-            _rowSet = (List<int>)_rowSets[marioPowerUpState];
+            _rowSet = _rowSets[marioPowerUpState.GetHashCode()];
         }
 
     }

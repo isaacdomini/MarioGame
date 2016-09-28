@@ -32,14 +32,14 @@ namespace MarioGame.Sprites.BlockSprite
         {
             _numberOfFramesPerRow = 15;
             //Each state has a frameSet
-            _frameSets = new Dictionary<BlockStates, List<Frames>> {
-                { BlockStates.StandardBlock, new List<Frames> { Frames.StandardBlock } },
-                { BlockStates.GroundBlock, new List<Frames> { Frames.GroundBlock } },
-                { BlockStates.StepBlock, new List<Frames> { Frames.StepBlock } },
-                { BlockStates.BreakingBlock, new List<Frames> {Frames.BreakingBlock} },
-                { BlockStates.QuestionBlock, new List<Frames> {Frames.QuestionBlock1, Frames.QuestionBlock2, Frames.QuestionBlock3 } },
-                { BlockStates.HiddenBlock, new List<Frames> {Frames.HiddenBlock} },
-                { BlockStates.UsedBlock, new List<Frames> { Frames.UsedBlock } },
+            _frameSets = new Dictionary<int, List<int>> {
+                { BlockStates.StandardBlock.GetHashCode(), new List<int> { Frames.StandardBlock.GetHashCode() } },
+                { BlockStates.GroundBlock.GetHashCode(), new List<int> { Frames.GroundBlock.GetHashCode() } },
+                { BlockStates.StepBlock.GetHashCode(), new List<int> { Frames.StepBlock.GetHashCode() } },
+                { BlockStates.BreakingBlock.GetHashCode(), new List<int> {Frames.BreakingBlock.GetHashCode() } },
+                { BlockStates.QuestionBlock.GetHashCode(), new List<int> {Frames.QuestionBlock1.GetHashCode(), Frames.QuestionBlock2.GetHashCode(), Frames.QuestionBlock3.GetHashCode() } },
+                { BlockStates.HiddenBlock.GetHashCode(), new List<int> {Frames.HiddenBlock.GetHashCode() } },
+                { BlockStates.UsedBlock.GetHashCode(), new List<int> { Frames.UsedBlock.GetHashCode() } },
 
             };
         }

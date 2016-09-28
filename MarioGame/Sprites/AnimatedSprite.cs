@@ -16,11 +16,11 @@ namespace MarioGame.Sprites
         protected int _numberOfFramesPerRow; //number of frames in the row
 
         //each action state uses a set of frames (e.g. frame numbers 7, 8, 9 on the specific row on the sprite sheet
-        protected IDictionary _frameSets; //TODO: somehow figure out how to declare the type of the dictionary as <String, Frames> . . .it gave me an error when doing that. This should also get rid of the pesky casting on line 81
+        protected IDictionary<int, List<int>> _frameSets; //TODO: somehow figure out how to declare the type of the dictionary as <String, Frames> . . .it gave me an error when doing that. This should also get rid of the pesky casting on line 81
         protected List<int> _frameSet;
         protected int _frameSetPosition; //this refers to the position in the frameset. e.g. if our frameSet was <7,8,9> if _frameSetPosition = 1 then _frameSet[_frameSetPosition] would equal 8
 
-        protected IDictionary _rowSets;
+        protected IDictionary<int, List<int>> _rowSets;
         protected List<int> _rowSet;
         protected int _rowSetPosition;
 
@@ -64,6 +64,7 @@ namespace MarioGame.Sprites
         {
             _texture = _content.Load<Texture2D>(_assetName);
 
+            _frameHeight = _texture.Height;
             _frameWidth = _texture.Width / _numberOfFramesPerRow;
             _frameSetPosition = 0;
 

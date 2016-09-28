@@ -23,8 +23,8 @@ namespace MarioGame.Sprites
             _assetName = "fireFlower.png";
             _numberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
 
-            _frameSets = new Dictionary<int, List<Frames>> {
-                { 0, new List<Frames> { Frames.Blue, Frames.Red, Frames.Purple, Frames.Halo } },
+            _frameSets = new Dictionary<int, List<int>> {
+                { 0, new List<int> { Frames.Blue.GetHashCode(), Frames.Red.GetHashCode(), Frames.Purple.GetHashCode(), Frames.Halo.GetHashCode() } },
             };
         }
 

@@ -23,8 +23,8 @@ namespace MarioGame.Sprites
             _assetName = "star.png";
             _numberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
 
-            _frameSets = new Dictionary<int, List<Frames>> {
-                { 0, new List<Frames> { Frames.Orange, Frames.Yellow, Frames.Red } },
+            _frameSets = new Dictionary<int, List<int>> {
+                { 0, new List<int> { Frames.Orange.GetHashCode(), Frames.Yellow.GetHashCode(), Frames.Red.GetHashCode() } },
             };
         }
 

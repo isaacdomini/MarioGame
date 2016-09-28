@@ -20,19 +20,6 @@ namespace MarioGame.Theming.Scenes
             AnimatedStill,
             AnimatedMoving
         }
-        public enum EnemyTypes
-        {
-            KoopaTroopa,
-            Goomba
-        }
-        public enum ItemTypes
-        {
-            Star,
-            Coins,
-            Mushroom1Up,
-            MushroomSuper,
-            FireFlower
-        }
 
         private readonly Script _script;
         private SpriteBatch _spriteBatch;
