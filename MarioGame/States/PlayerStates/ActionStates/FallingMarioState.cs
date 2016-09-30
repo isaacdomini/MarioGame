@@ -14,7 +14,7 @@ namespace MarioGame.States.PlayerStates
         //TODO: Shouldn't this state only be able to be called when in Giant Mario Power State?
         public FallingMarioState(MarioEntity entity) : base(entity)
         {
-            actionState = MarioActionStateEnum.Idle; // what sprite should we use for falling?
+            actionState = MarioActionStateEnum.Crouching; // what sprite should we use for falling?
         }
         public override void Jump()
         {

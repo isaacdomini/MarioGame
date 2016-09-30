@@ -37,7 +37,9 @@ namespace MarioGame.Theming
             _controllers[0].AddCommand((int)Keys.Up, new JumpCommand(Game1.Scene.getScript()));
             // Adding movement commands (Needs updated with actual commands)
             _controllers[0].AddCommand((int)Keys.Left, new MoveLeftCommand(Game1.Scene.getScript()));
+            _controllers[0].AddCommand((int)Keys.A, new MoveLeftCommand(Game1.Scene.getScript()));
             _controllers[0].AddCommand((int)Keys.Right, new MoveRightCommand(Game1.Scene.getScript()));
+            _controllers[0].AddCommand((int)Keys.D, new MoveRightCommand(Game1.Scene.getScript()));
             _controllers[0].AddCommand((int)Keys.Down, new CrouchCommand(Game1.Scene.getScript()));
             _controllers[0].AddCommand((int)Keys.S, new CrouchCommand(Game1.Scene.getScript()));
             _controllers[0].AddCommand((int)Keys.Space, new DashOrThrowFireballCommand(Game1.Scene.getScript()));
