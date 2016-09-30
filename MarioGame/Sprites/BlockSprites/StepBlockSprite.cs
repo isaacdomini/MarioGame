@@ -18,7 +18,7 @@ namespace MarioGame.Sprites.BlockSprites
         }
         public StepBlockSprite(ContentManager content) : base(content)
         {
-            _assetName = "stepblock.png";
+            _assetName = "stepblock";
             _numberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
 
             _frameSets = new Dictionary<int, List<int>> {

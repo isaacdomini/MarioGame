@@ -20,7 +20,7 @@ namespace MarioGame.Sprites
         }
         public FireFlowerSprite(ContentManager content) : base(content)
         {
-            _assetName = "fireFlower.png";
+            _assetName = "fireFlower";
             _numberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
 
             _frameSets = new Dictionary<int, List<int>> {

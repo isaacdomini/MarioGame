@@ -13,16 +13,16 @@ namespace MarioGame.Sprites
         public enum Frames
         {
             //frames are all facing left. 
-            MidWings = 3,
-            Wings = 4,
-            Walk = 5,
-            Walk2 =6,
-            DeadLegs =7,
-            Dead=8
+            MidWings = 0,
+            Wings = 1,
+            Walk = 2,
+            Walk2 =3,
+            DeadLegs =8,
+            Dead=9
         }
         public KoopaTroopaSprite (ContentManager content) : base(content)
         {
-            _assetName = "EnemySpriteSheet2";
+            _assetName = "regularkoopa";
             _numberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
 
             _frameSets = new Dictionary<int, List<int>> {
@@ -31,7 +31,7 @@ namespace MarioGame.Sprites
             _frameSet = _frameSets[0];
             _frameSetPosition = 0;
             _rowSetPosition = 0;
-            _numberOfFramesPerRow = 9;
+            _numberOfFramesPerRow = 10;
         }
         public override void Update(float elapsed)
         {

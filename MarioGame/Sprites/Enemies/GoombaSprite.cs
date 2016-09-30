@@ -20,7 +20,7 @@ namespace MarioGame.Sprites
     {
         public GoombaSprite(ContentManager content) : base(content)
         {
-            _assetName = "EnemySpriteSheet2";
+            _assetName = "regulargoomba";
             _numberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
 
             _frameSets = new Dictionary<int, List<int>> {
@@ -29,7 +29,7 @@ namespace MarioGame.Sprites
             _frameSet = _frameSets[Frames.Walk.GetHashCode()];
             _frameSetPosition = 0;
             _rowSetPosition = 0;
-            _numberOfFramesPerRow = 9;
+            _numberOfFramesPerRow = 3;
         }
         public override void Update(float elapsed)
         {

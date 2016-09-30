@@ -18,7 +18,7 @@ namespace MarioGame.Sprites.BlockSprites
         }
         public UsedBlockSprite(ContentManager content) : base(content)
         {
-            _assetName = "usedblock.png";
+            _assetName = "usedblock";
             _numberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
 
             _frameSets = new Dictionary<int, List<int>> {

@@ -35,38 +35,13 @@ C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Co
 C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\charactersTwoSided.xnb
 C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\characters_transparent.xnb
 C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\coin.xnb
-C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\EnemySpriteSheet2.xnb
 C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\fireFlower.xnb
-C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\ItemSheet2 - Copy (2).xnb
-C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\ItemSheet2 - Copy (3).xnb
-C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\ItemSheet2 - Copy (4).xnb
-C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\ItemSheet2 - Copy.xnb
 C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\mushroom1up.xnb
 C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\mushroomSuper.xnb
 C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\regularMario.xnb
 C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\star.xnb
 C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\obj\x86\Debug\MarioGame.csprojResolveAssemblyReference.cache
-C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\blocks.png
-C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\brick1.png
-C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\characters_transparent.gif
 C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\obj\Bricks.png
-C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\characters.gif
-C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\charactersTwoSided.gif
-C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\coin.png
-C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\EnemySpriteSheet2.png
-C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\fireFlower.png
-C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\groundblock.png
-C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\ItemSheet2 - Copy.png
-C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\mariodead.jpg
-C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\mariorunningright.jpg
-C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\mariostanding.jpg
-C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\mushroom1up.png
-C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\mushroomSuper.png
-C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\questionblock.png
-C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\regularMario.png
-C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\star.png
-C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\stepblock.png
-C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\usedblock.png
 C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\obj\x86\Debug\MarioGame.exe
 C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\obj\x86\Debug\MarioGame.pdb
 C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\blocks.xnb
@@ -136,3 +111,5 @@ C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\SharpDX.X
 C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\SharpDX.RawInput.xml
 C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
 C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\obj\x86\Debug\MarioGame.csprojResolveAssemblyReference.cache
+C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\regulargoomba.xnb
+C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\regularkoopa.xnb

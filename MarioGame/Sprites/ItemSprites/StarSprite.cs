@@ -20,7 +20,7 @@ namespace MarioGame.Sprites
         }
         public StarSprite(ContentManager content) : base(content)
         {
-            _assetName = "star.png";
+            _assetName = "star";
             _numberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
 
             _frameSets = new Dictionary<int, List<int>> {

@@ -22,7 +22,7 @@ namespace MarioGame.Sprites
 
         public CoinsSprite(ContentManager content) : base(content)
         {
-            _assetName = "coin.png";
+            _assetName = "coin";
             _numberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
 
             _frameSets = new Dictionary<int, List<int>> {

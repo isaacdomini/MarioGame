@@ -47,7 +47,7 @@ namespace MarioGame.Sprites.PlayerSprites
 
         public MarioSprite(ContentManager content) : base(content)
         {
-            _assetName = "characters_transparent.gif";
+            _assetName = "characters_transparent";
             _numberOfFramesPerRow = 15;
             //Each state has a frameSet
             

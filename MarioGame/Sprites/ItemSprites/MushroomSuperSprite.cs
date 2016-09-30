@@ -9,7 +9,7 @@ namespace MarioGame.Sprites
     {
         public MushroomSuperSprite(ContentManager content) : base(content)
         {
-            _assetName = "mushroomSuper.png";
+            _assetName = "mushroomSuper";
         }
     }
 }
