@@ -38,9 +38,90 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Game1.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Commands\CrouchCommand.cs" />
+    <Compile Include="Commands\DashOrThrowFireballCommand.cs" />
+    <Compile Include="Commands\DisplayGoomba.cs" />
+    <Compile Include="Commands\DisplayKoopaTroopa.cs" />
+    <Compile Include="Commands\GameCommand.cs" />
+    <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Commands\JumpCommand.cs" />
+    <Compile Include="Commands\MoveLeftCommand.cs" />
+    <Compile Include="Commands\MoveRightCommand.cs" />
+    <Compile Include="Commands\PauseCommand.cs" />
+    <Compile Include="Commands\QuitCommand.cs" />
+    <Compile Include="Commands\SceneCommand.cs" />
+    <Compile Include="Commands\ScriptCommand.cs" />
+    <Compile Include="Commands\SwitchToAnimatedMovingCommand.cs" />
+    <Compile Include="Commands\SwitchToAnimatedStillCommand.cs" />
+    <Compile Include="Commands\SwitchToStaticMovingCommand.cs" />
+    <Compile Include="Commands\SwitchToStaticStillCommand.cs" />
+    <Compile Include="Controllers\GamepadController.cs" />
+    <Compile Include="Controllers\IController.cs" />
+    <Compile Include="Controllers\KeyboardController.cs" />
+    <Compile Include="Core\Game1.cs" />
+    <Compile Include="Core\Program.cs" />
+    <Compile Include="Entities\BlockEntities\BlockEntity.cs" />
+    <Compile Include="Entities\BlockEntities\BrickBlockEntity.cs" />
+    <Compile Include="Entities\BlockEntities\GroundBlockEntity.cs" />
+    <Compile Include="Entities\BlockEntities\StepBlockEntity.cs" />
+    <Compile Include="Entities\BlockEntities\UsedBlockEntity.cs" />
+    <Compile Include="Entities\EnemyEntities\GoombaEntity.cs" />
+    <Compile Include="Entities\EnemyEntities\KoopaTroopaEntity.cs" />
+    <Compile Include="Entities\Entity.cs" />
+    <Compile Include="Entities\IEntity.cs" />
+    <Compile Include="Entities\ItemEntities\CoinEntity.cs" />
+    <Compile Include="Entities\ItemEntities\FireFlowerEntity.cs" />
+    <Compile Include="Entities\ItemEntities\Mushroom1UpEntity.cs" />
+    <Compile Include="Entities\ItemEntities\MushroomSuperEntity.cs" />
+    <Compile Include="Entities\ItemEntities\StarEntity.cs" />
+    <Compile Include="Entities\PlayerEntities\MarioEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sprites\AnimatedSprite.cs" />
+    <Compile Include="Sprites\BlockSprites\BlockSprite.cs" />
+    <Compile Include="Sprites\BlockSprites\BrickBlockSprite.cs" />
+    <Compile Include="Sprites\BlockSprites\GroundBlockSprite.cs" />
+    <Compile Include="Sprites\BlockSprites\StepBlockSprite.cs" />
+    <Compile Include="Sprites\BlockSprites\UsedBlockSprite.cs" />
+    <Compile Include="Sprites\Enemies\GoombaSprite.cs" />
+    <Compile Include="Sprites\Enemies\KoopaTroopaSprite.cs" />
+    <Compile Include="Sprites\ISprite.cs" />
+    <Compile Include="Sprites\ItemSprites\CoinSprite.cs" />
+    <Compile Include="Sprites\ItemSprites\FireFlowerSprite.cs" />
+    <Compile Include="Sprites\ItemSprites\Mushroom1UpSprite.cs" />
+    <Compile Include="Sprites\ItemSprites\MushroomSuperSprite.cs" />
+    <Compile Include="Sprites\ItemSprites\QuestionBlockSprite.cs" />
+    <Compile Include="Sprites\ItemSprites\StarSprite.cs" />
+    <Compile Include="Sprites\PlayerSprites\MarioSprite.cs" />
+    <Compile Include="Sprites\Sprite.cs" />
+    <Compile Include="States\BlockStates\BlockState.cs" />
+    <Compile Include="States\BlockStates\BlockStates.cs" />
+    <Compile Include="States\BlockStates\BreakBlockState.cs" />
+    <Compile Include="States\BlockStates\BumpBlockState.cs" />
+    <Compile Include="States\BlockStates\HiddenBlockState.cs" />
+    <Compile Include="States\BlockStates\StandardBlockState.cs" />
+    <Compile Include="States\BlockStates\StandardState.cs" />
+    <Compile Include="States\BlockStates\UsedBlockState.cs" />
+    <Compile Include="States\IState.cs" />
+    <Compile Include="States\PlayerStates\ActionState.cs" />
+    <Compile Include="States\PlayerStates\ActionStates\CrouchingMarioState.cs" />
+    <Compile Include="States\PlayerStates\ActionStates\DyingMarioState.cs" />
+    <Compile Include="States\PlayerStates\ActionStates\FallingMarioState.cs" />
+    <Compile Include="States\PlayerStates\ActionStates\IdleMarioState.cs" />
+    <Compile Include="States\PlayerStates\ActionStates\JumpingMarioState.cs" />
+    <Compile Include="States\PlayerStates\ActionStates\RunningMarioState.cs" />
+    <Compile Include="States\PlayerStates\ActionStates\WalkingMarioState.cs" />
+    <Compile Include="States\PlayerStates\MarioActionState.cs" />
+    <Compile Include="States\PlayerStates\MarioActionStates.cs" />
+    <Compile Include="States\PlayerStates\MarioPowerUpStates.cs" />
+    <Compile Include="States\PlayerStates\PowerUpState.cs" />
+    <Compile Include="States\PlayerStates\PowerUpStates\DeadState.cs" />
+    <Compile Include="States\PlayerStates\PowerUpStates\FireState.cs" />
+    <Compile Include="States\PlayerStates\PowerUpStates\StandardState.cs" />
+    <Compile Include="States\PlayerStates\PowerUpStates\SuperState.cs" />
+    <Compile Include="States\State.cs" />
+    <Compile Include="Theming\Scenes\Scene.cs" />
+    <Compile Include="Theming\Script.cs" />
+    <Compile Include="Theming\Stage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
@@ -54,6 +135,9 @@
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sprites\PlayerSprites\.MarioSprite.cs.swp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/cyriac/Documents/Projects/MarioLopez/MarioGame/Content/blocks.png</File>
+    <File>C:/Users/cyriac/Documents/Projects/MarioLopez/MarioGame/Content/brick1.png</File>
+    <File>C:/Users/cyriac/Documents/Projects/MarioLopez/MarioGame/Content/Bricks.png</File>
+    <File>C:/Users/cyriac/Documents/Projects/MarioLopez/MarioGame/Content/characters.gif</File>
+    <File>C:/Users/cyriac/Documents/Projects/MarioLopez/MarioGame/Content/characters_transparent.gif</File>
+    <File>C:/Users/cyriac/Documents/Projects/MarioLopez/MarioGame/Content/charactersTwoSided.gif</File>
+    <File>C:/Users/cyriac/Documents/Projects/MarioLopez/MarioGame/Content/coin.png</File>
+    <File>C:/Users/cyriac/Documents/Projects/MarioLopez/MarioGame/Content/EnemySpriteSheet2.png</File>
+    <File>C:/Users/cyriac/Documents/Projects/MarioLopez/MarioGame/Content/fireFlower.png</File>
+    <File>C:/Users/cyriac/Documents/Projects/MarioLopez/MarioGame/Content/groundblock.png</File>
+    <File>C:/Users/cyriac/Documents/Projects/MarioLopez/MarioGame/Content/ItemSheet2 - Copy (2).png</File>
+    <File>C:/Users/cyriac/Documents/Projects/MarioLopez/MarioGame/Content/ItemSheet2 - Copy (3).png</File>
+    <File>C:/Users/cyriac/Documents/Projects/MarioLopez/MarioGame/Content/ItemSheet2 - Copy (4).png</File>
+    <File>C:/Users/cyriac/Documents/Projects/MarioLopez/MarioGame/Content/ItemSheet2 - Copy.png</File>
+    <File>C:/Users/cyriac/Documents/Projects/MarioLopez/MarioGame/Content/mariodead.jpg</File>
+    <File>C:/Users/cyriac/Documents/Projects/MarioLopez/MarioGame/Content/mariorunningright.jpg</File>
+    <File>C:/Users/cyriac/Documents/Projects/MarioLopez/MarioGame/Content/mariostanding.jpg</File>
+    <File>C:/Users/cyriac/Documents/Projects/MarioLopez/MarioGame/Content/mushroom1up.png</File>
+    <File>C:/Users/cyriac/Documents/Projects/MarioLopez/MarioGame/Content/mushroomSuper.png</File>
+    <File>C:/Users/cyriac/Documents/Projects/MarioLopez/MarioGame/Content/questionblock.png</File>
+    <File>C:/Users/cyriac/Documents/Projects/MarioLopez/MarioGame/Content/regularMario.png</File>
+    <File>C:/Users/cyriac/Documents/Projects/MarioLopez/MarioGame/Content/star.png</File>
+    <File>C:/Users/cyriac/Documents/Projects/MarioLopez/MarioGame/Content/stepblock.png</File>
+    <File>C:/Users/cyriac/Documents/Projects/MarioLopez/MarioGame/Content/usedblock.png</File>
+  </SourceFiles>
+</SourceFileCollection>
