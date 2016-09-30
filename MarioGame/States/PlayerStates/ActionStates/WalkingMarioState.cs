@@ -56,9 +56,8 @@ namespace MarioGame.States.PlayerStates
         }
         public override void MoveRight()
         {
-            else if (this.direction == Directions.Left)
+            if (this.direction == Directions.Left)
             {
-                // Mario now is idles left
                 MarioActionState idleLeft = new IdleMarioState(marioEntity);
                 marioEntity.ChangeActionState(idleLeft);
                 idleLeft.setDirection(Directions.Left);
