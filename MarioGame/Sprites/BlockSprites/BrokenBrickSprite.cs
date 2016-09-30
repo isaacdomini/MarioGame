@@ -17,7 +17,6 @@ namespace MarioGame.Sprites.BlockSprites
         {
             _assetName = "BrokenBrick";
             _numberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
-            Visible = true;
 
             _frameSets = new Dictionary<int, List<int>> {
                 { 0, new List<int> { Frames.Brick1.GetHashCode(), Frames.Brick1.GetHashCode(), Frames.Brick1.GetHashCode(), Frames.Brick1.GetHashCode() } },

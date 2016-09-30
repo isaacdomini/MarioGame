@@ -56,10 +56,6 @@ namespace MarioGame.Theming.Scenes
             _script.AddBlock(new StepBlockEntity(new Vector2(600, 300), new StepBlockSprite(Stage.Game1.Content)));
             _script.AddBlock(new UsedBlockEntity(new Vector2(650, 300), new UsedBlockSprite(Stage.Game1.Content)));
             _script.AddBlock(new QuestionBlockEntity(new Vector2(700, 300), new QuestionBlockSprite(Stage.Game1.Content)));
-            _script.AddBlock(new BrokenBrickEntity(new Vector2(500, 300), new BrokenBrickSprite(Stage.Game1.Content)));
-            _script.AddBlock(new BrokenBrickEntity(new Vector2(504, 300), new BrokenBrickSprite(Stage.Game1.Content)));
-            _script.AddBlock(new BrokenBrickEntity(new Vector2(500, 304), new BrokenBrickSprite(Stage.Game1.Content)));
-            _script.AddBlock(new BrokenBrickEntity(new Vector2(504, 304), new BrokenBrickSprite(Stage.Game1.Content)));
 
         }
 
