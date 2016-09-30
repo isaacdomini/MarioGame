@@ -15,7 +15,7 @@ namespace MarioGame.Sprites.BlockSprites
         }
         public BrokenBrickSprite(ContentManager content) : base(content)
         {
-            _assetName = "BrokenBrick.png";
+            _assetName = "BrokenBrick";
             _numberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
             Visible = true;
 

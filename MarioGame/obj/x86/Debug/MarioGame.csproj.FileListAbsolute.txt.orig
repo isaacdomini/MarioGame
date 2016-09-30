@@ -50,8 +50,13 @@ C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\c
 C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\charactersTwoSided.xnb
 C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\characters_transparent.xnb
 C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\coin.xnb
+C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\EnemySpriteSheet2.xnb
 C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\fireFlower.xnb
 C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\groundblock.xnb
+C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\ItemSheet2 - Copy (2).xnb
+C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\ItemSheet2 - Copy (3).xnb
+C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\ItemSheet2 - Copy (4).xnb
+C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\ItemSheet2 - Copy.xnb
 C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\mariodead.xnb
 C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\mariorunningright.xnb
 C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\mariostanding.xnb
@@ -62,7 +67,27 @@ C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\r
 C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\star.xnb
 C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\stepblock.xnb
 C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\usedblock.xnb
+C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\blocks.png
+C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\brick1.png
+C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\characters_transparent.gif
 C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\obj\Bricks.png
+C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\characters.gif
+C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\charactersTwoSided.gif
+C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\coin.png
+C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\EnemySpriteSheet2.png
+C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\fireFlower.png
+C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\groundblock.png
+C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\ItemSheet2 - Copy.png
+C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\mariodead.jpg
+C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\mariorunningright.jpg
+C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\mariostanding.jpg
+C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\mushroom1up.png
+C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\mushroomSuper.png
+C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\questionblock.png
+C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\regularMario.png
+C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\star.png
+C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\stepblock.png
+C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\usedblock.png
 C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\MarioGame.exe
 C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\MarioGame.pdb
 C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\MonoGame.Framework.dll
@@ -86,9 +111,9 @@ C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\SharpDX.X
 C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\SharpDX.RawInput.xml
 C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
 C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\obj\x86\Debug\MarioGame.csprojResolveAssemblyReference.cache
+<<<<<<< HEAD
 C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\regulargoomba.xnb
 C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\regularkoopa.xnb
-C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\regulargoomba.xnb
-C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\regularkoopa.xnb
-C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\Bricks.xnb
-C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\BrokenBrick.xnb
+=======
+C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\BrokenBrick.png
+>>>>>>> Block animations

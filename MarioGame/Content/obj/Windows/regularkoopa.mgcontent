@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/cyriac/Documents/Projects/MarioLopez/MarioGame/Content/regularkoopa.png</SourceFile>
-  <SourceTime>2016-09-30T15:20:29.6550767-04:00</SourceTime>
-  <DestFile>C:/Users/cyriac/Documents/Projects/MarioLopez/MarioGame/Content/bin/Windows/regularkoopa.xnb</DestFile>
-  <DestTime>2016-09-30T15:22:24.2822508-04:00</DestTime>
+  <SourceFile>C:/Users/eegge/Source/Repos/MarioLopez/MarioGame/Content/regularkoopa.png</SourceFile>
+  <SourceTime>2016-09-30T15:51:10.2076362-04:00</SourceTime>
+  <DestFile>C:/Users/eegge/Source/Repos/MarioLopez/MarioGame/Content/bin/Windows/regularkoopa.xnb</DestFile>
+  <DestTime>2016-09-30T15:54:52.4516756-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-30T02:36:08-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

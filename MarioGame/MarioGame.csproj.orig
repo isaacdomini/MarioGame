@@ -141,6 +141,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\Windows\x86\Debug\MarioGame.vshost.exe" />
+<<<<<<< HEAD
+=======
+    <Content Include="Content\blocks.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\brick1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Bricks.png" />
+    <Content Include="Content\BrokenBrick.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\characters_transparent.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+>>>>>>> Block animations
     <Content Include="Content\obj\Bricks.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

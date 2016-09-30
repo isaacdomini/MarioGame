@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/cyriac/Documents/Projects/MarioLopez/MarioGame/Content/blocks.png</SourceFile>
-  <SourceTime>2016-09-27T15:40:20-04:00</SourceTime>
-  <DestFile>C:/Users/cyriac/Documents/Projects/MarioLopez/MarioGame/Content/bin/Windows/blocks.xnb</DestFile>
-  <DestTime>2016-09-30T15:22:24.168164-04:00</DestTime>
-  <SourceFile>C:/Users/eegge/Source/Repos/MarioLopez/MarioGame/Content/EnemySpriteSheet2.png</SourceFile>
-  <SourceTime>2016-09-30T14:14:05.5147386-04:00</SourceTime>
-  <DestFile>C:/Users/eegge/Source/Repos/MarioLopez/MarioGame/Content/bin/Windows/EnemySpriteSheet2.xnb</DestFile>
-  <DestTime>2016-09-30T14:35:45.7958299-04:00</DestTime>
+  <SourceFile>C:/Users/eegge/Source/Repos/MarioLopez/MarioGame/Content/blocks.png</SourceFile>
+  <SourceTime>2016-09-30T12:54:48.3381454-04:00</SourceTime>
+  <DestFile>C:/Users/eegge/Source/Repos/MarioLopez/MarioGame/Content/bin/Windows/blocks.xnb</DestFile>
+  <DestTime>2016-09-30T15:54:52.2045151-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-30T02:36:08-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
