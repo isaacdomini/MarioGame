@@ -113,3 +113,4 @@ C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\SharpDX.D
 C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\obj\x86\Debug\MarioGame.csprojResolveAssemblyReference.cache
 C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\regulargoomba.xnb
 C:\Users\cyriac\Documents\Projects\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\regularkoopa.xnb
+C:\Users\eegge\Source\Repos\MarioLopez\MarioGame\bin\Windows\x86\Debug\Content\BrokenBrick.png

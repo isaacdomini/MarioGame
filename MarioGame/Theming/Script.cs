@@ -101,5 +101,9 @@ namespace MarioGame.Theming
         {
             mario.ChangeToDeadState();
         }
+        public void BreakBrick()
+        {
+            //Need to implement still
+        }
     }
 }

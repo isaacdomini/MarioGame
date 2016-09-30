@@ -38,11 +38,10 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Commands\ChangeToBrokenState.cs" />
     <Compile Include="Commands\CrouchCommand.cs" />
     <Compile Include="Commands\DashOrThrowFireballCommand.cs" />
     <Compile Include="Commands\DeadStateCommand.cs" />
-    <Compile Include="Commands\DisplayGoomba.cs" />
-    <Compile Include="Commands\DisplayKoopaTroopa.cs" />
     <Compile Include="Commands\FireStateCommand.cs" />
     <Compile Include="Commands\GameCommand.cs" />
     <Compile Include="Commands\ICommand.cs" />
@@ -88,6 +87,7 @@
     <Compile Include="Sprites\AnimatedSprite.cs" />
     <Compile Include="Sprites\BlockSprites\BlockSprite.cs" />
     <Compile Include="Sprites\BlockSprites\BrickBlockSprite.cs" />
+    <Compile Include="Sprites\BlockSprites\BrokenBrickSprite.cs" />
     <Compile Include="Sprites\BlockSprites\GroundBlockSprite.cs" />
     <Compile Include="Sprites\BlockSprites\StepBlockSprite.cs" />
     <Compile Include="Sprites\BlockSprites\UsedBlockSprite.cs" />
@@ -127,6 +127,7 @@
     <Compile Include="States\PlayerStates\PowerUpStates\StandardState.cs" />
     <Compile Include="States\PlayerStates\PowerUpStates\SuperState.cs" />
     <Compile Include="States\State.cs" />
+    <Compile Include="Entities\BlockEntities\BrokenBrickEntity.cs" />
     <Compile Include="Theming\Scenes\Scene.cs" />
     <Compile Include="Theming\Script.cs" />
     <Compile Include="Theming\Stage.cs" />
@@ -140,6 +141,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\Windows\x86\Debug\MarioGame.vshost.exe" />
+    <Content Include="Content\blocks.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\brick1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Bricks.png" />
+    <Content Include="Content\BrokenBrick.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\characters_transparent.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\obj\Bricks.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

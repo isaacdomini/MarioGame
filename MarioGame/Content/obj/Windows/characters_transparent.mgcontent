@@ -4,6 +4,10 @@
   <SourceTime>2016-09-30T14:54:25.4095176-04:00</SourceTime>
   <DestFile>C:/Users/cyriac/Documents/Projects/MarioLopez/MarioGame/Content/bin/Windows/characters_transparent.xnb</DestFile>
   <DestTime>2016-09-30T15:22:24.258231-04:00</DestTime>
+  <SourceFile>C:/Users/eegge/Source/Repos/MarioLopez/MarioGame/Content/characters_transparent.gif</SourceFile>
+  <SourceTime>2016-09-30T14:14:05.5303507-04:00</SourceTime>
+  <DestFile>C:/Users/eegge/Source/Repos/MarioLopez/MarioGame/Content/bin/Windows/characters_transparent.xnb</DestFile>
+  <DestTime>2016-09-30T14:35:45.7801905-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-30T02:36:08-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

@@ -4,6 +4,10 @@
   <SourceTime>2016-09-27T15:40:20-04:00</SourceTime>
   <DestFile>C:/Users/cyriac/Documents/Projects/MarioLopez/MarioGame/Content/bin/Windows/brick1.xnb</DestFile>
   <DestTime>2016-09-30T15:22:24.1831766-04:00</DestTime>
+  <SourceFile>C:/Users/eegge/Source/Repos/MarioLopez/MarioGame/Content/ItemSheet2 - Copy (2).png</SourceFile>
+  <SourceTime>2016-09-30T14:14:05.5147386-04:00</SourceTime>
+  <DestFile>C:/Users/eegge/Source/Repos/MarioLopez/MarioGame/Content/bin/Windows/ItemSheet2 - Copy (2).xnb</DestFile>
+  <DestTime>2016-09-30T14:35:45.7958299-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-30T02:36:08-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

@@ -39,6 +39,7 @@ namespace MarioGame.Theming
             _controllers[0].AddCommand((int)Keys.Left, new MoveLeftCommand(Game1.Scene.getScript()));
             _controllers[0].AddCommand((int)Keys.Right, new MoveRightCommand(Game1.Scene.getScript()));
             _controllers[0].AddCommand((int)Keys.Down, new CrouchCommand(Game1.Scene.getScript()));
+            _controllers[0].AddCommand((int)Keys.S, new CrouchCommand(Game1.Scene.getScript()));
             _controllers[0].AddCommand((int)Keys.Space, new DashOrThrowFireballCommand(Game1.Scene.getScript()));
 
             // Add power up state commands
@@ -47,6 +48,8 @@ namespace MarioGame.Theming
             _controllers[0].AddCommand((int)Keys.I, new FireStateCommand(Game1.Scene.getScript()));
             _controllers[0].AddCommand((int)Keys.O, new DeadStateCommand(Game1.Scene.getScript()));
 
+            _controllers[0].AddCommand((int)Keys.B, new ChangeToBrokenState(Game1.Scene.getScript()));
+
             // Adds commands to game controller
             _controllers[1].AddCommand((int)Buttons.DPadLeft, new MoveLeftCommand(Game1.Scene.getScript()));
             _controllers[1].AddCommand((int)Buttons.DPadDown, new CrouchCommand(Game1.Scene.getScript()));
@@ -54,24 +57,6 @@ namespace MarioGame.Theming
             _controllers[1].AddCommand((int)Buttons.B, new DashOrThrowFireballCommand(Game1.Scene.getScript()));
             _controllers[1].AddCommand((int)Buttons.A, new JumpCommand(Game1.Scene.getScript()));
 
-
-            // Allows for Koopa Troopa to show up on screen at start time
-            ICommand KoopaTroopaCommand =new DisplayKoopaTroopa(Game1.Scene);
-            KoopaTroopaCommand.Execute();
-            // Allows for Enemies to show up on screen at start time
-            ICommand GoombaCommand = new DisplayGoomba(Game1.Scene);
-            GoombaCommand.Execute();
-            // Allows for Items to show up on screen at start time
-            ICommand StarCommand = new DisplayStar(Game1.Scene);
-            StarCommand.Execute();
-            ICommand CoinsCommand = new DisplayStar(Game1.Scene);
-            CoinsCommand.Execute();
-            ICommand Mushroom1UpCommand = new DisplayStar(Game1.Scene);
-            Mushroom1UpCommand.Execute();
-            ICommand MushroomSuperCommand = new DisplayStar(Game1.Scene);
-            MushroomSuperCommand.Execute();
-            ICommand FireFlowerCommand = new DisplayStar(Game1.Scene);
-            FireFlowerCommand.Execute();
         }
 
         public void LoadContent()
