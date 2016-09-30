@@ -14,7 +14,7 @@ namespace MarioGame.States.PlayerStates
         //TODO: Shouldn't this state only be able to be called when in Giant Mario Power State?
         public RunningMarioState(MarioEntity entity) : base(entity)
         {
-            actionState = MarioActionStates.Running;
+            actionState = MarioActionStateEnum.Running;
         }
     }
 }

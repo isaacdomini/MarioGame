@@ -8,7 +8,7 @@ namespace MarioGame.Commands
 
         protected SceneCommand()
         {
-            
+
         }
 
         protected SceneCommand(Scene scene)
@@ -18,7 +18,7 @@ namespace MarioGame.Commands
 
         public virtual void Execute()
         {
-            
+
         }
     }
 }

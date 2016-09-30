@@ -12,11 +12,9 @@ namespace MarioGame.Sprites.PlayerSprites
 {
     public class MarioSprite : AnimatedSprite
     {
-
         public enum Frames
         {
             //frames are all facing left. Except DeadMario who is facing the computer user.
-            DeadMario = 0,
             SwimmingMarioEnd = 1,
             SwimmingMarioBeforeEnd = 2,
             SwimmingMarioMiddle = 3,
@@ -29,62 +27,96 @@ namespace MarioGame.Sprites.PlayerSprites
             MovingMario3 = 10, //moving is the same sprites for Running and Walking action states
             MovingMario2 = 11,
             MovingMario1 = 12,
-            StandingMario = 13,
-            HalfBigMario = 14
+            CrouchingMario = 13,
+            StandingMario = 14,
+            DeadMario = 14
         }
 
         public enum Rows
         {
             Super = 0,
-            Dead = 1, //When Mario is dead the sprite sheet will reference row 1 frame 0 where the dead mario sprite is
             Standard = 1,
             SuperLuigi = 2,
             Luigi = 3,
-            Fire = 4
+            Fire = 4,
+            Dead = 5
+
         }
 
         //power up states - standard(small), super(big), fire ,start (invincible), Dead
 
         public MarioSprite(ContentManager content) : base(content)
         {
-            _assetName = "characters_transparent";
+            _assetName = "characters_transparent.gif";
             _numberOfFramesPerRow = 15;
             //Each state has a frameSet
             
             _frameSets = new Dictionary<int, List<int>> {
-                { MarioActionStates.Idle.GetHashCode(), new List<int> { Frames.StandingMario.GetHashCode() } },
-                { MarioActionStates.Walking.GetHashCode(), new List<int> {Frames.MovingMario1.GetHashCode(), Frames.MovingMario2.GetHashCode(), Frames.MovingMario3.GetHashCode(), Frames.MovingMario2.GetHashCode() } },//TODO: instead of {1, 2, 3} may have to do {1, 2, 3, 2} or something like that
-                { MarioActionStates.Running.GetHashCode(), new List<int> {Frames.MovingMario1.GetHashCode(), Frames.MovingMario2.GetHashCode(), Frames.MovingMario3.GetHashCode(), Frames.MovingMario2.GetHashCode() } },//TODO: instead of {1, 2, 3} may have to do {1, 2, 3, 2} or something like that
-                {MarioActionStates.Crouching.GetHashCode(), new List<int> {Frames.StandingMario.GetHashCode() } },
-                {MarioActionStates.Jumping.GetHashCode(), new List<int> {Frames.JumpingMario.GetHashCode() } },
-                {MarioActionStates.Sitting.GetHashCode(), new List<int> {Frames.SittingMario1.GetHashCode(), Frames.SittingMario2.GetHashCode() } },
-                { MarioActionStates.Swimming.GetHashCode(), new List<int> {Frames.SwimmingMarioStart.GetHashCode(), Frames.SwimmingMarioAfterStart.GetHashCode(), Frames.SwimmingMarioMiddle.GetHashCode(), Frames.SwimmingMarioBeforeEnd.GetHashCode(), Frames.SwimmingMarioEnd.GetHashCode() } },
-                {MarioActionStates.Dead.GetHashCode(), new List<int> {Frames.DeadMario.GetHashCode() } } //TODO: Is Dead an action state or power up state?
+                { MarioActionStateEnum.Idle.GetHashCode(), new List<int> { Frames.StandingMario.GetHashCode() } },
+                { MarioActionStateEnum.Walking.GetHashCode(), new List<int> {Frames.MovingMario1.GetHashCode(), Frames.MovingMario2.GetHashCode(), Frames.MovingMario3.GetHashCode(), Frames.MovingMario2.GetHashCode() } },//TODO: instead of {1, 2, 3} may have to do {1, 2, 3, 2} or something like that
+                { MarioActionStateEnum.Running.GetHashCode(), new List<int> {Frames.MovingMario1.GetHashCode(), Frames.MovingMario2.GetHashCode(), Frames.MovingMario3.GetHashCode(), Frames.MovingMario2.GetHashCode() } },//TODO: instead of {1, 2, 3} may have to do {1, 2, 3, 2} or something like that
+                {MarioActionStateEnum.Crouching.GetHashCode(), new List<int> {Frames.CrouchingMario.GetHashCode() } },
+                {MarioActionStateEnum.Jumping.GetHashCode(), new List<int> {Frames.JumpingMario.GetHashCode() } },
+                {MarioActionStateEnum.Sitting.GetHashCode(), new List<int> {Frames.SittingMario1.GetHashCode(), Frames.SittingMario2.GetHashCode() } },
+                { MarioActionStateEnum.Swimming.GetHashCode(), new List<int> {Frames.SwimmingMarioStart.GetHashCode(), Frames.SwimmingMarioAfterStart.GetHashCode(), Frames.SwimmingMarioMiddle.GetHashCode(), Frames.SwimmingMarioBeforeEnd.GetHashCode(), Frames.SwimmingMarioEnd.GetHashCode() }},
+                {MarioActionStateEnum.Dead.GetHashCode(), new List<int> {Frames.DeadMario.GetHashCode() } }
             };
 
             _rowSets = new Dictionary<int, List<int>>
             {
-                {MarioPowerUpStates.Standard.GetHashCode(), new List<int> {Rows.Standard.GetHashCode() } },
-                {MarioPowerUpStates.Super.GetHashCode(), new List<int> {Rows.Super.GetHashCode() } },
-                {MarioPowerUpStates.Fire.GetHashCode(), new List<int> {Rows.Fire.GetHashCode() } },
-                {MarioPowerUpStates.Invincible.GetHashCode(), new List<int> {Rows.Standard.GetHashCode(), Rows.Fire.GetHashCode(), Rows.Luigi.GetHashCode() } },  //Cycle between various types of mario sprite to give the flashing feel of invincibility
-                {MarioPowerUpStates.Dead.GetHashCode(), new List<int> {Rows.Standard.GetHashCode() } }
+                {MarioPowerUpStateEnum.Standard.GetHashCode(), new List<int> {Rows.Standard.GetHashCode() } },
+                {MarioPowerUpStateEnum.Super.GetHashCode(), new List<int> {Rows.Super.GetHashCode() } },
+                {MarioPowerUpStateEnum.Fire.GetHashCode(), new List<int> {Rows.Fire.GetHashCode() } },
+                {MarioPowerUpStateEnum.Invincible.GetHashCode(), new List<int> {Rows.Standard.GetHashCode(), Rows.Fire.GetHashCode(), Rows.Luigi.GetHashCode() } },  //Cycle between various types of mario sprite to give the flashing feel of invincibility
+                {MarioPowerUpStateEnum.Dead.GetHashCode(), new List<int> {Rows.Dead.GetHashCode() } }
             };
+
+            _frameSet = _frameSets[MarioActionStateEnum.Idle.GetHashCode()];
+            _frameSetPosition = 0;
+
+            // Begin with sprite facing right
+            _flipped = SpriteEffects.FlipHorizontally;
+
+            _rowSet = _rowSets[MarioPowerUpStateEnum.Standard.GetHashCode()];
+            _rowSetPosition = 0;
         }
 
         public override void Load(int framesPerSecond = 5)
         {
             base.Load(framesPerSecond);
             _frameHeight = 40;
+            
         }
-        public void changeActionState(MarioActionStates marioActionState)
+        public override void Update(float elapsed)
         {
-            _frameSet = _frameSets[marioActionState.GetHashCode()];
+            base.Update(elapsed);
+            Console.WriteLine("Mario sprite update");
+        }
+        public void changeActionState(MarioActionState marioActionState)
+        {
+            _frameSet = _frameSets[marioActionState.actionState.GetHashCode()];
+            _frameSetPosition = 0;
+            if (marioActionState.direction == ActionState.Directions.Right)
+            {
+                _flipped = SpriteEffects.FlipHorizontally;
+            }
+            else if (marioActionState.direction == ActionState.Directions.Left)
+            {
+                _flipped = SpriteEffects.None;
+            }
         }
 
-        public void changePowerUp(MarioPowerUpStates marioPowerUpState)
+        public void changePowerUp(MarioPowerUpState marioPowerUpState)
         {
-            _rowSet = _rowSets[marioPowerUpState.GetHashCode()];
+            // Because on the sprite sheet, dead state is a frame set, not a row set
+            if (marioPowerUpState.powerUpState == MarioPowerUpStateEnum.Dead)
+            {
+                _frameSet = _frameSets[MarioActionStateEnum.Dead.GetHashCode()];
+                _frameSetPosition = 0;
+            }
+            _rowSet = _rowSets[marioPowerUpState.powerUpState.GetHashCode()];
+            
+            _rowSetPosition = 0;
         }
 
     }

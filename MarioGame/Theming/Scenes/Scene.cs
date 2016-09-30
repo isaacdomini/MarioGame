@@ -3,26 +3,17 @@ using System.Collections.Generic;
 using MarioGame.Sprites;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using MarioGame.Entities.BlockEntities;
 using MarioGame.Entities.ItemEntities;
 using MarioGame.Entities.PlayerEntities;
 using MarioGame.Sprites.BlockSprites;
 using MarioGame.Sprites.PlayerSprites;
 using MarioGame.Entities.EnemyEntities;
 using MarioGame.Entities.BLockEntitiesEntities;
-using MarioGame.Sprites.BlockSprites;
 
 namespace MarioGame.Theming.Scenes
 {
     public class Scene : IDisposable
     {
-        public enum SpriteTypes
-        {
-            StaticStill,
-            StaticMoving,
-            AnimatedStill,
-            AnimatedMoving
-        }
 
         private readonly Script _script;
         private SpriteBatch _spriteBatch;
@@ -73,12 +64,9 @@ namespace MarioGame.Theming.Scenes
             Stage.LoadContent();
 
             Sprites.Add(_script.mario.mSprite);
-            foreach (var block in _script._blocks)
-                Sprites.Add(block._sprite);
-            foreach (var item in _script._items)
-                Sprites.Add(item._sprite);
-            foreach (var enemy in _script._enemies)
-                Sprites.Add(enemy._sprite);
+            _script._blocks.ForEach(b => Sprites.Add(b._sprite));
+            _script._items.ForEach(i => Sprites.Add(i._sprite));
+            _script._enemies.ForEach(e => Sprites.Add(e._sprite));
 
             Sprites.ForEach(s => s.Load());
 
@@ -87,8 +75,7 @@ namespace MarioGame.Theming.Scenes
         public void Update(GameTime gameTime)
         {
             Stage.Update(gameTime);
-            foreach (var current in Sprites)
-                current.Update((float) gameTime.ElapsedGameTime.TotalSeconds);
+            Sprites.ForEach(s => s.Update((float)gameTime.ElapsedGameTime.TotalSeconds));
         }
 
         public void Draw(GameTime gameTime)
@@ -104,13 +91,6 @@ namespace MarioGame.Theming.Scenes
         {
             if (disposing)
                 _spriteBatch.Dispose();
-        }
-
-        public void ChangeSprite(int sprite)
-        {
-            foreach (ISprite current in Sprites)
-                current.Visible = true;
-            Sprites[sprite].Visible = true;
         }
 
         public Script getScript()

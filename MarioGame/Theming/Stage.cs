@@ -5,6 +5,7 @@ using MarioGame.Core;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MarioGame.States.PlayerStates.PowerUpStates;
 
 namespace MarioGame.Theming
 {
@@ -39,6 +40,14 @@ namespace MarioGame.Theming
             _controllers[0].AddCommand((int)Keys.Right, new MoveRightCommand(Game1.Scene.getScript()));
             _controllers[0].AddCommand((int)Keys.Down, new CrouchCommand(Game1.Scene.getScript()));
             _controllers[0].AddCommand((int)Keys.Space, new DashOrThrowFireballCommand(Game1.Scene.getScript()));
+
+            // Add power up state commands
+            _controllers[0].AddCommand((int)Keys.Y, new StandardStateCommand(Game1.Scene.getScript()));
+            _controllers[0].AddCommand((int)Keys.U, new SuperStateCommand(Game1.Scene.getScript()));
+            _controllers[0].AddCommand((int)Keys.I, new FireStateCommand(Game1.Scene.getScript()));
+            _controllers[0].AddCommand((int)Keys.O, new DeadStateCommand(Game1.Scene.getScript()));
+
+            // Adds commands to game controller
             _controllers[1].AddCommand((int)Buttons.DPadLeft, new MoveLeftCommand(Game1.Scene.getScript()));
             _controllers[1].AddCommand((int)Buttons.DPadDown, new CrouchCommand(Game1.Scene.getScript()));
             _controllers[1].AddCommand((int)Buttons.DPadRight, new MoveRightCommand(Game1.Scene.getScript()));
@@ -53,7 +62,6 @@ namespace MarioGame.Theming
             ICommand GoombaCommand = new DisplayGoomba(Game1.Scene);
             GoombaCommand.Execute();
             // Allows for Items to show up on screen at start time
-            /*
             ICommand StarCommand = new DisplayStar(Game1.Scene);
             StarCommand.Execute();
             ICommand CoinsCommand = new DisplayStar(Game1.Scene);
@@ -64,7 +72,6 @@ namespace MarioGame.Theming
             MushroomSuperCommand.Execute();
             ICommand FireFlowerCommand = new DisplayStar(Game1.Scene);
             FireFlowerCommand.Execute();
-            */
         }
 
         public void LoadContent()
@@ -73,8 +80,7 @@ namespace MarioGame.Theming
 
         public void Update(GameTime gameTime)
         {
-            foreach (var controller in _controllers)
-                controller.UpdateInput();
+            _controllers.ForEach(c => c.UpdateInput());
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)

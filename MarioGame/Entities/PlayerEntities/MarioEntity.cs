@@ -6,12 +6,13 @@ using MarioGame.States.PlayerStates;
 using MarioGame.States.PlayerStates.PowerUpStates;
 using Microsoft.Xna.Framework;
 using MarioGame.Sprites;
+using static MarioGame.States.PlayerStates.ActionState;
 
 namespace MarioGame.Entities.PlayerEntities
 {
     public class MarioEntity : Entity
     {
-        private PowerUpState pState;
+        private MarioPowerUpState pState;
         // Could be useful for casting in certain circumstances
         public MarioSprite mSprite;
 
@@ -25,8 +26,6 @@ namespace MarioGame.Entities.PlayerEntities
         public readonly static Vector2 jumpingLeftVelocity = new Vector2(velocityConstant*- 1, velocityConstant*1);
         public readonly static Vector2 FallingVelocity = new Vector2(0, velocityConstant*- 1);
 
-
-
         public MarioEntity(Vector2 position, ISprite sprite) : base(position, sprite)
         {
             aState = new IdleMarioState(this);
@@ -36,44 +35,57 @@ namespace MarioGame.Entities.PlayerEntities
             mSprite = (MarioSprite)_sprite;
         }
 
+        public bool checkMarioJumpingUp()
+        {
+            return this._velocity.Equals(jumpingUpVelocity);
+        }
+
+        public bool checkMarioJumpLeft()
+        {
+            return this._velocity.Equals(jumpingLeftVelocity);
+        }
+        public bool checkMarioJumpRight()
+        {
+            return this._velocity.Equals(jumpingRightVelocity);
+        }
+
         public Vector2 position
         {
             get { return mSprite.Position; }
             set { mSprite.Position = value; }
         }
 
-
-
-        public override void Update()
-        {
-            
-        }
         public void ChangeActionState(ActionState state)
         {
             aState = state;
             aState.setDirection(state.direction);
             
         }
-        public void ChangePowerUpState(PowerUpState state)
+        public void ChangePowerUpState(MarioPowerUpState state)
         {
+            if (pState.powerUpState == MarioPowerUpStateEnum.Dead)
+            {
+                pState = state;
+            }
             // TODO Is this all we need? Or do we need below methods
             pState = state;
         }
+
         public void Jump()
         {
-            aState.Jump();
+            ((MarioActionState)aState).Jump();
         }
         public void Crouch()
         {
-            aState.Crouch();
+            ((MarioActionState)aState).Crouch();
         }
         public void WalkLeft()
         {
-            aState.MoveLeft();
+            ((MarioActionState)aState).MoveLeft();
         }
         public void WalkRight()
         {
-            aState.MoveRight();
+            ((MarioActionState)aState).MoveRight();
         }
         public void ChangeToFireState()
         {
@@ -94,6 +106,40 @@ namespace MarioGame.Entities.PlayerEntities
         public void DashOrThrowFireball()
         {
             //TODO: Ricky do this?
+        }
+        public void SetVelocityToFalling()
+        {
+            this.setVelocity(FallingVelocity);
+        }
+        public void SetVelocityToWalk(Directions dir)
+        {
+            if (dir == Directions.Left)
+            {
+                this.setVelocity(walkingLeftVelocity);
+            }
+            else if (dir == Directions.Right)
+            {
+                this.setVelocity(walkingRightVelocity);
+            }
+        }
+        public void SetVelocityToIdle()
+        {
+            this.setVelocity(idleVelocity);
+        }
+        public void SetVelocityToJumpingDiagonal(Directions dir)
+        {
+            if (dir == Directions.Right)
+            {
+                this.setVelocity(jumpingRightVelocity);
+            }
+            else if (dir == Directions.Left)
+            {
+                this.setVelocity(jumpingLeftVelocity);
+            }
+        }
+        public void SetVelocityToJumpingStraight()
+        {
+            this.setVelocity(jumpingUpVelocity);
         }
     }
 }

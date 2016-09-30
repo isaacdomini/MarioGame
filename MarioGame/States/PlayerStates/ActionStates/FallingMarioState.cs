@@ -14,14 +14,14 @@ namespace MarioGame.States.PlayerStates
         //TODO: Shouldn't this state only be able to be called when in Giant Mario Power State?
         public FallingMarioState(MarioEntity entity) : base(entity)
         {
-            actionState = MarioActionStates.Idle; // what sprite should we use for falling?
+            actionState = MarioActionStateEnum.Idle; // what sprite should we use for falling?
         }
         public override void Jump()
         {
             MarioActionState idleMario = new IdleMarioState(marioEntity);
-            marioEntity.ChangeActionState(idleMario);
-            marioEntity.setVelocity(MarioEntity.idleVelocity);
             idleMario.setDirection(this.direction);
+            marioEntity.ChangeActionState(idleMario);
+            marioEntity.SetVelocityToIdle();
             idleMario.Begin(this);
         }
         public override void MoveLeft()

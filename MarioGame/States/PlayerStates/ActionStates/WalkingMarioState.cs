@@ -14,7 +14,7 @@ namespace MarioGame.States.PlayerStates
         //TODO: Shouldn't this state only be able to be called when in Giant Mario Power State?
         public WalkingMarioState(MarioEntity entity) : base(entity)
         {
-            actionState = MarioActionStates.Walking;
+            actionState = MarioActionStateEnum.Walking;
         }
 
         public override void Jump()

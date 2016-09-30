@@ -1,10 +1,15 @@
 ﻿using MarioGame.Theming.Scenes;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace MarioGame.Commands
 {
-    public class SwitchToAnimatedStillCommand : ICommand
+    class DisplayCoins : ICommand
     {
-        public SwitchToAnimatedStillCommand(Scene scene)
+        public DisplayCoins(Scene scene)
         {
             Scene = scene;
         }
@@ -13,7 +18,6 @@ namespace MarioGame.Commands
 
         public void Execute()
         {
-            Scene.ChangeSprite(Scene.SpriteTypes.AnimatedStill.GetHashCode());
         }
     }
 }

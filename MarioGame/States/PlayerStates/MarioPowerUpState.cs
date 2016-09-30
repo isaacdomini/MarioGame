@@ -8,17 +8,20 @@ using MarioGame.Entities.PlayerEntities;
 
 namespace MarioGame.States.PlayerStates
 {
-    public class PowerUpState : State
+    public class MarioPowerUpState : State
     {
-        protected MarioPowerUpStates powerUpState;
+        public MarioPowerUpStateEnum powerUpState
+        {
+            get; protected set;
+        }
         protected MarioEntity marioEntity;
-        public PowerUpState(MarioEntity entity) : base(entity)
+        public MarioPowerUpState(MarioEntity entity) : base(entity)
         {
             marioEntity = entity;
         }
-        public void Begin(PowerUpState prevState)
+        public void Begin(MarioPowerUpState prevState)
         {
-            marioEntity.mSprite.changePowerUp(this.powerUpState);
+            marioEntity.mSprite.changePowerUp(this);
             base.Begin(prevState);
 
         }

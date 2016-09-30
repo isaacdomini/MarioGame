@@ -30,12 +30,6 @@ namespace MarioGame.States.PlayerStates
             base.Begin(prevState);
         }
 
-        public virtual void Jump() {}
 
-        public virtual void MoveRight() {}
-
-        public virtual void MoveLeft() {}
-
-        public virtual void Crouch() {}
     }
 }

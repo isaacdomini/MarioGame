@@ -21,7 +21,7 @@ namespace MarioGame.Sprites.BlockSprites
         }
         public QuestionBlockSprite(ContentManager content) : base(content)
         {
-            _assetName = "questionblock";
+            _assetName = "questionblock.png";
             _numberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
 
             _frameSets = new Dictionary<int, List<int>> {

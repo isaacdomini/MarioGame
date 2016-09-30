@@ -1,10 +1,15 @@
 ﻿using MarioGame.Theming.Scenes;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace MarioGame.Commands
 {
-    public class SwitchToStaticStillCommand : ICommand
+    class DisplayFireFlower : ICommand
     {
-        public SwitchToStaticStillCommand(Scene scene)
+        public DisplayFireFlower(Scene scene)
         {
             Scene = scene;
         }
@@ -13,7 +18,6 @@ namespace MarioGame.Commands
 
         public void Execute()
         {
-            Scene.ChangeSprite(Scene.SpriteTypes.StaticStill.GetHashCode());
         }
     }
 }

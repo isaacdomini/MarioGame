@@ -18,7 +18,7 @@ namespace MarioGame.Sprites.BlockSprites
         }
         public GroundBlockSprite(ContentManager content) : base(content)
         {
-            _assetName = "groundblock";
+            _assetName = "groundblock.png";
             _numberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
 
             _frameSets = new Dictionary<int, List<int>> {

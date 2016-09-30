@@ -8,7 +8,7 @@ namespace MarioGame.Commands
 
         public ScriptCommand()
         {
-            
+
         }
 
         public ScriptCommand(Script script)
@@ -18,7 +18,7 @@ namespace MarioGame.Commands
 
         public virtual void Execute()
         {
-            
+
         }
     }
 }

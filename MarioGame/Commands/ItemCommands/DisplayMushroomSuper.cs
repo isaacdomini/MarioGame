@@ -1,10 +1,15 @@
 ﻿using MarioGame.Theming.Scenes;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace MarioGame.Commands
 {
-    public class SwitchToAnimatedMovingCommand : ICommand
+    class DisplayMushroomSuper : ICommand
     {
-        public SwitchToAnimatedMovingCommand(Scene scene)
+        public DisplayMushroomSuper(Scene scene)
         {
             Scene = scene;
         }
@@ -13,7 +18,6 @@ namespace MarioGame.Commands
 
         public void Execute()
         {
-            Scene.ChangeSprite(Scene.SpriteTypes.AnimatedMoving.GetHashCode());
         }
     }
 }

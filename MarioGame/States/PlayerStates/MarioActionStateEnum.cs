@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MarioGame.States.PlayerStates
 {
-    public enum MarioActionStates
+    public enum MarioActionStateEnum
     {
         Idle,
         Jumping,

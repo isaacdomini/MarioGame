@@ -6,7 +6,7 @@ namespace MarioGame.Commands
     {
         public QuitCommand(Game1 game) : base(game)
         {
-            
+
         }
 
         public override void Execute()

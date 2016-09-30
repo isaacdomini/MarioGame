@@ -9,10 +9,12 @@ using MarioGame.Entities.PlayerEntities;
 
 namespace MarioGame.States.PlayerStates
 {
-    class MarioActionState : ActionState
+    public class MarioActionState : ActionState
     {
-        protected MarioActionStates actionState; //TODO: make this read from some shared enum with Sprites
-
+        public MarioActionStateEnum actionState
+        {
+            get; protected set; //TODO: make this read from some shared enum with Sprites
+        }
         protected MarioEntity marioEntity;
 
         public MarioActionState(MarioEntity entity) : base(entity)
@@ -23,7 +25,14 @@ namespace MarioGame.States.PlayerStates
         public void Begin(MarioActionState prevState)
         {
             base.Begin(prevState);
-            marioEntity.mSprite.changeActionState(actionState); //TODO: make it so we don't have to do this casts
+            marioEntity.mSprite.changeActionState(this); //TODO: make it so we don't have to do this casts
         }
+        public virtual void Jump() { }
+
+        public virtual void MoveRight() { }
+
+        public virtual void MoveLeft() { }
+
+        public virtual void Crouch() { }
     }
 }

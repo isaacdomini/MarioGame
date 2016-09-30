@@ -14,22 +14,22 @@ namespace MarioGame.States.PlayerStates
         //TODO: Shouldn't this state only be able to be called when in Giant Mario Power State?
         public CrouchingMarioState(MarioEntity entity) : base(entity)
         {
-            actionState = MarioActionStates.Crouching;
+            actionState = MarioActionStateEnum.Crouching;
         }
         public override void Jump()
         {
             MarioActionState newState = new IdleMarioState(marioEntity);
-            marioEntity.ChangeActionState(newState);
             newState.setDirection(this.direction);
-            marioEntity.setVelocity(MarioEntity.idleVelocity);
+            marioEntity.ChangeActionState(newState);
+            marioEntity.SetVelocityToIdle();
             newState.Begin(this);
         }
         public override void Crouch()
         {
             MarioActionState fallingState = new FallingMarioState(marioEntity);
-            marioEntity.ChangeActionState(fallingState);
             fallingState.setDirection(this.direction);
-            marioEntity.setVelocity(MarioEntity.FallingVelocity);
+            marioEntity.ChangeActionState(fallingState);
+            marioEntity.SetVelocityToFalling();
             fallingState.Begin(this);
         }
     }

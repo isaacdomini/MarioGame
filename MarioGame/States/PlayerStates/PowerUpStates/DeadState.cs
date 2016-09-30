@@ -8,28 +8,27 @@ using MarioGame.Entities.PlayerEntities;
 
 namespace MarioGame.States.PlayerStates.PowerUpStates
 {
-    class DeadState : PowerUpState
+    class DeadState : MarioPowerUpState
     {
         public DeadState(MarioEntity entity) : base(entity)
         {
-            powerUpState = MarioPowerUpStates.Dead;
+            powerUpState = MarioPowerUpStateEnum.Dead;
         }
         public override void ChangeToFire()
         {
-            PowerUpState fire = new FireState(marioEntity);
+            MarioPowerUpState fire = new FireState(marioEntity);
             marioEntity.ChangePowerUpState(fire);
             fire.Begin(this);
-                        
         }
         public override void ChangeToStandard()
         {
-            PowerUpState standard = new StandardState(marioEntity);
+            MarioPowerUpState standard = new StandardState(marioEntity);
             marioEntity.ChangePowerUpState(standard);
             standard.Begin(this);
         }
         public override void ChangeToSuper()
         {
-            PowerUpState super = new SuperState(marioEntity);
+            MarioPowerUpState super = new SuperState(marioEntity);
             marioEntity.ChangePowerUpState(super);
             super.Begin(this);
         }

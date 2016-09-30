@@ -12,7 +12,7 @@ namespace MarioGame.Sprites
     {
         public enum Frames
         {
-            //frames are all facing left. Except DeadMario who is facing the computer user.
+            //frames are all facing left. 
             Full = 0,
             Waning = 1,
             Sliver = 2,
@@ -21,12 +21,18 @@ namespace MarioGame.Sprites
 
         public CoinsSprite(ContentManager content) : base(content)
         {
-            _assetName = "fireFlower";
+            _assetName = "coin.png";
             _numberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
 
             _frameSets = new Dictionary<int, List<int>> {
                 { 0, new List<int>{Frames.Full.GetHashCode(), Frames.Waning.GetHashCode(), Frames.Sliver.GetHashCode(), Frames.Waxing.GetHashCode() } },
             };
+            _frameSetPosition = 0;
+            _rowSetPosition = 0;
+        }
+        public override void Update(float elapsed)
+        {
+            base.Update(elapsed);
         }
 
     }

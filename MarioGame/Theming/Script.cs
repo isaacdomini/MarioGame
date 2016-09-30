@@ -85,5 +85,21 @@ namespace MarioGame.Theming
         {
             mario.WalkRight();
         }
+        public void MakeMarioFire()
+        {
+            mario.ChangeToFireState();
+        }
+        public void MakeMarioStandard()
+        {
+            mario.ChangeToStandardState();
+        }
+        public void MakeMarioSuper()
+        {
+            mario.ChangeToSuperState();
+        }
+        public void MakeMarioDead()
+        {
+            mario.ChangeToDeadState();
+        }
     }
 }

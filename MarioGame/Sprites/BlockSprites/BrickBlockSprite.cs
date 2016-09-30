@@ -18,7 +18,7 @@ namespace MarioGame.Sprites.BlockSprites
         }
         public BrickBlockSprite(ContentManager content) : base(content)
         {
-            _assetName = "brick1";
+            _assetName = "brick1.png";
             _numberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
 
             _frameSets = new Dictionary<int, List<int>> {

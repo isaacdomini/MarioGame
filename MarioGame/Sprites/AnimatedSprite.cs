@@ -4,7 +4,6 @@ using MarioGame.Theming.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using static MarioGame.Sprites.PlayerSprites.MarioSprite;
@@ -31,10 +30,7 @@ namespace MarioGame.Sprites
         protected float _totalElapsed, _timePerFrame;
 
         protected SpriteEffects _flipped {
-            get
-            {
-                return SpriteEffects.None;
-            }
+            get; set;
         }
 
 
@@ -61,7 +57,7 @@ namespace MarioGame.Sprites
         }
 
         //NOTE: Child class must set _numberOfChildren
-        public override void Load(int framesPerSecond = 5)
+        public override void Load(int framesPerSecond = 10)
         {
             _texture = _content.Load<Texture2D>(_assetName);
 
@@ -70,7 +66,7 @@ namespace MarioGame.Sprites
             _frameSetPosition = 0;
 
             _totalElapsed = 0;
-            _timePerFrame = (float) 1/framesPerSecond;
+            _timePerFrame = ((float)1/(float)framesPerSecond);
         }
 
         public override void Update(float elapsed)
@@ -94,7 +90,6 @@ namespace MarioGame.Sprites
             {
                 return;
             }
-            Console.WriteLine("FrameSet" + _frameSet + " FrameSetPosition " + _frameSetPosition + "RowSet" + _rowSet + " RowSetPosition " + _rowSetPosition);
 
             var sourceRect = new Rectangle( ((int)_frameSet[_frameSetPosition]) * _frameWidth, ((int)_rowSet[_rowSetPosition]) * _frameHeight, _frameWidth, _frameHeight);
             batch.Draw(texture: _texture, position: Position, sourceRectangle: sourceRect, color: Color.White, effects : _flipped);

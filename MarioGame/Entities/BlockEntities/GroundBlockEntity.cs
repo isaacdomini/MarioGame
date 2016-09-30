@@ -6,12 +6,10 @@ using Microsoft.Xna.Framework.Content;
 using MarioGame.Sprites.BlockSprites;
 using MarioGame.Entities.BlockEntities;
 
-namespace MarioGame.Entities.ItemEntities
+namespace MarioGame.Entities.BLockEntitiesEntities
 {
     public class GroundBlockEntity : BlockEntity
     {
-        // Could be useful for casting in certain circumstances
-        ContentManager content;
         public GroundBlockEntity(Vector2 position, GroundBlockSprite sprite) : base(position, sprite)
         {
         }
