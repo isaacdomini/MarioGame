@@ -4,27 +4,27 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/eegge/Source/Repos/MarioLopez/MarioGame/Content/blocks.png</File>
-    <File>C:/Users/eegge/Source/Repos/MarioLopez/MarioGame/Content/brick1.png</File>
-    <File>C:/Users/eegge/Source/Repos/MarioLopez/MarioGame/Content/characters.gif</File>
-    <File>C:/Users/eegge/Source/Repos/MarioLopez/MarioGame/Content/characters_transparent.gif</File>
-    <File>C:/Users/eegge/Source/Repos/MarioLopez/MarioGame/Content/charactersTwoSided.gif</File>
-    <File>C:/Users/eegge/Source/Repos/MarioLopez/MarioGame/Content/coin.png</File>
-    <File>C:/Users/eegge/Source/Repos/MarioLopez/MarioGame/Content/fireFlower.png</File>
-    <File>C:/Users/eegge/Source/Repos/MarioLopez/MarioGame/Content/groundblock.png</File>
-    <File>C:/Users/eegge/Source/Repos/MarioLopez/MarioGame/Content/mariodead.jpg</File>
-    <File>C:/Users/eegge/Source/Repos/MarioLopez/MarioGame/Content/mariorunningright.jpg</File>
-    <File>C:/Users/eegge/Source/Repos/MarioLopez/MarioGame/Content/mariostanding.jpg</File>
-    <File>C:/Users/eegge/Source/Repos/MarioLopez/MarioGame/Content/mushroom1up.png</File>
-    <File>C:/Users/eegge/Source/Repos/MarioLopez/MarioGame/Content/mushroomSuper.png</File>
-    <File>C:/Users/eegge/Source/Repos/MarioLopez/MarioGame/Content/questionblock.png</File>
-    <File>C:/Users/eegge/Source/Repos/MarioLopez/MarioGame/Content/regularMario.png</File>
-    <File>C:/Users/eegge/Source/Repos/MarioLopez/MarioGame/Content/star.png</File>
-    <File>C:/Users/eegge/Source/Repos/MarioLopez/MarioGame/Content/stepblock.png</File>
-    <File>C:/Users/eegge/Source/Repos/MarioLopez/MarioGame/Content/usedblock.png</File>
-    <File>C:/Users/eegge/Source/Repos/MarioLopez/MarioGame/Content/regulargoomba.png</File>
-    <File>C:/Users/eegge/Source/Repos/MarioLopez/MarioGame/Content/regularkoopa.png</File>
-    <File>C:/Users/eegge/Source/Repos/MarioLopez/MarioGame/Content/Bricks.png</File>
-    <File>C:/Users/eegge/Source/Repos/MarioLopez/MarioGame/Content/BrokenBrick.png</File>
+    <File>C:/Users/John/Source/Repos/MarioLopezTheSecondOne/MarioLopez/MarioGame/Content/blocks.png</File>
+    <File>C:/Users/John/Source/Repos/MarioLopezTheSecondOne/MarioLopez/MarioGame/Content/brick1.png</File>
+    <File>C:/Users/John/Source/Repos/MarioLopezTheSecondOne/MarioLopez/MarioGame/Content/characters.gif</File>
+    <File>C:/Users/John/Source/Repos/MarioLopezTheSecondOne/MarioLopez/MarioGame/Content/characters_transparent.gif</File>
+    <File>C:/Users/John/Source/Repos/MarioLopezTheSecondOne/MarioLopez/MarioGame/Content/charactersTwoSided.gif</File>
+    <File>C:/Users/John/Source/Repos/MarioLopezTheSecondOne/MarioLopez/MarioGame/Content/coin.png</File>
+    <File>C:/Users/John/Source/Repos/MarioLopezTheSecondOne/MarioLopez/MarioGame/Content/fireFlower.png</File>
+    <File>C:/Users/John/Source/Repos/MarioLopezTheSecondOne/MarioLopez/MarioGame/Content/groundblock.png</File>
+    <File>C:/Users/John/Source/Repos/MarioLopezTheSecondOne/MarioLopez/MarioGame/Content/mariodead.jpg</File>
+    <File>C:/Users/John/Source/Repos/MarioLopezTheSecondOne/MarioLopez/MarioGame/Content/mariorunningright.jpg</File>
+    <File>C:/Users/John/Source/Repos/MarioLopezTheSecondOne/MarioLopez/MarioGame/Content/mariostanding.jpg</File>
+    <File>C:/Users/John/Source/Repos/MarioLopezTheSecondOne/MarioLopez/MarioGame/Content/mushroom1up.png</File>
+    <File>C:/Users/John/Source/Repos/MarioLopezTheSecondOne/MarioLopez/MarioGame/Content/mushroomSuper.png</File>
+    <File>C:/Users/John/Source/Repos/MarioLopezTheSecondOne/MarioLopez/MarioGame/Content/questionblock.png</File>
+    <File>C:/Users/John/Source/Repos/MarioLopezTheSecondOne/MarioLopez/MarioGame/Content/regularMario.png</File>
+    <File>C:/Users/John/Source/Repos/MarioLopezTheSecondOne/MarioLopez/MarioGame/Content/star.png</File>
+    <File>C:/Users/John/Source/Repos/MarioLopezTheSecondOne/MarioLopez/MarioGame/Content/stepblock.png</File>
+    <File>C:/Users/John/Source/Repos/MarioLopezTheSecondOne/MarioLopez/MarioGame/Content/usedblock.png</File>
+    <File>C:/Users/John/Source/Repos/MarioLopezTheSecondOne/MarioLopez/MarioGame/Content/regulargoomba.png</File>
+    <File>C:/Users/John/Source/Repos/MarioLopezTheSecondOne/MarioLopez/MarioGame/Content/regularkoopa.png</File>
+    <File>C:/Users/John/Source/Repos/MarioLopezTheSecondOne/MarioLopez/MarioGame/Content/Bricks.png</File>
+    <File>C:/Users/John/Source/Repos/MarioLopezTheSecondOne/MarioLopez/MarioGame/Content/BrokenBrick.png</File>
   </SourceFiles>
 </SourceFileCollection>

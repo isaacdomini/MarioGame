@@ -90,7 +90,6 @@ namespace MarioGame.Sprites.PlayerSprites
         public override void Update(float elapsed)
         {
             base.Update(elapsed);
-            Console.WriteLine("Mario sprite update");
         }
         public void changeActionState(MarioActionState marioActionState)
         {
