@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/cyriac/Documents/Projects/MarioLopez/MarioGame/Content/characters_transparent.gif</SourceFile>
-  <SourceTime>2016-09-27T17:37:16-04:00</SourceTime>
-  <DestFile>C:/Users/cyriac/Documents/Projects/MarioLopez/MarioGame/Content/bin/Windows/characters_transparent.xnb</DestFile>
-  <DestTime>2016-09-30T07:31:44.5578953-04:00</DestTime>
+  <SourceFile>C:/Users/eegge/Source/Repos/MarioLopez/MarioGame/Content/characters_transparent.gif</SourceFile>
+  <SourceTime>2016-09-30T13:37:46.5627243-04:00</SourceTime>
+  <DestFile>C:/Users/eegge/Source/Repos/MarioLopez/MarioGame/Content/bin/Windows/characters_transparent.xnb</DestFile>
+  <DestTime>2016-09-30T13:38:00.538416-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-30T02:36:08-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

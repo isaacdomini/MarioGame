@@ -14,7 +14,7 @@ namespace MarioGame.States.BlockStates
     {
         public StandardBlockState(BlockEntity entity) : base(entity)
         {
-            bState = BlockStates.StandardBlock;
+            bState = BlockStateEnum.StandardBlock;
         }
 
         public override void Bump()

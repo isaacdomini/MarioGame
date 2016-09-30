@@ -14,7 +14,7 @@ namespace MarioGame.States.BlockStates
     {
         public UsedBlockState(BlockEntity entity) : base(entity)
         {
-            bState = BlockStates.UsedBlock;
+            bState = BlockStateEnum.UsedBlock;
         }
 
         public override void Bump(){}

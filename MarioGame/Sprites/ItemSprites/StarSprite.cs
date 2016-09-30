@@ -26,6 +26,12 @@ namespace MarioGame.Sprites
             _frameSets = new Dictionary<int, List<int>> {
                 { 0, new List<int> { Frames.Orange.GetHashCode(), Frames.Yellow.GetHashCode(), Frames.Red.GetHashCode() } },
             };
+            _frameSet = _frameSets[Frames.Orange.GetHashCode()];
+
+        }
+        public override void Update(float elapsed)
+        {
+            base.Update(elapsed);
         }
 
     }

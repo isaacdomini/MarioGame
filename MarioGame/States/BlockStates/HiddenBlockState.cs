@@ -13,7 +13,7 @@ namespace MarioGame.States.BlockStates
     {
         public HiddenBlockState(BlockEntity entity) : base(entity)
         {
-            bState = BlockStates.HiddenBlock;
+            bState = BlockStateEnum.HiddenBlock;
         }
 
         public override void Bump() {

@@ -1,4 +1,5 @@
 ﻿using MarioGame.Entities;
+using MarioGame.States.BlockStates;
 using MarioGame.Theming.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -27,6 +28,7 @@ namespace MarioGame.Sprites
             _frameSets = new Dictionary<int, List<int>> {
                 { 0, new List<int>{Frames.Full.GetHashCode(), Frames.Waning.GetHashCode(), Frames.Sliver.GetHashCode(), Frames.Waxing.GetHashCode() } },
             };
+            _frameSet = _frameSets[Frames.Full.GetHashCode()];
             _frameSetPosition = 0;
             _rowSetPosition = 0;
         }

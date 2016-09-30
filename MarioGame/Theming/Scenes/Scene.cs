@@ -8,7 +8,7 @@ using MarioGame.Entities.PlayerEntities;
 using MarioGame.Sprites.BlockSprites;
 using MarioGame.Sprites.PlayerSprites;
 using MarioGame.Entities.EnemyEntities;
-using MarioGame.Entities.BLockEntitiesEntities;
+using MarioGame.Entities.BlockEntities;
 
 namespace MarioGame.Theming.Scenes
 {
@@ -50,11 +50,13 @@ namespace MarioGame.Theming.Scenes
             _script.AddItem(new StarEntity(new Vector2(350, 100), new StarSprite(Stage.Game1.Content)));
             _script.AddMario(new MarioEntity(new Vector2(100, 150), new MarioSprite(Stage.Game1.Content)));
             _script.AddEnemy(new KoopaTroopaEntity(new Vector2(450, 100), new KoopaTroopaSprite(Stage.Game1.Content)));
-            _script.AddEnemy(new GoombaEntity(new Vector2(450, 100), new GoombaSprite(Stage.Game1.Content)));
+            _script.AddEnemy(new GoombaEntity(new Vector2(500, 100), new GoombaSprite(Stage.Game1.Content)));
             _script.AddBlock(new BrickBlockEntity(new Vector2(500, 300), new BrickBlockSprite(Stage.Game1.Content)));
             _script.AddBlock(new GroundBlockEntity(new Vector2(550, 300), new GroundBlockSprite(Stage.Game1.Content)));
             _script.AddBlock(new StepBlockEntity(new Vector2(600, 300), new StepBlockSprite(Stage.Game1.Content)));
             _script.AddBlock(new UsedBlockEntity(new Vector2(650, 300), new UsedBlockSprite(Stage.Game1.Content)));
+            _script.AddBlock(new QuestionBlockEntity(new Vector2(700, 300), new QuestionBlockSprite(Stage.Game1.Content)));
+
         }
 
         public void LoadContent()

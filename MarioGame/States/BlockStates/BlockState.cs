@@ -11,7 +11,7 @@ namespace MarioGame.States.BlockStates
 {
     class BlockState : StandardState
     {
-        protected BlockStates bState;
+        protected BlockStateEnum bState;
 
         protected BlockEntity _BlockEntity;
 

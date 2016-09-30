@@ -31,13 +31,13 @@ namespace MarioGame.Sprites.BlockSprites
             _numberOfFramesPerRow = 15;
             //Each state has a frameSet
             _frameSets = new Dictionary<int, List<int>> {
-                { BlockStates.StandardBlock.GetHashCode(), new List<int> { Frames.StandardBlock.GetHashCode() } },
-                { BlockStates.GroundBlock.GetHashCode(), new List<int> { Frames.GroundBlock.GetHashCode() } },
-                { BlockStates.StepBlock.GetHashCode(), new List<int> { Frames.StepBlock.GetHashCode() } },
-                { BlockStates.BreakingBlock.GetHashCode(), new List<int> {Frames.BreakingBlock.GetHashCode() } },
-                { BlockStates.QuestionBlock.GetHashCode(), new List<int> {Frames.QuestionBlock1.GetHashCode(), Frames.QuestionBlock2.GetHashCode(), Frames.QuestionBlock3.GetHashCode() } },
-                { BlockStates.HiddenBlock.GetHashCode(), new List<int> {Frames.HiddenBlock.GetHashCode() } },
-                { BlockStates.UsedBlock.GetHashCode(), new List<int> { Frames.UsedBlock.GetHashCode() } },
+                { BlockStateEnum.StandardBlock.GetHashCode(), new List<int> { Frames.StandardBlock.GetHashCode() } },
+                { BlockStateEnum.GroundBlock.GetHashCode(), new List<int> { Frames.GroundBlock.GetHashCode() } },
+                { BlockStateEnum.StepBlock.GetHashCode(), new List<int> { Frames.StepBlock.GetHashCode() } },
+                { BlockStateEnum.BreakingBlock.GetHashCode(), new List<int> {Frames.BreakingBlock.GetHashCode() } },
+                { BlockStateEnum.QuestionBlock.GetHashCode(), new List<int> {Frames.QuestionBlock1.GetHashCode(), Frames.QuestionBlock2.GetHashCode(), Frames.QuestionBlock3.GetHashCode() } },
+                { BlockStateEnum.HiddenBlock.GetHashCode(), new List<int> {Frames.HiddenBlock.GetHashCode() } },
+                { BlockStateEnum.UsedBlock.GetHashCode(), new List<int> { Frames.UsedBlock.GetHashCode() } },
 
             };
         }

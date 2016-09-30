@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Content;
 using MarioGame.Sprites.BlockSprites;
 using MarioGame.Entities.BlockEntities;
 
-namespace MarioGame.Entities.BLockEntitiesEntities
+namespace MarioGame.Entities.BlockEntities
 {
     public class BrickBlockEntity : BlockEntity
     {

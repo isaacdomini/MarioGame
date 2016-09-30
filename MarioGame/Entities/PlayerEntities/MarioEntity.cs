@@ -73,19 +73,31 @@ namespace MarioGame.Entities.PlayerEntities
 
         public void Jump()
         {
-            ((MarioActionState)aState).Jump();
+            if (pState.powerUpState != MarioPowerUpStateEnum.Dead)
+            {
+                ((MarioActionState)aState).Jump();
+            }
         }
         public void Crouch()
         {
-            ((MarioActionState)aState).Crouch();
+            if (pState.powerUpState != MarioPowerUpStateEnum.Dead || pState.powerUpState != MarioPowerUpStateEnum.Standard)
+            {
+                ((MarioActionState)aState).Crouch();
+            }
         }
         public void WalkLeft()
         {
-            ((MarioActionState)aState).MoveLeft();
+            if (pState.powerUpState != MarioPowerUpStateEnum.Dead)
+            {
+                ((MarioActionState)aState).MoveLeft();
+            }
         }
         public void WalkRight()
         {
-            ((MarioActionState)aState).MoveRight();
+            if (pState.powerUpState != MarioPowerUpStateEnum.Dead)
+            {
+                ((MarioActionState)aState).MoveRight();
+            }
         }
         public void ChangeToFireState()
         {

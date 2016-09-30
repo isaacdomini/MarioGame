@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Content;
 using MarioGame.Entities.BlockEntities;
 using MarioGame.Sprites.BlockSprites;
 
-namespace MarioGame.Entities.BLockEntitiesEntities
+namespace MarioGame.Entities.BlockEntities
 {
     public class UsedBlockEntity : BlockEntity
     {

@@ -68,6 +68,7 @@
     <Compile Include="Entities\BlockEntities\BlockEntity.cs" />
     <Compile Include="Entities\BlockEntities\BrickBlockEntity.cs" />
     <Compile Include="Entities\BlockEntities\GroundBlockEntity.cs" />
+    <Compile Include="Entities\BlockEntities\QuestionBlockEntity.cs" />
     <Compile Include="Entities\BlockEntities\StepBlockEntity.cs" />
     <Compile Include="Entities\BlockEntities\UsedBlockEntity.cs" />
     <Compile Include="Entities\EnemyEntities\GoombaEntity.cs" />
@@ -97,12 +98,12 @@
     <Compile Include="Sprites\ItemSprites\FireFlowerSprite.cs" />
     <Compile Include="Sprites\ItemSprites\Mushroom1UpSprite.cs" />
     <Compile Include="Sprites\ItemSprites\MushroomSuperSprite.cs" />
-    <Compile Include="Sprites\ItemSprites\QuestionBlockSprite.cs" />
+    <Compile Include="Sprites\BlockSprites\QuestionBlockSprite.cs" />
     <Compile Include="Sprites\ItemSprites\StarSprite.cs" />
     <Compile Include="Sprites\PlayerSprites\MarioSprite.cs" />
     <Compile Include="Sprites\Sprite.cs" />
     <Compile Include="States\BlockStates\BlockState.cs" />
-    <Compile Include="States\BlockStates\BlockStates.cs" />
+    <Compile Include="States\BlockStates\BlockStateEnum.cs" />
     <Compile Include="States\BlockStates\BreakBlockState.cs" />
     <Compile Include="States\BlockStates\BumpBlockState.cs" />
     <Compile Include="States\BlockStates\HiddenBlockState.cs" />
