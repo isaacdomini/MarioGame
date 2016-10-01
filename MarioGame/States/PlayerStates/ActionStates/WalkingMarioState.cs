@@ -23,11 +23,11 @@ namespace MarioGame.States.PlayerStates
             MarioActionState jumpState = new JumpingMarioState(marioEntity);
             marioEntity.ChangeActionState(jumpState);
             jumpState.setDirection(this.direction);
-            if (this.direction == Directions.Left)
+            if (this.isFacingLeft())
             {
                 marioEntity.setVelocity(MarioEntity.jumpingLeftVelocity);
             }
-            else if (this.direction == Directions.Right)
+            else if (this.isFacingRight())
             {
                 marioEntity.setVelocity(MarioEntity.jumpingRightVelocity);
             }
@@ -44,7 +44,7 @@ namespace MarioGame.States.PlayerStates
         }
         public override void MoveLeft()
         {
-            if (this.direction == Directions.Right)
+            if (this.isFacingRight())
             {
                 MarioActionState idleRight = new IdleMarioState(marioEntity);
                 marioEntity.ChangeActionState(idleRight);
@@ -56,7 +56,7 @@ namespace MarioGame.States.PlayerStates
         }
         public override void MoveRight()
         {
-            if (this.direction == Directions.Left)
+            if (this.isFacingLeft())
             {
                 MarioActionState idleLeft = new IdleMarioState(marioEntity);
                 marioEntity.ChangeActionState(idleLeft);

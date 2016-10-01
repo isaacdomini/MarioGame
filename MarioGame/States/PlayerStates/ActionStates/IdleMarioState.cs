@@ -35,7 +35,7 @@ namespace MarioGame.States.PlayerStates
         }
         public override void MoveLeft()
         {
-            if (this.direction == Directions.Left)
+            if (this.isFacingLeft())
             {
                 MarioActionState moveLeft = new WalkingMarioState(marioEntity);
                 marioEntity.ChangeActionState(moveLeft);
@@ -43,7 +43,7 @@ namespace MarioGame.States.PlayerStates
                 marioEntity.SetVelocityToWalk(Directions.Left);
                 moveLeft.Begin(this);
             }
-            else if (this.direction == Directions.Right)
+            else if (this.isFacingRight())
             {
                 MarioActionState idleLeft = new IdleMarioState(marioEntity);
                 marioEntity.ChangeActionState(idleLeft);
@@ -56,7 +56,7 @@ namespace MarioGame.States.PlayerStates
         public override void MoveRight()
         {
             // Meaning idle mario is already facing right
-            if (this.direction == Directions.Right)
+            if (this.isFacingRight())
             {
                 // Mario state is set to walking right
                 MarioActionState moveRight = new WalkingMarioState(marioEntity);
@@ -66,7 +66,7 @@ namespace MarioGame.States.PlayerStates
                 moveRight.Begin(this);
             }
             // Meaning marion is facing left
-            else if (this.direction == Directions.Left)
+            else if (this.isFacingLeft())
             {
                 // Mario is idling facing the right
                 MarioActionState idleLeft = new IdleMarioState(marioEntity);

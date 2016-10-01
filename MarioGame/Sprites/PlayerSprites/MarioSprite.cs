@@ -95,11 +95,11 @@ namespace MarioGame.Sprites.PlayerSprites
         {
             _frameSet = _frameSets[marioActionState.actionState.GetHashCode()];
             _frameSetPosition = 0;
-            if (marioActionState.direction == ActionState.Directions.Right)
+            if (marioActionState.isFacingRight())
             {
                 _flipped = SpriteEffects.FlipHorizontally;
             }
-            else if (marioActionState.direction == ActionState.Directions.Left)
+            else if (marioActionState.isFacingLeft())
             {
                 _flipped = SpriteEffects.None;
             }

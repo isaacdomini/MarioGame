@@ -26,7 +26,7 @@ namespace MarioGame.States.PlayerStates
         }
         public override void MoveLeft()
         {
-            if (this.direction == Directions.Left)
+            if (this.isFacingLeft())
             {
                 // Checks if Mario was previously jumping left
                 if (marioEntity.checkMarioJumpLeft())
@@ -52,7 +52,7 @@ namespace MarioGame.States.PlayerStates
 
             }
             // Facing right jumping and told to move left now
-            else if (this.direction == Directions.Right)
+            else if (this.isFacingRight())
             {
                 // Checking if mario was jumping straight up previously
                 if (marioEntity._velocity == MarioEntity.jumpingUpVelocity)
@@ -79,7 +79,7 @@ namespace MarioGame.States.PlayerStates
         }
         public override void MoveRight()
         {
-            if (this.direction == Directions.Left)
+            if (this.isFacingLeft())
             {
                 // Checks if Mario was previously jumping left
                 if (marioEntity._velocity == MarioEntity.jumpingLeftVelocity)
@@ -105,7 +105,7 @@ namespace MarioGame.States.PlayerStates
                 }
 
             }
-            else if (this.direction == Directions.Right)
+            else if (this.isFacingRight())
             {
                 // Checking if mario was jumping straight up previously
                 if (marioEntity._velocity == MarioEntity.jumpingUpVelocity)

@@ -26,7 +26,7 @@ namespace MarioGame.States.PlayerStates
         }
         public override void MoveLeft()
         {
-            if (this.direction == Directions.Right)
+            if (this.isFacingRight())
             {
                 MarioActionState fallingFacingLeft = new FallingMarioState(marioEntity);
                 marioEntity.ChangeActionState(fallingFacingLeft);
@@ -34,7 +34,7 @@ namespace MarioGame.States.PlayerStates
                 marioEntity.setVelocity(MarioEntity.FallingVelocity);
                 fallingFacingLeft.Begin(this);
             }
-            else if (this.direction == Directions.Left)
+            else if (this.isFacingLeft())
             {
                 MarioActionState walkingLeft = new WalkingMarioState(marioEntity);
                 marioEntity.ChangeActionState(walkingLeft);
@@ -46,7 +46,7 @@ namespace MarioGame.States.PlayerStates
         }
         public override void MoveRight()
         {
-            if (this.direction == Directions.Left)
+            if (this.isFacingLeft())
             {
                 MarioActionState fallingFacingRight = new FallingMarioState(marioEntity);
                 marioEntity.ChangeActionState(fallingFacingRight);
@@ -54,7 +54,7 @@ namespace MarioGame.States.PlayerStates
                 marioEntity.setVelocity(MarioEntity.FallingVelocity);
                 fallingFacingRight.Begin(this);
             }
-            else if (this.direction == Directions.Right)
+            else if (this.isFacingRight())
             {
                 MarioActionState walkingRight = new WalkingMarioState(marioEntity);
                 marioEntity.ChangeActionState(walkingRight);
