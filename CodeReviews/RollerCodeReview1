@@ -1,0 +1,14 @@
+Author: Adam Roller
+Date: 9-27-16
+Sprint 1
+File being reviewed: MarioGame/Sprites/PlayerSprites/MarioSprite.cs
+Author of file: John Simmerlink
+Thoughts:
+Code is ugly even though it works. The idea of using an enum is cool and all but when you literally have to follow every enum value with a GetHashCode it doesn't really make things much nicer.
+Also the framesPerSecond is never really used except for the default value since in the Load function that uses it, the base Load is called with no parameters. There should be some way where if we actually wanted to use that field we would have the option. Right now there is no way to actually change the frames per second since calling the empty Load function on the base throws out any choice made.
+The Dictionaries and enums work and could be a good idea but need to be implemented a bit cleaner so that people can actually work with this file without trying to figure out what these integer values are supposed to do, however that might just mean pushing the mess to a different file so it might not actually be possible.
+
+Time Spent: 10 minutes.
+
+Potential changes?
+The most doable change would be to make framespersecond an actual meaningful parameter to have instead of ignoring it and assuming it is using the default value which doesn't look particularly good while animating.

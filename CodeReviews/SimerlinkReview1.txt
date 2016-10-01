@@ -1,0 +1,7 @@
+Author of code review: John Simerlink
+Date of Code Review: 9/27/2016
+Sprint Number: 1
+Name of the file: Script.cs
+Author of file: Adam Roller
+Code Quality:  We have a lot of short methods that may seem unnecessary
+Time spent on Code Review: 1 minute.
