@@ -15,15 +15,11 @@ namespace MarioGame.Entities.BlockEntities
         {
             bState = new StandardBlockState(this);
         }
-        public override void Update(){}
         public void ChangeBrickState(StandardState state)
         {
             bState = state;
         }
-        public void Bump()
-        {
-            bState.Bump();
-        }
+
         public void Standard()
         {
             bState.Standard();

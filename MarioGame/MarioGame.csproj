@@ -66,7 +66,9 @@
     <Compile Include="Core\Program.cs" />
     <Compile Include="Entities\BlockEntities\BlockEntity.cs" />
     <Compile Include="Entities\BlockEntities\BrickBlockEntity.cs" />
+    <Compile Include="Entities\BlockEntities\BumpableBlockEntity.cs" />
     <Compile Include="Entities\BlockEntities\GroundBlockEntity.cs" />
+    <Compile Include="Entities\BlockEntities\IBumpable.cs" />
     <Compile Include="Entities\BlockEntities\QuestionBlockEntity.cs" />
     <Compile Include="Entities\BlockEntities\StepBlockEntity.cs" />
     <Compile Include="Entities\BlockEntities\UsedBlockEntity.cs" />
