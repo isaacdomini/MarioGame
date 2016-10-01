@@ -47,7 +47,7 @@ namespace MarioGame.States.PlayerStates
             {
                 MarioActionState idleLeft = new IdleMarioState(marioEntity);
                 marioEntity.ChangeActionState(idleLeft);
-                idleLeft.setDirection(Directions.Left);
+                idleLeft.turnLeft();
                 marioEntity.SetVelocityToIdle();
                 idleLeft.Begin(this);
             }
@@ -61,7 +61,7 @@ namespace MarioGame.States.PlayerStates
                 // Mario state is set to walking right
                 MarioActionState moveRight = new WalkingMarioState(marioEntity);
                 marioEntity.ChangeActionState(moveRight);
-                moveRight.setDirection(Directions.Right);
+                moveRight.turnRight();
                 marioEntity.SetVelocityToWalk(Directions.Right);
                 moveRight.Begin(this);
             }
@@ -71,7 +71,7 @@ namespace MarioGame.States.PlayerStates
                 // Mario is idling facing the right
                 MarioActionState idleLeft = new IdleMarioState(marioEntity);
                 marioEntity.ChangeActionState(idleLeft);
-                idleLeft.setDirection(Directions.Right);
+                idleLeft.turnRight();
                 marioEntity.SetVelocityToIdle();
                 idleLeft.Begin(this);
             }

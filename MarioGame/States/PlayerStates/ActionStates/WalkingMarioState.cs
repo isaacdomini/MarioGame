@@ -48,7 +48,7 @@ namespace MarioGame.States.PlayerStates
             {
                 MarioActionState idleRight = new IdleMarioState(marioEntity);
                 marioEntity.ChangeActionState(idleRight);
-                idleRight.setDirection(Directions.Right);
+                idleRight.turnRight();
                 marioEntity.setVelocity(MarioEntity.idleVelocity);
                 idleRight.Begin(this);
             }
@@ -60,7 +60,7 @@ namespace MarioGame.States.PlayerStates
             {
                 MarioActionState idleLeft = new IdleMarioState(marioEntity);
                 marioEntity.ChangeActionState(idleLeft);
-                idleLeft.setDirection(Directions.Left);
+                idleLeft.turnLeft();
                 marioEntity.setVelocity(MarioEntity.idleVelocity);
                 idleLeft.Begin(this);
             }

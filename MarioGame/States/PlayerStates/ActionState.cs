@@ -21,6 +21,22 @@ namespace MarioGame.States.PlayerStates
         {
             direction = newDir;
         }
+        public bool isFacingLeft()
+        {
+            return direction == Directions.Left;
+        }
+        public bool isFacingRight()
+        {
+            return direction == Directions.Right;
+        }
+        public void turnLeft()
+        {
+            direction = Directions.Left;
+        }
+        public void turnRight()
+        {
+            direction = Directions.Right;
+        }
         public ActionState(IEntity entity) : base(entity)
         {
 

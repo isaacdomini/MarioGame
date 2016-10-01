@@ -29,7 +29,7 @@ namespace MarioGame.Entities.PlayerEntities
         public MarioEntity(Vector2 position, ISprite sprite) : base(position, sprite)
         {
             aState = new IdleMarioState(this);
-            aState.setDirection(ActionState.Directions.Right);
+            aState.turnRight();
             pState = new StandardState(this);
             // Now only cast once
             mSprite = (MarioSprite)_sprite;
