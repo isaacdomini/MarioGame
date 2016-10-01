@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/John/Source/Repos/MarioLopezTheSecondOne/MarioLopez/MarioGame/Content/brick1.png</SourceFile>
-  <SourceTime>2016-09-30T16:44:26.0881992-04:00</SourceTime>
-  <DestFile>C:/Users/John/Source/Repos/MarioLopezTheSecondOne/MarioLopez/MarioGame/Content/bin/Windows/brick1.xnb</DestFile>
-  <DestTime>2016-09-30T16:46:12.6069003-04:00</DestTime>
+  <SourceFile>C:/Users/eegge/Source/Repos/MarioLopez/MarioGame/Content/brick1.png</SourceFile>
+  <SourceTime>2016-09-30T12:54:48.3381454-04:00</SourceTime>
+  <DestFile>C:/Users/eegge/Source/Repos/MarioLopez/MarioGame/Content/bin/Windows/brick1.xnb</DestFile>
+  <DestTime>2016-09-30T20:26:11.5639032-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-30T02:36:08-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
