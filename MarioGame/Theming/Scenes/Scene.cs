@@ -77,6 +77,7 @@ namespace MarioGame.Theming.Scenes
         public void Update(GameTime gameTime)
         {
             Stage.Update(gameTime);
+            _script.Update(gameTime);
             Sprites.ForEach(s => s.Update((float)gameTime.ElapsedGameTime.TotalSeconds));
         }
 

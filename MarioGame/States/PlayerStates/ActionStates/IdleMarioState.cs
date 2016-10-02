@@ -30,7 +30,7 @@ namespace MarioGame.States.PlayerStates
             MarioActionState crouchState = new CrouchingMarioState(marioEntity);
             crouchState.setDirection(this.direction);
             marioEntity.ChangeActionState(crouchState);
-            marioEntity.SetVelocityToIdle();
+            marioEntity.SetVelocityToFalling();
             crouchState.Begin(this);
         }
         public override void MoveLeft()

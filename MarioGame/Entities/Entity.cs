@@ -20,15 +20,20 @@ namespace MarioGame.Entities
         }
 
         IState _state;
-        public ISprite _sprite;
-        protected Vector2 _position;
+        public Sprite _sprite;
+
+        protected Vector2 _position
+        {
+            get { return _sprite.Position; }
+            set { _sprite.Position = value; }
+        }
         public Vector2 _velocity { get; private set; }
         
-        public Entity(Vector2 position, ISprite sprite, float xVelocity = 0, float yVelocity = 0)
+        public Entity(Vector2 position, Sprite sprite, float xVelocity = 0, float yVelocity = 0)
         {
             _velocity = new Vector2(xVelocity, yVelocity);
-            _position = position;
             _sprite = sprite;
+            _position = position;
             ((Sprite)_sprite).Position = _position;
         }
         public virtual void ChangeState(IState newstate)

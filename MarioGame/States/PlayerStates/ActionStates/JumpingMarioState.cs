@@ -15,6 +15,11 @@ namespace MarioGame.States.PlayerStates
             actionState = MarioActionStateEnum.Jumping;
         }
         //TODO: need to add in behavior for jumping higher if you hold the jump button down.
+        public override void Begin(MarioActionState prevState)
+        {
+            base.Begin(prevState);
+            marioEntity.SetVelocityToJumpingStraight();
+        }
 
         public override void Crouch()
         {

@@ -10,7 +10,7 @@ namespace MarioGame.Entities.BlockEntities
 {
     public class QuestionBlockEntity : BlockEntity
     {
-        public QuestionBlockEntity(Vector2 position, ISprite sprite) : base(position, sprite)
+        public QuestionBlockEntity(Vector2 position, Sprite sprite) : base(position, sprite)
         {
         }
     }

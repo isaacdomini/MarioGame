@@ -22,10 +22,10 @@ namespace MarioGame.States.PlayerStates
             marioEntity = entity;
         }
 
-        public void Begin(MarioActionState prevState)
+        public virtual void Begin(MarioActionState prevState)
         {
             base.Begin(prevState);
-            marioEntity.mSprite.changeActionState(this); //TODO: make it so we don't have to do this casts
+            marioEntity.mSprite.changeActionState(this);
         }
         public virtual void Jump() { }
 

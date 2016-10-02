@@ -9,7 +9,7 @@ namespace MarioGame.Entities.EnemyEntities
     public class GoombaEntity : Entity
     {
 
-        public GoombaEntity(Vector2 position, ISprite sprite) : base(position, sprite)
+        public GoombaEntity(Vector2 position, Sprite sprite) : base(position, sprite)
 	    {
 
         }

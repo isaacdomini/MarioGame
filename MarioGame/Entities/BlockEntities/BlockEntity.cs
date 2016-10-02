@@ -11,7 +11,7 @@ namespace MarioGame.Entities.BlockEntities
     {
         // Could be useful for casting in certain circumstances
         public StandardState bState;
-        public BlockEntity(Vector2 position, ISprite sprite) : base(position, sprite)
+        public BlockEntity(Vector2 position, Sprite sprite) : base(position, sprite)
         {
             bState = new StandardBlockState(this);
         }

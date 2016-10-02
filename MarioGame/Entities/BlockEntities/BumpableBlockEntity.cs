@@ -18,7 +18,7 @@ namespace MarioGame.Entities.BlockEntities
             ThreeQuarters,
             Top
         }
-        public BumpableBlockEntity(Vector2 position, ISprite sprite) : base(position, sprite)
+        public BumpableBlockEntity(Vector2 position, Sprite sprite) : base(position, sprite)
         {
         }
 

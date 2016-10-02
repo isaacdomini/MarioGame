@@ -143,9 +143,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\Windows\x86\Debug\MarioGame.vshost.exe" />
-    <Content Include="Content\obj\Bricks.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>

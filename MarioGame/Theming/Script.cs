@@ -44,6 +44,11 @@ namespace MarioGame.Theming
 		    _items = new List<Entity>();
 		    _blocks = new List<BlockEntity>();
         }
+
+        public void Update(GameTime gameTime)
+        {
+            mario.Update(Viewport);
+        }
         
         public void AddMario(MarioEntity marioEntity)
         {
