@@ -18,6 +18,8 @@ namespace MarioGame.Entities.PlayerEntities
         public MarioSprite mSprite;
         private int _width;
         private int _height;
+        private Rectangle boundingBox;
+
 
         // Velocity variables
         public readonly static int velocityConstant = 1;
@@ -38,6 +40,7 @@ namespace MarioGame.Entities.PlayerEntities
             mSprite = (MarioSprite)_sprite;
             _height = 40;
             _width = 20;
+            boundingBox= new Rectangle((int)_position.X, (int)_position.Y,_width,_height);
         }
 
         public void Update(Viewport viewport)
@@ -59,6 +62,8 @@ namespace MarioGame.Entities.PlayerEntities
                 pos.Y = viewport.Height - _height;
             }
             _position = pos;
+            boundingBox.X = (int)_position.X;
+            boundingBox.Y = (int)_position.Y;
         }
 
         public bool checkMarioJumpingUp()
