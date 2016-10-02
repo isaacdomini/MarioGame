@@ -38,6 +38,7 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Collisions\CollisionHandler.cs" />
     <Compile Include="Commands\ChangeToBrokenState.cs" />
     <Compile Include="Commands\CrouchCommand.cs" />
     <Compile Include="Commands\DashOrThrowFireballCommand.cs" />

@@ -179,5 +179,9 @@ namespace MarioGame.Entities.PlayerEntities
         {
             this.setVelocity(jumpingUpVelocity);
         }
+        public void Halt()
+        {
+            this.SetVelocityToIdle();
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using MarioGame.Core;
+﻿using MarioGame.Collisions;
+using MarioGame.Core;
 using MarioGame.Entities;
 using MarioGame.Entities.BlockEntities;
 using MarioGame.Entities.PlayerEntities;
@@ -12,6 +13,8 @@ namespace MarioGame.Theming
     public class Script
     {
         private readonly Scene _scene;
+
+        private CollisionHandler collisionHandler;
 
         public MarioEntity mario { get; private set; }
 	    public List<Entity> _enemies { get; private set; }
@@ -43,10 +46,18 @@ namespace MarioGame.Theming
 		    _enemies = new List<Entity>();
 		    _items = new List<Entity>();
 		    _blocks = new List<BlockEntity>();
+            collisionHandler = new CollisionHandler();
         }
 
         public void Update(GameTime gameTime)
         {
+            foreach(var entity in _blocks)
+            {
+                if (collisionHandler.checkForCollisions(mario, entity))
+                {
+                    mario.Halt();
+                }
+            }
             mario.Update(Viewport);
         }
         
