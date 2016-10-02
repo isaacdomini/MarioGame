@@ -85,24 +85,12 @@ namespace MarioGame.Sprites.PlayerSprites
         {
             base.Load(framesPerSecond);
             _frameHeight = 40;
-
+            
         }
         public override void Update(float elapsed)
         {
             base.Update(elapsed);
         }
-
-        public override void Draw(SpriteBatch batch)
-        {
-            if (Visible)
-            {
-                return;
-            }
-
-            var sourceRect = new Rectangle(((int)_frameSet[_frameSetPosition]) * _frameWidth, ((int)_rowSet[_rowSetPosition]) * _frameHeight, _frameWidth - 5, _frameHeight);
-            batch.Draw(texture: _texture, position: Position, sourceRectangle: sourceRect, color: Color.White, effects: _flipped);
-        }
-
         public void changeActionState(MarioActionState marioActionState)
         {
             _frameSet = _frameSets[marioActionState.actionState.GetHashCode()];
