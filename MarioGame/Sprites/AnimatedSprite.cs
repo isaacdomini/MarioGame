@@ -24,7 +24,7 @@ namespace MarioGame.Sprites
         protected List<int> _rowSet;
         protected int _rowSetPosition;
 
-        private int _frameWidth;
+        protected int _frameWidth;
         protected int _frameHeight;
 
         protected float _totalElapsed, _timePerFrame;
