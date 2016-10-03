@@ -8,6 +8,7 @@ using MarioGame.Theming.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using System;
 
 namespace MarioGame.Theming
 {
@@ -21,6 +22,7 @@ namespace MarioGame.Theming
 	    public List<Entity> _enemies { get; private set; }
 	    public List<Entity> _items { get; private set; }
 	    public List<BlockEntity> _blocks { get; private set; }
+
 
         public Script(Scene scene)
         {
@@ -47,14 +49,14 @@ namespace MarioGame.Theming
 		    _enemies = new List<Entity>();
 		    _items = new List<Entity>();
 		    _blocks = new List<BlockEntity>();
-            collisionHandler = new CollisionHandler();
+            collisionHandler = new CollisionHandler(mario, _blocks, _items, _enemies);
         }
 
         public void Update(GameTime gameTime)
         {
-            mario.Update(Viewport);
+            mario.Update(Viewport, collisionHandler);
         }
-        
+
         public void AddMario(MarioEntity marioEntity)
         {
             mario = marioEntity;

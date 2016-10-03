@@ -66,6 +66,7 @@
     <Compile Include="Core\Game1.cs" />
     <Compile Include="Core\Program.cs" />
     <Compile Include="Entities\BlockEntities\BlockEntity.cs" />
+    <Compile Include="Entities\BlockEntities\BlockEntityEnum.cs" />
     <Compile Include="Entities\BlockEntities\BrickBlockEntity.cs" />
     <Compile Include="Entities\BlockEntities\BumpableBlockEntity.cs" />
     <Compile Include="Entities\BlockEntities\GroundBlockEntity.cs" />

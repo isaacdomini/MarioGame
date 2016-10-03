@@ -12,14 +12,15 @@ namespace MarioGame.Entities
 {
     public abstract class Entity : IEntity
     {
+        IState _state;
+        public Sprite _sprite;
+        public Rectangle boundingBox;
+
         protected ActionState aState;
         public ActionState ActionState
         {
             get { return this.aState; }
         }
-
-        IState _state;
-        public Sprite _sprite;
 
         protected Vector2 _position
         {

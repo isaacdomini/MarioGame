@@ -32,10 +32,7 @@ namespace MarioGame.Sprites
         protected SpriteEffects _flipped {
             get; set;
         }
-
-
-
-
+        
         public AnimatedSprite(ContentManager content) : base(content)
         {
             _rowSets = new Dictionary<int, List<int>>

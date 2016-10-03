@@ -8,6 +8,9 @@ using Microsoft.Xna.Framework;
 using MarioGame.Sprites;
 using Microsoft.Xna.Framework.Graphics;
 using static MarioGame.States.PlayerStates.ActionState;
+using MarioGame.Theming;
+using MarioGame.Entities.BlockEntities;
+using MarioGame.Collisions;
 
 namespace MarioGame.Entities.PlayerEntities
 {
@@ -22,7 +25,6 @@ namespace MarioGame.Entities.PlayerEntities
         public MarioSprite mSprite;
         private int _width;
         private int _height;
-        private Rectangle boundingBox;
 
         // Velocity variables
         public readonly static int velocityConstant = 1;
@@ -47,9 +49,13 @@ namespace MarioGame.Entities.PlayerEntities
             boundingBox= new Rectangle((int)_position.X, (int)_position.Y,_width,_height);
         }
 
-        public void Update(Viewport viewport)
+
+
+        public void Update(Viewport viewport, CollisionHandler collisionHandler)
         {
             base.Update();
+            collisionHandler.handleMarioCollisions();
+            // Maybe just set velocity to zero for all this? - Ricky
             Vector2 pos = _position;
             if (_position.X < 0)
             {
@@ -69,7 +75,6 @@ namespace MarioGame.Entities.PlayerEntities
             boundingBox.X = (int)_position.X;
             boundingBox.Y = (int)_position.Y;
         }
-
         public bool checkMarioJumpingUp()
         {
             return this._velocity.Equals(jumpingUpVelocity);
