@@ -78,6 +78,7 @@ namespace MarioGame.Theming.Scenes
         {
             Stage.Update(gameTime);
             _script.Update(gameTime);
+            // TODO Should we update the sprites in script? That way we are only doing updates from one location
             Sprites.ForEach(s => s.Update((float)gameTime.ElapsedGameTime.TotalSeconds));
         }
 

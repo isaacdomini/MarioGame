@@ -51,13 +51,6 @@ namespace MarioGame.Theming
 
         public void Update(GameTime gameTime)
         {
-            foreach(var entity in _blocks)
-            {
-                if (collisionHandler.checkForCollisions(mario, entity))
-                {
-                    mario.Halt();
-                }
-            }
             mario.Update(Viewport);
         }
         

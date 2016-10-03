@@ -16,6 +16,7 @@ namespace MarioGame.Collisions
         public bool checkForCollisions(Entity entity1, Entity entity2)
         {
             bool check = false;
+            
             return check;
         }
     }
