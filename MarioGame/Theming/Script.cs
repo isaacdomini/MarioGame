@@ -3,6 +3,7 @@ using MarioGame.Core;
 using MarioGame.Entities;
 using MarioGame.Entities.BlockEntities;
 using MarioGame.Entities.PlayerEntities;
+using MarioGame.States.PlayerStates;
 using MarioGame.Theming.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;

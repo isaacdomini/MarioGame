@@ -12,7 +12,6 @@ namespace MarioGame.Entities
 {
     public abstract class Entity : IEntity
     {
-        // Ricky: What is the difference between aState and ActionState and _state?
         protected ActionState aState;
         public ActionState ActionState
         {
@@ -27,7 +26,7 @@ namespace MarioGame.Entities
             get { return _sprite.Position; }
             set { _sprite.Position = value; }
         }
-        public Vector2 _velocity { get; private set; }
+        public Vector2 _velocity { get; protected set; }
         
         public Entity(Vector2 position, Sprite sprite, float xVelocity = 0, float yVelocity = 0)
         {

@@ -87,7 +87,7 @@ namespace MarioGame.States.PlayerStates
             if (this.isFacingLeft())
             {
                 // Checks if Mario was previously jumping left
-                if (marioEntity._velocity == MarioEntity.jumpingLeftVelocity)
+                if (marioEntity.checkMarioJumpLeft())
                 {
                     MarioActionState walkingLeft = new WalkingMarioState(marioEntity);
                     walkingLeft.turnLeft();
@@ -98,7 +98,7 @@ namespace MarioGame.States.PlayerStates
                     walkingLeft.Begin(this);
                 }
                 // Checks if mario was previously jumping straight up
-                else if (marioEntity._velocity == MarioEntity.jumpingUpVelocity)
+                else if (marioEntity.checkMarioJumpingUp())
                 {
                     // Sets mario to jumping straight up facing right  
                     MarioActionState jumpingUpFacingRight = new JumpingMarioState(marioEntity);
@@ -113,7 +113,7 @@ namespace MarioGame.States.PlayerStates
             else if (this.isFacingRight())
             {
                 // Checking if mario was jumping straight up previously
-                if (marioEntity._velocity == MarioEntity.jumpingUpVelocity)
+                if (marioEntity.checkMarioJumpingUp())
                 {
                     // Change mario to jumping right now
                     MarioActionState jumpingRight = new JumpingMarioState(marioEntity);
@@ -123,7 +123,7 @@ namespace MarioGame.States.PlayerStates
                     jumpingRight.Begin(this);
                 }
                 // Checking if mario was jumping and moving to the right
-                else if (marioEntity._velocity == MarioEntity.walkingRightVelocity)
+                else if (marioEntity.checkMarioJumpRight())
                 {
                     MarioActionState walkingRight = new WalkingMarioState(marioEntity);
                     walkingRight.turnRight();

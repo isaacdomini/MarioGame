@@ -27,11 +27,23 @@ namespace MarioGame.States.PlayerStates
         }
         public override void Crouch()
         {
-            MarioActionState crouchState = new CrouchingMarioState(marioEntity);
-            crouchState.setDirection(this.direction);
-            marioEntity.ChangeActionState(crouchState);
-            marioEntity.SetVelocityToFalling();
-            crouchState.Begin(this);
+            if (marioEntity.PowerUpState.powerUpState == MarioPowerUpStateEnum.Standard)
+            {
+                MarioActionState fallingState = new FallingMarioState(marioEntity);
+                fallingState.setDirection(this.direction);
+                marioEntity.ChangeActionState(fallingState);
+                marioEntity.SetVelocityToFalling();
+                fallingState.Begin(this);
+            }
+            else
+            {
+                MarioActionState crouchState = new CrouchingMarioState(marioEntity);
+                crouchState.setDirection(this.direction);
+                marioEntity.ChangeActionState(crouchState);
+                marioEntity.SetVelocityToFalling();
+                crouchState.Begin(this);
+            }
+
         }
         public override void MoveLeft()
         {

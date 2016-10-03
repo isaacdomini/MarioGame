@@ -15,11 +15,14 @@ namespace MarioGame.Entities.PlayerEntities
     {
         private MarioPowerUpState pState;
         // Could be useful for casting in certain circumstances
+        public MarioPowerUpState PowerUpState
+        {
+            get { return pState; }
+        }
         public MarioSprite mSprite;
         private int _width;
         private int _height;
         private Rectangle boundingBox;
-
 
         // Velocity variables
         public readonly static int velocityConstant = 1;
@@ -29,7 +32,8 @@ namespace MarioGame.Entities.PlayerEntities
         public readonly static Vector2 jumpingUpVelocity = new Vector2(0, velocityConstant*-1);
         public readonly static Vector2 jumpingRightVelocity = new Vector2(velocityConstant*1, velocityConstant*-1);
         public readonly static Vector2 jumpingLeftVelocity = new Vector2(velocityConstant*- 1, velocityConstant*-1);
-        public readonly static Vector2 FallingVelocity = new Vector2(0, velocityConstant*1);
+        public readonly static Vector2 fallingVelocity = new Vector2(0, velocityConstant*1);
+        public readonly static Vector2 dashVelocity = new Vector2(velocityConstant * 2, 0);
 
         public MarioEntity(Vector2 position, Sprite sprite) : base(position, sprite)
         {
@@ -111,7 +115,7 @@ namespace MarioGame.Entities.PlayerEntities
         }
         public void Crouch()
         {
-            if (pState.powerUpState != MarioPowerUpStateEnum.Dead || pState.powerUpState != MarioPowerUpStateEnum.Standard)
+            if (pState.powerUpState != MarioPowerUpStateEnum.Dead)
             {
                 ((MarioActionState)aState).Crouch();
             }
@@ -149,10 +153,18 @@ namespace MarioGame.Entities.PlayerEntities
         public void DashOrThrowFireball()
         {
             //TODO: Ricky do this?
+            if (pState.powerUpState == MarioPowerUpStateEnum.Fire)
+            {
+                // TODO: Mario entity adds fireball to scene
+            }
+            else if (pState.powerUpState == MarioPowerUpStateEnum.Super)
+            {
+                this.setVelocity(dashVelocity);
+            }
         }
         public void SetVelocityToFalling()
         {
-            this.setVelocity(FallingVelocity);
+            this.setVelocity(fallingVelocity);
         }
         public void SetVelocityToWalk(Directions dir)
         {
