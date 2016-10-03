@@ -34,5 +34,13 @@ namespace MarioGame.States.PlayerStates
         public virtual void MoveLeft() { }
 
         public virtual void Crouch() { }
+        public void Halt()
+        {
+            MarioActionState newState = new IdleMarioState(marioEntity);
+            newState.setDirection(this.direction);
+            marioEntity.ChangeActionState(newState);
+            marioEntity.SetVelocityToIdle();
+            newState.Begin(this);
+        }
     }
 }

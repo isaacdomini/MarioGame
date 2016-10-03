@@ -26,7 +26,8 @@ namespace MarioGame.Collisions
         public bool checkForCollision(Entity entity1, Entity entity2)
         {
             bool check = false;
-            
+            // Add this line when bounding boxes have been initialized and dealt with for all entities
+            //if (entity1.boundingBox.Intersects(entity2.boundingBox)) check = true;
             return check;
         }
 
@@ -35,7 +36,7 @@ namespace MarioGame.Collisions
             foreach (var block in _blocks)
             {
                 if (checkForCollision(_mario, block)){
-                    // TODO: Figure out how to access block's boundingBox
+                    _mario.Halt();
                 }
             }
         }

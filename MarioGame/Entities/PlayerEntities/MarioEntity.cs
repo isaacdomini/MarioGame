@@ -203,7 +203,7 @@ namespace MarioGame.Entities.PlayerEntities
         }
         public void Halt()
         {
-            this.SetVelocityToIdle();
+            ((MarioActionState)aState).Halt();
         }
     }
 }
