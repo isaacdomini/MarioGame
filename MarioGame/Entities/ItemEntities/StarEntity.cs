@@ -14,6 +14,9 @@ namespace MarioGame.Entities.ItemEntities
         public StarEntity(Vector2 position, StarSprite sprite) : base(position, sprite)
         {
             iSprite = new StarSprite(content);
+            int _height = 40;
+            int _width = 20;
+            boundingBox = new Rectangle((int)_position.X, (int)_position.Y, _width, _height);
         }
         public override void Update() { }
     }
