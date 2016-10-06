@@ -18,9 +18,7 @@ namespace MarioGame.States.PlayerStates.PowerUpStates
         }
         public override void ChangeToDead()
         {
-            MarioPowerUpState dead = new DeadState(marioEntity);
-            marioEntity.ChangePowerUpState(dead);
-            dead.Begin(this);
+            ChangeToStandard();
 
         }
         public override void ChangeToStandard()

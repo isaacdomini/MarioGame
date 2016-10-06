@@ -95,6 +95,9 @@ namespace MarioGame.Entities.PlayerEntities
                 }
             }
         }
+
+        
+
         public bool checkMarioJumpingUp()
         {
             return this._velocity.Equals(jumpingUpVelocity);

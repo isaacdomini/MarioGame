@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using System;
 using MarioGame.Entities.EnemyEntities;
+using MarioGame.Entities.ItemEntities;
 
 namespace MarioGame.Theming
 {
@@ -70,13 +71,16 @@ namespace MarioGame.Theming
                 {
                     //_mario.Halt();
                     colliding = true;
+                    mario.Halt();
                     if(enemy.GetType() == typeof(KoopaTroopaEntity))
                     {
                         enemy.boxColor = Color.Black;
+                        mario.ChangeToDeadState();
                     }
                     else if(enemy.GetType() == typeof(GoombaEntity))
                     {
                         enemy.boxColor = Color.Black;
+                        mario.ChangeToDeadState();
                     }
                 }
                 else
@@ -89,8 +93,33 @@ namespace MarioGame.Theming
             {
                 if (collisionHandler.checkForCollision(mario, item))
                 {
-                    //_mario.Halt();
                     colliding = true;
+                    if (item.GetType() == typeof(CoinEntity))
+                    {
+                        item.boxColor = Color.Black;
+                    }
+                    else if (item.GetType() == typeof(StarEntity))
+                    {
+                        item.boxColor = Color.Black;
+                    }
+                    else if (item.GetType() == typeof(FireFlowerEntity))
+                    {
+                        mario.ChangeToFireState();
+                        item.boxColor = Color.Black;
+                    }
+                    else if (item.GetType() == typeof(Mushroom1UpEntity))
+                    {
+                        item.boxColor = Color.Black;
+                    }
+                    else if (item.GetType() == typeof(MushroomSuperEntity))
+                    {
+                        mario.ChangeToSuperState();
+                        item.boxColor = Color.Black;
+                    }
+                }
+                else
+                {
+                    item.boxColor = Color.Green;
                 }
             }
             if (colliding)
