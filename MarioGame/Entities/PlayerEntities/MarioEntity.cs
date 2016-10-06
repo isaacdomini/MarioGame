@@ -239,6 +239,7 @@ namespace MarioGame.Entities.PlayerEntities
         }
         public void Halt()
         {
+            _position -= _velocity;
             ((MarioActionState)aState).Halt();
         }
     }

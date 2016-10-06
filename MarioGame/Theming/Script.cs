@@ -59,7 +59,7 @@ namespace MarioGame.Theming
             {
                 if (collisionHandler.checkForCollision(mario, block))
                 {
-                    //_mario.Halt();
+                    mario.Halt();
                     colliding = true;
                 }
             }
