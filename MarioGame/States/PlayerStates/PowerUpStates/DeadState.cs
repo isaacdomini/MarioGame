@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MarioGame.Entities;
 using MarioGame.Entities.PlayerEntities;
+using Microsoft.Xna.Framework;
 
 namespace MarioGame.States.PlayerStates.PowerUpStates
 {
@@ -13,6 +14,9 @@ namespace MarioGame.States.PlayerStates.PowerUpStates
         public DeadState(MarioEntity entity) : base(entity)
         {
             powerUpState = MarioPowerUpStateEnum.Dead;
+            MarioEntity.boundingBox.Width = 20;
+            MarioEntity.boundingBox.Height = 20;
+
         }
         public override void ChangeToFire()
         {

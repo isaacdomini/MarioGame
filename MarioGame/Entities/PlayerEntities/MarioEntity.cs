@@ -79,15 +79,12 @@ namespace MarioGame.Entities.PlayerEntities
             
             if(PowerUpState.powerUpState != MarioPowerUpStateEnum.Standard)
             {
-                boundingBox.Width = 30;
-                boundingBox.Height = 40;
+                
                 boundingBox.X = (int)_position.X - 5;
                 boundingBox.Y = (int)_position.Y;
             }
             if (PowerUpState.powerUpState == MarioPowerUpStateEnum.Standard || PowerUpState.powerUpState == MarioPowerUpStateEnum.Dead)
             {
-                boundingBox.Width = 20;
-                boundingBox.Height = 20;
                 if (ActionState.isFacingLeft() == true)
                 {
                     boundingBox.X = (int)_position.X - 5;
