@@ -1,7 +1,9 @@
 ﻿using MarioGame.Entities;
 using MarioGame.Entities.BlockEntities;
+using MarioGame.Entities.EnemyEntities;
 using MarioGame.Entities.PlayerEntities;
 using MarioGame.Theming;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +29,7 @@ namespace MarioGame.Collisions
         {
             bool check = false;
             // Add this line when bounding boxes have been initialized and dealt with for all entities
-            //if (entity1.boundingBox.Intersects(entity2.boundingBox)) check = true;
+            if (MarioEntity.boundingBox.Intersects(BrickBlockEntity.boundingBox)) check = true;
             return check;
         }
 
@@ -36,7 +38,12 @@ namespace MarioGame.Collisions
             foreach (var block in _blocks)
             {
                 if (checkForCollision(_mario, block)){
-                    _mario.Halt();
+                    //_mario.Halt();
+                    MarioEntity.boxColor = Color.Black;
+                }
+                else
+                {
+                    MarioEntity.boxColor = Color.Yellow;
                 }
             }
         }

@@ -9,11 +9,14 @@ namespace MarioGame.Entities.BlockEntities
 {
     public class BlockEntity : Entity
     {
+ 
+
         // Could be useful for casting in certain circumstances
         public StandardState bState;
         public BlockEntity(Vector2 position, Sprite sprite) : base(position, sprite)
         {
             bState = new StandardBlockState(this);
+            
         }
         public void ChangeBrickState(StandardState state)
         {

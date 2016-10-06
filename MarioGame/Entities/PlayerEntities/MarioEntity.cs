@@ -25,6 +25,9 @@ namespace MarioGame.Entities.PlayerEntities
         public MarioSprite mSprite;
         private int _width;
         private int _height;
+        public static Rectangle boundingBox;
+        //Bounding Box color for sprint2
+        public static Color boxColor;
 
         // Velocity variables
         public readonly static int velocityConstant = 1;
@@ -46,7 +49,8 @@ namespace MarioGame.Entities.PlayerEntities
             mSprite = (MarioSprite)_sprite;
             _height = 40;
             _width = 20;
-            boundingBox= new Rectangle((int)_position.X, (int)_position.Y,_width,_height);
+            boundingBox= new Rectangle((int)(_position.X+5), (int)(_position.Y+16),_width,_width);
+            boxColor = Color.Yellow;
         }
 
 
@@ -72,8 +76,21 @@ namespace MarioGame.Entities.PlayerEntities
                 pos.Y = viewport.Height - _height;
             }
             _position = pos;
-            boundingBox.X = (int)_position.X;
-            boundingBox.Y = (int)_position.Y;
+            if (ActionState.isFacingLeft() == true)
+            {
+                boundingBox.X = (int)_position.X-5;
+                boundingBox.Y = (int)_position.Y+16;
+            }
+            else
+            {
+                boundingBox.X = (int)_position.X + 5;
+                boundingBox.Y = (int)_position.Y + 16;
+            }
+            //if (MarioPowerUpState != StandardState)
+            //{
+            //    boundingBox.Width = 30;
+            //    boundingBox.Height = 40;
+            //}
         }
         public bool checkMarioJumpingUp()
         {
@@ -106,6 +123,7 @@ namespace MarioGame.Entities.PlayerEntities
             if (pState.powerUpState == MarioPowerUpStateEnum.Dead)
             {
                 pState = state;
+
             }
             // TODO Is this all we need? Or do we need below methods
             pState = state;

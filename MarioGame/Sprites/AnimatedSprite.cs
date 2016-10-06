@@ -1,9 +1,14 @@
 ﻿using MarioGame.Entities;
+using MarioGame.Entities.BlockEntities;
+using MarioGame.Entities.EnemyEntities;
+using MarioGame.Entities.ItemEntities;
+using MarioGame.Entities.PlayerEntities;
 using MarioGame.States.PlayerStates;
 using MarioGame.Theming.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using static MarioGame.Sprites.PlayerSprites.MarioSprite;
@@ -90,6 +95,29 @@ namespace MarioGame.Sprites
 
             var sourceRect = new Rectangle( ((int)_frameSet[_frameSetPosition]) * _frameWidth, ((int)_rowSet[_rowSetPosition]) * _frameHeight, _frameWidth, _frameHeight);
             batch.Draw(texture: _texture, position: Position, sourceRectangle: sourceRect, color: Color.White, effects : _flipped);
+            drawRectangleBorder(batch, MarioEntity.boundingBox, 1, MarioEntity.boxColor);
+            drawRectangleBorder(batch, GoombaEntity.boundingBox, 1, GoombaEntity.boxColor);
+            drawRectangleBorder(batch, KoopaTroopaEntity.boundingBox, 1, KoopaTroopaEntity.boxColor);
+            drawRectangleBorder(batch, QuestionBlockEntity.boundingBox, 1, QuestionBlockEntity.boxColor);
+            drawRectangleBorder(batch, BrickBlockEntity.boundingBox, 1, BrickBlockEntity.boxColor);
+            drawRectangleBorder(batch, CoinEntity.boundingBox, 1, CoinEntity.boxColor);
+            drawRectangleBorder(batch, FireFlowerEntity.boundingBox, 1, FireFlowerEntity.boxColor);
+            drawRectangleBorder(batch, Mushroom1UpEntity.boundingBox, 1, Mushroom1UpEntity.boxColor);
+            drawRectangleBorder(batch, MushroomSuperEntity.boundingBox, 1, MushroomSuperEntity.boxColor);
+            drawRectangleBorder(batch, StarEntity.boundingBox, 1, StarEntity.boxColor);
+
+
+        }
+        public void drawRectangleBorder (SpriteBatch batch, Rectangle toDraw, int borderThickness, Color borderColor)
+        {
+            // Draw top line
+            batch.Draw(Scene.rectanglePixel, new Rectangle((toDraw.X), toDraw.Y, toDraw.Width, 1), borderColor);
+            // Draw left line
+            batch.Draw(Scene.rectanglePixel, new Rectangle(toDraw.X, toDraw.Y, 1, toDraw.Height), borderColor);
+            // Draw right line
+            batch.Draw(Scene.rectanglePixel, new Rectangle((toDraw.X + toDraw.Width - 1), toDraw.Y,1, toDraw.Height), borderColor);
+            // Draw bottom line
+            batch.Draw(Scene.rectanglePixel, new Rectangle(toDraw.X, toDraw.Y + toDraw.Height - 1, toDraw.Width,1), borderColor);
         }
     }
 }

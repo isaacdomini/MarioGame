@@ -14,7 +14,8 @@ namespace MarioGame.Theming.Scenes
 {
     public class Scene : IDisposable
     {
-
+        //Texture in order to draw bounding boxes on screen from sprint2
+        public static Texture2D rectanglePixel;
         private readonly Script _script;
         private SpriteBatch _spriteBatch;
 
@@ -71,6 +72,9 @@ namespace MarioGame.Theming.Scenes
             _script._enemies.ForEach(e => Sprites.Add(e._sprite));
 
             Sprites.ForEach(s => s.Load());
+            //Allows for bounding boxes to be drawn in different colors
+            rectanglePixel = new Texture2D(Stage.Game1.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
+            rectanglePixel.SetData(new[] { Color.White });
 
         }
 
