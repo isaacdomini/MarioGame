@@ -35,7 +35,9 @@ namespace MarioGame.Entities.PlayerEntities
         public readonly static Vector2 jumpingRightVelocity = new Vector2(velocityConstant*1, velocityConstant*-1);
         public readonly static Vector2 jumpingLeftVelocity = new Vector2(velocityConstant*- 1, velocityConstant*-1);
         public readonly static Vector2 fallingVelocity = new Vector2(0, velocityConstant*1);
-        public readonly static Vector2 dashVelocity = new Vector2(velocityConstant * 2, 0);
+        public readonly static Vector2 dashRightVelocity = new Vector2(velocityConstant * 2, 0);
+        public readonly static Vector2 dashLeftVelocity = new Vector2(velocityConstant * -2, 0);
+
 
         public MarioEntity(Vector2 position, Sprite sprite) : base(position, sprite)
         {
@@ -183,7 +185,22 @@ namespace MarioGame.Entities.PlayerEntities
             }
             else if (pState.powerUpState == MarioPowerUpStateEnum.Super)
             {
-                this.setVelocity(dashVelocity);
+                if (_velocity == dashLeftVelocity)
+                {
+                    _velocity = walkingLeftVelocity;
+                }
+                else if (_velocity == dashRightVelocity)
+                {
+                    _velocity = walkingRightVelocity;
+                }
+                else if (_velocity == walkingLeftVelocity)
+                {
+                    _velocity = dashLeftVelocity;
+                }
+                else if (_velocity == walkingRightVelocity)
+                {
+                    _velocity = dashRightVelocity;
+                }
             }
         }
         public void SetVelocityToFalling()

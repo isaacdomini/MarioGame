@@ -54,18 +54,38 @@ namespace MarioGame.Theming
 
         public void Update(GameTime gameTime)
         {
+            bool colliding = false;
             foreach (var block in _blocks)
             {
                 if (collisionHandler.checkForCollision(mario, block))
                 {
                     //_mario.Halt();
-                    mario.boxColor = Color.Black;
-                    break;
+                    colliding = true;
                 }
-                else
+            }
+            foreach (var enemy in _enemies)
+            {
+                if (collisionHandler.checkForCollision(mario, enemy))
                 {
-                    mario.boxColor = Color.Yellow;
+                    //_mario.Halt();
+                    colliding = true;
                 }
+
+            }
+            foreach (var item in _items)
+            {
+                if (collisionHandler.checkForCollision(mario, item))
+                {
+                    //_mario.Halt();
+                    colliding = true;
+                }
+            }
+            if (colliding)
+            {
+                mario.boxColor = Color.Black;
+            } else
+            {
+                mario.boxColor = Color.Yellow;
             }
             mario.Update(Viewport);
         }
