@@ -10,9 +10,6 @@ namespace MarioGame.Entities.ItemEntities
     {
         // Could be useful for casting in certain circumstances
         public MushroomSuperSprite iSprite;
-        ContentManager content;
-        public static Rectangle boundingBox;
-        public static Color boxColor;
 
         public MushroomSuperEntity(Vector2 position, MushroomSuperSprite sprite) : base(position, sprite)
         {

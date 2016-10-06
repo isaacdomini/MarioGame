@@ -11,8 +11,6 @@ namespace MarioGame.Entities.ItemEntities
         // Could be useful for casting in certain circumstances
         public StarSprite iSprite;
         ContentManager content;
-        public static Rectangle boundingBox;
-        public static Color boxColor;
 
         public StarEntity(Vector2 position, StarSprite sprite) : base(position, sprite)
         {

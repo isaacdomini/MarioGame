@@ -49,12 +49,25 @@ namespace MarioGame.Theming
 		    _enemies = new List<Entity>();
 		    _items = new List<Entity>();
 		    _blocks = new List<BlockEntity>();
-            collisionHandler = new CollisionHandler(mario, _blocks, _items, _enemies);
+            collisionHandler = new CollisionHandler();
         }
 
         public void Update(GameTime gameTime)
         {
-            mario.Update(Viewport, collisionHandler);
+            foreach (var block in _blocks)
+            {
+                if (collisionHandler.checkForCollision(mario, block))
+                {
+                    //_mario.Halt();
+                    mario.boxColor = Color.Black;
+                    break;
+                }
+                else
+                {
+                    mario.boxColor = Color.Yellow;
+                }
+            }
+            mario.Update(Viewport);
         }
 
         public void AddMario(MarioEntity marioEntity)

@@ -92,7 +92,34 @@ namespace MarioGame.Theming.Scenes
 
             _spriteBatch.Begin();
             Sprites.ForEach(s => s.Draw(_spriteBatch));
+
+            // Draw all rectangles
+            drawRectangleBorder(_spriteBatch, _script.mario.boundingBox, 1, _script.mario.boxColor);
+            foreach (var block in _script._blocks)
+            {
+                drawRectangleBorder(_spriteBatch, block.boundingBox, 1, block.boxColor);
+            }
+            foreach (var enemy in _script._enemies)
+            {
+                drawRectangleBorder(_spriteBatch, enemy.boundingBox, 1, enemy.boxColor);
+            }
+            foreach (var item in _script._items)
+            {
+                drawRectangleBorder(_spriteBatch, item.boundingBox, 1, item.boxColor);
+            }
             _spriteBatch.End();
+        }
+
+        public void drawRectangleBorder(SpriteBatch batch, Rectangle toDraw, int borderThickness, Color borderColor)
+        {
+            // Draw top line
+            batch.Draw(Scene.rectanglePixel, new Rectangle((toDraw.X), toDraw.Y, toDraw.Width, 1), borderColor);
+            // Draw left line
+            batch.Draw(Scene.rectanglePixel, new Rectangle(toDraw.X, toDraw.Y, 1, toDraw.Height), borderColor);
+            // Draw right line
+            batch.Draw(Scene.rectanglePixel, new Rectangle((toDraw.X + toDraw.Width - 1), toDraw.Y, 1, toDraw.Height), borderColor);
+            // Draw bottom line
+            batch.Draw(Scene.rectanglePixel, new Rectangle(toDraw.X, toDraw.Y + toDraw.Height - 1, toDraw.Width, 1), borderColor);
         }
 
         protected virtual void Dispose(bool disposing)

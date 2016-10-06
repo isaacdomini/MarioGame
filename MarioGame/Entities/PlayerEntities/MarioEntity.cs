@@ -25,9 +25,6 @@ namespace MarioGame.Entities.PlayerEntities
         public MarioSprite mSprite;
         private int _width;
         private int _height;
-        public static Rectangle boundingBox;
-        //Bounding Box color for sprint2
-        public static Color boxColor;
 
         // Velocity variables
         public readonly static int velocityConstant = 1;
@@ -55,10 +52,9 @@ namespace MarioGame.Entities.PlayerEntities
 
 
 
-        public void Update(Viewport viewport, CollisionHandler collisionHandler)
+        public void Update(Viewport viewport)
         {
             base.Update();
-            collisionHandler.handleMarioCollisions();
             // Maybe just set velocity to zero for all this? - Ricky
             Vector2 pos = _position;
             if (_position.X < 0)

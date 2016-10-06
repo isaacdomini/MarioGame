@@ -8,9 +8,7 @@ namespace MarioGame.Entities.EnemyEntities
 {
     public class GoombaEntity : Entity
     {
-        //Bounding Box color for sprint2
-        public static Color boxColor;
-        public static Rectangle boundingBox;
+
 
         public GoombaEntity(Vector2 position, Sprite sprite) : base(position, sprite)
 	    {

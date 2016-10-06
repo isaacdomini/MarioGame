@@ -10,8 +10,6 @@ namespace MarioGame.Entities.BlockEntities
 {
     public class BrickBlockEntity : BlockEntity
     {
-        public static Rectangle boundingBox;
-        public static Color boxColor;
         public BrickBlockEntity(Vector2 position, BrickBlockSprite sprite) : base(position, sprite)
         {
             boundingBox = new Rectangle((int)_position.X, (int)_position.Y, 18, 18);

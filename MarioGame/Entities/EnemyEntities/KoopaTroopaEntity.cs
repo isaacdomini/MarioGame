@@ -10,8 +10,7 @@ namespace MarioGame.Entities.EnemyEntities
 {
     class KoopaTroopaEntity : Entity
     {
-        public static Rectangle boundingBox;
-        public static Color boxColor;
+        
 
 
         public KoopaTroopaEntity(Vector2 position, Sprite sprite) : base(position, sprite)

@@ -8,10 +8,7 @@ namespace MarioGame.Entities.ItemEntities
 {
     public class FireFlowerEntity : Entity
     {
-        // Could be useful for casting in certain circumstances
-        ContentManager content;
-        public static Rectangle boundingBox;
-        public static Color boxColor;
+
 
         public FireFlowerEntity(Vector2 position, FireFlowerSprite flowerSprite) : base(position, flowerSprite)
         {

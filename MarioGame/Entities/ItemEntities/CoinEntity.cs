@@ -8,9 +8,6 @@ namespace MarioGame.Entities.ItemEntities
 {
     public class CoinEntity : Entity
     {
-        public static Rectangle boundingBox;
-        public static Color boxColor;
-
 
         public CoinEntity(Vector2 position, CoinsSprite sprite) : base(position, sprite)
         {

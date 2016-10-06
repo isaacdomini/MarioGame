@@ -14,7 +14,8 @@ namespace MarioGame.Entities
     {
         IState _state;
         public Sprite _sprite;
-
+        public Rectangle boundingBox;
+        public Color boxColor;
         protected ActionState aState;
         public ActionState ActionState
         {

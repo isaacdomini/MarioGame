@@ -14,39 +14,18 @@ namespace MarioGame.Collisions
 {
     public class CollisionHandler
     {
-        MarioEntity _mario;
-        List<BlockEntity> _blocks;
-        List<Entity> _items;
-        List<Entity> _enemies;
-        public CollisionHandler(MarioEntity mario, List<BlockEntity> blocks, List<Entity> items, List<Entity> enemies) 
+        public CollisionHandler() 
         {
-            _mario = mario;
-            _blocks = blocks;
-            _items = items;
-            _enemies = enemies;
         }
         public bool checkForCollision(Entity entity1, Entity entity2)
         {
             bool check = false;
             // Add this line when bounding boxes have been initialized and dealt with for all entities
-            if (MarioEntity.boundingBox.Intersects(BrickBlockEntity.boundingBox)) check = true;
+            if (entity1.boundingBox.Intersects(entity2.boundingBox)) check = true;
             return check;
         }
 
-        public void handleMarioCollisions()
-        {
-            foreach (var block in _blocks)
-            {
-                if (checkForCollision(_mario, block)){
-                    //_mario.Halt();
-                    MarioEntity.boxColor = Color.Black;
-                }
-                else
-                {
-                    MarioEntity.boxColor = Color.Yellow;
-                }
-            }
-        }
+
     }
 
 }
