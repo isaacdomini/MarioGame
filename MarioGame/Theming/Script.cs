@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using System;
+using MarioGame.Entities.EnemyEntities;
 
 namespace MarioGame.Theming
 {
@@ -69,6 +70,18 @@ namespace MarioGame.Theming
                 {
                     //_mario.Halt();
                     colliding = true;
+                    if(enemy.GetType() == typeof(KoopaTroopaEntity))
+                    {
+                        enemy.boxColor = Color.Black;
+                    }
+                    else if(enemy.GetType() == typeof(GoombaEntity))
+                    {
+                        enemy.boxColor = Color.Black;
+                    }
+                }
+                else
+                {
+                    enemy.boxColor = Color.Red;
                 }
 
             }
