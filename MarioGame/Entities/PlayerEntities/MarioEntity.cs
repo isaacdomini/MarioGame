@@ -76,21 +76,29 @@ namespace MarioGame.Entities.PlayerEntities
                 pos.Y = viewport.Height - _height;
             }
             _position = pos;
-            if (ActionState.isFacingLeft() == true)
+            
+            if(PowerUpState.powerUpState != MarioPowerUpStateEnum.Standard)
             {
-                boundingBox.X = (int)_position.X-5;
-                boundingBox.Y = (int)_position.Y+16;
+                boundingBox.Width = 30;
+                boundingBox.Height = 40;
+                boundingBox.X = (int)_position.X - 5;
+                boundingBox.Y = (int)_position.Y;
             }
-            else
+            if (PowerUpState.powerUpState == MarioPowerUpStateEnum.Standard || PowerUpState.powerUpState == MarioPowerUpStateEnum.Dead)
             {
-                boundingBox.X = (int)_position.X + 5;
-                boundingBox.Y = (int)_position.Y + 16;
+                boundingBox.Width = 20;
+                boundingBox.Height = 20;
+                if (ActionState.isFacingLeft() == true)
+                {
+                    boundingBox.X = (int)_position.X - 5;
+                    boundingBox.Y = (int)_position.Y + 16;
+                }
+                else
+                {
+                    boundingBox.X = (int)_position.X + 5;
+                    boundingBox.Y = (int)_position.Y + 16;
+                }
             }
-            //if (MarioPowerUpState != StandardState)
-            //{
-            //    boundingBox.Width = 30;
-            //    boundingBox.Height = 40;
-            //}
         }
         public bool checkMarioJumpingUp()
         {
