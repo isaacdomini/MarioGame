@@ -12,6 +12,8 @@ namespace MarioGame.Entities.BlockEntities
     {
         public StepBlockEntity(Vector2 position, StepBlockSprite sprite) : base(position, sprite)
         {
+            boundingBox = new Rectangle((int)_position.X, (int)_position.Y, 18, 18);
+            boxColor = Color.Blue;
         }
     }
 }

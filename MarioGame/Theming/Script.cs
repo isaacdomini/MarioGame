@@ -69,19 +69,26 @@ namespace MarioGame.Theming
             {
                 if (collisionHandler.checkForCollision(mario, enemy))
                 {
-                    //_mario.Halt();
-                    colliding = true;
-                    mario.Halt();
+                    
                     if(enemy.GetType() == typeof(KoopaTroopaEntity))
                     {
-                        enemy.boxColor = Color.Black;
-                        mario.ChangeToDeadState();
+                        string returned = collisionHandler.checkSideCollision(mario, enemy);
+                        Console.WriteLine(returned);
+                        if (collisionHandler.checkSideCollision(mario, enemy) == "l")
+                        {
+                            enemy.boxColor = Color.Black;
+                            mario.ChangeToDeadState();
+                        }
+                        
                     }
                     else if(enemy.GetType() == typeof(GoombaEntity))
                     {
                         enemy.boxColor = Color.Black;
                         mario.ChangeToDeadState();
                     }
+                    //_mario.Halt();
+                    colliding = true;
+                    mario.Halt();
                 }
                 else
                 {
