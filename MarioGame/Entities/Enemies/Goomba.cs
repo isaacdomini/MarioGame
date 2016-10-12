@@ -4,13 +4,13 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
-namespace MarioGame.Entities.EnemyEntities
+namespace MarioGame.Entities.Enemies
 {
-    public class GoombaEntity : Entity
+    public class Goomba : Entity
     {
 
 
-        public GoombaEntity(Vector2 position, Sprite sprite) : base(position, sprite)
+        public Goomba(Vector2 position, Sprite sprite) : base(position, sprite)
 	    {
             int _height = 40;
             int _width = 20;

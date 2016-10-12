@@ -1,6 +1,6 @@
 ﻿using MarioGame.Entities;
-using MarioGame.Entities.BlockEntities;
-using MarioGame.Entities.EnemyEntities;
+using MarioGame.Entities.Blocks;
+using MarioGame.Entities.Enemies;
 using MarioGame.Entities.PlayerEntities;
 using MarioGame.Theming;
 using Microsoft.Xna.Framework;

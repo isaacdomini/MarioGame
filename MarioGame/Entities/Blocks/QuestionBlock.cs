@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using MarioGame.Sprites;
 using Microsoft.Xna.Framework;
 
-namespace MarioGame.Entities.BlockEntities
+namespace MarioGame.Entities.Blocks
 {
-    public class QuestionBlockEntity : BlockEntity
+    public class QuestionBlock : Block
     {
-        public QuestionBlockEntity(Vector2 position, Sprite sprite) : base(position, sprite)
+        public QuestionBlock(Vector2 position, Sprite sprite) : base(position, sprite)
         {
             boundingBox = new Rectangle((int)_position.X, (int)_position.Y, 18, 18);
             boxColor = Color.Blue;

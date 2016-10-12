@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MarioGame.Entities.BlockEntities
+namespace MarioGame.Entities.Blocks
 {
-    public enum BlockEntityEnum
+    public enum BlocksEnum
     {
          GroundBlockEntity,
          BrickBlockEntity,

@@ -4,17 +4,16 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
-namespace MarioGame.Entities.ItemEntities
+namespace MarioGame.Entities.Items
 {
-    public class FireFlowerEntity : Entity
+    public class Coin : Entity
     {
 
-
-        public FireFlowerEntity(Vector2 position, FireFlowerSprite flowerSprite) : base(position, flowerSprite)
+        public Coin(Vector2 position, CoinsSprite sprite) : base(position, sprite)
         {
             int _height = 40;
             int _width = 20;
-            boundingBox = new Rectangle((int)_position.X, (int)_position.Y, _width, _height/2);
+            boundingBox = new Rectangle((int)_position.X, (int)_position.Y, _width/2, _height/3);
             boxColor = Color.Green;
         }
         public override void Update() { }

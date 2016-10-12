@@ -6,14 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MarioGame.Entities.EnemyEntities
+namespace MarioGame.Entities.Enemies
 {
-    class KoopaTroopaEntity : Entity
+    class KoopaTroopa : Entity
     {
         
 
 
-        public KoopaTroopaEntity(Vector2 position, Sprite sprite) : base(position, sprite)
+        public KoopaTroopa(Vector2 position, Sprite sprite) : base(position, sprite)
 	{
             int _height = 40;
             int _width = 20;

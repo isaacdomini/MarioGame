@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using MarioGame.Sprites;
 using Microsoft.Xna.Framework;
 
-namespace MarioGame.Entities.BlockEntities
+namespace MarioGame.Entities.Blocks
 {
-    abstract class BumpableBlockEntity : BlockEntity, IBumpable
+    abstract class BumpableBlock : Block, IBumpable
     {
         private enum bumpedStatus
         {
@@ -18,7 +18,7 @@ namespace MarioGame.Entities.BlockEntities
             ThreeQuarters,
             Top
         }
-        public BumpableBlockEntity(Vector2 position, Sprite sprite) : base(position, sprite)
+        public BumpableBlock(Vector2 position, Sprite sprite) : base(position, sprite)
         {
             boundingBox = new Rectangle((int)_position.X, (int)_position.Y, 18, 18);
             boxColor = Color.Blue;

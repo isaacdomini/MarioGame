@@ -4,14 +4,14 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
-namespace MarioGame.Entities.ItemEntities
+namespace MarioGame.Entities.Items
 {
-    public class MushroomSuperEntity : Entity
+    public class MushroomSuper : Entity
     {
         // Could be useful for casting in certain circumstances
         public MushroomSuperSprite iSprite;
 
-        public MushroomSuperEntity(Vector2 position, MushroomSuperSprite sprite) : base(position, sprite)
+        public MushroomSuper(Vector2 position, MushroomSuperSprite sprite) : base(position, sprite)
         {
             iSprite = sprite;
             int _height = 40;

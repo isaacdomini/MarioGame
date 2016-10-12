@@ -4,13 +4,13 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
-namespace MarioGame.Entities.ItemEntities
+namespace MarioGame.Entities.Items
 {
-    public class Mushroom1UpEntity : Entity
+    public class FireFlower : Entity
     {
 
 
-        public Mushroom1UpEntity(Vector2 position, Mushroom1UpSprite sprite) : base(position, sprite)
+        public FireFlower(Vector2 position, FireFlowerSprite flowerSprite) : base(position, flowerSprite)
         {
             int _height = 40;
             int _width = 20;

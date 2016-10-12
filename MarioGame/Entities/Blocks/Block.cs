@@ -5,15 +5,15 @@ using MarioGame.States;
 using MarioGame.States.BlockStates;
 using Microsoft.Xna.Framework;
 
-namespace MarioGame.Entities.BlockEntities
+namespace MarioGame.Entities.Blocks
 {
-    public class BlockEntity : Entity
+    public class Block : Entity
     {
  
 
         // Could be useful for casting in certain circumstances
         public StandardState bState;
-        public BlockEntity(Vector2 position, Sprite sprite) : base(position, sprite)
+        public Block(Vector2 position, Sprite sprite) : base(position, sprite)
         {
             bState = new StandardBlockState(this);
             

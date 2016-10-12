@@ -9,12 +9,12 @@ using MarioGame.Sprites;
 using Microsoft.Xna.Framework.Graphics;
 using static MarioGame.States.PlayerStates.ActionState;
 using MarioGame.Theming;
-using MarioGame.Entities.BlockEntities;
+using MarioGame.Entities.Blocks;
 using MarioGame.Collisions;
 
-namespace MarioGame.Entities.PlayerEntities
+namespace MarioGame.Entities.Players
 {
-    public class MarioEntity : Entity
+    public class Mario : Entity
     {
         private MarioPowerUpState pState;
         // Could be useful for casting in certain circumstances
@@ -39,7 +39,7 @@ namespace MarioGame.Entities.PlayerEntities
         public readonly static Vector2 dashLeftVelocity = new Vector2(velocityConstant * -2, 0);
 
 
-        public MarioEntity(Vector2 position, Sprite sprite) : base(position, sprite)
+        public Mario(Vector2 position, Sprite sprite) : base(position, sprite)
         {
             aState = new IdleMarioState(this);
             aState.turnRight();
