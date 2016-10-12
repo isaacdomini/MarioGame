@@ -21,6 +21,8 @@ namespace MarioGame.Theming
         private CollisionHandler collisionHandler;
 
         public MarioEntity mario { get; private set; }
+
+        public List<Entity> _entities { get; private set; }
 	    public List<Entity> _enemies { get; private set; }
 	    public List<Entity> _items { get; private set; }
 	    public List<BlockEntity> _blocks { get; private set; }
@@ -69,17 +71,15 @@ namespace MarioGame.Theming
             {
                 if (collisionHandler.checkForCollision(mario, enemy))
                 {
-                    
                     if(enemy.GetType() == typeof(KoopaTroopaEntity))
                     {
-                        string returned = collisionHandler.checkSideCollision(mario, enemy);
+                        CollisionTypes returned = collisionHandler.checkSideCollision(mario, enemy);
                         Console.WriteLine(returned);
-                        if (collisionHandler.checkSideCollision(mario, enemy) == "l")
+                        if (collisionHandler.checkSideCollision(mario, enemy) == CollisionTypes.Left)
                         {
                             enemy.boxColor = Color.Black;
                             mario.ChangeToDeadState();
                         }
-                        
                     }
                     else if(enemy.GetType() == typeof(GoombaEntity))
                     {

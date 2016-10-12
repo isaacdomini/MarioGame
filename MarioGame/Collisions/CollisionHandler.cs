@@ -12,6 +12,14 @@ using System.Threading.Tasks;
 
 namespace MarioGame.Collisions
 {
+    public enum CollisionTypes
+    {
+        Left,
+        Right,
+        Bottom,
+        Top,
+        None
+    }
     public class CollisionHandler
     {
         public CollisionHandler() 
@@ -19,19 +27,15 @@ namespace MarioGame.Collisions
         }
         public bool checkForCollision(Entity entity1, Entity entity2)
         {
-            bool check = false;
-            // Add this line when bounding boxes have been initialized and dealt with for all entities
-            if (entity1.boundingBox.Intersects(entity2.boundingBox)) check = true;
-            return check;
+            return entity1.boundingBox.Intersects(entity2.boundingBox);
         }
-        public string checkSideCollision(Entity entity1, Entity entity2)
+        public CollisionTypes checkSideCollision(Entity entity1, Entity entity2)
         {
-
             double width = 0.5 * (entity1.boundingBox.Width + entity2.boundingBox.Width);
             double height = 0.5 * (entity1.boundingBox.Height + entity2.boundingBox.Height);
             double dx = entity1.boundingBox.Center.X - entity2.boundingBox.Center.X;
             double dy = entity1.boundingBox.Center.Y - entity2.boundingBox.Center.Y;
-            string toReturn = "";
+            CollisionTypes toReturn = CollisionTypes.None;
 
             if (Math.Abs(dx) <= width && Math.Abs(dy) <= height)
             {
@@ -42,29 +46,30 @@ namespace MarioGame.Collisions
                 {
                     if (wy > -hx)
                     {
-                        toReturn = "b";
+                        toReturn = CollisionTypes.Bottom;
                     }
                     /* collision at the top */
                     else
                     {
-                        toReturn = "l";
+                        toReturn = CollisionTypes.Left;
 
                     }
+                    /* on the left */
                 }
-                /* on the left */
+
                 else
                 {
                     if (wy > -hx)
                     {
-                        toReturn = "r";
+                        toReturn = CollisionTypes.Right;
                     }
                     /* on the right */
                     else
                     {
-                        toReturn = "t";
+                        toReturn = CollisionTypes.Left;
                     }
                 }
-                /* at the bottom */
+                /* at the top */
             }
             return toReturn;
             
