@@ -1,11 +1,4 @@
-<<<<<<< eeae4443b49819b251433519bb521fe6ddb59882
-﻿using MarioGame.Entities;
-using MarioGame.Entities.BlockEntities;
-using MarioGame.Entities.EnemyEntities;
-using MarioGame.Entities.ItemEntities;
-using MarioGame.Entities.PlayerEntities;
-using MarioGame.States.PlayerStates;
-using MarioGame.Theming.Scenes;
+<<<<<<< 07f3f3c131ce7ed30917d9774317d9d94187e345
 using Microsoft.Xna.Framework;
 =======
 ﻿using Microsoft.Xna.Framework;
