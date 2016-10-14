@@ -1,17 +1,9 @@
-﻿using MarioGame.Entities;
-using MarioGame.Entities.BlockEntities;
-using MarioGame.Entities.EnemyEntities;
-using MarioGame.Entities.ItemEntities;
-using MarioGame.Entities.PlayerEntities;
-using MarioGame.States.PlayerStates;
-using MarioGame.Theming.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections;
+
 using System.Collections.Generic;
-using static MarioGame.Sprites.PlayerSprites.MarioSprite;
+
 
 namespace MarioGame.Sprites
 {

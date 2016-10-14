@@ -1,11 +1,6 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using MarioGame.Entities.PlayerEntities;
-using MarioGame.Entities;
 using System.Collections.Generic;
-using System.Collections;
 using MarioGame.States.PlayerStates;
 
 namespace MarioGame.Sprites.PlayerSprites

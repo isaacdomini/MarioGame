@@ -1,18 +1,11 @@
-﻿using MarioGame.Entities;
-using MarioGame.Entities.PlayerEntities;
-using MarioGame.Sprites;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MarioGame.Entities.Players;
 
 namespace MarioGame.States.PlayerStates
 {
     class WalkingMarioState  : MarioActionState
     {
         //TODO: Shouldn't this state only be able to be called when in Giant Mario Power State?
-        public WalkingMarioState(MarioEntity entity) : base(entity)
+        public WalkingMarioState(Mario entity) : base(entity)
         {
             actionState = MarioActionStateEnum.Walking;
         }
@@ -20,36 +13,36 @@ namespace MarioGame.States.PlayerStates
         public override void Jump()
         {
             
-            MarioActionState jumpState = new JumpingMarioState(marioEntity);
-            marioEntity.ChangeActionState(jumpState);
+            MarioActionState jumpState = new JumpingMarioState(mario);
+            mario.ChangeActionState(jumpState);
             jumpState.setDirection(this.direction);
             if (this.isFacingLeft())
             {
-                marioEntity.setVelocity(MarioEntity.jumpingLeftVelocity);
+                mario.setVelocity(mario.jumpingLeftVelocity);
             }
             else if (this.isFacingRight())
             {
-                marioEntity.setVelocity(MarioEntity.jumpingRightVelocity);
+                mario.setVelocity(mario.jumpingRightVelocity);
             }
             jumpState.Begin(this);
 
         }
         public override void Crouch()
         {
-            MarioActionState crouchState = new CrouchingMarioState(marioEntity);
-            marioEntity.ChangeActionState(crouchState);
+            MarioActionState crouchState = new CrouchingMarioState(mario);
+            mario.ChangeActionState(crouchState);
             crouchState.setDirection(this.direction);
-            marioEntity.setVelocity(MarioEntity.idleVelocity);
+            mario.setVelocity(mario.idleVelocity);
             crouchState.Begin(this);
         }
         public override void MoveLeft()
         {
             if (this.isFacingRight())
             {
-                MarioActionState idleRight = new IdleMarioState(marioEntity);
-                marioEntity.ChangeActionState(idleRight);
+                MarioActionState idleRight = new IdleMarioState(mario);
+                mario.ChangeActionState(idleRight);
                 idleRight.turnRight();
-                marioEntity.setVelocity(MarioEntity.idleVelocity);
+                mario.setVelocity(mario.idleVelocity);
                 idleRight.Begin(this);
             }
 
@@ -58,10 +51,10 @@ namespace MarioGame.States.PlayerStates
         {
             if (this.isFacingLeft())
             {
-                MarioActionState idleLeft = new IdleMarioState(marioEntity);
-                marioEntity.ChangeActionState(idleLeft);
+                MarioActionState idleLeft = new IdleMarioState(mario);
+                mario.ChangeActionState(idleLeft);
                 idleLeft.turnLeft();
-                marioEntity.setVelocity(MarioEntity.idleVelocity);
+                mario.setVelocity(mario.idleVelocity);
                 idleLeft.Begin(this);
             }
         }

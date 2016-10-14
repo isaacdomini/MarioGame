@@ -1,45 +1,38 @@
-﻿using MarioGame.Entities;
-using MarioGame.Entities.PlayerEntities;
-using MarioGame.Sprites;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MarioGame.Entities.Players;
 
 namespace MarioGame.States.PlayerStates
 {
     class FallingMarioState  : MarioActionState
     {
         //TODO: Shouldn't this state only be able to be called when in Giant Mario Power State?
-        public FallingMarioState(MarioEntity entity) : base(entity)
+        public FallingMarioState(Mario entity) : base(entity)
         {
             actionState = MarioActionStateEnum.Crouching; // what sprite should we use for falling?
         }
         public override void Jump()
         {
-            MarioActionState idleMario = new IdleMarioState(marioEntity);
+            MarioActionState idleMario = new IdleMarioState(mario);
             idleMario.setDirection(this.direction);
-            marioEntity.ChangeActionState(idleMario);
-            marioEntity.SetVelocityToIdle();
+            mario.ChangeActionState(idleMario);
+            mario.SetVelocityToIdle();
             idleMario.Begin(this);
         }
         public override void MoveLeft()
         {
             if (this.isFacingRight())
             {
-                MarioActionState fallingFacingLeft = new FallingMarioState(marioEntity);
-                marioEntity.ChangeActionState(fallingFacingLeft);
+                MarioActionState fallingFacingLeft = new FallingMarioState(mario);
+                mario.ChangeActionState(fallingFacingLeft);
                 fallingFacingLeft.turnLeft();
-                marioEntity.setVelocity(MarioEntity.fallingVelocity);
+                mario.setVelocity(mario.fallingVelocity);
                 fallingFacingLeft.Begin(this);
             }
             else if (this.isFacingLeft())
             {
-                MarioActionState walkingLeft = new WalkingMarioState(marioEntity);
-                marioEntity.ChangeActionState(walkingLeft);
+                MarioActionState walkingLeft = new WalkingMarioState(mario);
+                mario.ChangeActionState(walkingLeft);
                 walkingLeft.turnLeft();
-                marioEntity.setVelocity(MarioEntity.walkingLeftVelocity);
+                mario.setVelocity(mario.walkingLeftVelocity);
                 walkingLeft.Begin(this);
 
             }
@@ -48,18 +41,18 @@ namespace MarioGame.States.PlayerStates
         {
             if (this.isFacingLeft())
             {
-                MarioActionState fallingFacingRight = new FallingMarioState(marioEntity);
-                marioEntity.ChangeActionState(fallingFacingRight);
+                MarioActionState fallingFacingRight = new FallingMarioState(mario);
+                mario.ChangeActionState(fallingFacingRight);
                 fallingFacingRight.turnRight();
-                marioEntity.setVelocity(MarioEntity.fallingVelocity);
+                mario.setVelocity(mario.fallingVelocity);
                 fallingFacingRight.Begin(this);
             }
             else if (this.isFacingRight())
             {
-                MarioActionState walkingRight = new WalkingMarioState(marioEntity);
-                marioEntity.ChangeActionState(walkingRight);
+                MarioActionState walkingRight = new WalkingMarioState(mario);
+                mario.ChangeActionState(walkingRight);
                 walkingRight.turnRight();
-                marioEntity.setVelocity(MarioEntity.walkingRightVelocity);
+                mario.setVelocity(mario.walkingRightVelocity);
                 walkingRight.Begin(this);
 
             }

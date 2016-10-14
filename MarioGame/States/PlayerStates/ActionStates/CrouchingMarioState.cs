@@ -1,35 +1,29 @@
 ﻿using MarioGame.Entities;
-using MarioGame.Entities.PlayerEntities;
-using MarioGame.Sprites;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MarioGame.Entities.Players;
 
 namespace MarioGame.States.PlayerStates
 {
     class CrouchingMarioState  : MarioActionState
     {
         //TODO: Shouldn't this state only be able to be called when in Giant Mario Power State?
-        public CrouchingMarioState(MarioEntity entity) : base(entity)
+        public CrouchingMarioState(Mario entity) : base(entity)
         {
             actionState = MarioActionStateEnum.Crouching;
         }
         public override void Jump()
         {
-            MarioActionState newState = new IdleMarioState(marioEntity);
+            MarioActionState newState = new IdleMarioState(mario);
             newState.setDirection(this.direction);
-            marioEntity.ChangeActionState(newState);
-            marioEntity.SetVelocityToIdle();
+            mario.ChangeActionState(newState);
+            mario.SetVelocityToIdle();
             newState.Begin(this);
         }
         public override void Crouch()
         {
-            MarioActionState fallingState = new FallingMarioState(marioEntity);
+            MarioActionState fallingState = new FallingMarioState(mario);
             fallingState.setDirection(this.direction);
-            marioEntity.ChangeActionState(fallingState);
-            marioEntity.SetVelocityToFalling();
+            mario.ChangeActionState(fallingState);
+            mario.SetVelocityToFalling();
             fallingState.Begin(this);
         }
     }

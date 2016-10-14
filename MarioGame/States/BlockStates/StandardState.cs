@@ -1,8 +1,4 @@
-﻿
-using System;
-using MarioGame.Entities.PlayerEntities;
-using MarioGame.Entities;
-using MarioGame.Sprites;
+﻿using MarioGame.Entities;
 
 namespace MarioGame.States.BlockStates
 {

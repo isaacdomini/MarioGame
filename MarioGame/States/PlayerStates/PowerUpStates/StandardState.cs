@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MarioGame.Entities;
-using MarioGame.Entities.PlayerEntities;
-using Microsoft.Xna.Framework;
+﻿using MarioGame.Entities.Players;
 
 namespace MarioGame.States.PlayerStates.PowerUpStates
 {
     class StandardState : MarioPowerUpState
     {
-        public StandardState(MarioEntity entity) : base(entity)
+        public StandardState(Mario entity) : base(entity)
         {
             powerUpState = MarioPowerUpStateEnum.Standard;
             entity.boundingBox.Width = 20;
@@ -20,21 +13,21 @@ namespace MarioGame.States.PlayerStates.PowerUpStates
         }
         public override void ChangeToFire()
         {
-            MarioPowerUpState fire = new FireState(marioEntity);
-            marioEntity.ChangePowerUpState(fire);
+            MarioPowerUpState fire = new FireState(mario);
+            mario.ChangePowerUpState(fire);
             fire.Begin(this);
 
         }
         public override void ChangeToDead()
         {
-            MarioPowerUpState dead = new DeadState(marioEntity);
-            marioEntity.ChangePowerUpState(dead);
+            MarioPowerUpState dead = new DeadState(mario);
+            mario.ChangePowerUpState(dead);
             dead.Begin(this);
         }
         public override void ChangeToSuper()
         {
-            MarioPowerUpState super = new SuperState(marioEntity);
-            marioEntity.ChangePowerUpState(super);
+            MarioPowerUpState super = new SuperState(mario);
+            mario.ChangePowerUpState(super);
             super.Begin(this);
         }
     }

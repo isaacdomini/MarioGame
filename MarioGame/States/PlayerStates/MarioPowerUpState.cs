@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MarioGame.Entities;
-using MarioGame.Entities.PlayerEntities;
+﻿using MarioGame.Entities.Players;
 
 namespace MarioGame.States.PlayerStates
 {
@@ -14,14 +8,14 @@ namespace MarioGame.States.PlayerStates
         {
             get; protected set;
         }
-        protected MarioEntity marioEntity;
-        public MarioPowerUpState(MarioEntity entity) : base(entity)
+        protected Mario mario;
+        public MarioPowerUpState(Mario entity) : base(entity)
         {
-            marioEntity = entity;
+            mario = entity;
         }
         public void Begin(MarioPowerUpState prevState)
         {
-            marioEntity.mSprite.changePowerUp(this);
+            mario.mSprite.changePowerUp(this);
             base.Begin(prevState);
 
         }

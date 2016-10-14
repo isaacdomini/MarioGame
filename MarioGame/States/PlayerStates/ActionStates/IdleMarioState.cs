@@ -1,46 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MarioGame.Entities.PlayerEntities;
-using MarioGame.Entities;
-using MarioGame.Sprites;
+﻿using MarioGame.Entities.Players;
 
 namespace MarioGame.States.PlayerStates
 {
     class IdleMarioState : MarioActionState
     {
-        public IdleMarioState(MarioEntity entity) : base(entity)
+        public IdleMarioState(Mario entity) : base(entity)
         {
             actionState = MarioActionStateEnum.Idle;
         }
 
         public override void Jump()
         {
-            MarioActionState jumpState = new JumpingMarioState(marioEntity);
+            MarioActionState jumpState = new JumpingMarioState(mario);
             jumpState.setDirection(this.direction);
-            marioEntity.ChangeActionState(jumpState);
-            marioEntity.SetVelocityToJumpingStraight();
+            mario.ChangeActionState(jumpState);
+            mario.SetVelocityToJumpingStraight();
             jumpState.Begin(this);
 
         }
         public override void Crouch()
         {
-            if (marioEntity.PowerUpState.powerUpState == MarioPowerUpStateEnum.Standard)
+            if (mario.PowerUpState.powerUpState == MarioPowerUpStateEnum.Standard)
             {
-                MarioActionState fallingState = new FallingMarioState(marioEntity);
+                MarioActionState fallingState = new FallingMarioState(mario);
                 fallingState.setDirection(this.direction);
-                marioEntity.ChangeActionState(fallingState);
-                marioEntity.SetVelocityToFalling();
+                mario.ChangeActionState(fallingState);
+                mario.SetVelocityToFalling();
                 fallingState.Begin(this);
             }
             else
             {
-                MarioActionState crouchState = new CrouchingMarioState(marioEntity);
+                MarioActionState crouchState = new CrouchingMarioState(mario);
                 crouchState.setDirection(this.direction);
-                marioEntity.ChangeActionState(crouchState);
-                marioEntity.SetVelocityToFalling();
+                mario.ChangeActionState(crouchState);
+                mario.SetVelocityToFalling();
                 crouchState.Begin(this);
             }
 
@@ -49,18 +42,18 @@ namespace MarioGame.States.PlayerStates
         {
             if (this.isFacingLeft())
             {
-                MarioActionState moveLeft = new WalkingMarioState(marioEntity);
-                marioEntity.ChangeActionState(moveLeft);
+                MarioActionState moveLeft = new WalkingMarioState(mario);
+                mario.ChangeActionState(moveLeft);
                 moveLeft.setDirection(this.direction);
-                marioEntity.SetVelocityToWalk(Directions.Left);
+                mario.SetVelocityToWalk(Directions.Left);
                 moveLeft.Begin(this);
             }
             else if (this.isFacingRight())
             {
-                MarioActionState idleLeft = new IdleMarioState(marioEntity);
-                marioEntity.ChangeActionState(idleLeft);
+                MarioActionState idleLeft = new IdleMarioState(mario);
+                mario.ChangeActionState(idleLeft);
                 idleLeft.turnLeft();
-                marioEntity.SetVelocityToIdle();
+                mario.SetVelocityToIdle();
                 idleLeft.Begin(this);
             }
 
@@ -71,20 +64,20 @@ namespace MarioGame.States.PlayerStates
             if (this.isFacingRight())
             {
                 // Mario state is set to walking right
-                MarioActionState moveRight = new WalkingMarioState(marioEntity);
-                marioEntity.ChangeActionState(moveRight);
+                MarioActionState moveRight = new WalkingMarioState(mario);
+                mario.ChangeActionState(moveRight);
                 moveRight.turnRight();
-                marioEntity.SetVelocityToWalk(Directions.Right);
+                mario.SetVelocityToWalk(Directions.Right);
                 moveRight.Begin(this);
             }
             // Meaning marion is facing left
             else if (this.isFacingLeft())
             {
                 // Mario is idling facing the right
-                MarioActionState idleLeft = new IdleMarioState(marioEntity);
-                marioEntity.ChangeActionState(idleLeft);
+                MarioActionState idleLeft = new IdleMarioState(mario);
+                mario.ChangeActionState(idleLeft);
                 idleLeft.turnRight();
-                marioEntity.SetVelocityToIdle();
+                mario.SetVelocityToIdle();
                 idleLeft.Begin(this);
             }
 
