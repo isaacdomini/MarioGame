@@ -13,9 +13,5 @@ namespace MarioGame.States.EnemyStates
         {
             enemyState = EnemyActionStateEnum.Dead;
         }
-
-        public override void Halt()
-        {
-        }
     }
 }

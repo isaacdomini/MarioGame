@@ -55,7 +55,10 @@ namespace MarioGame.Entities
             _velocity = newVelocity;
         }
         public virtual void Halt() { }
-
+        public void makeInvisible()
+        {
+            _sprite.Visible = true;
+        }
 
     }
 }

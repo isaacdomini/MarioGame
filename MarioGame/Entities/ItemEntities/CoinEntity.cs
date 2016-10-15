@@ -8,7 +8,6 @@ namespace MarioGame.Entities.ItemEntities
 {
     public class CoinEntity : Entity
     {
-
         public CoinEntity(Vector2 position, CoinsSprite sprite) : base(position, sprite)
         {
             int _height = 40;
@@ -17,5 +16,7 @@ namespace MarioGame.Entities.ItemEntities
             boxColor = Color.Green;
         }
         public override void Update() { }
+
+       
     }
 }

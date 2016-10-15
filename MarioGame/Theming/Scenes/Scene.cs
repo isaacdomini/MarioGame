@@ -98,15 +98,24 @@ namespace MarioGame.Theming.Scenes
             drawRectangleBorder(_spriteBatch, _script.mario.boundingBox, 1, _script.mario.boxColor);
             foreach (var block in _script._blocks)
             {
-                drawRectangleBorder(_spriteBatch, block.boundingBox, 1, block.boxColor);
+                if (block._sprite.Visible == false)
+                {
+                    drawRectangleBorder(_spriteBatch, block.boundingBox, 1, block.boxColor);
+                }
             }
             foreach (var enemy in _script._enemies)
             {
-                drawRectangleBorder(_spriteBatch, enemy.boundingBox, 1, enemy.boxColor);
+                if (enemy._sprite.Visible == false)
+                {
+                    drawRectangleBorder(_spriteBatch, enemy.boundingBox, 1, enemy.boxColor);
+                }
             }
             foreach (var item in _script._items)
             {
-                drawRectangleBorder(_spriteBatch, item.boundingBox, 1, item.boxColor);
+                if (item._sprite.Visible == false)
+                {
+                    drawRectangleBorder(_spriteBatch, item.boundingBox, 1, item.boxColor);
+                }
             }
             _spriteBatch.End();
         }
