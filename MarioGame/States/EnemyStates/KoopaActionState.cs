@@ -23,7 +23,7 @@ namespace MarioGame.States.EnemyStates
             base.Begin(prevState);
             enemyEntity.eSprite.changeActionState(this);
         }
-        public void Halt()
+        public virtual void Halt()
         {
             KoopaActionState newState = new DeadKoopaState(enemyEntity);
             newState.setDirection(this.direction);

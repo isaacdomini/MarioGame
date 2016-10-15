@@ -21,14 +21,14 @@ namespace MarioGame.States.EnemyStates
         public virtual void Begin(GoombaActionState prevState)
         {
             base.Begin(prevState);
-            //enemyEntity.eSprite.changeActionState(this);
+            enemyEntity.eSprite.changeActionState(this);
         }
-        public void Halt()
+        public virtual void Halt()
         {
             GoombaActionState newState = new DeadGoombaState(enemyEntity);
             newState.setDirection(this.direction);
-            //enemyEntity.ChangeActionState(newState);
-            //enemyEntity.SetVelocityToIdle();
+            enemyEntity.ChangeActionState(newState);
+            enemyEntity.SetVelocityToIdle();
             newState.Begin(this);
         }
 

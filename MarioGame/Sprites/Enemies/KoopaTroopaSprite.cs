@@ -30,7 +30,7 @@ namespace MarioGame.Sprites
                 {EnemyActionStateEnum.Walking.GetHashCode(), new List<int>{Frames.MidWings.GetHashCode(), Frames.Wings.GetHashCode(), Frames.Walk.GetHashCode(), Frames.Walk2.GetHashCode()} },
                 {EnemyActionStateEnum.Dead.GetHashCode(), new List<int> { Frames.Dead.GetHashCode() } }
             };
-            _frameSet = _frameSets[0];
+            _frameSet = _frameSets[EnemyActionStateEnum.Walking.GetHashCode()];
             _frameSetPosition = 0;
             _rowSetPosition = 0;
             _numberOfFramesPerRow = 10;

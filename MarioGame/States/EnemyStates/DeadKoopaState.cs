@@ -14,5 +14,14 @@ namespace MarioGame.States.EnemyStates
         {
             enemyState = EnemyActionStateEnum.Dead;
         }
+        public override void Halt()
+        {
+            KoopaActionState newState = new DeadKoopaState(enemyEntity);
+            newState.setDirection(this.direction);
+            enemyEntity.ChangeActionState(newState);
+            enemyEntity.SetVelocityToMoving();
+            enemyEntity.Update();
+            newState.Begin(this);
+        }
     }
 }

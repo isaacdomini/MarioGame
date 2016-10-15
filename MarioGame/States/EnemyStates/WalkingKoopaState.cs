@@ -10,7 +10,7 @@ namespace MarioGame.States.EnemyStates
 {
     class WalkingKoopaState : KoopaActionState
     {
-        private KoopaTroopaEntity enemyEntity;
+        //private KoopaTroopaEntity enemyEntity;
 
         public WalkingKoopaState(KoopaTroopaEntity enemyEntity) : base(enemyEntity)
         {

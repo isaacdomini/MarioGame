@@ -1,6 +1,10 @@
-﻿using MarioGame.Sprites;
+﻿using MarioGame.Collisions;
+using MarioGame.Core;
+using MarioGame.Sprites;
 using MarioGame.States.EnemyStates;
 using MarioGame.States.PlayerStates;
+using MarioGame.Theming;
+using MarioGame.Theming.Scenes;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -15,6 +19,7 @@ namespace MarioGame.Entities.EnemyEntities
         public KoopaTroopaSprite eSprite;
         private KoopaActionState eState;
         public readonly static Vector2 idleVelocity = new Vector2(0, 0);
+        public readonly static Vector2 movingVelocity = new Vector2(20, 0);
 
         public KoopaTroopaEntity(Vector2 position, Sprite sprite) : base(position, sprite)
         {
@@ -26,11 +31,16 @@ namespace MarioGame.Entities.EnemyEntities
             boxColor = Color.Red;
 
         }
+
+        internal void SetVelocityToMoving()
+        {
+            this.setVelocity(movingVelocity);
+        }
+
         public void ChangeActionState(ActionState state)
         {
             aState = state;
             aState.setDirection(state.direction);
-
         }
         public override void Halt()
         {
