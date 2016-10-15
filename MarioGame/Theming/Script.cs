@@ -83,7 +83,8 @@ namespace MarioGame.Theming
                     else
                     {
                         // Need to switch isCollidable based on powerUpState 
-                        //so that mario can technically walk through enemyies after taking damage
+                        //so that mario can technically walk through enemies after taking damage
+                        //Mario shouldn't die when koopa is an idle shell. Only when shell is moving or Koopa is alive
                         if (mario.isCollidable == true)
                         {
                             mario.ChangeToDeadState();
@@ -95,6 +96,7 @@ namespace MarioGame.Theming
                     enemy.boxColor = Color.Red;
                     mario.isCollidable = true;
                 }
+                enemy.Update(Viewport);
 
             }
             foreach (var item in _items)
@@ -139,6 +141,7 @@ namespace MarioGame.Theming
                 mario.boxColor = Color.Yellow;
             }
             mario.Update(Viewport);
+
         }
 
 

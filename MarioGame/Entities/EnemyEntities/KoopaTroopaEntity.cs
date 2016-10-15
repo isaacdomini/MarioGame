@@ -6,6 +6,7 @@ using MarioGame.States.PlayerStates;
 using MarioGame.Theming;
 using MarioGame.Theming.Scenes;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,14 +20,16 @@ namespace MarioGame.Entities.EnemyEntities
         public KoopaTroopaSprite eSprite;
         private KoopaActionState eState;
         public readonly static Vector2 idleVelocity = new Vector2(0, 0);
-        public readonly static Vector2 movingVelocity = new Vector2(20, 0);
+        public readonly static Vector2 movingVelocity = new Vector2(2, 0);
+        private int _height;
+        private int _width;
 
         public KoopaTroopaEntity(Vector2 position, Sprite sprite) : base(position, sprite)
         {
             aState = new WalkingKoopaState(this);
             eSprite = (KoopaTroopaSprite)_sprite;
-            int _height = 40;
-            int _width = 20;
+             _height = 40;
+             _width = 20;
             boundingBox = new Rectangle((int)_position.X + 3, (int)_position.Y + 5, _width / 2, _height / 3);
             boxColor = Color.Red;
             isCollidable = true;
@@ -52,9 +55,23 @@ namespace MarioGame.Entities.EnemyEntities
         {
             this.setVelocity(idleVelocity);
         }
-        public override void Update()
+        public override void Update(Viewport viewport)
         {
-            _position += _velocity;
+            base.Update();
+            Vector2 pos = _position;
+            if (_position.X < 0)
+            {
+                pos.X = 0;
+                _velocity = _velocity * -1;
+            }
+            else if (_position.X + _width > viewport.Width)
+            {
+                pos.X = viewport.Width - _width;
+                _velocity = _velocity * -1;
+            }
+            _position = pos;
+
+            //_position += _velocity;
             boundingBox.X = (int)_position.X + 3;
             boundingBox.Y = (int)_position.Y + 5;
         }

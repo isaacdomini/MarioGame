@@ -54,7 +54,7 @@ namespace MarioGame.Entities.PlayerEntities
 
 
 
-        public void Update(Viewport viewport)
+        public override void Update(Viewport viewport)
         {
             base.Update();
             // Maybe just set velocity to zero for all this? - Ricky

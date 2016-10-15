@@ -1,5 +1,6 @@
 ﻿using MarioGame.Entities.EnemyEntities;
 using MarioGame.States.PlayerStates;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,13 @@ namespace MarioGame.States.EnemyStates
             KoopaActionState newState = new DeadKoopaState(enemyEntity);
             newState.setDirection(this.direction);
             enemyEntity.ChangeActionState(newState);
-            enemyEntity.SetVelocityToMoving();
+            if (Vector2.Equals(enemyEntity._velocity,KoopaTroopaEntity.idleVelocity))
+            {
+                enemyEntity.SetVelocityToMoving();
+            }else
+            {
+                enemyEntity.SetVelocityToIdle();
+            }
             enemyEntity.Update();
             newState.Begin(this);
         }

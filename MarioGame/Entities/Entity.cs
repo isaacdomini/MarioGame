@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MarioGame.States.PlayerStates;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MarioGame.Entities
 {
@@ -46,7 +47,7 @@ namespace MarioGame.Entities
         {
             _position += _velocity;
         }
-
+        public virtual void Update(Viewport viewport) { }
         public Vector2 getPosition()
         {
             return _position;

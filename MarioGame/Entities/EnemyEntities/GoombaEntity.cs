@@ -41,7 +41,7 @@ namespace MarioGame.Entities.EnemyEntities
         {
             eState.ChangeToDead();
         }
-        public override void Update()
+        public override void Update(Viewport viewport)
         {
             _position += _velocity;
             boundingBox.X = (int)_position.X;
