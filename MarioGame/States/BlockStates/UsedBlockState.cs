@@ -5,14 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using MarioGame.Entities;
 using MarioGame.Sprites;
-using MarioGame.Entities.Blocks;
+using MarioGame.Entities.BlockEntities;
 using MarioGame.Sprites.BlockSprites;
 
 namespace MarioGame.States.BlockStates
 {
     class UsedBlockState : BlockState
     {
-        public UsedBlockState(Block entity) : base(entity)
+        public UsedBlockState(BlockEntity entity) : base(entity)
         {
             bState = BlockStateEnum.UsedBlock;
         }

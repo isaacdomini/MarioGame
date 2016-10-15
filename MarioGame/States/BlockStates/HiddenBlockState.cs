@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using MarioGame.Entities;
 using MarioGame.Sprites;
-using MarioGame.Entities.Blocks;
+using MarioGame.Entities.BlockEntities;
 
 namespace MarioGame.States.BlockStates
 {
     class HiddenBlockState : BlockState
     {
-        public HiddenBlockState(Block entity) : base(entity)
+        public HiddenBlockState(BlockEntity entity) : base(entity)
         {
             bState = BlockStateEnum.HiddenBlock;
         }

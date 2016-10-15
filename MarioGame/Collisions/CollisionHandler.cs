@@ -1,6 +1,6 @@
 ﻿using MarioGame.Entities;
-using MarioGame.Entities.Blocks;
-using MarioGame.Entities.Enemies;
+using MarioGame.Entities.BlockEntities;
+using MarioGame.Entities.EnemyEntities;
 using MarioGame.Entities.PlayerEntities;
 using MarioGame.Theming;
 using Microsoft.Xna.Framework;
@@ -54,9 +54,8 @@ namespace MarioGame.Collisions
                         toReturn = CollisionTypes.Left;
 
                     }
-                    /* on the left */
                 }
-
+                /* on the left */
                 else
                 {
                     if (wy > -hx)
@@ -66,11 +65,12 @@ namespace MarioGame.Collisions
                     /* on the right */
                     else
                     {
-                        toReturn = CollisionTypes.Left;
+                        toReturn = CollisionTypes.Top;
                     }
                 }
-                /* at the top */
+                /* at the bottom */
             }
+
             return toReturn;
             
         }

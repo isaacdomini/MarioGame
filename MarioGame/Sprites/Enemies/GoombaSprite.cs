@@ -1,4 +1,5 @@
 ﻿using MarioGame.Entities;
+using MarioGame.States.EnemyStates;
 using MarioGame.Theming.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -24,7 +25,8 @@ namespace MarioGame.Sprites
             _numberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
 
             _frameSets = new Dictionary<int, List<int>> {
-                { 0, new List<int>{Frames.Walk.GetHashCode(), Frames.Walk1.GetHashCode(), Frames.Dead.GetHashCode()} },
+                {EnemyActionStateEnum.Walking.GetHashCode(), new List<int>{Frames.Walk.GetHashCode(), Frames.Walk1.GetHashCode()} },
+                {EnemyActionStateEnum.Dead.GetHashCode(), new List<int> { Frames.Dead.GetHashCode() } }
             };
             _frameSet = _frameSets[Frames.Walk.GetHashCode()];
             _frameSetPosition = 0;
@@ -34,6 +36,19 @@ namespace MarioGame.Sprites
         public override void Update(float elapsed)
         {
             base.Update(elapsed);
+        }
+        public void changeActionState(GoombaActionState goombaActionState)
+        {
+            _frameSet = _frameSets[goombaActionState.enemyState.GetHashCode()];
+            _frameSetPosition = 0;
+            if (goombaActionState.isFacingRight())
+            {
+                _flipped = SpriteEffects.FlipHorizontally;
+            }
+            else if (goombaActionState.isFacingLeft())
+            {
+                _flipped = SpriteEffects.None;
+            }
         }
     }
 }

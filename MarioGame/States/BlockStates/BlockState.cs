@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MarioGame.Entities;
 using MarioGame.Sprites;
-using MarioGame.Entities.Blocks;
+using MarioGame.Entities.BlockEntities;
 
 namespace MarioGame.States.BlockStates
 {
@@ -13,9 +13,9 @@ namespace MarioGame.States.BlockStates
     {
         protected BlockStateEnum bState;
 
-        protected Block _BlockEntity;
+        protected BlockEntity _BlockEntity;
 
-        public BlockState(Block entity) : base(entity)
+        public BlockState(BlockEntity entity) : base(entity)
         {
             _BlockEntity = entity;
         }

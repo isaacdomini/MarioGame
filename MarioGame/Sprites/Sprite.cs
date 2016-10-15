@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using MarioGame.Entities;
+using MarioGame.States.PlayerStates;
 
 namespace MarioGame.Sprites
 {
@@ -46,5 +47,7 @@ namespace MarioGame.Sprites
         {
             throw new NotImplementedException();
         }
+
+        public virtual void changeActionState(ActionState goombaActionState) { }
     }
 }

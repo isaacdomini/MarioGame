@@ -115,6 +115,13 @@
     <Compile Include="States\BlockStates\StandardBlockState.cs" />
     <Compile Include="States\BlockStates\StandardState.cs" />
     <Compile Include="States\BlockStates\UsedBlockState.cs" />
+    <Compile Include="States\EnemyStates\DeadGoombaState.cs" />
+    <Compile Include="States\EnemyStates\DeadKoopaState.cs" />
+    <Compile Include="States\EnemyStates\EnemyActionStateEnum.cs" />
+    <Compile Include="States\EnemyStates\GoombaActionState.cs" />
+    <Compile Include="States\EnemyStates\KoopaActionState.cs" />
+    <Compile Include="States\EnemyStates\WalkingGoombaState .cs" />
+    <Compile Include="States\EnemyStates\WalkingKoopaState.cs" />
     <Compile Include="States\IState.cs" />
     <Compile Include="States\PlayerStates\ActionState.cs" />
     <Compile Include="States\PlayerStates\ActionStates\CrouchingMarioState.cs" />

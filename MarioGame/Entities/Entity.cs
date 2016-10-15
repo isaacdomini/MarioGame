@@ -54,6 +54,7 @@ namespace MarioGame.Entities
         {
             _velocity = newVelocity;
         }
+        public virtual void Halt() { }
 
 
     }
