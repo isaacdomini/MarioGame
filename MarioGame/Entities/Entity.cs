@@ -17,6 +17,7 @@ namespace MarioGame.Entities
         public Rectangle boundingBox;
         public Color boxColor;
         protected ActionState aState;
+        public bool isCollidable;
         public ActionState ActionState
         {
             get { return this.aState; }

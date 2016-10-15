@@ -16,7 +16,7 @@ namespace MarioGame.States.PlayerStates.PowerUpStates
             powerUpState = MarioPowerUpStateEnum.Dead;
             entity.boundingBox.Width = 20;
             entity.boundingBox.Height = 20;
-
+            marioEntity.isCollidable = false;
         }
         public override void ChangeToFire()
         {

@@ -29,6 +29,7 @@ namespace MarioGame.Entities.EnemyEntities
             int _width = 20;
             boundingBox = new Rectangle((int)_position.X + 3, (int)_position.Y + 5, _width / 2, _height / 3);
             boxColor = Color.Red;
+            isCollidable = true;
 
         }
 

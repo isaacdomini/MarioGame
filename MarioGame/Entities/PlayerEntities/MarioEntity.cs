@@ -240,7 +240,7 @@ namespace MarioGame.Entities.PlayerEntities
         {
             this.setVelocity(jumpingUpVelocity);
         }
-        public void Halt()
+        public override void Halt()
         {
             _position -= _velocity;
             ((MarioActionState)aState).Halt();

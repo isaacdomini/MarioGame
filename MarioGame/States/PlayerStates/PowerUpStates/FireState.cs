@@ -15,11 +15,11 @@ namespace MarioGame.States.PlayerStates.PowerUpStates
             powerUpState = MarioPowerUpStateEnum.Fire;
             entity.boundingBox.Width = 30;
             entity.boundingBox.Height = 40;
+
         }
         public override void ChangeToDead()
         {
             ChangeToStandard();
-
         }
         public override void ChangeToStandard()
         {

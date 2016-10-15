@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System;
 using MarioGame.Entities.EnemyEntities;
 using MarioGame.Entities.ItemEntities;
+using MarioGame.States;
 
 namespace MarioGame.Theming
 {
@@ -69,6 +70,7 @@ namespace MarioGame.Theming
             }
             foreach (var enemy in _enemies)
             {
+
                 if (collisionHandler.checkForCollision(mario, enemy))
                 {
                     colliding = true;
@@ -80,12 +82,18 @@ namespace MarioGame.Theming
                     }
                     else
                     {
-                        mario.ChangeToDeadState();
+                        // Need to switch isCollidable based on powerUpState 
+                        //so that mario can technically walk through enemyies after taking damage
+                        if (mario.isCollidable == true)
+                        {
+                            mario.ChangeToDeadState();
+                        }
                     }
                 }
                 else
                 {
                     enemy.boxColor = Color.Red;
+                    mario.isCollidable = true;
                 }
 
             }
