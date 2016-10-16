@@ -33,6 +33,7 @@ namespace MarioGame.Sprites
             _rowSetPosition = 0;
             _numberOfFramesPerRow = 3;
         }
+<<<<<<< 88c00baed242b47c3707abeda584f6e7fa743769
         public override void Update(float elapsed)
         {
             base.Update(elapsed);
@@ -50,5 +51,7 @@ namespace MarioGame.Sprites
                 _flipped = SpriteEffects.None;
             }
         }
+=======
+>>>>>>> Made it so that invoker of an entity constructor doesn't also have to invoke a sprite constructor. The user of an entity shouldn't have to have any knowledge about the entity's sprite.
     }
 }

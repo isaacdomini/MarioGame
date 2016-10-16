@@ -108,7 +108,7 @@
     <Compile Include="Sprites\ItemSprites\MushroomSuperSprite.cs" />
     <Compile Include="Sprites\BlockSprites\QuestionBlockSprite.cs" />
     <Compile Include="Sprites\ItemSprites\StarSprite.cs" />
-    <Compile Include="Sprites\PlayerSprites\MarioSprite.cs" />
+    <Compile Include="Sprites\Player\MarioSprite.cs" />
     <Compile Include="Sprites\Sprite.cs" />
     <Compile Include="States\BlockStates\BlockState.cs" />
     <Compile Include="States\BlockStates\BlockStateEnum.cs" />
@@ -142,7 +142,7 @@
     <Compile Include="States\PlayerStates\PowerUpStates\StandardState.cs" />
     <Compile Include="States\PlayerStates\PowerUpStates\SuperState.cs" />
     <Compile Include="States\State.cs" />
-    <Compile Include="Entities\Blocks\BrokenBrick.cs" />
+    <Compile Include="Entities\Blocks\BrokenBrickBlock.cs" />
     <Compile Include="Theming\Factory.cs" />
     <Compile Include="Theming\Scenes\Scene.cs" />
     <Compile Include="Theming\Script.cs" />

@@ -19,9 +19,9 @@ namespace MarioGame.Theming
         }
         public void addTileMapToScript(String tileMapFile, Script script)
         {
-            script.AddEntity(new Coin(new Vector2(150, 100), new CoinsSprite(Stage.Game1.Content)));
-            _script.AddItem(new FireFlower(new Vector2(200, 100), new FireFlowerSprite(Stage.Game1.Content)));
-            _script.AddItem(new Mushroom1Up(new Vector2(250, 100), new Mushroom1UpSprite(Stage.Game1.Content)));
+          //  script.AddEntity(new Coin(new Vector2(150, 100), new CoinsSprite(Stage.Game1.Content)));
+           // _script.AddItem(new FireFlower(new Vector2(200, 100), new FireFlowerSprite(Stage.Game1.Content)));
+           // _script.AddItem(new Mushroom1Up(new Vector2(250, 100), new Mushroom1UpSprite(Stage.Game1.Content)));
         }
     }
 }

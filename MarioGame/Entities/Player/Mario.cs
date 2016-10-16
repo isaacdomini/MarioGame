@@ -1,18 +1,12 @@
-﻿
-using System;
-using MarioGame.Sprites.PlayerSprites;
-using MarioGame.States;
-using MarioGame.States.PlayerStates;
+﻿using MarioGame.States.PlayerStates;
 using MarioGame.States.PlayerStates.PowerUpStates;
 using Microsoft.Xna.Framework;
 using MarioGame.Sprites;
 using Microsoft.Xna.Framework.Graphics;
 using static MarioGame.States.PlayerStates.ActionState;
-using MarioGame.Theming;
-using MarioGame.Entities.Blocks;
-using MarioGame.Collisions;
+using Microsoft.Xna.Framework.Content;
 
-namespace MarioGame.Entities.Players
+namespace MarioGame.Entities
 {
     public class Mario : Entity
     {
@@ -38,8 +32,7 @@ namespace MarioGame.Entities.Players
         public readonly static Vector2 dashRightVelocity = new Vector2(velocityConstant * 2, 0);
         public readonly static Vector2 dashLeftVelocity = new Vector2(velocityConstant * -2, 0);
 
-
-        public Mario(Vector2 position, Sprite sprite) : base(position, sprite)
+        public Mario(Vector2 position, ContentManager content) : base(position, content)
         {
             aState = new IdleMarioState(this);
             aState.turnRight();
@@ -51,8 +44,6 @@ namespace MarioGame.Entities.Players
             boundingBox= new Rectangle((int)(_position.X+5), (int)(_position.Y+16),_width,_width);
             boxColor = Color.Yellow;
         }
-
-
 
         public void Update(Viewport viewport)
         {

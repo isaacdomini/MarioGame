@@ -1,4 +1,4 @@
-﻿using MarioGame.Entities.Players;
+﻿using MarioGame.Entities;
 
 namespace MarioGame.States.PlayerStates
 {

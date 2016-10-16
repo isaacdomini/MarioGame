@@ -1,13 +1,11 @@
 ﻿using MarioGame.Collisions;
 using MarioGame.Core;
 using MarioGame.Entities;
-using MarioGame.Entities.Blocks;
 using MarioGame.Theming.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using System;
-using MarioGame.Entities;
 
 namespace MarioGame.Theming
 {

@@ -29,11 +29,6 @@ namespace MarioGame.Sprites
             _frameSet = _frameSets[Frames.Orange.GetHashCode()];
 
         }
-        public override void Update(float elapsed)
-        {
-            base.Update(elapsed);
-        }
-
     }
 }
 

@@ -1,16 +1,11 @@
-﻿
-using MarioGame.Sprites;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 
-namespace MarioGame.Entities.Items
+namespace MarioGame.Entities
 {
     public class FireFlower : Entity
     {
-
-
-        public FireFlower(Vector2 position, FireFlowerSprite flowerSprite) : base(position, flowerSprite)
+        public FireFlower(Vector2 position, ContentManager content) : base(position, content)
         {
             int _height = 40;
             int _width = 20;

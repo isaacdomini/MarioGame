@@ -1,4 +1,5 @@
-using System;
+<<<<<<< 88c00baed242b47c3707abeda584f6e7fa743769
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,9 @@ using MarioGame.Entities;
 using MarioGame.Sprites;
 using MarioGame.Entities.BlockEntities;
 using MarioGame.Sprites.BlockSprites;
-using MarioGame.Entities;
+=======
+﻿using MarioGame.Entities;
+>>>>>>> Made it so that invoker of an entity constructor doesn't also have to invoke a sprite constructor. The user of an entity shouldn't have to have any knowledge about the entity's sprite.
 
 namespace MarioGame.States.BlockStates
 {

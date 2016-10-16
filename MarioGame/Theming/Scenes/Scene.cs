@@ -4,6 +4,7 @@ using MarioGame.Sprites;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MarioGame.Entities;
+using Microsoft.Xna.Framework.Content;
 
 namespace MarioGame.Theming.Scenes
 {
@@ -39,19 +40,21 @@ namespace MarioGame.Theming.Scenes
 
             //TODO DRAW all Sprites
             //TODO init all objects and give them some positions
-            _script.AddItem(new Coin(new Vector2(150, 100), new CoinsSprite(Stage.Game1.Content)));
-            _script.AddItem(new FireFlower(new Vector2(200, 100), new FireFlowerSprite(Stage.Game1.Content)));
-            _script.AddItem(new Mushroom1Up(new Vector2(250, 100), new Mushroom1UpSprite(Stage.Game1.Content)));
-            _script.AddItem(new MushroomSuper(new Vector2(300, 100), new MushroomSuperSprite(Stage.Game1.Content)));
-            _script.AddItem(new Star(new Vector2(350, 100), new StarSprite(Stage.Game1.Content)));
-            _script.AddMario(new Mario(new Vector2(100, 150), new MarioSprite(Stage.Game1.Content)));
-            _script.AddEnemy(new KoopaTroopa(new Vector2(450, 100), new KoopaTroopaSprite(Stage.Game1.Content)));
-            _script.AddEnemy(new Goomba(new Vector2(500, 100), new GoombaSprite(Stage.Game1.Content)));
-            _script.AddBlock(new BrickBlock(new Vector2(500, 300), new BrickBlockSprite(Stage.Game1.Content)));
-            _script.AddBlock(new GroundBLock(new Vector2(550, 300), new GroundBlockSprite(Stage.Game1.Content)));
-            _script.AddBlock(new StepBlock(new Vector2(600, 300), new StepBlockSprite(Stage.Game1.Content)));
-            _script.AddBlock(new UsedBlock(new Vector2(650, 300), new UsedBlockSprite(Stage.Game1.Content)));
-            _script.AddBlock(new QuestionBlock(new Vector2(700, 300), new QuestionBlockSprite(Stage.Game1.Content)));
+            ContentManager content = Stage.Game1.Content;
+            _script.AddItem(new Coin(new Vector2(150, 100), content));
+            _script.AddItem(new FireFlower(new Vector2(200, 100), content));
+            _script.AddItem(new Mushroom1Up(new Vector2(250, 100), content));
+            _script.AddItem(new MushroomSuper(new Vector2(300, 100), content));
+            _script.AddItem(new Star(new Vector2(350, 100), content));
+            _script.AddMario(new Mario(new Vector2(100, 150), content));
+            _script.AddEnemy(new KoopaTroopa(new Vector2(450, 100), content));
+            _script.AddEnemy(new Goomba(new Vector2(500, 100), content));
+            _script.AddBlock(new BrickBlock(new Vector2(500, 300), content));
+
+            _script.AddBlock(new GroundBlock(new Vector2(550, 300), content));
+            _script.AddBlock(new StepBlock(new Vector2(600, 300), content));
+            _script.AddBlock(new UsedBlock(new Vector2(650, 300), content));
+            _script.AddBlock(new QuestionBlock(new Vector2(700, 300), content));
 
         }
 

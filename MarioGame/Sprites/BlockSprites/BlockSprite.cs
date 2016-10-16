@@ -7,11 +7,10 @@ using System.Collections.Generic;
 using System.Collections;
 using MarioGame.States.BlockStates;
 
-namespace MarioGame.Sprites.BlockSprites
+namespace MarioGame.Sprites
 {
     public class BlockSprite : AnimatedSprite
     {
-
         public enum Frames
         {
             StandardBlock = 0,

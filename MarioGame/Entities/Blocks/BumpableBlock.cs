@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MarioGame.Sprites;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 
-namespace MarioGame.Entities.Blocks
+namespace MarioGame.Entities
 {
     abstract class BumpableBlock : Block, IBumpable
     {
@@ -18,7 +13,7 @@ namespace MarioGame.Entities.Blocks
             ThreeQuarters,
             Top
         }
-        public BumpableBlock(Vector2 position, Sprite sprite) : base(position, sprite)
+        public BumpableBlock(Vector2 position, ContentManager content) : base(position, content)
         {
             boundingBox = new Rectangle((int)_position.X, (int)_position.Y, 18, 18);
             boxColor = Color.Blue;

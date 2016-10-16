@@ -1,19 +1,14 @@
-﻿
-using MarioGame.Sprites;
-using MarioGame.Sprites.PlayerSprites;
-using MarioGame.States;
-using MarioGame.States.BlockStates;
+﻿using MarioGame.States.BlockStates;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 
-namespace MarioGame.Entities.Blocks
+namespace MarioGame.Entities
 {
     public class Block : Entity
     {
- 
-
         // Could be useful for casting in certain circumstances
         public StandardState bState;
-        public Block(Vector2 position, Sprite sprite) : base(position, sprite)
+        public Block(Vector2 position, ContentManager content) : base(position, content)
         {
             bState = new StandardBlockState(this);
             

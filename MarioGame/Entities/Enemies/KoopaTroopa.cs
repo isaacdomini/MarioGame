@@ -1,20 +1,13 @@
 ﻿using MarioGame.Sprites;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Content;
 
-namespace MarioGame.Entities.Enemies
+namespace MarioGame.Entities
 {
     class KoopaTroopa : Entity
     {
-        
-
-
-        public KoopaTroopa(Vector2 position, Sprite sprite) : base(position, sprite)
-	{
+        public KoopaTroopa(Vector2 position, ContentManager content) : base(position, content)
+        {
             int _height = 40;
             int _width = 20;
             boundingBox = new Rectangle((int)_position.X+3, (int)_position.Y+5, _width/2, _height/3);

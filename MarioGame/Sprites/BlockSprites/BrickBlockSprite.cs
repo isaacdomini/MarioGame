@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MarioGame.Sprites.BlockSprites
+namespace MarioGame.Sprites
 {
     public class BrickBlockSprite : AnimatedSprite
     {

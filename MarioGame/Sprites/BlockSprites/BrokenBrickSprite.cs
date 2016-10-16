@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MarioGame.Sprites.BlockSprites
+namespace MarioGame.Sprites
 {
     class BrokenBrickSprite : AnimatedSprite
     {
@@ -21,10 +21,6 @@ namespace MarioGame.Sprites.BlockSprites
             _frameSets = new Dictionary<int, List<int>> {
                 { 0, new List<int> { Frames.Brick1.GetHashCode(), Frames.Brick1.GetHashCode(), Frames.Brick1.GetHashCode(), Frames.Brick1.GetHashCode() } },
             };
-        }
-        public override void Update(float elapsed)
-        {
-            base.Update(elapsed);
         }
     }
 }

@@ -1,15 +1,15 @@
 ﻿using MarioGame.Collisions;
 using MarioGame.Core;
 using MarioGame.Entities;
-using MarioGame.Entities.Blocks;
 using MarioGame.Theming.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using System;
-using MarioGame.Entities.Enemies;
-using MarioGame.Entities.Items;
-using MarioGame.Entities.Players;
+<<<<<<< 88c00baed242b47c3707abeda584f6e7fa743769
+using MarioGame.Entities;
+=======
+>>>>>>> Made it so that invoker of an entity constructor doesn't also have to invoke a sprite constructor. The user of an entity shouldn't have to have any knowledge about the entity's sprite.
 
 namespace MarioGame.Theming
 {
@@ -68,7 +68,6 @@ namespace MarioGame.Theming
             }
             foreach (var enemy in _enemies)
             {
-
                 if (collisionHandler.checkForCollision(mario, enemy))
                 {
                     colliding = true;
@@ -142,10 +141,6 @@ namespace MarioGame.Theming
 
         }
 
-<<<<<<< 6b87ff095c16da848ef899905fc29ef4ca92323c
-
-=======
->>>>>>> Typo Fix
         public void AddMario(Mario mario)
         {
             this.mario = mario;

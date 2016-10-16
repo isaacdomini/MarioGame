@@ -1,19 +1,12 @@
-﻿
-using MarioGame.Sprites;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 
-namespace MarioGame.Entities.Items
+namespace MarioGame.Entities
 {
     public class MushroomSuper : Entity
     {
-        // Could be useful for casting in certain circumstances
-        public MushroomSuperSprite iSprite;
-
-        public MushroomSuper(Vector2 position, MushroomSuperSprite sprite) : base(position, sprite)
+        public MushroomSuper(Vector2 position, ContentManager content) : base(position, content)
         {
-            iSprite = sprite;
             int _height = 40;
             int _width = 20;
             boundingBox = new Rectangle((int)_position.X, (int)_position.Y, _width, _height / 2);

@@ -16,7 +16,6 @@ namespace MarioGame.Entities
     {
         IState _state;
         public Sprite _sprite;
-        protected string _spriteFolderAndClass;
         public Rectangle boundingBox;
         public Color boxColor;
         protected ActionState aState;
@@ -33,11 +32,15 @@ namespace MarioGame.Entities
         }
         public Vector2 _velocity { get; protected set; }
         
+        protected virtual void preConstructor() { }
         public Entity(Vector2 position, ContentManager content, float xVelocity = 0, float yVelocity = 0)
         {
+            preConstructor();
             _velocity = new Vector2(xVelocity, yVelocity);
 
-            Type type = Type.GetType(typeof(Sprite).Namespace + "." + _spriteFolderAndClass);
+            String spriteClass = this.GetType().Name + "Sprite";
+            string namespaceAndClass = typeof(Sprite).Namespace + "." + spriteClass;
+            Type type = Type.GetType(namespaceAndClass);
            _sprite = (Sprite)Activator.CreateInstance(type, content);
 
             _position = position;

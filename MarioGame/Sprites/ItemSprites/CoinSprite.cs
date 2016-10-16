@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace MarioGame.Sprites
 {
-    public class CoinsSprite : AnimatedSprite //TODO: refactor this class to use either ANimated Sprite or Sprite
+    public class CoinSprite : AnimatedSprite //TODO: refactor this class to use either ANimated Sprite or Sprite
     {
         public enum Frames
         {
@@ -20,7 +20,7 @@ namespace MarioGame.Sprites
             Waxing = 3
         }
 
-        public CoinsSprite(ContentManager content) : base(content)
+        public CoinSprite(ContentManager content) : base(content)
         {
             _assetName = "coin";
             _numberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
@@ -32,11 +32,6 @@ namespace MarioGame.Sprites
             _frameSetPosition = 0;
             _rowSetPosition = 0;
         }
-        public override void Update(float elapsed)
-        {
-            base.Update(elapsed);
-        }
-
     }
 }
 

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MarioGame.Sprites.BlockSprites
+namespace MarioGame.Sprites
 {
     class QuestionBlockSprite : AnimatedSprite
     {
@@ -29,10 +29,6 @@ namespace MarioGame.Sprites.BlockSprites
             };
             _frameSet = _frameSets[Frames.Light.GetHashCode()];
 
-        }
-        public override void Update(float elapsed)
-        {
-            base.Update(elapsed);
         }
     }
 }

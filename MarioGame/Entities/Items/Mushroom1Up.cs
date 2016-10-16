@@ -1,16 +1,11 @@
-﻿
-using MarioGame.Sprites;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 
-namespace MarioGame.Entities.Items
+namespace MarioGame.Entities
 {
     public class Mushroom1Up : Entity
     {
-
-
-        public Mushroom1Up(Vector2 position, Mushroom1UpSprite sprite) : base(position, sprite)
+        public Mushroom1Up(Vector2 position, ContentManager content) : base(position, content)
         {
             int _height = 40;
             int _width = 20;
