@@ -8,9 +8,10 @@ namespace MarioGame.Entities.Items
 {
     public class Coin : Entity
     {
-
-        public Coin(Vector2 position, CoinsSprite sprite) : base(position, sprite)
+        protected new string _spriteFolderAndClass = "Items.Coin";
+        public Coin(Vector2 position, ContentManager content) : base(position, content)
         {
+            
             int _height = 40;
             int _width = 20;
             boundingBox = new Rectangle((int)_position.X, (int)_position.Y, _width/2, _height/3);

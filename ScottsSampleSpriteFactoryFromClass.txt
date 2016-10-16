@@ -1,0 +1,17 @@
+public abstrat lcass SpriteFactory {
+	protceted Scene scene;
+	protected Dictionary<int, Sprite> sprites;
+
+	protected SpriteFactory(Scence scene) {
+		this. scene = scene;
+		sprites = new Dictionary<int, Sprite>();
+	}
+
+	public abstract Sprite CreateSprite(int type);
+}
+
+
+static public int MarioSpriteType(MarioAction State currentActionState, MarioPowerState currentPowerState
+)
+
+MarioSpriteFactory.CreateSprite
