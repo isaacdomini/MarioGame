@@ -17,6 +17,5 @@ namespace MarioGame.Entities.Items
             boundingBox = new Rectangle((int)_position.X, (int)_position.Y, _width/2, _height/3);
             boxColor = Color.Green;
         }
-        public override void Update() { }
     }
 }

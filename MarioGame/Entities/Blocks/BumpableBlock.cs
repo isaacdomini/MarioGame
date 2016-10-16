@@ -28,10 +28,5 @@ namespace MarioGame.Entities.Blocks
         {
             bState.Bump();
         }
-        public override void Update()
-        {
-            base.Update();
-
-        }
     }
 }
