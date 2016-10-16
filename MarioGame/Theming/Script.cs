@@ -1,17 +1,15 @@
 ﻿using MarioGame.Collisions;
 using MarioGame.Core;
 using MarioGame.Entities;
-using MarioGame.Entities.BlockEntities;
-using MarioGame.Entities.PlayerEntities;
-using MarioGame.States.PlayerStates;
+using MarioGame.Entities.Blocks;
 using MarioGame.Theming.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using System;
-using MarioGame.Entities.EnemyEntities;
-using MarioGame.Entities.ItemEntities;
-using MarioGame.States;
+using MarioGame.Entities.Enemies;
+using MarioGame.Entities.Items;
+using MarioGame.Entities.Players;
 
 namespace MarioGame.Theming
 {
@@ -21,7 +19,7 @@ namespace MarioGame.Theming
 
         private CollisionHandler collisionHandler;
 
-        public MarioEntity mario { get; private set; }
+        public Mario mario { get; private set; }
 
         public List<Entity> _entities { get; private set; }
 	    public List<Entity> _enemies { get; private set; }
@@ -145,9 +143,9 @@ namespace MarioGame.Theming
         }
 
 
-        public void AddMario(MarioEntity marioEntity)
+        public void AddMario(Mario mario)
         {
-            mario = marioEntity;
+            this.mario = mario;
         }
 
 	    public void AddEnemy(Entity enemy)

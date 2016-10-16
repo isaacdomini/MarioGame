@@ -18,11 +18,11 @@ namespace MarioGame.States.PlayerStates
             jumpState.setDirection(this.direction);
             if (this.isFacingLeft())
             {
-                mario.setVelocity(mario.jumpingLeftVelocity);
+                mario.setVelocity(Mario.jumpingLeftVelocity);
             }
             else if (this.isFacingRight())
             {
-                mario.setVelocity(mario.jumpingRightVelocity);
+                mario.setVelocity(Mario.jumpingRightVelocity);
             }
             jumpState.Begin(this);
 
@@ -32,7 +32,7 @@ namespace MarioGame.States.PlayerStates
             MarioActionState crouchState = new CrouchingMarioState(mario);
             mario.ChangeActionState(crouchState);
             crouchState.setDirection(this.direction);
-            mario.setVelocity(mario.idleVelocity);
+            mario.setVelocity(Mario.idleVelocity);
             crouchState.Begin(this);
         }
         public override void MoveLeft()
@@ -42,7 +42,7 @@ namespace MarioGame.States.PlayerStates
                 MarioActionState idleRight = new IdleMarioState(mario);
                 mario.ChangeActionState(idleRight);
                 idleRight.turnRight();
-                mario.setVelocity(mario.idleVelocity);
+                mario.setVelocity(Mario.idleVelocity);
                 idleRight.Begin(this);
             }
 
@@ -54,7 +54,7 @@ namespace MarioGame.States.PlayerStates
                 MarioActionState idleLeft = new IdleMarioState(mario);
                 mario.ChangeActionState(idleLeft);
                 idleLeft.turnLeft();
-                mario.setVelocity(mario.idleVelocity);
+                mario.setVelocity(Mario.idleVelocity);
                 idleLeft.Begin(this);
             }
         }

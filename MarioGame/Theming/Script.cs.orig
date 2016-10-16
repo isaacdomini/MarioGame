@@ -1,21 +1,27 @@
 ﻿using MarioGame.Collisions;
 using MarioGame.Core;
 using MarioGame.Entities;
-using MarioGame.Entities.Blocks;
+<<<<<<< 5879ccf6d20b669d41f40305992a2acd35093e95
+using MarioGame.Entities.BlockEntities;
 using MarioGame.Entities.PlayerEntities;
-using MarioGame.Entities.ItemEntities;
-using MarioGame.States.EnemyStates;
+using MarioGame.States.PlayerStates;
+=======
+using MarioGame.Entities.Blocks;
+>>>>>>> Typo Fix
 using MarioGame.Theming.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using System;
-<<<<<<< HEAD
+<<<<<<< 5879ccf6d20b669d41f40305992a2acd35093e95
+using MarioGame.Entities.EnemyEntities;
+using MarioGame.Entities.ItemEntities;
+using MarioGame.States;
+=======
 using MarioGame.Entities.Enemies;
 using MarioGame.Entities.Items;
-=======
-using MarioGame.Entities.EnemyEntities;
->>>>>>> Koopa Troopa dies (turns into shell) when hit from the top
+using MarioGame.Entities.Players;
+>>>>>>> Typo Fix
 
 namespace MarioGame.Theming
 {
@@ -25,16 +31,12 @@ namespace MarioGame.Theming
 
         private CollisionHandler collisionHandler;
 
-        public MarioEntity mario { get; private set; }
-<<<<<<< HEAD
+        public Mario mario { get; private set; }
 
         public List<Entity> _entities { get; private set; }
 	    public List<Entity> _enemies { get; private set; }
-=======
-	    public List<EnemyEntity> _enemies { get; private set; }
->>>>>>> Koopa Troopa dies (turns into shell) when hit from the top
 	    public List<Entity> _items { get; private set; }
-	    public List<Block> _blocks { get; private set; }
+	    public List<BlockEntity> _blocks { get; private set; }
 
 
         public Script(Scene scene)
@@ -59,9 +61,9 @@ namespace MarioGame.Theming
 
         public void Initialize()
         {
-		    _enemies = new List<EnemyEntity>();
+		    _enemies = new List<Entity>();
 		    _items = new List<Entity>();
-		    _blocks = new List<Block>();
+		    _blocks = new List<BlockEntity>();
             collisionHandler = new CollisionHandler();
         }
 
@@ -78,39 +80,33 @@ namespace MarioGame.Theming
             }
             foreach (var enemy in _enemies)
             {
+
                 if (collisionHandler.checkForCollision(mario, enemy))
                 {
-<<<<<<< HEAD
-                    if(enemy.GetType() == typeof(KoopaTroopa))
-                    {
-                        CollisionTypes returned = collisionHandler.checkSideCollision(mario, enemy);
-                        Console.WriteLine(returned);
-                        if (collisionHandler.checkSideCollision(mario, enemy) == CollisionTypes.Left)
-                        {
-                            enemy.boxColor = Color.Black;
-                            mario.ChangeToDeadState();
-                        }
-                    }
-                    else if(enemy.GetType() == typeof(Goomba))
-=======
                     colliding = true;
                     mario.Halt();
                     enemy.boxColor = Color.Black;
-                    if (collisionHandler.checkSideCollision(mario, enemy) == "t")
+                    if (collisionHandler.checkSideCollision(mario, enemy) == CollisionTypes.Top)
                     {
                         enemy.Halt();
-                        
                     }
                     else
->>>>>>> Koopa Troopa dies (turns into shell) when hit from the top
                     {
-                        mario.ChangeToDeadState();
-                    }                     
+                        // Need to switch isCollidable based on powerUpState 
+                        //so that mario can technically walk through enemies after taking damage
+                        //Mario shouldn't die when koopa is an idle shell. Only when shell is moving or Koopa is alive
+                        if (mario.isCollidable == true)
+                        {
+                            mario.ChangeToDeadState();
+                        }
+                    }
                 }
                 else
                 {
                     enemy.boxColor = Color.Red;
+                    mario.isCollidable = true;
                 }
+                enemy.Update(Viewport);
 
             }
             foreach (var item in _items)
@@ -118,28 +114,28 @@ namespace MarioGame.Theming
                 if (collisionHandler.checkForCollision(mario, item))
                 {
                     colliding = true;
-                    if (item.GetType() == typeof(Coin))
+                    item.boxColor = Color.Black;
+                    if (item.GetType() == typeof(CoinEntity))
                     {
-                        item.boxColor = Color.Black;
+                        //Add code to add coin to total coins
                     }
-                    else if (item.GetType() == typeof(Star))
+                    else if (item.GetType() == typeof(StarEntity))
                     {
-                        item.boxColor = Color.Black;
+                        //Add code to make Mario invinsible
                     }
-                    else if (item.GetType() == typeof(FireFlower))
+                    else if (item.GetType() == typeof(FireFlowerEntity))
                     {
                         mario.ChangeToFireState();
-                        item.boxColor = Color.Black;
                     }
-                    else if (item.GetType() == typeof(Mushroom1Up))
+                    else if (item.GetType() == typeof(Mushroom1UpEntity))
                     {
-                        item.boxColor = Color.Black;
+                        //Add code to add extra life
                     }
-                    else if (item.GetType() == typeof(MushroomSuper))
+                    else if (item.GetType() == typeof(MushroomSuperEntity))
                     {
                         mario.ChangeToSuperState();
-                        item.boxColor = Color.Black;
                     }
+                    item.makeInvisible();
                 }
                 else
                 {
@@ -149,19 +145,26 @@ namespace MarioGame.Theming
             if (colliding)
             {
                 mario.boxColor = Color.Black;
-            } else
+            }
+            else
             {
                 mario.boxColor = Color.Yellow;
             }
             mario.Update(Viewport);
+
         }
+
+<<<<<<< 5879ccf6d20b669d41f40305992a2acd35093e95
 
         public void AddMario(MarioEntity marioEntity)
+=======
+        public void AddMario(Mario mario)
+>>>>>>> Typo Fix
         {
-            mario = marioEntity;
+            this.mario = mario;
         }
 
-	    public void AddEnemy(EnemyEntity enemy)
+	    public void AddEnemy(Entity enemy)
 	    {
 		    _enemies.Add(enemy);
 	    }
@@ -171,7 +174,7 @@ namespace MarioGame.Theming
 		    _items.Add(item);
 	    }
 
-	    public void AddBlock(Block block)
+	    public void AddBlock(BlockEntity block)
 	    {
 		    _blocks.Add(block);
 	    }

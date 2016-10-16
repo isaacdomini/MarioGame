@@ -3,12 +3,22 @@ using System.Collections.Generic;
 using MarioGame.Sprites;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using MarioGame.Entities.Items;
+<<<<<<< 5879ccf6d20b669d41f40305992a2acd35093e95
+using MarioGame.Entities.ItemEntities;
 using MarioGame.Entities.PlayerEntities;
+using MarioGame.Sprites.BlockSprites;
+using MarioGame.Sprites.PlayerSprites;
+using MarioGame.Entities.EnemyEntities;
+using MarioGame.Entities.BlockEntities;
+using MarioGame.Entities.BlockEntities;
+=======
+using MarioGame.Entities.Items;
 using MarioGame.Sprites.BlockSprites;
 using MarioGame.Sprites.PlayerSprites;
 using MarioGame.Entities.Enemies;
 using MarioGame.Entities.Blocks;
+using MarioGame.Entities.Players;
+>>>>>>> Typo Fix
 
 namespace MarioGame.Theming.Scenes
 {
@@ -44,27 +54,36 @@ namespace MarioGame.Theming.Scenes
 
             //TODO DRAW all Sprites
             //TODO init all objects and give them some positions
+<<<<<<< 5879ccf6d20b669d41f40305992a2acd35093e95
+            _script.AddItem(new CoinEntity(new Vector2(150, 100), new CoinsSprite(Stage.Game1.Content)));
+            _script.AddItem(new FireFlowerEntity(new Vector2(200, 100), new FireFlowerSprite(Stage.Game1.Content)));
+            _script.AddItem(new Mushroom1UpEntity(new Vector2(250, 100), new Mushroom1UpSprite(Stage.Game1.Content)));
+            _script.AddItem(new MushroomSuperEntity(new Vector2(300, 100), new MushroomSuperSprite(Stage.Game1.Content)));
+            _script.AddItem(new StarEntity(new Vector2(350, 100), new StarSprite(Stage.Game1.Content)));
+            _script.AddMario(new MarioEntity(new Vector2(100, 150), new MarioSprite(Stage.Game1.Content)));
+            _script.AddEnemy(new KoopaTroopaEntity(new Vector2(450, 100), new KoopaTroopaSprite(Stage.Game1.Content)));
+            _script.AddEnemy(new GoombaEntity(new Vector2(500, 100), new GoombaSprite(Stage.Game1.Content)));
+            _script.AddBlock(new BrickBlockEntity(new Vector2(500, 300), new BrickBlockSprite(Stage.Game1.Content)));
+            _script.AddBlock(new GroundBlockEntity(new Vector2(550, 300), new GroundBlockSprite(Stage.Game1.Content)));
+            _script.AddBlock(new StepBlockEntity(new Vector2(600, 300), new StepBlockSprite(Stage.Game1.Content)));
+            _script.AddBlock(new UsedBlockEntity(new Vector2(650, 300), new UsedBlockSprite(Stage.Game1.Content)));
+            _script.AddBlock(new QuestionBlockEntity(new Vector2(700, 300), new QuestionBlockSprite(Stage.Game1.Content)));
+=======
             _script.AddItem(new Coin(new Vector2(150, 100), new CoinsSprite(Stage.Game1.Content)));
             _script.AddItem(new FireFlower(new Vector2(200, 100), new FireFlowerSprite(Stage.Game1.Content)));
             _script.AddItem(new Mushroom1Up(new Vector2(250, 100), new Mushroom1UpSprite(Stage.Game1.Content)));
             _script.AddItem(new MushroomSuper(new Vector2(300, 100), new MushroomSuperSprite(Stage.Game1.Content)));
             _script.AddItem(new Star(new Vector2(350, 100), new StarSprite(Stage.Game1.Content)));
-            _script.AddMario(new MarioEntity(new Vector2(100, 150), new MarioSprite(Stage.Game1.Content)));
-<<<<<<< HEAD
+            _script.AddMario(new Mario(new Vector2(100, 150), new MarioSprite(Stage.Game1.Content)));
             _script.AddEnemy(new KoopaTroopa(new Vector2(450, 100), new KoopaTroopaSprite(Stage.Game1.Content)));
             _script.AddEnemy(new Goomba(new Vector2(500, 100), new GoombaSprite(Stage.Game1.Content)));
             _script.AddBlock(new BrickBlock(new Vector2(500, 300), new BrickBlockSprite(Stage.Game1.Content)));
+
             _script.AddBlock(new GroundBLock(new Vector2(550, 300), new GroundBlockSprite(Stage.Game1.Content)));
             _script.AddBlock(new StepBlock(new Vector2(600, 300), new StepBlockSprite(Stage.Game1.Content)));
-=======
-            _script.AddEnemy(new EnemyEntity(new Vector2(450, 100), new KoopaTroopaSprite(Stage.Game1.Content)));
-            _script.AddEnemy(new GoombaEntity(new Vector2(500, 100), new GoombaSprite(Stage.Game1.Content)));
-            _script.AddBlock(new BrickBlockEntity(new Vector2(500, 300), new BrickBlockSprite(Stage.Game1.Content)));
-            _script.AddBlock(new GroundBlockEntity(new Vector2(550, 300), new GroundBlockSprite(Stage.Game1.Content)));
-            _script.AddBlock(new StepBlockEntity(new Vector2(600, 300), new StepBlockSprite(Stage.Game1.Content)));
->>>>>>> Koopa Troopa dies (turns into shell) when hit from the top
-            _script.AddBlock(new UsedBlockEntity(new Vector2(650, 300), new UsedBlockSprite(Stage.Game1.Content)));
+            _script.AddBlock(new UsedBlock(new Vector2(650, 300), new UsedBlockSprite(Stage.Game1.Content)));
             _script.AddBlock(new QuestionBlock(new Vector2(700, 300), new QuestionBlockSprite(Stage.Game1.Content)));
+>>>>>>> Typo Fix
 
         }
 
@@ -105,15 +124,24 @@ namespace MarioGame.Theming.Scenes
             drawRectangleBorder(_spriteBatch, _script.mario.boundingBox, 1, _script.mario.boxColor);
             foreach (var block in _script._blocks)
             {
-                drawRectangleBorder(_spriteBatch, block.boundingBox, 1, block.boxColor);
+                if (block._sprite.Visible == false)
+                {
+                    drawRectangleBorder(_spriteBatch, block.boundingBox, 1, block.boxColor);
+                }
             }
             foreach (var enemy in _script._enemies)
             {
-                drawRectangleBorder(_spriteBatch, enemy.boundingBox, 1, enemy.boxColor);
+                if (enemy._sprite.Visible == false)
+                {
+                    drawRectangleBorder(_spriteBatch, enemy.boundingBox, 1, enemy.boxColor);
+                }
             }
             foreach (var item in _script._items)
             {
-                drawRectangleBorder(_spriteBatch, item.boundingBox, 1, item.boxColor);
+                if (item._sprite.Visible == false)
+                {
+                    drawRectangleBorder(_spriteBatch, item.boundingBox, 1, item.boxColor);
+                }
             }
             _spriteBatch.End();
         }

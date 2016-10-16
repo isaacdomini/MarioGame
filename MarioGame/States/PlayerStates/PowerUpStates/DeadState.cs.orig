@@ -1,0 +1,36 @@
+﻿using MarioGame.Entities.Players;
+
+namespace MarioGame.States.PlayerStates.PowerUpStates
+{
+    class DeadState : MarioPowerUpState
+    {
+        public DeadState(Mario entity) : base(entity)
+        {
+            powerUpState = MarioPowerUpStateEnum.Dead;
+            entity.boundingBox.Width = 20;
+            entity.boundingBox.Height = 20;
+<<<<<<< eeae4443b49819b251433519bb521fe6ddb59882
+            marioEntity.isCollidable = false;
+=======
+>>>>>>> removing 'Entity' from the names of many classes. cleaning up references
+        }
+        public override void ChangeToFire()
+        {
+            MarioPowerUpState fire = new FireState(mario);
+            mario.ChangePowerUpState(fire);
+            fire.Begin(this);
+        }
+        public override void ChangeToStandard()
+        {
+            MarioPowerUpState standard = new StandardState(mario);
+            mario.ChangePowerUpState(standard);
+            standard.Begin(this);
+        }
+        public override void ChangeToSuper()
+        {
+            MarioPowerUpState super = new SuperState(mario);
+            mario.ChangePowerUpState(super);
+            super.Begin(this);
+        }
+    }
+}

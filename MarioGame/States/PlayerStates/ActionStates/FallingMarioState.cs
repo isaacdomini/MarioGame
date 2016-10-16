@@ -24,7 +24,7 @@ namespace MarioGame.States.PlayerStates
                 MarioActionState fallingFacingLeft = new FallingMarioState(mario);
                 mario.ChangeActionState(fallingFacingLeft);
                 fallingFacingLeft.turnLeft();
-                mario.setVelocity(mario.fallingVelocity);
+                mario.setVelocity(Mario.fallingVelocity);
                 fallingFacingLeft.Begin(this);
             }
             else if (this.isFacingLeft())
@@ -32,7 +32,7 @@ namespace MarioGame.States.PlayerStates
                 MarioActionState walkingLeft = new WalkingMarioState(mario);
                 mario.ChangeActionState(walkingLeft);
                 walkingLeft.turnLeft();
-                mario.setVelocity(mario.walkingLeftVelocity);
+                mario.setVelocity(Mario.walkingLeftVelocity);
                 walkingLeft.Begin(this);
 
             }
@@ -44,7 +44,7 @@ namespace MarioGame.States.PlayerStates
                 MarioActionState fallingFacingRight = new FallingMarioState(mario);
                 mario.ChangeActionState(fallingFacingRight);
                 fallingFacingRight.turnRight();
-                mario.setVelocity(mario.fallingVelocity);
+                mario.setVelocity(Mario.fallingVelocity);
                 fallingFacingRight.Begin(this);
             }
             else if (this.isFacingRight())
@@ -52,7 +52,7 @@ namespace MarioGame.States.PlayerStates
                 MarioActionState walkingRight = new WalkingMarioState(mario);
                 mario.ChangeActionState(walkingRight);
                 walkingRight.turnRight();
-                mario.setVelocity(mario.walkingRightVelocity);
+                mario.setVelocity(Mario.walkingRightVelocity);
                 walkingRight.Begin(this);
 
             }

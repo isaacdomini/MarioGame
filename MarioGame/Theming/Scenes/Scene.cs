@@ -3,13 +3,6 @@ using System.Collections.Generic;
 using MarioGame.Sprites;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using MarioGame.Entities.ItemEntities;
-using MarioGame.Entities.PlayerEntities;
-using MarioGame.Sprites.BlockSprites;
-using MarioGame.Sprites.PlayerSprites;
-using MarioGame.Entities.EnemyEntities;
-using MarioGame.Entities.BlockEntities;
-using MarioGame.Entities.BlockEntities;
 
 namespace MarioGame.Theming.Scenes
 {
@@ -45,19 +38,20 @@ namespace MarioGame.Theming.Scenes
 
             //TODO DRAW all Sprites
             //TODO init all objects and give them some positions
-            _script.AddItem(new CoinEntity(new Vector2(150, 100), new CoinsSprite(Stage.Game1.Content)));
-            _script.AddItem(new FireFlowerEntity(new Vector2(200, 100), new FireFlowerSprite(Stage.Game1.Content)));
-            _script.AddItem(new Mushroom1UpEntity(new Vector2(250, 100), new Mushroom1UpSprite(Stage.Game1.Content)));
-            _script.AddItem(new MushroomSuperEntity(new Vector2(300, 100), new MushroomSuperSprite(Stage.Game1.Content)));
-            _script.AddItem(new StarEntity(new Vector2(350, 100), new StarSprite(Stage.Game1.Content)));
-            _script.AddMario(new MarioEntity(new Vector2(100, 150), new MarioSprite(Stage.Game1.Content)));
-            _script.AddEnemy(new KoopaTroopaEntity(new Vector2(450, 100), new KoopaTroopaSprite(Stage.Game1.Content)));
-            _script.AddEnemy(new GoombaEntity(new Vector2(500, 100), new GoombaSprite(Stage.Game1.Content)));
-            _script.AddBlock(new BrickBlockEntity(new Vector2(500, 300), new BrickBlockSprite(Stage.Game1.Content)));
-            _script.AddBlock(new GroundBlockEntity(new Vector2(550, 300), new GroundBlockSprite(Stage.Game1.Content)));
-            _script.AddBlock(new StepBlockEntity(new Vector2(600, 300), new StepBlockSprite(Stage.Game1.Content)));
-            _script.AddBlock(new UsedBlockEntity(new Vector2(650, 300), new UsedBlockSprite(Stage.Game1.Content)));
-            _script.AddBlock(new QuestionBlockEntity(new Vector2(700, 300), new QuestionBlockSprite(Stage.Game1.Content)));
+            _script.AddItem(new Coin(new Vector2(150, 100), new CoinsSprite(Stage.Game1.Content)));
+            _script.AddItem(new FireFlower(new Vector2(200, 100), new FireFlowerSprite(Stage.Game1.Content)));
+            _script.AddItem(new Mushroom1Up(new Vector2(250, 100), new Mushroom1UpSprite(Stage.Game1.Content)));
+            _script.AddItem(new MushroomSuper(new Vector2(300, 100), new MushroomSuperSprite(Stage.Game1.Content)));
+            _script.AddItem(new Star(new Vector2(350, 100), new StarSprite(Stage.Game1.Content)));
+            _script.AddMario(new Mario(new Vector2(100, 150), new MarioSprite(Stage.Game1.Content)));
+            _script.AddEnemy(new KoopaTroopa(new Vector2(450, 100), new KoopaTroopaSprite(Stage.Game1.Content)));
+            _script.AddEnemy(new Goomba(new Vector2(500, 100), new GoombaSprite(Stage.Game1.Content)));
+            _script.AddBlock(new BrickBlock(new Vector2(500, 300), new BrickBlockSprite(Stage.Game1.Content)));
+
+            _script.AddBlock(new GroundBLock(new Vector2(550, 300), new GroundBlockSprite(Stage.Game1.Content)));
+            _script.AddBlock(new StepBlock(new Vector2(600, 300), new StepBlockSprite(Stage.Game1.Content)));
+            _script.AddBlock(new UsedBlock(new Vector2(650, 300), new UsedBlockSprite(Stage.Game1.Content)));
+            _script.AddBlock(new QuestionBlock(new Vector2(700, 300), new QuestionBlockSprite(Stage.Game1.Content)));
 
         }
 
