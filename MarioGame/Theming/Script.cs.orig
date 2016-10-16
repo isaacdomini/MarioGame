@@ -1,27 +1,15 @@
 ﻿using MarioGame.Collisions;
 using MarioGame.Core;
 using MarioGame.Entities;
-<<<<<<< 5879ccf6d20b669d41f40305992a2acd35093e95
-using MarioGame.Entities.BlockEntities;
-using MarioGame.Entities.PlayerEntities;
-using MarioGame.States.PlayerStates;
-=======
 using MarioGame.Entities.Blocks;
->>>>>>> Typo Fix
 using MarioGame.Theming.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using System;
-<<<<<<< 5879ccf6d20b669d41f40305992a2acd35093e95
-using MarioGame.Entities.EnemyEntities;
-using MarioGame.Entities.ItemEntities;
-using MarioGame.States;
-=======
 using MarioGame.Entities.Enemies;
 using MarioGame.Entities.Items;
 using MarioGame.Entities.Players;
->>>>>>> Typo Fix
 
 namespace MarioGame.Theming
 {
@@ -154,12 +142,11 @@ namespace MarioGame.Theming
 
         }
 
-<<<<<<< 5879ccf6d20b669d41f40305992a2acd35093e95
+<<<<<<< 6b87ff095c16da848ef899905fc29ef4ca92323c
 
-        public void AddMario(MarioEntity marioEntity)
 =======
-        public void AddMario(Mario mario)
 >>>>>>> Typo Fix
+        public void AddMario(Mario mario)
         {
             this.mario = mario;
         }

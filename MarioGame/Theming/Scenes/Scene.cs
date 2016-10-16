@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using MarioGame.Sprites;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MarioGame.Entities;
 
 namespace MarioGame.Theming.Scenes
 {
@@ -47,7 +48,6 @@ namespace MarioGame.Theming.Scenes
             _script.AddEnemy(new KoopaTroopa(new Vector2(450, 100), new KoopaTroopaSprite(Stage.Game1.Content)));
             _script.AddEnemy(new Goomba(new Vector2(500, 100), new GoombaSprite(Stage.Game1.Content)));
             _script.AddBlock(new BrickBlock(new Vector2(500, 300), new BrickBlockSprite(Stage.Game1.Content)));
-
             _script.AddBlock(new GroundBLock(new Vector2(550, 300), new GroundBlockSprite(Stage.Game1.Content)));
             _script.AddBlock(new StepBlock(new Vector2(600, 300), new StepBlockSprite(Stage.Game1.Content)));
             _script.AddBlock(new UsedBlock(new Vector2(650, 300), new UsedBlockSprite(Stage.Game1.Content)));

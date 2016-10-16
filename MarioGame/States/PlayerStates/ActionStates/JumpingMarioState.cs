@@ -87,7 +87,6 @@ namespace MarioGame.States.PlayerStates
                     walkingLeft.turnLeft();
                     mario.ChangeActionState(walkingLeft);
                     // Sets mario to walking to the left
-<<<<<<< 07f3f3c131ce7ed30917d9774317d9d94187e345
                     mario.setVelocity(Mario.walkingLeftVelocity);
                     mario.SetVelocityToWalk(Directions.Left);
                     walkingLeft.Begin(this);

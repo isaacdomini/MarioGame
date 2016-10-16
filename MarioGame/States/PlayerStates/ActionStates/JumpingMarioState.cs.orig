@@ -54,11 +54,7 @@ namespace MarioGame.States.PlayerStates
             else if (this.isFacingRight())
             {
                 // Checking if mario was jumping straight up previously
-<<<<<<< 07f3f3c131ce7ed30917d9774317d9d94187e345
                 if (mario._velocity == Mario.jumpingUpVelocity)
-=======
-                if (mario._velocity == mario.jumpingUpVelocity)
->>>>>>> removing 'Entity' from the names of many classes. cleaning up references
                 {
                     // Change mario to jumping up facing left now
                     MarioActionState jumpingUpFacingLeft = new JumpingMarioState(mario);
@@ -68,11 +64,7 @@ namespace MarioGame.States.PlayerStates
                     jumpingUpFacingLeft.Begin(this);
                 }
                 // Checking if mario was jumping and moving to the right
-<<<<<<< 07f3f3c131ce7ed30917d9774317d9d94187e345
                 else if (mario._velocity == Mario.jumpingRightVelocity)
-=======
-                else if (mario._velocity == mario.jumpingRightVelocity)
->>>>>>> removing 'Entity' from the names of many classes. cleaning up references
                 {
                     MarioActionState walkingRight = new WalkingMarioState(mario);
                     walkingRight.turnRight();
@@ -95,11 +87,11 @@ namespace MarioGame.States.PlayerStates
                     walkingLeft.turnLeft();
                     mario.ChangeActionState(walkingLeft);
                     // Sets mario to walking to the left
+<<<<<<< 6b87ff095c16da848ef899905fc29ef4ca92323c
 <<<<<<< 07f3f3c131ce7ed30917d9774317d9d94187e345
-                    mario.setVelocity(Mario.walkingLeftVelocity);
 =======
-                    mario.setVelocity(mario.walkingLeftVelocity);
->>>>>>> removing 'Entity' from the names of many classes. cleaning up references
+>>>>>>> Typo Fix
+                    mario.setVelocity(Mario.walkingLeftVelocity);
                     mario.SetVelocityToWalk(Directions.Left);
                     walkingLeft.Begin(this);
                 }

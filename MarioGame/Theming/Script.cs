@@ -7,9 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using System;
-using MarioGame.Entities.Enemies;
-using MarioGame.Entities.Items;
-using MarioGame.Entities.Players;
+using MarioGame.Entities;
 
 namespace MarioGame.Theming
 {
@@ -68,7 +66,6 @@ namespace MarioGame.Theming
             }
             foreach (var enemy in _enemies)
             {
-
                 if (collisionHandler.checkForCollision(mario, enemy))
                 {
                     colliding = true;
@@ -141,7 +138,6 @@ namespace MarioGame.Theming
             mario.Update(Viewport);
 
         }
-
 
         public void AddMario(Mario mario)
         {
