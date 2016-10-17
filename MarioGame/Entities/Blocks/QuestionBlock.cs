@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace MarioGame.Entities
 {
-    public class QuestionBlock : Block
+    public class QuestionBlock : BumpableContainerBlock
     {
         public QuestionBlock(Vector2 position, ContentManager content) : base(position, content)
         {

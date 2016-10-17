@@ -47,8 +47,10 @@ namespace MarioGame.Sprites
         {
             throw new NotImplementedException();
         }
+<<<<<<< b939bd9f750c3b256707f34bed431c16b27ccfd8
 
         public virtual void changeActionState(ActionState goombaActionState) { }
+=======
         public void Show()
         {
             this.Visible = true;
@@ -57,5 +59,6 @@ namespace MarioGame.Sprites
         {
             this.Visible = false;
         }
+>>>>>>> Level loader working. I think my level1.json file has the x's and y's mixed up or something. But the gist of it is there. We will have to fix this.Also I had to manually copy Level1.json from the Content folder into bin/Windows/x86/Debug. You will have to do the same to get it to be able to run. We will have to fix this.
     }
 }

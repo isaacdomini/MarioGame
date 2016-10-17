@@ -9,8 +9,10 @@ namespace MarioGame.Entities
     //Blocks that can contain other elements (e.g. a coin or powerup) will implement this interface
     public interface IContainer
     {
-        void addHiddenItem();
-        IContainable popHiddenItem();
+        void addContainedItem(IContainable containedItem);
+        IContainable popContainedItem();
+
+        bool hasItems();
 
     }
 }

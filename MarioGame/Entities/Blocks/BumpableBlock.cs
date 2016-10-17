@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace MarioGame.Entities
 {
-    abstract class BumpableBlock : Block, IBumpable
+    public abstract class BumpableBlock : Block, IBumpable
     {
         private enum bumpedStatus
         {

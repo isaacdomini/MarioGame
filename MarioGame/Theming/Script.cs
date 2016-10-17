@@ -15,7 +15,6 @@ namespace MarioGame.Theming
 
         private CollisionHandler collisionHandler;
 
-        public Mario mario { get; private set; }
 
         public List<Entity> _entities { get; private set; }
         //possibile TODO: cache the getters if performance suffers
@@ -23,6 +22,8 @@ namespace MarioGame.Theming
         public List<Item> _items { get { return _entities.FindAll(e => e is Item).ConvertAll(e => (Item) e); } }
         public List<Enemy> _enemies { get { return _entities.FindAll(e => e is Enemy).ConvertAll(e => (Enemy) e); } }
 
+        //TODO: clean up below line's code smell
+        public Mario mario { get { return (Mario)_entities.Find(e => e is Mario); } }
         public Script(Scene scene)
         {
             _scene = scene;
@@ -138,10 +139,6 @@ namespace MarioGame.Theming
         public void AddEntity(Entity entity)
         {
             _entities.Add(entity);
-        }
-        public void AddMario(Mario mario)
-        {
-            this.mario = mario;
         }
 
         public void MakeMarioJump()

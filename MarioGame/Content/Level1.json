@@ -84,7 +84,7 @@
       ] 
     },
     {
-      "type": "StairBlock",
+      "type": "StepBlock",
       "rowColumns": [
         {
           "row": 3,

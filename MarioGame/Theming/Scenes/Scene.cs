@@ -38,27 +38,7 @@ namespace MarioGame.Theming.Scenes
             var middle = new Vector2(Stage.Game1.GraphicsDevice.Viewport.Width/2f,
                 Stage.Game1.GraphicsDevice.Viewport.Height/2f);
 
-            //TODO DRAW all Sprites
-            //TODO init all objects and give them some positions
-            Console.WriteLine("Add to tile map scripts about to be called");
-            ContentManager content = Stage.Game1.Content;
-            Factory.addTileMapToScript("Level1.json", _script);
-            Console.WriteLine("Add to tile map scripts called");
-            /*_script.AddEntity(new Coin(new Vector2(150, 100), content));
-            _script.AddEntity(new FireFlower(new Vector2(200, 100), content));
-            _script.AddEntity(new Mushroom1Up(new Vector2(250, 100), content));
-            _script.AddEntity(new MushroomSuper(new Vector2(300, 100), content));
-            _script.AddEntity(new Star(new Vector2(350, 100), content));
-            _script.AddMario(new Mario(new Vector2(100, 150), content));
-            _script.AddEntity(new KoopaTroopa(new Vector2(450, 100), content));
-            _script.AddEntity(new Goomba(new Vector2(500, 100), content));
-            _script.AddEntity(new BrickBlock(new Vector2(500, 300), content));
-
-            _script.AddEntity(new GroundBlock(new Vector2(550, 300), content));
-            _script.AddEntity(new StepBlock(new Vector2(600, 300), content));
-            _script.AddEntity(new UsedBlock(new Vector2(650, 300), content));
-            _script.AddEntity(new QuestionBlock(new Vector2(700, 300), content));
-            */
+            LevelLoader.addTileMapToScript("Level1.json", _script, Stage.Game1.Content);
 
         }
 
@@ -68,11 +48,7 @@ namespace MarioGame.Theming.Scenes
 
             Stage.LoadContent();
 
-            Sprites.Add(_script.mario.mSprite);
-            _script._blocks.ForEach(b => Sprites.Add(b._sprite));
-            _script._items.ForEach(i => Sprites.Add(i._sprite));
-            _script._enemies.ForEach(e => Sprites.Add(e._sprite));
-
+            _script._entities.ForEach(e => Sprites.Add(e._sprite));
             Sprites.ForEach(s => s.Load());
             //Allows for bounding boxes to be drawn in different colors
             rectanglePixel = new Texture2D(Stage.Game1.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
@@ -142,7 +118,6 @@ namespace MarioGame.Theming.Scenes
         public Script getScript()
         {
             return this._script;
-
         }
 
     }
