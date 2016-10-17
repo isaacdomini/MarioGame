@@ -72,7 +72,13 @@ namespace MarioGame.Entities
         {
             _position += _velocity;
         }
-        public virtual void Update(Viewport viewport) { }
+
+        public virtual void Update(Viewport viewport)
+        {
+            _position += _velocity;
+            boundingBox.X = (int)_position.X;
+            boundingBox.Y = (int)_position.Y;
+        }
         public Vector2 getPosition()
         {
             return _position;

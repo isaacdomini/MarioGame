@@ -126,6 +126,7 @@
     <Compile Include="States\BlockStates\UsedBlockState.cs" />
     <Compile Include="States\EnemyStates\DeadGoombaState.cs" />
     <Compile Include="States\EnemyStates\DeadKoopaState.cs" />
+    <Compile Include="States\EnemyStates\EnemyActionState.cs" />
     <Compile Include="States\EnemyStates\EnemyActionStateEnum.cs" />
     <Compile Include="States\EnemyStates\GoombaActionState.cs" />
     <Compile Include="States\EnemyStates\GoombaStateMachine.cs" />

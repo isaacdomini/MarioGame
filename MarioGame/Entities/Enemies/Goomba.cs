@@ -45,12 +45,6 @@ namespace MarioGame.Entities
         {
             eState.JumpedOn();
         }
-        public override void Update(Viewport viewport)
-        {
-            _position += _velocity;
-            boundingBox.X = (int)_position.X;
-            boundingBox.Y = (int)_position.Y;
-        }
     }
 
 }

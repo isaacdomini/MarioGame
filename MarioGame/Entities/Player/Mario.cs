@@ -3,7 +3,6 @@ using MarioGame.States.PlayerStates.PowerUpStates;
 using Microsoft.Xna.Framework;
 using MarioGame.Sprites;
 using Microsoft.Xna.Framework.Graphics;
-using static MarioGame.States.PlayerStates.ActionState;
 using Microsoft.Xna.Framework.Content;
 
 namespace MarioGame.Entities
