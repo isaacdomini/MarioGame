@@ -199,6 +199,10 @@ namespace MarioGame.Entities
         {
             pState.ChangeToSuper();
         }
+        public void ChangeToStarState()
+        {
+            pState.ChangeToStar();
+        }
         public void ChangeToDeadState()
         {
             pState.ChangeToDead();

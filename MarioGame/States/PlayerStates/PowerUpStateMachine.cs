@@ -16,6 +16,7 @@ namespace MarioGame.States.PlayerStates
         MarioPowerUpState super;
         MarioPowerUpState fire;
         MarioPowerUpState dead;
+        MarioPowerUpState star;
         internal MarioPowerUpState StandardState
         {
             get { return standard; }
@@ -32,6 +33,10 @@ namespace MarioGame.States.PlayerStates
         {
             get { return dead; }
         }
+        internal MarioPowerUpState StarState
+        {
+            get { return dead; }
+        }
         // TODO: Add this when needed
         //        MarioActionState star;
         public PowerUpStateMachine(Mario mario)
@@ -41,7 +46,7 @@ namespace MarioGame.States.PlayerStates
             super = new SuperState(_mario, this);
             fire = new FireState(_mario, this);
             dead = new DeadState(_mario, this);
-
+            star = new StarState(_mario,this);
         }
     }
 }

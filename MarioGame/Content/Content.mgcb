@@ -301,3 +301,8 @@
 /processorParam:TextureFormat=Color
 /build:ScenerySprite.png
 
+#begin Level1.json
+/importer:
+/processor:
+/build:Level1.json
+

@@ -42,7 +42,7 @@ namespace MarioGame.Sprites
 
         }
 
-        //power up states - standard(small), super(big), fire ,start (invincible), Dead
+        //power up states - standard(small), super(big), fire ,star (invincible), Dead
 
         public MarioSprite(ContentManager content) : base(content)
         {
@@ -66,7 +66,7 @@ namespace MarioGame.Sprites
                 {MarioPowerUpStateEnum.Standard.GetHashCode(), new List<int> {Rows.Standard.GetHashCode() } },
                 {MarioPowerUpStateEnum.Super.GetHashCode(), new List<int> {Rows.Super.GetHashCode() } },
                 {MarioPowerUpStateEnum.Fire.GetHashCode(), new List<int> {Rows.Fire.GetHashCode() } },
-                {MarioPowerUpStateEnum.Invincible.GetHashCode(), new List<int> {Rows.Standard.GetHashCode(), Rows.Fire.GetHashCode(), Rows.Luigi.GetHashCode() } },  //Cycle between various types of mario sprite to give the flashing feel of invincibility
+                {MarioPowerUpStateEnum.Star.GetHashCode(), new List<int> {Rows.Standard.GetHashCode(), Rows.Fire.GetHashCode(), Rows.Luigi.GetHashCode() } },  //Cycle between various types of mario sprite to give the flashing feel of invincibility
                 {MarioPowerUpStateEnum.Dead.GetHashCode(), new List<int> {Rows.Dead.GetHashCode() } }
             };
 

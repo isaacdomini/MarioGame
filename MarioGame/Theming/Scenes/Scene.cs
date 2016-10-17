@@ -38,7 +38,7 @@ namespace MarioGame.Theming.Scenes
             var middle = new Vector2(Stage.Game1.GraphicsDevice.Viewport.Width/2f,
                 Stage.Game1.GraphicsDevice.Viewport.Height/2f);
 
-            LevelLoader.addTileMapToScript("Level1.json", _script, Stage.Game1.Content);
+            LevelLoader.addTileMapToScript("Level1", _script, Stage.Game1.Content);
 
         }
 

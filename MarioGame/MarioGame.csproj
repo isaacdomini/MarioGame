@@ -151,6 +151,7 @@
     <Compile Include="States\PlayerStates\PowerUpStates\DeadState.cs" />
     <Compile Include="States\PlayerStates\PowerUpStates\FireState.cs" />
     <Compile Include="States\PlayerStates\PowerUpStates\StandardState.cs" />
+    <Compile Include="States\PlayerStates\PowerUpStates\StarState.cs" />
     <Compile Include="States\PlayerStates\PowerUpStates\SuperState.cs" />
     <Compile Include="States\State.cs" />
     <Compile Include="Entities\Blocks\BrokenBrickBlock.cs" />

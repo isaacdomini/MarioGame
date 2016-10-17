@@ -2,12 +2,11 @@
 
 namespace MarioGame.States.PlayerStates.PowerUpStates
 {
-    class FireState : MarioPowerUpState
+    class StarState : MarioPowerUpState
     {
-        public FireState(Mario entity, PowerUpStateMachine stateMachine) : base(entity, stateMachine)
+        public StarState(Mario entity, PowerUpStateMachine stateMachine) : base(entity, stateMachine)
         {
-            powerUpState = MarioPowerUpStateEnum.Fire;
-            _mario.isCollidable = true;
+            powerUpState = MarioPowerUpStateEnum.Star;
         }
         public override void ChangeToStandard()
         {
@@ -17,18 +16,10 @@ namespace MarioGame.States.PlayerStates.PowerUpStates
         {
             _mario.ChangePowerUpState(_stateMachine.DeadState);
         }
-        public override void ChangeToStar()
-        {
-            _mario.ChangePowerUpState(_stateMachine.StarState);
-        }
         public override void ChangeToSuper()
         {
             _mario.ChangePowerUpState(_stateMachine.SuperState);
         }
-        public override void EnemyHit()
-        {
-            ChangeToStandard();
-            Mario.invinsibleTimer = 70;
-        }
+
     }
 }

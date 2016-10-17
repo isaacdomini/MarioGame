@@ -13,6 +13,10 @@ namespace MarioGame.States.PlayerStates.PowerUpStates
         {
             _mario.ChangePowerUpState(_stateMachine.FireState);
         }
+        public override void ChangeToStar()
+        {
+            _mario.ChangePowerUpState(_stateMachine.StarState);
+        }
         public override void ChangeToStandard()
         {
             _mario.ChangePowerUpState(_stateMachine.StandardState);
