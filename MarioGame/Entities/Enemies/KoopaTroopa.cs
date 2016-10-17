@@ -41,7 +41,7 @@ namespace MarioGame.Entities
         public void ChangeActionState(GoombaActionState newState)
         {
             aState = newState;
-            eSprite.changeActionState(newState);
+            ((KoopaTroopaSprite)eSprite).changeActionState(newState);
         }
 
         internal void SetShellVelocityToMoving()

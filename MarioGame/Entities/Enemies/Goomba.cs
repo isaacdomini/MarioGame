@@ -28,7 +28,7 @@ namespace MarioGame.Entities
         public void ChangeActionState(GoombaActionState newState)
         {
             eState = newState;
-            eSprite.changeActionState(newState);
+            ((GoombaSprite)eSprite).changeActionState(newState);
         }
         
         public override void Halt()
@@ -40,6 +40,10 @@ namespace MarioGame.Entities
         public void ChangeToDeadState()
         {
             eState.ChangeToDead();
+        }
+        public override void JumpedOn()
+        {
+            eState.JumpedOn();
         }
         public override void Update(Viewport viewport)
         {
