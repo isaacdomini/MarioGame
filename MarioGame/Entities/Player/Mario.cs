@@ -225,16 +225,6 @@ namespace MarioGame.Entities
                 }
             }
         }
-        public override void turnLeft()
-        {
-            direction = Directions.Left;
-            mSprite.changeDirection(direction);
-        }
-        public override void turnRight()
-        {
-            direction = Directions.Right;
-            mSprite.changeDirection(direction);
-        }
         public void SetVelocityToFalling()
         {
             this.setVelocity(fallingVelocity);

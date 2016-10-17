@@ -15,7 +15,7 @@ namespace MarioGame.Entities
     public abstract class Entity : IEntity
     {
         IState _state;
-        public Sprite _sprite;
+        public AnimatedSprite _sprite;
         public Rectangle boundingBox;
         public Color boxColor;
         protected ActionState aState;
@@ -55,7 +55,7 @@ namespace MarioGame.Entities
             String spriteClass = this.GetType().Name + "Sprite";
             string namespaceAndClass = typeof(Sprite).Namespace + "." + spriteClass;
             Type type = Type.GetType(namespaceAndClass);
-           _sprite = (Sprite)Activator.CreateInstance(type, content);
+           _sprite = (AnimatedSprite)Activator.CreateInstance(type, content);
 
             _position = position;
             _sprite.Position = _position;
@@ -110,8 +110,15 @@ namespace MarioGame.Entities
         {
             return direction == Directions.Right;
         }
-        public virtual void turnLeft() {}
-        public virtual void turnRight() {}
+        public virtual void turnLeft()
+        {
+            direction = Directions.Left;
+            _sprite.changeDirection(direction);
+        }
+        public virtual void turnRight() {
+            direction = Directions.Right;
+            _sprite.changeDirection(direction);
+        }
 
     }
 }

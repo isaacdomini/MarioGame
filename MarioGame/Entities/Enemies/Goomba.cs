@@ -51,16 +51,6 @@ namespace MarioGame.Entities
             boundingBox.X = (int)_position.X;
             boundingBox.Y = (int)_position.Y;
         }
-        public override void turnLeft()
-        {
-            direction = Directions.Left;
-            eSprite.changeDirection(direction);
-        }
-        public override void turnRight()
-        {
-            direction = Directions.Right;
-            eSprite.changeDirection(direction);
-        }
     }
 
 }
