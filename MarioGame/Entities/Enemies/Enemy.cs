@@ -9,6 +9,7 @@ namespace MarioGame.Entities
         public AnimatedSprite eSprite;
         public Enemy(Vector2 position, ContentManager content) : base(position, content)
         {
+
         }
     }
 }

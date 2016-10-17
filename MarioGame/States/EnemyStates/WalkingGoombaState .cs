@@ -1,10 +1,11 @@
 ﻿using MarioGame.Entities;
+using MarioGame.Entities.EnemyEntities;
 
 namespace MarioGame.States.EnemyStates
 {
     class WalkingGoombaState : GoombaActionState
     {
-        private Goomba enemyEntity;
+        //private Goomba enemyEntity;
 
         public WalkingGoombaState(Goomba enemyEntity) : base(enemyEntity)
         {

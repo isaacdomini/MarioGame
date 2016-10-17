@@ -1,4 +1,5 @@
 ﻿using MarioGame.Entities;
+using MarioGame.Entities.EnemyEntities;
 using MarioGame.States.PlayerStates;
 
 namespace MarioGame.States.EnemyStates

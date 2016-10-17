@@ -173,6 +173,7 @@
     </MonoGameContentReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="bin\Windows\x86\Debug\Level1.json" />
     <None Include="bin\Windows\x86\Debug\MarioGame.vshost.exe.manifest" />
     <None Include="Content\bin\Windows\brick1.xnb" />
     <None Include="Content\bin\Windows\groundblock.xnb" />
