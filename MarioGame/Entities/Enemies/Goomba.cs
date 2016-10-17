@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 using MarioGame.Entities;
 using Microsoft.Xna.Framework.Content;
 
-namespace MarioGame.Entities.EnemyEntities
+namespace MarioGame.Entities
 {
     public class Goomba : Enemy
     {

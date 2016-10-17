@@ -14,7 +14,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MarioGame.Entities.EnemyEntities
+namespace MarioGame.Entities
 {
     public class KoopaTroopa : Enemy
     {
