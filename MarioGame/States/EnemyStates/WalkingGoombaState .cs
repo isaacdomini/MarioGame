@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MarioGame.Entities.EnemyEntities;
-using MarioGame.Entities;
+﻿using MarioGame.Entities;
 
 namespace MarioGame.States.EnemyStates
 {
     class WalkingGoombaState : GoombaActionState
     {
-        private GoombaEntity enemyEntity;
+        private Goomba enemyEntity;
 
-        public WalkingGoombaState(GoombaEntity enemyEntity) : base(enemyEntity)
+        public WalkingGoombaState(Goomba enemyEntity) : base(enemyEntity)
         {
             enemyState = EnemyActionStateEnum.Walking;
         }

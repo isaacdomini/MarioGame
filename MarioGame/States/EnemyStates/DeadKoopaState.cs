@@ -1,17 +1,11 @@
-﻿using MarioGame.Entities.EnemyEntities;
-using MarioGame.States.PlayerStates;
+﻿using MarioGame.Entities;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MarioGame.States.EnemyStates
 {
     class DeadKoopaState : KoopaActionState
     {
-        public DeadKoopaState(KoopaTroopaEntity entity) : base(entity)
+        public DeadKoopaState(KoopaTroopa entity) : base(entity)
         {
             enemyState = EnemyActionStateEnum.Dead;
         }

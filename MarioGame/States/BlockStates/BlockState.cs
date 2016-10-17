@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MarioGame.Entities;
-using MarioGame.Sprites;
-using MarioGame.Entities.BlockEntities;
+﻿using MarioGame.Entities;
 
 namespace MarioGame.States.BlockStates
 {
@@ -13,11 +6,12 @@ namespace MarioGame.States.BlockStates
     {
         protected BlockStateEnum bState;
 
-        protected BlockEntity _BlockEntity;
+        protected Block
+            _block;
 
-        public BlockState(BlockEntity entity) : base(entity)
+        public BlockState(Block entity) : base(entity)
         {
-            _BlockEntity = entity;
+            _block = entity;
         }
 
         public override void Begin(IState prevState)

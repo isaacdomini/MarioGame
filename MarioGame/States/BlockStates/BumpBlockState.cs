@@ -13,7 +13,7 @@ namespace MarioGame.States.BlockStates
 {
     class BumpBlockState : BlockState
     {
-        public BumpBlockState(BlockEntity entity) : base(entity)
+        public BumpBlockState(Block entity) : base(entity)
         {
             bState = BlockStateEnum.BumpBlock;
         }
@@ -21,14 +21,14 @@ namespace MarioGame.States.BlockStates
         public override void Bump(){}
         public override void Standard()
         {
-            BlockState standardState = new StandardBlockState(_BlockEntity);
-            _BlockEntity.ChangeBrickState(standardState);
+            BlockState standardState = new StandardBlockState(_block);
+            _block.ChangeBrickState(standardState);
             standardState.Begin(this);
         }
         public override void Used()
         {
-            BlockState usedState = new UsedBlockState(_BlockEntity);
-            _BlockEntity.ChangeBrickState(usedState);
+            BlockState usedState = new UsedBlockState(_block);
+            _block.ChangeBrickState(usedState);
             usedState.Begin(this);
         }
         public override void Break(){}

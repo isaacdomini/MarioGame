@@ -9,7 +9,7 @@ namespace MarioGame.States.PlayerStates.PowerUpStates
             powerUpState = MarioPowerUpStateEnum.Standard;
             entity.boundingBox.Width = 20;
             entity.boundingBox.Height = 20;
-            marioEntity.isCollidable = true;
+            mario.isCollidable = true;
         }
         public override void ChangeToFire()
         {

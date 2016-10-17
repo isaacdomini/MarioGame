@@ -1,16 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MarioGame.Entities;
-using MarioGame.Sprites;
 
 namespace MarioGame.States.BlockStates
 {
     class UsedBlockState : BlockState
     {
-        public UsedBlockState(BlockEntity entity) : base(entity)
+        public UsedBlockState(Block entity) : base(entity)
         {
             bState = BlockStateEnum.UsedBlock;
         }

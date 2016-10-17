@@ -97,23 +97,23 @@ namespace MarioGame.Theming
                 {
                     colliding = true;
                     item.boxColor = Color.Black;
-                    if (item.GetType() == typeof(CoinEntity))
+                    if (item.GetType() == typeof(Coin))
                     {
                         //Add code to add coin to total coins
                     }
-                    else if (item.GetType() == typeof(StarEntity))
+                    else if (item.GetType() == typeof(Star))
                     {
                         //Add code to make Mario invinsible
                     }
-                    else if (item.GetType() == typeof(FireFlowerEntity))
+                    else if (item.GetType() == typeof(FireFlower))
                     {
                         mario.ChangeToFireState();
                     }
-                    else if (item.GetType() == typeof(Mushroom1UpEntity))
+                    else if (item.GetType() == typeof(Mushroom1Up))
                     {
                         //Add code to add extra life
                     }
-                    else if (item.GetType() == typeof(MushroomSuperEntity))
+                    else if (item.GetType() == typeof(MushroomSuper))
                     {
                         mario.ChangeToSuperState();
                     }

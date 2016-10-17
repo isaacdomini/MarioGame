@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace MarioGame.Entities
 {
-    class KoopaTroopa : Enemy
+    public class KoopaTroopa : Enemy
     {
         public KoopaTroopa(Vector2 position, ContentManager content) : base(position, content)
         {

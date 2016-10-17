@@ -1,10 +1,5 @@
-﻿using MarioGame.Entities.EnemyEntities;
+﻿using MarioGame.Entities;
 using MarioGame.States.PlayerStates;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MarioGame.States.EnemyStates
 {
@@ -12,8 +7,8 @@ namespace MarioGame.States.EnemyStates
     {
         public EnemyActionStateEnum enemyState
         { get; protected set; }
-        protected KoopaTroopaEntity enemyEntity;
-        public KoopaActionState(KoopaTroopaEntity entity) : base(entity)
+        public KoopaTroopa enemyEntity;
+        public KoopaActionState(KoopaTroopa entity) : base(entity)
         {
             enemyEntity = entity;
         }

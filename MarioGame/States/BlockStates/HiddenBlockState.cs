@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MarioGame.Entities;
-using MarioGame.Sprites;
-using MarioGame.Entities.BlockEntities;
+﻿using MarioGame.Entities;
 
 namespace MarioGame.States.BlockStates
 {
     class HiddenBlockState : BlockState
     {
-        public HiddenBlockState(BlockEntity entity) : base(entity)
+        public HiddenBlockState(Block entity) : base(entity)
         {
             bState = BlockStateEnum.HiddenBlock;
         }
@@ -20,8 +13,8 @@ namespace MarioGame.States.BlockStates
             Standard();
         }
         public override void Standard() {
-            BlockState standardState = new StandardBlockState(_BlockEntity);
-            _BlockEntity.ChangeBrickState(standardState);
+            BlockState standardState = new StandardBlockState(_block);
+            _block.ChangeBrickState(standardState);
             standardState.Begin(this);
         }
         public override void Used() { }

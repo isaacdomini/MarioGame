@@ -1,24 +1,18 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MarioGame.Entities;
-using MarioGame.Sprites;
 
 namespace MarioGame.States.BlockStates
 {
     class StandardBlockState : BlockState
     {
-        public StandardBlockState(BlockEntity entity) : base(entity)
+        public StandardBlockState(Block entity) : base(entity)
         {
             bState = BlockStateEnum.StandardBlock;
         }
 
         public override void Bump()
         {
-            BlockState bumpState = new BumpBlockState(_BlockEntity);
-            _BlockEntity.ChangeBrickState(bumpState);
+            BlockState bumpState = new BumpBlockState(_block);
+            _block.ChangeBrickState(bumpState);
             bumpState.Begin(this);
 
         }
@@ -26,8 +20,8 @@ namespace MarioGame.States.BlockStates
         public override void Used(){}
         public override void Break()
         {
-            BlockState breakState = new BreakBlockState(_BlockEntity);
-            _BlockEntity.ChangeBrickState(breakState);
+            BlockState breakState = new BreakBlockState(_block);
+            _block.ChangeBrickState(breakState);
             breakState.Begin(this);
         }
     }
