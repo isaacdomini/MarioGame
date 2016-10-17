@@ -303,5 +303,11 @@
 /build:ScenerySprite.png
 
 #begin Level1.json
+<<<<<<< HEAD
 /copy:Level1.json
+=======
+/importer:
+/processor:
+/build:Level1.json
+>>>>>>> added code for star state
 
