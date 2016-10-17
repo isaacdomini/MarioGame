@@ -7,16 +7,15 @@ namespace MarioGame.States.EnemyStates
     {
         //private KoopaTroopaEntity enemyEntity;
 
-        public WalkingKoopaState(KoopaTroopa enemyEntity) : base(enemyEntity)
+        public WalkingKoopaState(KoopaTroopa enemyEntity, KoopaStateMachine stateMachine) : base(enemyEntity, stateMachine)
         {
             enemyState = EnemyActionStateEnum.Walking;
         }
 
-        public override void ChangeToDead()
+        public override void Begin(KoopaActionState prevState)
         {
-            KoopaActionState dead = new DeadKoopaState(enemyEntity);
-            enemyEntity.ChangeActionState(dead);
-            dead.Begin(this);
+            koopa.SetVelocityToWalk();
+            koopa.ChangeActionState(_stateMachine.WalkState);
         }
     }
 }

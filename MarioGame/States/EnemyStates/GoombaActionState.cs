@@ -7,26 +7,30 @@ namespace MarioGame.States.EnemyStates
     {
         public EnemyActionStateEnum enemyState
         { get; protected set; }
-        protected Goomba enemyEntity;
-        public GoombaActionState(Goomba entity) : base(entity)
+        protected Goomba goomba;
+        protected GoombaStateMachine _stateMachine;
+        public GoombaActionState(Goomba entity, GoombaStateMachine stateMachine) : base(entity)
         {
-            enemyEntity = entity;
+            _stateMachine = stateMachine;
+            goomba = entity;
         }
 
         public virtual void Begin(GoombaActionState prevState)
         {
             base.Begin(prevState);
-            enemyEntity.eSprite.changeActionState(this);
         }
         public virtual void Halt()
         {
-            GoombaActionState newState = new DeadGoombaState(enemyEntity);
-            newState.setDirection(this.direction);
-            enemyEntity.ChangeActionState(newState);
-            enemyEntity.SetVelocityToIdle();
-            newState.Begin(this);
+            ChangeToDead();
         }
 
-        public virtual void ChangeToDead(){ }
+        public virtual void ChangeToDead()
+        {
+            _stateMachine.DeadGoomba.Begin(this);
+        }
+        public virtual void JumpedOn()
+        {
+            ChangeToDead();
+        }
     }
 }

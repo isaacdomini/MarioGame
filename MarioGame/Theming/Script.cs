@@ -70,7 +70,7 @@ namespace MarioGame.Theming
                     enemy.boxColor = Color.Black;
                     if (collisionHandler.checkSideCollision(mario, enemy) == CollisionTypes.Top)
                     {
-                        enemy.Halt();
+                        enemy.JumpedOn();
                     }
                     else
                     {

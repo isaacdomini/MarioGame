@@ -8,26 +8,30 @@ namespace MarioGame.States.EnemyStates
     {
         public EnemyActionStateEnum enemyState
         { get; protected set; }
-        public KoopaTroopa enemyEntity;
-        public KoopaActionState(KoopaTroopa entity) : base(entity)
+        public KoopaTroopa koopa;
+        protected KoopaStateMachine _stateMachine;
+        public KoopaActionState(KoopaTroopa entity, KoopaStateMachine stateMachine) : base(entity)
         {
-            enemyEntity = entity;
+            _stateMachine = stateMachine;
+            koopa = entity;
         }
 
         public virtual void Begin(KoopaActionState prevState)
         {
             base.Begin(prevState);
-            enemyEntity.eSprite.changeActionState(this);
         }
         public virtual void Halt()
         {
-            KoopaActionState newState = new DeadKoopaState(enemyEntity);
-            newState.setDirection(this.direction);
-            enemyEntity.ChangeActionState(newState);
-            enemyEntity.SetVelocityToIdle();
-            newState.Begin(this);
+            ChangeToDead();
+        }
+        public virtual void JumpedOn()
+        {
+            ChangeToDead();
         }
 
-        public virtual void ChangeToDead(){ }
+        public virtual void ChangeToDead()
+        {
+            _stateMachine.DeadState.Begin(this);
+        }
     }
 }

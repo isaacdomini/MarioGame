@@ -4,9 +4,14 @@ namespace MarioGame.States.EnemyStates
 {
     class DeadGoombaState : GoombaActionState
     {
-        public DeadGoombaState(Goomba entity) : base(entity)
+        public DeadGoombaState(Goomba entity, GoombaStateMachine stateMachine) : base(entity, stateMachine)
         {
             enemyState = EnemyActionStateEnum.Dead;
+        }
+        public override void Begin(GoombaActionState prevState)
+        {
+            goomba.SetVelocityToIdle();
+            goomba.ChangeActionState(_stateMachine.DeadGoomba);
         }
     }
 }

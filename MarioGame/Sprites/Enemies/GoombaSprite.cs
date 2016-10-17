@@ -41,14 +41,6 @@ namespace MarioGame.Sprites
         {
             _frameSet = _frameSets[goombaActionState.enemyState.GetHashCode()];
             _frameSetPosition = 0;
-            if (goombaActionState.isFacingRight())
-            {
-                _flipped = SpriteEffects.FlipHorizontally;
-            }
-            else if (goombaActionState.isFacingLeft())
-            {
-                _flipped = SpriteEffects.None;
-            }
         }
     }
 }

@@ -95,17 +95,7 @@ namespace MarioGame.Sprites
             _frameSet = _frameSets[marioActionState.actionState.GetHashCode()];
             _frameSetPosition = 0;
         }
-        public void changeDirection(Directions newDirection)
-        {
-            if (newDirection == Directions.Left)
-            {
-                _flipped = SpriteEffects.None;
-            }
-            else if (newDirection == Directions.Right)
-            {
-                _flipped = SpriteEffects.FlipHorizontally;
-            }
-        }
+
 
         public void changePowerUp(MarioPowerUpState marioPowerUpState)
         {

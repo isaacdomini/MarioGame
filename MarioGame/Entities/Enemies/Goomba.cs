@@ -11,21 +11,30 @@ namespace MarioGame.Entities
     public class Goomba : Enemy
     {
         //public GoombaSprite eSprite;
-        private GoombaActionState eState;
+        GoombaActionState eState;
+        GoombaStateMachine stateMachine;
+        private static int boundingBoxWidth = 10;
+        private static int boundingBoxHeight = 10;
+
         public Goomba(Vector2 position, ContentManager content) : base(position, content)
         {
-            aState = new WalkingGoombaState(this);
+            stateMachine = new GoombaStateMachine(this);
+            aState = stateMachine.WalkingGoomba;
+            eState = (GoombaActionState)aState;
             eSprite = (GoombaSprite)_sprite;
-            int _height = 40;
-            int _width = 20;
-            boundingBox = new Rectangle((int)(_position.X + 3), (int)(_position.Y + 5), _width / 2, _height / 4);
+            boundingBox = new Rectangle((int)(_position.X + 3), (int)(_position.Y + 5), boundingBoxWidth, boundingBoxHeight);
             boxColor = Color.Red;
+        }
+        public void ChangeActionState(GoombaActionState newState)
+        {
+            eState = newState;
+            eSprite.changeActionState(newState);
         }
         
         public override void Halt()
         {
             _position -= _velocity;
-            ((GoombaActionState)aState).Halt();
+            eState.Halt();
         }
 
         public void ChangeToDeadState()
@@ -37,6 +46,16 @@ namespace MarioGame.Entities
             _position += _velocity;
             boundingBox.X = (int)_position.X;
             boundingBox.Y = (int)_position.Y;
+        }
+        public override void turnLeft()
+        {
+            direction = Directions.Left;
+            eSprite.changeDirection(direction);
+        }
+        public override void turnRight()
+        {
+            direction = Directions.Right;
+            eSprite.changeDirection(direction);
         }
     }
 

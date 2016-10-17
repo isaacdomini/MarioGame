@@ -5,24 +5,25 @@ namespace MarioGame.States.EnemyStates
 {
     class DeadKoopaState : KoopaActionState
     {
-        public DeadKoopaState(KoopaTroopa entity) : base(entity)
+        public DeadKoopaState(KoopaTroopa entity, KoopaStateMachine stateMachine) : base(entity, stateMachine)
         {
             enemyState = EnemyActionStateEnum.Dead;
         }
-        public override void Halt()
+        public override void Begin(KoopaActionState prevState)
         {
-            KoopaActionState newState = new DeadKoopaState(enemyEntity);
-            newState.setDirection(this.direction);
-            enemyEntity.ChangeActionState(newState);
-            if (Vector2.Equals(enemyEntity._velocity,Entity.idleVelocity))
+            koopa.SetVelocityToIdle();
+            koopa.ChangeActionState(_stateMachine.DeadState);
+        }
+        public override void JumpedOn()
+        {
+            if (Vector2.Equals(koopa._velocity, Entity.idleVelocity))
             {
-                //enemyEntity.SetVelocityToMoving();
-            }else
-            {
-                enemyEntity.SetVelocityToIdle();
+                koopa.SetShellVelocityToMoving();
             }
-            enemyEntity.Update();
-            newState.Begin(this);
+            else
+            {
+                koopa.SetVelocityToIdle();
+            }
         }
     }
 }

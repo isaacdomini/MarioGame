@@ -6,16 +6,15 @@ namespace MarioGame.States.EnemyStates
     {
         //private Goomba enemyEntity;
 
-        public WalkingGoombaState(Goomba enemyEntity) : base(enemyEntity)
+        public WalkingGoombaState(Goomba enemyEntity, GoombaStateMachine stateMachine) : base(enemyEntity, stateMachine)
         {
             enemyState = EnemyActionStateEnum.Walking;
         }
-
-        public override void ChangeToDead()
+        public override void Begin(GoombaActionState prevState)
         {
-            GoombaActionState dead = new DeadGoombaState(enemyEntity);
-            //enemyEntity.ChangeActionState(dead);
-            dead.Begin(this);
+            goomba.SetVelocityToWalk();
+            goomba.ChangeActionState(_stateMachine.WalkingGoomba);
         }
+        
     }
 }

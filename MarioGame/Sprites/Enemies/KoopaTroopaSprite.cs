@@ -40,14 +40,6 @@ namespace MarioGame.Sprites
         {
             _frameSet = _frameSets[koopaActionState.enemyState.GetHashCode()];
             _frameSetPosition = 0;
-            if (koopaActionState.isFacingRight())
-            {
-                _flipped = SpriteEffects.FlipHorizontally;
-            }
-            else if (koopaActionState.isFacingLeft())
-            {
-                _flipped = SpriteEffects.None;
-            }
         }
 
     }

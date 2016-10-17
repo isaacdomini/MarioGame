@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 using System.Collections.Generic;
-
+using static MarioGame.Entities.Entity;
 
 namespace MarioGame.Sprites
 {
@@ -88,6 +88,17 @@ namespace MarioGame.Sprites
             var sourceRect = new Rectangle( ((int)_frameSet[_frameSetPosition]) * _frameWidth, ((int)_rowSet[_rowSetPosition]) * _frameHeight, _frameWidth, _frameHeight);
             batch.Draw(texture: _texture, position: Position, sourceRectangle: sourceRect, color: Color.White, effects : _flipped);
      
+        }
+        public void changeDirection(Directions newDirection)
+        {
+            if (newDirection == Directions.Left)
+            {
+                _flipped = SpriteEffects.None;
+            }
+            else if (newDirection == Directions.Right)
+            {
+                _flipped = SpriteEffects.FlipHorizontally;
+            }
         }
 
     }

@@ -20,33 +20,45 @@ namespace MarioGame.Entities
     {
         //public KoopaTroopaSprite eSprite;
         private KoopaActionState eState;
-        public readonly static Vector2 movingVelocity = new Vector2(2, 0);
+        public readonly static Vector2 shellMovingVelocity = new Vector2(2, 0);
         private int _height;
         private int _width;
+        private static int boundingBoxWidth = 10;
+        private static int boundingBoxHeight = 13;
+        KoopaStateMachine _stateMachine;
 
         public KoopaTroopa(Vector2 position, ContentManager content) : base(position, content)
         {
-            aState = new WalkingKoopaState(this);
+            _stateMachine = new KoopaStateMachine(this);
+            aState = _stateMachine.WalkState;
+            eState = (KoopaActionState)aState;
             eSprite = (KoopaTroopaSprite)_sprite;
-            _height = 40;
-            _width = 20;
-            boundingBox = new Rectangle((int)_position.X + 3, (int)_position.Y + 5, _width / 2, _height / 3);
+            boundingBox = new Rectangle((int)_position.X + 3, (int)_position.Y + 5, boundingBoxWidth, boundingBoxHeight);
             boxColor = Color.Red;
             isCollidable = true;
 
         }
-
-        internal void SetVelocityToMoving()
+        public void ChangeActionState(GoombaActionState newState)
         {
-            this.setVelocity(movingVelocity);
+            aState = newState;
+            eSprite.changeActionState(newState);
+        }
+
+        internal void SetShellVelocityToMoving()
+        {
+            this.setVelocity(shellMovingVelocity);
         }
 
         public override void Halt()
         {
             _position -= _velocity;
-            ((KoopaActionState)aState).Halt();
+            eState.Halt();
         }
-       
+        public override void JumpedOn()
+        {
+            eState.JumpedOn();
+        }
+
         public override void Update(Viewport viewport)
         {
             base.Update();
