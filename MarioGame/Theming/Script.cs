@@ -18,10 +18,10 @@ namespace MarioGame.Theming
         public Mario mario { get; private set; }
 
         public List<Entity> _entities { get; private set; }
-	    public List<Entity> _enemies { get; private set; }
-	    public List<Entity> _items { get; private set; }
-	    public List<BlockEntity> _blocks { get; private set; }
-
+        //possibile TODO: cache the getters if performance suffers
+        public List<Block> _blocks { get { return _entities.FindAll(e => e is Block).ConvertAll(e => (Block) e); } }
+        public List<Item> _items { get { return _entities.FindAll(e => e is Item).ConvertAll(e => (Item) e); } }
+        public List<Enemy> _enemies { get { return _entities.FindAll(e => e is Enemy).ConvertAll(e => (Enemy) e); } }
 
         public Script(Scene scene)
         {
@@ -45,9 +45,7 @@ namespace MarioGame.Theming
 
         public void Initialize()
         {
-		    _enemies = new List<Entity>();
-		    _items = new List<Entity>();
-		    _blocks = new List<BlockEntity>();
+		    _entities = new List<Entity>();
             collisionHandler = new CollisionHandler();
         }
 
@@ -137,25 +135,14 @@ namespace MarioGame.Theming
 
         }
 
+        public void AddEntity(Entity entity)
+        {
+            _entities.Add(entity);
+        }
         public void AddMario(Mario mario)
         {
             this.mario = mario;
         }
-
-	    public void AddEnemy(Entity enemy)
-	    {
-		    _enemies.Add(enemy);
-	    }
-
-	    public void AddItem(Entity item)
-	    {
-		    _items.Add(item);
-	    }
-
-	    public void AddBlock(BlockEntity block)
-	    {
-		    _blocks.Add(block);
-	    }
 
         public void MakeMarioJump()
         {

@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace MarioGame.Entities
 {
-    public class MushroomSuper : Entity
+    public class MushroomSuper : Item
     {
         public MushroomSuper(Vector2 position, ContentManager content) : base(position, content)
         {

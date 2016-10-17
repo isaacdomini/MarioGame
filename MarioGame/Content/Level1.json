@@ -1,0 +1,145 @@
+﻿{
+  "width": 50,
+  "height": 20,
+  "checkpoints":  [25, 40],
+  "entities": [
+    {
+      "type": "GroundBlock",
+      "rowColumns": [
+        {
+          "row": 20,
+          "columns": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50 ]
+        },
+        {
+          "row": 19,
+          "columns": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50 ]
+        }
+      ] 
+    },
+    {
+      "type": "QuestionBlock",
+      "rowColumnWithHiddenItems": [
+        {
+          "row": 15,
+          "column": 10,
+          "hiddenItems": [
+            {
+              "type": "Coin",
+              "amount": 2
+            } 
+          ]
+        },
+        {
+          "row": 15,
+          "column": 15,
+          "hiddenItems": [
+            {
+              "type": "MushroomSuper",
+              "amount": 1
+            } 
+          ]
+        },
+        {
+          "row": 15,
+          "column": 19,
+          "hiddenItems": [
+            {
+              "type": "Coin",
+              "amount": 3
+            },
+            {
+              "type": "Mushroom1Up",
+              "amount":  1
+            }
+          ]
+        }
+      ],
+      "rowColumns": [
+        {
+          "row": 9,
+          "columns": [ 16 ]
+        },
+        {
+          "row": 5,
+          "columns": [ 17 ]
+        }
+      ]
+    },
+    {
+      "type": "BrickBlock",
+      "rowColumns": [
+        {
+          "row": 5,
+          "columns": [ 14, 16, 18 ]
+        }
+      ]
+    },
+    {
+      "type": "UsedBlock",
+      "rowColumns": [
+        {
+          "row": 5,
+          "columns": [ 10 ]
+        }
+      ] 
+    },
+    {
+      "type": "StairBlock",
+      "rowColumns": [
+        {
+          "row": 3,
+          "columns": [ 30, 31, 32 ]
+        },
+        {
+          "row": 4,
+          "columns": [ 31 ]
+        }
+      ]
+    },
+    {
+      "type": "Star",
+      "rowColumns": [
+        {
+          "row": 3,
+          "columns": [ 11 ]
+        }
+      ]
+    },
+    {
+      "type": "FireFlower",
+      "rowColumns": [
+        {
+          "row": 3,
+          "columns": [ 25 ]
+        }
+      ]
+    },
+    {
+      "type": "Goomba",
+      "rowColumns": [
+        {
+          "row": 3,
+          "columns": [ 20 ]
+        }
+      ]
+    },
+    {
+      "type": "KoopaTroopa",
+      "rowColumns": [
+        {
+          "row": 3,
+          "columns": [ 30 ]
+        }
+      ]
+    },
+    {
+      "type": "Mario",
+      "rowColumns": [
+        {
+          "row": 3,
+          "columns": [ 3 ]
+        }
+      ]
+    }
+  ]
+}

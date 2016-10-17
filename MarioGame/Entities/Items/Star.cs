@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace MarioGame.Entities
 {
-    public class Star : Entity
+    public class Star : Item
     {
         public Star(Vector2 position, ContentManager content) : base(position, content)
         {

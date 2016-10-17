@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace MarioGame.Entities
 {
-    public class FireFlower : Entity
+    public class FireFlower : Item
     {
         public FireFlower(Vector2 position, ContentManager content) : base(position, content)
         {

@@ -44,7 +44,7 @@ namespace MarioGame.Entities
            _sprite = (Sprite)Activator.CreateInstance(type, content);
 
             _position = position;
-            ((Sprite)_sprite).Position = _position;
+            _sprite.Position = _position;
         }
         public virtual void ChangeState(IState newstate)
         {

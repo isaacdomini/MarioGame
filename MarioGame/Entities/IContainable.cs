@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace MarioGame.Entities
 {
     //Items (e.g. a coin or powerup, that are contained by other elementsp (e.g. a block)) implement this interface
-    interface IContainable : IHidable
+    public interface IContainable
     {
     }
 }

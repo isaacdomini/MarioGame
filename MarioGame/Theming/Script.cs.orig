@@ -6,10 +6,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using System;
-<<<<<<< 88c00baed242b47c3707abeda584f6e7fa743769
-using MarioGame.Entities;
-=======
->>>>>>> Made it so that invoker of an entity constructor doesn't also have to invoke a sprite constructor. The user of an entity shouldn't have to have any knowledge about the entity's sprite.
 
 namespace MarioGame.Theming
 {
@@ -22,10 +18,17 @@ namespace MarioGame.Theming
         public Mario mario { get; private set; }
 
         public List<Entity> _entities { get; private set; }
+<<<<<<< 4590d60f51510a8b3862738a92ba6d86e97fb8fa
 	    public List<Entity> _enemies { get; private set; }
 	    public List<Entity> _items { get; private set; }
 	    public List<BlockEntity> _blocks { get; private set; }
 
+=======
+        //possibile TODO: cache the getters if performance suffers
+        public List<Block> _blocks { get { return _entities.FindAll(e => e is Block).ConvertAll(e => (Block) e); } }
+        public List<Item> _items { get { return _entities.FindAll(e => e is Item).ConvertAll(e => (Item) e); } }
+        public List<Enemy> _enemies { get { return _entities.FindAll(e => e is Enemy).ConvertAll(e => (Enemy) e); } }
+>>>>>>> level loader almost done. creating Icontainable and IContainer interfaces for blocks that can hold items
 
         public Script(Scene scene)
         {
@@ -49,9 +52,13 @@ namespace MarioGame.Theming
 
         public void Initialize()
         {
+<<<<<<< 4590d60f51510a8b3862738a92ba6d86e97fb8fa
 		    _enemies = new List<Entity>();
 		    _items = new List<Entity>();
 		    _blocks = new List<BlockEntity>();
+=======
+		    _entities = new List<Entity>();
+>>>>>>> level loader almost done. creating Icontainable and IContainer interfaces for blocks that can hold items
             collisionHandler = new CollisionHandler();
         }
 
@@ -141,11 +148,16 @@ namespace MarioGame.Theming
 
         }
 
+        public void AddEntity(Entity entity)
+        {
+            _entities.Add(entity);
+        }
         public void AddMario(Mario mario)
         {
             this.mario = mario;
         }
 
+<<<<<<< 4590d60f51510a8b3862738a92ba6d86e97fb8fa
 	    public void AddEnemy(Entity enemy)
 	    {
 		    _enemies.Add(enemy);
@@ -161,6 +173,8 @@ namespace MarioGame.Theming
 		    _blocks.Add(block);
 	    }
 
+=======
+>>>>>>> level loader almost done. creating Icontainable and IContainer interfaces for blocks that can hold items
         public void MakeMarioJump()
         {
             mario.Jump();

@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace MarioGame.Entities
 {
-    public class Goomba : Entity
+    public class Goomba : Enemy
     {
         public Goomba(Vector2 position, ContentManager content) : base(position, content)
         {

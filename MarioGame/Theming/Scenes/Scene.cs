@@ -40,21 +40,25 @@ namespace MarioGame.Theming.Scenes
 
             //TODO DRAW all Sprites
             //TODO init all objects and give them some positions
+            Console.WriteLine("Add to tile map scripts about to be called");
             ContentManager content = Stage.Game1.Content;
-            _script.AddItem(new Coin(new Vector2(150, 100), content));
-            _script.AddItem(new FireFlower(new Vector2(200, 100), content));
-            _script.AddItem(new Mushroom1Up(new Vector2(250, 100), content));
-            _script.AddItem(new MushroomSuper(new Vector2(300, 100), content));
-            _script.AddItem(new Star(new Vector2(350, 100), content));
+            Factory.addTileMapToScript("Level1.json", _script);
+            Console.WriteLine("Add to tile map scripts called");
+            /*_script.AddEntity(new Coin(new Vector2(150, 100), content));
+            _script.AddEntity(new FireFlower(new Vector2(200, 100), content));
+            _script.AddEntity(new Mushroom1Up(new Vector2(250, 100), content));
+            _script.AddEntity(new MushroomSuper(new Vector2(300, 100), content));
+            _script.AddEntity(new Star(new Vector2(350, 100), content));
             _script.AddMario(new Mario(new Vector2(100, 150), content));
-            _script.AddEnemy(new KoopaTroopa(new Vector2(450, 100), content));
-            _script.AddEnemy(new Goomba(new Vector2(500, 100), content));
-            _script.AddBlock(new BrickBlock(new Vector2(500, 300), content));
+            _script.AddEntity(new KoopaTroopa(new Vector2(450, 100), content));
+            _script.AddEntity(new Goomba(new Vector2(500, 100), content));
+            _script.AddEntity(new BrickBlock(new Vector2(500, 300), content));
 
-            _script.AddBlock(new GroundBlock(new Vector2(550, 300), content));
-            _script.AddBlock(new StepBlock(new Vector2(600, 300), content));
-            _script.AddBlock(new UsedBlock(new Vector2(650, 300), content));
-            _script.AddBlock(new QuestionBlock(new Vector2(700, 300), content));
+            _script.AddEntity(new GroundBlock(new Vector2(550, 300), content));
+            _script.AddEntity(new StepBlock(new Vector2(600, 300), content));
+            _script.AddEntity(new UsedBlock(new Vector2(650, 300), content));
+            _script.AddEntity(new QuestionBlock(new Vector2(700, 300), content));
+            */
 
         }
 

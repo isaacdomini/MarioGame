@@ -71,6 +71,7 @@
     <Compile Include="Entities\Blocks\BumpableBlock.cs" />
     <Compile Include="Entities\Blocks\GroundBlock.cs" />
     <Compile Include="Entities\Blocks\HiddenBlock.cs" />
+    <Compile Include="Entities\Enemies\Enemy.cs" />
     <Compile Include="Entities\IBumpable.cs" />
     <Compile Include="Entities\Blocks\QuestionBlock.cs" />
     <Compile Include="Entities\Blocks\StepBlock.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Entities\IHidable.cs" />
     <Compile Include="Entities\Items\Coin.cs" />
     <Compile Include="Entities\Items\FireFlower.cs" />
+    <Compile Include="Entities\Items\Item.cs" />
     <Compile Include="Entities\Items\Mushroom1Up.cs" />
     <Compile Include="Entities\Items\MushroomSuper.cs" />
     <Compile Include="Entities\Items\Star.cs" />
@@ -152,6 +154,10 @@
     <Reference Include="MonoGame.Framework">
       <HintPath>$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\Windows\MonoGame.Framework.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -174,6 +180,7 @@
     <None Include="Content\bin\Windows\questionblock.xnb" />
     <None Include="Content\bin\Windows\stepblock.xnb" />
     <None Include="Content\bin\Windows\usedblock.xnb" />
+    <None Include="Content\Level1.json" />
     <None Include="Content\obj\Windows\.mgcontent" />
     <None Include="Content\obj\Windows\brick1.mgcontent" />
     <None Include="Content\obj\Windows\groundblock.mgcontent" />
@@ -184,7 +191,9 @@
     <None Include="Content\obj\Windows\stepblock.mgcontent" />
     <None Include="Content\obj\Windows\usedblock.mgcontent" />
     <None Include="obj\x86\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="packages.config" />
     <None Include="Theming\Scenes\Level1.json" />
+    <None Include="Theming\Scenes\Level2.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Commands\ItemsCommands\" />
