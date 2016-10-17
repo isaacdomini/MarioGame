@@ -38,15 +38,20 @@ namespace MarioGame.Entities
             isCollidable = true;
 
         }
-        public void ChangeActionState(GoombaActionState newState)
+        public void ChangeActionState(KoopaActionState newState)
         {
-            aState = newState;
+            eState = newState;
             ((KoopaTroopaSprite)eSprite).changeActionState(newState);
         }
 
         internal void SetShellVelocityToMoving()
         {
             this.setVelocity(shellMovingVelocity);
+        }
+        internal void ChangeShellVelocityDirection()
+        {
+            Vector2 newVelocity = _velocity * -1;
+            this.setVelocity(newVelocity);
         }
 
         public override void Halt()
@@ -66,13 +71,12 @@ namespace MarioGame.Entities
             if (_position.X < 0)
             {
                 pos.X = 0;
-                _velocity = _velocity * -1;
+                ChangeShellVelocityDirection();
             }
             else if (_position.X + _width > viewport.Width)
             {
                 pos.X = viewport.Width - _width;
-                _velocity = _velocity * -1;
-            }
+                ChangeShellVelocityDirection();            }
             _position = pos;
 
             //_position += _velocity;

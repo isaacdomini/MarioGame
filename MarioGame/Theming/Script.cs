@@ -87,6 +87,13 @@ namespace MarioGame.Theming
                 {
                     enemy.boxColor = Color.Red;
                     mario.isCollidable = true;
+                    foreach (var block in _blocks)
+                    {
+                        if (collisionHandler.checkForCollision(enemy, block))
+                        {
+                            ((KoopaTroopa)enemy).ChangeShellVelocityDirection();
+                        }
+                    }
                 }
                 enemy.Update(Viewport);
 
