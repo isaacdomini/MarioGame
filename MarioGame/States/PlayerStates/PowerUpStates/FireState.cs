@@ -4,28 +4,25 @@ namespace MarioGame.States.PlayerStates.PowerUpStates
 {
     class FireState : MarioPowerUpState
     {
-        public FireState(Mario entity) : base(entity)
+        public FireState(Mario entity, PowerUpStateMachine stateMachine) : base(entity, stateMachine)
         {
             powerUpState = MarioPowerUpStateEnum.Fire;
-            entity.boundingBox.Width = 30;
-            entity.boundingBox.Height = 40;
-
-        }
-        public override void ChangeToDead()
-        {
-            ChangeToStandard();
         }
         public override void ChangeToStandard()
         {
-            MarioPowerUpState standard = new StandardState(mario);
-            mario.ChangePowerUpState(standard);
-            standard.Begin(this);
+            _mario.ChangePowerUpState(_stateMachine.StandardState);
+        }
+        public override void ChangeToDead()
+        {
+            _mario.ChangePowerUpState(_stateMachine.DeadState);
         }
         public override void ChangeToSuper()
         {
-            MarioPowerUpState super = new SuperState(mario);
-            mario.ChangePowerUpState(super);
-            super.Begin(this);
+            _mario.ChangePowerUpState(_stateMachine.SuperState);
+        }
+        public override void EnemyHit()
+        {
+            ChangeToStandard();
         }
     }
 }

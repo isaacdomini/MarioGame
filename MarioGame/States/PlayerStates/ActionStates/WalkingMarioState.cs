@@ -2,60 +2,40 @@
 
 namespace MarioGame.States.PlayerStates
 {
-    class WalkingMarioState  : MarioActionState
+    class WalkingMarioState : MarioActionState
     {
         //TODO: Shouldn't this state only be able to be called when in Giant Mario Power State?
-        public WalkingMarioState(Mario entity) : base(entity)
+        public WalkingMarioState(Mario entity, MarioActionStateMachine stateMachine) : base(entity, stateMachine)
         {
             actionState = MarioActionStateEnum.Walking;
+        }
+        public override void Begin(MarioActionState prevState)
+        {
+            mario.ChangeActionState(stateMachine.WalkingMarioState);
+            mario.SetVelocityToWalk();
         }
 
         public override void Jump()
         {
-            
-            MarioActionState jumpState = new JumpingMarioState(mario);
-            mario.ChangeActionState(jumpState);
-            jumpState.setDirection(this.direction);
-            if (this.isFacingLeft())
-            {
-                mario.setVelocity(Mario.jumpingLeftVelocity);
-            }
-            else if (this.isFacingRight())
-            {
-                mario.setVelocity(Mario.jumpingRightVelocity);
-            }
-            jumpState.Begin(this);
-
+            stateMachine.JumpingMarioState.Begin(this);
         }
         public override void Crouch()
         {
-            MarioActionState crouchState = new CrouchingMarioState(mario);
-            mario.ChangeActionState(crouchState);
-            crouchState.setDirection(this.direction);
-            mario.setVelocity(Mario.idleVelocity);
-            crouchState.Begin(this);
+            stateMachine.CrouchingMarioState.Begin(this);
         }
         public override void MoveLeft()
         {
-            if (this.isFacingRight())
+            if (mario.isFacingRight())
             {
-                MarioActionState idleRight = new IdleMarioState(mario);
-                mario.ChangeActionState(idleRight);
-                idleRight.turnRight();
-                mario.setVelocity(Mario.idleVelocity);
-                idleRight.Begin(this);
+                stateMachine.IdleMarioState.Begin(this);
             }
 
         }
         public override void MoveRight()
         {
-            if (this.isFacingLeft())
+            if (mario.isFacingLeft())
             {
-                MarioActionState idleLeft = new IdleMarioState(mario);
-                mario.ChangeActionState(idleLeft);
-                idleLeft.turnLeft();
-                mario.setVelocity(Mario.idleVelocity);
-                idleLeft.Begin(this);
+                stateMachine.IdleMarioState.Begin(this);
             }
         }
     }

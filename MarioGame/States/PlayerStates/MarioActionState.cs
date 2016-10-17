@@ -1,4 +1,5 @@
-﻿using MarioGame.Entities;
+﻿using System;
+using MarioGame.Entities;
 
 namespace MarioGame.States.PlayerStates
 {
@@ -9,16 +10,17 @@ namespace MarioGame.States.PlayerStates
             get; protected set; //TODO: make this read from some shared enum with Sprites
         }
         protected Mario mario;
+        protected MarioActionStateMachine stateMachine;
 
-        public MarioActionState(Mario entity) : base(entity)
+        public MarioActionState(Mario entity, MarioActionStateMachine stateMachine) : base(entity)
         {
             mario = entity;
+            this.stateMachine = stateMachine;
         }
 
         public virtual void Begin(MarioActionState prevState)
         {
             base.Begin(prevState);
-            mario.mSprite.changeActionState(this);
         }
         public virtual void Jump() { }
 
@@ -27,13 +29,10 @@ namespace MarioGame.States.PlayerStates
         public virtual void MoveLeft() { }
 
         public virtual void Crouch() { }
+        public virtual void Fall() { }
         public void Halt()
         {
-            MarioActionState newState = new IdleMarioState(mario);
-            newState.setDirection(this.direction);
-            mario.ChangeActionState(newState);
-            mario.SetVelocityToIdle();
-            newState.Begin(this);
+            stateMachine.IdleMarioState.Begin(this);
         }
     }
 }

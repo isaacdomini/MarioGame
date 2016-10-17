@@ -2,6 +2,10 @@
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using MarioGame.States.PlayerStates;
+using static MarioGame.Entities.Mario;
+using MarioGame.Entities;
+using System;
+using static MarioGame.Entities.Entity;
 
 namespace MarioGame.Sprites
 {
@@ -90,13 +94,16 @@ namespace MarioGame.Sprites
         {
             _frameSet = _frameSets[marioActionState.actionState.GetHashCode()];
             _frameSetPosition = 0;
-            if (marioActionState.isFacingRight())
-            {
-                _flipped = SpriteEffects.FlipHorizontally;
-            }
-            else if (marioActionState.isFacingLeft())
+        }
+        public void changeDirection(Directions newDirection)
+        {
+            if (newDirection == Directions.Left)
             {
                 _flipped = SpriteEffects.None;
+            }
+            else if (newDirection == Directions.Right)
+            {
+                _flipped = SpriteEffects.FlipHorizontally;
             }
         }
 

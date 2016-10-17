@@ -8,20 +8,21 @@ namespace MarioGame.States.PlayerStates
         {
             get; protected set;
         }
-        protected Mario mario;
-        public MarioPowerUpState(Mario entity) : base(entity)
+        protected Mario _mario;
+        protected PowerUpStateMachine _stateMachine;
+        public MarioPowerUpState(Mario mario, PowerUpStateMachine stateMachine) : base(mario)
         {
-            mario = entity;
+            _mario = mario;
+            _stateMachine = stateMachine;
         }
         public void Begin(MarioPowerUpState prevState)
         {
-            mario.mSprite.changePowerUp(this);
             base.Begin(prevState);
-
         }
-        public virtual void ChangeToSuper() {}
-        public virtual void ChangeToStandard() {}
-        public virtual void ChangeToFire() {}
-        public virtual void ChangeToDead() {}
+        public virtual void ChangeToSuper() { }
+        public virtual void ChangeToStandard() { }
+        public virtual void ChangeToFire() { }
+        public virtual void ChangeToDead() { }
+        public virtual void EnemyHit() { }
     }
 }

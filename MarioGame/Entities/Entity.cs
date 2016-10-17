@@ -20,6 +20,16 @@ namespace MarioGame.Entities
         public Color boxColor;
         protected ActionState aState;
         public bool isCollidable;
+        public enum Directions
+        {
+            Left = 1,
+            Right = 2
+        }
+        public Directions direction
+        {
+            get; protected set;
+        }
+
         public ActionState ActionState
         {
             get { return this.aState; }
@@ -34,8 +44,7 @@ namespace MarioGame.Entities
         
 
         public readonly static int velocityConstant = 1;
-        public readonly static Vector2 walkingRightVelocity = new Vector2(velocityConstant*1, 0);
-        public readonly static Vector2 walkingLeftVelocity = new Vector2(velocityConstant *- 1, 0);
+        private readonly static Vector2 walkingVelocity = new Vector2(velocityConstant * 1, 0);
         public readonly static Vector2 idleVelocity = new Vector2(0, 0);
         protected virtual void preConstructor() { }
         public Entity(Vector2 position, ContentManager content, float xVelocity = 0, float yVelocity = 0)
@@ -58,7 +67,6 @@ namespace MarioGame.Entities
         public void ChangeActionState(ActionState state)
         {
             aState = state;
-            aState.setDirection(state.direction);
         }
         public virtual void Update()
         {
@@ -77,11 +85,33 @@ namespace MarioGame.Entities
         {
             this.setVelocity(idleVelocity);
         }
+        public void SetVelocityToWalk()
+        {
+            this.setVelocity(walkingVelocity);
+            if (direction == Directions.Left)
+            {
+                _velocity = _velocity * -1;
+            }
+        }
         public virtual void Halt() { }
         public void makeInvisible()
         {
             _sprite.Visible = true;
         }
+        public void setDirection(Directions newDir)
+        {
+            direction = newDir;
+        }
+        public bool isFacingLeft()
+        {
+            return direction == Directions.Left;
+        }
+        public bool isFacingRight()
+        {
+            return direction == Directions.Right;
+        }
+        public virtual void turnLeft() {}
+        public virtual void turnRight() {}
 
     }
 }

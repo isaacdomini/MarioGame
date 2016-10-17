@@ -21,27 +21,55 @@ namespace MarioGame.Entities
         private int _height;
 
         // Velocity variables
-        public readonly static Vector2 jumpingUpVelocity = new Vector2(0, velocityConstant*-1);
-        public readonly static Vector2 jumpingRightVelocity = new Vector2(velocityConstant*1, velocityConstant*-1);
-        public readonly static Vector2 jumpingLeftVelocity = new Vector2(velocityConstant*- 1, velocityConstant*-1);
-        public readonly static Vector2 fallingVelocity = new Vector2(0, velocityConstant*1);
-        public readonly static Vector2 dashRightVelocity = new Vector2(velocityConstant * 2, 0);
-        public readonly static Vector2 dashLeftVelocity = new Vector2(velocityConstant * -2, 0);
+        private readonly static Vector2 jumpingVelocity = new Vector2(0, velocityConstant * -1);
+        private readonly static Vector2 fallingVelocity = new Vector2(0, velocityConstant * 1);
+        private readonly static Vector2 dashVelocity = new Vector2(velocityConstant * 2, 0);
+
+        private static int superBoundingBoxWidth = 30;
+        private static int superBoundingBoxHeight = 40;
+
+        private static int standardBoundingBoxWidth = 20;
+        private static int standardBoundingBoxHeight = 20;
+        private enum SpaceBarAction
+        {
+            walk,
+            run
+        }
+        private SpaceBarAction spaceBarAction;
+
+        MarioActionStateMachine marioActionStateMachine;
+
+        MarioActionState marioActionState;
+
+        PowerUpStateMachine powerUpStateMachine;
+
+        MarioActionState CurrentActionState
+        {
+            get { return marioActionState; }
+        }
+        MarioPowerUpState CurrentPowerUpState
+        {
+            get { return pState; }
+        }
 
         public Mario(Vector2 position, ContentManager content) : base(position, content)
         {
-            aState = new IdleMarioState(this);
-            aState.turnRight();
-            pState = new StandardState(this);
+            direction = Directions.Right;
+            spaceBarAction = SpaceBarAction.run;
+            marioActionStateMachine = new MarioActionStateMachine(this);
+            powerUpStateMachine = new PowerUpStateMachine(this);
+            aState = marioActionStateMachine.IdleMarioState;
+            marioActionState = (MarioActionState)aState;
+            pState = powerUpStateMachine.StandardState;
             // Now only cast once
             mSprite = (MarioSprite)_sprite;
-            _height = 40;
-            _width = 20;
-            boundingBox= new Rectangle((int)(_position.X+5), (int)(_position.Y+16),_width,_width);
+            _height = standardBoundingBoxHeight;
+            _width = standardBoundingBoxWidth;
+            boundingBox = new Rectangle((int)(_position.X + 5), (int)(_position.Y + 16), _width, _height);
             boxColor = Color.Yellow;
         }
 
-        public void Update(Viewport viewport)
+        public override void Update(Viewport viewport)
         {
             base.Update();
             // Maybe just set velocity to zero for all this? - Ricky
@@ -70,7 +98,7 @@ namespace MarioGame.Entities
             }
             if (PowerUpState.powerUpState == MarioPowerUpStateEnum.Standard || PowerUpState.powerUpState == MarioPowerUpStateEnum.Dead)
             {
-                if (ActionState.isFacingLeft() == true)
+                if (this.isFacingLeft() == true)
                 {
                     boundingBox.X = (int)_position.X - 5;
                     boundingBox.Y = (int)_position.Y + 16;
@@ -85,18 +113,9 @@ namespace MarioGame.Entities
 
         
 
-        public bool checkMarioJumpingUp()
+        public bool checkMarioJumping()
         {
-            return this._velocity.Equals(jumpingUpVelocity);
-        }
-
-        public bool checkMarioJumpLeft()
-        {
-            return this._velocity.Equals(jumpingLeftVelocity);
-        }
-        public bool checkMarioJumpRight()
-        {
-            return this._velocity.Equals(jumpingRightVelocity);
+            return this._velocity.Equals(jumpingVelocity);
         }
 
         public Vector2 position
@@ -105,44 +124,68 @@ namespace MarioGame.Entities
             set { mSprite.Position = value; }
         }
 
+        public void ChangeActionState(MarioActionState state)
+        {
+            marioActionState = state;
+            mSprite.changeActionState(state);
+
+        }
         public void ChangePowerUpState(MarioPowerUpState state)
         {
-            if (pState.powerUpState == MarioPowerUpStateEnum.Dead)
-            {
-                pState = state;
-
-            }
-            // TODO Is this all we need? Or do we need below methods
             pState = state;
+            setBoundingBox(pState.powerUpState);
+            mSprite.changePowerUp(pState);
         }
+        private void setBoundingBox(MarioPowerUpStateEnum powerUpState)
+        {
+            if (powerUpState == MarioPowerUpStateEnum.Super || powerUpState == MarioPowerUpStateEnum.Fire)
+            {
+                boundingBox.Width = superBoundingBoxWidth;
+                boundingBox.Height = superBoundingBoxHeight;
+            }
+            else if (powerUpState == MarioPowerUpStateEnum.Standard || powerUpState == MarioPowerUpStateEnum.Dead)
+            {
+                boundingBox.Width = standardBoundingBoxWidth;
+                boundingBox.Height = standardBoundingBoxHeight;
+            }
+        }
+
 
         public void Jump()
         {
             if (pState.powerUpState != MarioPowerUpStateEnum.Dead)
             {
-                ((MarioActionState)aState).Jump();
+                marioActionState.Jump();
             }
         }
         public void Crouch()
         {
-            if (pState.powerUpState != MarioPowerUpStateEnum.Dead)
+            if (pState.powerUpState == MarioPowerUpStateEnum.Standard && ((MarioActionState)aState).actionState == MarioActionStateEnum.Idle)
             {
-                ((MarioActionState)aState).Crouch();
+                marioActionState.Fall();
+            }
+            else if (pState.powerUpState != MarioPowerUpStateEnum.Dead)
+            {
+                marioActionState.Crouch();
             }
         }
-        public void WalkLeft()
+        public void MoveLeft()
         {
             if (pState.powerUpState != MarioPowerUpStateEnum.Dead)
             {
-                ((MarioActionState)aState).MoveLeft();
+                marioActionState.MoveLeft();
             }
         }
-        public void WalkRight()
+        public void MoveRight()
         {
             if (pState.powerUpState != MarioPowerUpStateEnum.Dead)
             {
-                ((MarioActionState)aState).MoveRight();
+                marioActionState.MoveRight();
             }
+        }
+        internal void EnemyHit()
+        {
+            pState.EnemyHit();
         }
         public void ChangeToFireState()
         {
@@ -166,62 +209,44 @@ namespace MarioGame.Entities
             if (pState.powerUpState == MarioPowerUpStateEnum.Fire)
             {
                 // TODO: Mario entity adds fireball to scene
+
             }
             else if (pState.powerUpState == MarioPowerUpStateEnum.Super)
             {
-                if (_velocity == dashLeftVelocity)
+                if (spaceBarAction == SpaceBarAction.walk)
                 {
-                    _velocity = walkingLeftVelocity;
+                    _velocity = _velocity / 2;
+                    spaceBarAction = SpaceBarAction.run;
                 }
-                else if (_velocity == dashRightVelocity)
+                else if (spaceBarAction == SpaceBarAction.run)
                 {
-                    _velocity = walkingRightVelocity;
-                }
-                else if (_velocity == walkingLeftVelocity)
-                {
-                    _velocity = dashLeftVelocity;
-                }
-                else if (_velocity == walkingRightVelocity)
-                {
-                    _velocity = dashRightVelocity;
+                    _velocity = _velocity * 2;
+                    spaceBarAction = SpaceBarAction.walk;
                 }
             }
+        }
+        public override void turnLeft()
+        {
+            direction = Directions.Left;
+            mSprite.changeDirection(direction);
+        }
+        public override void turnRight()
+        {
+            direction = Directions.Right;
+            mSprite.changeDirection(direction);
         }
         public void SetVelocityToFalling()
         {
             this.setVelocity(fallingVelocity);
         }
-        public void SetVelocityToWalk(Directions dir)
+        public void SetVelocityToJumping()
         {
-            if (dir == Directions.Left)
-            {
-                this.setVelocity(walkingLeftVelocity);
-            }
-            else if (dir == Directions.Right)
-            {
-                this.setVelocity(walkingRightVelocity);
-            }
+            this.setVelocity(jumpingVelocity);
         }
-
-        public void SetVelocityToJumpingDiagonal(Directions dir)
-        {
-            if (dir == Directions.Right)
-            {
-                this.setVelocity(jumpingRightVelocity);
-            }
-            else if (dir == Directions.Left)
-            {
-                this.setVelocity(jumpingLeftVelocity);
-            }
-        }
-        public void SetVelocityToJumpingStraight()
-        {
-            this.setVelocity(jumpingUpVelocity);
-        }
-        public void Halt()
+        public override void Halt()
         {
             _position -= _velocity;
-            ((MarioActionState)aState).Halt();
+            marioActionState.Halt();
         }
     }
 }

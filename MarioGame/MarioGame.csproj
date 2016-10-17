@@ -140,8 +140,10 @@
     <Compile Include="States\PlayerStates\ActionStates\WalkingMarioState.cs" />
     <Compile Include="States\PlayerStates\MarioActionState.cs" />
     <Compile Include="States\PlayerStates\MarioActionStateEnum.cs" />
+    <Compile Include="States\PlayerStates\MarioActionStateMachine.cs" />
     <Compile Include="States\PlayerStates\MarioPowerUpStateEnum.cs" />
     <Compile Include="States\PlayerStates\MarioPowerUpState.cs" />
+    <Compile Include="States\PlayerStates\PowerUpStateMachine.cs" />
     <Compile Include="States\PlayerStates\PowerUpStates\DeadState.cs" />
     <Compile Include="States\PlayerStates\PowerUpStates\FireState.cs" />
     <Compile Include="States\PlayerStates\PowerUpStates\StandardState.cs" />

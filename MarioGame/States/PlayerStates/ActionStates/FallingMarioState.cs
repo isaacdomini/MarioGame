@@ -2,59 +2,42 @@
 
 namespace MarioGame.States.PlayerStates
 {
-    class FallingMarioState  : MarioActionState
+    class FallingMarioState : MarioActionState
     {
         //TODO: Shouldn't this state only be able to be called when in Giant Mario Power State?
-        public FallingMarioState(Mario entity) : base(entity)
+        public FallingMarioState(Mario entity, MarioActionStateMachine stateMachine) : base(entity, stateMachine)
         {
             actionState = MarioActionStateEnum.Crouching; // what sprite should we use for falling?
         }
+        public override void Begin(MarioActionState prevState)
+        {
+            mario.ChangeActionState(stateMachine.FallingMarioState);
+            mario.SetVelocityToFalling();
+        }
         public override void Jump()
         {
-            MarioActionState idleMario = new IdleMarioState(mario);
-            idleMario.setDirection(this.direction);
-            mario.ChangeActionState(idleMario);
-            mario.SetVelocityToIdle();
-            idleMario.Begin(this);
+            stateMachine.IdleMarioState.Begin(this);
         }
         public override void MoveLeft()
         {
-            if (this.isFacingRight())
+            if (mario.isFacingRight())
             {
-                MarioActionState fallingFacingLeft = new FallingMarioState(mario);
-                mario.ChangeActionState(fallingFacingLeft);
-                fallingFacingLeft.turnLeft();
-                mario.setVelocity(Mario.fallingVelocity);
-                fallingFacingLeft.Begin(this);
+                mario.turnLeft();
             }
-            else if (this.isFacingLeft())
+            else if (mario.isFacingLeft())
             {
-                MarioActionState walkingLeft = new WalkingMarioState(mario);
-                mario.ChangeActionState(walkingLeft);
-                walkingLeft.turnLeft();
-                mario.setVelocity(Mario.walkingLeftVelocity);
-                walkingLeft.Begin(this);
-
+                stateMachine.WalkingMarioState.Begin(this);
             }
         }
         public override void MoveRight()
         {
-            if (this.isFacingLeft())
+            if (mario.isFacingLeft())
             {
-                MarioActionState fallingFacingRight = new FallingMarioState(mario);
-                mario.ChangeActionState(fallingFacingRight);
-                fallingFacingRight.turnRight();
-                mario.setVelocity(Mario.fallingVelocity);
-                fallingFacingRight.Begin(this);
+                mario.turnRight();
             }
-            else if (this.isFacingRight())
+            else if (mario.isFacingRight())
             {
-                MarioActionState walkingRight = new WalkingMarioState(mario);
-                mario.ChangeActionState(walkingRight);
-                walkingRight.turnRight();
-                mario.setVelocity(Mario.walkingRightVelocity);
-                walkingRight.Begin(this);
-
+                stateMachine.WalkingMarioState.Begin(this);
             }
         }
     }
