@@ -11,7 +11,8 @@ namespace MarioGame.States.PlayerStates
         public override void Begin(MarioActionState prevState)
         {
             base.Begin(prevState);
-            mario.SetVelocityToJumpingStraight();
+            //Commented out so that mario can move right/left while jumping
+            //mario.SetVelocityToJumpingStraight();
         }
 
         public override void Crouch()

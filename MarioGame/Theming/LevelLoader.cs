@@ -30,7 +30,7 @@ namespace MarioGame.Theming
             {
                 e.rowColumns.ForEach(rc =>
                 {
-                    rc.columns.ForEach(c => script.AddEntity(createEntity(e.type, new Vector2(rc.row, c), content)));
+                    rc.columns.ForEach(c => script.AddEntity(createEntity(e.type, new Vector2(c, rc.row), content)));
                 });
             });
 
@@ -38,13 +38,13 @@ namespace MarioGame.Theming
             {
                 e.rowColumnWithHiddenItems.ForEach(instance =>
                 {
-                    Entity entity = createEntity(e.type, new Vector2(instance.row, instance.column), content);
+                    Entity entity = createEntity(e.type, new Vector2(instance.column, instance.row), content);
                     script.AddEntity(entity);
                     instance.hiddenItems.ForEach(h =>
                     {
                         while (h.amount-- > 0)
                         {
-                            ContainableHidableEntity hiddenItem = (ContainableHidableEntity)createEntity(h.type, new Vector2(instance.row, instance.column), content);
+                            ContainableHidableEntity hiddenItem = (ContainableHidableEntity)createEntity(h.type, new Vector2(instance.column, instance.row), content);
                             hiddenItem.Hide();
                             ((IContainer)entity).addContainedItem(hiddenItem);
                         }
@@ -58,8 +58,8 @@ namespace MarioGame.Theming
 
     public class RowColumn
     {
-        public int row { get; set; }
-        public List<int> columns { get; set; }
+        public float row { get; set; }
+        public List<float> columns { get; set; }
     }
 
     public class HiddenItem
@@ -70,8 +70,8 @@ namespace MarioGame.Theming
 
     public class RowColumnWithHiddenItem
     {
-        public int row { get; set; }
-        public int column { get; set; }
+        public float row { get; set; }
+        public float column { get; set; }
         public List<HiddenItem> hiddenItems { get; set; }
     }
 
