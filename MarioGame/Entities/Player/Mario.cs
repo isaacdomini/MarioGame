@@ -21,10 +21,6 @@ namespace MarioGame.Entities
         private int _height;
 
         // Velocity variables
-        public readonly static int velocityConstant = 1;
-        public readonly static Vector2 walkingRightVelocity = new Vector2(velocityConstant*1, 0);
-        public readonly static Vector2 walkingLeftVelocity = new Vector2(velocityConstant *- 1, 0);
-        public readonly static Vector2 idleVelocity = new Vector2(0, 0);
         public readonly static Vector2 jumpingUpVelocity = new Vector2(0, velocityConstant*-1);
         public readonly static Vector2 jumpingRightVelocity = new Vector2(velocityConstant*1, velocityConstant*-1);
         public readonly static Vector2 jumpingLeftVelocity = new Vector2(velocityConstant*- 1, velocityConstant*-1);
@@ -109,12 +105,6 @@ namespace MarioGame.Entities
             set { mSprite.Position = value; }
         }
 
-        public void ChangeActionState(ActionState state)
-        {
-            aState = state;
-            aState.setDirection(state.direction);
-            
-        }
         public void ChangePowerUpState(MarioPowerUpState state)
         {
             if (pState.powerUpState == MarioPowerUpStateEnum.Dead)
@@ -212,10 +202,7 @@ namespace MarioGame.Entities
                 this.setVelocity(walkingRightVelocity);
             }
         }
-        public void SetVelocityToIdle()
-        {
-            this.setVelocity(idleVelocity);
-        }
+
         public void SetVelocityToJumpingDiagonal(Directions dir)
         {
             if (dir == Directions.Right)

@@ -32,6 +32,11 @@ namespace MarioGame.Entities
         }
         public Vector2 _velocity { get; protected set; }
         
+
+        public readonly static int velocityConstant = 1;
+        public readonly static Vector2 walkingRightVelocity = new Vector2(velocityConstant*1, 0);
+        public readonly static Vector2 walkingLeftVelocity = new Vector2(velocityConstant *- 1, 0);
+        public readonly static Vector2 idleVelocity = new Vector2(0, 0);
         protected virtual void preConstructor() { }
         public Entity(Vector2 position, ContentManager content, float xVelocity = 0, float yVelocity = 0)
         {
@@ -50,7 +55,11 @@ namespace MarioGame.Entities
         {
             throw new NotImplementedException();
         }
-
+        public void ChangeActionState(ActionState state)
+        {
+            aState = state;
+            aState.setDirection(state.direction);
+        }
         public virtual void Update()
         {
             _position += _velocity;
@@ -63,6 +72,10 @@ namespace MarioGame.Entities
         public void setVelocity(Vector2 newVelocity)
         {
             _velocity = newVelocity;
+        }
+        public void SetVelocityToIdle()
+        {
+            this.setVelocity(idleVelocity);
         }
         public virtual void Halt() { }
         public void makeInvisible()

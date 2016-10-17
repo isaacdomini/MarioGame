@@ -1,12 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MarioGame.Entities;
-using MarioGame.Sprites;
-using MarioGame.Entities.BlockEntities;
-using MarioGame.Sprites.BlockSprites;
 using MarioGame.Entities;
 
 namespace MarioGame.States.BlockStates

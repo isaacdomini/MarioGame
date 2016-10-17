@@ -14,9 +14,9 @@ namespace MarioGame.States.EnemyStates
             KoopaActionState newState = new DeadKoopaState(enemyEntity);
             newState.setDirection(this.direction);
             enemyEntity.ChangeActionState(newState);
-            if (Vector2.Equals(enemyEntity._velocity,KoopaTroopaEntity.idleVelocity))
+            if (Vector2.Equals(enemyEntity._velocity,Entity.idleVelocity))
             {
-                enemyEntity.SetVelocityToMoving();
+                //enemyEntity.SetVelocityToMoving();
             }else
             {
                 enemyEntity.SetVelocityToIdle();
