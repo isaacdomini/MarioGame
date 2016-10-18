@@ -8,11 +8,11 @@ namespace MarioGame.States
 
         protected BlockState _prevBState;
 
-        protected BlockStateMachine _stateMachine;
+        protected BlockActionStateMachine _stateMachine;
 
         protected Block _block;
 
-        public BlockState(Block entity, BlockStateMachine stateMachine)
+        public BlockState(Block entity, BlockActionStateMachine stateMachine)
         {
             _block = entity;
             _stateMachine = stateMachine;

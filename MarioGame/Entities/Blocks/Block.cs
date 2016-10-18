@@ -1,5 +1,5 @@
 ﻿using System;
-using MarioGame.States.BlockStates;
+using MarioGame.States;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 
@@ -9,7 +9,7 @@ namespace MarioGame.Entities
     {
         // Could be useful for casting in certain circumstances
         public BlockState bState;
-        protected BlockStateMachine stateMachine;
+        protected BlockActionStateMachine stateMachine;
 
         protected bool isVisible;
 

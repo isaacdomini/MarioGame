@@ -60,7 +60,7 @@ namespace MarioGame.Theming
                 {
                     mario.Halt();
                     colliding = true;
-                    if (collisionHandler.checkSideCollision(mario, block))
+                    //if (collisionHandler.checkSideCollision(mario, block))
                 }
             }
             foreach (var enemy in _enemies)
@@ -183,10 +183,10 @@ namespace MarioGame.Theming
         {
             foreach (var block in _blocks)
             {
-                if (block is BrickBlock)
+               /* if (block is BrickBlock)
                 {
                     block.Bump();
-                }
+                }*/
             }
         }
         internal void ChangeQuestionToUsed()

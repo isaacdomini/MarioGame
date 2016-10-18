@@ -5,7 +5,6 @@ using MarioGame.Core;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using MarioGame.States.PlayerStates.PowerUpStates;
 using MarioGame.Commands.BlockCommands;
 
 namespace MarioGame.Theming

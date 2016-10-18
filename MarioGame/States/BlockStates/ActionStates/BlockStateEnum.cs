@@ -9,6 +9,7 @@ namespace MarioGame.States
     public enum BlockStateEnum
     {
         StepBlock,
+        SilverBlock,
         GroundBlock,
         QuestionBlock,
         HiddenBlock,

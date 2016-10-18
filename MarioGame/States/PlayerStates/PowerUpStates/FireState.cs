@@ -1,6 +1,6 @@
 ﻿using MarioGame.Entities;
 
-namespace MarioGame.States.PlayerStates
+namespace MarioGame.States
 {
     class FireState : MarioPowerUpState
     {

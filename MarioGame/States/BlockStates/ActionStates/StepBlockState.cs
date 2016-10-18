@@ -9,7 +9,7 @@ namespace MarioGame.States
 {
     public class StepBlockState : BlockState
     {
-        public StepBlockState(StepBlock block, BlockStateMachine stateMachine) : base (block, stateMachine)
+        public StepBlockState(Block block, BlockActionStateMachine stateMachine) : base (block, stateMachine)
         {
             bState = BlockStateEnum.StepBlock;
         }

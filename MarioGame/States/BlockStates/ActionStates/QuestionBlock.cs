@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace MarioGame.States
 {
-    public class BrickBlockState : BlockState
+    public class QuestionBlockState : BlockState
     {
-        public BrickBlockState(Block block, BlockActionStateMachine stateMachine) : base(block, stateMachine)
+        public QuestionBlockState(Block block, BlockActionStateMachine stateMachine) : base(block, stateMachine)
         {
 
         }
@@ -19,3 +19,4 @@ namespace MarioGame.States
         }
     }
 }
+

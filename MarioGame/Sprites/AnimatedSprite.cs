@@ -1,3 +1,4 @@
+using MarioGame.States;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -101,5 +102,13 @@ namespace MarioGame.Sprites
             }
         }
 
+        public void changeActionState(ActionState actionState)
+        {
+            _frameSetPosition = 0;
+        }
+        public void changePowerUp(PowerUpState powerUpState)
+        {
+            _rowSetPosition = 0;
+        }
     }
 }

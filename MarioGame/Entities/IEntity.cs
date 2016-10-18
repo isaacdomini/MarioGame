@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MarioGame.States.PlayerStates;
 using Microsoft.Xna.Framework;
 using MarioGame.States;
 

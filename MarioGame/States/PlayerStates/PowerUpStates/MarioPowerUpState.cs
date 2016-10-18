@@ -2,7 +2,7 @@
 
 namespace MarioGame.States
 {
-    public class MarioPowerUpState : State
+    public class MarioPowerUpState : PowerUpState
     {
         public MarioPowerUpStateEnum powerUpState
         {
@@ -14,10 +14,6 @@ namespace MarioGame.States
         {
             _mario = mario;
             _stateMachine = stateMachine;
-        }
-        public void Begin(MarioPowerUpState prevState)
-        {
-            base.Begin(prevState);
         }
         public virtual void ChangeToSuper() { }
         public virtual void ChangeToStandard() { }

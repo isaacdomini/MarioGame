@@ -7,20 +7,16 @@ using System.Threading.Tasks;
 
 namespace MarioGame.States
 {
-    public class BlockStateMachine
+    public class BlockActionStateMachine
     {
         Block _block;
-        BlockState hiddenState;
         BlockState usedState;
         BlockState groundState;
         BlockState stepState;
         BlockState brickState;
+        BlockState questionState;
 
         
-        internal BlockState HiddenState
-        {
-            get { return hiddenState; }
-        }
         internal BlockState UsedState
         {
             get { return usedState; }
@@ -37,15 +33,19 @@ namespace MarioGame.States
         {
             get { return brickState; }
         }
+        internal BlockState QuestionState
+        {
+            get { return questionState; }
+        }
 
-        public BlockStateMachine(Block block)
+        public BlockActionStateMachine(Block block)
         {
             _block = block;
-            hiddenState = new HiddenBlockState(_block, this);
             usedState = new UsedBlockState(_block, this);
-            brickState = new BrickBlockState((BrickBlock)_block, this);
-            groundState = new GroundBlockState((GroundBlock)_block, this);
-            stepState = new StepBlockState((StepBlock)_block, this);
+            brickState = new BrickBlockState(_block, this);
+            groundState = new GroundBlockState(_block, this);
+            stepState = new StepBlockState(_block, this);
+            questionState = new QuestionBlockState(_block, this);
         }
     }
 }

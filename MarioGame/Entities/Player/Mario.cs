@@ -1,10 +1,8 @@
-﻿using MarioGame.States.PlayerStates;
-using MarioGame.States.PlayerStates.PowerUpStates;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using MarioGame.Sprites;
 using Microsoft.Xna.Framework.Graphics;
-using static MarioGame.States.PlayerStates.ActionState;
 using Microsoft.Xna.Framework.Content;
+using MarioGame.States;
 
 namespace MarioGame.Entities
 {
@@ -41,7 +39,7 @@ namespace MarioGame.Entities
 
         MarioActionState marioActionState;
 
-        PowerUpStateMachine powerUpStateMachine;
+        MarioPowerUpStateMachine powerUpStateMachine;
 
         MarioActionState CurrentActionState
         {
@@ -57,7 +55,7 @@ namespace MarioGame.Entities
             direction = Directions.Right;
             spaceBarAction = SpaceBarAction.run;
             marioActionStateMachine = new MarioActionStateMachine(this);
-            powerUpStateMachine = new PowerUpStateMachine(this);
+            powerUpStateMachine = new MarioPowerUpStateMachine(this);
             aState = marioActionStateMachine.IdleMarioState;
             marioActionState = (MarioActionState)aState;
             pState = powerUpStateMachine.StandardState;
