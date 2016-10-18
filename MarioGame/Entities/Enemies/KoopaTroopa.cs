@@ -40,13 +40,18 @@ namespace MarioGame.Entities
         }
         public void ChangeActionState(KoopaActionState newState)
         {
-            aState = newState;
+            eState = newState;
             ((KoopaTroopaSprite)eSprite).changeActionState(newState);
         }
 
         internal void SetShellVelocityToMoving()
         {
             this.setVelocity(shellMovingVelocity);
+        }
+        public void ChangeShellVelocityDirection()
+        {
+            Vector2 newVelocity = _velocity * -1;
+            this.setVelocity(newVelocity);
         }
 
         public override void Halt()
@@ -57,6 +62,7 @@ namespace MarioGame.Entities
         public override void JumpedOn()
         {
             eState.JumpedOn();
+            _hurts = !_hurts;
         }
 
         public override void Update(Viewport viewport)
@@ -66,13 +72,12 @@ namespace MarioGame.Entities
             if (_position.X < 0)
             {
                 pos.X = 0;
-                _velocity = _velocity * -1;
+                ChangeShellVelocityDirection();
             }
             else if (_position.X + _width > viewport.Width)
             {
                 pos.X = viewport.Width - _width;
-                _velocity = _velocity * -1;
-            }
+                ChangeShellVelocityDirection();            }
             _position = pos;
 
             //_position += _velocity;

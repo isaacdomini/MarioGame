@@ -30,7 +30,7 @@ namespace MarioGame.Entities
             eState = newState;
             ((GoombaSprite)eSprite).changeActionState(newState);
         }
-        
+
         public override void Halt()
         {
             _position -= _velocity;
@@ -44,23 +44,13 @@ namespace MarioGame.Entities
         public override void JumpedOn()
         {
             eState.JumpedOn();
+            _isDead = true;
         }
         public override void Update(Viewport viewport)
         {
             _position += _velocity;
-            boundingBox.X = (int)_position.X;
-            boundingBox.Y = (int)_position.Y;
-        }
-        public override void turnLeft()
-        {
-            direction = Directions.Left;
-            eSprite.changeDirection(direction);
-        }
-        public override void turnRight()
-        {
-            direction = Directions.Right;
-            eSprite.changeDirection(direction);
+            boundingBox.X = (int)_position.X + 3;
+            boundingBox.Y = (int)_position.Y + 5;
         }
     }
-
 }

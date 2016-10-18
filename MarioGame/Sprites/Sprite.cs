@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using MarioGame.Entities;
+using MarioGame.States;
 
 namespace MarioGame.Sprites
 {

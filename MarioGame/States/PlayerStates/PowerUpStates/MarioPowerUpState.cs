@@ -15,10 +15,15 @@ namespace MarioGame.States
             _mario = mario;
             _stateMachine = stateMachine;
         }
+        public virtual void Begin(MarioPowerUpState prevState)
+        {
+            base.Begin(prevState);
+        }
         public virtual void ChangeToSuper() { }
         public virtual void ChangeToStandard() { }
         public virtual void ChangeToFire() { }
         public virtual void ChangeToDead() { }
+        public virtual void ChangeToStar() { }
         public virtual void EnemyHit() { }
     }
 }

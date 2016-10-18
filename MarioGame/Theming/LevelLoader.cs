@@ -23,6 +23,7 @@ namespace MarioGame.Theming
         }
         public static void addTileMapToScript(String tileMapFile, Script script, ContentManager content)
         {
+
             string json = File.ReadAllText(tileMapFile);
             Level level = JsonConvert.DeserializeObject<Level>(json);
 

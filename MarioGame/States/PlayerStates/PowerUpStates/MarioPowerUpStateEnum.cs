@@ -11,6 +11,9 @@ namespace MarioGame.States
         Standard,
         Super,
         Fire,
+        SuperStar,
+        FireStar,
+        StandardStar,
         Invincible, //switch between mario, luigi, and fire
         Dead
     }

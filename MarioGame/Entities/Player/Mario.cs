@@ -9,6 +9,7 @@ namespace MarioGame.Entities
     public class Mario : Entity
     {
         private MarioPowerUpState pState;
+        public static int invinsibleTimer=0;
         // Could be useful for casting in certain circumstances
         public MarioPowerUpState PowerUpState
         {
@@ -88,13 +89,13 @@ namespace MarioGame.Entities
             }
             _position = pos;
             
-            if(PowerUpState.powerUpState != MarioPowerUpStateEnum.Standard)
+            if(PowerUpState.powerUpState != MarioPowerUpStateEnum.Standard || PowerUpState.powerUpState != MarioPowerUpStateEnum.StandardStar)
             {
                 
                 boundingBox.X = (int)_position.X - 5;
                 boundingBox.Y = (int)_position.Y;
             }
-            if (PowerUpState.powerUpState == MarioPowerUpStateEnum.Standard || PowerUpState.powerUpState == MarioPowerUpStateEnum.Dead)
+            if (PowerUpState.powerUpState == MarioPowerUpStateEnum.Standard || PowerUpState.powerUpState == MarioPowerUpStateEnum.Dead || PowerUpState.powerUpState == MarioPowerUpStateEnum.StandardStar)
             {
                 if (this.isFacingLeft() == true)
                 {
@@ -136,12 +137,12 @@ namespace MarioGame.Entities
         }
         private void setBoundingBox(MarioPowerUpStateEnum powerUpState)
         {
-            if (powerUpState == MarioPowerUpStateEnum.Super || powerUpState == MarioPowerUpStateEnum.Fire)
+            if (powerUpState == MarioPowerUpStateEnum.Super || powerUpState == MarioPowerUpStateEnum.Fire || powerUpState == MarioPowerUpStateEnum.SuperStar || powerUpState == MarioPowerUpStateEnum.FireStar )
             {
                 boundingBox.Width = superBoundingBoxWidth;
                 boundingBox.Height = superBoundingBoxHeight;
             }
-            else if (powerUpState == MarioPowerUpStateEnum.Standard || powerUpState == MarioPowerUpStateEnum.Dead)
+            else if (powerUpState == MarioPowerUpStateEnum.Standard || powerUpState == MarioPowerUpStateEnum.Dead || powerUpState == MarioPowerUpStateEnum.StandardStar)
             {
                 boundingBox.Width = standardBoundingBoxWidth;
                 boundingBox.Height = standardBoundingBoxHeight;
@@ -197,6 +198,10 @@ namespace MarioGame.Entities
         {
             pState.ChangeToSuper();
         }
+        public void ChangeToStarState()
+        {
+            pState.ChangeToStar();
+        }
         public void ChangeToDeadState()
         {
             pState.ChangeToDead();
@@ -222,16 +227,6 @@ namespace MarioGame.Entities
                     spaceBarAction = SpaceBarAction.walk;
                 }
             }
-        }
-        public override void turnLeft()
-        {
-            direction = Directions.Left;
-            mSprite.changeDirection(direction);
-        }
-        public override void turnRight()
-        {
-            direction = Directions.Right;
-            mSprite.changeDirection(direction);
         }
         public void SetVelocityToFalling()
         {
