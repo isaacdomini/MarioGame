@@ -81,7 +81,16 @@ namespace MarioGame.Theming
                             //Mario shouldn't die when koopa is an idle shell. Only when shell is moving or Koopa is alive
                             if (mario.isCollidable == true)
                             {
-                                mario.EnemyHit();
+                                if (enemy.Hurts())
+                                {
+                                    mario.EnemyHit();
+                                }
+                                else
+                                {
+                                    enemy.JumpedOn();
+                                    if (collisionHandler.checkSideCollision(mario, enemy) == CollisionTypes.Right)
+                                        ((KoopaTroopa)enemy).ChangeShellVelocityDirection();
+                                }
                             }
                         }
                     }
@@ -91,25 +100,12 @@ namespace MarioGame.Theming
                         mario.isCollidable = true;
                         foreach (var block in _blocks)
                         {
-<<<<<<< HEAD
-                            if (enemy.Hurts())
-                            {
-                                mario.EnemyHit();
-                            }
-                            else
-                            {
-                                enemy.JumpedOn();
-                                if (collisionHandler.checkSideCollision(mario, enemy) == CollisionTypes.Right)
-                                    ((KoopaTroopa)enemy).ChangeShellVelocityDirection();
-=======
                             if (collisionHandler.checkForCollision(enemy, block))
                             {
                                 ((KoopaTroopa)enemy).ChangeShellVelocityDirection();
->>>>>>> Mario has invinsibility after hitting enemy in powerup state
                             }
                         }
                     }
-                    
                 }
                 else
                 {
@@ -118,6 +114,7 @@ namespace MarioGame.Theming
                 enemy.Update(Viewport);
 
             }
+
             foreach (var item in _items)
             {
                 if (item.isCollidable) {
