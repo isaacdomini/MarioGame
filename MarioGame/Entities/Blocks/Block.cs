@@ -9,9 +9,10 @@ namespace MarioGame.Entities
     public abstract class Block : PowerUpEntity
     {
         // Could be useful for casting in certain circumstances
-        protected BlockActionStateMachine actionStateMachine;
-        protected BlockPowerUpStateMachine powerUpStateMachine;
         protected BlockSprite blockSprite;
+        public BlockActionState blockActionState;
+        public BlockPowerUpState blockPowerUpState;
+        protected BlockActionStateMachine stateMachine;
 
         public Block(Vector2 position, ContentManager content) : base(position, content)
         {
