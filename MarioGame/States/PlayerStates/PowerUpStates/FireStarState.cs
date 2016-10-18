@@ -1,10 +1,10 @@
 ﻿using MarioGame.Entities;
 
-namespace MarioGame.States.PlayerStates.PowerUpStates
+namespace MarioGame.States
 {
     class FireStarState : MarioPowerUpState
     {
-        public FireStarState(Mario entity, PowerUpStateMachine stateMachine) : base(entity, stateMachine)
+        public FireStarState(Mario entity, MarioPowerUpStateMachine stateMachine) : base(entity, stateMachine)
         {
             powerUpState = MarioPowerUpStateEnum.SuperStar;
 

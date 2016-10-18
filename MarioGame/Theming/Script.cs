@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using System;
-using MarioGame.States.PlayerStates.PowerUpStates;
+using MarioGame.States;
 
 namespace MarioGame.Theming
 {
