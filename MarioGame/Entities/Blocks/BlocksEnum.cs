@@ -2,8 +2,9 @@
 {
     public enum BlocksEnum
     {
-         GroundBlockEntity,
-         BrickBlockEntity,
-         QuestionBlockEntity
+         GroundBlock,
+         BrickBlock,
+         QuestionBlock,
+         StepBlock
     }
 }

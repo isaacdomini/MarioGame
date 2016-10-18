@@ -26,7 +26,7 @@ namespace MarioGame.Entities
         private readonly static Vector2 dashVelocity = new Vector2(velocityConstant * 2, 0);
 
         private static int superBoundingBoxWidth = 30;
-        private static int superBoundingBoxHeight = 40;
+        private static int superBoundingBoxHeight = 36;
 
         private static int standardBoundingBoxWidth = 20;
         private static int standardBoundingBoxHeight = 20;

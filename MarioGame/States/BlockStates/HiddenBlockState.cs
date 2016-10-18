@@ -4,20 +4,13 @@ namespace MarioGame.States.BlockStates
 {
     class HiddenBlockState : BlockState
     {
-        public HiddenBlockState(Block entity) : base(entity)
+        public HiddenBlockState(Block entity, BlockStateMachine stateMachine) : base(entity, stateMachine)
         {
             bState = BlockStateEnum.HiddenBlock;
         }
 
         public override void Bump() {
-            Standard();
+            _block.Reveal();
         }
-        public override void Standard() {
-            BlockState standardState = new StandardBlockState(_block);
-            _block.ChangeBrickState(standardState);
-            standardState.Begin(this);
-        }
-        public override void Used() { }
-        public override void Break() { }
     }
 }

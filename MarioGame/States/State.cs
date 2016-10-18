@@ -18,8 +18,8 @@ namespace MarioGame.States
 
         public virtual void Begin(IState prevState)
         {
-            _prevState = prevState;
             _prevState.End();
+            _prevState = prevState;
         }
 
         public virtual void End() {}

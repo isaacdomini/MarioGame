@@ -17,6 +17,7 @@ namespace MarioGame.Theming
 
 
         public List<Entity> _entities { get; private set; }
+
         //possibile TODO: cache the getters if performance suffers
         public List<Block> _blocks { get { return _entities.FindAll(e => e is Block).ConvertAll(e => (Block) e); } }
         public List<Item> _items { get { return _entities.FindAll(e => e is Item).ConvertAll(e => (Item) e); } }
@@ -141,45 +142,59 @@ namespace MarioGame.Theming
             _entities.Add(entity);
         }
 
-        public void MakeMarioJump()
+        internal void MakeMarioJump()
         {
             mario.Jump();
         }
-        public void MakeMarioCrouch()
+        internal void MakeMarioCrouch()
         {
             mario.Crouch();
         }
-        public void MakeMarioDashOrThrowFireball()
+        internal void MakeMarioDashOrThrowFireball()
         {
             mario.DashOrThrowFireball();
         }
-        public void MakeMarioMoveLeft()
+        internal void MakeMarioMoveLeft()
         {
             mario.MoveLeft();
         }
-        public void MakeMarioMoveRight()
+        internal void MakeMarioMoveRight()
         {
             mario.MoveRight();
         }
-        public void MakeMarioFire()
+        internal void MakeMarioFire()
         {
             mario.ChangeToFireState();
         }
-        public void MakeMarioStandard()
+        internal void MakeMarioStandard()
         {
             mario.ChangeToStandardState();
         }
-        public void MakeMarioSuper()
+        internal void MakeMarioSuper()
         {
             mario.ChangeToSuperState();
         }
-        public void MakeMarioDead()
+        internal void MakeMarioDead()
         {
             mario.ChangeToDeadState();
         }
-        public void BreakBrick()
+        internal void BrickBump()
         {
-            //Need to implement still
+            foreach (var block in _blocks)
+            {
+                if (block is BrickBlock)
+                {
+                    block.Bump();
+                }
+            }
+        }
+        internal void ChangeQuestionToUsed()
+        {
+            throw new NotImplementedException();
+        }
+        internal void ShowHiddenBlock()
+        {
+
         }
     }
 }

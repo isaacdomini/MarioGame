@@ -39,7 +39,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Collisions\CollisionHandler.cs" />
-    <Compile Include="Commands\ChangeToBrokenState.cs" />
+    <Compile Include="Commands\BlockCommands\ChangeQuestionToUsedState.cs" />
+    <Compile Include="Commands\BlockCommands\BumpBrick.cs" />
+    <Compile Include="Commands\BlockCommands\ShowHiddenBlock.cs" />
     <Compile Include="Commands\CrouchCommand.cs" />
     <Compile Include="Commands\DashOrThrowFireballCommand.cs" />
     <Compile Include="Commands\DeadStateCommand.cs" />
@@ -68,16 +70,12 @@
     <Compile Include="Entities\Blocks\Block.cs" />
     <Compile Include="Entities\Blocks\BlocksEnum.cs" />
     <Compile Include="Entities\Blocks\BrickBlock.cs" />
-    <Compile Include="Entities\Blocks\BumpableBlock.cs" />
-    <Compile Include="Entities\Blocks\BumpableContainerBlock.cs" />
     <Compile Include="Entities\Blocks\GroundBlock.cs" />
-    <Compile Include="Entities\Blocks\HiddenBlock.cs" />
     <Compile Include="Entities\ContainableHidableEntity.cs" />
     <Compile Include="Entities\Enemies\Enemy.cs" />
     <Compile Include="Entities\IBumpable.cs" />
     <Compile Include="Entities\Blocks\QuestionBlock.cs" />
     <Compile Include="Entities\Blocks\StepBlock.cs" />
-    <Compile Include="Entities\Blocks\UsedBlock.cs" />
     <Compile Include="Entities\Enemies\Goomba.cs" />
     <Compile Include="Entities\Enemies\KoopaTroopa.cs" />
     <Compile Include="Entities\Entity.cs" />
@@ -117,11 +115,11 @@
     <Compile Include="Sprites\Sprite.cs" />
     <Compile Include="States\BlockStates\BlockState.cs" />
     <Compile Include="States\BlockStates\BlockStateEnum.cs" />
-    <Compile Include="States\BlockStates\BreakBlockState.cs" />
-    <Compile Include="States\BlockStates\BumpBlockState.cs" />
+    <Compile Include="States\BlockStates\BlockStateMachine.cs" />
+    <Compile Include="States\BlockStates\BrickBlockState.cs" />
+    <Compile Include="States\BlockStates\GroundBlockState.cs" />
     <Compile Include="States\BlockStates\HiddenBlockState.cs" />
-    <Compile Include="States\BlockStates\StandardBlockState.cs" />
-    <Compile Include="States\BlockStates\StandardState.cs" />
+    <Compile Include="States\BlockStates\StepBlockState.cs" />
     <Compile Include="States\BlockStates\UsedBlockState.cs" />
     <Compile Include="States\EnemyStates\DeadGoombaState.cs" />
     <Compile Include="States\EnemyStates\DeadKoopaState.cs" />
@@ -143,7 +141,7 @@
     <Compile Include="States\PlayerStates\MarioActionState.cs" />
     <Compile Include="States\PlayerStates\MarioActionStateEnum.cs" />
     <Compile Include="States\PlayerStates\MarioActionStateMachine.cs" />
-    <Compile Include="States\PlayerStates\MarioPowerUpStateEnum.cs" />
+    <Compile Include="States\PlayerStates\PowerUpStates\MarioPowerUpStateEnum.cs" />
     <Compile Include="States\PlayerStates\MarioPowerUpState.cs" />
     <Compile Include="States\PlayerStates\PowerUpStateMachine.cs" />
     <Compile Include="States\PlayerStates\PowerUpStates\DeadState.cs" />
@@ -151,7 +149,6 @@
     <Compile Include="States\PlayerStates\PowerUpStates\StandardState.cs" />
     <Compile Include="States\PlayerStates\PowerUpStates\SuperState.cs" />
     <Compile Include="States\State.cs" />
-    <Compile Include="Entities\Blocks\BrokenBrickBlock.cs" />
     <Compile Include="Theming\LevelLoader.cs" />
     <Compile Include="Theming\Scenes\Scene.cs" />
     <Compile Include="Theming\Script.cs" />
@@ -204,8 +201,6 @@
     <None Include="Theming\Scenes\Level2.json" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Commands\ItemsCommands\" />
-    <Folder Include="Commands\Items\" />
     <Folder Include="obj\x86\Debug\TempPE\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MarioGame.States.PlayerStates.PowerUpStates;
+using MarioGame.Commands.BlockCommands;
 
 namespace MarioGame.Theming
 {
@@ -32,9 +33,11 @@ namespace MarioGame.Theming
             _controllers.Add(new GamepadController());
             _controllers[0].AddCommand((int)Keys.Q, new QuitCommand(Game1));
             _controllers[1].AddCommand((int) Buttons.Start, new QuitCommand(Game1));
+
             // Adding jump command to controllers
             _controllers[0].AddCommand((int)Keys.W, new JumpCommand(Game1.Scene.getScript()));
             _controllers[0].AddCommand((int)Keys.Up, new JumpCommand(Game1.Scene.getScript()));
+
             // Adding movement commands (Needs updated with actual commands)
             _controllers[0].AddCommand((int)Keys.Left, new MoveLeftCommand(Game1.Scene.getScript()));
             _controllers[0].AddCommand((int)Keys.A, new MoveLeftCommand(Game1.Scene.getScript()));
@@ -50,7 +53,10 @@ namespace MarioGame.Theming
             _controllers[0].AddCommand((int)Keys.I, new FireStateCommand(Game1.Scene.getScript()));
             _controllers[0].AddCommand((int)Keys.O, new DeadStateCommand(Game1.Scene.getScript()));
 
-            _controllers[0].AddCommand((int)Keys.B, new ChangeToBrokenState(Game1.Scene.getScript()));
+            // Add block state commands
+            _controllers[0].AddCommand((int)Keys.B, new BumpBrick(Game1.Scene.getScript()));
+            _controllers[0].AddCommand((int)Keys.H, new ShowHiddenBlock(Game1.Scene.getScript()));
+            _controllers[0].AddCommand((int)Keys.X, new ChangeQuestionToUsedState(Game1.Scene.getScript()));
 
             // Adds commands to game controller
             _controllers[1].AddCommand((int)Buttons.DPadLeft, new MoveLeftCommand(Game1.Scene.getScript()));

@@ -1,30 +1,36 @@
-﻿using MarioGame.States.BlockStates;
+﻿using System;
+using MarioGame.States.BlockStates;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 
 namespace MarioGame.Entities
 {
-    public class Block : Entity
+    public abstract class Block : Entity
     {
         // Could be useful for casting in certain circumstances
-        public StandardState bState;
+        public BlockState bState;
+        protected BlockStateMachine stateMachine;
+
+        protected bool isVisible;
+
+        internal bool Visibility
+        {
+            get { return isVisible; }
+        }
+
         public Block(Vector2 position, ContentManager content) : base(position, content)
         {
-            bState = new StandardBlockState(this);
-            
+            isVisible = true;
         }
-        public void ChangeBrickState(StandardState state)
+
+        public void ChangeBrickState(BlockState state)
         {
             bState = state;
         }
 
-        public void Standard()
-        {
-            bState.Standard();
-        }
-        public void Used()
-        {
-            bState.Used();
-        }
+        public virtual void ChangeToUsed() { }
+        public virtual void Bump() { }
+        public virtual void Break() { }
+        public virtual void Reveal() { }
     }
 }

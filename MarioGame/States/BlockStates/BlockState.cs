@@ -2,21 +2,29 @@
 
 namespace MarioGame.States.BlockStates
 {
-    class BlockState : StandardState
+    public class BlockState
     {
         protected BlockStateEnum bState;
 
-        protected Block
-            _block;
+        protected BlockState _prevBState;
 
-        public BlockState(Block entity) : base(entity)
+        protected BlockStateMachine _stateMachine;
+
+        protected Block _block;
+
+        public BlockState(Block entity, BlockStateMachine stateMachine)
         {
             _block = entity;
+            _stateMachine = stateMachine;
         }
 
-        public override void Begin(IState prevState)
+        public virtual void Begin(BlockState prevState)
         {
-            base.Begin(prevState);
+            _prevBState = prevState;
         }
+        public virtual void Bump() { }
+        public virtual void Reveal() { }
+        public virtual void Break() { }
+        public virtual void ChangeToUsed() { }
     }
 }

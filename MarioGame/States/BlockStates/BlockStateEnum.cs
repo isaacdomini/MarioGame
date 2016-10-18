@@ -8,13 +8,11 @@ namespace MarioGame.States.BlockStates
 {
     public enum BlockStateEnum
     {
-        StandardBlock,
         StepBlock,
         GroundBlock,
-        BumpBlock,
-        BreakingBlock,
         QuestionBlock,
         HiddenBlock,
-        UsedBlock
+        UsedBlock,
+        BrickBlock
     }
 }
