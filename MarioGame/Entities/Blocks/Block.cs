@@ -8,7 +8,8 @@ namespace MarioGame.Entities
     public abstract class Block : Entity
     {
         // Could be useful for casting in certain circumstances
-        public BlockState bState;
+        public BlockActionState actionState;
+        public BlockPowerUpState powerUpState;
         protected BlockActionStateMachine stateMachine;
 
         protected bool isVisible;
@@ -23,9 +24,13 @@ namespace MarioGame.Entities
             isVisible = true;
         }
 
-        public void ChangeBrickState(BlockState state)
+        public void ChangeBrickActionState(BlockActionState state)
         {
-            bState = state;
+            actionState = state;
+        }
+        public void ChangeBrickPowerUpState(BlockPowerUpState state)
+        {
+
         }
 
         public virtual void ChangeToUsed() { }

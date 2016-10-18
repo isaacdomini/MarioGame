@@ -6,7 +6,6 @@ using MarioGame.Entities;
 using System.Collections.Generic;
 using System.Collections;
 using MarioGame.States;
-using MarioGame.States;
 
 namespace MarioGame.Sprites
 {

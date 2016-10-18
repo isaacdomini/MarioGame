@@ -13,13 +13,11 @@ namespace MarioGame.Entities
 {
     public abstract class Entity : IEntity
     {
-        IState _state;
-        public AnimatedSprite _sprite;
+        public Sprite _sprite;
         public Rectangle boundingBox;
         public Color boxColor;
         protected ActionState aState;
         public bool isCollidable;
-
         public enum Directions
         {
             Left = 1,
@@ -55,14 +53,10 @@ namespace MarioGame.Entities
             String spriteClass = this.GetType().Name + "Sprite";
             string namespaceAndClass = typeof(Sprite).Namespace + "." + spriteClass;
             Type type = Type.GetType(namespaceAndClass);
-           _sprite = (AnimatedSprite)Activator.CreateInstance(type, content);
+           _sprite = (Sprite)Activator.CreateInstance(type, content);
 
             _position = position;
             _sprite.Position = _position;
-        }
-        public virtual void ChangeState(IState newstate)
-        {
-            throw new NotImplementedException();
         }
         public void ChangeActionState(ActionState state)
         {
@@ -72,13 +66,7 @@ namespace MarioGame.Entities
         {
             _position += _velocity;
         }
-
-        public virtual void Update(Viewport viewport)
-        {
-            _position += _velocity;
-            boundingBox.X = (int)_position.X;
-            boundingBox.Y = (int)_position.Y;
-        }
+        public virtual void Update(Viewport viewport) { }
         public Vector2 getPosition()
         {
             return _position;
@@ -116,15 +104,8 @@ namespace MarioGame.Entities
         {
             return direction == Directions.Right;
         }
-        public virtual void turnLeft()
-        {
-            direction = Directions.Left;
-            _sprite.changeDirection(direction);
-        }
-        public virtual void turnRight() {
-            direction = Directions.Right;
-            _sprite.changeDirection(direction);
-        }
+        public virtual void turnLeft() {}
+        public virtual void turnRight() {}
 
     }
 }

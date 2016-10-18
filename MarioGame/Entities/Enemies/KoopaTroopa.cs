@@ -2,7 +2,6 @@
 using MarioGame.Core;
 using MarioGame.Sprites;
 using MarioGame.States;
-using MarioGame.States;
 using MarioGame.Theming;
 using MarioGame.Theming.Scenes;
 using Microsoft.Xna.Framework;

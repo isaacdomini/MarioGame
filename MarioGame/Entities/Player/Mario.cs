@@ -6,7 +6,7 @@ using MarioGame.States;
 
 namespace MarioGame.Entities
 {
-    public class Mario : Entity
+    public class Mario : PowerUpEntity
     {
         private MarioPowerUpState pState;
         public static int invinsibleTimer=0;
@@ -59,7 +59,8 @@ namespace MarioGame.Entities
             powerUpStateMachine = new MarioPowerUpStateMachine(this);
             aState = marioActionStateMachine.IdleMarioState;
             marioActionState = (MarioActionState)aState;
-            pState = powerUpStateMachine.StandardState;
+            powerUpState = powerUpStateMachine.StandardState;
+            pState = (MarioPowerUpState)powerUpState;
             // Now only cast once
             mSprite = (MarioSprite)_sprite;
             _height = standardBoundingBoxHeight;

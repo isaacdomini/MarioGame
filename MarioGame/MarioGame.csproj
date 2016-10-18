@@ -86,6 +86,7 @@
     <Compile Include="Entities\Items\MushroomSuper.cs" />
     <Compile Include="Entities\Items\Star.cs" />
     <Compile Include="Entities\Player\Mario.cs" />
+    <Compile Include="Entities\PowerUpEntity.cs" />
     <Compile Include="obj\x86\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\x86\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\x86\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
@@ -130,7 +131,7 @@
     <Compile Include="States\EnemyStates\WalkingGoombaState .cs" />
     <Compile Include="States\EnemyStates\WalkingKoopaState.cs" />
     <Compile Include="States\IState.cs" />
-    <Compile Include="States\PlayerStates\ActionState.cs" />
+    <Compile Include="States\ActionState.cs" />
     <Compile Include="States\PlayerStates\ActionStates\CrouchingMarioState.cs" />
     <Compile Include="States\PlayerStates\ActionStates\FallingMarioState.cs" />
     <Compile Include="States\PlayerStates\ActionStates\IdleMarioState.cs" />
@@ -142,7 +143,7 @@
     <Compile Include="States\PlayerStates\ActionStates\MarioActionState.cs" />
     <Compile Include="States\PlayerStates\ActionStates\MarioActionStateEnum.cs" />
     <Compile Include="States\PlayerStates\ActionStates\MarioActionStateMachine.cs" />
-    <Compile Include="States\PlayerStates\PowerUpState.cs" />
+    <Compile Include="States\PowerUpState.cs" />
     <Compile Include="States\PlayerStates\PowerUpStates\MarioPowerUpStateEnum.cs" />
     <Compile Include="States\PlayerStates\PowerUpStates\MarioPowerUpState.cs" />
     <Compile Include="States\PlayerStates\PowerUpStates\MarioPowerUpStateMachine.cs" />
