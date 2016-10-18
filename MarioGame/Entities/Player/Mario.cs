@@ -10,6 +10,7 @@ namespace MarioGame.Entities
     public class Mario : Entity
     {
         private MarioPowerUpState pState;
+        public static int invinsibleTimer=0;
         // Could be useful for casting in certain circumstances
         public MarioPowerUpState PowerUpState
         {

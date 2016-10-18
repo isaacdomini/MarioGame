@@ -7,6 +7,7 @@ namespace MarioGame.States.PlayerStates.PowerUpStates
         public SuperState(Mario entity, PowerUpStateMachine stateMachine) : base(entity, stateMachine)
         {
             powerUpState = MarioPowerUpStateEnum.Super;
+            _mario.isCollidable = true;
         }
         public override void ChangeToFire()
         {
@@ -23,6 +24,7 @@ namespace MarioGame.States.PlayerStates.PowerUpStates
         public override void EnemyHit()
         {
             ChangeToStandard();
+            Mario.invinsibleTimer = 70;
         }
     }
 }

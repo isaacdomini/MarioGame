@@ -7,6 +7,7 @@ namespace MarioGame.States.PlayerStates.PowerUpStates
         public StandardState(Mario entity, PowerUpStateMachine stateMachine) : base(entity, stateMachine)
         {
             powerUpState = MarioPowerUpStateEnum.Standard;
+            _mario.isCollidable = true;
         }
         public override void ChangeToFire()
         {

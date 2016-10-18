@@ -15,21 +15,15 @@ namespace MarioGame.Theming
 
         private CollisionHandler collisionHandler;
 
-        public Mario mario { get; private set; }
 
         public List<Entity> _entities { get; private set; }
-<<<<<<< 4590d60f51510a8b3862738a92ba6d86e97fb8fa
-	    public List<Entity> _enemies { get; private set; }
-	    public List<Entity> _items { get; private set; }
-	    public List<BlockEntity> _blocks { get; private set; }
-
-=======
         //possibile TODO: cache the getters if performance suffers
         public List<Block> _blocks { get { return _entities.FindAll(e => e is Block).ConvertAll(e => (Block) e); } }
         public List<Item> _items { get { return _entities.FindAll(e => e is Item).ConvertAll(e => (Item) e); } }
         public List<Enemy> _enemies { get { return _entities.FindAll(e => e is Enemy).ConvertAll(e => (Enemy) e); } }
->>>>>>> level loader almost done. creating Icontainable and IContainer interfaces for blocks that can hold items
 
+        //TODO: clean up below line's code smell
+        public Mario mario { get { return (Mario)_entities.Find(e => e is Mario); } }
         public Script(Scene scene)
         {
             _scene = scene;
@@ -52,13 +46,7 @@ namespace MarioGame.Theming
 
         public void Initialize()
         {
-<<<<<<< 4590d60f51510a8b3862738a92ba6d86e97fb8fa
-		    _enemies = new List<Entity>();
-		    _items = new List<Entity>();
-		    _blocks = new List<BlockEntity>();
-=======
 		    _entities = new List<Entity>();
->>>>>>> level loader almost done. creating Icontainable and IContainer interfaces for blocks that can hold items
             collisionHandler = new CollisionHandler();
         }
 
@@ -75,61 +63,91 @@ namespace MarioGame.Theming
             }
             foreach (var enemy in _enemies)
             {
-                if (collisionHandler.checkForCollision(mario, enemy))
+                if (Mario.invinsibleTimer == 0)
                 {
-                    colliding = true;
-                    mario.Halt();
-                    enemy.boxColor = Color.Black;
-                    if (collisionHandler.checkSideCollision(mario, enemy) == CollisionTypes.Top)
+                    if (collisionHandler.checkForCollision(mario, enemy) && !enemy.IsDead())
                     {
-                        enemy.Halt();
+                        colliding = true;
+                        //mario.Halt();
+                        enemy.boxColor = Color.Black;
+                        if (collisionHandler.checkSideCollision(mario, enemy) == CollisionTypes.Top)
+                        {
+                            enemy.JumpedOn();
+                        }
+                        else
+                        {
+                            // Need to switch isCollidable based on powerUpState 
+                            //so that mario can technically walk through enemies after taking damage
+                            //Mario shouldn't die when koopa is an idle shell. Only when shell is moving or Koopa is alive
+                            if (mario.isCollidable == true)
+                            {
+                                mario.EnemyHit();
+                            }
+                        }
                     }
                     else
                     {
-                        // Need to switch isCollidable based on powerUpState 
-                        //so that mario can technically walk through enemies after taking damage
-                        //Mario shouldn't die when koopa is an idle shell. Only when shell is moving or Koopa is alive
-                        if (mario.isCollidable == true)
+                        enemy.boxColor = Color.Red;
+                        mario.isCollidable = true;
+                        foreach (var block in _blocks)
                         {
-                            mario.ChangeToDeadState();
+<<<<<<< HEAD
+                            if (enemy.Hurts())
+                            {
+                                mario.EnemyHit();
+                            }
+                            else
+                            {
+                                enemy.JumpedOn();
+                                if (collisionHandler.checkSideCollision(mario, enemy) == CollisionTypes.Right)
+                                    ((KoopaTroopa)enemy).ChangeShellVelocityDirection();
+=======
+                            if (collisionHandler.checkForCollision(enemy, block))
+                            {
+                                ((KoopaTroopa)enemy).ChangeShellVelocityDirection();
+>>>>>>> Mario has invinsibility after hitting enemy in powerup state
+                            }
                         }
                     }
+                    
                 }
                 else
                 {
-                    enemy.boxColor = Color.Red;
-                    mario.isCollidable = true;
+                    Mario.invinsibleTimer--;
                 }
                 enemy.Update(Viewport);
 
             }
             foreach (var item in _items)
             {
-                if (collisionHandler.checkForCollision(mario, item))
-                {
-                    colliding = true;
-                    item.boxColor = Color.Black;
-                    if (item.GetType() == typeof(CoinEntity))
+                if (item.isCollidable) {
+                    if (collisionHandler.checkForCollision(mario, item))
                     {
-                        //Add code to add coin to total coins
+                        colliding = true;
+                        item.boxColor = Color.Black;
+                        if (item.GetType() == typeof(Coin))
+                        {
+                            //Add code to add coin to total coins
+                        }
+                        else if (item.GetType() == typeof(Star))
+                        {
+                            //Add code to make Mario invinsible
+                        }
+                        else if (item.GetType() == typeof(FireFlower))
+                        {
+                            mario.ChangeToFireState();
+                        }
+                        else if (item.GetType() == typeof(Mushroom1Up))
+                        {
+                            //Add code to add extra life
+                        }
+                        else if (item.GetType() == typeof(MushroomSuper))
+                        {
+                            mario.ChangeToSuperState();
+                        }
+                        item.makeInvisible();
+                        item.isCollidable = false;
                     }
-                    else if (item.GetType() == typeof(StarEntity))
-                    {
-                        //Add code to make Mario invinsible
-                    }
-                    else if (item.GetType() == typeof(FireFlowerEntity))
-                    {
-                        mario.ChangeToFireState();
-                    }
-                    else if (item.GetType() == typeof(Mushroom1UpEntity))
-                    {
-                        //Add code to add extra life
-                    }
-                    else if (item.GetType() == typeof(MushroomSuperEntity))
-                    {
-                        mario.ChangeToSuperState();
-                    }
-                    item.makeInvisible();
                 }
                 else
                 {
@@ -152,29 +170,7 @@ namespace MarioGame.Theming
         {
             _entities.Add(entity);
         }
-        public void AddMario(Mario mario)
-        {
-            this.mario = mario;
-        }
 
-<<<<<<< 4590d60f51510a8b3862738a92ba6d86e97fb8fa
-	    public void AddEnemy(Entity enemy)
-	    {
-		    _enemies.Add(enemy);
-	    }
-
-	    public void AddItem(Entity item)
-	    {
-		    _items.Add(item);
-	    }
-
-	    public void AddBlock(BlockEntity block)
-	    {
-		    _blocks.Add(block);
-	    }
-
-=======
->>>>>>> level loader almost done. creating Icontainable and IContainer interfaces for blocks that can hold items
         public void MakeMarioJump()
         {
             mario.Jump();
@@ -189,11 +185,11 @@ namespace MarioGame.Theming
         }
         public void MakeMarioMoveLeft()
         {
-            mario.WalkLeft();
+            mario.MoveLeft();
         }
         public void MakeMarioMoveRight()
         {
-            mario.WalkRight();
+            mario.MoveRight();
         }
         public void MakeMarioFire()
         {

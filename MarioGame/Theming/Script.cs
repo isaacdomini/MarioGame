@@ -63,22 +63,35 @@ namespace MarioGame.Theming
             }
             foreach (var enemy in _enemies)
             {
-                if (collisionHandler.checkForCollision(mario, enemy) && !enemy.IsDead())
+                if (Mario.invinsibleTimer == 0)
                 {
-                    colliding = true;
-                    mario.Halt();
-                    enemy.boxColor = Color.Black;
-                    if (collisionHandler.checkSideCollision(mario, enemy) == CollisionTypes.Top)
+                    if (collisionHandler.checkForCollision(mario, enemy) && !enemy.IsDead())
                     {
-                        enemy.JumpedOn();
+                        colliding = true;
+                        //mario.Halt();
+                        enemy.boxColor = Color.Black;
+                        if (collisionHandler.checkSideCollision(mario, enemy) == CollisionTypes.Top)
+                        {
+                            enemy.JumpedOn();
+                        }
+                        else
+                        {
+                            // Need to switch isCollidable based on powerUpState 
+                            //so that mario can technically walk through enemies after taking damage
+                            //Mario shouldn't die when koopa is an idle shell. Only when shell is moving or Koopa is alive
+                            if (mario.isCollidable == true)
+                            {
+                                mario.EnemyHit();
+                            }
+                        }
                     }
                     else
                     {
-                        // Need to switch isCollidable based on powerUpState 
-                        //so that mario can technically walk through enemies after taking damage
-                        //Mario shouldn't die when koopa is an idle shell. Only when shell is moving or Koopa is alive
-                        if (mario.isCollidable == true)
+                        enemy.boxColor = Color.Red;
+                        mario.isCollidable = true;
+                        foreach (var block in _blocks)
                         {
+<<<<<<< HEAD
                             if (enemy.Hurts())
                             {
                                 mario.EnemyHit();
@@ -88,21 +101,19 @@ namespace MarioGame.Theming
                                 enemy.JumpedOn();
                                 if (collisionHandler.checkSideCollision(mario, enemy) == CollisionTypes.Right)
                                     ((KoopaTroopa)enemy).ChangeShellVelocityDirection();
+=======
+                            if (collisionHandler.checkForCollision(enemy, block))
+                            {
+                                ((KoopaTroopa)enemy).ChangeShellVelocityDirection();
+>>>>>>> Mario has invinsibility after hitting enemy in powerup state
                             }
                         }
                     }
+                    
                 }
                 else
                 {
-                    enemy.boxColor = Color.Red;
-                    mario.isCollidable = true;
-                    foreach (var block in _blocks)
-                    {
-                        if (collisionHandler.checkForCollision(enemy, block))
-                        {
-                            ((KoopaTroopa)enemy).ChangeShellVelocityDirection();
-                        }
-                    }
+                    Mario.invinsibleTimer--;
                 }
                 enemy.Update(Viewport);
 

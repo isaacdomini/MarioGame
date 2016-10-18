@@ -20,6 +20,7 @@ namespace MarioGame.Entities
         public Color boxColor;
         protected ActionState aState;
         public bool isCollidable;
+
         public enum Directions
         {
             Left = 1,
