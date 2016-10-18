@@ -1,5 +1,5 @@
 ﻿using MarioGame.Entities;
-using MarioGame.States.PlayerStates.PowerUpStates;
+using MarioGame.States;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MarioGame.States
 {
-    public class PowerUpStateMachine
+    public class MarioPowerUpStateMachine
     {
         Mario _mario;
 
@@ -34,7 +34,7 @@ namespace MarioGame.States
         }
         // TODO: Add this when needed
         //        MarioActionState star;
-        public PowerUpStateMachine(Mario mario)
+        public MarioPowerUpStateMachine(Mario mario)
         {
             _mario = mario;
             standard = new StandardState(_mario, this);

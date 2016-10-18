@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MarioGame.Entities;
 
-namespace MarioGame.States.PlayerStates
+namespace MarioGame.States
 {
     public class BlockPowerUpState : PowerUpState
     {

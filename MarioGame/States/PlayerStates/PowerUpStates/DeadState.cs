@@ -4,7 +4,7 @@ namespace MarioGame.States.PlayerStates
 {
     class DeadState : MarioPowerUpState
     {
-        public DeadState(Mario entity, PowerUpStateMachine stateMachine) : base(entity, stateMachine)
+        public DeadState(Mario entity, MarioPowerUpStateMachine stateMachine) : base(entity, stateMachine)
         {
             powerUpState = MarioPowerUpStateEnum.Dead;
         }

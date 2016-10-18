@@ -9,8 +9,8 @@ namespace MarioGame.States
             get; protected set;
         }
         protected Mario _mario;
-        protected PowerUpStateMachine _stateMachine;
-        public MarioPowerUpState(Mario mario, PowerUpStateMachine stateMachine) : base(mario)
+        protected MarioPowerUpStateMachine _stateMachine;
+        public MarioPowerUpState(Mario mario, MarioPowerUpStateMachine stateMachine) : base(mario)
         {
             _mario = mario;
             _stateMachine = stateMachine;

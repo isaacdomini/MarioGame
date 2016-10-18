@@ -4,7 +4,7 @@ namespace MarioGame.States.PlayerStates
 {
     class FireState : MarioPowerUpState
     {
-        public FireState(Mario entity, PowerUpStateMachine stateMachine) : base(entity, stateMachine)
+        public FireState(Mario entity, MarioPowerUpStateMachine stateMachine) : base(entity, stateMachine)
         {
             powerUpState = MarioPowerUpStateEnum.Fire;
         }

@@ -4,7 +4,7 @@ namespace MarioGame.States
 {
     class StandardState : MarioPowerUpState
     {
-        public StandardState(Mario entity, PowerUpStateMachine stateMachine) : base(entity, stateMachine)
+        public StandardState(Mario entity, MarioPowerUpStateMachine stateMachine) : base(entity, stateMachine)
         {
             powerUpState = MarioPowerUpStateEnum.Standard;
         }
