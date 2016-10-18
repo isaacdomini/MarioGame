@@ -19,10 +19,23 @@ namespace MarioGame.States.PlayerStates
         {
             base.Begin(prevState);
         }
-        public virtual void ChangeToSuper() { }
-        public virtual void ChangeToStandard() { }
-        public virtual void ChangeToFire() { }
-        public virtual void ChangeToDead() { }
+        public virtual void ChangeToStandard()
+        {
+            _mario.ChangePowerUpState(_stateMachine.StandardState);
+        }
+        public virtual void ChangeToDead()
+        {
+            _mario.ChangePowerUpState(_stateMachine.DeadState);
+        }
+        public virtual void ChangeToSuper()
+        {
+            _mario.ChangePowerUpState(_stateMachine.SuperState);
+        }
+
+        public virtual void ChangeToFire()
+        {
+            _mario.ChangePowerUpState(_stateMachine.FireState);
+        }
         public virtual void ChangeToStar() { }
         public virtual void EnemyHit() { }
     }
