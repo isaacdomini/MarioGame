@@ -1,7 +1,7 @@
 ﻿using System;
 using MarioGame.Entities;
 
-namespace MarioGame.States.PlayerStates
+namespace MarioGame.States
 {
     public class MarioActionState : ActionState
     {

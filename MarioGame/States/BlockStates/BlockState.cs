@@ -1,6 +1,6 @@
 ﻿using MarioGame.Entities;
 
-namespace MarioGame.States.BlockStates
+namespace MarioGame.States
 {
     public class BlockState
     {

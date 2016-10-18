@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MarioGame.Entities;
 
 namespace MarioGame.States
 {
-    public enum MarioPowerUpStateEnum
+    public class PowerUpState : State
     {
-        Standard,
-        Super,
-        Fire,
-        Invincible, //switch between mario, luigi, and fire
-        Dead
+        public PowerUpState(IEntity entity) : base(entity)
+        {
+        }
     }
 }

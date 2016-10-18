@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MarioGame.States.PlayerStates
+namespace MarioGame.States
 {
     public class MarioActionStateMachine
     {

@@ -1,6 +1,6 @@
 ﻿using MarioGame.Entities;
 
-namespace MarioGame.States.PlayerStates
+namespace MarioGame.States
 {
     public class ActionState : State
     {
@@ -8,11 +8,6 @@ namespace MarioGame.States.PlayerStates
         {
 
         }
-        public override void Begin(IState prevState)
-        {
-            base.Begin(prevState);
-        }
-
 
     }
 }

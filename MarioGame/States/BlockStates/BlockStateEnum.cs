@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MarioGame.States.BlockStates
+namespace MarioGame.States
 {
     public enum BlockStateEnum
     {

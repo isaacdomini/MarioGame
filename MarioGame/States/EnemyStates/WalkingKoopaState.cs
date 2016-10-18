@@ -1,7 +1,7 @@
 ﻿using MarioGame.Entities;
 
 
-namespace MarioGame.States.EnemyStates
+namespace MarioGame.States
 {
     class WalkingKoopaState : KoopaActionState
     {

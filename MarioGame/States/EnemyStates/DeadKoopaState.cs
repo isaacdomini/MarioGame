@@ -1,7 +1,7 @@
 ﻿using MarioGame.Entities;
 using Microsoft.Xna.Framework;
 
-namespace MarioGame.States.EnemyStates
+namespace MarioGame.States
 {
     class DeadKoopaState : KoopaActionState
     {

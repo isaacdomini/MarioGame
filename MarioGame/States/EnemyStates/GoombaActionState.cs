@@ -1,7 +1,7 @@
 ﻿using MarioGame.Entities;
 using MarioGame.States.PlayerStates;
 
-namespace MarioGame.States.EnemyStates
+namespace MarioGame.States
 {
     public class GoombaActionState : ActionState
     {
