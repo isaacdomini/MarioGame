@@ -9,7 +9,7 @@ namespace MarioGame.States
 {
     public abstract class State: IState
     {
-        protected IState _prevState;
+        public IState _prevState { get; protected set; }
         protected IEntity _entity;
         public State(IEntity entity)
         {
@@ -21,7 +21,6 @@ namespace MarioGame.States
             _prevState = prevState;
             _prevState.End();
         }
-
         public virtual void End() {}
     }
 }

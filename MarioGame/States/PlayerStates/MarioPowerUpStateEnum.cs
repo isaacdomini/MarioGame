@@ -11,7 +11,9 @@ namespace MarioGame.States.PlayerStates
         Standard,
         Super,
         Fire,
-        Star,
+        SuperStar,
+        FireStar,
+        StandardStar,
         Invincible, //switch between mario, luigi, and fire
         Dead
     }

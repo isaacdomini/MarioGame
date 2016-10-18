@@ -15,7 +15,7 @@ namespace MarioGame.States.PlayerStates
             _mario = mario;
             _stateMachine = stateMachine;
         }
-        public void Begin(MarioPowerUpState prevState)
+        public virtual void Begin(MarioPowerUpState prevState)
         {
             base.Begin(prevState);
         }

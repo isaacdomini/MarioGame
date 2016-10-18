@@ -138,12 +138,12 @@ namespace MarioGame.Entities
         }
         private void setBoundingBox(MarioPowerUpStateEnum powerUpState)
         {
-            if (powerUpState == MarioPowerUpStateEnum.Super || powerUpState == MarioPowerUpStateEnum.Fire)
+            if (powerUpState == MarioPowerUpStateEnum.Super || powerUpState == MarioPowerUpStateEnum.Fire || powerUpState == MarioPowerUpStateEnum.SuperStar || powerUpState == MarioPowerUpStateEnum.FireStar )
             {
                 boundingBox.Width = superBoundingBoxWidth;
                 boundingBox.Height = superBoundingBoxHeight;
             }
-            else if (powerUpState == MarioPowerUpStateEnum.Standard || powerUpState == MarioPowerUpStateEnum.Dead)
+            else if (powerUpState == MarioPowerUpStateEnum.Standard || powerUpState == MarioPowerUpStateEnum.Dead || powerUpState == MarioPowerUpStateEnum.StandardStar)
             {
                 boundingBox.Width = standardBoundingBoxWidth;
                 boundingBox.Height = standardBoundingBoxHeight;

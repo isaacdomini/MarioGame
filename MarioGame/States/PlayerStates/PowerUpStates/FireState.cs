@@ -19,7 +19,7 @@ namespace MarioGame.States.PlayerStates.PowerUpStates
         }
         public override void ChangeToStar()
         {
-            _mario.ChangePowerUpState(_stateMachine.StarState);
+            _mario.ChangePowerUpState(_stateMachine.FireStarState);
         }
         public override void ChangeToSuper()
         {

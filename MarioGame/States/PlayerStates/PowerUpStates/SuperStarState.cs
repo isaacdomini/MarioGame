@@ -2,11 +2,12 @@
 
 namespace MarioGame.States.PlayerStates.PowerUpStates
 {
-    class StarState : MarioPowerUpState
+    class SuperStarState : MarioPowerUpState
     {
-        public StarState(Mario entity, PowerUpStateMachine stateMachine) : base(entity, stateMachine)
+        public SuperStarState(Mario entity, PowerUpStateMachine stateMachine) : base(entity, stateMachine)
         {
-            powerUpState = MarioPowerUpStateEnum.Star;
+            powerUpState = MarioPowerUpStateEnum.SuperStar;
+
         }
         public override void ChangeToStandard()
         {

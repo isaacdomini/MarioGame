@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using System;
+using MarioGame.States.PlayerStates.PowerUpStates;
 
 namespace MarioGame.Theming
 {
@@ -68,7 +69,11 @@ namespace MarioGame.Theming
                     colliding = true;
                     mario.Halt();
                     enemy.boxColor = Color.Black;
-                    if (collisionHandler.checkSideCollision(mario, enemy) == CollisionTypes.Top)
+                    if(mario.PowerUpState is SuperStarState || mario.PowerUpState is FireStarState|| mario.PowerUpState is StandardStarState)
+                    {
+                        enemy.JumpedOn();
+                    }
+                    else if (collisionHandler.checkSideCollision(mario, enemy) == CollisionTypes.Top)
                     {
                         enemy.JumpedOn();
                     }
@@ -105,23 +110,23 @@ namespace MarioGame.Theming
                 {
                     colliding = true;
                     item.boxColor = Color.Black;
-                    if (item.GetType() == typeof(Coin))
+                    if (item is Coin)
                     {
                         //Add code to add coin to total coins
                     }
-                    else if (item.GetType() == typeof(Star))
+                    else if (item is Star)
                     {
                         mario.ChangeToStarState();
                     }
-                    else if (item.GetType() == typeof(FireFlower))
+                    else if (item is FireFlower)
                     {
                         mario.ChangeToFireState();
                     }
-                    else if (item.GetType() == typeof(Mushroom1Up))
+                    else if (item is Mushroom1Up)
                     {
                         //Add code to add extra life
                     }
-                    else if (item.GetType() == typeof(MushroomSuper))
+                    else if (item is MushroomSuper)
                     {
                         mario.ChangeToSuperState();
                     }

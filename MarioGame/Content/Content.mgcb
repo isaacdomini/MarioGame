@@ -10,6 +10,7 @@
 
 #-------------------------------- References --------------------------------#
 
+/reference:LevelImporter.dll
 
 #---------------------------------- Content ---------------------------------#
 
@@ -302,7 +303,5 @@
 /build:ScenerySprite.png
 
 #begin Level1.json
-/importer:
-/processor:
-/build:Level1.json
+/copy:Level1.json
 
