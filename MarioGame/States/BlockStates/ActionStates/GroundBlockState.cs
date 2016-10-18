@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MarioGame.States
 {
-    public class GroundBlockState : BlockState
+    public class GroundBlockState : BlockActionState
     {
         public GroundBlockState(Block block, BlockActionStateMachine stateMachine): base(block, stateMachine)
         {

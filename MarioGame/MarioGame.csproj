@@ -111,14 +111,12 @@
     <Compile Include="Sprites\Player\MarioSprite.cs" />
     <Compile Include="Sprites\Sprite.cs" />
     <Compile Include="States\BlockStates\ActionStates\BlockActionState.cs" />
-    <Compile Include="States\BlockStates\ActionStates\BlockState.cs" />
     <Compile Include="States\BlockStates\ActionStates\BlockStateEnum.cs" />
     <Compile Include="States\BlockStates\ActionStates\BlockActionStateMachine.cs" />
     <Compile Include="States\BlockStates\ActionStates\BrickBlockState.cs" />
     <Compile Include="States\BlockStates\ActionStates\GroundBlockState.cs" />
     <Compile Include="States\BlockStates\ActionStates\QuestionBlock.cs" />
     <Compile Include="States\BlockStates\ActionStates\StepBlockState.cs" />
-    <Compile Include="States\BlockStates\ActionStates\UsedBlock.cs" />
     <Compile Include="States\BlockStates\ActionStates\UsedBlockState.cs" />
     <Compile Include="States\EnemyStates\DeadGoombaState.cs" />
     <Compile Include="States\EnemyStates\DeadKoopaState.cs" />

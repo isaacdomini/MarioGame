@@ -9,8 +9,21 @@ namespace MarioGame.States
 {
     public class BlockPowerUpState : PowerUpState
     {
+        public BlockPowerUpStateEnum powerUpStateEnum
+        {
+            get; private set;
+        }
         public BlockPowerUpState(IEntity entity) : base(entity)
         {
+            powerUpStateEnum = BlockPowerUpStateEnum.Hidden;
+        }
+        public BlockPowerUpState(IEntity entity, BlockPowerUpStateEnum visibility) : base(entity)
+        {
+            powerUpStateEnum = visibility;
+        }
+        public void Bump()
+        {
+            powerUpStateEnum = BlockPowerUpStateEnum.Visible;
         }
     }
 }

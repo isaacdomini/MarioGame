@@ -10,6 +10,10 @@ namespace MarioGame.States
         }
         protected Block block;
         protected BlockActionStateMachine stateMachine;
+        public BlockStateEnum bState
+        {
+            get; protected set;
+        }
 
         public BlockActionState(Block entity, BlockActionStateMachine stateMachine) : base(entity)
         {
@@ -21,6 +25,11 @@ namespace MarioGame.States
         {
             base.Begin(prevState);
         }
+        public virtual void Bump() { }
+        public virtual void Reveal() { }
+        public virtual void Break() { }
+        public virtual void ChangeToUsed() { }
+
     }
 }
 

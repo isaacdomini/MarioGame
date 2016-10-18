@@ -256,10 +256,7 @@ namespace MarioGame.Theming
         {
             foreach (var block in _blocks)
             {
-               /* if (block is BrickBlock)
-                {
-                    block.Bump();
-                }*/
+                block.Bump();
             }
         }
         internal void ChangeQuestionToUsed()

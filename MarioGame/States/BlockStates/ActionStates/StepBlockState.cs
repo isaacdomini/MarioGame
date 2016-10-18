@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace MarioGame.States
 {
-    public class StepBlockState : BlockState
+    public class StepBlockState : BlockActionState
     {
         public StepBlockState(Block block, BlockActionStateMachine stateMachine) : base (block, stateMachine)
         {
-            bState = BlockStateEnum.StepBlock;
+             bState = BlockStateEnum.StepBlock;
         }
     }
 }
