@@ -76,6 +76,7 @@ namespace MarioGame.Theming
                 {
                     mario.ChangeToSuperState();
                 }
+
                 foreach (var enemy in _enemies)
                 {
 
@@ -83,7 +84,11 @@ namespace MarioGame.Theming
                     {
                         colliding = true;
                         enemy.boxColor = Color.Black;
-                        if (collisionHandler.checkSideCollision(mario, enemy) == CollisionTypes.Top)
+                        if(mario.PowerUpState is SuperStarState || mario.PowerUpState is FireStarState || mario.PowerUpState is StandardStarState)
+                        {
+                            enemy.JumpedOn();
+                        }
+                        else if (collisionHandler.checkSideCollision(mario, enemy) == CollisionTypes.Top)
                         {
                             enemy.JumpedOn();
                             mario.Halt();
@@ -125,7 +130,35 @@ namespace MarioGame.Theming
             else
             {
                 Mario.invinsibleTimer--;
-            }
+
+                    foreach (var enemy in _enemies)
+                    {
+
+                        if (collisionHandler.checkForCollision(mario, enemy) && !enemy.IsDead())
+                        {
+                            colliding = true;
+                            enemy.boxColor = Color.Black;
+                            if (mario.PowerUpState is SuperStarState || mario.PowerUpState is FireStarState || mario.PowerUpState is StandardStarState)
+                            {
+                                enemy.JumpedOn();
+                            }
+                        }
+                        else
+                        {
+                            enemy.boxColor = Color.Red;
+                            mario.isCollidable = true;
+                            foreach (var block in _blocks)
+                            {
+                                if (collisionHandler.checkForCollision(enemy, block))
+                                {
+                                    ((KoopaTroopa)enemy).ChangeShellVelocityDirection();
+                                }
+                            }
+                        }
+                        enemy.Update(Viewport);
+
+                    }
+                }
 
             foreach (var item in _items)
             {
