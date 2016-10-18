@@ -10,25 +10,20 @@ namespace MarioGame.Entities
         // Could be useful for casting in certain circumstances
         protected BlockActionStateMachine stateMachine;
 
-        protected bool isVisible;
-
-        internal bool Visibility
-        {
-            get { return isVisible; }
-        }
-
         public Block(Vector2 position, ContentManager content) : base(position, content)
         {
-            isVisible = true;
+             powerUpState = power
         }
 
         public void ChangeBrickActionState(BlockActionState state)
         {
             base.ChangeActionState(state);
+            // TODO: Call sprite to change action state
         }
         public void ChangeBrickPowerUpState(BlockPowerUpState state)
         {
             base.ChangePowerUpState(state);
+            // TODO: Call sprite to change power up state
         }
 
         public void ChangeToUsed()

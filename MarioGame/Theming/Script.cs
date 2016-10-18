@@ -268,7 +268,13 @@ namespace MarioGame.Theming
         }
         internal void ShowHiddenBlock()
         {
+            foreach(Block block in _blocks)
+            {
+                if (block.Visibility == false)
+                {
 
+                }
+            }
         }
     }
 }

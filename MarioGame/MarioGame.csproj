@@ -39,8 +39,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Collisions\CollisionHandler.cs" />
+    <Compile Include="Commands\BlockCommands\BumpOrBreakBrick.cs" />
     <Compile Include="Commands\BlockCommands\ChangeQuestionToUsedState.cs" />
-    <Compile Include="Commands\BlockCommands\BumpBrick.cs" />
     <Compile Include="Commands\BlockCommands\ShowHiddenBlock.cs" />
     <Compile Include="Commands\CrouchCommand.cs" />
     <Compile Include="Commands\DashOrThrowFireballCommand.cs" />
