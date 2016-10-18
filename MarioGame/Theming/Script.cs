@@ -68,17 +68,14 @@ namespace MarioGame.Theming
                     if (collisionHandler.checkForCollision(mario, enemy) && !enemy.IsDead())
                     {
                         colliding = true;
-                        //mario.Halt();
                         enemy.boxColor = Color.Black;
                         if (collisionHandler.checkSideCollision(mario, enemy) == CollisionTypes.Top)
                         {
                             enemy.JumpedOn();
+                            mario.Halt();
                         }
                         else
                         {
-                            // Need to switch isCollidable based on powerUpState 
-                            //so that mario can technically walk through enemies after taking damage
-                            //Mario shouldn't die when koopa is an idle shell. Only when shell is moving or Koopa is alive
                             if (mario.isCollidable == true)
                             {
                                 if (enemy.Hurts())
@@ -88,6 +85,7 @@ namespace MarioGame.Theming
                                 else
                                 {
                                     enemy.JumpedOn();
+                                    mario.Halt();
                                     if (collisionHandler.checkSideCollision(mario, enemy) == CollisionTypes.Right)
                                         ((KoopaTroopa)enemy).ChangeShellVelocityDirection();
                                 }
