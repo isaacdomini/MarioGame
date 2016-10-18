@@ -100,31 +100,34 @@ namespace MarioGame.Theming
             }
             foreach (var item in _items)
             {
-                if (collisionHandler.checkForCollision(mario, item))
-                {
-                    colliding = true;
-                    item.boxColor = Color.Black;
-                    if (item.GetType() == typeof(Coin))
+                if (item.isCollidable) {
+                    if (collisionHandler.checkForCollision(mario, item))
                     {
-                        //Add code to add coin to total coins
+                        colliding = true;
+                        item.boxColor = Color.Black;
+                        if (item.GetType() == typeof(Coin))
+                        {
+                            //Add code to add coin to total coins
+                        }
+                        else if (item.GetType() == typeof(Star))
+                        {
+                            //Add code to make Mario invinsible
+                        }
+                        else if (item.GetType() == typeof(FireFlower))
+                        {
+                            mario.ChangeToFireState();
+                        }
+                        else if (item.GetType() == typeof(Mushroom1Up))
+                        {
+                            //Add code to add extra life
+                        }
+                        else if (item.GetType() == typeof(MushroomSuper))
+                        {
+                            mario.ChangeToSuperState();
+                        }
+                        item.makeInvisible();
+                        item.isCollidable = false;
                     }
-                    else if (item.GetType() == typeof(Star))
-                    {
-                        //Add code to make Mario invinsible
-                    }
-                    else if (item.GetType() == typeof(FireFlower))
-                    {
-                        mario.ChangeToFireState();
-                    }
-                    else if (item.GetType() == typeof(Mushroom1Up))
-                    {
-                        //Add code to add extra life
-                    }
-                    else if (item.GetType() == typeof(MushroomSuper))
-                    {
-                        mario.ChangeToSuperState();
-                    }
-                    item.makeInvisible();
                 }
                 else
                 {

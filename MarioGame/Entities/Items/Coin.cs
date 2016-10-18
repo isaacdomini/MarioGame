@@ -13,6 +13,7 @@ namespace MarioGame.Entities
             int _width = 20;
             boundingBox = new Rectangle((int)_position.X, (int)_position.Y, _width/2, _height/3);
             boxColor = Color.Green;
+            isCollidable = true;
         }
     }
 }
