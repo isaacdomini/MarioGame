@@ -252,16 +252,19 @@ namespace MarioGame.Theming
         {
             mario.ChangeToDeadState();
         }
-        internal void BrickBump()
+        internal void BrickBumpOrBreak()
         {
             foreach (var block in _blocks)
             {
-                block.Bump();
+                if (mario.PowerUpState is SuperState)
+                {
+                    block.Break();
+                }
+                else if (mario.PowerUpState is StandardState)
+                {
+                    block.Bump();
+                }
             }
-        }
-        internal void ChangeQuestionToUsed()
-        {
-            throw new NotImplementedException();
         }
         internal void ShowHiddenBlock()
         {

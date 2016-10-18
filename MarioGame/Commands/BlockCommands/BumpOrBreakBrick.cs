@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace MarioGame.Commands
 {
-    class BumpBrick : ScriptCommand
+    class BumpOrBreakBrick: ScriptCommand
     {
-        public BumpBrick(Script script) : base(script)
+        public BumpOrBreakBrick(Script script) : base(script)
         {
         }
 
         public override void Execute()
         {
-            Script.BrickBump();
+            Script.BrickBumpOrBreak();
         }
     }
 }

@@ -53,7 +53,7 @@ namespace MarioGame.Theming
             _controllers[0].AddCommand((int)Keys.O, new DeadStateCommand(Game1.Scene.getScript()));
 
             // Add block state commands
-            _controllers[0].AddCommand((int)Keys.B, new BumpBrick(Game1.Scene.getScript()));
+            _controllers[0].AddCommand((int)Keys.B, new BumpOrBreakBrick(Game1.Scene.getScript()));
             _controllers[0].AddCommand((int)Keys.H, new ShowHiddenBlock(Game1.Scene.getScript()));
             _controllers[0].AddCommand((int)Keys.X, new ChangeQuestionToUsedState(Game1.Scene.getScript()));
 

@@ -21,7 +21,7 @@ namespace MarioGame.States
         {
             powerUpStateEnum = visibility;
         }
-        public void Bump()
+        public void Reveal()
         {
             powerUpStateEnum = BlockPowerUpStateEnum.Visible;
         }
