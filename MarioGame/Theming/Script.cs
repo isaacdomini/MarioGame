@@ -63,7 +63,7 @@ namespace MarioGame.Theming
             }
             foreach (var enemy in _enemies)
             {
-                if (collisionHandler.checkForCollision(mario, enemy))
+                if (collisionHandler.checkForCollision(mario, enemy) && !enemy.IsDead())
                 {
                     colliding = true;
                     mario.Halt();

@@ -44,6 +44,7 @@ namespace MarioGame.Entities
         public override void JumpedOn()
         {
             eState.JumpedOn();
+            _isDead = true;
         }
     }
 
