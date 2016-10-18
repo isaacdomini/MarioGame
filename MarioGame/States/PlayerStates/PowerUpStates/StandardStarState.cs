@@ -8,6 +8,7 @@ namespace MarioGame.States.PlayerStates.PowerUpStates
         {
             powerUpState = MarioPowerUpStateEnum.StandardStar;
 
+
         }
         public override void ChangeToStandard()
         {

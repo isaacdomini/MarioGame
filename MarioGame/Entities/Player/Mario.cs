@@ -90,13 +90,13 @@ namespace MarioGame.Entities
             }
             _position = pos;
             
-            if(PowerUpState.powerUpState != MarioPowerUpStateEnum.Standard)
+            if(PowerUpState.powerUpState != MarioPowerUpStateEnum.Standard || PowerUpState.powerUpState != MarioPowerUpStateEnum.StandardStar)
             {
                 
                 boundingBox.X = (int)_position.X - 5;
                 boundingBox.Y = (int)_position.Y;
             }
-            if (PowerUpState.powerUpState == MarioPowerUpStateEnum.Standard || PowerUpState.powerUpState == MarioPowerUpStateEnum.Dead)
+            if (PowerUpState.powerUpState == MarioPowerUpStateEnum.Standard || PowerUpState.powerUpState == MarioPowerUpStateEnum.Dead || PowerUpState.powerUpState == MarioPowerUpStateEnum.StandardStar)
             {
                 if (this.isFacingLeft() == true)
                 {
