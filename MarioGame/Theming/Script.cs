@@ -62,10 +62,23 @@ namespace MarioGame.Theming
                     colliding = true;
                 }
             }
-            foreach (var enemy in _enemies)
+            if (Mario.invinsibleTimer == 0)
             {
-                if (Mario.invinsibleTimer == 0)
+                if(mario.PowerUpState is FireStarState)
                 {
+                    mario.ChangeToFireState();
+                }
+                else if (mario.PowerUpState is StandardStarState)
+                {
+                    mario.ChangeToStandardState();
+                }
+                else if (mario.PowerUpState is SuperStarState)
+                {
+                    mario.ChangeToSuperState();
+                }
+                foreach (var enemy in _enemies)
+                {
+
                     if (collisionHandler.checkForCollision(mario, enemy) && !enemy.IsDead())
                     {
                         colliding = true;
@@ -105,13 +118,13 @@ namespace MarioGame.Theming
                             }
                         }
                     }
-                }
-                else
-                {
-                    Mario.invinsibleTimer--;
-                }
-                enemy.Update(Viewport);
+                    enemy.Update(Viewport);
 
+                }
+            }
+            else
+            {
+                Mario.invinsibleTimer--;
             }
 
             foreach (var item in _items)
