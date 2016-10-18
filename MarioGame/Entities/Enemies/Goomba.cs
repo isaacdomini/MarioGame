@@ -45,6 +45,7 @@ namespace MarioGame.Entities
         {
             eState.JumpedOn();
             _isDead = true;
+            
         }
         public override void Update(Viewport viewport)
         {
