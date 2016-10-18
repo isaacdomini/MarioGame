@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MarioGame.States
 {
-    public class BlockPowerUpStateEnum
+    public enum BlockPowerUpStateEnum
     {
         Visible,
         Hidden
