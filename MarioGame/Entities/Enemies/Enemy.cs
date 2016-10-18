@@ -8,7 +8,6 @@ namespace MarioGame.Entities
     public class Enemy : Entity
     {
         public AnimatedSprite eSprite;
-        public ActionState aState;
         protected bool _isDead;
         protected bool _hurts;
         public Enemy(Vector2 position, ContentManager content) : base(position, content)

@@ -28,7 +28,7 @@ namespace MarioGame.Entities
             get; protected set;
         }
 
-        public ActionState ActionState
+        public ActionState CurrentActionState
         {
             get { return this.aState; }
         }
@@ -40,7 +40,6 @@ namespace MarioGame.Entities
         }
         public Vector2 _velocity { get; protected set; }
         
-
         public readonly static int velocityConstant = 1;
         private readonly static Vector2 walkingVelocity = new Vector2(velocityConstant * 1, 0);
         public readonly static Vector2 idleVelocity = new Vector2(0, 0);
@@ -87,7 +86,6 @@ namespace MarioGame.Entities
                 _velocity = _velocity * -1;
             }
         }
-        public virtual void Halt() { }
         public void makeInvisible()
         {
             _sprite.Visible = true;
@@ -106,6 +104,7 @@ namespace MarioGame.Entities
         }
         public virtual void turnLeft() {}
         public virtual void turnRight() {}
+        public virtual void Halt() { }
 
     }
 }

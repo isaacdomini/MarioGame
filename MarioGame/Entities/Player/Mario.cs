@@ -34,6 +34,7 @@ namespace MarioGame.Entities
             walk,
             run
         }
+
         private SpaceBarAction spaceBarAction;
 
         MarioActionStateMachine marioActionStateMachine;
@@ -41,15 +42,6 @@ namespace MarioGame.Entities
         MarioActionState marioActionState;
 
         MarioPowerUpStateMachine powerUpStateMachine;
-
-        MarioActionState CurrentActionState
-        {
-            get { return marioActionState; }
-        }
-        MarioPowerUpState CurrentPowerUpState
-        {
-            get { return pState; }
-        }
 
         public Mario(Vector2 position, ContentManager content) : base(position, content)
         {
@@ -110,9 +102,6 @@ namespace MarioGame.Entities
                 }
             }
         }
-
-        
-
         public bool checkMarioJumping()
         {
             return this._velocity.Equals(jumpingVelocity);
@@ -126,13 +115,13 @@ namespace MarioGame.Entities
 
         public void ChangeActionState(MarioActionState state)
         {
-            marioActionState = state;
+            base.ChangeActionState(state);
             mSprite.changeActionState(state);
 
         }
         public void ChangePowerUpState(MarioPowerUpState state)
         {
-            pState = state;
+            base.ChangePowerUpState(state);
             setBoundingBox(pState.powerUpState);
             mSprite.changePowerUp(pState);
         }
