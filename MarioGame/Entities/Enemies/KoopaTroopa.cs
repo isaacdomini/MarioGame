@@ -48,7 +48,7 @@ namespace MarioGame.Entities
         {
             this.setVelocity(shellMovingVelocity);
         }
-        internal void ChangeShellVelocityDirection()
+        public void ChangeShellVelocityDirection()
         {
             Vector2 newVelocity = _velocity * -1;
             this.setVelocity(newVelocity);
@@ -62,6 +62,7 @@ namespace MarioGame.Entities
         public override void JumpedOn()
         {
             eState.JumpedOn();
+            _hurts = !_hurts;
         }
 
         public override void Update(Viewport viewport)

@@ -79,7 +79,16 @@ namespace MarioGame.Theming
                         //Mario shouldn't die when koopa is an idle shell. Only when shell is moving or Koopa is alive
                         if (mario.isCollidable == true)
                         {
-                            mario.EnemyHit();
+                            if (enemy.Hurts())
+                            {
+                                mario.EnemyHit();
+                            }
+                            else
+                            {
+                                enemy.JumpedOn();
+                                if (collisionHandler.checkSideCollision(mario, enemy) == CollisionTypes.Right)
+                                    ((KoopaTroopa)enemy).ChangeShellVelocityDirection();
+                            }
                         }
                     }
                 }
