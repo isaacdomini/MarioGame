@@ -11,19 +11,22 @@ namespace MarioGame.States
     {
         public BlockPowerUpStateEnum powerUpStateEnum
         {
-            get; private set;
+            get; protected set;
         }
-        public BlockPowerUpState(IEntity entity) : base(entity)
+        protected BlockPowerUpStateMachine stateMachine;
+        protected Block block;
+        public BlockPowerUpState(Block entity, BlockPowerUpStateMachine stateMachine) : base(entity)
         {
-            powerUpStateEnum = BlockPowerUpStateEnum.Hidden;
+            block = entity;
+            this.stateMachine = stateMachine;
         }
         public BlockPowerUpState(IEntity entity, BlockPowerUpStateEnum visibility) : base(entity)
         {
             powerUpStateEnum = visibility;
         }
-        public void Reveal()
+        public virtual void Reveal()
         {
-            powerUpStateEnum = BlockPowerUpStateEnum.Visible;
+
         }
     }
 }

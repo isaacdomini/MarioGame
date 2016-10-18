@@ -8,19 +8,21 @@ namespace MarioGame.Entities
     public abstract class Block : PowerUpEntity
     {
         // Could be useful for casting in certain circumstances
-        protected BlockActionStateMachine stateMachine;
+        protected BlockActionStateMachine actionStateMachine;
+        protected BlockPowerUpStateMachine powerUpStateMachine;
 
         public Block(Vector2 position, ContentManager content) : base(position, content)
         {
-             powerUpState = power
+            actionStateMachine = new BlockActionStateMachine(this);
+            powerUpStateMachine = new BlockPowerUpStateMachine(this)
         }
 
-        public void ChangeBrickActionState(BlockActionState state)
+        public void ChangeBlockActionState(BlockActionState state)
         {
             base.ChangeActionState(state);
             // TODO: Call sprite to change action state
         }
-        public void ChangeBrickPowerUpState(BlockPowerUpState state)
+        public void ChangeBlockPowerUpState(BlockPowerUpState state)
         {
             base.ChangePowerUpState(state);
             // TODO: Call sprite to change power up state

@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using System;
 using MarioGame.States;
+using MarioGame.States.BlockStates.PowerUpStates;
 
 namespace MarioGame.Theming
 {
@@ -270,7 +271,7 @@ namespace MarioGame.Theming
         {
             foreach(Block block in _blocks)
             {
-                if (block.Visibility == false)
+                if (block.CurrentPowerUpState is HiddenState)
                 {
 
                 }
