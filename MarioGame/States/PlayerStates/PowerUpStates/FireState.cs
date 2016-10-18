@@ -20,6 +20,8 @@ namespace MarioGame.States.PlayerStates.PowerUpStates
         public override void ChangeToStar()
         {
             _mario.ChangePowerUpState(_stateMachine.FireStarState);
+            Mario.invinsibleTimer = 625;
+
         }
         public override void ChangeToSuper()
         {
