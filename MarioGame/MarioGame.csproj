@@ -71,6 +71,7 @@
     <Compile Include="Entities\Blocks\BlocksEnum.cs" />
     <Compile Include="Entities\Blocks\BrickBlock.cs" />
     <Compile Include="Entities\Blocks\GroundBlock.cs" />
+    <Compile Include="Entities\Blocks\UsedBlock.cs" />
     <Compile Include="Entities\ContainableHidableEntity.cs" />
     <Compile Include="Entities\Enemies\Enemy.cs" />
     <Compile Include="Entities\IBumpable.cs" />

@@ -60,6 +60,7 @@ namespace MarioGame.Theming
                 {
                     mario.Halt();
                     colliding = true;
+                    if (collisionHandler.checkSideCollision(mario, block))
                 }
             }
             foreach (var enemy in _enemies)

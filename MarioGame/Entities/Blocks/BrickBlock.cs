@@ -1,12 +1,16 @@
-﻿using MarioGame.States.PlayerStates;
+﻿using MarioGame.Sprites;
+using MarioGame.States.PlayerStates;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using System.Collections.Generic;
+using System;
 
 namespace MarioGame.Entities
 { 
     public class BrickBlock : Block
     {
+        Vector2 bumpingVelocity = new Vector2(0, -1);
+        Vector2 bumpingAcceleration = new Vector2()
         Queue<Item> _items;
         public BrickBlock(Vector2 position, ContentManager content) : base(position, content)
         {
@@ -37,15 +41,29 @@ namespace MarioGame.Entities
         public override void Bump()
         {
             bState.Bump();
+            // TODO: MAKE BRICK BLOCK BUMP
+            SetVelocityToBumping();
+            SetAccelerationToFalling();
             if (_items != null)
             {
-                foreach (var item in _items)
+                if (_items.Count > 0)
                 {
+                    Item item = _items.Dequeue();
                     item.Show();
                 }
             }
-
         }
+
+        private void SetVelocityToBumping()
+        {
+            _velocity = bumpingVelocity;
+        }
+
+        private void SetAccelerationToFalling()
+        {
+            throw new NotImplementedException();
+        }
+
         public override void Break()
         {
             bState.Break();
@@ -53,6 +71,11 @@ namespace MarioGame.Entities
         public override void Reveal()
         {
             isVisible = true;
+        }
+        public override void ChangeToUsed()
+        {
+            bState.ChangeToUsed();
+            
         }
     }
 }

@@ -47,8 +47,6 @@ namespace MarioGame.Sprites
         {
             throw new NotImplementedException();
         }
-
-        public virtual void changeActionState(ActionState goombaActionState) { }
         public void Show()
         {
             this.Visible = true;

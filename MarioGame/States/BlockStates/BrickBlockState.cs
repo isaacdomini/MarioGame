@@ -13,5 +13,9 @@ namespace MarioGame.States.BlockStates
         {
 
         }
+        public override void ChangeToUsed()
+        {
+            _stateMachine.UsedState.Begin(this);
+        }
     }
 }

@@ -38,7 +38,7 @@ namespace MarioGame.Entities
             isCollidable = true;
 
         }
-        public void ChangeActionState(GoombaActionState newState)
+        public void ChangeActionState(KoopaActionState newState)
         {
             aState = newState;
             ((KoopaTroopaSprite)eSprite).changeActionState(newState);

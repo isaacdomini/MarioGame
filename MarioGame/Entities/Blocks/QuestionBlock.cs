@@ -35,6 +35,7 @@ namespace MarioGame.Entities
         public override void Bump()
         {
             bState.Bump();
+            // TODO: MAKE QUESTION BLOCK BUMP
             if (_item != null)
             {
                 _item.Show();

@@ -9,6 +9,7 @@ namespace MarioGame.States.BlockStates
             bState = BlockStateEnum.HiddenBlock;
         }
 
+
         public override void Bump() {
             _block.Reveal();
         }
