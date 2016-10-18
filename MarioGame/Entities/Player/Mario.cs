@@ -24,6 +24,7 @@ namespace MarioGame.Entities
         private readonly static Vector2 jumpingVelocity = new Vector2(0, velocityConstant * -1);
         private readonly static Vector2 fallingVelocity = new Vector2(0, velocityConstant * 1);
         private readonly static Vector2 dashVelocity = new Vector2(velocityConstant * 2, 0);
+        private readonly static Vector2 idleVelocity = new Vector2(0, 0);
 
         private static int superBoundingBoxWidth = 30;
         private static int superBoundingBoxHeight = 40;
@@ -71,6 +72,10 @@ namespace MarioGame.Entities
 
         public override void Update(Viewport viewport)
         {
+            if(PowerUpState.powerUpState == MarioPowerUpStateEnum.Dead)
+            {
+                _velocity = idleVelocity;
+            }
             base.Update();
             // Maybe just set velocity to zero for all this? - Ricky
             Vector2 pos = _position;
