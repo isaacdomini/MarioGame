@@ -64,41 +64,51 @@ namespace MarioGame.Theming
             }
             foreach (var enemy in _enemies)
             {
-                if (collisionHandler.checkForCollision(mario, enemy))
+                if (Mario.invinsibleTimer == 0)
                 {
-                    colliding = true;
-                    mario.Halt();
-                    enemy.boxColor = Color.Black;
-                    if(mario.PowerUpState is SuperStarState || mario.PowerUpState is FireStarState|| mario.PowerUpState is StandardStarState)
+                    if (collisionHandler.checkForCollision(mario, enemy) && !enemy.IsDead())
                     {
-                        enemy.JumpedOn();
-                    }
-                    else if (collisionHandler.checkSideCollision(mario, enemy) == CollisionTypes.Top)
-                    {
-                        enemy.JumpedOn();
+                        colliding = true;
+                        enemy.boxColor = Color.Black;
+                        if (collisionHandler.checkSideCollision(mario, enemy) == CollisionTypes.Top)
+                        {
+                            enemy.JumpedOn();
+                            mario.Halt();
+                        }
+                        else
+                        {
+                            if (mario.isCollidable == true)
+                            {
+                                if (enemy.Hurts())
+                                {
+                                    mario.EnemyHit();
+                                }
+                                else
+                                {
+                                    enemy.JumpedOn();
+                                    mario.Halt();
+                                    if (collisionHandler.checkSideCollision(mario, enemy) == CollisionTypes.Right)
+                                        ((KoopaTroopa)enemy).ChangeShellVelocityDirection();
+                                }
+                            }
+                        }
                     }
                     else
                     {
-                        // Need to switch isCollidable based on powerUpState 
-                        //so that mario can technically walk through enemies after taking damage
-                        //Mario shouldn't die when koopa is an idle shell. Only when shell is moving or Koopa is alive
-                        if (mario.isCollidable == true)
+                        enemy.boxColor = Color.Red;
+                        mario.isCollidable = true;
+                        foreach (var block in _blocks)
                         {
-                            mario.EnemyHit();
+                            if (collisionHandler.checkForCollision(enemy, block))
+                            {
+                                ((KoopaTroopa)enemy).ChangeShellVelocityDirection();
+                            }
                         }
                     }
                 }
                 else
                 {
-                    enemy.boxColor = Color.Red;
-                    mario.isCollidable = true;
-                    foreach (var block in _blocks)
-                    {
-                        if (collisionHandler.checkForCollision(enemy, block))
-                        {
-                            ((KoopaTroopa)enemy).ChangeShellVelocityDirection();
-                        }
-                    }
+                    Mario.invinsibleTimer--;
                 }
                 enemy.Update(Viewport);
 
@@ -106,35 +116,39 @@ namespace MarioGame.Theming
 
             foreach (var item in _items)
             {
-                if (collisionHandler.checkForCollision(mario, item))
+                if (item.isCollidable)
                 {
-                    colliding = true;
-                    item.boxColor = Color.Black;
-                    if (item is Coin)
+                    if (collisionHandler.checkForCollision(mario, item))
                     {
-                        //Add code to add coin to total coins
+                        colliding = true;
+                        item.boxColor = Color.Black;
+                        if (item is Coin)
+                        {
+                            //Add code to add coin to total coins
+                        }
+                        else if (item is Star)
+                        {
+                            mario.ChangeToStarState();
+                        }
+                        else if (item is FireFlower)
+                        {
+                            mario.ChangeToFireState();
+                        }
+                        else if (item is Mushroom1Up)
+                        {
+                            //Add code to add extra life
+                        }
+                        else if (item is MushroomSuper)
+                        {
+                            mario.ChangeToSuperState();
+                        }
+                        item.makeInvisible();
+                        item.isCollidable = false;
                     }
-                    else if (item is Star)
+                    else
                     {
-                        mario.ChangeToStarState();
+                        item.boxColor = Color.Green;
                     }
-                    else if (item is FireFlower)
-                    {
-                        mario.ChangeToFireState();
-                    }
-                    else if (item is Mushroom1Up)
-                    {
-                        //Add code to add extra life
-                    }
-                    else if (item is MushroomSuper)
-                    {
-                        mario.ChangeToSuperState();
-                    }
-                    item.makeInvisible();
-                }
-                else
-                {
-                    item.boxColor = Color.Green;
                 }
             }
             if (colliding)
