@@ -30,7 +30,7 @@ namespace MarioGame.Entities
             eState = newState;
             ((GoombaSprite)eSprite).changeActionState(newState);
         }
-        
+
         public override void Halt()
         {
             _position -= _velocity;
@@ -46,6 +46,11 @@ namespace MarioGame.Entities
             eState.JumpedOn();
             _isDead = true;
         }
+        public override void Update(Viewport viewport)
+        {
+            _position += _velocity;
+            boundingBox.X = (int)_position.X + 3;
+            boundingBox.Y = (int)_position.Y + 5;
+        }
     }
-
 }
