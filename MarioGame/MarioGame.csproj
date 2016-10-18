@@ -118,6 +118,7 @@
     <Compile Include="States\BlockStates\ActionStates\QuestionBlock.cs" />
     <Compile Include="States\BlockStates\ActionStates\StepBlockState.cs" />
     <Compile Include="States\BlockStates\ActionStates\UsedBlockState.cs" />
+    <Compile Include="States\BlockStates\PowerUpStates\BlockPowerUpStateMachine.cs" />
     <Compile Include="States\BlockStates\PowerUpStates\HiddenState.cs" />
     <Compile Include="States\BlockStates\PowerUpStates\VisibleState.cs" />
     <Compile Include="States\EnemyStates\DeadGoombaState.cs" />

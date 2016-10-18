@@ -14,14 +14,50 @@ namespace MarioGame.Entities
         public Block(Vector2 position, ContentManager content) : base(position, content)
         {
             actionStateMachine = new BlockActionStateMachine(this);
-            powerUpStateMachine = new BlockPowerUpStateMachine(this)
+            powerUpStateMachine = new BlockPowerUpStateMachine(this);
+            aState = actionStateMachine.BrickState;
+            powerUpState = powerUpStateMachine.VisibleState;
         }
-
+        public void SetBlockActionState(String state)
+        {
+            if (state.Equals("UsedBlockState"))
+            {
+                aState = actionStateMachine.UsedState;
+            }
+            else if (state.Equals("BrickBlockState"))
+            {
+                aState = actionStateMachine.BrickState;
+            }
+            else if (state.Equals("GroundBlockState"))
+            {
+                aState = actionStateMachine.GroundState;
+            }
+            else if (state.Equals("QuestionBlockState"))
+            {
+                aState = actionStateMachine.QuestionState;
+            }
+            else if (state.Equals("StepBlockState"))
+            {
+                aState = actionStateMachine.StepState;
+            }
+        }
+        public void SetBlockPowerUpState(String state)
+        {
+            if (state.Equals("HiddenState"))
+            {
+                powerUpState = powerUpStateMachine.HiddenState;
+            }
+            else if (state.Equals("VisibleState"))
+            {
+                powerUpState = powerUpStateMachine.VisibleState;
+            }
+        }
         public void ChangeBlockActionState(BlockActionState state)
         {
             base.ChangeActionState(state);
             // TODO: Call sprite to change action state
         }
+
         public void ChangeBlockPowerUpState(BlockPowerUpState state)
         {
             base.ChangePowerUpState(state);

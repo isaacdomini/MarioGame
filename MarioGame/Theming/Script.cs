@@ -277,5 +277,9 @@ namespace MarioGame.Theming
                 }
             }
         }
+        internal void ChangeQuestionToUsed()
+        {
+ 
+        }
     }
 }
