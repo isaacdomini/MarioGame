@@ -272,10 +272,7 @@ namespace MarioGame.Theming
         {
             foreach(Block block in _blocks)
             {
-                if (block.CurrentPowerUpState is HiddenState)
-                {
-
-                }
+                block.Reveal();
             }
         }
         internal void ChangeQuestionToUsed()

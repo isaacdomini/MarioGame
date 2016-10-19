@@ -26,7 +26,7 @@ namespace MarioGame.States
         }
         public virtual void Reveal()
         {
-
+            stateMachine.VisibleState.Begin(this);
         }
     }
 }
