@@ -1,0 +1,19 @@
+Author: Ricky Renner
+Date: 10/18/16
+Sprint 2
+
+File Reviewed: Mario.cs
+
+File Authors: Cyriac Thundathil, John Simerlink, Erin George, Ricky Renner
+
+I dont like the jumpingVelocity and fallingVelocity vectors. I think it would be better if we had a direction property (up or down) and then that would be used to calculate the velocity.
+
+Many of the uses of pState and aState are unecessary and causing messy casting. We could just have a variable that is the casted version of pState and aState and use that version instead so that every time we call the variable we dont have to cast it.
+
+The Update Method has many if statements. Maybe we could cut down on these. The logic inside of the update method involving the bounding boxes contains magic numbers. We should make these constants or otherwise adjust the sprite sheets so that we don't need magic numbers. Also if we are creating larger bounding boxes for items and smaller bounding boxes for enemies, rather than typing in static numbers maybe we could make the bounding boxes some ratio of the width and the height, and the ratio would change based on whether the entity is an item or a enemy.
+
+I dont like the checkMarioJumping method. Why is the state of whether mario is jumping determined by its velocity? Shouldn't it be determined by by mario's state? 
+
+I'd rather the position property not be reading from _sprite.Position. I think it would be better if position was kept in Mario and rather _sprite.Position read from mario.Position. better yet position shouldn't even be handled by mario. It should be handled by its parent class - entity.
+
+I like the "polymorphism" of ChangeActionState and how it takes a subclass of actionState for its argument - actionState is used by base.changeActionState(). same thing for changePowerUpState
