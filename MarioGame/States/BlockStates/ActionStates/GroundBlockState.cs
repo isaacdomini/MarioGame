@@ -13,5 +13,9 @@ namespace MarioGame.States
         {
             bState = BlockActionStateEnum.GroundBlock;
         }
+        public override void Begin(BlockActionState prevState)
+        {
+            block.ChangeBlockActionState(stateMachine.GroundState);
+        }
     }
 }

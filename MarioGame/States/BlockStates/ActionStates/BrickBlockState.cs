@@ -13,6 +13,10 @@ namespace MarioGame.States
         {
             bState = BlockActionStateEnum.BrickBlock;
         }
+        public override void Begin(BlockActionState prevState)
+        {
+            block.ChangeBlockActionState(stateMachine.BrickState);
+        }
         public override void ChangeToUsed()
         {
             stateMachine.UsedState.Begin(this);
