@@ -26,7 +26,7 @@ namespace MarioGame.Sprites
         public enum Rows
         {
             Visible = 0,
-            Row = 1
+            Hidden = 1
         }
 
         public BlockSprite(ContentManager content) : base(content)
@@ -41,6 +41,11 @@ namespace MarioGame.Sprites
                 { BlockActionStateEnum.StepBlock.GetHashCode(), new List<int> { Frames.StepBlock.GetHashCode() } },
                 { BlockActionStateEnum.SilverBlock.GetHashCode(), new List<int> { Frames.SilverBlock.GetHashCode() } },
                 { BlockActionStateEnum.QuestionBlock.GetHashCode(), new List<int> {Frames.QuestionBlock1.GetHashCode(), Frames.QuestionBlock2.GetHashCode(), Frames.QuestionBlock3.GetHashCode() } },
+            };
+            _rowSets = new Dictionary<int, List<int>>
+            {
+                {BlockPowerUpStateEnum.Visible.GetHashCode(), new List<int> {Rows.Visible.GetHashCode() } },
+                { BlockPowerUpStateEnum.Hidden.GetHashCode(), new List<int> {Rows.Hidden.GetHashCode() } }
             };
             _rowSet = _rowSets[BlockPowerUpStateEnum.Visible.GetHashCode()];
             _frameSet = _frameSets[BlockActionStateEnum.BrickBlock.GetHashCode()];

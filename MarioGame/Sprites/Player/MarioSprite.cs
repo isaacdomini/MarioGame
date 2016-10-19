@@ -84,7 +84,6 @@ namespace MarioGame.Sprites
         {
             base.Load(framesPerSecond);
             _frameHeight = 40;
-            
         }
         public void changeActionState(MarioActionState marioActionState)
         {
@@ -102,8 +101,6 @@ namespace MarioGame.Sprites
             }
            
             _rowSet = _rowSets[marioPowerUpState.powerUpState.GetHashCode()];
-
         }
-
     }
 }
