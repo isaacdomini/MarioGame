@@ -47,19 +47,19 @@ namespace MarioGame.Entities
             }
             else if (state.Equals("BrickBlockState"))
             {
-                actionStateMachine.UsedState.Begin(aState);
+                actionStateMachine.BrickState.Begin(aState);
             }
             else if (state.Equals("GroundBlockState"))
             {
-                actionStateMachine.UsedState.Begin(aState);
+                actionStateMachine.GroundState.Begin(aState);
             }
             else if (state.Equals("QuestionBlockState"))
             {
-                actionStateMachine.UsedState.Begin(aState);
+                actionStateMachine.QuestionState.Begin(aState);
             }
             else if (state.Equals("StepBlockState"))
             {
-                actionStateMachine.UsedState.Begin(aState);
+                actionStateMachine.StepState.Begin(aState);
             }
 
         }
