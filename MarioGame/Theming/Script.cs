@@ -61,9 +61,19 @@ namespace MarioGame.Theming
                 block.Update();
                 if (collisionHandler.checkForCollision(mario, block))
                 {
-                    mario.Halt();
-                    colliding = true;
-                    //if (collisionHandler.checkSideCollision(mario, block))
+                    if (block.CurrentPowerUpState is HiddenState)
+                    {
+                        if (collisionHandler.checkSideCollision(mario, block) == CollisionTypes.Bottom)
+                        {
+                            mario.Halt();
+                        }
+                    }
+                    else
+                    {
+                        mario.Halt();
+                        colliding = true;
+                    }
+
                 }
             }
             if (Mario.invincibleTimer == 0)
