@@ -37,8 +37,6 @@ namespace MarioGame.Entities
 
         MarioActionStateMachine marioActionStateMachine;
 
-
-
         MarioPowerUpStateMachine powerUpStateMachine;
 
         public Mario(Vector2 position, ContentManager content) : base(position, content)
