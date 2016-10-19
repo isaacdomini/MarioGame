@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MarioGame.States
 {
-    public enum BlockStateEnum
+    public enum BlockActionStateEnum
     {
         StepBlock,
         SilverBlock,

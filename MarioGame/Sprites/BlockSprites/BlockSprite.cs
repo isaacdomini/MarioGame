@@ -31,25 +31,30 @@ namespace MarioGame.Sprites
 
         public BlockSprite(ContentManager content) : base(content)
         {
+            _assetName = "blocks";
             _numberOfFramesPerRow = 15;
             //Each state has a frameSet
             _frameSets = new Dictionary<int, List<int>> {
-                { BlockStateEnum.BrickBlock.GetHashCode(), new List<int> { Frames.BrickBlock.GetHashCode() } },
-                { BlockStateEnum.UsedBlock.GetHashCode(), new List<int> { Frames.UsedBlock.GetHashCode() } },
-                { BlockStateEnum.GroundBlock.GetHashCode(), new List<int> { Frames.GroundBlock.GetHashCode() } },
-                { BlockStateEnum.StepBlock.GetHashCode(), new List<int> { Frames.StepBlock.GetHashCode() } },
-                { BlockStateEnum.SilverBlock.GetHashCode(), new List<int> { Frames.SilverBlock.GetHashCode() } },
-                { BlockStateEnum.QuestionBlock.GetHashCode(), new List<int> {Frames.QuestionBlock1.GetHashCode(), Frames.QuestionBlock2.GetHashCode(), Frames.QuestionBlock3.GetHashCode() } },
+                { BlockActionStateEnum.BrickBlock.GetHashCode(), new List<int> { Frames.BrickBlock.GetHashCode() } },
+                { BlockActionStateEnum.UsedBlock.GetHashCode(), new List<int> { Frames.UsedBlock.GetHashCode() } },
+                { BlockActionStateEnum.GroundBlock.GetHashCode(), new List<int> { Frames.GroundBlock.GetHashCode() } },
+                { BlockActionStateEnum.StepBlock.GetHashCode(), new List<int> { Frames.StepBlock.GetHashCode() } },
+                { BlockActionStateEnum.SilverBlock.GetHashCode(), new List<int> { Frames.SilverBlock.GetHashCode() } },
+                { BlockActionStateEnum.QuestionBlock.GetHashCode(), new List<int> {Frames.QuestionBlock1.GetHashCode(), Frames.QuestionBlock2.GetHashCode(), Frames.QuestionBlock3.GetHashCode() } },
             };
+            _rowSet = _rowSets[BlockPowerUpStateEnum.Visible.GetHashCode()];
+            _frameSet = _frameSets[BlockActionStateEnum.BrickBlock.GetHashCode()];
+
         }
         public void changeActionState(BlockActionState actionState)
         {
-            _frameSet = _frameSets[actionState.actionState.GetHashCode()];
+            base.changeActionState(actionState);
+            _frameSet = _frameSets[actionState.bState.GetHashCode()];
         }
-        public void changePowerUp(MarioPowerUpState marioPowerUpState)
+        public void changePowerUp(BlockPowerUpState powerUpState)
         {
-            base.changePowerUp(marioPowerUpState);
-            _rowSet = _rowSets[marioPowerUpState.powerUpState.GetHashCode()];
+            base.changePowerUp(powerUpState);
+            _rowSet = _rowSets[powerUpState.powerUpStateEnum.GetHashCode()];
         }
 
     }

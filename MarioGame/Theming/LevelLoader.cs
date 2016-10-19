@@ -1,4 +1,5 @@
 ﻿using MarioGame.Entities;
+using MarioGame.States;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Newtonsoft.Json;
@@ -21,6 +22,7 @@ namespace MarioGame.Theming
             Type type = Type.GetType(typeof(Entity).Namespace + "." + klass);
             return (Entity)Activator.CreateInstance(type, location * blockWidth, content);
         }
+
         public static void addTileMapToScript(String tileMapFile, Script script, ContentManager content)
         {
 
@@ -31,7 +33,20 @@ namespace MarioGame.Theming
             {
                 e.rowColumns.ForEach(rc =>
                 {
-                    rc.columns.ForEach(c => script.AddEntity(createEntity(e.type, new Vector2(c, rc.row), content)));
+                rc.columns.ForEach(c => {
+                    Entity entity = createEntity(e.type, new Vector2(c, rc.row), content);
+                    script.AddEntity(entity);
+                    if (e.actionState != null)
+                    {
+                        Type actionState = Type.GetType(typeof(ActionState).Namespace + e.actionState);
+                    //    entity.changeActionState(actionState);
+                    }
+                    if (e.powerUpState != null)
+                    {
+                        Type powerUpState = Type.GetType(typeof(PowerUpState).Namespace + e.powerUpState);
+                     //   ((PowerUpEntity) entity).changePowerUpEntity(PowerUpState);
+                    }
+                    });
                 });
             });
 

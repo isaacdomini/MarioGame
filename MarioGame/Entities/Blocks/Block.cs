@@ -2,35 +2,86 @@
 using MarioGame.States;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
+using MarioGame.Sprites;
+using System.Collections.Generic;
 
 namespace MarioGame.Entities
 {
-    public abstract class Block : PowerUpEntity
+    public class Block : PowerUpEntity, IContainer
     {
         // Could be useful for casting in certain circumstances
-        protected BlockActionStateMachine stateMachine;
+        protected BlockSprite blockSprite;
+        public BlockActionState blockActionState;
+        public BlockPowerUpState blockPowerUpState;
+        protected BlockActionStateMachine actionStateMachine;
+        protected BlockPowerUpStateMachine powerUpStateMachine;
+        List<IContainable> containedItems = new List<IContainable>();
 
         protected bool isVisible;
         private int tickCount;
 
-        internal bool Visibility
-        {
-            get { return isVisible; }
-        }
+        internal bool Visibility;
 
         public Block(Vector2 position, ContentManager content) : base(position, content)
         {
+            actionStateMachine = new BlockActionStateMachine(this);
+            powerUpStateMachine = new BlockPowerUpStateMachine(this);
+            aState = actionStateMachine.BrickState;
+            powerUpState = powerUpStateMachine.VisibleState;
+            blockSprite = (BlockSprite)_sprite;
+        }
+        public void SetBlockActionState(String state)
+        {
+            if (state.Equals("UsedBlockState"))
+            {
+                aState = actionStateMachine.UsedState;
+            }
+            else if (state.Equals("BrickBlockState"))
+            {
+                aState = actionStateMachine.BrickState;
+            }
+            else if (state.Equals("GroundBlockState"))
+            {
+                aState = actionStateMachine.GroundState;
+            }
+            else if (state.Equals("QuestionBlockState"))
+            {
+                aState = actionStateMachine.QuestionState;
+            }
+            else if (state.Equals("StepBlockState"))
+            {
+                aState = actionStateMachine.StepState;
+            }
+            blockSprite.changeActionState(aState);
+
+        }
+        public void SetBlockPowerUpState(String state)
+        {
             isVisible = true;
             tickCount = 0;
-        }
 
-        public void ChangeBrickActionState(BlockActionState state)
+            if (state.Equals("HiddenState"))
+            {
+                powerUpState = powerUpStateMachine.HiddenState;
+                
+            }
+            else if (state.Equals("VisibleState"))
+            {
+                powerUpState = powerUpStateMachine.VisibleState;
+            }
+            blockSprite.changePowerUp(powerUpState);
+
+        }
+        public void ChangeBlockActionState(BlockActionState state)
         {
             base.ChangeActionState(state);
+            blockSprite.changeActionState(state);
         }
-        public void ChangeBrickPowerUpState(BlockPowerUpState state)
+
+        public void ChangeBlockPowerUpState(BlockPowerUpState state)
         {
             base.ChangePowerUpState(state);
+            blockSprite.changePowerUp(state);
         }
 
         public void ChangeToUsed()
@@ -39,7 +90,7 @@ namespace MarioGame.Entities
         }
         public void Bump()
         {
-            if (((BlockActionState)aState).bState == BlockStateEnum.BrickBlock)
+            if (((BlockActionState)aState).bState == BlockActionStateEnum.BrickBlock)
             {
                 tickCount = 20;
                 Vector2 copyVel = _velocity;
@@ -59,6 +110,7 @@ namespace MarioGame.Entities
         {
             ((BlockPowerUpState)powerUpState).Reveal();
         }
+
         public override void Update()
         {
             base.Update();
@@ -81,6 +133,22 @@ namespace MarioGame.Entities
                 copyVel.Y = 0;
                 _velocity = copyVel;
             }
+
+
+        public void addContainedItem(IContainable containedItem)
+        {
+            containedItems.Add(containedItem);
+        }
+
+        public IContainable popContainedItem()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool hasItems()
+        {
+            throw new NotImplementedException();
+
         }
     }
 }

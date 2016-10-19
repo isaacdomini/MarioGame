@@ -6,7 +6,7 @@ namespace MarioGame.States
     {
         public UsedBlockState(Block entity, BlockActionStateMachine stateMachine) : base(entity, stateMachine)
         {
-            bState = BlockStateEnum.UsedBlock;
+            bState = BlockActionStateEnum.UsedBlock;
         }
     }
 }

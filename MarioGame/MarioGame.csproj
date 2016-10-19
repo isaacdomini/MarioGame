@@ -39,8 +39,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Collisions\CollisionHandler.cs" />
+    <Compile Include="Commands\BlockCommands\BumpOrBreakBrick.cs" />
     <Compile Include="Commands\BlockCommands\ChangeQuestionToUsedState.cs" />
-    <Compile Include="Commands\BlockCommands\BumpBrick.cs" />
     <Compile Include="Commands\BlockCommands\ShowHiddenBlock.cs" />
     <Compile Include="Commands\CrouchCommand.cs" />
     <Compile Include="Commands\DashOrThrowFireballCommand.cs" />
@@ -94,11 +94,6 @@
     <Compile Include="Sprites\AnimatedSprite.cs" />
     <Compile Include="Sprites\BackgroundItems\CloudSprite.cs" />
     <Compile Include="Sprites\BlockSprites\BlockSprite.cs" />
-    <Compile Include="Sprites\BlockSprites\BrickBlockSprite.cs" />
-    <Compile Include="Sprites\BlockSprites\BrokenBrickSprite.cs" />
-    <Compile Include="Sprites\BlockSprites\GroundBlockSprite.cs" />
-    <Compile Include="Sprites\BlockSprites\StepBlockSprite.cs" />
-    <Compile Include="Sprites\BlockSprites\UsedBlockSprite.cs" />
     <Compile Include="Sprites\Enemies\GoombaSprite.cs" />
     <Compile Include="Sprites\Enemies\KoopaTroopaSprite.cs" />
     <Compile Include="Sprites\ISprite.cs" />
@@ -106,18 +101,20 @@
     <Compile Include="Sprites\ItemSprites\FireFlowerSprite.cs" />
     <Compile Include="Sprites\ItemSprites\Mushroom1UpSprite.cs" />
     <Compile Include="Sprites\ItemSprites\MushroomSuperSprite.cs" />
-    <Compile Include="Sprites\BlockSprites\QuestionBlockSprite.cs" />
     <Compile Include="Sprites\ItemSprites\StarSprite.cs" />
     <Compile Include="Sprites\Player\MarioSprite.cs" />
     <Compile Include="Sprites\Sprite.cs" />
     <Compile Include="States\BlockStates\ActionStates\BlockActionState.cs" />
-    <Compile Include="States\BlockStates\ActionStates\BlockStateEnum.cs" />
+    <Compile Include="States\BlockStates\ActionStates\BlockActionStateEnum.cs" />
     <Compile Include="States\BlockStates\ActionStates\BlockActionStateMachine.cs" />
     <Compile Include="States\BlockStates\ActionStates\BrickBlockState.cs" />
     <Compile Include="States\BlockStates\ActionStates\GroundBlockState.cs" />
     <Compile Include="States\BlockStates\ActionStates\QuestionBlock.cs" />
     <Compile Include="States\BlockStates\ActionStates\StepBlockState.cs" />
     <Compile Include="States\BlockStates\ActionStates\UsedBlockState.cs" />
+    <Compile Include="States\BlockStates\PowerUpStates\BlockPowerUpStateMachine.cs" />
+    <Compile Include="States\BlockStates\PowerUpStates\HiddenState.cs" />
+    <Compile Include="States\BlockStates\PowerUpStates\VisibleState.cs" />
     <Compile Include="States\EnemyStates\DeadGoombaState.cs" />
     <Compile Include="States\EnemyStates\DeadKoopaState.cs" />
     <Compile Include="States\EnemyStates\EnemyActionState.cs" />
