@@ -3,16 +3,19 @@ using MarioGame.States;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using MarioGame.Sprites;
+using System.Collections.Generic;
 
 namespace MarioGame.Entities
 {
-    public abstract class Block : PowerUpEntity
+    public class Block : PowerUpEntity, IContainer
     {
         // Could be useful for casting in certain circumstances
         protected BlockSprite blockSprite;
         public BlockActionState blockActionState;
         public BlockPowerUpState blockPowerUpState;
-        protected BlockActionStateMachine stateMachine;
+        protected BlockActionStateMachine actionStateMachine;
+        protected BlockPowerUpStateMachine powerUpStateMachine;
+        List<IContainable> containedItems = new List<IContainable>();
 
         public Block(Vector2 position, ContentManager content) : base(position, content)
         {
@@ -93,6 +96,21 @@ namespace MarioGame.Entities
         public void Reveal()
         {
             ((BlockPowerUpState)powerUpState).Reveal();
+        }
+
+        public void addContainedItem(IContainable containedItem)
+        {
+            containedItems.Add(containedItem);
+        }
+
+        public IContainable popContainedItem()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool hasItems()
+        {
+            throw new NotImplementedException();
         }
     }
 }
