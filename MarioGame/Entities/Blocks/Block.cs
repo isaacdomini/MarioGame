@@ -11,6 +11,7 @@ namespace MarioGame.Entities
         protected BlockActionStateMachine stateMachine;
 
         protected bool isVisible;
+        private int tickCount;
 
         internal bool Visibility
         {
@@ -20,6 +21,7 @@ namespace MarioGame.Entities
         public Block(Vector2 position, ContentManager content) : base(position, content)
         {
             isVisible = true;
+            tickCount = 0;
         }
 
         public void ChangeBrickActionState(BlockActionState state)
@@ -39,6 +41,10 @@ namespace MarioGame.Entities
         {
             if (((BlockActionState)aState).bState == BlockStateEnum.BrickBlock)
             {
+                tickCount = 20;
+                Vector2 copyVel = _velocity;
+                copyVel.Y = -5;
+                _velocity = copyVel;
                 // TODO: Begin bumping sequence
                 // TODO: If there is no item, change to used.
                 // TODO: If there is an item, display item, and bump
@@ -52,6 +58,29 @@ namespace MarioGame.Entities
         public void Reveal()
         {
             ((BlockPowerUpState)powerUpState).Reveal();
+        }
+        public override void Update()
+        {
+            base.Update();
+            if (tickCount > 1)
+            {
+                tickCount--;
+            } else if (tickCount == 1)
+            {
+                tickCount = -20;
+                Vector2 copyVel = _velocity;
+                copyVel.Y = 5;
+                _velocity = copyVel;
+            } else if (tickCount < -1)
+            {
+                tickCount++;
+            } else if (tickCount == -1)
+            {
+                tickCount = 0;
+                Vector2 copyVel = _velocity;
+                copyVel.Y = 0;
+                _velocity = copyVel;
+            }
         }
     }
 }

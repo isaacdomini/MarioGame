@@ -57,6 +57,7 @@ namespace MarioGame.Theming
             bool colliding = false;
             foreach (var block in _blocks)
             {
+                block.Update();
                 if (collisionHandler.checkForCollision(mario, block))
                 {
                     mario.Halt();
