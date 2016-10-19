@@ -11,14 +11,14 @@ namespace MarioGame.States
     public class BlockPowerUpStateMachine
     {
         Block _block;
-        BlockPowerUpState visible;
-        BlockPowerUpState hidden;
+        VisibleState visible;
+        HiddenState hidden;
         
-        internal BlockPowerUpState HiddenState
+        internal HiddenState HiddenState
         {
             get { return hidden; }
         }
-        internal BlockPowerUpState VisibleState
+        internal VisibleState VisibleState
         {
             get { return visible; }
         }
