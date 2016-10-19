@@ -92,10 +92,13 @@ namespace MarioGame.Entities
         {
             if (((BlockActionState)aState).bState == BlockActionStateEnum.BrickBlock)
             {
-                tickCount = 20;
-                Vector2 copyVel = _velocity;
-                copyVel.Y = -5;
-                _velocity = copyVel;
+                if(tickCount == 0)
+                {
+                    tickCount = 10;
+                    Vector2 copyVel = _velocity;
+                    copyVel.Y = -1;
+                    _velocity = copyVel;
+                }
                 // TODO: Begin bumping sequence
                 // TODO: If there is no item, change to used.
                 // TODO: If there is an item, display item, and bump
@@ -120,9 +123,9 @@ namespace MarioGame.Entities
             }
             else if (tickCount == 1)
             {
-                tickCount = -20;
+                tickCount = -10;
                 Vector2 copyVel = _velocity;
-                copyVel.Y = 5;
+                copyVel.Y = 1;
                 _velocity = copyVel;
             }
             else if (tickCount < -1)
