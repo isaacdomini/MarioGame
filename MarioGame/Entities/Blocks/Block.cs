@@ -33,6 +33,7 @@ namespace MarioGame.Entities
             blockActionState = (BlockActionState)aState;
             blockPowerUpState = (BlockPowerUpState)pState;
             blockSprite = (BlockSprite)_sprite;
+            tickCount = 0;
         }
         public void SetBlockActionState(String state)
         {
@@ -60,9 +61,6 @@ namespace MarioGame.Entities
         }
         public void SetBlockPowerUpState(String state)
         {
-            isVisible = true;
-            tickCount = 0;
-
             if (state.Equals("HiddenState"))
             {
                 powerUpStateMachine.HiddenState.Begin(pState);              
@@ -71,7 +69,6 @@ namespace MarioGame.Entities
             {
                 powerUpStateMachine.VisibleState.Begin(pState);
             }
-
         }
         public void ChangeBlockActionState(BlockActionState state)
         {

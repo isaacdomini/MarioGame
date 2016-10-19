@@ -187,7 +187,6 @@
     <None Include="Content\bin\Windows\questionblock.xnb" />
     <None Include="Content\bin\Windows\stepblock.xnb" />
     <None Include="Content\bin\Windows\usedblock.xnb" />
-    <None Include="Content\Level1.json" />
     <None Include="Content\obj\Windows\.mgcontent" />
     <None Include="Content\obj\Windows\brick1.mgcontent" />
     <None Include="Content\obj\Windows\groundblock.mgcontent" />
