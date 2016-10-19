@@ -21,7 +21,7 @@ namespace MarioGame.States
             this.stateMachine = stateMachine;
         }
 
-        public virtual void Begin(BlockActionState prevState)
+        public override void Begin(IState prevState)
         {
             base.Begin(prevState);
         }

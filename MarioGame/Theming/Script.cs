@@ -258,13 +258,17 @@ namespace MarioGame.Theming
         {
             foreach (var block in _blocks)
             {
-                if (mario.PowerUpState is SuperState)
+                if (block.CurrentActionState is BrickBlockState)
                 {
-                    block.Break();
-                }
-                else if (mario.PowerUpState is StandardState)
-                {
-                    block.Bump();
+                    if (mario.PowerUpState is SuperState)
+                    {
+                        block.Break();
+                    }
+                    else if (mario.PowerUpState is StandardState)
+                    {
+                        block.Bump();
+                        block.ChangeToUsed();
+                    }
                 }
             }
         }
@@ -277,7 +281,11 @@ namespace MarioGame.Theming
         }
         internal void ChangeQuestionToUsed()
         {
- 
+            foreach (Block block in _blocks)
+            {
+                if (block.CurrentActionState is QuestionBlockState)
+                block.ChangeToUsed();
+            }
         }
     }
 }
