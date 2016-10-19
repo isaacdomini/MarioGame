@@ -10,7 +10,7 @@ namespace MarioGame.States
         }
         protected Block block;
         protected BlockActionStateMachine stateMachine;
-        public BlockStateEnum bState
+        public BlockActionStateEnum bState
         {
             get; protected set;
         }

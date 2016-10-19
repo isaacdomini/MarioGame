@@ -11,7 +11,7 @@ namespace MarioGame.States
     {
         public GroundBlockState(Block block, BlockActionStateMachine stateMachine): base(block, stateMachine)
         {
-            bState = BlockStateEnum.GroundBlock;
+            bState = BlockActionStateEnum.GroundBlock;
         }
     }
 }

@@ -11,7 +11,7 @@ namespace MarioGame.States
     {
         public QuestionBlockState(Block block, BlockActionStateMachine stateMachine) : base(block, stateMachine)
         {
-            bState = BlockStateEnum.QuestionBlock;
+            bState = BlockActionStateEnum.QuestionBlock;
         }
         public override void ChangeToUsed()
         {

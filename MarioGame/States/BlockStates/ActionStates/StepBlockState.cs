@@ -11,7 +11,7 @@ namespace MarioGame.States
     {
         public StepBlockState(Block block, BlockActionStateMachine stateMachine) : base (block, stateMachine)
         {
-             bState = BlockStateEnum.StepBlock;
+             bState = BlockActionStateEnum.StepBlock;
         }
     }
 }

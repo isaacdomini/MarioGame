@@ -2,6 +2,7 @@
 using MarioGame.States;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
+using MarioGame.Sprites;
 
 namespace MarioGame.Entities
 {
@@ -10,6 +11,7 @@ namespace MarioGame.Entities
         // Could be useful for casting in certain circumstances
         protected BlockActionStateMachine actionStateMachine;
         protected BlockPowerUpStateMachine powerUpStateMachine;
+        protected BlockSprite blockSprite;
 
         public Block(Vector2 position, ContentManager content) : base(position, content)
         {
@@ -17,6 +19,7 @@ namespace MarioGame.Entities
             powerUpStateMachine = new BlockPowerUpStateMachine(this);
             aState = actionStateMachine.BrickState;
             powerUpState = powerUpStateMachine.VisibleState;
+            blockSprite = (BlockSprite)_sprite;
         }
         public void SetBlockActionState(String state)
         {
@@ -40,28 +43,32 @@ namespace MarioGame.Entities
             {
                 aState = actionStateMachine.StepState;
             }
+            blockSprite.changeActionState(aState);
+
         }
         public void SetBlockPowerUpState(String state)
         {
             if (state.Equals("HiddenState"))
             {
                 powerUpState = powerUpStateMachine.HiddenState;
+                
             }
             else if (state.Equals("VisibleState"))
             {
                 powerUpState = powerUpStateMachine.VisibleState;
             }
+            blockSprite.changePowerUp(powerUpState);
         }
         public void ChangeBlockActionState(BlockActionState state)
         {
             base.ChangeActionState(state);
-            // TODO: Call sprite to change action state
+            blockSprite.changeActionState(state);
         }
 
         public void ChangeBlockPowerUpState(BlockPowerUpState state)
         {
             base.ChangePowerUpState(state);
-            // TODO: Call sprite to change power up state
+            blockSprite.changePowerUp(state);
         }
 
         public void ChangeToUsed()
@@ -70,7 +77,7 @@ namespace MarioGame.Entities
         }
         public void Bump()
         {
-            if (((BlockActionState)aState).bState == BlockStateEnum.BrickBlock)
+            if (((BlockActionState)aState).bState == BlockActionStateEnum.BrickBlock)
             {
                 // TODO: Begin bumping sequence
                 // TODO: If there is no item, change to used.
