@@ -4,10 +4,6 @@ namespace MarioGame.States
 {
     public class BlockActionState : ActionState
     {
-        public BlockActionStateMachine actionState
-        {
-            get; protected set; //TODO: make this read from some shared enum with Sprites
-        }
         protected Block block;
         protected BlockActionStateMachine stateMachine;
         public BlockActionStateEnum bState
