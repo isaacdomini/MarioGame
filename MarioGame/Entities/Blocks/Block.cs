@@ -27,32 +27,35 @@ namespace MarioGame.Entities
             actionStateMachine = new BlockActionStateMachine(this);
             powerUpStateMachine = new BlockPowerUpStateMachine(this);
             aState = actionStateMachine.BrickState;
-            powerUpState = powerUpStateMachine.VisibleState;
+            // Temporary
+            aState._prevState = actionStateMachine.BrickState;
+            pState = powerUpStateMachine.VisibleState;
+            blockActionState = (BlockActionState)aState;
+            blockPowerUpState = (BlockPowerUpState)pState;
             blockSprite = (BlockSprite)_sprite;
         }
         public void SetBlockActionState(String state)
         {
             if (state.Equals("UsedBlockState"))
             {
-                aState = actionStateMachine.UsedState;
+                actionStateMachine.UsedState.Begin(aState);
             }
             else if (state.Equals("BrickBlockState"))
             {
-                aState = actionStateMachine.BrickState;
+                actionStateMachine.UsedState.Begin(aState);
             }
             else if (state.Equals("GroundBlockState"))
             {
-                aState = actionStateMachine.GroundState;
+                actionStateMachine.UsedState.Begin(aState);
             }
             else if (state.Equals("QuestionBlockState"))
             {
-                aState = actionStateMachine.QuestionState;
+                actionStateMachine.UsedState.Begin(aState);
             }
             else if (state.Equals("StepBlockState"))
             {
-                aState = actionStateMachine.StepState;
+                actionStateMachine.UsedState.Begin(aState);
             }
-            blockSprite.changeActionState(aState);
 
         }
         public void SetBlockPowerUpState(String state)
@@ -62,14 +65,12 @@ namespace MarioGame.Entities
 
             if (state.Equals("HiddenState"))
             {
-                powerUpState = powerUpStateMachine.HiddenState;
-                
+                powerUpStateMachine.HiddenState.Begin(pState);              
             }
             else if (state.Equals("VisibleState"))
             {
-                powerUpState = powerUpStateMachine.VisibleState;
+                powerUpStateMachine.VisibleState.Begin(pState);
             }
-            blockSprite.changePowerUp(powerUpState);
 
         }
         public void ChangeBlockActionState(BlockActionState state)
@@ -111,7 +112,7 @@ namespace MarioGame.Entities
         }
         public void Reveal()
         {
-            ((BlockPowerUpState)powerUpState).Reveal();
+            ((BlockPowerUpState)pState).Reveal();
         }
 
         public override void Update()
@@ -154,7 +155,6 @@ namespace MarioGame.Entities
         public bool hasItems()
         {
             throw new NotImplementedException();
-
         }
     }
 }

@@ -11,17 +11,17 @@ namespace MarioGame.Entities
 {
     public class PowerUpEntity : Entity
     {
-        protected PowerUpState powerUpState;
+        protected PowerUpState pState;
         internal PowerUpState CurrentPowerUpState
         {
-            get { return powerUpState; }
+            get { return pState; }
         }
         public PowerUpEntity(Vector2 position, ContentManager content, float xVelocity = 0, float yVelocity = 0) : base(position, content, xVelocity, yVelocity)
         {
         }
         public void ChangePowerUpState(PowerUpState state)
         {
-            powerUpState = state;
+            pState = state;
 
         }
     }

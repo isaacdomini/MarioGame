@@ -8,12 +8,12 @@ namespace MarioGame.Entities
 {
     public class Mario : PowerUpEntity
     {
-        private MarioPowerUpState pState;
+        private MarioPowerUpState marioPowerUpState;
         public static int invinsibleTimer=0;
         // Could be useful for casting in certain circumstances
         public MarioPowerUpState PowerUpState
         {
-            get { return pState; }
+            get { return marioPowerUpState; }
         }
         public MarioSprite mSprite;
         private int _width;
@@ -51,8 +51,8 @@ namespace MarioGame.Entities
             powerUpStateMachine = new MarioPowerUpStateMachine(this);
             aState = marioActionStateMachine.IdleMarioState;
             marioActionState = (MarioActionState)aState;
-            powerUpState = powerUpStateMachine.StandardState;
-            pState = (MarioPowerUpState)powerUpState;
+            pState = powerUpStateMachine.StandardState;
+            marioPowerUpState = (MarioPowerUpState)pState; 
             // Now only cast once
             mSprite = (MarioSprite)_sprite;
             _height = standardBoundingBoxHeight;
@@ -122,8 +122,8 @@ namespace MarioGame.Entities
         public void ChangePowerUpState(MarioPowerUpState state)
         {
             base.ChangePowerUpState(state);
-            setBoundingBox(pState.powerUpState);
-            mSprite.changePowerUp(pState);
+            setBoundingBox(marioPowerUpState.powerUpState);
+            mSprite.changePowerUp(marioPowerUpState);
         }
         private void setBoundingBox(MarioPowerUpStateEnum powerUpState)
         {
@@ -142,69 +142,69 @@ namespace MarioGame.Entities
 
         public void Jump()
         {
-            if (pState.powerUpState != MarioPowerUpStateEnum.Dead)
+            if (marioPowerUpState.powerUpState != MarioPowerUpStateEnum.Dead)
             {
                 marioActionState.Jump();
             }
         }
         public void Crouch()
         {
-            if (pState.powerUpState == MarioPowerUpStateEnum.Standard && ((MarioActionState)aState).actionState == MarioActionStateEnum.Idle)
+            if (marioPowerUpState.powerUpState == MarioPowerUpStateEnum.Standard && ((MarioActionState)aState).actionState == MarioActionStateEnum.Idle)
             {
                 marioActionState.Fall();
             }
-            else if (pState.powerUpState != MarioPowerUpStateEnum.Dead)
+            else if (marioPowerUpState.powerUpState != MarioPowerUpStateEnum.Dead)
             {
                 marioActionState.Crouch();
             }
         }
         public void MoveLeft()
         {
-            if (pState.powerUpState != MarioPowerUpStateEnum.Dead)
+            if (marioPowerUpState.powerUpState != MarioPowerUpStateEnum.Dead)
             {
                 marioActionState.MoveLeft();
             }
         }
         public void MoveRight()
         {
-            if (pState.powerUpState != MarioPowerUpStateEnum.Dead)
+            if (marioPowerUpState.powerUpState != MarioPowerUpStateEnum.Dead)
             {
                 marioActionState.MoveRight();
             }
         }
         internal void EnemyHit()
         {
-            pState.EnemyHit();
+            marioPowerUpState.EnemyHit();
         }
         public void ChangeToFireState()
         {
-            pState.ChangeToFire();
+            marioPowerUpState.ChangeToFire();
         }
         public void ChangeToStandardState()
         {
-            pState.ChangeToStandard();
+            marioPowerUpState.ChangeToStandard();
         }
         public void ChangeToSuperState()
         {
-            pState.ChangeToSuper();
+            marioPowerUpState.ChangeToSuper();
         }
         public void ChangeToStarState()
         {
-            pState.ChangeToStar();
+            marioPowerUpState.ChangeToStar();
         }
         public void ChangeToDeadState()
         {
-            pState.ChangeToDead();
+            marioPowerUpState.ChangeToDead();
         }
         public void DashOrThrowFireball()
         {
             //TODO: Ricky do this?
-            if (pState.powerUpState == MarioPowerUpStateEnum.Fire)
+            if (marioPowerUpState.powerUpState == MarioPowerUpStateEnum.Fire)
             {
                 // TODO: Mario entity adds fireball to scene
 
             }
-            else if (pState.powerUpState == MarioPowerUpStateEnum.Super)
+            else if (marioPowerUpState.powerUpState == MarioPowerUpStateEnum.Super)
             {
                 if (spaceBarAction == SpaceBarAction.walk)
                 {

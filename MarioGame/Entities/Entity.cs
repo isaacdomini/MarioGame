@@ -17,7 +17,6 @@ namespace MarioGame.Entities
         public Rectangle boundingBox;
         public Color boxColor;
         protected ActionState aState;
-        protected PowerUpState pState;
         public bool isCollidable;
         public enum Directions
         {
@@ -61,10 +60,6 @@ namespace MarioGame.Entities
         public void ChangeActionState(ActionState state)
         {
             aState = state;
-        }
-        public void ChangePowerUpState(PowerUpState state)
-        {
-            pState = state;
         }
         public virtual void Update()
         {

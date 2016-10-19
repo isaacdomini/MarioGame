@@ -17,14 +17,12 @@ namespace MarioGame.Entities
         protected BlockPowerUpStateMachine powerUpStateMachine;
         List<IContainable> containedItems = new List<IContainable>();
 
-<<<<<<< HEAD
         protected bool isVisible;
         private int tickCount;
 
-        internal bool Visibility
-=======
+        internal bool Visibility;
+
         public Block(Vector2 position, ContentManager content) : base(position, content)
->>>>>>> e4ec61559af9a994038dd4966c7a37e602b0b4a8
         {
             actionStateMachine = new BlockActionStateMachine(this);
             powerUpStateMachine = new BlockPowerUpStateMachine(this);
@@ -36,44 +34,44 @@ namespace MarioGame.Entities
         {
             if (state.Equals("UsedBlockState"))
             {
-                aState = actionStateMachine.UsedState;
+                actionStateMachine.UsedState.Begin(aState);
             }
             else if (state.Equals("BrickBlockState"))
             {
-                aState = actionStateMachine.BrickState;
+                actionStateMachine.UsedState.Begin(aState);
             }
             else if (state.Equals("GroundBlockState"))
             {
-                aState = actionStateMachine.GroundState;
+                actionStateMachine.UsedState.Begin(aState);
             }
             else if (state.Equals("QuestionBlockState"))
             {
-                aState = actionStateMachine.QuestionState;
+                actionStateMachine.UsedState.Begin(aState);
             }
             else if (state.Equals("StepBlockState"))
             {
-                aState = actionStateMachine.StepState;
+                actionStateMachine.UsedState.Begin(aState);
             }
-            blockSprite.changeActionState(aState);
 
         }
         public void SetBlockPowerUpState(String state)
         {
-<<<<<<< HEAD
             isVisible = true;
             tickCount = 0;
-=======
+
             if (state.Equals("HiddenState"))
             {
-                powerUpState = powerUpStateMachine.HiddenState;
-                
+                powerUpStateMachine.HiddenState.Begin(powerUpState);              
             }
             else if (state.Equals("VisibleState"))
             {
-                powerUpState = powerUpStateMachine.VisibleState;
+                powerUpStateMachine.VisibleState.Begin(powerUpState);
             }
+<<<<<<< Updated upstream
             blockSprite.changePowerUp(powerUpState);
->>>>>>> e4ec61559af9a994038dd4966c7a37e602b0b4a8
+
+=======
+>>>>>>> Stashed changes
         }
         public void ChangeBlockActionState(BlockActionState state)
         {
@@ -113,30 +111,33 @@ namespace MarioGame.Entities
         {
             ((BlockPowerUpState)powerUpState).Reveal();
         }
-<<<<<<< HEAD
+
         public override void Update()
         {
             base.Update();
             if (tickCount > 1)
             {
                 tickCount--;
-            } else if (tickCount == 1)
+            }
+            else if (tickCount == 1)
             {
                 tickCount = -20;
                 Vector2 copyVel = _velocity;
                 copyVel.Y = 5;
                 _velocity = copyVel;
-            } else if (tickCount < -1)
+            }
+            else if (tickCount < -1)
             {
                 tickCount++;
-            } else if (tickCount == -1)
+            }
+            else if (tickCount == -1)
             {
                 tickCount = 0;
                 Vector2 copyVel = _velocity;
                 copyVel.Y = 0;
                 _velocity = copyVel;
             }
-=======
+        }
 
         public void addContainedItem(IContainable containedItem)
         {
@@ -151,7 +152,7 @@ namespace MarioGame.Entities
         public bool hasItems()
         {
             throw new NotImplementedException();
->>>>>>> e4ec61559af9a994038dd4966c7a37e602b0b4a8
+
         }
     }
 }
