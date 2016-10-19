@@ -22,5 +22,10 @@ namespace MarioGame.States
             _mario.ChangePowerUpState(_stateMachine.SuperState);
         }
 
+        public override void ChangeToFire()
+        {
+            _mario.ChangePowerUpState(_stateMachine.FireState);
+        }
+
     }
 }
