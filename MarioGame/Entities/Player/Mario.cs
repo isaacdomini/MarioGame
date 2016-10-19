@@ -8,7 +8,7 @@ namespace MarioGame.Entities
 {
     public class Mario : PowerUpEntity
     {
-        public static int invinsibleTimer=0;
+        public static int invincibleTimer=0;
         // Could be useful for casting in certain circumstances
         public MarioPowerUpState PowerUpState
         {
