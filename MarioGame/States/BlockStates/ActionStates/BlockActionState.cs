@@ -17,10 +17,6 @@ namespace MarioGame.States
             this.stateMachine = stateMachine;
         }
 
-        public override void Begin(IState prevState)
-        {
-            base.Begin(prevState);
-        }
         public virtual void Bump() { }
         public virtual void Reveal() { }
         public virtual void Break() { }
