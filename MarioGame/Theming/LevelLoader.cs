@@ -38,13 +38,17 @@ namespace MarioGame.Theming
                     script.AddEntity(entity);
                     if (e.actionState != null)
                     {
-                        Type actionState = Type.GetType(typeof(ActionState).Namespace + e.actionState);
-                    //    entity.changeActionState(actionState);
+                        if (entity is Block)
+                        {
+                            ((Block)entity).SetBlockActionState(e.actionState);
+                        }
                     }
                     if (e.powerUpState != null)
                     {
-                        Type powerUpState = Type.GetType(typeof(PowerUpState).Namespace + e.powerUpState);
-                     //   ((PowerUpEntity) entity).changePowerUpEntity(PowerUpState);
+                        if (entity is Block)
+                        {
+                            ((Block)entity).SetBlockPowerUpState(e.powerUpState);
+                        }
                     }
                     });
                 });
