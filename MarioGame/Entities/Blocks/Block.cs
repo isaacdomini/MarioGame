@@ -16,6 +16,8 @@ namespace MarioGame.Entities
         protected BlockActionStateMachine actionStateMachine;
         protected BlockPowerUpStateMachine powerUpStateMachine;
         List<IContainable> containedItems = new List<IContainable>();
+        private static int boundingBoxWidth = 20;
+        private static int boundingBoxHeight = 20;
 
         protected bool isVisible;
         private int tickCount;
@@ -34,6 +36,8 @@ namespace MarioGame.Entities
             blockPowerUpState = (BlockPowerUpState)pState;
             blockSprite = (BlockSprite)_sprite;
             tickCount = 0;
+            boundingBox = new Rectangle((int)(_position.X + 3), (int)(_position.Y + 5), boundingBoxWidth, boundingBoxHeight);
+            boxColor = Color.Blue;
         }
         public void SetBlockActionState(String state)
         {
