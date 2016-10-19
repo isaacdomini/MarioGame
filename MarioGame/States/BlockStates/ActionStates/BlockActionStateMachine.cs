@@ -10,30 +10,30 @@ namespace MarioGame.States
     public class BlockActionStateMachine
     {
         Block _block;
-        BlockActionState usedState;
-        BlockActionState groundState;
-        BlockActionState stepState;
-        BlockActionState brickState;
-        BlockActionState questionState;
+        UsedBlockState usedState;
+        GroundBlockState groundState;
+        StepBlockState stepState;
+        BrickBlockState brickState;
+        QuestionBlockState questionState;
 
         
-        internal BlockActionState UsedState
+        internal UsedBlockState UsedState
         {
             get { return usedState; }
         }
-        internal BlockActionState GroundState
+        internal GroundBlockState GroundState
         {
             get { return groundState; }
         }
-        internal BlockActionState StepState
+        internal StepBlockState StepState
         {
             get { return stepState; }
         }
-        internal BlockActionState BrickState
+        internal BrickBlockState BrickState
         {
             get { return brickState; }
         }
-        internal BlockActionState QuestionState
+        internal QuestionBlockState QuestionState
         {
             get { return questionState; }
         }

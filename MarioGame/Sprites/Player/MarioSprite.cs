@@ -86,10 +86,10 @@ namespace MarioGame.Sprites
             _frameHeight = 40;
             
         }
-        public void changeActionState(BlockActionState blockActionState)
+        public void changeActionState(MarioActionState marioActionState)
         {
-            base.changeActionState(blockActionState);
-            _frameSet = _frameSets[blockActionState.actionState.GetHashCode()];
+            base.changeActionState(marioActionState);
+            _frameSet = _frameSets[marioActionState.actionState.GetHashCode()];
         }
         public void changePowerUp(MarioPowerUpState marioPowerUpState)
         {
@@ -102,8 +102,7 @@ namespace MarioGame.Sprites
             }
            
             _rowSet = _rowSets[marioPowerUpState.powerUpState.GetHashCode()];
-            
-            _rowSetPosition = 0;
+
         }
 
     }
