@@ -66,7 +66,7 @@ namespace MarioGame.Theming
                     //if (collisionHandler.checkSideCollision(mario, block))
                 }
             }
-            if (Mario.invinsibleTimer == 0)
+            if (Mario.invincibleTiber == 0)
             {
                 if(mario.PowerUpState is FireStarState)
                 {
@@ -133,7 +133,7 @@ namespace MarioGame.Theming
             }
             else
             {
-                Mario.invinsibleTimer--;
+                Mario.invincibleTiber--;
 
                     foreach (var enemy in _enemies)
                     {

@@ -16,7 +16,7 @@ namespace MarioGame.States
         public override void ChangeToStar()
         {
             _mario.ChangePowerUpState(_stateMachine.SuperStarState);
-            Mario.invinsibleTimer = 625;
+            Mario.invincibleTiber = 625;
 
         }
         public override void ChangeToStandard()
@@ -30,7 +30,7 @@ namespace MarioGame.States
         public override void EnemyHit()
         {
             ChangeToStandard();
-            Mario.invinsibleTimer = 70;
+            Mario.invincibleTiber = 70;
         }
     }
 }
