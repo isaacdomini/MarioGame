@@ -16,7 +16,7 @@ namespace MarioGame.States
         public override void ChangeToStar()
         {
             _mario.ChangePowerUpState(_stateMachine.StandardStarState);
-            Mario.invincibleTiber = 625;
+            Mario.invinsibleTimer = 625;
         }
         public override void ChangeToDead()
         {
