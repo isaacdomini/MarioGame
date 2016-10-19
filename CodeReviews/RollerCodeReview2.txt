@@ -1,0 +1,9 @@
+Reviewer: Adam Roller
+Review Date: 10/18
+File Reviewed: MarioGame/Collisions/CollisionHandler.cs
+File Author: Erin & Ricky
+Thoughts:
+The comments are good and it's good that the math is up front but the names of the variables are incredibly confusing and make it very difficult to read the code. The enums make it easier to read though, as well as making it easier in other files that use them like the script. Honeslty I thought there was more to review just because it looked confusing but there's not actually that much code which is a good thing.
+Time Spent: 5 minutes
+Recommended changes:
+Just make the variable names more readable and actually represent what they are and what they do.
