@@ -8,8 +8,9 @@ namespace MarioGame.States
         {
             bState = BlockActionStateEnum.UsedBlock;
         }
-        public override void Begin(BlockActionState prevState)
+        public override void Begin(IState prevState)
         {
+            base.Begin(prevState);
             block.ChangeBlockActionState(stateMachine.UsedState);
         }
     }

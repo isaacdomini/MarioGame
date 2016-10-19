@@ -15,7 +15,7 @@ namespace MarioGame.Sprites
         {
             BrickBlock = 0,
             UsedBlock = 1,
-            //GroundBlock = 2
+            //BrickBlock = 2
             GroundBlock = 3,
             StepBlock = 4,
             SilverBlock = 5,
@@ -32,7 +32,7 @@ namespace MarioGame.Sprites
         public BlockSprite(ContentManager content) : base(content)
         {
             _assetName = "blocks";
-            _numberOfFramesPerRow = 8;
+            _numberOfFramesPerRow = 9;
             //Each state has a frameSet
             _frameSets = new Dictionary<int, List<int>> {
                 { BlockActionStateEnum.BrickBlock.GetHashCode(), new List<int> { Frames.BrickBlock.GetHashCode() } },
