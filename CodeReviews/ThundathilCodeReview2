@@ -1,0 +1,13 @@
+yriac Domini Thundathil
+10/18/2016
+Sprint 2
+Scrip.cs
+Multiple Authors
+The code in Update(gameTime) method needs to be refactored. When checking for collision 
+and iterating through each of the elements, There are too many nested ifs and loops
+Instead of doing all of the checking (post collision condition checking) in the Update Method,
+it might be wiser to delegate each of the entity to do its own post collision condition checking
+This will make the entities deal with their own collisions
+Number of minutes taken to complete the review
+There would have to be handleCollision(TypeOfCollision) for the entities that would then actually 
+change their states or not, depending on the conditions
