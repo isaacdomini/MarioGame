@@ -38,6 +38,7 @@ namespace MarioGame.Theming
                     script.AddEntity(entity);
                     if (e.actionState != null)
                     {
+                        //TODO: make it so that we dont have to check what type each entity is 
                         if (entity is Block)
                         {
                             ((Block)entity).SetBlockActionState(e.actionState);
