@@ -51,6 +51,11 @@ namespace MarioGame.Sprites
             _frameSet = _frameSets[BlockActionStateEnum.BrickBlock.GetHashCode()];
 
         }
+        public override void Load(int framesPerSecond = 5)
+        {
+            base.Load(framesPerSecond);
+            _frameHeight = 16;
+        }
         public void changeActionState(BlockActionState actionState)
         {
             base.changeActionState(actionState);

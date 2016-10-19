@@ -171,6 +171,16 @@
         }
       ] 
     },
+    {"type": "Block",
+		"actionState": "BrickBlockState",
+		"powerUpState": "Hidden",
+		"rowColumns": [
+			{
+				"row": 11,
+				"columns": [4]
+			}
+		]
+		},
     {
       "type": "Block",
       "actionState": "StepBlockState",

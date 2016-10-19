@@ -20,6 +20,7 @@ namespace MarioGame.States
             block = entity;
             this.stateMachine = stateMachine;
         }
+
         public BlockPowerUpState(IEntity entity, BlockPowerUpStateEnum visibility) : base(entity)
         {
             powerUpStateEnum = visibility;

@@ -67,7 +67,8 @@ namespace MarioGame.Entities
         {
             if (state.Equals("HiddenState"))
             {
-                powerUpStateMachine.HiddenState.Begin(pState);              
+                powerUpStateMachine.HiddenState.Begin(pState);
+                //this.ChangeBlockPowerUpState(pState);
             }
             else if (state.Equals("VisibleState"))
             {
