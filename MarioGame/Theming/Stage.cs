@@ -31,6 +31,8 @@ namespace MarioGame.Theming
             _controllers.Add(new KeyboardController());
             _controllers.Add(new GamepadController());
             _controllers[0].AddCommand((int)Keys.Q, new QuitCommand(Game1));
+            //Reset Command
+            _controllers[0].AddCommand((int)Keys.R, new ResetCommand(Game1));
             _controllers[1].AddCommand((int) Buttons.Start, new QuitCommand(Game1));
 
             // Adding jump command to controllers
@@ -65,7 +67,6 @@ namespace MarioGame.Theming
             _controllers[1].AddCommand((int)Buttons.A, new JumpCommand(Game1.Scene.getScript()));
 
         }
-
         public void LoadContent()
         {
         }
