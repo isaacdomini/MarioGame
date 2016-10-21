@@ -9,6 +9,7 @@ namespace MarioGame.Entities
     public class Mario : PowerUpEntity
     {
         public static int invincibleTimer=0;
+        public float jumpTimer = 0;
         // Could be useful for casting in certain circumstances
         public MarioPowerUpState PowerUpState
         {
@@ -22,6 +23,7 @@ namespace MarioGame.Entities
         private readonly static Vector2 fallingVelocity = new Vector2(0, velocityConstant * 1);
         private readonly static Vector2 dashVelocity = new Vector2(velocityConstant * 2, 0);
         private readonly static Vector2 idleVelocity = new Vector2(0, 0);
+
 
         private static int superBoundingBoxWidth = 30;
         private static int superBoundingBoxHeight = 36;
@@ -155,6 +157,10 @@ namespace MarioGame.Entities
             {
                 ((MarioActionState)aState).Crouch();
             }
+        }
+        public void Fall()
+        {
+                ((MarioActionState)aState).Fall();
         }
         public void MoveLeft()
         {
