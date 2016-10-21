@@ -16,6 +16,7 @@ namespace MarioGame.States
         MarioActionState walkMarioState;
         MarioActionState fallingMarioState;
 
+
         internal MarioActionState CrouchingMarioState
         {
             get { return crouchingMarioState; }

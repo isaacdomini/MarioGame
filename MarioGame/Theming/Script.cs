@@ -55,6 +55,15 @@ namespace MarioGame.Theming
 
         public void Update(GameTime gameTime)
         {
+            if(mario.CurrentActionState is JumpingMarioState)
+            {
+                if (mario.jumpTimer > 2.0)
+                {
+                    Console.WriteLine(mario.jumpTimer);
+                    MakeMarioFall();
+                }
+                mario.jumpTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            }
             bool colliding = false;
             foreach (var block in _blocks)
             {
@@ -65,16 +74,24 @@ namespace MarioGame.Theming
                     {
                         if (collisionHandler.checkSideCollision(mario, block) == CollisionTypes.Bottom)
                         {
-                            mario.Halt();
+                            MakeMarioFall();
                         }
                     }
                     else
                     {
-                        mario.Halt();
-                        colliding = true;
+                        if (collisionHandler.checkSideCollision(mario, block) == CollisionTypes.Bottom)
+                        {
+                            MakeMarioFall();
+                        }
+                        else
+                        {
+                            mario.Halt();
+                            colliding = true;
+                        }
                     }
 
                 }
+
             }
             if (Mario.invincibleTimer == 0)
             {
@@ -231,6 +248,11 @@ namespace MarioGame.Theming
         internal void MakeMarioJump()
         {
             mario.Jump();
+        }
+        internal void MakeMarioFall()
+        {
+            mario.jumpTimer = 0;
+            mario.Fall();
         }
         internal void MakeMarioCrouch()
         {
