@@ -68,6 +68,7 @@
     <Compile Include="Core\Directions.cs" />
     <Compile Include="Core\Game1.cs" />
     <Compile Include="Core\Program.cs" />
+    <Compile Include="Core\Utils.cs" />
     <Compile Include="Entities\BackgroundItems\Cloud.cs" />
     <Compile Include="Entities\Blocks\Block.cs" />
     <Compile Include="Entities\ContainableHidableEntity.cs" />

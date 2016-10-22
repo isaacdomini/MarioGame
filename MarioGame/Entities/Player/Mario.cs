@@ -10,7 +10,8 @@ namespace MarioGame.Entities
 {
     public class Mario : PowerUpEntity
     {
-        public static int invincibleTimer=0;
+        private float secondsOfInvincibilityRemaining = 0.0f;
+        public bool Invincible { get { return secondsOfInvincibilityRemaining > 0; } }
         // Could be useful for casting in certain circumstances
         public MarioPowerUpState PowerUpState
         {
@@ -59,7 +60,8 @@ namespace MarioGame.Entities
 
         public override void Update(Viewport viewport)
         {
-            if(PowerUpState.powerUpState == MarioPowerUpStateEnum.Dead)
+            secondsOfInvincibilityRemaining -=
+            if (PowerUpState.powerUpState == MarioPowerUpStateEnum.Dead)
             {
                 _velocity = idleVelocity;
             }
@@ -69,22 +71,24 @@ namespace MarioGame.Entities
             if (_position.X < 0)
             {
                 pos.X = 0;
-            }else if (_position.X + _width > viewport.Width)
+            }
+            else if (_position.X + _width > viewport.Width)
             {
                 pos.X = viewport.Width - _width;
             }
             if (_position.Y < 0)
             {
                 pos.Y = 0;
-            }else if (_position.Y + _height > viewport.Height)
+            }
+            else if (_position.Y + _height > viewport.Height)
             {
                 pos.Y = viewport.Height - _height;
             }
             _position = pos;
-            
-            if(PowerUpState.powerUpState != MarioPowerUpStateEnum.Standard || PowerUpState.powerUpState != MarioPowerUpStateEnum.StandardStar)
+
+            if (PowerUpState.powerUpState != MarioPowerUpStateEnum.Standard || PowerUpState.powerUpState != MarioPowerUpStateEnum.StandardStar)
             {
-                
+
                 boundingBox.X = (int)_position.X - 5;
                 boundingBox.Y = (int)_position.Y;
             }
@@ -127,7 +131,7 @@ namespace MarioGame.Entities
         }
         private void setBoundingBox(MarioPowerUpStateEnum powerUpState)
         {
-            if (powerUpState == MarioPowerUpStateEnum.Super || powerUpState == MarioPowerUpStateEnum.Fire || powerUpState == MarioPowerUpStateEnum.SuperStar || powerUpState == MarioPowerUpStateEnum.FireStar )
+            if (powerUpState == MarioPowerUpStateEnum.Super || powerUpState == MarioPowerUpStateEnum.Fire || powerUpState == MarioPowerUpStateEnum.SuperStar || powerUpState == MarioPowerUpStateEnum.FireStar)
             {
                 boundingBox.Width = superBoundingBoxWidth;
                 boundingBox.Height = superBoundingBoxHeight;
@@ -241,18 +245,19 @@ namespace MarioGame.Entities
                 {
                     if (side == Sides.Top)
                     {
-                        this.Halt();
+                        Halt();
                     }
                 }
                 else
                 {
-                    this.Halt();
+                    Halt();
                 }
             }
         }
         public void setInvincible(float seconds)
         {
-            //this.invincibleTimer = 
+            secondsOfInvincibilityRemaining = seconds;
         }
     }
+
 }
