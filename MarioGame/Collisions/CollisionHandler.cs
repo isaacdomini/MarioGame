@@ -1,25 +1,19 @@
 ﻿using MarioGame.Core;
 using MarioGame.Entities;
+using Microsoft.Xna.Framework;
 using System;
 
 namespace MarioGame.Collisions
 {
-    public class CollisionHandler
+    public static class CollisionHandler
     {
-        public CollisionHandler() 
-        {
-        }
-        public bool checkForCollision(Entity entity1, Entity entity2)
-        {
-            return entity1.boundingBox.Intersects(entity2.boundingBox);
-        }
 
-        public Sides checkSideCollision(Entity entity1, Entity entity2)
+        public static Sides getIntersectingSide(Rectangle box1, Rectangle box2)
         {
-            double width = 0.5 * (entity1.boundingBox.Width + entity2.boundingBox.Width);
-            double height = 0.5 * (entity1.boundingBox.Height + entity2.boundingBox.Height);
-            double dx = entity1.boundingBox.Center.X - entity2.boundingBox.Center.X;
-            double dy = entity1.boundingBox.Center.Y - entity2.boundingBox.Center.Y;
+            double width = 0.5 * (box1.Width + box2.Width);
+            double height = 0.5 * (box1.Height + box2.Height);
+            double dx = box1.Center.X - box2.Center.X;
+            double dy = box1.Center.Y - box2.Center.Y;
             Sides toReturn = Sides.None;
 
             if (Math.Abs(dx) <= width && Math.Abs(dy) <= height)

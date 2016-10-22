@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using MarioGame.States;
 using MarioGame.Core;
+using MarioGame.States.BlockStates.PowerUpStates;
 
 namespace MarioGame.Entities
 {
@@ -229,6 +230,29 @@ namespace MarioGame.Entities
         {
             _position -= _velocity;
             ((MarioActionState)aState).Halt();
+        }
+        public override void onCollide(IEntity otherObject, Sides side)
+        {
+            base.onCollide(otherObject, side);
+            if (otherObject is Block)
+            {
+                Block block = (Block)otherObject;
+                if (block.CurrentPowerUpState is HiddenState)
+                {
+                    if (side == Sides.Top)
+                    {
+                        this.Halt();
+                    }
+                }
+                else
+                {
+                    this.Halt();
+                }
+            }
+        }
+        public void setInvincible(float seconds)
+        {
+            //this.invincibleTimer = 
         }
     }
 }

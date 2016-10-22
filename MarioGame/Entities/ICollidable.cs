@@ -10,6 +10,7 @@ namespace MarioGame.Entities
 {
     public interface ICollidable
     {
-        void onCollide(IEntity otherObject, Sides otherObjectsSide);
+        //side = the side of `this` that was hit by otherObject
+        void onCollide(IEntity otherObject, Sides side);
     }
 }

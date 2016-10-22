@@ -50,11 +50,19 @@ namespace MarioGame.Theming
         public void Initialize()
         {
 		    _entities = new List<Entity>();
-            collisionHandler = new CollisionHandler();
         }
 
         public void Update(GameTime gameTime)
         {
+            _entities.FindAll(e => e.Moving).ForEach( e =>
+            {
+                _entities.FindAll(e2 => e.boundingBox.Intersects(e2.boundingBox)).ForEach(e2 => {
+                    Sides eSide = CollisionHandler.getIntersectingSide(e.boundingBox, e2.boundingBox);
+                    e.onCollide(e2, eSide);
+                    e2.onCollide(e, Util.flip(eSide));
+                }); 
+
+            })
             bool colliding = false;
             foreach (var block in _blocks)
             {

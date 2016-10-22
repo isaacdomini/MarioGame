@@ -19,6 +19,7 @@ namespace MarioGame.Entities
         public Color boxColor;
         protected ActionState aState;
         public bool isCollidable;
+        private bool _colliding;
         public Directions direction
         {
             get; protected set;
@@ -34,11 +35,12 @@ namespace MarioGame.Entities
             get { return _sprite.Position; }
             set { _sprite.Position = value; }
         }
-        public Vector2 _velocity { get; protected set; }
-        
+
         public readonly static int velocityConstant = 1;
         private readonly static Vector2 walkingVelocity = new Vector2(velocityConstant * 1, 0);
         public readonly static Vector2 idleVelocity = new Vector2(0, 0);
+        public Vector2 _velocity { get; protected set; }
+        public bool Moving { get { return !_velocity.Equals(idleVelocity); } }
         protected virtual void preConstructor() { }
         public Entity(Vector2 position, ContentManager content, float xVelocity = 0, float yVelocity = 0)
         {
@@ -52,6 +54,8 @@ namespace MarioGame.Entities
 
             _position = position;
             _sprite.Position = _position;
+
+            _colliding = false;
         }
         public void ChangeActionState(ActionState state)
         {
@@ -60,6 +64,8 @@ namespace MarioGame.Entities
         public virtual void Update()
         {
             _position += _velocity;
+            boxColor = _colliding ? Color.Black : Color.Yellow;
+            _colliding = false;
         }
         public virtual void Update(Viewport viewport) { }
         public Vector2 getPosition()
@@ -108,8 +114,10 @@ namespace MarioGame.Entities
         }
         public virtual void Halt() { }
 
-        public virtual void onCollide(IEntity otherObject, Sides otherObjectSide)
+        /** onColide must be called before Update */
+        public virtual void onCollide(IEntity otherObject, Sides side)
         {
+            this._colliding = true;
         }
     }
 }
