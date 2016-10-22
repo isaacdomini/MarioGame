@@ -15,9 +15,6 @@ namespace MarioGame.Theming
     {
         private readonly Scene _scene;
 
-        private CollisionHandler collisionHandler;
-
-
         public List<Entity> _entities { get; private set; }
 
         //possibile TODO: cache the getters if performance suffers
@@ -74,7 +71,7 @@ namespace MarioGame.Theming
                     {
                         colliding = true;
                         enemy.boxColor = Color.Black;
-                        if(mario.PowerUpState is SuperStarState || mario.PowerUpState is FireStarState || mario.PowerUpState is StandardStarState)
+                        if(mario.marioPowerUpState is SuperStarState || mario.marioPowerUpState is FireStarState || mario.marioPowerUpState is StandardStarState)
                         {
                             enemy.JumpedOn();
                         }
@@ -128,7 +125,7 @@ namespace MarioGame.Theming
                         {
                             colliding = true;
                             enemy.boxColor = Color.Black;
-                            if (mario.PowerUpState is SuperStarState || mario.PowerUpState is FireStarState || mario.PowerUpState is StandardStarState)
+                            if (mario.marioPowerUpState is SuperStarState || mario.marioPowerUpState is FireStarState || mario.marioPowerUpState is StandardStarState)
                             {
                                 enemy.JumpedOn();
                             }
@@ -246,11 +243,11 @@ namespace MarioGame.Theming
             {
                 if (block.CurrentActionState is BrickBlockState)
                 {
-                    if (mario.PowerUpState is SuperState)
+                    if (mario.marioPowerUpState is SuperState)
                     {
                         block.Break();
                     }
-                    else if (mario.PowerUpState is StandardState)
+                    else if (mario.marioPowerUpState is StandardState)
                     {
                         block.Bump();
                         block.ChangeToUsed();
