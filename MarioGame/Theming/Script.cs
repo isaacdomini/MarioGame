@@ -57,7 +57,7 @@ namespace MarioGame.Theming
         {
             if(mario.CurrentActionState is JumpingMarioState)
             {
-                if (mario.jumpTimer > 1.0)
+                if (mario.jumpTimer > 1.5)
                 {
                     Console.WriteLine(mario.jumpTimer);
                     MakeMarioFall();
