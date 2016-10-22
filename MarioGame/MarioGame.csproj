@@ -65,6 +65,7 @@
     <Compile Include="Controllers\GamepadController.cs" />
     <Compile Include="Controllers\IController.cs" />
     <Compile Include="Controllers\KeyboardController.cs" />
+    <Compile Include="Core\Directions.cs" />
     <Compile Include="Core\Game1.cs" />
     <Compile Include="Core\Program.cs" />
     <Compile Include="Entities\BackgroundItems\Cloud.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Entities\Enemies\Goomba.cs" />
     <Compile Include="Entities\Enemies\KoopaTroopa.cs" />
     <Compile Include="Entities\Entity.cs" />
+    <Compile Include="Entities\ICollidable.cs" />
     <Compile Include="Entities\IContainable.cs" />
     <Compile Include="Entities\IContainer.cs" />
     <Compile Include="Entities\IEntity.cs" />

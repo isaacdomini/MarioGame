@@ -63,7 +63,7 @@ namespace MarioGame.Theming
                 {
                     if (block.CurrentPowerUpState is HiddenState)
                     {
-                        if (collisionHandler.checkSideCollision(mario, block) == CollisionTypes.Bottom)
+                        if (collisionHandler.checkSideCollision(mario, block) == Sides.Bottom)
                         {
                             mario.Halt();
                         }
@@ -102,7 +102,7 @@ namespace MarioGame.Theming
                         {
                             enemy.JumpedOn();
                         }
-                        else if (collisionHandler.checkSideCollision(mario, enemy) == CollisionTypes.Top)
+                        else if (collisionHandler.checkSideCollision(mario, enemy) == Sides.Top)
                         {
                             enemy.JumpedOn();
                             mario.Halt();
@@ -119,7 +119,7 @@ namespace MarioGame.Theming
                                 {
                                     enemy.JumpedOn();
                                     mario.Halt();
-                                    if (collisionHandler.checkSideCollision(mario, enemy) == CollisionTypes.Right)
+                                    if (collisionHandler.checkSideCollision(mario, enemy) == Sides.Right)
                                         ((KoopaTroopa)enemy).ChangeShellVelocityDirection();
                                 }
                             }

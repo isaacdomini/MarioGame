@@ -1,16 +1,9 @@
-﻿using MarioGame.Entities;
+﻿using MarioGame.Core;
+using MarioGame.Entities;
 using System;
 
 namespace MarioGame.Collisions
 {
-    public enum CollisionTypes
-    {
-        Left,
-        Right,
-        Bottom,
-        Top,
-        None
-    }
     public class CollisionHandler
     {
         public CollisionHandler() 
@@ -21,13 +14,13 @@ namespace MarioGame.Collisions
             return entity1.boundingBox.Intersects(entity2.boundingBox);
         }
 
-        public CollisionTypes checkSideCollision(Entity entity1, Entity entity2)
+        public Sides checkSideCollision(Entity entity1, Entity entity2)
         {
             double width = 0.5 * (entity1.boundingBox.Width + entity2.boundingBox.Width);
             double height = 0.5 * (entity1.boundingBox.Height + entity2.boundingBox.Height);
             double dx = entity1.boundingBox.Center.X - entity2.boundingBox.Center.X;
             double dy = entity1.boundingBox.Center.Y - entity2.boundingBox.Center.Y;
-            CollisionTypes toReturn = CollisionTypes.None;
+            Sides toReturn = Sides.None;
 
             if (Math.Abs(dx) <= width && Math.Abs(dy) <= height)
             {
@@ -38,12 +31,12 @@ namespace MarioGame.Collisions
                 {
                     if (wy > -hx)
                     {
-                        toReturn = CollisionTypes.Bottom;
+                        toReturn = Sides.Bottom;
                     }
                     /* collision at the top */
                     else
                     {
-                        toReturn = CollisionTypes.Left;
+                        toReturn = Sides.Left;
 
                     }
                 }
@@ -52,12 +45,12 @@ namespace MarioGame.Collisions
                 {
                     if (wy > -hx)
                     {
-                        toReturn = CollisionTypes.Right;
+                        toReturn = Sides.Right;
                     }
                     /* on the right */
                     else
                     {
-                        toReturn = CollisionTypes.Top;
+                        toReturn = Sides.Top;
                     }
                 }
                 /* at the bottom */

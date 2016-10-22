@@ -8,21 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using MarioGame.Core;
 
 namespace MarioGame.Entities
 {
-    public abstract class Entity : IEntity
+    public abstract class Entity : IEntity, ICollidable
     {
         public AnimatedSprite _sprite;
         public Rectangle boundingBox;
         public Color boxColor;
         protected ActionState aState;
         public bool isCollidable;
-        public enum Directions
-        {
-            Left = 1,
-            Right = 2
-        }
         public Directions direction
         {
             get; protected set;
@@ -112,5 +108,8 @@ namespace MarioGame.Entities
         }
         public virtual void Halt() { }
 
+        public virtual void onCollide(IEntity otherObject, Directions otherObjectSide)
+        {
+        }
     }
 }
