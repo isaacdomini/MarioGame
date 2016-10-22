@@ -3,6 +3,7 @@ using MarioGame.Sprites;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using MarioGame.States;
+using MarioGame.Core;
 
 namespace MarioGame.Entities
 {

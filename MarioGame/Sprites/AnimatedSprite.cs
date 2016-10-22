@@ -1,3 +1,4 @@
+using MarioGame.Core;
 using MarioGame.States;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;

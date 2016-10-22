@@ -108,7 +108,7 @@ namespace MarioGame.Entities
         }
         public virtual void Halt() { }
 
-        public virtual void onCollide(IEntity otherObject, Directions otherObjectSide)
+        public virtual void onCollide(IEntity otherObject, Sides otherObjectSide)
         {
         }
     }
