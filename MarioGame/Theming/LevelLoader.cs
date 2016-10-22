@@ -1,4 +1,5 @@
 ﻿using MarioGame.Entities;
+using MarioGame.States;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Newtonsoft.Json;
@@ -15,12 +16,13 @@ namespace MarioGame.Theming
     static class LevelLoader
     {
         static private int blockWidth = 30; // each intereger in location is a multiple of blockWidth. e.g. each block in our scene may be 20 pixels width. So if we have a block at an x location of 10, that block's x position would actually be at pixel 200
-        public static Entity createEntity(string folderAndClass, Vector2 location, ContentManager content)
+        public static Entity createEntity(string klass, Vector2 location, ContentManager content)
         {
-            Console.WriteLine(typeof(Entity).Namespace + "." + folderAndClass);
-            Type type = Type.GetType(typeof(Entity).Namespace + "." + folderAndClass);
+            Console.WriteLine(typeof(Entity).Namespace + "." + klass);
+            Type type = Type.GetType(typeof(Entity).Namespace + "." + klass);
             return (Entity)Activator.CreateInstance(type, location * blockWidth, content);
         }
+
         public static void addTileMapToScript(String tileMapFile, Script script, ContentManager content)
         {
 
@@ -31,7 +33,25 @@ namespace MarioGame.Theming
             {
                 e.rowColumns.ForEach(rc =>
                 {
-                    rc.columns.ForEach(c => script.AddEntity(createEntity(e.type, new Vector2(c, rc.row), content)));
+                rc.columns.ForEach(c => {
+                    Entity entity = createEntity(e.type, new Vector2(c, rc.row), content);
+                    script.AddEntity(entity);
+                    if (e.actionState != null)
+                    {
+                        //TODO: make it so that we dont have to check what type each entity is 
+                        if (entity is Block)
+                        {
+                            ((Block)entity).SetBlockActionState(e.actionState);
+                        }
+                    }
+                    if (e.powerUpState != null)
+                    {
+                        if (entity is Block)
+                        {
+                            ((Block)entity).SetBlockPowerUpState(e.powerUpState);
+                        }
+                    }
+                    });
                 });
             });
 
@@ -81,6 +101,8 @@ namespace MarioGame.Theming
         public string type { get; set; }
         public List<RowColumn> rowColumns { get; set; }
         public List<RowColumnWithHiddenItem> rowColumnWithHiddenItems { get; set; }
+        public string powerUpState { get; set; }
+        public string actionState { get; set; }
     }
 
     public class Level

@@ -1,0 +1,16 @@
+Author: Ricky Renner
+Date: 10/18/16
+Sprint 2
+
+File Reviewed: Mario.cs
+
+File Authors: Cyriac Thundathil, John Simerlink, Erin George, Ricky Renner
+
+Almost every line has a variable being casted to something to call a function defined in the casted class. It seems that a more specific implementation of a class
+is needed for this class. Also, everything in update involves an if statement, and it seems as though it is unclear what it is changing initially.
+Maybe this could all be put into functions within Mario. While we are talking about Mario, it might make a lot more sense just to put more things in update itself.
+Perhaps call command listeners that are checked on every iteration to see if any commands had been called in Mario. If something is called update, it might
+make most sense just to have everything that updates Mario go through that. Although ChangeActionState and ChangePowerUpState are trying to inherit its
+base class methods, it actually does not override, which is kind of a misimplementation of object oriented practices. Although it does call base.Change...
+so that is nice. Hopefully more of this code can be implemented in the base classes, such as "SetBoundingBox" which sounds like something that would be
+applicable to all entities. I like that everything that is applicable to Mario is central to Mario.cs class, though.

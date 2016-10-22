@@ -1,0 +1,9 @@
+Author of the code review: Erin George
+Date of the code review: 10/18/16
+Sprint number: 2
+Name of the .cs file being reviewed: LevelLoader.cs
+Author of the .cs file being reviewed: John Simerlink
+Specific comments on code quality: At first look this code was somewhat confusing. It took me a few times walking through it in order to understand it. In the createEntity method, there is a lot happening in each line which makes the code hard to read. However, since the method is only three lines long, isn’t too bad to figure out. In addTileMapToScript, there are some non-descriptive variable names such as rc and e. The nested for and if loops make the code confusing as well. Could there be an easier way to do this so that you don’t have to use all of the nesting? Do you have to check the type of the entity or could you do it in a way that doesn’t have to check? Also how the foreach loops are set up can be confusing since they are long links. The public classes at the end of the file were easy to read and follow. 
+Number of minutes taken to complete the review: 30minutes
+A hypothetical change to make to the game related to file being reviewed and how the current implementation could or could not easily support that change: I’m curious to see how this file will work when there are multiple levels. 
+

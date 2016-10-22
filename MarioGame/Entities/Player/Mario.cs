@@ -1,22 +1,19 @@
-﻿using MarioGame.States.PlayerStates;
-using MarioGame.States.PlayerStates.PowerUpStates;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using MarioGame.Sprites;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using MarioGame.States;
 
 namespace MarioGame.Entities
 {
-    public class Mario : Entity
+    public class Mario : PowerUpEntity
     {
-        private MarioPowerUpState pState;
-        public static int invinsibleTimer=0;
+        public static int invincibleTimer=0;
         // Could be useful for casting in certain circumstances
         public MarioPowerUpState PowerUpState
         {
-            get { return pState; }
+            get { return ((MarioPowerUpState)pState); }
         }
-        public MarioSprite mSprite;
         private int _width;
         private int _height;
 
@@ -36,34 +33,22 @@ namespace MarioGame.Entities
             walk,
             run
         }
+
         private SpaceBarAction spaceBarAction;
 
         MarioActionStateMachine marioActionStateMachine;
 
-        MarioActionState marioActionState;
-
-        PowerUpStateMachine powerUpStateMachine;
-
-        MarioActionState CurrentActionState
-        {
-            get { return marioActionState; }
-        }
-        MarioPowerUpState CurrentPowerUpState
-        {
-            get { return pState; }
-        }
+        MarioPowerUpStateMachine powerUpStateMachine;
 
         public Mario(Vector2 position, ContentManager content) : base(position, content)
         {
             direction = Directions.Right;
             spaceBarAction = SpaceBarAction.run;
             marioActionStateMachine = new MarioActionStateMachine(this);
-            powerUpStateMachine = new PowerUpStateMachine(this);
+            powerUpStateMachine = new MarioPowerUpStateMachine(this);
             aState = marioActionStateMachine.IdleMarioState;
-            marioActionState = (MarioActionState)aState;
             pState = powerUpStateMachine.StandardState;
             // Now only cast once
-            mSprite = (MarioSprite)_sprite;
             _height = standardBoundingBoxHeight;
             _width = standardBoundingBoxWidth;
             boundingBox = new Rectangle((int)(_position.X + 5), (int)(_position.Y + 16), _width, _height);
@@ -115,9 +100,6 @@ namespace MarioGame.Entities
                 }
             }
         }
-
-        
-
         public bool checkMarioJumping()
         {
             return this._velocity.Equals(jumpingVelocity);
@@ -125,21 +107,21 @@ namespace MarioGame.Entities
 
         public Vector2 position
         {
-            get { return mSprite.Position; }
-            set { mSprite.Position = value; }
+            get { return ((MarioSprite)_sprite).Position; }
+            set { ((MarioSprite)_sprite).Position = value; }
         }
 
         public void ChangeActionState(MarioActionState state)
         {
-            marioActionState = state;
-            mSprite.changeActionState(state);
+            base.ChangeActionState(state);
+            ((MarioSprite)_sprite).changeActionState(state);
 
         }
         public void ChangePowerUpState(MarioPowerUpState state)
         {
-            pState = state;
-            setBoundingBox(pState.powerUpState);
-            mSprite.changePowerUp(pState);
+            base.ChangePowerUpState(state);
+            setBoundingBox(((MarioPowerUpState)pState).powerUpState);
+            ((MarioSprite)_sprite).changePowerUp(state);
         }
         private void setBoundingBox(MarioPowerUpStateEnum powerUpState)
         {
@@ -158,69 +140,69 @@ namespace MarioGame.Entities
 
         public void Jump()
         {
-            if (pState.powerUpState != MarioPowerUpStateEnum.Dead)
+            if (((MarioPowerUpState)pState).powerUpState != MarioPowerUpStateEnum.Dead)
             {
-                marioActionState.Jump();
+                ((MarioActionState)aState).Jump();
             }
         }
         public void Crouch()
         {
-            if (pState.powerUpState == MarioPowerUpStateEnum.Standard && ((MarioActionState)aState).actionState == MarioActionStateEnum.Idle)
+            if (((MarioPowerUpState)pState).powerUpState == MarioPowerUpStateEnum.Standard && ((MarioActionState)aState).actionState == MarioActionStateEnum.Idle)
             {
-                marioActionState.Fall();
+                ((MarioActionState)aState).Fall();
             }
-            else if (pState.powerUpState != MarioPowerUpStateEnum.Dead)
+            else if (((MarioPowerUpState)pState).powerUpState != MarioPowerUpStateEnum.Dead)
             {
-                marioActionState.Crouch();
+                ((MarioActionState)aState).Crouch();
             }
         }
         public void MoveLeft()
         {
-            if (pState.powerUpState != MarioPowerUpStateEnum.Dead)
+            if (((MarioPowerUpState)pState).powerUpState != MarioPowerUpStateEnum.Dead)
             {
-                marioActionState.MoveLeft();
+                ((MarioActionState)aState).MoveLeft();
             }
         }
         public void MoveRight()
         {
-            if (pState.powerUpState != MarioPowerUpStateEnum.Dead)
+            if (((MarioPowerUpState)pState).powerUpState != MarioPowerUpStateEnum.Dead)
             {
-                marioActionState.MoveRight();
+                ((MarioActionState)aState).MoveRight();
             }
         }
         internal void EnemyHit()
         {
-            pState.EnemyHit();
+            ((MarioPowerUpState)pState).EnemyHit();
         }
         public void ChangeToFireState()
         {
-            pState.ChangeToFire();
+            ((MarioPowerUpState)pState).ChangeToFire();
         }
         public void ChangeToStandardState()
         {
-            pState.ChangeToStandard();
+            ((MarioPowerUpState)pState).ChangeToStandard();
         }
         public void ChangeToSuperState()
         {
-            pState.ChangeToSuper();
+            ((MarioPowerUpState)pState).ChangeToSuper();
         }
         public void ChangeToStarState()
         {
-            pState.ChangeToStar();
+            ((MarioPowerUpState)pState).ChangeToStar();
         }
         public void ChangeToDeadState()
         {
-            pState.ChangeToDead();
+            ((MarioPowerUpState)pState).ChangeToDead();
         }
         public void DashOrThrowFireball()
         {
             //TODO: Ricky do this?
-            if (pState.powerUpState == MarioPowerUpStateEnum.Fire)
+            if (((MarioPowerUpState)pState).powerUpState == MarioPowerUpStateEnum.Fire)
             {
                 // TODO: Mario entity adds fireball to scene
 
             }
-            else if (pState.powerUpState == MarioPowerUpStateEnum.Super)
+            else if (((MarioPowerUpState)pState).powerUpState == MarioPowerUpStateEnum.Super)
             {
                 if (spaceBarAction == SpaceBarAction.walk)
                 {
@@ -245,7 +227,7 @@ namespace MarioGame.Entities
         public override void Halt()
         {
             _position -= _velocity;
-            marioActionState.Halt();
+            ((MarioActionState)aState).Halt();
         }
     }
 }

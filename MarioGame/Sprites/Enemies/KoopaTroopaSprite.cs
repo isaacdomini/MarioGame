@@ -1,5 +1,5 @@
 ﻿using MarioGame.Entities;
-using MarioGame.States.EnemyStates;
+using MarioGame.States;
 using MarioGame.Theming.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;

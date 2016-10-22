@@ -1,11 +1,11 @@
 ﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
-using MarioGame.States.PlayerStates;
 using static MarioGame.Entities.Mario;
 using MarioGame.Entities;
 using System;
 using static MarioGame.Entities.Entity;
+using MarioGame.States;
 
 namespace MarioGame.Sprites
 {
@@ -39,7 +39,6 @@ namespace MarioGame.Sprites
             Luigi = 3,
             Fire = 4,
             Dead = 5
-
         }
 
         //power up states - standard(small), super(big), fire ,star (invincible), Dead
@@ -85,21 +84,15 @@ namespace MarioGame.Sprites
         {
             base.Load(framesPerSecond);
             _frameHeight = 40;
-            
-        }
-        public override void Update(float elapsed)
-        {
-            base.Update(elapsed);
         }
         public void changeActionState(MarioActionState marioActionState)
         {
+            base.changeActionState(marioActionState);
             _frameSet = _frameSets[marioActionState.actionState.GetHashCode()];
-            _frameSetPosition = 0;
         }
-
-
         public void changePowerUp(MarioPowerUpState marioPowerUpState)
         {
+            base.changePowerUp(marioPowerUpState);
             // Because on the sprite sheet, dead state is a frame set, not a row set
             if (marioPowerUpState.powerUpState == MarioPowerUpStateEnum.Dead)
             {
@@ -108,9 +101,6 @@ namespace MarioGame.Sprites
             }
            
             _rowSet = _rowSets[marioPowerUpState.powerUpState.GetHashCode()];
-            
-            _rowSetPosition = 0;
         }
-
     }
 }

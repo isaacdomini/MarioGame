@@ -1,10 +1,10 @@
 ﻿using MarioGame.Entities;
 
-namespace MarioGame.States.PlayerStates.PowerUpStates
+namespace MarioGame.States
 {
     class StandardState : MarioPowerUpState
     {
-        public StandardState(Mario entity, PowerUpStateMachine stateMachine) : base(entity, stateMachine)
+        public StandardState(Mario entity, MarioPowerUpStateMachine stateMachine) : base(entity, stateMachine)
         {
             powerUpState = MarioPowerUpStateEnum.Standard;
             _mario.isCollidable = true;
@@ -12,7 +12,7 @@ namespace MarioGame.States.PlayerStates.PowerUpStates
         public override void ChangeToStar()
         {
             _mario.ChangePowerUpState(_stateMachine.StandardStarState);
-            Mario.invinsibleTimer = 625;
+            Mario.invincibleTimer = 625;
         }
         public override void EnemyHit()
         {

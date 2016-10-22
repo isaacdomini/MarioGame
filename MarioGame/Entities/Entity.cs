@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MarioGame.States.PlayerStates;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
@@ -14,13 +13,11 @@ namespace MarioGame.Entities
 {
     public abstract class Entity : IEntity
     {
-        IState _state;
         public AnimatedSprite _sprite;
         public Rectangle boundingBox;
         public Color boxColor;
         protected ActionState aState;
         public bool isCollidable;
-
         public enum Directions
         {
             Left = 1,
@@ -31,7 +28,7 @@ namespace MarioGame.Entities
             get; protected set;
         }
 
-        public ActionState ActionState
+        public ActionState CurrentActionState
         {
             get { return this.aState; }
         }
@@ -43,7 +40,6 @@ namespace MarioGame.Entities
         }
         public Vector2 _velocity { get; protected set; }
         
-
         public readonly static int velocityConstant = 1;
         private readonly static Vector2 walkingVelocity = new Vector2(velocityConstant * 1, 0);
         public readonly static Vector2 idleVelocity = new Vector2(0, 0);
@@ -61,10 +57,6 @@ namespace MarioGame.Entities
             _position = position;
             _sprite.Position = _position;
         }
-        public virtual void ChangeState(IState newstate)
-        {
-            throw new NotImplementedException();
-        }
         public void ChangeActionState(ActionState state)
         {
             aState = state;
@@ -73,13 +65,7 @@ namespace MarioGame.Entities
         {
             _position += _velocity;
         }
-
-        public virtual void Update(Viewport viewport)
-        {
-            _position += _velocity;
-            boundingBox.X = (int)_position.X;
-            boundingBox.Y = (int)_position.Y;
-        }
+        public virtual void Update(Viewport viewport) { }
         public Vector2 getPosition()
         {
             return _position;
@@ -100,7 +86,6 @@ namespace MarioGame.Entities
                 _velocity = _velocity * -1;
             }
         }
-        public virtual void Halt() { }
         public void makeInvisible()
         {
             _sprite.Visible = true;
@@ -117,8 +102,7 @@ namespace MarioGame.Entities
         {
             return direction == Directions.Right;
         }
-        public virtual void turnLeft()
-        {
+        public virtual void turnLeft() {
             direction = Directions.Left;
             _sprite.changeDirection(direction);
         }
@@ -126,6 +110,7 @@ namespace MarioGame.Entities
             direction = Directions.Right;
             _sprite.changeDirection(direction);
         }
+        public virtual void Halt() { }
 
     }
 }

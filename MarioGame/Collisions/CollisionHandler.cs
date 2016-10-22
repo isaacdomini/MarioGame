@@ -20,6 +20,7 @@ namespace MarioGame.Collisions
         {
             return entity1.boundingBox.Intersects(entity2.boundingBox);
         }
+
         public CollisionTypes checkSideCollision(Entity entity1, Entity entity2)
         {
             double width = 0.5 * (entity1.boundingBox.Width + entity2.boundingBox.Width);

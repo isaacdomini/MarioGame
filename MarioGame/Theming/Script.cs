@@ -6,7 +6,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using System;
-using MarioGame.States.PlayerStates.PowerUpStates;
+using MarioGame.States;
+using MarioGame.States.BlockStates.PowerUpStates;
 
 namespace MarioGame.Theming
 {
@@ -18,6 +19,7 @@ namespace MarioGame.Theming
 
 
         public List<Entity> _entities { get; private set; }
+
         //possibile TODO: cache the getters if performance suffers
         public List<Block> _blocks { get { return _entities.FindAll(e => e is Block).ConvertAll(e => (Block) e); } }
         public List<Item> _items { get { return _entities.FindAll(e => e is Item).ConvertAll(e => (Item) e); } }
@@ -56,13 +58,25 @@ namespace MarioGame.Theming
             bool colliding = false;
             foreach (var block in _blocks)
             {
+                block.Update();
                 if (collisionHandler.checkForCollision(mario, block))
                 {
-                    mario.Halt();
-                    colliding = true;
+                    if (block.CurrentPowerUpState is HiddenState)
+                    {
+                        if (collisionHandler.checkSideCollision(mario, block) == CollisionTypes.Bottom)
+                        {
+                            mario.Halt();
+                        }
+                    }
+                    else
+                    {
+                        mario.Halt();
+                        colliding = true;
+                    }
+
                 }
             }
-            if (Mario.invinsibleTimer == 0)
+            if (Mario.invincibleTimer == 0)
             {
                 if(mario.PowerUpState is FireStarState)
                 {
@@ -129,7 +143,7 @@ namespace MarioGame.Theming
             }
             else
             {
-                Mario.invinsibleTimer--;
+                Mario.invincibleTimer--;
 
                     foreach (var enemy in _enemies)
                     {
@@ -214,45 +228,74 @@ namespace MarioGame.Theming
             _entities.Add(entity);
         }
 
-        public void MakeMarioJump()
+        internal void MakeMarioJump()
         {
             mario.Jump();
         }
-        public void MakeMarioCrouch()
+        internal void MakeMarioCrouch()
         {
             mario.Crouch();
         }
-        public void MakeMarioDashOrThrowFireball()
+        internal void MakeMarioDashOrThrowFireball()
         {
             mario.DashOrThrowFireball();
         }
-        public void MakeMarioMoveLeft()
+        internal void MakeMarioMoveLeft()
         {
             mario.MoveLeft();
         }
-        public void MakeMarioMoveRight()
+        internal void MakeMarioMoveRight()
         {
             mario.MoveRight();
         }
-        public void MakeMarioFire()
+        internal void MakeMarioFire()
         {
             mario.ChangeToFireState();
         }
-        public void MakeMarioStandard()
+        internal void MakeMarioStandard()
         {
             mario.ChangeToStandardState();
         }
-        public void MakeMarioSuper()
+        internal void MakeMarioSuper()
         {
             mario.ChangeToSuperState();
         }
-        public void MakeMarioDead()
+        internal void MakeMarioDead()
         {
             mario.ChangeToDeadState();
         }
-        public void BreakBrick()
+        internal void BrickBumpOrBreak()
         {
-            //Need to implement still
+            foreach (var block in _blocks)
+            {
+                if (block.CurrentActionState is BrickBlockState)
+                {
+                    if (mario.PowerUpState is SuperState)
+                    {
+                        block.Break();
+                    }
+                    else if (mario.PowerUpState is StandardState)
+                    {
+                        block.Bump();
+                        block.ChangeToUsed();
+                    }
+                }
+            }
+        }
+        internal void ShowHiddenBlock()
+        {
+            foreach(Block block in _blocks)
+            {
+                block.Reveal();
+            }
+        }
+        internal void ChangeQuestionToUsed()
+        {
+            foreach (Block block in _blocks)
+            {
+                if (block.CurrentActionState is QuestionBlockState)
+                block.ChangeToUsed();
+            }
         }
     }
 }

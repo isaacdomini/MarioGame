@@ -1,3 +1,4 @@
+using MarioGame.States;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -85,7 +86,7 @@ namespace MarioGame.Sprites
                 return;
             }
 
-            var sourceRect = new Rectangle( ((int)_frameSet[_frameSetPosition]) * _frameWidth, ((int)_rowSet[_rowSetPosition]) * _frameHeight, _frameWidth, _frameHeight);
+            var sourceRect = new Rectangle(((int)_frameSet[_frameSetPosition]) * _frameWidth, ((int)_rowSet[_rowSetPosition]) * _frameHeight, _frameWidth, _frameHeight);
             batch.Draw(texture: _texture, position: Position, sourceRectangle: sourceRect, color: Color.White, effects : _flipped);
      
         }
@@ -101,5 +102,13 @@ namespace MarioGame.Sprites
             }
         }
 
+        public void changeActionState(ActionState actionState)
+        {
+            _frameSetPosition = 0;
+        }
+        public void changePowerUp(PowerUpState powerUpState)
+        {
+            _rowSetPosition = 0;
+        }
     }
 }
