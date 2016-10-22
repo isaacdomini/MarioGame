@@ -16,8 +16,8 @@ namespace MarioGame.Entities
         protected BlockActionStateMachine actionStateMachine;
         protected BlockPowerUpStateMachine powerUpStateMachine;
         List<IContainable> containedItems = new List<IContainable>();
-        private static int boundingBoxWidth = 18;
-        private static int boundingBoxHeight = 18;
+        private static int boundingBoxWidth = 16;
+        private static int boundingBoxHeight = 16;
 
         protected bool isVisible;
         private int tickCount;
@@ -93,8 +93,7 @@ namespace MarioGame.Entities
         }
         public void Bump()
         {
-            if (((BlockActionState)aState).bState == BlockActionStateEnum.BrickBlock)
-            {
+
                 if(tickCount == 0)
                 {
                     tickCount = 10;
@@ -104,13 +103,20 @@ namespace MarioGame.Entities
                 }
                 // TODO: Begin bumping sequence
                 // TODO: If there is no item, change to used.
+                ChangeToUsed();
                 // TODO: If there is an item, display item, and bump
-            }
         }
         // Only called when mario is super
         public void Break()
         {
-            // TODO: Begin breaking sequence
+            if (this.CurrentActionState is QuestionBlockState /*or  bumpable blockstate*/)
+            {
+                this.Bump();
+            }
+            else
+            {
+                // TODO: Begin breaking sequence
+            }
         }
         public void Reveal()
         {

@@ -57,7 +57,7 @@ namespace MarioGame.Theming
         {
             if(mario.CurrentActionState is JumpingMarioState)
             {
-                if (mario.jumpTimer > 2.0)
+                if (mario.jumpTimer > 1.0)
                 {
                     Console.WriteLine(mario.jumpTimer);
                     MakeMarioFall();
@@ -74,6 +74,7 @@ namespace MarioGame.Theming
                     {
                         if (collisionHandler.checkSideCollision(mario, block) == CollisionTypes.Bottom)
                         {
+                            BumpBlock(block);
                             MakeMarioFall();
                         }
                     }
@@ -81,6 +82,7 @@ namespace MarioGame.Theming
                     {
                         if (collisionHandler.checkSideCollision(mario, block) == CollisionTypes.Bottom)
                         {
+                            BumpBlock(block);
                             MakeMarioFall();
                         }
                         else
@@ -285,6 +287,17 @@ namespace MarioGame.Theming
         internal void MakeMarioDead()
         {
             mario.ChangeToDeadState();
+        }
+        internal void BumpBlock(Block block)
+        {
+            if (mario.PowerUpState is SuperState || mario.PowerUpState is FireState || mario.PowerUpState is FireStarState || mario.PowerUpState is SuperStarState)
+            {
+                block.Break();
+            }
+            else
+            {
+                block.Bump();
+            }
         }
         internal void BrickBumpOrBreak()
         {
