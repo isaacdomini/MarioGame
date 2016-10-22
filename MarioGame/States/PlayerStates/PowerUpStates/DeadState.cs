@@ -8,6 +8,7 @@ namespace MarioGame.States
         {
             powerUpState = MarioPowerUpStateEnum.Dead;
             _mario.isCollidable = false;
+        }
         public override void Begin(IState prevState)
         {
             base.Begin(prevState);
