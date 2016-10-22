@@ -5,13 +5,14 @@ using Microsoft.Xna.Framework.Content;
 using MarioGame.States;
 using MarioGame.Core;
 using MarioGame.States.BlockStates.PowerUpStates;
+using MarioGame.Theming;
 
 namespace MarioGame.Entities
 {
     public class Mario : PowerUpEntity
     {
         private float secondsOfInvincibilityRemaining = 0.0f;
-        public bool Invincible { get { return secondsOfInvincibilityRemaining > 0; } }
+        public bool Invincible { get { return CurrentPowerUpState is FireStarState || CurrentPowerUpState is StandardStarState || CurrentPowerUpState is SuperStarState; } }
         // Could be useful for casting in certain circumstances
         public MarioPowerUpState PowerUpState
         {
@@ -58,33 +59,44 @@ namespace MarioGame.Entities
             boxColor = Color.Yellow;
         }
 
+        private void OnInvincibilityEnded()
+        {
+            if(PowerUpState is FireStarState)
+            {
+               ChangeToFireState();
+            }
+            else if (PowerUpState is StandardStarState)
+            {
+                ChangeToStandardState();
+            }
+            else if (PowerUpState is SuperStarState)
+            {
+                ChangeToSuperState();
+            }
+        }
+        private void UpdateInvincibilityStatus()
+        {
+            if (secondsOfInvincibilityRemaining > 0)
+            {
+                secondsOfInvincibilityRemaining -= (GlobalConstants.MILLISECONDS_PER_FRAME / 1000);
+                if (secondsOfInvincibilityRemaining < 0)
+                {
+                    OnInvincibilityEnded();
+                }
+            }
+        }
         public override void Update(Viewport viewport)
         {
-            secondsOfInvincibilityRemaining -=
+            base.Update();
+            UpdateInvincibilityStatus();
             if (PowerUpState.powerUpState == MarioPowerUpStateEnum.Dead)
             {
-                _velocity = idleVelocity;
+                SetVelocityToIdle();// _velocity = idleVelocity;
             }
-            base.Update();
-            // Maybe just set velocity to zero for all this? - Ricky
-            Vector2 pos = _position;
-            if (_position.X < 0)
-            {
-                pos.X = 0;
+            
+            if (_position.X < 0 || _position.X + _width > viewport.Width || _position.Y < 0 || _position.Y + _height > viewport.Height ){
+                SetVelocityToIdle();
             }
-            else if (_position.X + _width > viewport.Width)
-            {
-                pos.X = viewport.Width - _width;
-            }
-            if (_position.Y < 0)
-            {
-                pos.Y = 0;
-            }
-            else if (_position.Y + _height > viewport.Height)
-            {
-                pos.Y = viewport.Height - _height;
-            }
-            _position = pos;
 
             if (PowerUpState.powerUpState != MarioPowerUpStateEnum.Standard || PowerUpState.powerUpState != MarioPowerUpStateEnum.StandardStar)
             {
@@ -235,12 +247,59 @@ namespace MarioGame.Entities
             _position -= _velocity;
             ((MarioActionState)aState).Halt();
         }
-        public override void onCollide(IEntity otherObject, Sides side)
+        private void onCollideEnemy(Enemy enemy, Sides side)
         {
-            base.onCollide(otherObject, side);
-            if (otherObject is Block)
+            if (!Invincible)
             {
-                Block block = (Block)otherObject;
+                    if (collisionHandler.checkForCollision(mario, enemy) && !enemy.IsDead())
+                    {
+                        colliding = true;
+                        enemy.boxColor = Color.Black;
+                        if(mario.PowerUpState is SuperStarState || mario.PowerUpState is FireStarState || mario.PowerUpState is StandardStarState)
+                        {
+                            enemy.JumpedOn();
+                        }
+                        else if (collisionHandler.checkSideCollision(mario, enemy) == Sides.Top)
+                        {
+                            enemy.JumpedOn();
+                            mario.Halt();
+                        }
+                        else
+                        {
+                            if (mario.isCollidable == true)
+                            {
+                                if (enemy.Hurts())
+                                {
+                                    mario.EnemyHit();
+                                }
+                                else
+                                {
+                                    enemy.JumpedOn();
+                                    mario.Halt();
+                                    if (collisionHandler.checkSideCollision(mario, enemy) == Sides.Right)
+                                        ((KoopaTroopa)enemy).ChangeShellVelocityDirection();
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        enemy.boxColor = Color.Red;
+                        mario.isCollidable = true;
+                        foreach (var block in _blocks)
+                        {
+                            if (collisionHandler.checkForCollision(enemy, block))
+                            {
+                                ((KoopaTroopa)enemy).ChangeShellVelocityDirection();
+                            }
+                        }
+                    }
+                    enemy.Update(Viewport);
+            }
+ 
+        }
+        private void onCollideBlock(Block block, Sides side)
+        {
                 if (block.CurrentPowerUpState is HiddenState)
                 {
                     if (side == Sides.Top)
@@ -252,8 +311,19 @@ namespace MarioGame.Entities
                 {
                     Halt();
                 }
-            }
         }
+        public override void onCollide(IEntity otherObject, Sides side)
+        {
+            base.onCollide(otherObject, side);
+            if (otherObject is Block)
+            {
+                onCollideBlock((Block)otherObject, side);
+            }
+            else if (otherObject is Enemy)
+            {
+                onCollideEnemy((Enemy)otherObject, Sides side);
+            }
+       }
         public void setInvincible(float seconds)
         {
             secondsOfInvincibilityRemaining = seconds;

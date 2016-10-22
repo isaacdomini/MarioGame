@@ -64,40 +64,8 @@ namespace MarioGame.Theming
 
             })
             bool colliding = false;
-            foreach (var block in _blocks)
-            {
-                block.Update();
-                if (collisionHandler.checkForCollision(mario, block))
-                {
-                    if (block.CurrentPowerUpState is HiddenState)
-                    {
-                        if (collisionHandler.checkSideCollision(mario, block) == Sides.Bottom)
-                        {
-                            mario.Halt();
-                        }
-                    }
-                    else
-                    {
-                        mario.Halt();
-                        colliding = true;
-                    }
-
-                }
-            }
             if (Mario.invincibleTimer == 0)
             {
-                if(mario.PowerUpState is FireStarState)
-                {
-                    mario.ChangeToFireState();
-                }
-                else if (mario.PowerUpState is StandardStarState)
-                {
-                    mario.ChangeToStandardState();
-                }
-                else if (mario.PowerUpState is SuperStarState)
-                {
-                    mario.ChangeToSuperState();
-                }
 
                 foreach (var enemy in _enemies)
                 {
