@@ -6,6 +6,7 @@ using MarioGame.States;
 using MarioGame.Core;
 using MarioGame.States.BlockStates.PowerUpStates;
 using MarioGame.Theming;
+using System;
 
 namespace MarioGame.Entities
 {
@@ -52,7 +53,7 @@ namespace MarioGame.Entities
             marioActionState = marioActionStateMachine.IdleMarioState;
             marioPowerUpState = powerUpStateMachine.StandardState;
 
-            _marioSprite = (MarioSprite)_sprite;
+            _marioSprite = (MarioSprite) _sprite;
             direction = Directions.Right;
             spaceBarAction = SpaceBarAction.run;
             _height = standardBoundingBoxHeight;
@@ -91,7 +92,7 @@ namespace MarioGame.Entities
         {
             base.Update();
             UpdateInvincibilityStatus();
-            if (marioPowerUpState.powerUpState == MarioPowerUpStateEnum.Dead)
+            if (marioPowerUpState is DeadState)
             {
                 SetVelocityToIdle();// _velocity = idleVelocity;
             }
@@ -100,13 +101,13 @@ namespace MarioGame.Entities
                 SetVelocityToIdle();
             }
 
-            if (marioPowerUpState.powerUpState != MarioPowerUpStateEnum.Standard || marioPowerUpState.powerUpState != MarioPowerUpStateEnum.StandardStar)
+            if (!(marioPowerUpState is StandardState) || !(marioPowerUpState is StandardStarState) )
             {
 
                 boundingBox.X = (int)Position.X - 5;
                 boundingBox.Y = (int)Position.Y;
             }
-            if (marioPowerUpState.powerUpState == MarioPowerUpStateEnum.Standard || marioPowerUpState.powerUpState == MarioPowerUpStateEnum.Dead || marioPowerUpState.powerUpState == MarioPowerUpStateEnum.StandardStar)
+            if (marioPowerUpState is StandardState || marioPowerUpState is DeadState || marioPowerUpState is StandardStarState )
             {
                 if (this.isFacingLeft() == true)
                 {
@@ -127,22 +128,22 @@ namespace MarioGame.Entities
         public void ChangeActionState(MarioActionState state)
         {
             base.ChangeActionState(state);
-            ((MarioSprite)_sprite).changeActionState(state);
+            _marioSprite.changeActionState(state);
         }
         public void ChangePowerUpState(MarioPowerUpState state)
         {
             base.ChangePowerUpState(state);
-            setBoundingBox(marioPowerUpState.powerUpState);
-            ((MarioSprite)_sprite).changePowerUp(state);
+            setBoundingBox(); 
+            _marioSprite.changePowerUp(state);//TODO: can we push _marioSprite.changePowerUp inside of base.ChangePowerUpState, or will doing so lose the polymorphism (e.g. will it call AnimatedSprite.changePowerUp rather than _marioSprite.changePowerUp
         }
-        private void setBoundingBox(MarioPowerUpStateEnum powerUpState)
+        private void setBoundingBox()
         {
-            if (powerUpState == MarioPowerUpStateEnum.Super || powerUpState == MarioPowerUpStateEnum.Fire || powerUpState == MarioPowerUpStateEnum.SuperStar || powerUpState == MarioPowerUpStateEnum.FireStar)
+            if (marioPowerUpState is SuperState || marioPowerUpState is SuperStarState || marioPowerUpState is SuperStarState || marioPowerUpState is FireStarState ) 
             {
                 boundingBox.Width = superBoundingBoxWidth;
                 boundingBox.Height = superBoundingBoxHeight;
             }
-            else if (powerUpState == MarioPowerUpStateEnum.Standard || powerUpState == MarioPowerUpStateEnum.Dead || powerUpState == MarioPowerUpStateEnum.StandardStar)
+            else if (marioPowerUpState is StandardState || marioPowerUpState is DeadState || marioPowerUpState is StandardStarState)
             {
                 boundingBox.Width = standardBoundingBoxWidth;
                 boundingBox.Height = standardBoundingBoxHeight;
@@ -150,34 +151,36 @@ namespace MarioGame.Entities
         }
         public void Jump()
         {
-            if (marioPowerUpState.powerUpState != MarioPowerUpStateEnum.Dead)
+            if (!(marioPowerUpState is DeadState))
             {
                 marioActionState.Jump();
             }
         }
         public void Crouch()
         {
-            if (marioPowerUpState.powerUpState == MarioPowerUpStateEnum.Standard && (marioActionState).actionState == MarioActionStateEnum.Idle)
+            //TODO: make actionState take a StateFactory so the way we check pState and action State below can be consistent
+            if (marioPowerUpState is StandardState && (marioActionState).actionState == MarioActionStateEnum.Idle)
             {
-                (marioActionState).Fall();
+                marioActionState.Fall();
             }
-            else if (marioPowerUpState.powerUpState != MarioPowerUpStateEnum.Dead)
+            else if (!(marioPowerUpState is DeadState))
             {
-                (marioActionState).Crouch();
+                marioActionState.Crouch();
             }
         }
         public void MoveLeft()
         {
-            if (marioPowerUpState.powerUpState != MarioPowerUpStateEnum.Dead)
+            Console.WriteLine("mario.MoveLeft called");
+            if (!(marioPowerUpState is DeadState))
             {
-                (marioActionState).MoveLeft();
+                marioActionState.MoveLeft();
             }
         }
         public void MoveRight()
         {
-            if (marioPowerUpState.powerUpState != MarioPowerUpStateEnum.Dead)
+            if (!(marioPowerUpState is DeadState))
             {
-                (marioActionState).MoveRight();
+                marioActionState.MoveRight();
             }
         }
         internal void onHitByEnemy()
@@ -204,15 +207,16 @@ namespace MarioGame.Entities
         {
             marioPowerUpState.ChangeToDead();
         }
+        //Todo: I don't like that we have a method called DashOrThrowFireball. I think we should have a Dash() method and a throwFireball() method, and which one gets called gets handled in the State classes
         public void DashOrThrowFireball()
         {
             //TODO: Ricky do this?
-            if (marioPowerUpState.powerUpState == MarioPowerUpStateEnum.Fire)
+            if (pState is FireState || pState is FireStarState)
             {
                 // TODO: Mario entity adds fireball to scene
 
             }
-            else if (marioPowerUpState.powerUpState == MarioPowerUpStateEnum.Super)
+            else if (pState is SuperState)
             {
                 if (spaceBarAction == SpaceBarAction.walk)
                 {

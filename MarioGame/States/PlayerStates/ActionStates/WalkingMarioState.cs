@@ -29,7 +29,6 @@ namespace MarioGame.States
             {
                 stateMachine.IdleMarioState.Begin(this);
             }
-
         }
         public override void MoveRight()
         {

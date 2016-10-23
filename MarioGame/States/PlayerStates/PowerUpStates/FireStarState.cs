@@ -6,14 +6,7 @@ namespace MarioGame.States
     {
         public FireStarState(Mario entity, MarioPowerUpStateMachine stateMachine) : base(entity, stateMachine)
         {
-            powerUpState = MarioPowerUpStateEnum.SuperStar;
-
+            powerUpState = MarioPowerUpStateEnum.FireStar;
         }
-
-        public override void ChangeToFire()
-        {
-            _mario.ChangePowerUpState(_stateMachine.FireState);
-        }
-
     }
 }

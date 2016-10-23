@@ -98,9 +98,7 @@ namespace MarioGame.Entities
                 if(tickCount == 0)
                 {
                     tickCount = 10;
-                    Vector2 copyVel = Velocity;
-                    copyVel.Y = -1;
-                    Velocity = copyVel;
+                    _velocity.Y = -1;
                 }
                 // TODO: Begin bumping sequence
                 // TODO: If there is no item, change to used.
@@ -127,9 +125,7 @@ namespace MarioGame.Entities
             else if (tickCount == 1)
             {
                 tickCount = -10;
-                Vector2 copyVel = Velocity;
-                copyVel.Y = 1;
-                Velocity = copyVel;
+                _velocity.Y = 1;
             }
             else if (tickCount < -1)
             {
@@ -138,9 +134,7 @@ namespace MarioGame.Entities
             else if (tickCount == -1)
             {
                 tickCount = 0;
-                Vector2 copyVel = Velocity;
-                copyVel.Y = 0;
-                Velocity = copyVel;
+                _velocity.Y = 0;
             }
         }
 

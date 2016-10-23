@@ -22,7 +22,6 @@ namespace MarioGame.Entities
         public void ChangePowerUpState(PowerUpState state)
         {
             pState = state;
-
         }
     }
 }

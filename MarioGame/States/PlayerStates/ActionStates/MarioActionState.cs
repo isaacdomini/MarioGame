@@ -3,7 +3,7 @@ using MarioGame.Entities;
 
 namespace MarioGame.States
 {
-    public class MarioActionState : ActionState
+    public abstract class MarioActionState : ActionState
     {
         public MarioActionStateEnum actionState
         {
@@ -26,7 +26,12 @@ namespace MarioGame.States
 
         public virtual void MoveRight() { }
 
-        public virtual void MoveLeft() { }
+        public virtual void MoveLeft() {
+            if (mario.isFacingLeft())
+            {
+
+            }
+        }
 
         public virtual void Crouch() { }
         public virtual void Fall() { }

@@ -23,6 +23,7 @@ namespace MarioGame.States
             if (mario.isFacingRight())
             {
                 mario.turnLeft();
+                mario.SetVelocityToIdle();
             }
             else if (mario.isFacingLeft())
             {

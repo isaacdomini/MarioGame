@@ -7,7 +7,6 @@ namespace MarioGame.States
         public SuperStarState(Mario entity, MarioPowerUpStateMachine stateMachine) : base(entity, stateMachine)
         {
             powerUpState = MarioPowerUpStateEnum.SuperStar;
-
         }
     }
 }

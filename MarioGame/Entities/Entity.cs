@@ -35,6 +35,7 @@ namespace MarioGame.Entities
         public Vector2 Position
         {
             get { return _position; }
+            protected set { _position = value; }
         }
         protected Vector2 _velocity;
         public Vector2 Velocity { get { return _velocity; } }
@@ -47,7 +48,15 @@ namespace MarioGame.Entities
         {
             Deleted = true;
         }
-        protected virtual void preConstructor() { }
+        protected static int boundingBoxWidth = 10;
+        protected static Point boundingBoxSize;
+        protected Point boundingBoxOffset;
+        protected Color regularBoxColor = Color.Yellow;
+        protected Color collidingBoxColor = Color.Black;
+        protected virtual void preConstructor() {
+            boundingBoxSize = new Point(10, 13);
+            boundingBoxOffset = new Point(3, 5);
+        }
         public Entity(Vector2 position, ContentManager content, float xVelocity = 0, float yVelocity = 0)
         {
             preConstructor();
@@ -59,6 +68,7 @@ namespace MarioGame.Entities
            _sprite = (AnimatedSprite)Activator.CreateInstance(type, content, this);
 
             _position = position;
+            boundingBox = new Rectangle(Util.vectorToPoint(Position) + boundingBoxOffset, boundingBoxSize);
 
             _colliding = false;
         }
@@ -69,14 +79,11 @@ namespace MarioGame.Entities
         public virtual void Update()
         {
             _position += Velocity;
-            boxColor = _colliding ? Color.Black : Color.Yellow;
+            boundingBox.Location = Util.vectorToPoint(Position) + boundingBoxOffset;
+            boxColor = _colliding ? collidingBoxColor : regularBoxColor;
             _colliding = false;
         }
         public virtual void Update(Viewport viewport) { }
-        public Vector2 getPosition()
-        {
-            return Position;
-        }
         public void setVelocity(Vector2 newVelocity)
         {
             _velocity = newVelocity;
@@ -88,7 +95,7 @@ namespace MarioGame.Entities
         public void SetVelocityToWalk()
         {
             this.setVelocity(walkingVelocity);
-            if (direction == Directions.Left)
+            if (isFacingLeft())
             {
                 //TODO: how does below line work
                 _velocity = Velocity * -1;

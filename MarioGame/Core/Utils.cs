@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,6 +38,10 @@ namespace MarioGame.Core
                     return Sides.Top;
             }
             return Sides.None;
+        }
+        public static Point vectorToPoint(Vector2 vector)
+        {
+            return new Point((int)vector.X, (int)vector.Y);
         }
     }
 }
