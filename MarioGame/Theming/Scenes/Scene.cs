@@ -50,6 +50,7 @@ namespace MarioGame.Theming.Scenes
 
             _script._entities.ForEach(e => Sprites.Add(e._sprite));
             Sprites.ForEach(s => s.Load());
+            _script._entities.ForEach(e => e.LoadBoundingBox());
             //Allows for bounding boxes to be drawn in different colors
             rectanglePixel = new Texture2D(Stage.Game1.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             rectanglePixel.SetData(new[] { Color.White });

@@ -57,8 +57,6 @@ namespace MarioGame.Entities
         protected Color collidingBoxColor = Color.Black;
         public Color BoxColor;
         protected virtual void preConstructor() {
-            boundingBoxSize = new Point(_sprite.FrameWidth, _sprite.FrameHeight);
-            boundingBoxOffset = new Point(0, 0);
         }
         public Entity(Vector2 position, ContentManager content, float xVelocity = 0, float yVelocity = 0)
         {
@@ -71,9 +69,15 @@ namespace MarioGame.Entities
            _sprite = (AnimatedSprite)Activator.CreateInstance(type, content, this);
 
             _position = position;
+            _colliding = false;
+        }
+        /** must be called after _sprite.Load(). this is called in Scene. */
+        public void LoadBoundingBox()
+        {
+            boundingBoxSize = new Point(_sprite.FrameWidth, _sprite.FrameHeight);
+            boundingBoxOffset = new Point(0, 0);
             boundingBox = new Rectangle(Util.vectorToPoint(Position) + boundingBoxOffset, boundingBoxSize);
             BoxColor = regularBoxColor; 
-            _colliding = false;
         }
         public void ChangeActionState(ActionState state)
         {
