@@ -10,17 +10,8 @@ namespace MarioGame.States
         }
         public override void Begin(MarioActionState prevState)
         {
-            mario.ChangeActionState(stateMachine.IdleMarioState);
-            mario.SetVelocityToIdle();
-        }
-
-        public override void Jump()
-        {
-            stateMachine.JumpingMarioState.Begin(this);
-        }
-        public override void Crouch()
-        {
-            stateMachine.CrouchingMarioState.Begin(this);
+            _mario.ChangeActionState(stateMachine.IdleMarioState);
+            _mario.SetVelocityToIdle();
         }
         public override void Fall()
         {
@@ -28,29 +19,22 @@ namespace MarioGame.States
         }
         public override void MoveLeft()
         {
-            if (mario.isFacingLeft())
-            {
+            if (_mario.FacingLeft) { 
                 stateMachine.WalkingMarioState.Begin(this);
-            }
-            else if (mario.isFacingRight())
+            } else if (_mario.FacingRight)
             {
-                mario.turnLeft();
+                _mario.turnLeft();
             }
-
         }
         public override void MoveRight()
         {
-            // Meaning idle mario is already facing right
-            if (mario.isFacingRight())
+            if (_mario.FacingLeft)
+            {
+                _mario.turnRight();
+            } else if (_mario.FacingRight)
             {
                 stateMachine.WalkingMarioState.Begin(this);
             }
-            // Meaning mario is facing left
-            else if (mario.isFacingLeft())
-            {
-                mario.turnRight();
-            }
-
         }
     }
 }

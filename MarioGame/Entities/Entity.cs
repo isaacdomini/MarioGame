@@ -37,6 +37,8 @@ namespace MarioGame.Entities
             get { return _position; }
             protected set { _position = value; }
         }
+        public bool FacingLeft { get { return direction == Directions.Left;  } }
+        public bool FacingRight { get { return direction == Directions.Right; } }
         protected Vector2 _velocity;
         public Vector2 Velocity { get { return _velocity; } }
         public readonly static int velocityConstant = 1;
@@ -95,7 +97,7 @@ namespace MarioGame.Entities
         public void SetVelocityToWalk()
         {
             this.setVelocity(walkingVelocity);
-            if (isFacingLeft())
+            if (FacingLeft)
             {
                 //TODO: how does below line work
                 _velocity = Velocity * -1;
@@ -109,14 +111,7 @@ namespace MarioGame.Entities
         {
             direction = newDir;
         }
-        public bool isFacingLeft()
-        {
-            return direction == Directions.Left;
-        }
-        public bool isFacingRight()
-        {
-            return direction == Directions.Right;
-        }
+        
         public virtual void turnLeft() {
             direction = Directions.Left;
             _sprite.changeDirection(direction);

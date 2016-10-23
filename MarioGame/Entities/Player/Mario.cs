@@ -13,12 +13,12 @@ namespace MarioGame.Entities
     public class Mario : PowerUpEntity
     {
         private float secondsOfInvincibilityRemaining = 0.0f;
-        public bool Invincible { get { return CurrentPowerUpState is FireStarState || CurrentPowerUpState is StandardStarState || CurrentPowerUpState is SuperStarState; } }
+        public bool Invincible { get { return pState is FireStarState || pState is StandardStarState || pState is SuperStarState; } }
         // Could be useful for casting in certain circumstances
-        public MarioPowerUpState marioPowerUpState;
-        public MarioActionState marioActionState;
+        public MarioPowerUpState marioPowerUpState { get { return (MarioPowerUpState)pState; } }
+        public MarioActionState marioActionState { get { return (MarioActionState)aState; } }
         // TODO: maybe we don't have to give the casted variable a new name, but rather just use the new keyword and the subclass type
-        public MarioSprite _marioSprite;
+        public MarioSprite _marioSprite { get { return (MarioSprite)_sprite; } }
         private int _width;
         private int _height;
 
@@ -42,18 +42,15 @@ namespace MarioGame.Entities
 
         MarioActionStateMachine marioActionStateMachine;
 
-        MarioPowerUpStateMachine powerUpStateMachine;
+        MarioPowerUpStateMachine marioPowerUpStateMachine;
 
         public Mario(Vector2 position, ContentManager content) : base(position, content)
         {
-            marioPowerUpState = (MarioPowerUpState)pState;
-            marioActionState = (MarioActionState)aState;
             marioActionStateMachine = new MarioActionStateMachine(this);
-            powerUpStateMachine = new MarioPowerUpStateMachine(this);
-            marioActionState = marioActionStateMachine.IdleMarioState;
-            marioPowerUpState = powerUpStateMachine.StandardState;
+            marioPowerUpStateMachine = new MarioPowerUpStateMachine(this);           
+            aState = marioActionStateMachine.IdleMarioState; //TODO: make marioActionState a casted getter of aState?
+            pState = marioPowerUpStateMachine.StandardState;
 
-            _marioSprite = (MarioSprite) _sprite;
             direction = Directions.Right;
             spaceBarAction = SpaceBarAction.run;
             _height = standardBoundingBoxHeight;
@@ -109,7 +106,7 @@ namespace MarioGame.Entities
             }
             if (marioPowerUpState is StandardState || marioPowerUpState is DeadState || marioPowerUpState is StandardStarState )
             {
-                if (this.isFacingLeft() == true)
+                if (FacingLeft == true)
                 {
                     boundingBox.X = (int)Position.X - 5;
                     boundingBox.Y = (int)Position.Y + 16;
@@ -132,6 +129,7 @@ namespace MarioGame.Entities
         }
         public void ChangePowerUpState(MarioPowerUpState state)
         {
+            Console.WriteLine("state passed into Mario.ChangePowerUpState is DeadState?" + (state is DeadState)); 
             base.ChangePowerUpState(state);
             setBoundingBox(); 
             _marioSprite.changePowerUp(state);//TODO: can we push _marioSprite.changePowerUp inside of base.ChangePowerUpState, or will doing so lose the polymorphism (e.g. will it call AnimatedSprite.changePowerUp rather than _marioSprite.changePowerUp
@@ -173,11 +171,17 @@ namespace MarioGame.Entities
             Console.WriteLine("mario.MoveLeft called");
             if (!(marioPowerUpState is DeadState))
             {
+                Console.WriteLine("Mario is not in dead State");
                 marioActionState.MoveLeft();
+            }
+            else
+            {
+                Console.WriteLine("mario is DeadState");
             }
         }
         public void MoveRight()
         {
+            Console.WriteLine("mario.MoveRight called");
             if (!(marioPowerUpState is DeadState))
             {
                 marioActionState.MoveRight();
@@ -245,9 +249,16 @@ namespace MarioGame.Entities
         }
         private void onCollideEnemy(Enemy enemy, Sides side)
         {
-            if (!Invincible && !enemy.Dead && side != Sides.Top){
-                Halt();
-                ChangeToDeadState();
+            Console.WriteLine("mario collided an enemy");
+            if (!enemy.Dead && side != Sides.Bottom){
+                Console.WriteLine("Enemy was alive and mario did not hit the top of the enemy, meaning we are calling marioPowerUpState.onHitByEnemy()");
+                Console.WriteLine("is mario dead before marioPowerUpState.onHitByEnemy? " + ( marioPowerUpState is DeadState));
+                marioPowerUpState.onHitByEnemy();
+                Console.WriteLine("is mario dead after marioPowerUpState.onHitByEnemy? " + ( marioPowerUpState is DeadState));
+            }
+            else
+            {
+                Console.WriteLine("Enemy was Dead and/or mario hit the top of the enemy, meaning this does not affect mario.");
             }
         }
         protected override void onBlockSideCollision()

@@ -9,12 +9,11 @@ namespace MarioGame.States
         {
             get; protected set; //TODO: make this read from some shared enum with Sprites
         }
-        protected Mario mario;
+        protected Mario _mario { get { return (Mario)_entity; } }
         protected MarioActionStateMachine stateMachine;
 
         public MarioActionState(Mario entity, MarioActionStateMachine stateMachine) : base(entity)
         {
-            mario = entity;
             this.stateMachine = stateMachine;
         }
 
@@ -22,18 +21,27 @@ namespace MarioGame.States
         {
             base.Begin(prevState);
         }
-        public virtual void Jump() { }
+        public virtual void Jump() {
+            stateMachine.JumpingMarioState.Begin(this);
+        }
 
-        public virtual void MoveRight() { }
-
-        public virtual void MoveLeft() {
-            if (mario.isFacingLeft())
+        public virtual void MoveRight() {
+            if (_mario.FacingLeft)
             {
-
+                _mario.turnRight();
             }
         }
 
-        public virtual void Crouch() { }
+        public virtual void MoveLeft() {
+            if (_mario.FacingRight)
+            {
+                _mario.turnLeft();
+            }
+        }
+
+        public virtual void Crouch() {
+            stateMachine.CrouchingMarioState.Begin(this);
+        }
         public virtual void Fall() { }
         public void Halt()
         {

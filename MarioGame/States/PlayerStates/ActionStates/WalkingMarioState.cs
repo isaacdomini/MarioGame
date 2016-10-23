@@ -11,28 +11,20 @@ namespace MarioGame.States
         }
         public override void Begin(MarioActionState prevState)
         {
-            mario.ChangeActionState(stateMachine.WalkingMarioState);
-            mario.SetVelocityToWalk();
+            _mario.ChangeActionState(stateMachine.WalkingMarioState);
+            _mario.SetVelocityToWalk();
         }
 
-        public override void Jump()
-        {
-            stateMachine.JumpingMarioState.Begin(this);
-        }
-        public override void Crouch()
-        {
-            stateMachine.CrouchingMarioState.Begin(this);
-        }
         public override void MoveLeft()
         {
-            if (mario.isFacingRight())
+            if (_mario.FacingRight)
             {
                 stateMachine.IdleMarioState.Begin(this);
             }
         }
         public override void MoveRight()
         {
-            if (mario.isFacingLeft())
+            if (_mario.FacingLeft)
             {
                 stateMachine.IdleMarioState.Begin(this);
             }
