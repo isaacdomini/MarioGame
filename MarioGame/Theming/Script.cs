@@ -139,7 +139,7 @@ namespace MarioGame.Theming
                                     enemy.JumpedOn();
                                     mario.Halt();
                                     if (collisionHandler.checkSideCollision(mario, enemy) == CollisionTypes.Right)
-                                        ((KoopaTroopa)enemy).ChangeShellVelocityDirection();
+                                        ((KoopaTroopa)enemy).ChangeVelocityDirection();
                                 }
                             }
                         }
@@ -152,7 +152,7 @@ namespace MarioGame.Theming
                         {
                             if (collisionHandler.checkForCollision(enemy, block))
                             {
-                                ((KoopaTroopa)enemy).ChangeShellVelocityDirection();
+                                enemy.ChangeVelocityDirection();
                             }
                         }
                     }
@@ -184,7 +184,7 @@ namespace MarioGame.Theming
                             {
                                 if (collisionHandler.checkForCollision(enemy, block))
                                 {
-                                    ((KoopaTroopa)enemy).ChangeShellVelocityDirection();
+                                    ((KoopaTroopa)enemy).ChangeVelocityDirection();
                                 }
                             }
                         }

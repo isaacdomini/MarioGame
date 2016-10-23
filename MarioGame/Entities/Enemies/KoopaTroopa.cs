@@ -19,7 +19,7 @@ namespace MarioGame.Entities
     {
         //public KoopaTroopaSprite eSprite;
         private KoopaActionState eState;
-        public readonly static Vector2 shellMovingVelocity = new Vector2(2, 0);
+        public readonly static Vector2 movingVelocity = new Vector2(-1, 0);
         private int _height;
         private int _width;
         private static int boundingBoxWidth = 10;
@@ -35,7 +35,9 @@ namespace MarioGame.Entities
             boundingBox = new Rectangle((int)_position.X + 3, (int)_position.Y + 5, boundingBoxWidth, boundingBoxHeight);
             boxColor = Color.Red;
             isCollidable = true;
-
+            _height = boundingBoxHeight;
+            _width = boundingBoxWidth;
+            _velocity = movingVelocity;
         }
         public void ChangeActionState(KoopaActionState newState)
         {
@@ -45,12 +47,13 @@ namespace MarioGame.Entities
 
         internal void SetShellVelocityToMoving()
         {
-            this.setVelocity(shellMovingVelocity);
+            this.setVelocity(movingVelocity);
         }
-        public void ChangeShellVelocityDirection()
+        public override void ChangeVelocityDirection()
         {
             Vector2 newVelocity = _velocity * -1;
             this.setVelocity(newVelocity);
+            changeSpriteDirection();
         }
 
         public override void Halt()
@@ -71,14 +74,14 @@ namespace MarioGame.Entities
             if (_position.X < 0)
             {
                 pos.X = 0;
-                ChangeShellVelocityDirection();
+                ChangeVelocityDirection();
             }
             else if (_position.X + _width > viewport.Width)
             {
                 pos.X = viewport.Width - _width;
-                ChangeShellVelocityDirection();            }
+                ChangeVelocityDirection();
+            }
             _position = pos;
-
             //_position += _velocity;
             boundingBox.X = (int)_position.X + 3;
             boundingBox.Y = (int)_position.Y + 5;
@@ -86,6 +89,10 @@ namespace MarioGame.Entities
         public void ChangeToDeadState()
         {
             eState.ChangeToDead();
+        }
+        public void changeSpriteDirection()
+        {
+            ((KoopaActionState)eState).changeSpriteDirection();
         }
     }
 }

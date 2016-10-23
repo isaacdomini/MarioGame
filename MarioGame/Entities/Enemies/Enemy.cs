@@ -25,5 +25,6 @@ namespace MarioGame.Entities
         {
             return _hurts;
         }
+        public virtual void ChangeVelocityDirection() { }
     }
 }

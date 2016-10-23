@@ -29,7 +29,8 @@ namespace MarioGame.Entities
 
         public void changeDirection()
         {
-            _velocity = -1 * _velocity;
+            Vector2 newVelocity = _velocity * -1;
+            this.setVelocity(newVelocity);
         }
     }
 }
