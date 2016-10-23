@@ -83,7 +83,9 @@ namespace MarioGame.Theming
 
         public void LookAt(Vector2 position)
         {
-            Position = position - new Vector2(_viewport.Width / 2.0f, _viewport.Height / 2.0f);
+            //Position = position - new Vector2(_viewport.Width / 2.0f, _viewport.Height / 2.0f);
+            Position = new Vector2(position.X - _viewport.Width / 2.0f, Position.Y);
+            Console.WriteLine("Viewport width: " + _viewport.Width/2.0f + " position.X: "+ (position.X-_viewport.Width / 2.0f));
         }
 
         public void Move(Vector2 displacement, bool respectRotation = false)
