@@ -245,7 +245,7 @@ namespace MarioGame.Entities
         }
         private void onCollideEnemy(Enemy enemy, Sides side)
         {
-            if (!Invincible && !enemy.Dead && side != Sides.Bottom){
+            if (!Invincible && !enemy.Dead && side != Sides.Top){
                 Halt();
                 ChangeToDeadState();
             }

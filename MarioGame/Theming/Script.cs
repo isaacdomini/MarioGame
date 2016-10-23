@@ -51,15 +51,24 @@ namespace MarioGame.Theming
 
         public void Update(GameTime gameTime)
         {
+            List<int> entityPairs = new List<int>();
             _entities = _entities.FindAll(e => !e.Deleted);
             _entities.FindAll(e => e.Moving).ForEach(e =>
            {
                _entities.FindAll(e2 => e.boundingBox.Intersects(e2.boundingBox)).ForEach(e2 =>
                {
-                   Sides eSide = CollisionHandler.getIntersectingSide(e.boundingBox, e2.boundingBox);
-                   e.onCollide(e2, eSide);
-                   e2.onCollide(e, Util.flip(eSide));
-               });
+                   if(!entityPairs.Contains(e.GetHashCode() ^ e2.GetHashCode()))
+                   {
+                       Sides eSide = CollisionHandler.getIntersectingSide(e.boundingBox, e2.boundingBox);
+                       e.onCollide(e2, eSide);
+                       e2.onCollide(e, Util.flip(eSide));
+                       entityPairs.Add(e.GetHashCode() ^ e2.GetHashCode());
+                   }
+                   else
+                   {
+                       Console.WriteLine("Type" + e.GetType());
+                   }
+                });
 
            });
             mario.Update(Viewport);
