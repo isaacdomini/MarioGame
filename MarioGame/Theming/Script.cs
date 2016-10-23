@@ -18,9 +18,9 @@ namespace MarioGame.Theming
         public List<Entity> _entities { get; private set; }
 
         //possibile TODO: cache the getters if performance suffers
-        public List<Block> _blocks { get { return _entities.FindAll(e => e is Block).ConvertAll(e => (Block) e); } }
-        public List<Item> _items { get { return _entities.FindAll(e => e is Item).ConvertAll(e => (Item) e); } }
-        public List<Enemy> _enemies { get { return _entities.FindAll(e => e is Enemy).ConvertAll(e => (Enemy) e); } }
+        protected List<Block> _blocks { get { return _entities.FindAll(e => e is Block).ConvertAll(e => (Block) e); } }
+        protected List<Item> _items { get { return _entities.FindAll(e => e is Item).ConvertAll(e => (Item) e); } }
+        protected List<Enemy> _enemies { get { return _entities.FindAll(e => e is Enemy).ConvertAll(e => (Enemy) e); } }
 
         //TODO: clean up below line's code smell
         public Mario _mario { get { return (Mario)_entities.Find(e => e is Mario); } }
