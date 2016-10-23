@@ -14,7 +14,7 @@ namespace MarioGame.Theming.Scenes
         public static Texture2D rectanglePixel;
         private readonly Script _script;
         private SpriteBatch _spriteBatch;
-        Camera camera;
+        public Camera camera;
         Vector2 camPos;
 
         public Scene(Stage stage)
@@ -67,7 +67,7 @@ namespace MarioGame.Theming.Scenes
             // TODO Should we update the sprites in script? That way we are only doing updates from one location
             Sprites.ForEach(s => s.Update((float)gameTime.ElapsedGameTime.TotalSeconds));
             //camera.Position = new Vector2(camera.Position.X + 1, camera.Position.Y);
-            camera.LookAt(_script.mario.position);
+            //camera.LookAt(_script.mario.position);
             Console.WriteLine("Mario Pos: "+ _script.mario.position.X + " CamPos: "+ camera.Position.X);
         }
         public void Draw(GameTime gameTime)

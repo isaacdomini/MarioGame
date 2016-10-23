@@ -55,6 +55,10 @@ namespace MarioGame.Theming
 
         public void Update(GameTime gameTime)
         {
+            if (mario.position.X >= Viewport.Width / 2.0f)
+            {
+                _scene.camera.LookAt(mario.position);
+            }
             if(mario.CurrentActionState is JumpingMarioState)
             {
                 if (mario.jumpTimer > 1.5)
