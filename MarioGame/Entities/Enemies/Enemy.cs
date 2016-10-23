@@ -10,7 +10,9 @@ namespace MarioGame.Entities
     {
         public AnimatedSprite eSprite;
         protected bool _isDead;
+        public bool Dead { get { return _isDead; } }
         protected bool _hurts;
+        public bool Hurts { get { return _hurts; } }
         public Enemy(Vector2 position, ContentManager content) : base(position, content)
         {
             _isDead = false;
@@ -18,17 +20,16 @@ namespace MarioGame.Entities
         }
         public virtual void JumpedOn() { }
 
-        public virtual bool IsDead()
+        public override void onCollide(IEntity otherObject, Sides side)
         {
-            return _isDead;
-        }
-        public virtual bool Hurts()
-        {
-            return _hurts;
-        }
-        public override void OnCollide(IEntity otherObject, Sides side)
-        {
-            
+            base.onCollide(otherObject, side);
+            if (otherObject is Mario )
+            {
+                if (side == Sides.Top)
+                {
+                    _isDead = true;
+                }
+            } 
         }
     }
 }

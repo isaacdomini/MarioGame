@@ -16,7 +16,7 @@ namespace MarioGame.Sprites
             //frames are all facing left. 
             Cloud = 0
         }
-        public CloudSprite(ContentManager content) : base(content)
+        public CloudSprite(ContentManager content, Entity entity) : base(content, entity)
         {
             _assetName = "ScenerySprite";
             _numberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;

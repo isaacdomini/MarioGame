@@ -31,17 +31,17 @@ namespace MarioGame.Entities
             get { return this.aState; }
         }
 
-        protected Vector2 _position
+        protected Vector2 _position;
+        public Vector2 Position
         {
-            get { return _sprite.Position; }
-            set { _sprite.Position = value; }
+            get { return _position; }
         }
-
+        protected Vector2 _velocity;
+        public Vector2 Velocity { get { return _velocity; } }
         public readonly static int velocityConstant = 1;
         private readonly static Vector2 walkingVelocity = new Vector2(velocityConstant * 1, 0);
         public readonly static Vector2 idleVelocity = new Vector2(0, 0);
-        public Vector2 _velocity { get; protected set; }
-        public bool Moving { get { return !_velocity.Equals(idleVelocity); } }
+        public bool Moving { get { return !Velocity.Equals(idleVelocity); } }
         public bool Deleted { get; private set; }
         protected void Delete()
         {
@@ -56,10 +56,9 @@ namespace MarioGame.Entities
             String spriteClass = this.GetType().Name + "Sprite";
             string namespaceAndClass = typeof(Sprite).Namespace + "." + spriteClass;
             Type type = Type.GetType(namespaceAndClass);
-           _sprite = (AnimatedSprite)Activator.CreateInstance(type, content);
+           _sprite = (AnimatedSprite)Activator.CreateInstance(type, content, this);
 
             _position = position;
-            _sprite.Position = _position;
 
             _colliding = false;
         }
@@ -69,14 +68,14 @@ namespace MarioGame.Entities
         }
         public virtual void Update()
         {
-            _position += _velocity;
+            _position += Velocity;
             boxColor = _colliding ? Color.Black : Color.Yellow;
             _colliding = false;
         }
         public virtual void Update(Viewport viewport) { }
         public Vector2 getPosition()
         {
-            return _position;
+            return Position;
         }
         public void setVelocity(Vector2 newVelocity)
         {
@@ -91,7 +90,8 @@ namespace MarioGame.Entities
             this.setVelocity(walkingVelocity);
             if (direction == Directions.Left)
             {
-                _velocity = _velocity * -1;
+                //TODO: how does below line work
+                _velocity = Velocity * -1;
             }
         }
         public void makeInvisible()
@@ -131,36 +131,32 @@ namespace MarioGame.Entities
         }
         protected virtual void onCollideBlock(Block block, Sides side)
         {
-                if (block.CurrentPowerUpState is HiddenState)
+            if (block.CurrentPowerUpState is HiddenState)
+            {
+                if (side == Sides.Top)
                 {
-                    if (side == Sides.Top)
-                    {
-                        Halt();
-                    }
+                    Halt();
                 }
-                else
+            }
+            else
+            {
+                if (side == Sides.Left || side == Sides.Right)
                 {
-                    if (side == Sides.Left || side == Sides.Right)
-                    {
-                        onBlockSideCollision();
-                    }
-                    else if (side == Sides.Top || side == Sides.Bottom)
-                    {
-                        _position.Y -= _velocity.Y;
-                        _velocity.Y = 0;
-                    }
-                    else if (side == Sides.Top)
-                    {
-                        //TODO: replace the below with simply letting gravity take over
-                        _position.Y -= _velocity.Y;
-                        _velocity.Y = 0;
-                    }
+                    onBlockSideCollision();
                 }
+                else if (side == Sides.Top)
+                {
+                    _position.Y -= Velocity.Y;
+                    _velocity.Y = 0;
+                }
+                else if (side == Sides.Top)
+                {
+                    //TODO: replace the below with simply letting gravity take over
+                    _position.Y -= Velocity.Y;
+                    _velocity.Y = 0;
+                }
+            }
         }
         protected virtual void onBlockSideCollision() { }
-        protected void removeFromEntitiesList()
-        {
-
-        }
     }
 }

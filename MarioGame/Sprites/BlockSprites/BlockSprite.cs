@@ -29,7 +29,7 @@ namespace MarioGame.Sprites
             Hidden = 1
         }
 
-        public BlockSprite(ContentManager content) : base(content)
+        public BlockSprite(ContentManager content, Entity entity) : base(content, entity)
         {
             _assetName = "blocks";
             _numberOfFramesPerRow = 9;

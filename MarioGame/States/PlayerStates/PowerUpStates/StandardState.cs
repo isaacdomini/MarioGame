@@ -14,7 +14,7 @@ namespace MarioGame.States
             _mario.ChangePowerUpState(_stateMachine.StandardStarState);
             Mario.invincibleTimer = 625;
         }
-        public override void EnemyHit()
+        public override void onHitByEnemy()
         {
             ChangeToDead();
         }

@@ -16,16 +16,20 @@ namespace MarioGame.Sprites
         protected Texture2D _texture;
         protected string _assetName;
         protected ContentManager _content;
+        protected Entity _entity;
+        private ContentManager content;
 
         public Vector2 Position
         {
-            get; set;
+            get { return _entity.Position; }
         }
 
-        public Sprite(ContentManager content)
+        public Sprite(ContentManager content, Entity entity)
         {
+            _entity = entity;
             _content = content;
         }
+
         public bool Visible { get; set; }
        
 

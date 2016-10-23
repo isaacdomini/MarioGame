@@ -43,7 +43,7 @@ namespace MarioGame.Sprites
 
         //power up states - standard(small), super(big), fire ,star (invincible), Dead
 
-        public MarioSprite(ContentManager content) : base(content)
+        public MarioSprite(ContentManager content, Entity entity) : base(content, entity)
         {
             _assetName = "characters_transparent";
             _numberOfFramesPerRow = 15;

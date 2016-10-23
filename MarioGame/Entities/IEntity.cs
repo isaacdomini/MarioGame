@@ -13,7 +13,7 @@ namespace MarioGame.Entities
         void Update();
         void ChangeActionState(ActionState newstate);
 
-        Vector2 getPosition();
+        Vector2 Position { get; }
 
     }
 }

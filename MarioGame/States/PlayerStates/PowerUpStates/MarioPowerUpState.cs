@@ -31,12 +31,11 @@ namespace MarioGame.States
         {
             _mario.ChangePowerUpState(_stateMachine.SuperState);
         }
-
         public virtual void ChangeToFire()
         {
             _mario.ChangePowerUpState(_stateMachine.FireState);
         }
         public virtual void ChangeToStar() { }
-        public virtual void EnemyHit() { }
+        public virtual void onHitByEnemy() { }
     }
 }

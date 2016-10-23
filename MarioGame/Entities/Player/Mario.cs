@@ -54,7 +54,7 @@ namespace MarioGame.Entities
             spaceBarAction = SpaceBarAction.run;
             _height = standardBoundingBoxHeight;
             _width = standardBoundingBoxWidth;
-            boundingBox = new Rectangle((int)(_position.X + 5), (int)(_position.Y + 16), _width, _height);
+            boundingBox = new Rectangle((int)(Position.X + 5), (int)(Position.Y + 16), _width, _height);
             boxColor = Color.Yellow;
         }
 
@@ -93,33 +93,33 @@ namespace MarioGame.Entities
                 SetVelocityToIdle();// _velocity = idleVelocity;
             }
             
-            if (_position.X < 0 || _position.X + _width > viewport.Width || _position.Y < 0 || _position.Y + _height > viewport.Height ){
+            if (Position.X < 0 || Position.X + _width > viewport.Width || Position.Y < 0 || Position.Y + _height > viewport.Height ){
                 SetVelocityToIdle();
             }
 
             if (marioPowerUpState.powerUpState != MarioPowerUpStateEnum.Standard || marioPowerUpState.powerUpState != MarioPowerUpStateEnum.StandardStar)
             {
 
-                boundingBox.X = (int)_position.X - 5;
-                boundingBox.Y = (int)_position.Y;
+                boundingBox.X = (int)Position.X - 5;
+                boundingBox.Y = (int)Position.Y;
             }
             if (marioPowerUpState.powerUpState == MarioPowerUpStateEnum.Standard || marioPowerUpState.powerUpState == MarioPowerUpStateEnum.Dead || marioPowerUpState.powerUpState == MarioPowerUpStateEnum.StandardStar)
             {
                 if (this.isFacingLeft() == true)
                 {
-                    boundingBox.X = (int)_position.X - 5;
-                    boundingBox.Y = (int)_position.Y + 16;
+                    boundingBox.X = (int)Position.X - 5;
+                    boundingBox.Y = (int)Position.Y + 16;
                 }
                 else
                 {
-                    boundingBox.X = (int)_position.X + 5;
-                    boundingBox.Y = (int)_position.Y + 16;
+                    boundingBox.X = (int)Position.X + 5;
+                    boundingBox.Y = (int)Position.Y + 16;
                 }
             }
         }
         public bool checkMarioJumping()
         {
-            return this._velocity.Equals(jumpingVelocity);
+            return this.Velocity.Equals(jumpingVelocity);
         }
 
         public void ChangeActionState(MarioActionState state)
@@ -181,9 +181,9 @@ namespace MarioGame.Entities
                 (marioActionState).MoveRight();
             }
         }
-        internal void EnemyHit()
+        internal void onHitByEnemy()
         {
-            marioPowerUpState.EnemyHit();
+            marioPowerUpState.onHitByEnemy();
         }
         public void ChangeToFireState()
         {
@@ -217,12 +217,12 @@ namespace MarioGame.Entities
             {
                 if (spaceBarAction == SpaceBarAction.walk)
                 {
-                    _velocity = _velocity / 2;
+                    _velocity = Velocity / 2;
                     spaceBarAction = SpaceBarAction.run;
                 }
                 else if (spaceBarAction == SpaceBarAction.run)
                 {
-                    _velocity = _velocity * 2;
+                    _velocity = Velocity * 2;
                     spaceBarAction = SpaceBarAction.walk;
                 }
             }
@@ -237,20 +237,17 @@ namespace MarioGame.Entities
         }
         public override void Halt()
         {
-            _position -= _velocity;
+            _position -= Velocity;
             marioActionState.Halt();
         }
         private void onCollideEnemy(Enemy enemy, Sides side)
         {
-            if (!Invincible && !enemy.IsDead() && side != Sides.Bottom){
+            if (!Invincible && !enemy.Dead && side != Sides.Bottom){
                 Halt();
                 ChangeToDeadState();
             }
         }
-        private void onCollideBlock(Block block, Sides side)
-        {
-        }
-        public override onBlockSideCollision()
+        protected override void onBlockSideCollision()
         {
             Halt();
         }
@@ -280,11 +277,7 @@ namespace MarioGame.Entities
         public override void onCollide(IEntity otherObject, Sides side)
         {
             base.onCollide(otherObject, side);
-            if (otherObject is Block)
-            {
-                onCollideBlock((Block)otherObject, side);
-            }
-            else if (otherObject is Enemy)
+            if (otherObject is Enemy)
             {
                 onCollideEnemy((Enemy)otherObject, side);
             }

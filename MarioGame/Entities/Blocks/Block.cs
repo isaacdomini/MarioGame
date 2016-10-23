@@ -36,7 +36,7 @@ namespace MarioGame.Entities
             blockPowerUpState = (BlockPowerUpState)pState;
             blockSprite = (BlockSprite)_sprite;
             tickCount = 0;
-            boundingBox = new Rectangle((int)(_position.X), (int)(_position.Y), boundingBoxWidth, boundingBoxHeight);
+            boundingBox = new Rectangle((int)(Position.X), (int)(Position.Y), boundingBoxWidth, boundingBoxHeight);
             boxColor = Color.Blue;
         }
         public void SetBlockActionState(String state)
@@ -98,9 +98,9 @@ namespace MarioGame.Entities
                 if(tickCount == 0)
                 {
                     tickCount = 10;
-                    Vector2 copyVel = _velocity;
+                    Vector2 copyVel = Velocity;
                     copyVel.Y = -1;
-                    _velocity = copyVel;
+                    Velocity = copyVel;
                 }
                 // TODO: Begin bumping sequence
                 // TODO: If there is no item, change to used.
@@ -127,9 +127,9 @@ namespace MarioGame.Entities
             else if (tickCount == 1)
             {
                 tickCount = -10;
-                Vector2 copyVel = _velocity;
+                Vector2 copyVel = Velocity;
                 copyVel.Y = 1;
-                _velocity = copyVel;
+                Velocity = copyVel;
             }
             else if (tickCount < -1)
             {
@@ -138,9 +138,9 @@ namespace MarioGame.Entities
             else if (tickCount == -1)
             {
                 tickCount = 0;
-                Vector2 copyVel = _velocity;
+                Vector2 copyVel = Velocity;
                 copyVel.Y = 0;
-                _velocity = copyVel;
+                Velocity = copyVel;
             }
         }
 

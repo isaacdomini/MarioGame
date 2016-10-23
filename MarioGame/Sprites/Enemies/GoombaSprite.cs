@@ -19,7 +19,7 @@ namespace MarioGame.Sprites
 
     public class GoombaSprite : AnimatedSprite
     {
-        public GoombaSprite(ContentManager content) : base(content)
+        public GoombaSprite(ContentManager content, Entity entity) : base(content, entity)
         {
             _assetName = "regulargoomba";
             _numberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;

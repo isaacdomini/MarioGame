@@ -32,7 +32,7 @@ namespace MarioGame.Entities
             aState = _stateMachine.WalkState;
             eState = (KoopaActionState)aState;
             eSprite = (KoopaTroopaSprite)_sprite;
-            boundingBox = new Rectangle((int)_position.X + 3, (int)_position.Y + 5, boundingBoxWidth, boundingBoxHeight);
+            boundingBox = new Rectangle((int)Position.X + 3, (int)Position.Y + 5, boundingBoxWidth, boundingBoxHeight);
             boxColor = Color.Red;
             isCollidable = true;
 
@@ -49,13 +49,13 @@ namespace MarioGame.Entities
         }
         public void ChangeShellVelocityDirection()
         {
-            Vector2 newVelocity = _velocity * -1;
+            Vector2 newVelocity = Velocity * -1;
             this.setVelocity(newVelocity);
         }
 
         public override void Halt()
         {
-            _position -= _velocity;
+            Position -= Velocity;
             eState.Halt();
         }
         public override void JumpedOn()
@@ -67,21 +67,21 @@ namespace MarioGame.Entities
         public override void Update(Viewport viewport)
         {
             base.Update();
-            Vector2 pos = _position;
-            if (_position.X < 0)
+            Vector2 pos = Position;
+            if (Position.X < 0)
             {
                 pos.X = 0;
                 ChangeShellVelocityDirection();
             }
-            else if (_position.X + _width > viewport.Width)
+            else if (Position.X + _width > viewport.Width)
             {
                 pos.X = viewport.Width - _width;
                 ChangeShellVelocityDirection();            }
-            _position = pos;
+            Position = pos;
 
             //_position += _velocity;
-            boundingBox.X = (int)_position.X + 3;
-            boundingBox.Y = (int)_position.Y + 5;
+            boundingBox.X = (int)Position.X + 3;
+            boundingBox.Y = (int)Position.Y + 5;
         }
         public void ChangeToDeadState()
         {

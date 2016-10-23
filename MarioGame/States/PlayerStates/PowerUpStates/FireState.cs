@@ -12,13 +12,13 @@ namespace MarioGame.States
         public override void ChangeToStar()
         {
             _mario.ChangePowerUpState(_stateMachine.FireStarState);
-            Mario.invincibleTimer = 625;
-
+            _mario.setInvincible(10);
+            
         }
-        public override void EnemyHit()
+        public override void onHitByEnemy()
         {
             ChangeToStandard();
-            Mario.invincibleTimer = 70;
+            _mario.setInvincible(1);
         }
     }
 }

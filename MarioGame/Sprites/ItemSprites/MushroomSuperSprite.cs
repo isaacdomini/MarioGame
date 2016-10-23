@@ -7,7 +7,7 @@ namespace MarioGame.Sprites
 {
     public class MushroomSuperSprite : AnimatedSprite //TODO: refactor this class to use either ANimated Sprite or Sprite
     {
-        public MushroomSuperSprite(ContentManager content) : base(content)
+        public MushroomSuperSprite(ContentManager content, Entity entity) : base(content, entity)
         {
             _assetName = "mushroomSuper";
         }

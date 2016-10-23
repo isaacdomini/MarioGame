@@ -21,7 +21,7 @@ namespace MarioGame.Sprites
             DeadLegs = 8,
             Dead = 9
         }
-        public KoopaTroopaSprite(ContentManager content) : base(content)
+        public KoopaTroopaSprite(ContentManager content, Entity entity) : base(content, entity)
         {
             _assetName = "regularkoopa";
             _numberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;

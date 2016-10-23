@@ -1,4 +1,5 @@
 using MarioGame.Core;
+using MarioGame.Entities;
 using MarioGame.States;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -32,7 +33,7 @@ namespace MarioGame.Sprites
             get; set;
         }
         
-        public AnimatedSprite(ContentManager content) : base(content)
+        public AnimatedSprite(ContentManager content, Entity entity) : base(content, entity)
         {
             _rowSets = new Dictionary<int, List<int>>
             {

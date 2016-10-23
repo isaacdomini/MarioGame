@@ -20,7 +20,7 @@ namespace MarioGame.Sprites
             Waxing = 3
         }
 
-        public CoinSprite(ContentManager content) : base(content)
+        public CoinSprite(ContentManager content, Entity entity) : base(content, entity)
         {
             _assetName = "coin";
             _numberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
