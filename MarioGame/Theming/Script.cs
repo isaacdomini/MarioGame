@@ -229,6 +229,7 @@ namespace MarioGame.Theming
                         item.boxColor = Color.Green;
                     }
                 }
+                item.Update();
             }
             if (colliding)
             {
@@ -239,7 +240,6 @@ namespace MarioGame.Theming
                 mario.boxColor = Color.Yellow;
             }
             mario.Update(Viewport);
-
         }
 
         public void AddEntity(Entity entity)

@@ -13,5 +13,17 @@ namespace MarioGame.Entities
             boxColor = Color.Green;
             isCollidable = true;
         }
+
+        public override void Update()
+        {
+            if (_sprite.Visible == false)
+            {
+                _velocity = movingVelocity;
+                boundingBox.X = (int)_position.X;
+                boundingBox.Y = (int)_position.Y;
+
+            }
+            base.Update();
+        }
     }
 }

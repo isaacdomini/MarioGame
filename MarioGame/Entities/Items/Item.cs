@@ -7,6 +7,7 @@ namespace MarioGame.Entities
 {
     public abstract class Item : ContainableHidableEntity
     {
+        public Vector2 movingVelocity = new Vector2(.5f, 0);
         public Item(Vector2 position, ContentManager content) : base(position, content)
         {
         }
@@ -24,6 +25,11 @@ namespace MarioGame.Entities
         public override void leaveContainer()
         {
             throw new NotImplementedException();
+        }
+
+        public void changeDirection()
+        {
+            _velocity = -1 * _velocity;
         }
     }
 }
