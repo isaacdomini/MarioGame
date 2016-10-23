@@ -151,6 +151,7 @@
     <Compile Include="States\PlayerStates\PowerUpStates\FireStarState.cs" />
     <Compile Include="States\PlayerStates\PowerUpStates\SuperState.cs" />
     <Compile Include="States\State.cs" />
+    <Compile Include="Theming\Camera.cs" />
     <Compile Include="Theming\GlobalConstants.cs" />
     <Compile Include="Theming\LevelLoader.cs" />
     <Compile Include="Theming\Scenes\Scene.cs" />
