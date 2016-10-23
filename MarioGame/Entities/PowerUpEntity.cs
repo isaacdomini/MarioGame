@@ -21,7 +21,11 @@ namespace MarioGame.Entities
         }
         public void ChangePowerUpState(PowerUpState state)
         {
+            Console.WriteLine("state passed into PowerUpEntity.ChangePowerUpState is DeadState?" + (state is DeadState));
+            Console.WriteLine("state passed into PowerUpEntity.ChangePowerUpState is" + state.GetType());
+            Console.WriteLine("the type of pState before pState = state is " + pState.GetType());
             pState = state;
+            Console.WriteLine("the type of pState after pState = state is " + pState.GetType());
         }
     }
 }

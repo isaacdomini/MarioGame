@@ -13,7 +13,7 @@ namespace MarioGame.Entities
     public class Mario : PowerUpEntity
     {
         private float secondsOfInvincibilityRemaining = 0.0f;
-        public bool Invincible { get { return CurrentPowerUpState is FireStarState || CurrentPowerUpState is StandardStarState || CurrentPowerUpState is SuperStarState; } }
+        public bool Invincible { get { return pState is FireStarState || pState is StandardStarState || pState is SuperStarState; } }
         // Could be useful for casting in certain circumstances
         public MarioPowerUpState marioPowerUpState;
         public MarioActionState marioActionState;
@@ -42,16 +42,16 @@ namespace MarioGame.Entities
 
         MarioActionStateMachine marioActionStateMachine;
 
-        MarioPowerUpStateMachine powerUpStateMachine;
+        MarioPowerUpStateMachine marioPowerUpStateMachine;
 
         public Mario(Vector2 position, ContentManager content) : base(position, content)
         {
-            marioPowerUpState = (MarioPowerUpState)pState;
-            marioActionState = (MarioActionState)aState;
             marioActionStateMachine = new MarioActionStateMachine(this);
-            powerUpStateMachine = new MarioPowerUpStateMachine(this);
+            marioPowerUpStateMachine = new MarioPowerUpStateMachine(this);           
+            marioPowerUpState = marioPowerUpStateMachine.StandardState;
             marioActionState = marioActionStateMachine.IdleMarioState;
-            marioPowerUpState = powerUpStateMachine.StandardState;
+            pState = marioPowerUpState;
+            aState = marioActionState;
 
             _marioSprite = (MarioSprite) _sprite;
             direction = Directions.Right;
@@ -132,6 +132,7 @@ namespace MarioGame.Entities
         }
         public void ChangePowerUpState(MarioPowerUpState state)
         {
+            Console.WriteLine("state passed into Mario.ChangePowerUpState is DeadState?" + (state is DeadState)); 
             base.ChangePowerUpState(state);
             setBoundingBox(); 
             _marioSprite.changePowerUp(state);//TODO: can we push _marioSprite.changePowerUp inside of base.ChangePowerUpState, or will doing so lose the polymorphism (e.g. will it call AnimatedSprite.changePowerUp rather than _marioSprite.changePowerUp
@@ -173,7 +174,12 @@ namespace MarioGame.Entities
             Console.WriteLine("mario.MoveLeft called");
             if (!(marioPowerUpState is DeadState))
             {
+                Console.WriteLine("Mario is not in dead State");
                 marioActionState.MoveLeft();
+            }
+            else
+            {
+                Console.WriteLine("mario is DeadState");
             }
         }
         public void MoveRight()
@@ -246,9 +252,16 @@ namespace MarioGame.Entities
         }
         private void onCollideEnemy(Enemy enemy, Sides side)
         {
-            if (!Invincible && !enemy.Dead && side != Sides.Bottom){
-                Halt();
-                ChangeToDeadState();
+            Console.WriteLine("mario collided an enemy");
+            if (!enemy.Dead && side != Sides.Bottom){
+                Console.WriteLine("Enemy was alive and mario did not hit the top of the enemy, meaning we are calling marioPowerUpState.onHitByEnemy()");
+                Console.WriteLine("is mario dead before marioPowerUpState.onHitByEnemy? " + ( marioPowerUpState is DeadState));
+                marioPowerUpState.onHitByEnemy();
+                Console.WriteLine("is mario dead after marioPowerUpState.onHitByEnemy? " + ( marioPowerUpState is DeadState));
+            }
+            else
+            {
+                Console.WriteLine("Enemy was Dead and/or mario hit the top of the enemy, meaning this does not affect mario.");
             }
         }
         protected override void onBlockSideCollision()
