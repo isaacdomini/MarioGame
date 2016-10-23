@@ -17,7 +17,6 @@ namespace MarioGame.Sprites
         protected string _assetName;
         protected ContentManager _content;
         protected Entity _entity;
-        private ContentManager content;
 
         public Vector2 Position
         {

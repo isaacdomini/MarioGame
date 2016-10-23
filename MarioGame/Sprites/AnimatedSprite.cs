@@ -26,6 +26,8 @@ namespace MarioGame.Sprites
 
         private int _frameWidth;
         protected int _frameHeight;
+        public int FrameWidth { get { return _frameWidth; } private set { _frameWidth = value; } }
+        public int FrameHeight { get { return _frameHeight; } protected set { _frameHeight = value; } }
 
         protected float _totalElapsed, _timePerFrame;
 
@@ -58,8 +60,8 @@ namespace MarioGame.Sprites
         {
             _texture = _content.Load<Texture2D>(_assetName);
 
-            _frameHeight = _texture.Height;
-            _frameWidth = _texture.Width / _numberOfFramesPerRow;
+            FrameHeight = _texture.Height;
+            FrameWidth = _texture.Width / _numberOfFramesPerRow;
             _frameSetPosition = 0;
 
             _totalElapsed = 0;
@@ -88,7 +90,7 @@ namespace MarioGame.Sprites
                 return;
             }
 
-            var sourceRect = new Rectangle(((int)_frameSet[_frameSetPosition]) * _frameWidth, ((int)_rowSet[_rowSetPosition]) * _frameHeight, _frameWidth, _frameHeight);
+            var sourceRect = new Rectangle(((int)_frameSet[_frameSetPosition]) * FrameWidth, ((int)_rowSet[_rowSetPosition]) * _frameHeight, FrameWidth, FrameHeight);
             batch.Draw(texture: _texture, position: Position, sourceRectangle: sourceRect, color: Color.White, effects : _flipped);
      
         }

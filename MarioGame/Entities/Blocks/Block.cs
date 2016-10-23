@@ -36,8 +36,6 @@ namespace MarioGame.Entities
             blockPowerUpState = (BlockPowerUpState)pState;
             blockSprite = (BlockSprite)_sprite;
             tickCount = 0;
-            boundingBox = new Rectangle((int)(Position.X), (int)(Position.Y), boundingBoxWidth, boundingBoxHeight);
-            boxColor = Color.Blue;
         }
         public void SetBlockActionState(String state)
         {

@@ -9,8 +9,6 @@ namespace MarioGame.Entities
         {
             int _height = 40;
             int _width = 20;
-            boundingBox = new Rectangle((int)Position.X, (int)Position.Y, _width, _height / 2);
-            boxColor = Color.Green;
             isCollidable = true;
         }
     }

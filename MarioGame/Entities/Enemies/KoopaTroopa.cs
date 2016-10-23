@@ -76,9 +76,6 @@ namespace MarioGame.Entities
                 ChangeShellVelocityDirection();
             }
         
-            //_position += _velocity;
-            boundingBox.X = (int)Position.X + 3;
-            boundingBox.Y = (int)Position.Y + 5;
         }
         public void ChangeToDeadState()
         {

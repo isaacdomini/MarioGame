@@ -70,7 +70,7 @@ namespace MarioGame.Theming.Scenes
 
             _spriteBatch.Begin();
             Sprites.ForEach(s => s.Draw(_spriteBatch));
-            _script._entities.FindAll(e => !e._sprite.Visible).ForEach(e => drawRectangleBorder(_spriteBatch, e.boundingBox, 1, e.boxColor));
+            _script._entities.FindAll(e => !e._sprite.Visible).ForEach(e => drawRectangleBorder(_spriteBatch, e.boundingBox, 1, e.BoxColor));
             _spriteBatch.End();
         }
 

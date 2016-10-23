@@ -55,8 +55,6 @@ namespace MarioGame.Entities
             spaceBarAction = SpaceBarAction.run;
             _height = standardBoundingBoxHeight;
             _width = standardBoundingBoxWidth;
-            boundingBox = new Rectangle((int)(Position.X + 5), (int)(Position.Y + 16), _width, _height);
-            boxColor = Color.Yellow;
         }
 
         private void OnInvincibilityEnded()
@@ -101,20 +99,14 @@ namespace MarioGame.Entities
             if (!(marioPowerUpState is StandardState) || !(marioPowerUpState is StandardStarState) )
             {
 
-                boundingBox.X = (int)Position.X - 5;
-                boundingBox.Y = (int)Position.Y;
             }
             if (marioPowerUpState is StandardState || marioPowerUpState is DeadState || marioPowerUpState is StandardStarState )
             {
                 if (FacingLeft == true)
                 {
-                    boundingBox.X = (int)Position.X - 5;
-                    boundingBox.Y = (int)Position.Y + 16;
                 }
                 else
                 {
-                    boundingBox.X = (int)Position.X + 5;
-                    boundingBox.Y = (int)Position.Y + 16;
                 }
             }
         }

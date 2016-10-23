@@ -83,7 +83,7 @@ namespace MarioGame.Sprites
         public override void Load(int framesPerSecond = 5)
         {
             base.Load(framesPerSecond);
-            _frameHeight = 40;
+            FrameHeight = 40;
         }
         public void changeActionState(MarioActionState marioActionState)
         {

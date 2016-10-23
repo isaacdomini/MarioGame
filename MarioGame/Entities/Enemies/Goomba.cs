@@ -22,8 +22,6 @@ namespace MarioGame.Entities
             aState = stateMachine.WalkingGoomba;
             eState = (GoombaActionState)aState;
             eSprite = (GoombaSprite)_sprite;
-            boundingBox = new Rectangle((int)(Position.X + 3), (int)(Position.Y + 5), boundingBoxWidth, boundingBoxHeight);
-            boxColor = Color.Red;
         }
         public void ChangeActionState(GoombaActionState newState)
         {
@@ -50,8 +48,6 @@ namespace MarioGame.Entities
         public override void Update(Viewport viewport)
         {
             Position += Velocity;
-            boundingBox.X = (int)Position.X + 3;
-            boundingBox.Y = (int)Position.Y + 5;
         }
     }
 }
