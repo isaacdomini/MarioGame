@@ -10,8 +10,8 @@ namespace MarioGame.States
         //TODO: need to add in behavior for jumping higher if you hold the jump button down.
         public override void Begin(MarioActionState prevState)
         {
-            mario.ChangeActionState(stateMachine.JumpingMarioState);
-            mario.SetVelocityToJumping();
+            _mario.ChangeActionState(stateMachine.JumpingMarioState);
+            _mario.SetVelocityToJumping();
         }
         public override void Fall()
         {

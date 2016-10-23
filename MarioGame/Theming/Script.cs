@@ -23,7 +23,7 @@ namespace MarioGame.Theming
         public List<Enemy> _enemies { get { return _entities.FindAll(e => e is Enemy).ConvertAll(e => (Enemy) e); } }
 
         //TODO: clean up below line's code smell
-        public Mario mario { get { return (Mario)_entities.Find(e => e is Mario); } }
+        public Mario _mario { get { return (Mario)_entities.Find(e => e is Mario); } }
         public Script(Scene scene)
         {
             _scene = scene;
@@ -62,7 +62,7 @@ namespace MarioGame.Theming
                });
 
            });
-            mario.Update(Viewport);
+            _mario.Update(Viewport);
 
         }
 
@@ -73,39 +73,39 @@ namespace MarioGame.Theming
 
         internal void MakeMarioJump()
         {
-            mario.Jump();
+            _mario.Jump();
         }
         internal void MakeMarioCrouch()
         {
-            mario.Crouch();
+            _mario.Crouch();
         }
         internal void MakeMarioDashOrThrowFireball()
         {
-            mario.DashOrThrowFireball();
+            _mario.DashOrThrowFireball();
         }
         internal void MakeMarioMoveLeft()
         {
-            mario.MoveLeft();
+            _mario.MoveLeft();
         }
         internal void MakeMarioMoveRight()
         {
-            mario.MoveRight();
+            _mario.MoveRight();
         }
         internal void MakeMarioFire()
         {
-            mario.ChangeToFireState();
+            _mario.ChangeToFireState();
         }
         internal void MakeMarioStandard()
         {
-            mario.ChangeToStandardState();
+            _mario.ChangeToStandardState();
         }
         internal void MakeMarioSuper()
         {
-            mario.ChangeToSuperState();
+            _mario.ChangeToSuperState();
         }
         internal void MakeMarioDead()
         {
-            mario.ChangeToDeadState();
+            _mario.ChangeToDeadState();
         }
         internal void BrickBumpOrBreak()
         {
@@ -113,11 +113,11 @@ namespace MarioGame.Theming
             {
                 if (block.CurrentActionState is BrickBlockState)
                 {
-                    if (mario.marioPowerUpState is SuperState)
+                    if (_mario.marioPowerUpState is SuperState)
                     {
                         block.Break();
                     }
-                    else if (mario.marioPowerUpState is StandardState)
+                    else if (_mario.marioPowerUpState is StandardState)
                     {
                         block.Bump();
                         block.ChangeToUsed();
