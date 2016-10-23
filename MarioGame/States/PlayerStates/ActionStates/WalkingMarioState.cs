@@ -17,14 +17,14 @@ namespace MarioGame.States
 
         public override void MoveLeft()
         {
-            if (_mario.isFacingRight())
+            if (_mario.FacingRight)
             {
                 stateMachine.IdleMarioState.Begin(this);
             }
         }
         public override void MoveRight()
         {
-            if (_mario.isFacingLeft())
+            if (_mario.FacingLeft)
             {
                 stateMachine.IdleMarioState.Begin(this);
             }

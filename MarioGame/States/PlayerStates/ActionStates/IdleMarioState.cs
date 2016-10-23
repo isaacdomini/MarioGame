@@ -19,20 +19,19 @@ namespace MarioGame.States
         }
         public override void MoveLeft()
         {
-            if (_mario.isFacingLeft())
-            {
+            if (_mario.FacingLeft) { 
                 stateMachine.WalkingMarioState.Begin(this);
-            } else if (_mario.isFacingRight())
+            } else if (_mario.FacingRight)
             {
                 _mario.turnLeft();
             }
         }
         public override void MoveRight()
         {
-            if (_mario.isFacingLeft())
+            if (_mario.FacingLeft)
             {
                 _mario.turnRight();
-            } else if (_mario.isFacingRight())
+            } else if (_mario.FacingRight)
             {
                 stateMachine.WalkingMarioState.Begin(this);
             }

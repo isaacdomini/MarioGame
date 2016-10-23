@@ -24,7 +24,7 @@ namespace MarioGame.States
         }
         public override void MoveRight()
         {
-            if (_mario.isFacingRight())
+            if (_mario.FacingRight)
             {
                 stateMachine.WalkingMarioState.Begin(this);
             }
@@ -35,7 +35,7 @@ namespace MarioGame.States
         }
         public override void MoveLeft()
         {
-            if (_mario.isFacingLeft())
+            if (_mario.FacingLeft)
             {
                 stateMachine.WalkingMarioState.Begin(this);
             }

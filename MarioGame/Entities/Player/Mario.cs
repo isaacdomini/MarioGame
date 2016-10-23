@@ -106,7 +106,7 @@ namespace MarioGame.Entities
             }
             if (marioPowerUpState is StandardState || marioPowerUpState is DeadState || marioPowerUpState is StandardStarState )
             {
-                if (this.isFacingLeft() == true)
+                if (FacingLeft == true)
                 {
                     boundingBox.X = (int)Position.X - 5;
                     boundingBox.Y = (int)Position.Y + 16;
