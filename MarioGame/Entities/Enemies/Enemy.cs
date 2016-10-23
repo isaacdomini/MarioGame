@@ -10,6 +10,8 @@ namespace MarioGame.Entities
         public AnimatedSprite eSprite;
         protected bool _isDead;
         protected bool _hurts;
+        private readonly static Vector2 fallingVelocity = new Vector2(0, velocityConstant * 1);
+
         public Enemy(Vector2 position, ContentManager content) : base(position, content)
         {
             _isDead = false;
@@ -26,5 +28,9 @@ namespace MarioGame.Entities
             return _hurts;
         }
         public virtual void ChangeVelocityDirection() { }
+        public void SetVelocityToFalling()
+        {
+            this.setVelocity(fallingVelocity);
+        }
     }
 }

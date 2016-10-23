@@ -93,7 +93,7 @@ namespace MarioGame.Entities
         }
         public void Bump()
         {
-
+            // TODO: only bump if it's not a used block
                 if(tickCount == 0)
                 {
                     tickCount = 10;
