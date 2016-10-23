@@ -153,6 +153,7 @@
     <Compile Include="States\State.cs" />
     <Compile Include="Theming\Camera.cs" />
     <Compile Include="Theming\GlobalConstants.cs" />
+    <Compile Include="Theming\Layer.cs" />
     <Compile Include="Theming\LevelLoader.cs" />
     <Compile Include="Theming\Scenes\Scene.cs" />
     <Compile Include="Theming\Script.cs" />

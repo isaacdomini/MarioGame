@@ -66,20 +66,7 @@ namespace MarioGame.Entities
             base.Update();
             // Maybe just set velocity to zero for all this? - Ricky
             Vector2 pos = _position;
-            if (_position.X < 0)
-            {
-                pos.X = 0;
-            }else if (_position.X + _width > viewport.Width)
-            {
-                pos.X = viewport.Width - _width;
-            }
-            if (_position.Y < 0)
-            {
-                pos.Y = 0;
-            }else if (_position.Y + _height > viewport.Height)
-            {
-                pos.Y = viewport.Height - _height;
-            }
+
             _position = pos;
             
             if(PowerUpState.powerUpState != MarioPowerUpStateEnum.Standard || PowerUpState.powerUpState != MarioPowerUpStateEnum.StandardStar)
