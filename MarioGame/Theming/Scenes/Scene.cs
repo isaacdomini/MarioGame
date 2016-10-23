@@ -80,7 +80,6 @@ namespace MarioGame.Theming.Scenes
             Layers.ForEach(l => l.Sprites.ForEach(s => s.Update((float)gameTime.ElapsedGameTime.TotalSeconds)));
             //camera.Position = new Vector2(camera.Position.X + 1, camera.Position.Y);
             //camera.LookAt(_script.mario.position);
-            Console.WriteLine("Mario Pos: "+ _script.mario.position.X + " CamPos: "+ camera.Position.X);
         }
         public void Draw(GameTime gameTime)
         {
