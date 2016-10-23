@@ -1,4 +1,5 @@
-﻿using MarioGame.Sprites;
+﻿using MarioGame.Core;
+using MarioGame.Sprites;
 using MarioGame.States;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -24,6 +25,10 @@ namespace MarioGame.Entities
         public virtual bool Hurts()
         {
             return _hurts;
+        }
+        public override void OnCollide(IEntity otherObject, Sides side)
+        {
+            
         }
     }
 }

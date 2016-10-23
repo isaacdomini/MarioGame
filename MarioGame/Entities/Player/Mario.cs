@@ -23,7 +23,6 @@ namespace MarioGame.Entities
         private readonly static Vector2 jumpingVelocity = new Vector2(0, velocityConstant * -1);
         private readonly static Vector2 fallingVelocity = new Vector2(0, velocityConstant * 1);
         private readonly static Vector2 dashVelocity = new Vector2(velocityConstant * 2, 0);
-        private readonly static Vector2 idleVelocity = new Vector2(0, 0);
 
         private static int superBoundingBoxWidth = 30;
         private static int superBoundingBoxHeight = 36;
@@ -239,72 +238,44 @@ namespace MarioGame.Entities
         public override void Halt()
         {
             _position -= _velocity;
-            (marioActionState).Halt();
+            marioActionState.Halt();
         }
         private void onCollideEnemy(Enemy enemy, Sides side)
         {
-            if (!Invincible)
-            {
-                    if (collisionHandler.checkForCollision(mario, enemy) && !enemy.IsDead())
-                    {
-                        colliding = true;
-                        enemy.boxColor = Color.Black;
-                        if(mario.PowerUpState is SuperStarState || mario.PowerUpState is FireStarState || mario.PowerUpState is StandardStarState)
-                        {
-                            enemy.JumpedOn();
-                        }
-                        else if (collisionHandler.checkSideCollision(mario, enemy) == Sides.Top)
-                        {
-                            enemy.JumpedOn();
-                            mario.Halt();
-                        }
-                        else
-                        {
-                            if (mario.isCollidable == true)
-                            {
-                                if (enemy.Hurts())
-                                {
-                                    mario.EnemyHit();
-                                }
-                                else
-                                {
-                                    enemy.JumpedOn();
-                                    mario.Halt();
-                                    if (collisionHandler.checkSideCollision(mario, enemy) == Sides.Right)
-                                        ((KoopaTroopa)enemy).ChangeShellVelocityDirection();
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        enemy.boxColor = Color.Red;
-                        mario.isCollidable = true;
-                        foreach (var block in _blocks)
-                        {
-                            if (collisionHandler.checkForCollision(enemy, block))
-                            {
-                                ((KoopaTroopa)enemy).ChangeShellVelocityDirection();
-                            }
-                        }
-                    }
-                    enemy.Update(Viewport);
+            if (!Invincible && !enemy.IsDead() && side != Sides.Bottom){
+                Halt();
+                ChangeToDeadState();
             }
- 
         }
         private void onCollideBlock(Block block, Sides side)
         {
-                if (block.CurrentPowerUpState is HiddenState)
-                {
-                    if (side == Sides.Top)
-                    {
-                        Halt();
-                    }
-                }
-                else
-                {
-                    Halt();
-                }
+        }
+        public override onBlockSideCollision()
+        {
+            Halt();
+        }
+        private void onCollideItem(Item item, Sides side)
+        {
+            if (item is Coin)
+            {
+                //Add code to add coin to total coins
+            }
+            else if (item is Star)
+            {
+                ChangeToStarState();
+            }
+            else if (item is FireFlower)
+            {
+                ChangeToFireState();
+            }
+            else if (item is Mushroom1Up)
+            {
+                //Add code to add extra life
+            }
+            else if (item is MushroomSuper)
+            {
+                ChangeToSuperState();
+            }
         }
         public override void onCollide(IEntity otherObject, Sides side)
         {
@@ -315,7 +286,11 @@ namespace MarioGame.Entities
             }
             else if (otherObject is Enemy)
             {
-                onCollideEnemy((Enemy)otherObject, Sides side);
+                onCollideEnemy((Enemy)otherObject, side);
+            }
+            else if (otherObject is Item)
+            {
+                onCollideItem((Item)otherObject, side);
             }
        }
         public void setInvincible(float seconds)

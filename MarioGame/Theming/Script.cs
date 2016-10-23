@@ -51,147 +51,17 @@ namespace MarioGame.Theming
 
         public void Update(GameTime gameTime)
         {
-            _entities.FindAll(e => e.Moving).ForEach( e =>
-            {
-                _entities.FindAll(e2 => e.boundingBox.Intersects(e2.boundingBox)).ForEach(e2 => {
-                    Sides eSide = CollisionHandler.getIntersectingSide(e.boundingBox, e2.boundingBox);
-                    e.onCollide(e2, eSide);
-                    e2.onCollide(e, Util.flip(eSide));
-                }); 
+            _entities = _entities.FindAll(e => !e.Deleted);
+            _entities.FindAll(e => e.Moving).ForEach(e =>
+           {
+               _entities.FindAll(e2 => e.boundingBox.Intersects(e2.boundingBox)).ForEach(e2 =>
+               {
+                   Sides eSide = CollisionHandler.getIntersectingSide(e.boundingBox, e2.boundingBox);
+                   e.onCollide(e2, eSide);
+                   e2.onCollide(e, Util.flip(eSide));
+               });
 
-            })
-            bool colliding = false;
-            if (Mario.invincibleTimer == 0)
-            {
-
-                foreach (var enemy in _enemies)
-                {
-
-                    if (collisionHandler.checkForCollision(mario, enemy) && !enemy.IsDead())
-                    {
-                        colliding = true;
-                        enemy.boxColor = Color.Black;
-                        if(mario.marioPowerUpState is SuperStarState || mario.marioPowerUpState is FireStarState || mario.marioPowerUpState is StandardStarState)
-                        {
-                            enemy.JumpedOn();
-                        }
-                        else if (collisionHandler.checkSideCollision(mario, enemy) == Sides.Top)
-                        {
-                            enemy.JumpedOn();
-                            mario.Halt();
-                        }
-                        else
-                        {
-                            if (mario.isCollidable == true)
-                            {
-                                if (enemy.Hurts())
-                                {
-                                    mario.EnemyHit();
-                                }
-                                else
-                                {
-                                    enemy.JumpedOn();
-                                    mario.Halt();
-                                    if (collisionHandler.checkSideCollision(mario, enemy) == Sides.Right)
-                                        ((KoopaTroopa)enemy).ChangeShellVelocityDirection();
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        enemy.boxColor = Color.Red;
-                        mario.isCollidable = true;
-                        foreach (var block in _blocks)
-                        {
-                            if (collisionHandler.checkForCollision(enemy, block))
-                            {
-                                ((KoopaTroopa)enemy).ChangeShellVelocityDirection();
-                            }
-                        }
-                    }
-                    enemy.Update(Viewport);
-
-                }
-            }
-            else
-            {
-                Mario.invincibleTimer--;
-
-                    foreach (var enemy in _enemies)
-                    {
-
-                        if (collisionHandler.checkForCollision(mario, enemy) && !enemy.IsDead())
-                        {
-                            colliding = true;
-                            enemy.boxColor = Color.Black;
-                            if (mario.marioPowerUpState is SuperStarState || mario.marioPowerUpState is FireStarState || mario.marioPowerUpState is StandardStarState)
-                            {
-                                enemy.JumpedOn();
-                            }
-                        }
-                        else
-                        {
-                            enemy.boxColor = Color.Red;
-                            mario.isCollidable = true;
-                            foreach (var block in _blocks)
-                            {
-                                if (collisionHandler.checkForCollision(enemy, block))
-                                {
-                                    ((KoopaTroopa)enemy).ChangeShellVelocityDirection();
-                                }
-                            }
-                        }
-                        enemy.Update(Viewport);
-
-                    }
-                }
-
-            foreach (var item in _items)
-            {
-                if (item.isCollidable)
-                {
-                    if (collisionHandler.checkForCollision(mario, item))
-                    {
-                        colliding = true;
-                        item.boxColor = Color.Black;
-                        if (item is Coin)
-                        {
-                            //Add code to add coin to total coins
-                        }
-                        else if (item is Star)
-                        {
-                            mario.ChangeToStarState();
-                        }
-                        else if (item is FireFlower)
-                        {
-                            mario.ChangeToFireState();
-                        }
-                        else if (item is Mushroom1Up)
-                        {
-                            //Add code to add extra life
-                        }
-                        else if (item is MushroomSuper)
-                        {
-                            mario.ChangeToSuperState();
-                        }
-                        item.makeInvisible();
-                        item.isCollidable = false;
-                    }
-                    else
-                    {
-                        item.boxColor = Color.Green;
-                    }
-                }
-            }
-            if (colliding)
-            {
-                mario.boxColor = Color.Black;
-            }
-            else
-            {
-                mario.boxColor = Color.Yellow;
-            }
+           });
             mario.Update(Viewport);
 
         }

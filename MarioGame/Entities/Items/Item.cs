@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using System;
+using MarioGame.Core;
 
 namespace MarioGame.Entities
 {
@@ -24,6 +25,14 @@ namespace MarioGame.Entities
         public override void leaveContainer()
         {
             throw new NotImplementedException();
+        }
+        public override void onCollide(IEntity otherObject, Sides side)
+        {
+            base.onCollide(otherObject, side);
+            if (otherObject is Mario)
+            {
+                Delete();
+            }
         }
     }
 }

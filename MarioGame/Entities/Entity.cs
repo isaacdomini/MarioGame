@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using MarioGame.Core;
+using MarioGame.States.BlockStates.PowerUpStates;
 
 namespace MarioGame.Entities
 {
@@ -41,6 +42,11 @@ namespace MarioGame.Entities
         public readonly static Vector2 idleVelocity = new Vector2(0, 0);
         public Vector2 _velocity { get; protected set; }
         public bool Moving { get { return !_velocity.Equals(idleVelocity); } }
+        public bool Deleted { get; private set; }
+        protected void Delete()
+        {
+            Deleted = true;
+        }
         protected virtual void preConstructor() { }
         public Entity(Vector2 position, ContentManager content, float xVelocity = 0, float yVelocity = 0)
         {
@@ -118,6 +124,43 @@ namespace MarioGame.Entities
         public virtual void onCollide(IEntity otherObject, Sides side)
         {
             this._colliding = true;
+            if(otherObject is Block)
+            {
+                onCollideBlock((Block) otherObject, side);
+            }
+        }
+        protected virtual void onCollideBlock(Block block, Sides side)
+        {
+                if (block.CurrentPowerUpState is HiddenState)
+                {
+                    if (side == Sides.Top)
+                    {
+                        Halt();
+                    }
+                }
+                else
+                {
+                    if (side == Sides.Left || side == Sides.Right)
+                    {
+                        onBlockSideCollision();
+                    }
+                    else if (side == Sides.Top || side == Sides.Bottom)
+                    {
+                        _position.Y -= _velocity.Y;
+                        _velocity.Y = 0;
+                    }
+                    else if (side == Sides.Top)
+                    {
+                        //TODO: replace the below with simply letting gravity take over
+                        _position.Y -= _velocity.Y;
+                        _velocity.Y = 0;
+                    }
+                }
+        }
+        protected virtual void onBlockSideCollision() { }
+        protected void removeFromEntitiesList()
+        {
+
         }
     }
 }
