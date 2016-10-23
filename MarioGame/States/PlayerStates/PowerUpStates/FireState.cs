@@ -11,9 +11,8 @@ namespace MarioGame.States
         }
         public override void ChangeToStar()
         {
+            base.ChangeToStar();
             _mario.ChangePowerUpState(_stateMachine.FireStarState);
-            _mario.setInvincible(10);
-            
         }
         public override void onHitByEnemy()
         {

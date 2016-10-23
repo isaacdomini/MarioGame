@@ -9,21 +9,5 @@ namespace MarioGame.States
             powerUpState = MarioPowerUpStateEnum.SuperStar;
 
         }
-        public override void ChangeToStandard()
-        {
-            _mario.ChangePowerUpState(_stateMachine.StandardState);
-        }
-        public override void ChangeToDead()
-        {
-            _mario.ChangePowerUpState(_stateMachine.DeadState);
-        }
-        public override void ChangeToSuper()
-        {
-            _mario.ChangePowerUpState(_stateMachine.SuperState);
-        }
-        public override void ChangeToFire()
-        {
-            _mario.ChangePowerUpState(_stateMachine.FireState);
-        }
     }
 }

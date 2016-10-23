@@ -35,7 +35,9 @@ namespace MarioGame.States
         {
             _mario.ChangePowerUpState(_stateMachine.FireState);
         }
-        public virtual void ChangeToStar() { }
+        public virtual void ChangeToStar() {
+            _mario.setInvincible(10);
+        }
         public virtual void onHitByEnemy() { }
     }
 }

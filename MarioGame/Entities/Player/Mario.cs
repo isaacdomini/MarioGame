@@ -16,6 +16,8 @@ namespace MarioGame.Entities
         // Could be useful for casting in certain circumstances
         public MarioPowerUpState marioPowerUpState;
         public MarioActionState marioActionState;
+        // TODO: maybe we don't have to give the casted variable a new name, but rather just use the new keyword and the subclass type
+        public MarioSprite _marioSprite;
         private int _width;
         private int _height;
 
@@ -50,6 +52,7 @@ namespace MarioGame.Entities
             marioActionState = marioActionStateMachine.IdleMarioState;
             marioPowerUpState = powerUpStateMachine.StandardState;
 
+            _marioSprite = (MarioSprite)_sprite;
             direction = Directions.Right;
             spaceBarAction = SpaceBarAction.run;
             _height = standardBoundingBoxHeight;
@@ -121,12 +124,10 @@ namespace MarioGame.Entities
         {
             return this.Velocity.Equals(jumpingVelocity);
         }
-
         public void ChangeActionState(MarioActionState state)
         {
             base.ChangeActionState(state);
             ((MarioSprite)_sprite).changeActionState(state);
-
         }
         public void ChangePowerUpState(MarioPowerUpState state)
         {
@@ -147,8 +148,6 @@ namespace MarioGame.Entities
                 boundingBox.Height = standardBoundingBoxHeight;
             }
         }
-
-
         public void Jump()
         {
             if (marioPowerUpState.powerUpState != MarioPowerUpStateEnum.Dead)
