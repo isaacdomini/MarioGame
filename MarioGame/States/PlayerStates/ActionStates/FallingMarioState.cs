@@ -18,28 +18,5 @@ namespace MarioGame.States
         {
             stateMachine.IdleMarioState.Begin(this);
         }
-        public override void MoveLeft()
-        {
-            if (mario.isFacingRight())
-            {
-                mario.turnLeft();
-                mario.SetVelocityToIdle();
-            }
-            else if (mario.isFacingLeft())
-            {
-                stateMachine.WalkingMarioState.Begin(this);
-            }
-        }
-        public override void MoveRight()
-        {
-            if (mario.isFacingLeft())
-            {
-                mario.turnRight();
-            }
-            else if (mario.isFacingRight())
-            {
-                stateMachine.WalkingMarioState.Begin(this);
-            }
-        }
     }
 }

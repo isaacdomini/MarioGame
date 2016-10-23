@@ -23,19 +23,5 @@ namespace MarioGame.States
         {
             stateMachine.CrouchingMarioState.Begin(this);
         }
-        public override void MoveLeft()
-        {
-            if (mario.isFacingRight())
-            {
-                stateMachine.IdleMarioState.Begin(this);
-            }
-        }
-        public override void MoveRight()
-        {
-            if (mario.isFacingLeft())
-            {
-                stateMachine.IdleMarioState.Begin(this);
-            }
-        }
     }
 }

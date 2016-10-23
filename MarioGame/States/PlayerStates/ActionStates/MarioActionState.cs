@@ -24,12 +24,26 @@ namespace MarioGame.States
         }
         public virtual void Jump() { }
 
-        public virtual void MoveRight() { }
+        public virtual void MoveRight() {
+            if (mario.isFacingLeft())  
+            {
+                mario.turnRight();
+                stateMachine.IdleMarioState.Begin(this);
+            }
+            else if (mario.isFacingRight())
+            {
+                stateMachine.WalkingMarioState.Begin(this);
+            }
+        }
 
         public virtual void MoveLeft() {
             if (mario.isFacingLeft())
             {
-
+                stateMachine.WalkingMarioState.Begin(this);
+            } else if (mario.isFacingRight())
+            {
+                mario.turnLeft();
+                stateMachine.IdleMarioState.Begin(this);
             }
         }
 

@@ -178,6 +178,7 @@ namespace MarioGame.Entities
         }
         public void MoveRight()
         {
+            Console.WriteLine("mario.MoveRight called");
             if (!(marioPowerUpState is DeadState))
             {
                 marioActionState.MoveRight();
