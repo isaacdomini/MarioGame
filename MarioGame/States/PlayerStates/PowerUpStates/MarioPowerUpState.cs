@@ -9,11 +9,10 @@ namespace MarioGame.States
         {
             get; protected set;
         }
-        protected Mario _mario;
+        protected Mario _mario { get { return (Mario)_entity; } }
         protected MarioPowerUpStateMachine _stateMachine;
         public MarioPowerUpState(Mario mario, MarioPowerUpStateMachine stateMachine) : base(mario)
         {
-            _mario = mario;
             _stateMachine = stateMachine;
         }
         public virtual void Begin(MarioPowerUpState prevState)
@@ -26,6 +25,7 @@ namespace MarioGame.States
         }
         public virtual void ChangeToDead()
         {
+            //_mario.marioPowerUpState.powerUpState = 
             Console.WriteLine("marioPowerUpState.changeToDead() about to be called. mario is DeadState:" + (this is DeadState));
             Console.WriteLine("marioPowerUpState.changeToDead() about to be called. _stateMachine.DeadState is" + (_stateMachine.DeadState is DeadState));
             _mario.ChangePowerUpState(_stateMachine.DeadState);
@@ -47,5 +47,6 @@ namespace MarioGame.States
             _mario.setInvincible(10);
         }
         public virtual void onHitByEnemy() { }
+        public virtual void onInvincibilityEnded() { }
     }
 }

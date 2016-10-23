@@ -15,10 +15,10 @@ namespace MarioGame.Entities
         private float secondsOfInvincibilityRemaining = 0.0f;
         public bool Invincible { get { return pState is FireStarState || pState is StandardStarState || pState is SuperStarState; } }
         // Could be useful for casting in certain circumstances
-        public MarioPowerUpState marioPowerUpState;
-        public MarioActionState marioActionState;
+        public MarioPowerUpState marioPowerUpState { get { return (MarioPowerUpState)pState; } }
+        public MarioActionState marioActionState { get { return (MarioActionState)aState; } }
         // TODO: maybe we don't have to give the casted variable a new name, but rather just use the new keyword and the subclass type
-        public MarioSprite _marioSprite;
+        public MarioSprite _marioSprite { get { return (MarioSprite)_sprite; } }
         private int _width;
         private int _height;
 
@@ -48,12 +48,9 @@ namespace MarioGame.Entities
         {
             marioActionStateMachine = new MarioActionStateMachine(this);
             marioPowerUpStateMachine = new MarioPowerUpStateMachine(this);           
-            marioPowerUpState = marioPowerUpStateMachine.StandardState;
-            marioActionState = marioActionStateMachine.IdleMarioState;
-            pState = marioPowerUpState;
-            aState = marioActionState;
+            aState = marioActionStateMachine.IdleMarioState; //TODO: make marioActionState a casted getter of aState?
+            pState = marioPowerUpStateMachine.StandardState;
 
-            _marioSprite = (MarioSprite) _sprite;
             direction = Directions.Right;
             spaceBarAction = SpaceBarAction.run;
             _height = standardBoundingBoxHeight;

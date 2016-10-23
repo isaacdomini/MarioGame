@@ -8,5 +8,9 @@ namespace MarioGame.States
         {
             powerUpState = MarioPowerUpStateEnum.FireStar;
         }
+        public override void onInvincibilityEnded()
+        {
+            _mario.ChangePowerUpState(_stateMachine.FireState);
+        }
     }
 }
