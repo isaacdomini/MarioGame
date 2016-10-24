@@ -16,14 +16,7 @@ namespace MarioGame.States
         }
         public override void JumpedOn()
         {
-            if (Vector2.Equals(koopa.Velocity, Entity.idleVelocity))
-            {
-                koopa.SetShellVelocityToMoving();
-            }
-            else
-            {
-                koopa.SetVelocityToIdle();
-            }
+            _stateMachine.BouncingState.Begin(this);
         }
     }
 }

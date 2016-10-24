@@ -1,9 +1,8 @@
 ﻿using MarioGame.Entities;
 
-
 namespace MarioGame.States
 {
-    public class KoopaActionState : ActionState
+    public class KoopaActionState : EnemyActionState
     {
         public EnemyActionStateEnum enemyState
         { get; protected set; }
@@ -19,16 +18,8 @@ namespace MarioGame.States
         {
             base.Begin(prevState);
         }
-        public virtual void Halt()
-        {
-            ChangeToDead();
-        }
-        public virtual void JumpedOn()
-        {
-            ChangeToDead();
-        }
 
-        public virtual void ChangeToDead()
+        public override void ChangeToDead()
         {
             _stateMachine.DeadState.Begin(this);
         }

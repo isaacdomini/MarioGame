@@ -2,7 +2,7 @@
 
 namespace MarioGame.States
 {
-    public class GoombaActionState : ActionState
+    public class GoombaActionState : EnemyActionState
     {
         public EnemyActionStateEnum enemyState
         { get; protected set; }
@@ -18,18 +18,9 @@ namespace MarioGame.States
         {
             base.Begin(prevState);
         }
-        public virtual void Halt()
-        {
-            ChangeToDead();
-        }
-
-        public virtual void ChangeToDead()
+        public override void ChangeToDead()
         {
             _stateMachine.DeadGoomba.Begin(this);
-        }
-        public virtual void JumpedOn()
-        {
-            ChangeToDead();
         }
     }
 }

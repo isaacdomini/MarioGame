@@ -5,16 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using MarioGame.Entities;
 
-namespace MarioGame.States.EnemyStates
+namespace MarioGame.States
 {
     public class EnemyActionState : ActionState
     {
         public EnemyActionState(IEntity entity) : base(entity)
         {
         }
-        public virtual void Begin(KoopaActionState prevState)
+        public virtual void Begin(EnemyActionState prevState)
         {
             base.Begin(prevState);
+        }
+        public virtual void HitBlock()
+        {
+            ((Entity)_entity).flipHorizontalVelocity();
         }
         public virtual void Halt()
         {
@@ -24,10 +28,6 @@ namespace MarioGame.States.EnemyStates
         {
             ChangeToDead();
         }
-
-        public virtual void ChangeToDead()
-        {
-            _stateMachine.DeadState.Begin(this);
-        } 
+        public virtual void ChangeToDead() { }
     }
 }

@@ -25,12 +25,12 @@ namespace MarioGame.Collisions
                 {
                     if (wy > -hx)
                     {
-                        toReturn = Sides.Bottom;
+                        toReturn = Sides.Top;
                     }
                     /* collision at the top */
                     else
                     {
-                        toReturn = Sides.Left;
+                        toReturn = Sides.Right;
 
                     }
                 }
@@ -39,12 +39,12 @@ namespace MarioGame.Collisions
                 {
                     if (wy > -hx)
                     {
-                        toReturn = Sides.Right;
+                        toReturn = Sides.Left;
                     }
                     /* on the right */
                     else
                     {
-                        toReturn = Sides.Top;
+                        toReturn = Sides.Bottom;
                     }
                 }
                 /* at the bottom */

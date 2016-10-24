@@ -128,7 +128,10 @@ namespace MarioGame.Entities
         {
             direction = newDir;
         }
-        
+        public virtual void flipHorizontalVelocity()
+        {
+            _velocity = -1 * _velocity;
+        }
         public virtual void turnLeft() {
             direction = Directions.Left;
             _sprite.changeDirection(direction);

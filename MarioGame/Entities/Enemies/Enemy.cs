@@ -1,7 +1,6 @@
 ﻿using MarioGame.Core;
 using MarioGame.Sprites;
 using MarioGame.States;
-using MarioGame.States.EnemyStates;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 
@@ -10,7 +9,7 @@ namespace MarioGame.Entities
     public class Enemy : Entity
     {
         public AnimatedSprite _enemySprite { get { return _sprite; } }
-        protected EnemyActionState _enemyActionState {get {return _aState; } }
+        protected EnemyActionState _enemyActionState {get {return (EnemyActionState)aState; } }
         protected bool _isDead;
         public bool Dead { get { return _isDead; } }
         protected bool _hurts;
@@ -21,8 +20,11 @@ namespace MarioGame.Entities
             _hurts = true;
             boxPercentSizeOfEntity = .8f;
         }
-        public virtual void JumpedOn() { }
-
+        public override void Halt()
+        {
+            Position -= Velocity;
+            _enemyActionState.Halt();
+        }
         public override void onCollide(IEntity otherObject, Sides side)
         {
             base.onCollide(otherObject, side);
@@ -33,7 +35,18 @@ namespace MarioGame.Entities
                     _isDead = true;
                     _enemyActionState.JumpedOn(); 
                 }
-            } 
+            }
+            if(otherObject is Block)
+            {
+                if(side == Sides.Left || side == Sides.Right)
+                {
+                    _enemyActionState.HitBlock();
+                }
+            }
+        }
+        public void ChangeToDeadState()
+        {
+            _enemyActionState.ChangeToDead();
         }
     }
 }
