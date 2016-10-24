@@ -32,7 +32,7 @@ namespace MarioGame.Entities
             {
                 if (side == Sides.Top)
                 {
-                    _isDead = true;
+                    _isDead = !_isDead;
                     _enemyActionState.JumpedOn(); 
                 }
             }
