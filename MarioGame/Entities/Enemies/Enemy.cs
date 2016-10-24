@@ -1,6 +1,7 @@
 ﻿using MarioGame.Core;
 using MarioGame.Sprites;
 using MarioGame.States;
+using MarioGame.States.EnemyStates;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 
@@ -9,6 +10,7 @@ namespace MarioGame.Entities
     public class Enemy : Entity
     {
         public AnimatedSprite _enemySprite { get { return _sprite; } }
+        protected EnemyActionState _enemyActionState {get {return _aState; } }
         protected bool _isDead;
         public bool Dead { get { return _isDead; } }
         protected bool _hurts;
@@ -29,6 +31,7 @@ namespace MarioGame.Entities
                 if (side == Sides.Top)
                 {
                     _isDead = true;
+                    _enemyActionState.JumpedOn(); 
                 }
             } 
         }
