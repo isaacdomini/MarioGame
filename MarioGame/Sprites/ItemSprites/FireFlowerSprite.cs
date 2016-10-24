@@ -12,7 +12,6 @@ namespace MarioGame.Sprites
     {
         public enum Frames
         {
-            //frames are all facing left. Except DeadMario who is facing the computer user.
             Blue = 0,
             Red = 1,
             Purple = 2,
@@ -27,9 +26,7 @@ namespace MarioGame.Sprites
                 { 0, new List<int> { Frames.Blue.GetHashCode(), Frames.Red.GetHashCode(), Frames.Purple.GetHashCode(), Frames.Halo.GetHashCode() } },
             };
             _frameSet = _frameSets[Frames.Blue.GetHashCode()];
-
         }
-
     }
 }
 
