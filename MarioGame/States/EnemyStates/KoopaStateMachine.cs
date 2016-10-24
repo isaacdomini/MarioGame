@@ -11,7 +11,7 @@ namespace MarioGame.States
     {
         KoopaTroopa _koopa;
         KoopaActionState dead;
-        KoopaActionState bouncing;
+        KoopaBouncingState bouncing;
         KoopaActionState walking;
         internal KoopaActionState DeadState
         {
@@ -21,7 +21,7 @@ namespace MarioGame.States
         {
             get { return walking; }
         }
-        internal KoopaActionState BouncingState
+        internal KoopaBouncingState BouncingState
         {
             get { return bouncing; }
         }

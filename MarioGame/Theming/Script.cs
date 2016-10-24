@@ -66,11 +66,11 @@ namespace MarioGame.Theming
                    }
                    else
                    {
-                       Console.WriteLine("Type" + e.GetType());
                    }
                 });
 
            });
+            _entities.ForEach(e => e.Update(Viewport));
             _mario.Update(Viewport);
 
         }

@@ -14,7 +14,7 @@ namespace MarioGame.States
             goomba = entity;
         }
 
-        public virtual void Begin(GoombaActionState prevState)
+        public override void Begin(IState prevState)
         {
             base.Begin(prevState);
         }

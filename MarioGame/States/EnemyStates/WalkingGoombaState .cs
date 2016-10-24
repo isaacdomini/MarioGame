@@ -10,8 +10,9 @@ namespace MarioGame.States
         {
             enemyState = EnemyActionStateEnum.Walking;
         }
-        public override void Begin(GoombaActionState prevState)
+        public override void Begin(IState prevState)
         {
+            base.Begin(prevState);
             goomba.SetVelocityToWalk();
             goomba.ChangeActionState(_stateMachine.WalkingGoomba);
         }

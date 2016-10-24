@@ -51,7 +51,7 @@ namespace MarioGame.Entities
         }
         public override void Update(Viewport viewport)
         {
-            base.Update();
+            base.Update(viewport);
             if (Position.X < 0)
             {
                 _position.X = 0;

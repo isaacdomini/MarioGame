@@ -8,8 +8,9 @@ namespace MarioGame.States
         {
             enemyState = EnemyActionStateEnum.Dead;
         }
-        public override void Begin(GoombaActionState prevState)
+        public override void Begin(IState prevState)
         {
+            base.Begin(prevState);
             goomba.SetVelocityToIdle();
             goomba.ChangeActionState(_stateMachine.DeadGoomba);
         }

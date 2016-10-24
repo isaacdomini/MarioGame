@@ -4,6 +4,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using MarioGame.Sprites;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework.Graphics;
+using MarioGame.Core;
 
 namespace MarioGame.Entities
 {
@@ -89,10 +91,19 @@ namespace MarioGame.Entities
         {
             ((BlockActionState)aState).ChangeToUsed();
         }
+        public override void onCollide(IEntity otherObject, Sides side)
+        {
+            if(otherObject is Mario)
+            {
+                if(side == Sides.Bottom)
+                {
+                    Bump();
+                }
+            }
+        }
         public void Bump()
         {
-            if (((BlockActionState)aState).bState == BlockActionStateEnum.BrickBlock)
-            {
+            //if bumpable
                 if(tickCount == 0)
                 {
                     tickCount = 10;
@@ -101,7 +112,7 @@ namespace MarioGame.Entities
                 // TODO: Begin bumping sequence
                 // TODO: If there is no item, change to used.
                 // TODO: If there is an item, display item, and bump
-            }
+            //else break
         }
         // Only called when mario is super
         public void Break()
@@ -113,9 +124,9 @@ namespace MarioGame.Entities
             ((BlockPowerUpState)pState).Reveal();
         }
 
-        public override void Update()
+        public override void Update(Viewport viewport)
         {
-            base.Update();
+            base.Update(viewport);
             if (tickCount > 1)
             {
                 tickCount--;

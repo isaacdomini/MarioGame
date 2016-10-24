@@ -97,7 +97,7 @@ namespace MarioGame.Entities
         }
         public override void Update(Viewport viewport)
         {
-            base.Update();
+            base.Update(viewport);
             UpdateInvincibilityStatus();
             if (marioPowerUpState is DeadState)
             {
@@ -234,11 +234,24 @@ namespace MarioGame.Entities
             else
             {
                 Console.WriteLine("Enemy was Dead and/or mario hit the top of the enemy, meaning this does not affect mario.");
+                Halt();
             }
         }
         protected override void onBlockSideCollision()
         {
+            _position.X -= 2 * Velocity.X;
+            _velocity.X = 0;
+            marioActionState.Halt();
+        }
+        public override void onBlockBottomCollision()
+        {
+            base.onBlockBottomCollision();
             Halt();
+        }
+        public override void onBlockTopCollision()
+        {
+            base.onBlockTopCollision();
+            marioActionState.Fall();
         }
         private void onCollideItem(Item item, Sides side)
         {

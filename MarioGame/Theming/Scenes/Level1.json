@@ -166,7 +166,7 @@
         },
         {
           "row": 11,
-          "column": 30,
+          "column": 29.5,
           "hiddenItems": [
             {
               "type": "MushroomSuper",
@@ -193,7 +193,7 @@
       "rowColumns": [
         {
           "row": 11,
-          "columns": [ 14, 16, 18 ]
+          "columns": [ 14, 15, 16 ]
         }
       ]
     },
