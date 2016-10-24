@@ -26,7 +26,7 @@ namespace MarioGame.Entities
         private readonly static Vector2 jumpingVelocity = new Vector2(0, velocityConstant * -1);
         private readonly static Vector2 dashVelocity = new Vector2(velocityConstant * 2, 0);
 
-        private static int superBoundingBoxWidth = 30;
+        private static int superBoundingBoxWidth = 20;
         private static int superBoundingBoxHeight = 36;
 
         private static int standardBoundingBoxWidth = 20;
@@ -55,7 +55,20 @@ namespace MarioGame.Entities
             _height = standardBoundingBoxHeight;
             _width = standardBoundingBoxWidth;
         }
-
+        protected override void setUpBoundingBoxProperties()
+        {
+            int sideMargin = 0, topBottomMargin = 0;
+            if (marioPowerUpState is FireStarState || marioPowerUpState is SuperState || marioPowerUpState is FireState || marioPowerUpState is SuperStarState)
+            {
+                boundingBoxSize = new Point(superBoundingBoxWidth, superBoundingBoxHeight);
+            }
+            else
+            {
+                boundingBoxSize = new Point(standardBoundingBoxWidth, standardBoundingBoxHeight);
+                topBottomMargin = 16;
+            }
+            boundingBoxOffset = new Point(sideMargin, topBottomMargin);
+        }
         private void OnInvincibilityEnded()
         {
             if(marioPowerUpState is FireStarState)
