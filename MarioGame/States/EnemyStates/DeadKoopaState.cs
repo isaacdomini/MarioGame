@@ -17,6 +17,7 @@ namespace MarioGame.States
         }
         public override void JumpedOn()
         {
+            //KoopaTroopa.shellMovingVelocity= new Vector2(-2, 0);
             _stateMachine.BouncingState.Begin(this);
         }
     }

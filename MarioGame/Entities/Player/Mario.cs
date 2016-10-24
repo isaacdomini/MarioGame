@@ -13,7 +13,16 @@ namespace MarioGame.Entities
     public class Mario : PowerUpEntity
     {
         private float secondsOfInvincibilityRemaining = 0.0f;
-        public bool Invincible { get { return pState is FireStarState || pState is StandardStarState || pState is SuperStarState; } }
+        public bool Invincible
+        {
+            get
+            {
+                if (secondsOfInvincibilityRemaining > 0 || pState is FireStarState || pState is StandardStarState || pState is SuperStarState)
+                    return true;
+                else
+                    return false;
+            }
+        }
         // Could be useful for casting in certain circumstances
         public MarioPowerUpState marioPowerUpState { get { return (MarioPowerUpState)pState; } }
         public MarioActionState marioActionState { get { return (MarioActionState)aState; } }
@@ -89,7 +98,7 @@ namespace MarioGame.Entities
             if (secondsOfInvincibilityRemaining > 0)
             {
                 secondsOfInvincibilityRemaining -= (GlobalConstants.MILLISECONDS_PER_FRAME / 1000);
-                if (secondsOfInvincibilityRemaining < 0)
+                if (secondsOfInvincibilityRemaining <= 0)
                 {
                     OnInvincibilityEnded();
                 }
@@ -225,16 +234,20 @@ namespace MarioGame.Entities
         private void onCollideEnemy(Enemy enemy, Sides side)
         {
             Console.WriteLine("mario collided an enemy");
-            if (!enemy.Dead && side != Sides.Bottom){
-                Console.WriteLine("Enemy was alive and mario did not hit the top of the enemy, meaning we are calling marioPowerUpState.onHitByEnemy()");
-                Console.WriteLine("is mario dead before marioPowerUpState.onHitByEnemy? " + ( marioPowerUpState is DeadState));
-                marioPowerUpState.onHitByEnemy();
-                Console.WriteLine("is mario dead after marioPowerUpState.onHitByEnemy? " + ( marioPowerUpState is DeadState));
-            }
-            else
+            if (!Invincible)
             {
-                Halt();
-                Console.WriteLine("Enemy was Dead and/or mario hit the top of the enemy, meaning this does not affect mario.");
+                if (!enemy.Dead && side != Sides.Bottom)
+                {
+                    Console.WriteLine("Enemy was alive and mario did not hit the top of the enemy, meaning we are calling marioPowerUpState.onHitByEnemy()");
+                    Console.WriteLine("is mario dead before marioPowerUpState.onHitByEnemy? " + (marioPowerUpState is DeadState));
+                    marioPowerUpState.onHitByEnemy();
+                    Console.WriteLine("is mario dead after marioPowerUpState.onHitByEnemy? " + (marioPowerUpState is DeadState));
+                }
+                else
+                {
+                    Halt();
+                    Console.WriteLine("Enemy was Dead and/or mario hit the top of the enemy, meaning this does not affect mario.");
+                }
             }
         }
         protected override void onBlockSideCollision()

@@ -3,6 +3,7 @@ using MarioGame.Sprites;
 using MarioGame.States;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
+using System;
 
 namespace MarioGame.Entities
 {
@@ -34,6 +35,11 @@ namespace MarioGame.Entities
                 {
                     _isDead = !_isDead;
                     _enemyActionState.JumpedOn(); 
+                }
+                if (_isDead && (side == Sides.Left || side == Sides.Right))
+                {
+                    _isDead = !_isDead;
+                    _enemyActionState.JumpedOn();
                 }
             }
             if(otherObject is Block)
