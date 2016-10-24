@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MarioGame.Entities;
 using Microsoft.Xna.Framework;
+using MarioGame.Core;
 
 namespace MarioGame.States
 {
@@ -21,9 +22,9 @@ namespace MarioGame.States
             koopa.ChangeActionState(_stateMachine.BouncingState);
             koopa.SetShellVelocityToMoving();
         }
-        public override void JumpedOn()
+        public override void JumpedOn(Sides side)
         {
-            base.JumpedOn();
+            base.JumpedOn(side);
             ChangeToDead();
         }
     }

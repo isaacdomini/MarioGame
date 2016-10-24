@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MarioGame.Entities;
+using MarioGame.Core;
 
 namespace MarioGame.States
 {
@@ -24,7 +25,7 @@ namespace MarioGame.States
         {
             ChangeToDead();
         }
-        public virtual void JumpedOn()
+        public virtual void JumpedOn(Sides side)
         {
             ChangeToDead();
         }

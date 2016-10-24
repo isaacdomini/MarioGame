@@ -1,4 +1,5 @@
-﻿using MarioGame.Entities;
+﻿using MarioGame.Core;
+using MarioGame.Entities;
 using Microsoft.Xna.Framework;
 
 namespace MarioGame.States
@@ -15,9 +16,16 @@ namespace MarioGame.States
             koopa.SetVelocityToIdle();
             koopa.ChangeActionState(_stateMachine.DeadState);
         }
-        public override void JumpedOn()
+        public override void JumpedOn(Sides side)
         {
-            //KoopaTroopa.shellMovingVelocity= new Vector2(-2, 0);
+            if(side == Sides.Right)
+            {
+                KoopaTroopa.shellMovingVelocity= new Vector2(-2, 0);
+            }
+            else
+            {
+                KoopaTroopa.shellMovingVelocity = new Vector2(2, 0);
+            }
             _stateMachine.BouncingState.Begin(this);
         }
     }
