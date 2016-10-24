@@ -108,19 +108,6 @@ namespace MarioGame.Entities
                 SetVelocityToIdle();
             }
 
-            if (!(marioPowerUpState is StandardState) || !(marioPowerUpState is StandardStarState) )
-            {
-
-            }
-            if (marioPowerUpState is StandardState || marioPowerUpState is DeadState || marioPowerUpState is StandardStarState )
-            {
-                if (FacingLeft == true)
-                {
-                }
-                else
-                {
-                }
-            }
         }
         public bool checkMarioJumping()
         {
@@ -135,21 +122,8 @@ namespace MarioGame.Entities
         {
             Console.WriteLine("state passed into Mario.ChangePowerUpState is DeadState?" + (state is DeadState)); 
             base.ChangePowerUpState(state);
-            setBoundingBox(); 
+            LoadBoundingBox();
             _marioSprite.changePowerUp(state);//TODO: can we push _marioSprite.changePowerUp inside of base.ChangePowerUpState, or will doing so lose the polymorphism (e.g. will it call AnimatedSprite.changePowerUp rather than _marioSprite.changePowerUp
-        }
-        private void setBoundingBox()
-        {
-            if (marioPowerUpState is SuperState || marioPowerUpState is SuperStarState || marioPowerUpState is SuperStarState || marioPowerUpState is FireStarState ) 
-            {
-                boundingBox.Width = superBoundingBoxWidth;
-                boundingBox.Height = superBoundingBoxHeight;
-            }
-            else if (marioPowerUpState is StandardState || marioPowerUpState is DeadState || marioPowerUpState is StandardStarState)
-            {
-                boundingBox.Width = standardBoundingBoxWidth;
-                boundingBox.Height = standardBoundingBoxHeight;
-            }
         }
         public void Jump()
         {
