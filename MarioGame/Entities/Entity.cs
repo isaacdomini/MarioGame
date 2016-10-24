@@ -91,14 +91,13 @@ namespace MarioGame.Entities
         {
             aState = state;
         }
-        public virtual void Update()
+        public virtual void Update(Viewport viewport)
         {
             _position += Velocity;
             boundingBox.Location = Util.vectorToPoint(Position) + boundingBoxOffset;
             BoxColor = _colliding ? collidingBoxColor : regularBoxColor;
             _colliding = false;
         }
-        public virtual void Update(Viewport viewport) { }
         public void setVelocity(Vector2 newVelocity)
         {
             _velocity = newVelocity;
@@ -171,7 +170,7 @@ namespace MarioGame.Entities
                     _position.Y -= Velocity.Y;
                     _velocity.Y = 0;
                 }
-                else if (side == Sides.Top)
+                else if (side == Sides.Bottom)
                 {
                     //TODO: replace the below with simply letting gravity take over
                     _position.Y -= Velocity.Y;

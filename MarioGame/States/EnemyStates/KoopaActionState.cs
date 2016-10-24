@@ -14,7 +14,7 @@ namespace MarioGame.States
             koopa = entity;
         }
 
-        public virtual void Begin(KoopaActionState prevState)
+        public override void Begin(IState prevState)
         {
             base.Begin(prevState);
         }

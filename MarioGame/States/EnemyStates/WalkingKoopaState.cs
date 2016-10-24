@@ -12,7 +12,7 @@ namespace MarioGame.States
             enemyState = EnemyActionStateEnum.Walking;
         }
 
-        public override void Begin(KoopaActionState prevState)
+        public override void Begin(IState prevState)
         {
             koopa.SetVelocityToWalk();
             koopa.ChangeActionState(_stateMachine.WalkState);

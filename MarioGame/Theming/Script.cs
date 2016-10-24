@@ -72,6 +72,7 @@ namespace MarioGame.Theming
 
            });
             _mario.Update(Viewport);
+            _entities.ForEach(e => e.Update(Viewport));
 
         }
 

@@ -9,7 +9,7 @@ namespace MarioGame.States
         {
             enemyState = EnemyActionStateEnum.Dead;
         }
-        public override void Begin(KoopaActionState prevState)
+        public override void Begin(IState prevState)
         {
             koopa.SetVelocityToIdle();
             koopa.ChangeActionState(_stateMachine.DeadState);

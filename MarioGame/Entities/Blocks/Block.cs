@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using MarioGame.Sprites;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MarioGame.Entities
 {
@@ -113,9 +114,9 @@ namespace MarioGame.Entities
             ((BlockPowerUpState)pState).Reveal();
         }
 
-        public override void Update()
+        public override void Update(Viewport viewport)
         {
-            base.Update();
+            base.Update(viewport);
             if (tickCount > 1)
             {
                 tickCount--;

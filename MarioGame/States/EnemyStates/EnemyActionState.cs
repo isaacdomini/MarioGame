@@ -12,7 +12,7 @@ namespace MarioGame.States
         public EnemyActionState(IEntity entity) : base(entity)
         {
         }
-        public virtual void Begin(EnemyActionState prevState)
+        public override void Begin(IState prevState)
         {
             base.Begin(prevState);
         }

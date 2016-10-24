@@ -14,7 +14,7 @@ namespace MarioGame.States
         public KoopaBouncingState(KoopaTroopa entity, KoopaStateMachine stateMachine) : base(entity, stateMachine)
         {
         }
-        public override void Begin(EnemyActionState prevState)
+        public override void Begin(IState prevState)
         {
             base.Begin(prevState);
             koopa.ChangeActionState(_stateMachine.BouncingState);
