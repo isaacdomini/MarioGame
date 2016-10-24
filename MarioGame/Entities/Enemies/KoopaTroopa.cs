@@ -17,6 +17,7 @@ namespace MarioGame.Entities
 {
     public class KoopaTroopa : Enemy
     {
+        protected KoopaTroopaSprite _koopaTroopaSprite { get { return (KoopaTroopaSprite)_enemySprite; } }
         //public KoopaTroopaSprite eSprite;
         private KoopaActionState eState;
         public readonly static Vector2 shellMovingVelocity = new Vector2(2, 0);
@@ -30,15 +31,14 @@ namespace MarioGame.Entities
             _stateMachine = new KoopaStateMachine(this);
             aState = _stateMachine.WalkState;
             eState = (KoopaActionState)aState;
-            eSprite = (KoopaTroopaSprite)_sprite;
-            regularBoxColor = Color.Red;
             isCollidable = true;
 
         }
+        //TODO: couldn't we delete this method and just let the parent method be used?
         public void ChangeActionState(KoopaActionState newState)
         {
             eState = newState;
-            ((KoopaTroopaSprite)eSprite).changeActionState(newState);
+            _koopaTroopaSprite.changeActionState(newState);
         }
 
         internal void SetShellVelocityToMoving()

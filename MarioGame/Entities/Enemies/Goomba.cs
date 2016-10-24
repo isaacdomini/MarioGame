@@ -11,22 +11,19 @@ namespace MarioGame.Entities
     public class Goomba : Enemy
     {
         //public GoombaSprite eSprite;
-        GoombaActionState eState;
+        GoombaActionState eState { get { return (GoombaActionState)aState; } }
         GoombaStateMachine stateMachine;
-        private static int boundingBoxWidth = 10;
-        private static int boundingBoxHeight = 10;
-
+        GoombaSprite _goombaSprite { get { return (GoombaSprite)_sprite; } }
         public Goomba(Vector2 position, ContentManager content) : base(position, content)
         {
             stateMachine = new GoombaStateMachine(this);
             aState = stateMachine.WalkingGoomba;
-            eState = (GoombaActionState)aState;
-            eSprite = (GoombaSprite)_sprite;
         }
+        //TODO: couldn't we just inherit ChangeActionState from some parent
         public void ChangeActionState(GoombaActionState newState)
         {
-            eState = newState;
-            ((GoombaSprite)eSprite).changeActionState(newState);
+            aState = newState;
+            _goombaSprite.changeActionState(newState);
         }
 
         public override void Halt()

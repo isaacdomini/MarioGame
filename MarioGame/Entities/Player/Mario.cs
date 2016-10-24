@@ -24,7 +24,6 @@ namespace MarioGame.Entities
 
         // Velocity variables
         private readonly static Vector2 jumpingVelocity = new Vector2(0, velocityConstant * -1);
-        private readonly static Vector2 fallingVelocity = new Vector2(0, velocityConstant * 1);
         private readonly static Vector2 dashVelocity = new Vector2(velocityConstant * 2, 0);
 
         private static int superBoundingBoxWidth = 30;
@@ -226,10 +225,7 @@ namespace MarioGame.Entities
                 }
             }
         }
-        public void SetVelocityToFalling()
-        {
-            this.setVelocity(fallingVelocity);
-        }
+        
         public void SetVelocityToJumping()
         {
             this.setVelocity(jumpingVelocity);

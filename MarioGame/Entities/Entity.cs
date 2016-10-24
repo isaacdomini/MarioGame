@@ -43,6 +43,7 @@ namespace MarioGame.Entities
         public Vector2 Velocity { get { return _velocity; } }
         public readonly static int velocityConstant = 1;
         private readonly static Vector2 walkingVelocity = new Vector2(velocityConstant * 1, 0);
+        protected readonly static Vector2 fallingVelocity = new Vector2(0, velocityConstant * 1);
         public readonly static Vector2 idleVelocity = new Vector2(0, 0);
         public bool Moving { get { return !Velocity.Equals(idleVelocity); } }
         public bool Deleted { get; private set; }
@@ -52,9 +53,10 @@ namespace MarioGame.Entities
         }
         protected static int boundingBoxWidth = 10;
         protected Point boundingBoxSize;
-        protected Point boundingBoxOffset;
+        protected Point boundingBoxOffset = new Point(0,0);
         protected Color regularBoxColor = Color.Yellow;
         protected Color collidingBoxColor = Color.Black;
+        protected float boxPercentSizeOfEntity = 1.0f;
         public Color BoxColor;
         protected virtual void preConstructor() {
         }
@@ -71,13 +73,19 @@ namespace MarioGame.Entities
             _position = position;
             _colliding = false;
         }
-        /** must be called after _sprite.Load(). this is called in Scene. */
+        /** must be called after _sprite.Load() because boudningBoxSize reads from _sprite.FrameWidth/Height which aren't set until after _sprite.Load. LoadBoundingBox  is called in Scene. */
         public void LoadBoundingBox()
         {
-            boundingBoxSize = new Point(_sprite.FrameWidth, _sprite.FrameHeight);
-            boundingBoxOffset = new Point(0, 0);
+            setUpBoundingBox();
             boundingBox = new Rectangle(Util.vectorToPoint(Position) + boundingBoxOffset, boundingBoxSize);
             BoxColor = regularBoxColor; 
+        }
+        protected virtual void setUpBoundingBox()
+        {
+            boundingBoxSize = new Point((int) (_sprite.FrameWidth * boxPercentSizeOfEntity), (int) (_sprite.FrameHeight * boxPercentSizeOfEntity));
+            int sideMargin = (int) ((1.0f - boxPercentSizeOfEntity) / 2.0 * _sprite.FrameWidth);
+            int topBottomMargin = (int)((1.0f - boxPercentSizeOfEntity) / 2.0 * _sprite.FrameHeight);
+            boundingBoxOffset = new Point(sideMargin, topBottomMargin);
         }
         public void ChangeActionState(ActionState state)
         {
@@ -98,6 +106,10 @@ namespace MarioGame.Entities
         public void SetVelocityToIdle()
         {
             this.setVelocity(idleVelocity);
+        }
+        public void SetVelocityToFalling()
+        {
+            this.setVelocity(fallingVelocity);
         }
         public void SetVelocityToWalk()
         {

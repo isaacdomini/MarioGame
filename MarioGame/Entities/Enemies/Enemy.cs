@@ -8,7 +8,7 @@ namespace MarioGame.Entities
 {
     public class Enemy : Entity
     {
-        public AnimatedSprite eSprite;
+        public AnimatedSprite _enemySprite { get { return _sprite; } }
         protected bool _isDead;
         public bool Dead { get { return _isDead; } }
         protected bool _hurts;
@@ -17,6 +17,7 @@ namespace MarioGame.Entities
         {
             _isDead = false;
             _hurts = true;
+            boxPercentSizeOfEntity = .8f;
         }
         public virtual void JumpedOn() { }
 

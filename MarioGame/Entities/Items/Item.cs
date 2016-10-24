@@ -10,6 +10,7 @@ namespace MarioGame.Entities
     {
         public Item(Vector2 position, ContentManager content) : base(position, content)
         {
+            boxPercentSizeOfEntity = 1.2f;
         }
 
         public override void Hide()
