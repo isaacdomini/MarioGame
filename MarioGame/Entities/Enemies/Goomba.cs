@@ -11,12 +11,14 @@ namespace MarioGame.Entities
     public class Goomba : Enemy
     {
         //public GoombaSprite eSprite;
-        GoombaStateMachine stateMachine;
+        GoombaStateMachine _stateMachine;
         GoombaSprite _goombaSprite { get { return (GoombaSprite)_sprite; } }
         public Goomba(Vector2 position, ContentManager content) : base(position, content)
         {
-            stateMachine = new GoombaStateMachine(this);
-            aState = stateMachine.WalkingGoomba;
+            _stateMachine = new GoombaStateMachine(this);
+            ChangeActionState(_stateMachine.WalkingGoomba);
+            aState.Begin(aState);
+            isCollidable = true;
         }
         //TODO: couldn't we just inherit ChangeActionState from some parent
         public void ChangeActionState(GoombaActionState newState)
