@@ -104,15 +104,15 @@ namespace MarioGame.Entities
         }
         public void SetVelocityToIdle()
         {
-            this.setVelocity(idleVelocity);
+            setVelocity(idleVelocity);
         }
         public void SetVelocityToFalling()
         {
-            this.setVelocity(fallingVelocity);
+            setVelocity(fallingVelocity);
         }
         public void SetVelocityToWalk()
         {
-            this.setVelocity(walkingVelocity);
+            setVelocity(walkingVelocity);
             if (FacingLeft)
             {
                 //TODO: how does below line work
@@ -144,7 +144,7 @@ namespace MarioGame.Entities
         /** onColide must be called before Update */
         public virtual void onCollide(IEntity otherObject, Sides side)
         {
-            this._colliding = true;
+            _colliding = true;
             if(otherObject is Block)
             {
                 onCollideBlock((Block) otherObject, side);

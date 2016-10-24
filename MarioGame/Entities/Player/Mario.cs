@@ -233,6 +233,7 @@ namespace MarioGame.Entities
             }
             else
             {
+                Halt();
                 Console.WriteLine("Enemy was Dead and/or mario hit the top of the enemy, meaning this does not affect mario.");
                 Halt();
             }

@@ -14,7 +14,11 @@ namespace MarioGame.States
             koopa = entity;
         }
 
+<<<<<<< HEAD
+        public virtual void Begin(IState prevState)
+=======
         public override void Begin(IState prevState)
+>>>>>>> 53ec10448b82c746e7a73ebf6ec6cf481d0b0aaf
         {
             base.Begin(prevState);
         }
