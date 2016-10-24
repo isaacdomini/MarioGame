@@ -16,7 +16,6 @@ namespace MarioGame.Entities
     public abstract class Entity : IEntity, ICollidable
     {
         public AnimatedSprite _sprite;
-        public Rectangle boundingBox;
         
         protected ActionState aState;
         public bool isCollidable;
@@ -52,6 +51,7 @@ namespace MarioGame.Entities
             Deleted = true;
         }
         protected static int boundingBoxWidth = 10;
+        public Rectangle boundingBox;
         protected Point boundingBoxSize;
         protected Point boundingBoxOffset = new Point(0,0);
         protected Color regularBoxColor = Color.Yellow;
@@ -76,11 +76,11 @@ namespace MarioGame.Entities
         /** must be called after _sprite.Load() because boudningBoxSize reads from _sprite.FrameWidth/Height which aren't set until after _sprite.Load. LoadBoundingBox  is called in Scene. */
         public void LoadBoundingBox()
         {
-            setUpBoundingBox();
+            setUpBoundingBoxProperties();
             boundingBox = new Rectangle(Util.vectorToPoint(Position) + boundingBoxOffset, boundingBoxSize);
             BoxColor = regularBoxColor; 
         }
-        protected virtual void setUpBoundingBox()
+        protected virtual void setUpBoundingBoxProperties()
         {
             boundingBoxSize = new Point((int) (_sprite.FrameWidth * boxPercentSizeOfEntity), (int) (_sprite.FrameHeight * boxPercentSizeOfEntity));
             int sideMargin = (int) ((1.0f - boxPercentSizeOfEntity) / 2.0 * _sprite.FrameWidth);
