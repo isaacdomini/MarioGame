@@ -5,12 +5,9 @@ namespace MarioGame.States
 {
     internal class GoombaDeadState : GoombaActionState
     {
-<<<<<<< HEAD:MarioGame/States/EnemyStates/GoombaDeadState.cs
-        public GoombaDeadState(Goomba entity, GoombaStateMachine stateMachine) : base(entity, stateMachine)
-=======
         private float _deleteTimer = 0.0f;
-        public DeadGoombaState(Goomba entity, GoombaStateMachine stateMachine) : base(entity, stateMachine)
->>>>>>> Goomba disappears after 1 second when killed.:MarioGame/States/EnemyStates/DeadGoombaState.cs
+        public GoombaDeadState(Goomba entity, GoombaStateMachine stateMachine) : base(entity, stateMachine)
+
         {
             EnemyState = EnemyActionStateEnum.Dead;
         }
@@ -18,6 +15,7 @@ namespace MarioGame.States
         {
             base.Begin(prevState);
             Goomba.SetVelocityToIdle();
+<<<<<<< 56c29f4338c666fc10c83324e3c676cab44fa922
             Goomba.ChangeActionState(StateMachine.DeadGoomba);
 
         }
@@ -33,6 +31,14 @@ namespace MarioGame.States
             {
                 _deleteTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
+=======
+            Goomba.ChangeActionState(StateMachine.DeadState);
+        }
+
+        public override void ChangeToDead()
+        {
+            //Do nothing
+>>>>>>> naming consistency between enemy state machine classes
         }
     }
 }

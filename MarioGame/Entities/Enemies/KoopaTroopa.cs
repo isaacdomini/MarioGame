@@ -28,7 +28,7 @@ namespace MarioGame.Entities
         public KoopaTroopa(Vector2 position, ContentManager content) : base(position, content)
         {
             _stateMachine = new KoopaStateMachine(this);
-            ChangeActionState(_stateMachine.WalkState);
+            ChangeActionState(_stateMachine.WalkingState);
             AState.Begin(AState);
             IsCollidable = true;
         }

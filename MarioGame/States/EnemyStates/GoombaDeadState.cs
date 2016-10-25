@@ -15,8 +15,7 @@ namespace MarioGame.States
         {
             base.Begin(prevState);
             Goomba.SetVelocityToIdle();
-            Goomba.ChangeActionState(StateMachine.DeadGoomba);
-
+            Goomba.ChangeActionState(StateMachine.DeadState);
         }
 
         public override void UpdateEntity(GameTime gameTime)
@@ -30,6 +29,11 @@ namespace MarioGame.States
             {
                 _deleteTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
+        }
+
+        public override void ChangeToDead()
+        {
+            //Do nothing
         }
     }
 }

@@ -16,7 +16,7 @@ namespace MarioGame.Entities
         public Goomba(Vector2 position, ContentManager content) : base(position, content)
         {
             var stateMachine = new GoombaStateMachine(this);
-            ChangeActionState(stateMachine.WalkingGoomba);
+            ChangeActionState(stateMachine.WalkingState);
             AState.Begin(AState);
             IsCollidable = true;
         }

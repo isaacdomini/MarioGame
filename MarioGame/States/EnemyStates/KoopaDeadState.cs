@@ -21,5 +21,10 @@ namespace MarioGame.States
             KoopaTroopa.shellMovingVelocity = side == Sides.Right ? new Vector2(-2, 0) : new Vector2(2, 0); //TODO put this line in BouncingState.Begin
             StateMachine.BouncingState.Begin(this);
         }
+
+        public override void ChangeToDead()
+        {
+            //do nothing
+        }
     }
 }

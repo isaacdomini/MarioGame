@@ -20,7 +20,7 @@ namespace MarioGame.States
         }
         public override void ChangeToDead()
         {
-            StateMachine.DeadGoomba.Begin(this);
+            StateMachine.DeadState.Begin(this);
         }
     }
 }

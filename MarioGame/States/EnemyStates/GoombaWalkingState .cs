@@ -14,7 +14,7 @@ namespace MarioGame.States
         {
             base.Begin(prevState);
             Goomba.SetVelocityToWalk();
-            Goomba.ChangeActionState(StateMachine.WalkingGoomba);
+            Goomba.ChangeActionState(StateMachine.WalkingState);
         }
         
     }

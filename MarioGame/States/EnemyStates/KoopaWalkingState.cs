@@ -16,7 +16,7 @@ namespace MarioGame.States
         {
             base.Begin(prevState);
             Koopa.SetVelocityToWalk();
-            Koopa.ChangeActionState(StateMachine.WalkState);
+            Koopa.ChangeActionState(StateMachine.WalkingState);
         }
         
     }

@@ -1,0 +1,32 @@
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace MarioGame.Entities
+{
+    public class MushroomSuper : Item
+    {
+        public MushroomSuper(Vector2 position, ContentManager content) : base(position, content)
+        {
+            int _height = 40;
+            int _width = 20;
+            IsCollidable = true;
+<<<<<<< 117ec2bbbb4020f4119705823021601381a0e8e2
+            _velocity = -1 * MovingVelocity;
+=======
+            _velocity = IdleVelocity;
+>>>>>>> resharper more refactoring; no bounding box drawing for clouds
+        }
+
+        public override void Update(Viewport viewport, GameTime gameTime)
+        {
+            if (Sprite.Visible == false)
+            {
+                BoundingBox.X = (int)_position.X;
+                BoundingBox.Y = (int)_position.Y;
+
+            }
+            base.Update(viewport, gameTime);
+        }
+    }
+}
