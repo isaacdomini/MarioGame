@@ -9,23 +9,13 @@ namespace MarioGame.States
 {
     public class GoombaStateMachine
     {
-        Goomba _goomba;
-        GoombaActionState dead;
-        GoombaActionState walking;
-        internal GoombaActionState DeadGoomba
-        {
-            get { return dead; }           
-        }
-        internal GoombaActionState WalkingGoomba
-        {
-            get { return walking; }
-        }
+        internal GoombaActionState DeadState { get; }
+        internal GoombaActionState WalkingState { get; }
 
         public GoombaStateMachine(Goomba goomba)
         {
-            _goomba = goomba;
-            dead = new GoombaDeadState(_goomba, this);
-            walking = new GoombaWalkingState(_goomba, this);
+            DeadState = new GoombaDeadState(goomba, this);
+            WalkingState = new GoombaWalkingState(goomba, this);
 
         }
     }

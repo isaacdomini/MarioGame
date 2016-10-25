@@ -9,28 +9,17 @@ namespace MarioGame.States
 {
     public class KoopaStateMachine
     {
-        KoopaTroopa _koopa;
-        KoopaActionState dead;
-        KoopaBouncingState bouncing;
-        KoopaActionState walking;
-        internal KoopaActionState DeadState
-        {
-            get { return dead; }
-        }
-        internal KoopaActionState WalkState
-        {
-            get { return walking; }
-        }
-        internal KoopaBouncingState BouncingState
-        {
-            get { return bouncing; }
-        }
+        internal KoopaActionState DeadState { get; }
+
+        internal KoopaActionState WalkingState { get; }
+
+        internal KoopaBouncingState BouncingState { get; }
+
         public KoopaStateMachine(KoopaTroopa koopa)
         {
-            _koopa = koopa;
-            dead = new KoopaDeadState(_koopa, this);
-            walking = new KoopaWalkingState(_koopa, this);
-            bouncing = new KoopaBouncingState(_koopa, this);
+            DeadState = new KoopaDeadState(koopa, this);
+            WalkingState = new KoopaWalkingState(koopa, this);
+            BouncingState = new KoopaBouncingState(koopa, this);
         }
 
     }
