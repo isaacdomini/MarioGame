@@ -11,13 +11,13 @@ namespace MarioGame.Entities
             int _height = 40;
             int _width = 20;
             IsCollidable = true;
+            _velocity = MovingVelocity;
         }
 
         public override void Update(Viewport viewport, GameTime gameTime)
         {
             if (Sprite.Visible == false)
             {
-                _velocity = MovingVelocity;
                 BoundingBox.X = (int)_position.X;
                 BoundingBox.Y = (int)_position.Y;
 

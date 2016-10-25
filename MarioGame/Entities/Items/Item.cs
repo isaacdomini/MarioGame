@@ -37,6 +37,13 @@ namespace MarioGame.Entities
             {
                 Delete();
             }
+            if (otherObject is Block)
+            {
+                if (side == Sides.Left || side == Sides.Right)
+                {
+                    this.FlipHorizontalVelocity();
+                }
+            }
         }
     }
 }
