@@ -18,7 +18,6 @@ namespace MarioGame.Theming
         static private int blockWidth = 30; // each intereger in location is a multiple of blockWidth. e.g. each block in our scene may be 20 pixels width. So if we have a block at an x location of 10, that block's x position would actually be at pixel 200
         public static Entity createEntity(string klass, Vector2 location, ContentManager content)
         {
-            Console.WriteLine(typeof(Entity).Namespace + "." + klass);
             Type type = Type.GetType(typeof(Entity).Namespace + "." + klass);
             return (Entity)Activator.CreateInstance(type, location * blockWidth, content);
         }

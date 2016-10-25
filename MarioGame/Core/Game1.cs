@@ -26,7 +26,6 @@ namespace MarioGame.Core
             _scenes = new List<Scene>();
             _scenes.Add(new Scene(stage));
             _scene = 1;
-            Console.Out.WriteLine(_scenes.Count.ToString());
         }
         public Scene Scene
         {

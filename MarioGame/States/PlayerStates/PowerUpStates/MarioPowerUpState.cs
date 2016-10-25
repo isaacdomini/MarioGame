@@ -26,14 +26,7 @@ namespace MarioGame.States
         public virtual void ChangeToDead()
         {
             //_mario.marioPowerUpState.powerUpState = 
-            Console.WriteLine("marioPowerUpState.changeToDead() about to be called. mario is DeadState:" + (this is DeadState));
-            Console.WriteLine("marioPowerUpState.changeToDead() about to be called. _stateMachine.DeadState is" + (_stateMachine.DeadState is DeadState));
-            _mario.ChangePowerUpState(_stateMachine.DeadState);
-            Console.WriteLine("marioPowerUpState.changeToDead() was just called. mario is DeadState:" + (this is DeadState));
-            Console.WriteLine("marioPowerUpState.changeToDead() was just called. pState's type is " + _mario.CurrentPowerUpState.GetType());
-            Console.WriteLine("marioPowerUpState.changeToDead() was just called. marioPowerUpState's type is " + this.GetType());
-            Console.WriteLine("marioPowerUpState.changeToDead() was just called. marioPowerUpState's type (v2)is " + _mario.marioPowerUpState.GetType());
-            Console.WriteLine("marioPowerUpState.changeToDead() was just called. pState's type is " + _mario.CurrentPowerUpState.GetType());
+            _stateMachine.DeadState.Begin(this);
         }
         public virtual void ChangeToSuper()
         {

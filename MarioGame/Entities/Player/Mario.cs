@@ -122,8 +122,6 @@ namespace MarioGame.Entities
                 }
                 jumpTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
-            Console.WriteLine(marioPowerUpState);
-            Console.WriteLine(marioActionState);
         }
         public bool checkMarioJumping()
         {
@@ -136,7 +134,6 @@ namespace MarioGame.Entities
         }
         public void ChangePowerUpState(MarioPowerUpState state)
         {
-            Console.WriteLine("state passed into Mario.ChangePowerUpState is DeadState?" + (state is DeadState)); 
             base.ChangePowerUpState(state);
             LoadBoundingBox();
             _marioSprite.changePowerUp(state);//TODO: can we push _marioSprite.changePowerUp inside of base.ChangePowerUpState, or will doing so lose the polymorphism (e.g. will it call AnimatedSprite.changePowerUp rather than _marioSprite.changePowerUp
@@ -162,20 +159,13 @@ namespace MarioGame.Entities
         }
         public void MoveLeft()
         {
-            Console.WriteLine("mario.MoveLeft called");
             if (!(marioPowerUpState is DeadState))
             {
-                Console.WriteLine("Mario is not in dead State");
                 marioActionState.MoveLeft();
-            }
-            else
-            {
-                Console.WriteLine("mario is DeadState");
             }
         }
         public void MoveRight()
         {
-            Console.WriteLine("mario.MoveRight called");
             if (!(marioPowerUpState is DeadState))
             {
                 marioActionState.MoveRight();
@@ -240,20 +230,15 @@ namespace MarioGame.Entities
         }
         private void onCollideEnemy(Enemy enemy, Sides side)
         {
-            Console.WriteLine("mario collided an enemy");
             if (!Invincible)
             {
                 if (!enemy.Dead && side != Sides.Bottom)
                 {
-                    Console.WriteLine("Enemy was alive and mario did not hit the top of the enemy, meaning we are calling marioPowerUpState.onHitByEnemy()");
-                    Console.WriteLine("is mario dead before marioPowerUpState.onHitByEnemy? " + (marioPowerUpState is DeadState));
                     marioPowerUpState.onHitByEnemy();
-                    Console.WriteLine("is mario dead after marioPowerUpState.onHitByEnemy? " + (marioPowerUpState is DeadState));
                 }
                 else
                 {
                     Halt();
-                    Console.WriteLine("Enemy was Dead and/or mario hit the top of the enemy, meaning this does not affect mario.");
                 }
             }
         }

@@ -9,5 +9,10 @@ namespace MarioGame.States
             powerUpState = MarioPowerUpStateEnum.Dead;
             _mario.isCollidable = false;
         }
+
+        public override void Begin(MarioPowerUpState prevState)
+        {
+            _mario.ChangePowerUpState(_stateMachine.DeadState);
+        }
     }
 }
