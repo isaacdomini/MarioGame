@@ -13,7 +13,6 @@ namespace MarioGame.Entities
         protected EnemyActionState EnemyActionState => (EnemyActionState)AState;
         protected bool IsDead;
         public bool Dead => IsDead;
-        private static readonly Vector2 FallingVelocity = new Vector2(0, VelocityConstant * 1);
 
         public Enemy(Vector2 position, ContentManager content) : base(position, content)
         {
@@ -56,10 +55,5 @@ namespace MarioGame.Entities
                 }
             }
         }
-        public void ChangeToDeadState()
-        {
-            EnemyActionState.ChangeToDead();
-        }
-        public virtual void ChangeVelocityDirection() { }
     }
 }
