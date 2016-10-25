@@ -22,10 +22,7 @@ namespace MarioGame.Entities
             get; protected set;
         }
 
-        public ActionState CurrentActionState
-        {
-            get { return this.AState; }
-        }
+        public ActionState CurrentActionState => this.AState;
 
         protected Vector2 _position;
         public Vector2 Position
@@ -33,14 +30,14 @@ namespace MarioGame.Entities
             get { return _position; }
             protected set { _position = value; }
         }
-        public bool FacingLeft { get { return Direction == Directions.Left;  } }
-        public bool FacingRight { get { return Direction == Directions.Right; } }
+        public bool FacingLeft => Direction == Directions.Left;
+        public bool FacingRight => Direction == Directions.Right;
         protected Vector2 _velocity;
         public Vector2 Velocity { get { return _velocity; } }
         public static readonly int velocityConstant = 1;
-        private readonly static Vector2 walkingVelocity = new Vector2(velocityConstant * 1, 0);
-        protected readonly static Vector2 fallingVelocity = new Vector2(0, velocityConstant * 1);
-        public readonly static Vector2 idleVelocity = new Vector2(0, 0);
+        private static readonly Vector2 walkingVelocity = new Vector2(velocityConstant * 1, 0);
+        protected static readonly Vector2 fallingVelocity = new Vector2(0, velocityConstant * 1);
+        public static readonly Vector2 idleVelocity = new Vector2(0, 0);
         public bool Moving { get { return !Velocity.Equals(idleVelocity); } }
         public bool Deleted { get; private set; }
         public void Delete()
@@ -64,8 +61,8 @@ namespace MarioGame.Entities
             _velocity = new Vector2(xVelocity, yVelocity);
 
             var spriteClass = this.GetType().Name + "Sprite";
-            string namespaceAndClass = typeof(Sprite).Namespace + "." + spriteClass;
-            Type type = Type.GetType(namespaceAndClass);
+            var namespaceAndClass = typeof(Sprite).Namespace + "." + spriteClass;
+            var type = Type.GetType(namespaceAndClass);
             Debug.Assert(type != null, "type != null");
             Sprite = (AnimatedSprite)Activator.CreateInstance(type, content, this);
 
@@ -121,10 +118,6 @@ namespace MarioGame.Entities
         public virtual void MakeInvisible()
         {
             Sprite.Visible = true;
-        }
-        public virtual void SetDirection(Directions newDir)
-        {
-            Direction = newDir;
         }
         public virtual void FlipHorizontalVelocity()
         {
