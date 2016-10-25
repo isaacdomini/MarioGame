@@ -25,13 +25,14 @@ namespace MarioGame.States
         }
         public void ChangeSpriteDirection()
         {
+  
             if (Koopa.Direction == Core.Directions.Right)
             {
-                Koopa.turnLeft();
+                Koopa.TurnLeft();
             }
             else
             {
-                Koopa.turnRight();
+                Koopa.TurnRight();
             }
         }
     }

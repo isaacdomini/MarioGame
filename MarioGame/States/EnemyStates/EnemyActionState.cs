@@ -19,7 +19,8 @@ namespace MarioGame.States
         }
         public virtual void HitBlock()
         {
-            ((Entity)Entity).flipHorizontalVelocity();
+            ((Entity)Entity).FlipHorizontalVelocity();
+            //(Entity)Entity).
         }
         public virtual void Halt()
         {

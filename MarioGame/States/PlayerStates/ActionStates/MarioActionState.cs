@@ -28,14 +28,14 @@ namespace MarioGame.States
         public virtual void MoveRight() {
             if (Mario.FacingLeft)
             {
-                Mario.turnRight();
+                Mario.TurnRight();
             }
         }
 
         public virtual void MoveLeft() {
             if (Mario.FacingRight)
             {
-                Mario.turnLeft();
+                Mario.TurnLeft();
             }
         }
 

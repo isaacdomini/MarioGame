@@ -39,7 +39,7 @@ namespace MarioGame.States
             }
             else
             {
-                Mario.turnRight();
+                Mario.TurnRight();
             }
         }
         public override void MoveLeft()
@@ -50,7 +50,7 @@ namespace MarioGame.States
             }
             else
             {
-                Mario.turnLeft();
+                Mario.TurnLeft();
             }
         }
 

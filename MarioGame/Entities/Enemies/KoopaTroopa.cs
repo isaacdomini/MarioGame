@@ -45,7 +45,7 @@ namespace MarioGame.Entities
         }
         public void ChangeShellVelocityDirection()
         {
-            Vector2 newVelocity = Velocity * -1;
+            var newVelocity = Velocity * -1;
             this.SetVelocity(newVelocity);
         }
         public override void Update(Viewport viewport, GameTime gameTime)

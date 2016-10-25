@@ -20,7 +20,7 @@ namespace MarioGame.Entities
         {
             IsDead = false;
             Hurts = true;
-            boxPercentSizeOfEntity = .8f;
+            BoxPercentSizeOfEntity = .8f;
         }
         public override void Halt()
         {

@@ -24,14 +24,14 @@ namespace MarioGame.States
                 StateMachine.WalkingMarioState.Begin(this);
             } else if (Mario.FacingRight)
             {
-                Mario.turnLeft();
+                Mario.TurnLeft();
             }
         }
         public override void MoveRight()
         {
             if (Mario.FacingLeft)
             {
-                Mario.turnRight();
+                Mario.TurnRight();
             } else if (Mario.FacingRight)
             {
                 StateMachine.WalkingMarioState.Begin(this);

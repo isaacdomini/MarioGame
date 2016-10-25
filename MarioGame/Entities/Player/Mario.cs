@@ -48,7 +48,7 @@ namespace MarioGame.Entities
             Direction = Directions.Right;
             _spaceBarAction = SpaceBarAction.Run;
         }
-        protected override void setUpBoundingBoxProperties()
+        protected override void SetUpBoundingBoxProperties()
         {
             const int sideMargin = 0;
             var topBottomMargin = 0;
