@@ -1,15 +1,11 @@
-﻿using MarioGame.Sprites;
+﻿using MarioGame.Core;
+using MarioGame.Sprites;
 using MarioGame.States;
-using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Content;
-using MarioGame.Core;
 using MarioGame.States.BlockStates.PowerUpStates;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace MarioGame.Entities
 {
