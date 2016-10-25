@@ -160,7 +160,6 @@ namespace MarioGame.Entities
                 else if (side == Sides.Top)
                 {
                     OnBlockTopCollision();
-
                 }
                 else if (side == Sides.Bottom)
                 {

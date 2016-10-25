@@ -14,12 +14,10 @@ namespace MarioGame.Entities
         protected bool IsDead;
         public bool Dead => IsDead;
         private static readonly Vector2 FallingVelocity = new Vector2(0, VelocityConstant * 1);
-        public bool Hurts { get; }
 
         public Enemy(Vector2 position, ContentManager content) : base(position, content)
         {
             IsDead = false;
-            Hurts = true;
             BoxPercentSizeOfEntity = .8f;
         }
         public override void Halt()
