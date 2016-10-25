@@ -9,7 +9,7 @@ namespace MarioGame.Sprites
     {
         public MushroomSuperSprite(ContentManager content, Entity entity) : base(content, entity)
         {
-            _assetName = "mushroomSuper";
+            AssetName = "mushroomSuper";
         }
     }
 }

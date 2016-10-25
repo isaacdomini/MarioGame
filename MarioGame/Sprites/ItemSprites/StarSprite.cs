@@ -20,13 +20,13 @@ namespace MarioGame.Sprites
         }
         public StarSprite(ContentManager content, Entity entity) : base(content, entity)
         {
-            _assetName = "star";
-            _numberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
+            AssetName = "star";
+            NumberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
 
-            _frameSets = new Dictionary<int, List<int>> {
+            FrameSets = new Dictionary<int, List<int>> {
                 { 0, new List<int> { Frames.Orange.GetHashCode(), Frames.Yellow.GetHashCode(), Frames.Red.GetHashCode() } },
             };
-            _frameSet = _frameSets[Frames.Orange.GetHashCode()];
+            FrameSet = FrameSets[Frames.Orange.GetHashCode()];
 
         }
     }

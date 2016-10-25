@@ -12,97 +12,79 @@ namespace MarioGame.Entities
 {
     public class Mario : PowerUpEntity
     {
-        private float secondsOfInvincibilityRemaining = 0.0f;
-        public float jumpTimer = 0;
-        public bool Invincible
-        {
-            get
-            {
-                if (secondsOfInvincibilityRemaining > 0 || pState is FireStarState || pState is StandardStarState || pState is SuperStarState)
-                    return true;
-                else
-                    return false;
-            }
-        }
+        private float _secondsOfInvincibilityRemaining = 0.0f;
+        public bool Invincible => _secondsOfInvincibilityRemaining > 0 || PState is FireStarState || PState is StandardStarState || PState is SuperStarState;
         // Could be useful for casting in certain circumstances
-        public MarioPowerUpState marioPowerUpState { get { return (MarioPowerUpState)pState; } }
-        public MarioActionState marioActionState { get { return (MarioActionState)aState; } }
+        public MarioPowerUpState MarioPowerUpState => (MarioPowerUpState)PState;
+        protected MarioActionState MarioActionState => (MarioActionState)AState;
         // TODO: maybe we don't have to give the casted variable a new name, but rather just use the new keyword and the subclass type
-        public MarioSprite _marioSprite { get { return (MarioSprite)_sprite; } }
-        private int _width;
-        private int _height;
+        protected MarioSprite MarioSprite => (MarioSprite)Sprite;
 
         // Velocity variables
-        private readonly static Vector2 jumpingVelocity = new Vector2(0, velocityConstant * -1);
-        private readonly static Vector2 dashVelocity = new Vector2(velocityConstant * 2, 0);
+        private static readonly Vector2 JumpingVelocity = new Vector2(0, velocityConstant * -1);
+        private static readonly Vector2 DashVelocity = new Vector2(velocityConstant * 2, 0);
 
-        private static int superBoundingBoxWidth = 20;
-        private static int superBoundingBoxHeight = 36;
+        private const int SuperBoundingBoxWidth = 20;
+        private const int SuperBoundingBoxHeight = 36;
 
-        private static int standardBoundingBoxWidth = 20;
-        private static int standardBoundingBoxHeight = 20;
+        private const int StandardBoundingBoxWidth = 20;
+        private const int StandardBoundingBoxHeight = 20;
+
         private enum SpaceBarAction
         {
-            walk,
-            run
+            Walk,
+            Run
         }
 
-        private SpaceBarAction spaceBarAction;
-
-        MarioActionStateMachine marioActionStateMachine;
-
-        MarioPowerUpStateMachine marioPowerUpStateMachine;
+        private SpaceBarAction _spaceBarAction;
 
         public Mario(Vector2 position, ContentManager content) : base(position, content)
         {
-            marioActionStateMachine = new MarioActionStateMachine(this);
-            marioPowerUpStateMachine = new MarioPowerUpStateMachine(this);           
-            aState = marioActionStateMachine.IdleMarioState; //TODO: make marioActionState a casted getter of aState?
-            pState = marioPowerUpStateMachine.StandardState;
+            var marioActionStateMachine = new MarioActionStateMachine(this);
+            var marioPowerUpStateMachine = new MarioPowerUpStateMachine(this);           
+            AState = marioActionStateMachine.IdleMarioState; //TODO: make marioActionState a casted getter of aState?
+            PState = marioPowerUpStateMachine.StandardState;
 
-            direction = Directions.Right;
-            spaceBarAction = SpaceBarAction.run;
-            _height = standardBoundingBoxHeight;
-            _width = standardBoundingBoxWidth;
+            Direction = Directions.Right;
+            _spaceBarAction = SpaceBarAction.Run;
         }
         protected override void setUpBoundingBoxProperties()
         {
-            int sideMargin = 0, topBottomMargin = 0;
-            if (marioPowerUpState is FireStarState || marioPowerUpState is SuperState || marioPowerUpState is FireState || marioPowerUpState is SuperStarState)
+            const int sideMargin = 0;
+            var topBottomMargin = 0;
+            if (MarioPowerUpState is FireStarState || MarioPowerUpState is SuperState || MarioPowerUpState is FireState || MarioPowerUpState is SuperStarState)
             {
-                boundingBoxSize = new Point(superBoundingBoxWidth, superBoundingBoxHeight);
+                BoundingBoxSize = new Point(SuperBoundingBoxWidth, SuperBoundingBoxHeight);
             }
             else
             {
-                boundingBoxSize = new Point(standardBoundingBoxWidth, standardBoundingBoxHeight);
+                BoundingBoxSize = new Point(StandardBoundingBoxWidth, StandardBoundingBoxHeight);
                 topBottomMargin = 16;
             }
-            boundingBoxOffset = new Point(sideMargin, topBottomMargin);
+            BoundingBoxOffset = new Point(sideMargin, topBottomMargin);
         }
         private void OnInvincibilityEnded()
         {
-            if(marioPowerUpState is FireStarState)
+            if(MarioPowerUpState is FireStarState)
             {
                ChangeToFireState();
             }
-            else if (marioPowerUpState is StandardStarState)
+            else if (MarioPowerUpState is StandardStarState)
             {
                 ChangeToStandardState();
             }
-            else if (marioPowerUpState is SuperStarState)
+            else if (MarioPowerUpState is SuperStarState)
             {
                 ChangeToSuperState();
             }
         }
         private void UpdateInvincibilityStatus()
         {
-            if (secondsOfInvincibilityRemaining > 0)
+            if (!(_secondsOfInvincibilityRemaining > 0)) return;
+            _secondsOfInvincibilityRemaining -= (GlobalConstants.MillisecondsPerFrame / 1000);
+            if (_secondsOfInvincibilityRemaining <= 0)
             {
-                secondsOfInvincibilityRemaining -= (GlobalConstants.MILLISECONDS_PER_FRAME / 1000);
-                if (secondsOfInvincibilityRemaining <= 0)
-                {
-                    OnInvincibilityEnded();
-                }
+                OnInvincibilityEnded();
             }
         }
         public override void Update(Viewport viewport, GameTime gameTime)
@@ -110,137 +92,136 @@ namespace MarioGame.Entities
             base.Update(viewport, gameTime);
             UpdateInvincibilityStatus();
 
-            marioActionState.UpdateEntity(gameTime);
+            MarioActionState.UpdateEntity(gameTime);
         }
         public void ChangeActionState(MarioActionState state)
         {
             base.ChangeActionState(state);
-            _marioSprite.changeActionState(state);
+            MarioSprite.ChangeActionState(state);
         }
         public void ChangePowerUpState(MarioPowerUpState state)
         {
             base.ChangePowerUpState(state);
             LoadBoundingBox();
-            _marioSprite.changePowerUp(state);//TODO: can we push _marioSprite.changePowerUp inside of base.ChangePowerUpState, or will doing so lose the polymorphism (e.g. will it call AnimatedSprite.changePowerUp rather than _marioSprite.changePowerUp
+            MarioSprite.ChangePowerUp(state);//TODO: can we push _marioSprite.changePowerUp inside of base.ChangePowerUpState, or will doing so lose the polymorphism (e.g. will it call AnimatedSprite.changePowerUp rather than _marioSprite.changePowerUp
         }
         public void Jump()
         {
             //TODO: factor this logic somehow into marioPowerUpState so that mario doesn't have to keep track of what power up state he is inn
-            if (!(marioPowerUpState is DeadState))
+            if (!(MarioPowerUpState is DeadState))
             {
-                marioActionState.Jump();
+                MarioActionState.Jump();
             }
         }
         public void Crouch()
         {
             //TODO: make actionState take a StateFactory so the way we check pState and action State below can be consistent
-            if (marioPowerUpState is StandardState && (marioActionState).actionState == MarioActionStateEnum.Idle)
+            if (MarioPowerUpState is StandardState && (MarioActionState).actionState == MarioActionStateEnum.Idle)
             {
-                marioActionState.Fall();
+                MarioActionState.Fall();
             }
-            else if (!(marioPowerUpState is DeadState))
+            else if (!(MarioPowerUpState is DeadState))
             {
-                marioActionState.Crouch();
+                MarioActionState.Crouch();
             }
         }
         public void MoveLeft()
         {
-            if (!(marioPowerUpState is DeadState))
+            if (!(MarioPowerUpState is DeadState))
             {
-                marioActionState.MoveLeft();
+                MarioActionState.MoveLeft();
             }
         }
         public void MoveRight()
         {
-            if (!(marioPowerUpState is DeadState))
+            if (!(MarioPowerUpState is DeadState))
             {
-                marioActionState.MoveRight();
+                MarioActionState.MoveRight();
             }
         }
         public void ChangeToFireState()
         {
-            marioPowerUpState.ChangeToFire();
+            MarioPowerUpState.ChangeToFire();
         }
         public void ChangeToStandardState()
         {
-            marioPowerUpState.ChangeToStandard();
+            MarioPowerUpState.ChangeToStandard();
         }
         public void ChangeToSuperState()
         {
-            marioPowerUpState.ChangeToSuper();
+            MarioPowerUpState.ChangeToSuper();
         }
         public void ChangeToStarState()
         {
-            marioPowerUpState.ChangeToStar();
+            MarioPowerUpState.ChangeToStar();
         }
         public void ChangeToDeadState()
         {
-            marioPowerUpState.ChangeToDead();
+            MarioPowerUpState.ChangeToDead();
         }
         //Todo: I don't like that we have a method called DashOrThrowFireball. I think we should have a Dash() method and a throwFireball() method, and which one gets called gets handled in the State classes
         public void DashOrThrowFireball()
         {
             //TODO: Ricky do this?
-            if (pState is FireState || pState is FireStarState)
+            if (PState is FireState || PState is FireStarState)
             {
                 // TODO: Mario entity adds fireball to scene
 
             }
-            else if (pState is SuperState)
+            else if (PState is SuperState)
             {
-                if (spaceBarAction == SpaceBarAction.walk)
+                switch (_spaceBarAction)
                 {
-                    _velocity = Velocity / 2;
-                    spaceBarAction = SpaceBarAction.run;
-                }
-                else if (spaceBarAction == SpaceBarAction.run)
-                {
-                    _velocity = Velocity * 2;
-                    spaceBarAction = SpaceBarAction.walk;
+                    case SpaceBarAction.Walk:
+                        _velocity = Velocity / 2;
+                        _spaceBarAction = SpaceBarAction.Run;
+                        break;
+                    case SpaceBarAction.Run:
+                        _velocity = Velocity * 2;
+                        _spaceBarAction = SpaceBarAction.Walk;
+                        break;
                 }
             }
         }
         
         public void SetVelocityToJumping()
         {
-            this.setVelocity(jumpingVelocity);
+            this.SetVelocity(JumpingVelocity);
         }
         public override void Halt()
         {
             _position -= Velocity;
-            marioActionState.Halt();
+            MarioActionState.Halt();
         }
-        private void onCollideEnemy(Enemy enemy, Sides side)
+        private void OnCollideEnemy(Enemy enemy, Sides side)
         {
-            if (!Invincible)
+            if (Invincible) return;
+            if (!enemy.Dead && side != Sides.Bottom)
             {
-                if (!enemy.Dead && side != Sides.Bottom)
-                {
-                    marioPowerUpState.onHitByEnemy();
-                }
-                else
-                {
-                    Halt();
-                }
+                MarioPowerUpState.onHitByEnemy();
+            }
+            else
+            {
+                Halt();
             }
         }
-        protected override void onBlockSideCollision()
+        protected override void OnBlockSideCollision()
         {
             _position.X -= 2 * Velocity.X;
             _velocity.X = 0;
-            marioActionState.Halt();
+            MarioActionState.Halt();
         }
-        public override void onBlockBottomCollision()
+        public override void OnBlockBottomCollision()
         {
-            base.onBlockBottomCollision();
+            base.OnBlockBottomCollision();
             Halt();
         }
-        public override void onBlockTopCollision()
+        public override void OnBlockTopCollision()
         {
-            base.onBlockTopCollision();
-            marioActionState.Fall();
+            base.OnBlockTopCollision();
+            MarioActionState.Fall();
         }
-        private void onCollideItem(Item item, Sides side)
+        private void OnCollideItem(Item item, Sides side)
         {
             if (item is Coin)
             {
@@ -263,21 +244,21 @@ namespace MarioGame.Entities
                 ChangeToSuperState();
             }
         }
-        public override void onCollide(IEntity otherObject, Sides side)
+        public override void OnCollide(IEntity otherObject, Sides side)
         {
-            base.onCollide(otherObject, side);
+            base.OnCollide(otherObject, side);
             if (otherObject is Enemy)
             {
-                onCollideEnemy((Enemy)otherObject, side);
+                OnCollideEnemy((Enemy)otherObject, side);
             }
             else if (otherObject is Item)
             {
-                onCollideItem((Item)otherObject, side);
+                OnCollideItem((Item)otherObject, side);
             }
        }
-        public void setInvincible(float seconds)
+        public void SetInvincible(float seconds)
         {
-            secondsOfInvincibilityRemaining = seconds;
+            _secondsOfInvincibilityRemaining = seconds;
         }
     }
 

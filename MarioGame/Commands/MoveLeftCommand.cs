@@ -7,7 +7,7 @@ using MarioGame.Theming;
 
 namespace MarioGame.Commands
 {
-    class MoveLeftCommand : ScriptCommand
+    internal class MoveLeftCommand : ScriptCommand
     {
         public MoveLeftCommand(Script script) : base(script)
         {

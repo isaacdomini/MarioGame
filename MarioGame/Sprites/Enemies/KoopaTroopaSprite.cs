@@ -23,23 +23,23 @@ namespace MarioGame.Sprites
         }
         public KoopaTroopaSprite(ContentManager content, Entity entity) : base(content, entity)
         {
-            _assetName = "regularkoopa";
-            _numberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
+            AssetName = "regularkoopa";
+            NumberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
 
-            _frameSets = new Dictionary<int, List<int>> {
+            FrameSets = new Dictionary<int, List<int>> {
                 {EnemyActionStateEnum.Walking.GetHashCode(), new List<int>{Frames.MidWings.GetHashCode(), Frames.Wings.GetHashCode(), Frames.Walk.GetHashCode(), Frames.Walk2.GetHashCode()} },
                 {EnemyActionStateEnum.Dead.GetHashCode(), new List<int> { Frames.Dead.GetHashCode() } }
             };
-            _frameSet = _frameSets[EnemyActionStateEnum.Walking.GetHashCode()];
-            _frameSetPosition = 0;
-            _rowSetPosition = 0;
-            _numberOfFramesPerRow = 10;
+            FrameSet = FrameSets[EnemyActionStateEnum.Walking.GetHashCode()];
+            FrameSetPosition = 0;
+            RowSetPosition = 0;
+            NumberOfFramesPerRow = 10;
         }
 
         public void changeActionState(KoopaActionState koopaActionState)
         {
-            _frameSet = _frameSets[koopaActionState.enemyState.GetHashCode()];
-            _frameSetPosition = 0;
+            FrameSet = FrameSets[koopaActionState.enemyState.GetHashCode()];
+            FrameSetPosition = 0;
         }
 
     }

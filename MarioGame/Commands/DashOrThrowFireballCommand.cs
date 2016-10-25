@@ -7,7 +7,7 @@ using MarioGame.Theming;
 
 namespace MarioGame.Commands
 {
-    class DashOrThrowFireballCommand : ScriptCommand
+    internal class DashOrThrowFireballCommand : ScriptCommand
     {
         public DashOrThrowFireballCommand(Script script) : base(script)
         {

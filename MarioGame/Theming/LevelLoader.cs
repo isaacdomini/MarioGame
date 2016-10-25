@@ -66,7 +66,7 @@ namespace MarioGame.Theming
                         {
                             ContainableHidableEntity hiddenItem = (ContainableHidableEntity)createEntity(h.type, new Vector2(instance.column, instance.row), content);
                             hiddenItem.Hide();
-                            ((IContainer)entity).addContainedItem(hiddenItem);
+                            ((IContainer)entity).AddContainedItem(hiddenItem);
                         }
                     });
 

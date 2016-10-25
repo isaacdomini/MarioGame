@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MarioGame.Commands
 {
-    class FireStateCommand : ScriptCommand
+    internal class FireStateCommand : ScriptCommand
     {
         public FireStateCommand(Script script) : base(script)
         {

@@ -11,19 +11,19 @@ namespace MarioGame.Entities
 {
     public abstract class Entity : IEntity, ICollidable
     {
-        public AnimatedSprite _sprite;
+        public AnimatedSprite Sprite;
         
-        protected ActionState aState;
-        public bool isCollidable;
+        protected ActionState AState;
+        public bool IsCollidable;
         private bool _colliding;
-        public Directions direction
+        public Directions Direction
         {
             get; protected set;
         }
 
         public ActionState CurrentActionState
         {
-            get { return this.aState; }
+            get { return this.AState; }
         }
 
         protected Vector2 _position;
@@ -32,11 +32,11 @@ namespace MarioGame.Entities
             get { return _position; }
             protected set { _position = value; }
         }
-        public bool FacingLeft { get { return direction == Directions.Left;  } }
-        public bool FacingRight { get { return direction == Directions.Right; } }
+        public bool FacingLeft { get { return Direction == Directions.Left;  } }
+        public bool FacingRight { get { return Direction == Directions.Right; } }
         protected Vector2 _velocity;
         public Vector2 Velocity { get { return _velocity; } }
-        public readonly static int velocityConstant = 1;
+        public static readonly int velocityConstant = 1;
         private readonly static Vector2 walkingVelocity = new Vector2(velocityConstant * 1, 0);
         protected readonly static Vector2 fallingVelocity = new Vector2(0, velocityConstant * 1);
         public readonly static Vector2 idleVelocity = new Vector2(0, 0);
@@ -47,12 +47,12 @@ namespace MarioGame.Entities
             Deleted = true;
             //_sprite.Visible = true;
         }
-        protected static int boundingBoxWidth = 10;
-        public Rectangle boundingBox;
-        protected Point boundingBoxSize;
-        protected Point boundingBoxOffset = new Point(0,0);
-        protected Color regularBoxColor = Color.Yellow;
-        protected Color collidingBoxColor = Color.Black;
+        protected static int BoundingBoxWidth = 10;
+        public Rectangle BoundingBox;
+        protected Point BoundingBoxSize;
+        protected Point BoundingBoxOffset = new Point(0,0);
+        protected Color RegularBoxColor = Color.Yellow;
+        protected Color CollidingBoxColor = Color.Black;
         protected float boxPercentSizeOfEntity = 1.0f;
         public Color BoxColor;
         protected virtual void preConstructor() {
@@ -65,89 +65,89 @@ namespace MarioGame.Entities
             String spriteClass = this.GetType().Name + "Sprite";
             string namespaceAndClass = typeof(Sprite).Namespace + "." + spriteClass;
             Type type = Type.GetType(namespaceAndClass);
-           _sprite = (AnimatedSprite)Activator.CreateInstance(type, content, this);
+           Sprite = (AnimatedSprite)Activator.CreateInstance(type, content, this);
 
             _position = position;
             _colliding = false;
         }
         /** must be called after _sprite.Load() because boudningBoxSize reads from _sprite.FrameWidth/Height which aren't set until after _sprite.Load. LoadBoundingBox  is called in Scene. */
-        public void LoadBoundingBox()
+        public virtual void LoadBoundingBox()
         {
             setUpBoundingBoxProperties();
-            boundingBox = new Rectangle(Util.vectorToPoint(Position) + boundingBoxOffset, boundingBoxSize);
-            BoxColor = regularBoxColor; 
+            BoundingBox = new Rectangle(Util.VectorToPoint(Position) + BoundingBoxOffset, BoundingBoxSize);
+            BoxColor = RegularBoxColor; 
         }
         protected virtual void setUpBoundingBoxProperties()
         {
-            boundingBoxSize = new Point((int) (_sprite.FrameWidth * boxPercentSizeOfEntity), (int) (_sprite.FrameHeight * boxPercentSizeOfEntity));
-            int sideMargin = (int) ((1.0f - boxPercentSizeOfEntity) / 2.0 * _sprite.FrameWidth);
-            int topBottomMargin = (int)((1.0f - boxPercentSizeOfEntity) / 2.0 * _sprite.FrameHeight);
-            boundingBoxOffset = new Point(sideMargin, topBottomMargin);
+            BoundingBoxSize = new Point((int) (Sprite.FrameWidth * boxPercentSizeOfEntity), (int) (Sprite.FrameHeight * boxPercentSizeOfEntity));
+            int sideMargin = (int) ((1.0f - boxPercentSizeOfEntity) / 2.0 * Sprite.FrameWidth);
+            int topBottomMargin = (int)((1.0f - boxPercentSizeOfEntity) / 2.0 * Sprite.FrameHeight);
+            BoundingBoxOffset = new Point(sideMargin, topBottomMargin);
         }
-        public void ChangeActionState(ActionState state)
+        public virtual void ChangeActionState(ActionState state)
         {
-            aState = state;
+            AState = state;
         }
         public virtual void Update(Viewport viewport, GameTime gameTime)
         {
             _position += Velocity;
-            boundingBox.Location = Util.vectorToPoint(Position) + boundingBoxOffset;
-            BoxColor = _colliding ? collidingBoxColor : regularBoxColor;
+            BoundingBox.Location = Util.VectorToPoint(Position) + BoundingBoxOffset;
+            BoxColor = _colliding ? CollidingBoxColor : RegularBoxColor;
             _colliding = false;
         }
-        public void setVelocity(Vector2 newVelocity)
+        public virtual void SetVelocity(Vector2 newVelocity)
         {
             _velocity = newVelocity;
         }
-        public void SetVelocityToIdle()
+        public virtual void SetVelocityToIdle()
         {
-            setVelocity(idleVelocity);
+            SetVelocity(idleVelocity);
         }
-        public void SetVelocityToFalling()
+        public virtual void SetVelocityToFalling()
         {
-            setVelocity(fallingVelocity);
+            SetVelocity(fallingVelocity);
         }
-        public void SetVelocityToWalk()
+        public virtual void SetVelocityToWalk()
         {
-            setVelocity(walkingVelocity);
+            SetVelocity(walkingVelocity);
             if (FacingLeft)
             {
                 //TODO: how does below line work
                 _velocity = Velocity * -1;
             }
         }
-        public void makeInvisible()
+        public virtual void makeInvisible()
         {
-            _sprite.Visible = true;
+            Sprite.Visible = true;
         }
-        public void setDirection(Directions newDir)
+        public virtual void setDirection(Directions newDir)
         {
-            direction = newDir;
+            Direction = newDir;
         }
         public virtual void flipHorizontalVelocity()
         {
             _velocity = -1 * _velocity;
         }
         public virtual void turnLeft() {
-            direction = Directions.Left;
-            _sprite.changeDirection(direction);
+            Direction = Directions.Left;
+            Sprite.ChangeDirection(Direction);
         }
         public virtual void turnRight() {
-            direction = Directions.Right;
-            _sprite.changeDirection(direction);
+            Direction = Directions.Right;
+            Sprite.ChangeDirection(Direction);
         }
         public virtual void Halt() { }
 
         /** onColide must be called before Update */
-        public virtual void onCollide(IEntity otherObject, Sides side)
+        public virtual void OnCollide(IEntity otherObject, Sides side)
         {
             _colliding = true;
             if(otherObject is Block)
             {
-                onCollideBlock((Block) otherObject, side);
+                OnCollideBlock((Block) otherObject, side);
             }
         }
-        protected virtual void onCollideBlock(Block block, Sides side)
+        protected virtual void OnCollideBlock(Block block, Sides side)
         {
             if (block.CurrentPowerUpState is HiddenState)
             {
@@ -160,33 +160,33 @@ namespace MarioGame.Entities
             {
                 if (side == Sides.Left || side == Sides.Right)
                 {
-                    onBlockSideCollision();
+                    OnBlockSideCollision();
                 }
                 else if (side == Sides.Top)
                 {
-                    onBlockTopCollision();
+                    OnBlockTopCollision();
 
                 }
                 else if (side == Sides.Bottom)
                 {
-                    onBlockBottomCollision();
+                    OnBlockBottomCollision();
                     //TODO: replace the below with simply letting gravity take over
                 }
             }
         }
 
-        public virtual void onBlockBottomCollision()
+        public virtual void OnBlockBottomCollision()
         {
             _position.Y -= 2 * Velocity.Y;
             _velocity.Y = 0;
         }
 
-        public virtual void onBlockTopCollision()
+        public virtual void OnBlockTopCollision()
         {
             _position.Y -= 2 * Velocity.Y;
             _velocity.Y = 0;
         }
 
-        protected virtual void onBlockSideCollision() { }
+        protected virtual void OnBlockSideCollision() { }
     }
 }

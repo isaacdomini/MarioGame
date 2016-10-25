@@ -21,6 +21,10 @@ namespace MarioGame.Core
                     return Directions.Down;
                 case Directions.Down:
                     return Directions.Up;
+                case Directions.None:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(d), d, null);
             }
             return Directions.None;
         }
@@ -36,10 +40,14 @@ namespace MarioGame.Core
                     return Sides.Bottom;
                 case Sides.Bottom:
                     return Sides.Top;
+                case Sides.None:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(d), d, null);
             }
             return Sides.None;
         }
-        public static Point vectorToPoint(Vector2 vector)
+        public static Point VectorToPoint(Vector2 vector)
         {
             return new Point((int)vector.X, (int)vector.Y);
         }

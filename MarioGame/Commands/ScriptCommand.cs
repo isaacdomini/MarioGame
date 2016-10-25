@@ -2,7 +2,7 @@
 
 namespace MarioGame.Commands
 {
-    class ScriptCommand : ICommand
+    internal class ScriptCommand : ICommand
     {
         protected Script Script { get; set; }
 

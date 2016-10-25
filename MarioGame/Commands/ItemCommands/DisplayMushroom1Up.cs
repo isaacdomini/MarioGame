@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MarioGame.Commands
 {
-    class DisplayMushroom1Up : ICommand
+    internal class DisplayMushroom1Up : ICommand
     {
         public DisplayMushroom1Up(Scene scene)
         {

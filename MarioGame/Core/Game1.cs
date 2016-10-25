@@ -18,19 +18,15 @@ namespace MarioGame.Core
 
         public Game1()
         {
-            Stage stage = new Stage(this);
+            var stage = new Stage(this);
 
             Graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            _scenes = new List<Scene>();
-            _scenes.Add(new Scene(stage));
+            _scenes = new List<Scene> {new Scene(stage)};
             _scene = 1;
         }
-        public Scene Scene
-        {
-            get { return _scenes[_scene - 1]; }
-        }
+        public Scene Scene => _scenes[_scene - 1];
 
         public GraphicsDeviceManager Graphics { get; private set; }
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MarioGame.Commands
 {
-    class DeadStateCommand :ScriptCommand
+    internal class DeadStateCommand :ScriptCommand
     {
         public DeadStateCommand(Script script) : base(script)
         {

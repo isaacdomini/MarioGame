@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MarioGame.Commands
 {
-    class BumpOrBreakBrick: ScriptCommand
+    internal class BumpOrBreakBrick: ScriptCommand
     {
         public BumpOrBreakBrick(Script script) : base(script)
         {

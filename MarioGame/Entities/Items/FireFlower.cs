@@ -8,7 +8,7 @@ namespace MarioGame.Entities
     {
         public FireFlower(Vector2 position, ContentManager content) : base(position, content)
         {
-            isCollidable = true;
+            IsCollidable = true;
         }
     }
 }

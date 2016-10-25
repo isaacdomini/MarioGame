@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MarioGame.Commands
 {
-    class DisplayCoins : ICommand
+    internal class DisplayCoins : ICommand
     {
         public DisplayCoins(Scene scene)
         {

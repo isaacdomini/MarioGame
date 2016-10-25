@@ -21,26 +21,23 @@ namespace MarioGame.Sprites
     {
         public GoombaSprite(ContentManager content, Entity entity) : base(content, entity)
         {
-            _assetName = "regulargoomba";
-            _numberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
+            AssetName = "regulargoomba";
+            NumberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
 
-            _frameSets = new Dictionary<int, List<int>> {
+            FrameSets = new Dictionary<int, List<int>> {
                 {EnemyActionStateEnum.Walking.GetHashCode(), new List<int>{Frames.Walk.GetHashCode(), Frames.Walk1.GetHashCode()} },
                 {EnemyActionStateEnum.Dead.GetHashCode(), new List<int> { Frames.Dead.GetHashCode() } }
             };
-            _frameSet = _frameSets[Frames.Walk.GetHashCode()];
-            _frameSetPosition = 0;
-            _rowSetPosition = 0;
-            _numberOfFramesPerRow = 3;
+            FrameSet = FrameSets[Frames.Walk.GetHashCode()];
+            FrameSetPosition = 0;
+            RowSetPosition = 0;
+            NumberOfFramesPerRow = 3;
         }
-        public override void Update(float elapsed)
+        
+        public void ChangeActionState(GoombaActionState goombaActionState)
         {
-            base.Update(elapsed);
-        }
-        public void changeActionState(GoombaActionState goombaActionState)
-        {
-            _frameSet = _frameSets[goombaActionState.enemyState.GetHashCode()];
-            _frameSetPosition = 0;
+            FrameSet = FrameSets[goombaActionState.enemyState.GetHashCode()];
+            FrameSetPosition = 0;
         }
     }
 }

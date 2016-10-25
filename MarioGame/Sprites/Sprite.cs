@@ -13,20 +13,17 @@ namespace MarioGame.Sprites
 {
     public class Sprite : ISprite //TODO: Should we make this class abstract?
     {
-        protected Texture2D _texture;
-        protected string _assetName;
-        protected ContentManager _content;
-        protected Entity _entity;
+        protected Texture2D Texture;
+        protected string AssetName;
+        protected ContentManager Content;
+        protected Entity Entity;
 
-        public Vector2 Position
-        {
-            get { return _entity.Position; }
-        }
+        public Vector2 Position => Entity.Position;
 
         public Sprite(ContentManager content, Entity entity)
         {
-            _entity = entity;
-            _content = content;
+            Entity = entity;
+            Content = content;
         }
 
         public bool Visible { get; set; }
@@ -36,14 +33,14 @@ namespace MarioGame.Sprites
         {
             if (Visible)
             {
-                batch.Draw(_texture, Position);
+                batch.Draw(Texture, Position);
             }
         }
 
         public virtual void Load(int framesPerSecond = 5)
         {
 
-            _texture = _content.Load<Texture2D>(_assetName);
+            Texture = Content.Load<Texture2D>(AssetName);
         }
 
         public virtual void Update(float elapsed)

@@ -13,74 +13,72 @@ namespace MarioGame.Sprites
     public abstract class AnimatedSprite : Sprite
     {
        
-        protected int _numberOfFramesPerRow; //number of frames in the row
+        protected int NumberOfFramesPerRow; //number of frames in the row
 
         //each action state uses a set of frames (e.g. frame numbers 7, 8, 9 on the specific row on the sprite sheet
-        protected IDictionary<int, List<int>> _frameSets; //TODO: somehow figure out how to declare the type of the dictionary as <String, Frames> . . .it gave me an error when doing that. This should also get rid of the pesky casting on line 81
-        protected List<int> _frameSet;
-        protected int _frameSetPosition; //this refers to the position in the frameset. e.g. if our frameSet was <7,8,9> if _frameSetPosition = 1 then _frameSet[_frameSetPosition] would equal 8
+        protected IDictionary<int, List<int>> FrameSets; //TODO: somehow figure out how to declare the type of the dictionary as <String, Frames> . . .it gave me an error when doing that. This should also get rid of the pesky casting on line 81
+        protected List<int> FrameSet;
+        protected int FrameSetPosition; //this refers to the position in the frameset. e.g. if our frameSet was <7,8,9> if _frameSetPosition = 1 then _frameSet[_frameSetPosition] would equal 8
 
-        protected IDictionary<int, List<int>> _rowSets;
-        protected List<int> _rowSet;
-        protected int _rowSetPosition;
+        protected IDictionary<int, List<int>> RowSets;
+        protected List<int> RowSet;
+        protected int RowSetPosition;
 
-        private int _frameWidth;
-        protected int _frameHeight;
-        public int FrameWidth { get { return _frameWidth; } private set { _frameWidth = value; } }
-        public int FrameHeight { get { return _frameHeight; } protected set { _frameHeight = value; } }
+        public int FrameWidth { get; private set; }
 
-        protected float _totalElapsed, _timePerFrame;
+        public int FrameHeight { get; protected set; }
 
-        protected SpriteEffects _flipped {
+        protected float TotalElapsed, TimePerFrame;
+
+        protected SpriteEffects Flipped {
             get; set;
         }
         
         public AnimatedSprite(ContentManager content, Entity entity) : base(content, entity)
         {
-            _rowSets = new Dictionary<int, List<int>>
+            RowSets = new Dictionary<int, List<int>>
             {
                 { 0, new List<int> {0 } }
             };
-            _frameSets = new Dictionary<int, List<int>>
+            FrameSets = new Dictionary<int, List<int>>
             {
                 {0, new List<int> {0 } }
             };
-            _rowSetPosition = 0;
-            _frameSetPosition = 0;
+            RowSetPosition = 0;
+            FrameSetPosition = 0;
 
-            _rowSet = (List<int>) _rowSets[0];
-            _frameSet = (List<int>) _frameSets[0];
+            RowSet = (List<int>) RowSets[0];
+            FrameSet = (List<int>) FrameSets[0];
 
-            _numberOfFramesPerRow = 1;
+            NumberOfFramesPerRow = 1;
 
         }
 
         //NOTE: Child class must set _numberOfChildren
         public override void Load(int framesPerSecond = 5)
         {
-            _texture = _content.Load<Texture2D>(_assetName);
+            Texture = Content.Load<Texture2D>(AssetName);
 
-            FrameHeight = _texture.Height;
-            FrameWidth = _texture.Width / _numberOfFramesPerRow;
-            _frameSetPosition = 0;
+            FrameHeight = Texture.Height;
+            FrameWidth = Texture.Width / NumberOfFramesPerRow;
+            FrameSetPosition = 0;
 
-            _totalElapsed = 0;
-            _timePerFrame = ((float)1/(float)framesPerSecond);
+            TotalElapsed = 0;
+            TimePerFrame = ((float)1/(float)framesPerSecond);
         }
 
         public override void Update(float elapsed)
         {
-            _totalElapsed += elapsed;
-            if (_totalElapsed > _timePerFrame)
-            {
-                _frameSetPosition++;
-                _frameSetPosition = _frameSetPosition % _frameSet.Count;
+            TotalElapsed += elapsed;
 
-                _rowSetPosition++;
-                _rowSetPosition = _rowSetPosition % _rowSet.Count;
+            if (!(TotalElapsed > TimePerFrame)) return;
+            FrameSetPosition++;
+            FrameSetPosition = FrameSetPosition % FrameSet.Count;
 
-                _totalElapsed -= _timePerFrame;
-            }
+            RowSetPosition++;
+            RowSetPosition = RowSetPosition % RowSet.Count;
+
+            TotalElapsed -= TimePerFrame;
         }
 
         public override void Draw(SpriteBatch batch)
@@ -90,29 +88,30 @@ namespace MarioGame.Sprites
                 return;
             }
 
-            var sourceRect = new Rectangle(((int)_frameSet[_frameSetPosition]) * FrameWidth, ((int)_rowSet[_rowSetPosition]) * _frameHeight, FrameWidth, FrameHeight);
-            batch.Draw(texture: _texture, position: Position, sourceRectangle: sourceRect, color: Color.White, effects : _flipped);
+            var sourceRect = new Rectangle(((int)FrameSet[FrameSetPosition]) * FrameWidth, ((int)RowSet[RowSetPosition]) * FrameHeight, FrameWidth, FrameHeight);
+            batch.Draw(texture: Texture, position: Position, sourceRectangle: sourceRect, color: Color.White, effects : Flipped);
      
         }
-        public void changeDirection(Directions newDirection)
+        public void ChangeDirection(Directions newDirection)
         {
-            if (newDirection == Directions.Left)
+            switch (newDirection)
             {
-                _flipped = SpriteEffects.None;
-            }
-            else if (newDirection == Directions.Right)
-            {
-                _flipped = SpriteEffects.FlipHorizontally;
+                case Directions.Left:
+                    Flipped = SpriteEffects.None;
+                    break;
+                case Directions.Right:
+                    Flipped = SpriteEffects.FlipHorizontally;
+                    break;
             }
         }
 
-        public void changeActionState(ActionState actionState)
+        public void ChangeActionState(ActionState actionState)
         {
-            _frameSetPosition = 0;
+            FrameSetPosition = 0;
         }
-        public void changePowerUp(PowerUpState powerUpState)
+        public void ChangePowerUp(PowerUpState powerUpState)
         {
-            _rowSetPosition = 0;
+            RowSetPosition = 0;
         }
     }
 }

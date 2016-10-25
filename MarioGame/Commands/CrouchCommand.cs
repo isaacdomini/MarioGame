@@ -7,7 +7,7 @@ using MarioGame.Theming;
 
 namespace MarioGame.Commands
 {
-    class CrouchCommand : ScriptCommand
+    internal class CrouchCommand : ScriptCommand
     {
         public CrouchCommand(Script script) : base(script)
         {

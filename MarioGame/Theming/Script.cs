@@ -56,13 +56,13 @@ namespace MarioGame.Theming
             _entities = _entities.FindAll(e => !e.Deleted);
             _entities.FindAll(e => e.Moving).ForEach(e =>
            {
-               _entities.FindAll(e2 => e.boundingBox.Intersects(e2.boundingBox)).ForEach(e2 =>
+               _entities.FindAll(e2 => e.BoundingBox.Intersects(e2.BoundingBox)).ForEach(e2 =>
                {
                    if(!entityPairs.Contains(e.GetHashCode() ^ e2.GetHashCode()))
                    {
-                       Sides eSide = CollisionHandler.getIntersectingSide(e.boundingBox, e2.boundingBox);
-                       e.onCollide(e2, eSide);
-                       e2.onCollide(e, Util.flip(eSide));
+                       Sides eSide = CollisionHandler.GetIntersectingSide(e.BoundingBox, e2.BoundingBox);
+                       e.OnCollide(e2, eSide);
+                       e2.OnCollide(e, Util.flip(eSide));
                        entityPairs.Add(e.GetHashCode() ^ e2.GetHashCode());
                    }
                    else
@@ -130,11 +130,11 @@ namespace MarioGame.Theming
             {
                 if (block.CurrentActionState is BrickBlockState)
                 {
-                    if (_mario.marioPowerUpState is SuperState)
+                    if (_mario.MarioPowerUpState is SuperState)
                     {
                         block.Break();
                     }
-                    else if (_mario.marioPowerUpState is StandardState)
+                    else if (_mario.MarioPowerUpState is StandardState)
                     {
                         block.Bump();
                         block.ChangeToUsed();

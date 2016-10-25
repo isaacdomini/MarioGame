@@ -9,55 +9,51 @@ namespace MarioGame.Entities
 {
     public class Enemy : Entity
     {
-        public AnimatedSprite _enemySprite { get { return _sprite; } }
-        protected EnemyActionState _enemyActionState {get {return (EnemyActionState)aState; } }
-        protected bool _isDead;
-        public bool Dead { get { return _isDead; } }
-        protected bool _hurts;
-        private readonly static Vector2 fallingVelocity = new Vector2(0, velocityConstant * 1);
-        public bool Hurts { get { return _hurts; } }
+        public AnimatedSprite EnemySprite => Sprite;
+        protected EnemyActionState EnemyActionState => (EnemyActionState)AState;
+        protected bool IsDead;
+        public bool Dead => IsDead;
+        private static readonly Vector2 FallingVelocity = new Vector2(0, velocityConstant * 1);
+        public bool Hurts { get; }
+
         public Enemy(Vector2 position, ContentManager content) : base(position, content)
         {
-            _isDead = false;
-            _hurts = true;
+            IsDead = false;
+            Hurts = true;
             boxPercentSizeOfEntity = .8f;
         }
         public override void Halt()
         {
             Position -= Velocity;
-            _enemyActionState.Halt();
+            EnemyActionState.Halt();
         }
-        public override void onCollide(IEntity otherObject, Sides side)
+        public override void OnCollide(IEntity otherObject, Sides side)
         {
-            base.onCollide(otherObject, side);
+            base.OnCollide(otherObject, side);
             if (otherObject is Mario )
             {
                 if (side == Sides.Top)
                 {
-                    _isDead = !_isDead;
-                    _enemyActionState.JumpedOn(side); 
+                    IsDead = !IsDead;
+                    EnemyActionState.JumpedOn(side); 
                 }
-                if (_isDead && (side == Sides.Left || side == Sides.Right))
+                if (IsDead && (side == Sides.Left || side == Sides.Right))
                 {
-                    _isDead = !_isDead;
-                    _enemyActionState.JumpedOn(side);
+                    IsDead = !IsDead;
+                    EnemyActionState.JumpedOn(side);
                 }
             }
             if(otherObject is Block)
             {
                 if(side == Sides.Left || side == Sides.Right)
                 {
-                    _enemyActionState.HitBlock();
+                    EnemyActionState.HitBlock();
                 }
             }
         }
         public void ChangeToDeadState()
         {
-            _enemyActionState.ChangeToDead();
-        }
-        public void SetVelocityToFalling()
-        {
-            this.setVelocity(fallingVelocity);
+            EnemyActionState.ChangeToDead();
         }
         public virtual void ChangeVelocityDirection() { }
     }

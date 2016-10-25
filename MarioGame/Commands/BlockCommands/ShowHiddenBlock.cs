@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MarioGame.Commands.BlockCommands
 {
-    class ShowHiddenBlock : ScriptCommand
+    internal class ShowHiddenBlock : ScriptCommand
     {
         public ShowHiddenBlock(Script script) : base(script)
         {

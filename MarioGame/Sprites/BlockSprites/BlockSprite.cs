@@ -31,10 +31,10 @@ namespace MarioGame.Sprites
 
         public BlockSprite(ContentManager content, Entity entity) : base(content, entity)
         {
-            _assetName = "blocks";
-            _numberOfFramesPerRow = 9;
+            AssetName = "blocks";
+            NumberOfFramesPerRow = 9;
             //Each state has a frameSet
-            _frameSets = new Dictionary<int, List<int>> {
+            FrameSets = new Dictionary<int, List<int>> {
                 { BlockActionStateEnum.BrickBlock.GetHashCode(), new List<int> { Frames.BrickBlock.GetHashCode() } },
                 { BlockActionStateEnum.UsedBlock.GetHashCode(), new List<int> { Frames.UsedBlock.GetHashCode() } },
                 { BlockActionStateEnum.GroundBlock.GetHashCode(), new List<int> { Frames.GroundBlock.GetHashCode() } },
@@ -42,13 +42,13 @@ namespace MarioGame.Sprites
                 { BlockActionStateEnum.SilverBlock.GetHashCode(), new List<int> { Frames.SilverBlock.GetHashCode() } },
                 { BlockActionStateEnum.QuestionBlock.GetHashCode(), new List<int> {Frames.QuestionBlock1.GetHashCode(), Frames.QuestionBlock2.GetHashCode(), Frames.QuestionBlock3.GetHashCode() } },
             };
-            _rowSets = new Dictionary<int, List<int>>
+            RowSets = new Dictionary<int, List<int>>
             {
                 {BlockPowerUpStateEnum.Visible.GetHashCode(), new List<int> {Rows.Visible.GetHashCode() } },
                 { BlockPowerUpStateEnum.Hidden.GetHashCode(), new List<int> {Rows.Hidden.GetHashCode() } }
             };
-            _rowSet = _rowSets[BlockPowerUpStateEnum.Visible.GetHashCode()];
-            _frameSet = _frameSets[BlockActionStateEnum.BrickBlock.GetHashCode()];
+            RowSet = RowSets[BlockPowerUpStateEnum.Visible.GetHashCode()];
+            FrameSet = FrameSets[BlockActionStateEnum.BrickBlock.GetHashCode()];
 
         }
         public override void Load(int framesPerSecond = 5)
@@ -56,15 +56,15 @@ namespace MarioGame.Sprites
             base.Load(framesPerSecond);
             FrameHeight = 16;
         }
-        public void changeActionState(BlockActionState actionState)
+        public void ChangeActionState(BlockActionState actionState)
         {
-            base.changeActionState(actionState);
-            _frameSet = _frameSets[actionState.bState.GetHashCode()];
+            base.ChangeActionState(actionState);
+            FrameSet = FrameSets[actionState.bState.GetHashCode()];
         }
-        public void changePowerUp(BlockPowerUpState powerUpState)
+        public void ChangePowerUp(BlockPowerUpState powerUpState)
         {
-            base.changePowerUp(powerUpState);
-            _rowSet = _rowSets[powerUpState.powerUpStateEnum.GetHashCode()];
+            base.ChangePowerUp(powerUpState);
+            RowSet = RowSets[powerUpState.powerUpStateEnum.GetHashCode()];
         }
 
     }

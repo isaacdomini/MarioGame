@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MarioGame.Entities
 {
-    class Cloud : Entity
+    internal class Cloud : Entity
     {
         public Cloud(Vector2 position, ContentManager content) : base(position, content) { }
 

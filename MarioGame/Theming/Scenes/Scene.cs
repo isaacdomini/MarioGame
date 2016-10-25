@@ -57,11 +57,11 @@ namespace MarioGame.Theming.Scenes
             {
                 if(e is Cloud)
                 {
-                    Layers[0].Add(e._sprite);
+                    Layers[0].Add(e.Sprite);
                 }
                 else
                 {
-                    Layers[1].Add(e._sprite);
+                    Layers[1].Add(e.Sprite);
                 }
             }
 
@@ -88,12 +88,12 @@ namespace MarioGame.Theming.Scenes
             Stage.Draw(gameTime, _spriteBatch);
             Layers.ForEach(l => l.Draw(_spriteBatch));
             _spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, camera.GetViewMatrix(new Vector2(1.0f)));
-            _script._entities.FindAll(e => (!e._sprite.Visible)&& !(e is Cloud)).
-                ForEach(e => drawRectangleBorder(_spriteBatch, e.boundingBox, 1, e.BoxColor));
+            _script._entities.FindAll(e => (!e.Sprite.Visible)&& !(e is Cloud)).
+                ForEach(e => drawRectangleBorder(_spriteBatch, e.BoundingBox, 1, e.BoxColor));
             _spriteBatch.End();
             _spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, camera.GetViewMatrix(new Vector2(0.5f)));
-            _script._entities.FindAll(e => (!e._sprite.Visible) && (e is Cloud)).
-                ForEach(e => drawRectangleBorder(_spriteBatch, e.boundingBox, 1, e.BoxColor));
+            _script._entities.FindAll(e => (!e.Sprite.Visible) && (e is Cloud)).
+                ForEach(e => drawRectangleBorder(_spriteBatch, e.BoundingBox, 1, e.BoxColor));
             _spriteBatch.End();
         }
 

@@ -12,101 +12,97 @@ namespace MarioGame.Entities
     public class Block : PowerUpEntity, IContainer
     {
         // Could be useful for casting in certain circumstances
-        protected BlockSprite blockSprite;
-        public BlockActionState blockActionState;
-        public BlockPowerUpState blockPowerUpState;
-        protected BlockActionStateMachine actionStateMachine;
-        protected BlockPowerUpStateMachine powerUpStateMachine;
-        List<IContainable> containedItems = new List<IContainable>();
-        private static int boundingBoxWidth = 18;
-        private static int boundingBoxHeight = 18;
+        protected BlockSprite BlockSprite;
+        public BlockActionState BlockActionState;
+        public BlockPowerUpState BlockPowerUpState;
+        protected BlockActionStateMachine ActionStateMachine;
+        protected BlockPowerUpStateMachine PowerUpStateMachine;
+        List<IContainable> _containedItems = new List<IContainable>();
 
-        protected bool isVisible;
-        private int tickCount;
+        protected bool IsVisible;
+        private int _tickCount;
 
-        internal bool Visibility;
+        public bool Visibility;
 
         public Block(Vector2 position, ContentManager content) : base(position, content)
         {
-            actionStateMachine = new BlockActionStateMachine(this);
-            powerUpStateMachine = new BlockPowerUpStateMachine(this);
-            aState = actionStateMachine.BrickState;
+            ActionStateMachine = new BlockActionStateMachine(this);
+            PowerUpStateMachine = new BlockPowerUpStateMachine(this);
+            AState = ActionStateMachine.BrickState;
             // Temporary
-            aState._prevState = actionStateMachine.BrickState;
-            pState = powerUpStateMachine.VisibleState;
-            blockActionState = (BlockActionState)aState;
-            blockPowerUpState = (BlockPowerUpState)pState;
-            blockSprite = (BlockSprite)_sprite;
-            tickCount = 0;
+            AState._prevState = ActionStateMachine.BrickState;
+            PState = PowerUpStateMachine.VisibleState;
+            BlockActionState = (BlockActionState)AState;
+            BlockPowerUpState = (BlockPowerUpState)PState;
+            BlockSprite = (BlockSprite)Sprite;
+            _tickCount = 0;
         }
-        public void SetBlockActionState(String state)
+        public void SetBlockActionState(string state)
         {
             if (state.Equals("UsedBlockState"))
             {
-                actionStateMachine.UsedState.Begin(aState);
+                ActionStateMachine.UsedState.Begin(AState);
             }
             else if (state.Equals("BrickBlockState"))
             {
-                actionStateMachine.BrickState.Begin(aState);
+                ActionStateMachine.BrickState.Begin(AState);
             }
             else if (state.Equals("GroundBlockState"))
             {
-                actionStateMachine.GroundState.Begin(aState);
+                ActionStateMachine.GroundState.Begin(AState);
             }
             else if (state.Equals("QuestionBlockState"))
             {
-                actionStateMachine.QuestionState.Begin(aState);
+                ActionStateMachine.QuestionState.Begin(AState);
             }
             else if (state.Equals("StepBlockState"))
             {
-                actionStateMachine.StepState.Begin(aState);
+                ActionStateMachine.StepState.Begin(AState);
             }
 
         }
-        public void SetBlockPowerUpState(String state)
+        public void SetBlockPowerUpState(string state)
         {
             if (state.Equals("HiddenState"))
             {
-                powerUpStateMachine.HiddenState.Begin(pState);
+                PowerUpStateMachine.HiddenState.Begin(PState);
                 //this.ChangeBlockPowerUpState(pState);
             }
             else if (state.Equals("VisibleState"))
             {
-                powerUpStateMachine.VisibleState.Begin(pState);
+                PowerUpStateMachine.VisibleState.Begin(PState);
             }
         }
         public void ChangeBlockActionState(BlockActionState state)
         {
             base.ChangeActionState(state);
-            blockSprite.changeActionState(state);
+            BlockSprite.ChangeActionState(state);
         }
 
         public void ChangeBlockPowerUpState(BlockPowerUpState state)
         {
             base.ChangePowerUpState(state);
-            blockSprite.changePowerUp(state);
+            BlockSprite.ChangePowerUp(state);
         }
 
         public void ChangeToUsed()
         {
-            ((BlockActionState)aState).ChangeToUsed();
+            ((BlockActionState)AState).ChangeToUsed();
         }
-        public override void onCollide(IEntity otherObject, Sides side)
+        public override void OnCollide(IEntity otherObject, Sides side)
         {
-            if(otherObject is Mario)
+            if (!(otherObject is Mario)) return;
+            if(side == Sides.Bottom)
             {
-                if(side == Sides.Bottom)
-                {
-                    Bump();
-                }
+                Bump();
             }
         }
         public void Bump()
         {
             //if bumpable
-                if(tickCount == 0)
+                if(_tickCount == 0)
                 {
-                    tickCount = 10;
+                    _tickCount = 10;
                     _velocity.Y = -1;
                 }
                 // TODO: Begin bumping sequence
@@ -129,43 +125,43 @@ namespace MarioGame.Entities
         }
         public void Reveal()
         {
-            ((BlockPowerUpState)pState).Reveal();
+            ((BlockPowerUpState)PState).Reveal();
         }
 
         public override void Update(Viewport viewport, GameTime gameTime)
         {
             base.Update(viewport, gameTime);
-            if (tickCount > 1)
+            if (_tickCount > 1)
             {
-                tickCount--;
+                _tickCount--;
             }
-            else if (tickCount == 1)
+            else if (_tickCount == 1)
             {
-                tickCount = -10;
+                _tickCount = -10;
                 _velocity.Y = 1;
             }
-            else if (tickCount < -1)
+            else if (_tickCount < -1)
             {
-                tickCount++;
+                _tickCount++;
             }
-            else if (tickCount == -1)
+            else if (_tickCount == -1)
             {
-                tickCount = 0;
+                _tickCount = 0;
                 _velocity.Y = 0;
             }
         }
 
-        public void addContainedItem(IContainable containedItem)
+        public void AddContainedItem(IContainable containedItem)
         {
-            containedItems.Add(containedItem);
+            _containedItems.Add(containedItem);
         }
 
-        public IContainable popContainedItem()
+        public IContainable PopContainedItem()
         {
             throw new NotImplementedException();
         }
 
-        public bool hasItems()
+        public bool HasItems()
         {
             throw new NotImplementedException();
         }

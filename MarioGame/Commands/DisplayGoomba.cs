@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MarioGame.Commands
 {
-    class DisplayGoomba : ICommand
+    internal class DisplayGoomba : ICommand
     {
         public DisplayGoomba(Scene scene)
         {

@@ -46,11 +46,11 @@ namespace MarioGame.Sprites
 
         public MarioSprite(ContentManager content, Entity entity) : base(content, entity)
         {
-            _assetName = "characters_transparent";
-            _numberOfFramesPerRow = 15;
+            AssetName = "characters_transparent";
+            NumberOfFramesPerRow = 15;
             //Each state has a frameSet
             
-            _frameSets = new Dictionary<int, List<int>> {
+            FrameSets = new Dictionary<int, List<int>> {
                 { MarioActionStateEnum.Idle.GetHashCode(), new List<int> { Frames.StandingMario.GetHashCode() } },
                 { MarioActionStateEnum.Walking.GetHashCode(), new List<int> {Frames.MovingMario1.GetHashCode(), Frames.MovingMario2.GetHashCode(), Frames.MovingMario3.GetHashCode(), Frames.MovingMario2.GetHashCode() } },//TODO: instead of {1, 2, 3} may have to do {1, 2, 3, 2} or something like that
                 { MarioActionStateEnum.Running.GetHashCode(), new List<int> {Frames.MovingMario1.GetHashCode(), Frames.MovingMario2.GetHashCode(), Frames.MovingMario3.GetHashCode(), Frames.MovingMario2.GetHashCode() } },//TODO: instead of {1, 2, 3} may have to do {1, 2, 3, 2} or something like that
@@ -62,7 +62,7 @@ namespace MarioGame.Sprites
                 { MarioActionStateEnum.Dead.GetHashCode(), new List<int> {Frames.DeadMario.GetHashCode() } }
             };
 
-            _rowSets = new Dictionary<int, List<int>>
+            RowSets = new Dictionary<int, List<int>>
             {
                 {MarioPowerUpStateEnum.Standard.GetHashCode(), new List<int> {Rows.Standard.GetHashCode() } },
                 {MarioPowerUpStateEnum.Super.GetHashCode(), new List<int> {Rows.Super.GetHashCode() } },
@@ -73,14 +73,14 @@ namespace MarioGame.Sprites
                 {MarioPowerUpStateEnum.Dead.GetHashCode(), new List<int> {Rows.Dead.GetHashCode() } }
             };
 
-            _frameSet = _frameSets[MarioActionStateEnum.Idle.GetHashCode()];
-            _frameSetPosition = 0;
+            FrameSet = FrameSets[MarioActionStateEnum.Idle.GetHashCode()];
+            FrameSetPosition = 0;
 
             // Begin with sprite facing right
-            _flipped = SpriteEffects.FlipHorizontally;
+            Flipped = SpriteEffects.FlipHorizontally;
 
-            _rowSet = _rowSets[MarioPowerUpStateEnum.Standard.GetHashCode()];
-            _rowSetPosition = 0;
+            RowSet = RowSets[MarioPowerUpStateEnum.Standard.GetHashCode()];
+            RowSetPosition = 0;
         }
 
         public override void Load(int framesPerSecond = 5)
@@ -88,22 +88,22 @@ namespace MarioGame.Sprites
             base.Load(framesPerSecond);
             FrameHeight = 40;
         }
-        public void changeActionState(MarioActionState marioActionState)
+        public void ChangeActionState(MarioActionState marioActionState)
         {
-            base.changeActionState(marioActionState);
-            _frameSet = _frameSets[marioActionState.actionState.GetHashCode()];
+            base.ChangeActionState(marioActionState);
+            FrameSet = FrameSets[marioActionState.actionState.GetHashCode()];
         }
-        public void changePowerUp(MarioPowerUpState marioPowerUpState)
+        public void ChangePowerUp(MarioPowerUpState marioPowerUpState)
         {
-            base.changePowerUp(marioPowerUpState);
+            base.ChangePowerUp(marioPowerUpState);
             // Because on the sprite sheet, dead state is a frame set, not a row set
             if (marioPowerUpState.powerUpState == MarioPowerUpStateEnum.Dead)
             {
-                _frameSet = _frameSets[MarioActionStateEnum.Dead.GetHashCode()];
-                _frameSetPosition = 0;
+                FrameSet = FrameSets[MarioActionStateEnum.Dead.GetHashCode()];
+                FrameSetPosition = 0;
             }
            
-            _rowSet = _rowSets[marioPowerUpState.powerUpState.GetHashCode()];
+            RowSet = RowSets[marioPowerUpState.powerUpState.GetHashCode()];
         }
     }
 }

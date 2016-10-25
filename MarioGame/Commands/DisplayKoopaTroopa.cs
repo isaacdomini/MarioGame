@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MarioGame.Commands
 {
-    class DisplayKoopaTroopa : ICommand
+    internal class DisplayKoopaTroopa : ICommand
     {
         public DisplayKoopaTroopa(Scene scene)
         {

@@ -7,7 +7,7 @@ using MarioGame.Theming;
 
 namespace MarioGame.Commands
 {
-    class JumpCommand : ScriptCommand
+    internal class JumpCommand : ScriptCommand
     {
         public JumpCommand(Script script) : base(script)
         {

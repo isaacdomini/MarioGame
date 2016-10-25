@@ -7,7 +7,7 @@ namespace MarioGame.States
         public DeadState(Mario entity, MarioPowerUpStateMachine stateMachine) : base(entity, stateMachine)
         {
             powerUpState = MarioPowerUpStateEnum.Dead;
-            _mario.isCollidable = false;
+            _mario.IsCollidable = false;
         }
 
         public override void Begin(MarioPowerUpState prevState)

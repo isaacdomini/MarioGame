@@ -15,7 +15,7 @@ namespace MarioGame.Entities
         }
 
         public abstract void Hide();
-        public abstract void leaveContainer();
+        public abstract void LeaveContainer();
         public abstract void Show();
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MarioGame.Commands
 {
-    class DisplayFireFlower : ICommand
+    internal class DisplayFireFlower : ICommand
     {
         public DisplayFireFlower(Scene scene)
         {

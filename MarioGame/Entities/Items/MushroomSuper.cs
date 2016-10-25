@@ -10,17 +10,17 @@ namespace MarioGame.Entities
         {
             int _height = 40;
             int _width = 20;
-            isCollidable = true;
+            IsCollidable = true;
             _velocity = idleVelocity;
         }
 
         public override void Update(Viewport viewport, GameTime gameTime)
         {
-            if (_sprite.Visible == false)
+            if (Sprite.Visible == false)
             {
-                _velocity = -1*movingVelocity;
-                boundingBox.X = (int)_position.X;
-                boundingBox.Y = (int)_position.Y;
+                _velocity = -1*MovingVelocity;
+                BoundingBox.X = (int)_position.X;
+                BoundingBox.Y = (int)_position.Y;
 
             }
             base.Update(viewport, gameTime);

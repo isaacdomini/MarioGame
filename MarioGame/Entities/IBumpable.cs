@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MarioGame.Entities
 {
-    interface IBumpable
+    internal interface IBumpable
     {
         void Bump();
     }

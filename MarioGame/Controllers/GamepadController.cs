@@ -31,24 +31,22 @@ namespace MarioGame.Controllers
 
         public void UpdateInput()
         {
-            List<PlayerIndex> indeces = new List<PlayerIndex>();
+            var indeces = new List<PlayerIndex>();
             indeces.Add(PlayerIndex.One);
             indeces.Add(PlayerIndex.Two);
             indeces.Add(PlayerIndex.Three);
             indeces.Add(PlayerIndex.Four);
-            foreach (PlayerIndex index in indeces)
+            foreach (var index in indeces)
             {
                 var newState = GamePad.GetState(index);
-                if (newState.IsConnected)
-                {
-                    ICommand command;
-                    foreach (var button in Dictionary.Keys)
-                        if (!_previousState.IsButtonDown(button) && newState.IsButtonDown(button) &&
-                            Dictionary.TryGetValue(button, out command))
-                            command.Execute();
+                if (!newState.IsConnected) continue;
+                ICommand command;
+                foreach (var button in Dictionary.Keys)
+                    if (!_previousState.IsButtonDown(button) && newState.IsButtonDown(button) &&
+                        Dictionary.TryGetValue(button, out command))
+                        command.Execute();
 
-                    _previousState = newState;
-                }
+                _previousState = newState;
             }
         }
     }

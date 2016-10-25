@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MarioGame.Commands.BlockCommands
 {
-    class ChangeQuestionToUsedState : ScriptCommand
+    internal class ChangeQuestionToUsedState : ScriptCommand
     {
         public ChangeQuestionToUsedState(Script script) : base(script)
         {

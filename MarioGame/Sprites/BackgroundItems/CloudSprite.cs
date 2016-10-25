@@ -18,16 +18,16 @@ namespace MarioGame.Sprites
         }
         public CloudSprite(ContentManager content, Entity entity) : base(content, entity)
         {
-            _assetName = "ScenerySprite";
-            _numberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
+            AssetName = "ScenerySprite";
+            NumberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
 
-            _frameSets = new Dictionary<int, List<int>> {
+            FrameSets = new Dictionary<int, List<int>> {
                 {0, new List<int>{Frames.Cloud.GetHashCode()} }
             };
-            _frameSet = _frameSets[0];
-            _frameSetPosition = 0;
-            _rowSetPosition = 0;
-            _numberOfFramesPerRow = 1;
+            FrameSet = FrameSets[0];
+            FrameSetPosition = 0;
+            RowSetPosition = 0;
+            NumberOfFramesPerRow = 1;
         }
         public override void Update(float elapsed)
         {

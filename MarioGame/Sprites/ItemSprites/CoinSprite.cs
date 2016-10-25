@@ -22,15 +22,15 @@ namespace MarioGame.Sprites
 
         public CoinSprite(ContentManager content, Entity entity) : base(content, entity)
         {
-            _assetName = "coin";
-            _numberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
+            AssetName = "coin";
+            NumberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
 
-            _frameSets = new Dictionary<int, List<int>> {
+            FrameSets = new Dictionary<int, List<int>> {
                 { 0, new List<int>{Frames.Full.GetHashCode(), Frames.Waning.GetHashCode(), Frames.Sliver.GetHashCode(), Frames.Waxing.GetHashCode() } },
             };
-            _frameSet = _frameSets[Frames.Full.GetHashCode()];
-            _frameSetPosition = 0;
-            _rowSetPosition = 0;
+            FrameSet = FrameSets[Frames.Full.GetHashCode()];
+            FrameSetPosition = 0;
+            RowSetPosition = 0;
         }
     }
 }

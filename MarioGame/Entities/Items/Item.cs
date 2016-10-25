@@ -8,8 +8,8 @@ namespace MarioGame.Entities
 {
     public abstract class Item : ContainableHidableEntity
     {
-        public Vector2 movingVelocity = new Vector2(.5f, 0);
-        private readonly static Vector2 fallingVelocity = new Vector2(0, velocityConstant * 1);
+        public Vector2 MovingVelocity = new Vector2(.5f, 0);
+        private static readonly Vector2 FallingVelocity = new Vector2(0, velocityConstant * 1); //todo: can we just let this inherit/ override the parent?
 
         public Item(Vector2 position, ContentManager content) : base(position, content)
         {
@@ -18,34 +18,25 @@ namespace MarioGame.Entities
 
         public override void Hide()
         {
-            this._sprite.Hide();
+            this.Sprite.Hide();
         }
 
         public override void Show()
         {
-            this._sprite.Show();
+            this.Sprite.Show();
         }
 
-        public override void leaveContainer()
+        public override void LeaveContainer()
         {
             throw new NotImplementedException();
         }
-        public override void onCollide(IEntity otherObject, Sides side)
+        public override void OnCollide(IEntity otherObject, Sides side)
         {
-            base.onCollide(otherObject, side);
+            base.OnCollide(otherObject, side);
             if (otherObject is Mario)
             {
                 Delete();
             }
-        }
-        public void changeDirection()
-        {
-            Vector2 newVelocity = _velocity * -1;
-            this.setVelocity(newVelocity);
-        }
-        public void SetVelocityToFalling()
-        {
-            this.setVelocity(fallingVelocity);
         }
     }
 }
