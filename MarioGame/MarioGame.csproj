@@ -78,6 +78,7 @@
     <Compile Include="Entities\Enemies\Goomba.cs" />
     <Compile Include="Entities\Enemies\KoopaTroopa.cs" />
     <Compile Include="Entities\Entity.cs" />
+    <Compile Include="Entities\ICollidable.cs" />
     <Compile Include="Entities\IContainable.cs" />
     <Compile Include="Entities\IContainer.cs" />
     <Compile Include="Entities\IEntity.cs" />

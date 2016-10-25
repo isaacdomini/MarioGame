@@ -13,6 +13,7 @@ namespace MarioGame.Entities
     public class Mario : PowerUpEntity
     {
         private float secondsOfInvincibilityRemaining = 0.0f;
+        public float jumpTimer = 0;
         public bool Invincible
         {
             get
@@ -112,11 +113,8 @@ namespace MarioGame.Entities
             {
                 SetVelocityToIdle();// _velocity = idleVelocity;
             }
-            
-            if (Position.X < 0 || Position.X + _width > viewport.Width || Position.Y < 0 || Position.Y + _height > viewport.Height ){
-                SetVelocityToIdle();
-            }
-
+            Console.WriteLine(marioPowerUpState);
+            Console.WriteLine(marioActionState);
         }
         public bool checkMarioJumping()
         {

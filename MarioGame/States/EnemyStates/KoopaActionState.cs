@@ -25,7 +25,7 @@ namespace MarioGame.States
         }
         public void changeSpriteDirection()
         {
-            if (koopa.isFacingRight())
+            if (koopa.direction == Core.Directions.Right)
             {
                 koopa.turnLeft();
             }

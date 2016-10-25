@@ -8,6 +8,8 @@ namespace MarioGame.Entities
 {
     public abstract class Item : ContainableHidableEntity
     {
+        public Vector2 movingVelocity = new Vector2(.5f, 0);
+
         public Item(Vector2 position, ContentManager content) : base(position, content)
         {
             boxPercentSizeOfEntity = 1.2f;

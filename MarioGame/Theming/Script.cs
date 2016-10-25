@@ -51,18 +51,17 @@ namespace MarioGame.Theming
 
         public void Update(GameTime gameTime)
         {
-	    if (mario.position.X >= Viewport.Width / 2.0f)
+	    if (_mario.Position.X >= Viewport.Width / 2.0f)
             {
-                _scene.camera.LookAt(mario.position);
+                _scene.camera.LookAt(_mario.Position);
             }
-            if(mario.CurrentActionState is JumpingMarioState)
+            if(_mario.CurrentActionState is JumpingMarioState)
             {
-                if (mario.jumpTimer > 1.5)
+                if (_mario.jumpTimer > 1.5)
                 {
-                    Console.WriteLine(mario.jumpTimer);
-                    MakeMarioFall();
+                    _mario.marioActionState.Fall();
                 }
-                mario.jumpTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                _mario.jumpTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
             List<int> entityPairs = new List<int>();
             _entities = _entities.FindAll(e => !e.Deleted);

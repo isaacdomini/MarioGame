@@ -88,9 +88,8 @@ namespace MarioGame.Theming.Scenes
             Stage.Draw(gameTime, _spriteBatch);
             Layers.ForEach(l => l.Draw(_spriteBatch));
             Vector2 parallax = new Vector2(1.0f);
+            Layers.ForEach(l => l.Draw(_spriteBatch));
             _spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, camera.GetViewMatrix(parallax));
-
-            Sprites.ForEach(s => s.Draw(_spriteBatch));
             _script._entities.FindAll(e => !e._sprite.Visible).ForEach(e => drawRectangleBorder(_spriteBatch, e.boundingBox, 1, e.BoxColor));
             _spriteBatch.End();
         }

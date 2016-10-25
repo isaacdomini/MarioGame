@@ -15,6 +15,7 @@ namespace MarioGame.States
         }
         public override void Fall()
         {
+            base.Fall();
             stateMachine.FallingMarioState.Begin(this);
         }
         public override void MoveLeft()

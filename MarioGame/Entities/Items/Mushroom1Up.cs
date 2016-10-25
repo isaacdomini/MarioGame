@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MarioGame.Entities
 {
@@ -12,7 +13,7 @@ namespace MarioGame.Entities
             isCollidable = true;
         }
 
-        public override void Update()
+        public override void Update(Viewport viewport)
         {
             if (_sprite.Visible == false)
             {
@@ -21,7 +22,7 @@ namespace MarioGame.Entities
                 boundingBox.Y = (int)_position.Y;
 
             }
-            base.Update();
+            base.Update(viewport);
         }
     }
 }
