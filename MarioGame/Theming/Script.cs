@@ -51,18 +51,7 @@ namespace MarioGame.Theming
 
         public void Update(GameTime gameTime)
         {
-	    if (_mario.Position.X >= Viewport.Width / 2.0f)
-            {
-                _scene.camera.LookAt(_mario.Position);
-            }
-            if(_mario.CurrentActionState is JumpingMarioState)
-            {
-                if (_mario.jumpTimer > 1.5)
-                {
-                    _mario.marioActionState.Fall();
-                }
-                _mario.jumpTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            }
+            UpdateCamera(gameTime);
             List<int> entityPairs = new List<int>();
             _entities = _entities.FindAll(e => !e.Deleted);
             _entities.FindAll(e => e.Moving).ForEach(e =>
@@ -82,8 +71,16 @@ namespace MarioGame.Theming
                 });
 
            });
-            _entities.ForEach(e => e.Update(Viewport));
+            _entities.ForEach(e => e.Update(Viewport, gameTime));
 
+        }
+        private void UpdateCamera(GameTime gameTime)
+        {
+
+            if (_mario.Position.X >= Viewport.Width / 2.0f)
+            {
+                _scene.camera.LookAt(_mario.Position);
+            }
         }
 
         public void AddEntity(Entity entity)

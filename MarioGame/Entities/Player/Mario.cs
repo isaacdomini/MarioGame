@@ -105,13 +105,22 @@ namespace MarioGame.Entities
                 }
             }
         }
-        public override void Update(Viewport viewport)
+        public override void Update(Viewport viewport, GameTime gameTime)
         {
-            base.Update(viewport);
+            base.Update(viewport, gameTime);
             UpdateInvincibilityStatus();
             if (marioPowerUpState is DeadState)
             {
                 SetVelocityToIdle();// _velocity = idleVelocity;
+            }
+
+            if(marioActionState is JumpingMarioState)
+            {
+                if (jumpTimer > 1.5)
+                {
+                    marioActionState.Fall();
+                }
+                jumpTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
             Console.WriteLine(marioPowerUpState);
             Console.WriteLine(marioActionState);

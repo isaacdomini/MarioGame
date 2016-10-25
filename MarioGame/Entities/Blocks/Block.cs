@@ -132,9 +132,9 @@ namespace MarioGame.Entities
             ((BlockPowerUpState)pState).Reveal();
         }
 
-        public override void Update(Viewport viewport)
+        public override void Update(Viewport viewport, GameTime gameTime)
         {
-            base.Update(viewport);
+            base.Update(viewport, gameTime);
             if (tickCount > 1)
             {
                 tickCount--;

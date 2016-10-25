@@ -88,7 +88,7 @@ namespace MarioGame.Entities
         {
             aState = state;
         }
-        public virtual void Update(Viewport viewport)
+        public virtual void Update(Viewport viewport, GameTime gameTime)
         {
             _position += Velocity;
             boundingBox.Location = Util.vectorToPoint(Position) + boundingBoxOffset;

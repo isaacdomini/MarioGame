@@ -13,7 +13,7 @@ namespace MarioGame.Entities
             isCollidable = true;
         }
 
-        public override void Update(Viewport viewport)
+        public override void Update(Viewport viewport, GameTime gameTime)
         {
             if (_sprite.Visible == false)
             {
@@ -22,7 +22,7 @@ namespace MarioGame.Entities
                 boundingBox.Y = (int)_position.Y;
 
             }
-            base.Update(viewport);
+            base.Update(viewport, gameTime);
         }
     }
 }

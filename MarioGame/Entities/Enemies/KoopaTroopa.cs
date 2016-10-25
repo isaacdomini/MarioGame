@@ -48,9 +48,9 @@ namespace MarioGame.Entities
             Vector2 newVelocity = Velocity * -1;
             this.setVelocity(newVelocity);
         }
-        public override void Update(Viewport viewport)
+        public override void Update(Viewport viewport, GameTime gameTime)
         {
-            base.Update(viewport);
+            base.Update(viewport, gameTime);
             if (Position.X < 0)
             {
                 _position.X = 0;
