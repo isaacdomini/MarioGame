@@ -166,7 +166,7 @@
         },
         {
           "row": 11,
-          "column": 29.5,
+          "column": 30,
           "hiddenItems": [
             {
               "type": "MushroomSuper",
@@ -271,8 +271,8 @@
       "type": "Mario",
       "rowColumns": [
         {
-          "row": 11.69,
-          "columns": [ 4 ]
+          "row": 13,
+          "columns": [ 1 ]
         }
       ]
     }
