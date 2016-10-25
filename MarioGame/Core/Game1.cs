@@ -96,5 +96,12 @@ namespace MarioGame.Core
         {
             Exit();
         }
+        public void ResetCommand()
+        {
+            _scenes.Clear();
+            _scenes.Add(new Scene(new Stage(this)));
+            Initialize();
+            LoadContent();
+        }
     }
 }
