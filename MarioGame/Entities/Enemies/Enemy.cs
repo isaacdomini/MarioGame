@@ -47,6 +47,13 @@ namespace MarioGame.Entities
             {
                 if(side == Sides.Left || side == Sides.Right)
                 {
+                    if(side == Sides.Left)
+                    {
+                        TurnRight();
+                    }else
+                    {
+                        TurnLeft();
+                    }
                     EnemyActionState.HitBlock();
                 }
             }
