@@ -57,6 +57,7 @@
     <Compile Include="Commands\MoveLeftCommand.cs" />
     <Compile Include="Commands\MoveRightCommand.cs" />
     <Compile Include="Commands\PauseCommand.cs" />
+    <Compile Include="Commands\ResetCommand.cs" />
     <Compile Include="Commands\QuitCommand.cs" />
     <Compile Include="Commands\ResetCommand.cs" />
     <Compile Include="Commands\SceneCommand.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Entities\Enemies\Goomba.cs" />
     <Compile Include="Entities\Enemies\KoopaTroopa.cs" />
     <Compile Include="Entities\Entity.cs" />
+    <Compile Include="Entities\ICollidable.cs" />
     <Compile Include="Entities\IContainable.cs" />
     <Compile Include="Entities\IContainer.cs" />
     <Compile Include="Entities\IEntity.cs" />
@@ -155,9 +157,13 @@
     <Compile Include="States\PlayerStates\PowerUpStates\FireStarState.cs" />
     <Compile Include="States\PlayerStates\PowerUpStates\SuperState.cs" />
     <Compile Include="States\State.cs" />
-    <Compile Include="Theming\Camera.cs" />
+<<<<<<< HEAD
     <Compile Include="Core\GlobalConstants.cs" />
+=======
+    <Compile Include="Theming\Camera.cs" />
+    <Compile Include="Theming\GlobalConstants.cs" />
     <Compile Include="Theming\Layer.cs" />
+>>>>>>> scrolling
     <Compile Include="Theming\LevelLoader.cs" />
     <Compile Include="Theming\Scenes\Scene.cs" />
     <Compile Include="Theming\Script.cs" />

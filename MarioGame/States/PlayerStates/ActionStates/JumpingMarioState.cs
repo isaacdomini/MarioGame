@@ -15,7 +15,7 @@ namespace MarioGame.States
         }
         public override void Fall()
         {
-            Crouch();
+            stateMachine.FallingMarioState.Begin(this);
         }
 
         public override void Crouch()

@@ -67,7 +67,6 @@ namespace MarioGame.Theming
             _controllers[1].AddCommand((int)Buttons.A, new JumpCommand(Game1.Scene.getScript()));
 
         }
-
         public void LoadContent()
         {
         }

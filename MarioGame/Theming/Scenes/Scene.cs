@@ -14,6 +14,8 @@ namespace MarioGame.Theming.Scenes
         public static Texture2D rectanglePixel;
         private readonly Script _script;
         private SpriteBatch _spriteBatch;
+        public Camera camera;
+        Vector2 camPos;
 
         public Scene(Stage stage)
         {
@@ -21,7 +23,7 @@ namespace MarioGame.Theming.Scenes
             _script = new Script(this);
         }
 
-        private List<ISprite> Sprites { get; set; }
+        private List<Layer> Layers { get; set; }
         public Stage Stage { get; }
 
         public void Dispose()
@@ -34,11 +36,13 @@ namespace MarioGame.Theming.Scenes
         {
             Stage.Initialize();
             _script.Initialize();
-            Sprites = new List<ISprite>();
+            Layers = new List<Layer>();
             var middle = new Vector2(Stage.Game1.GraphicsDevice.Viewport.Width/2f,
                 Stage.Game1.GraphicsDevice.Viewport.Height/2f);
 
             LevelLoader.addTileMapToScript("Level1.json", _script, Stage.Game1.Content);
+            camera = new Camera(Stage.Game1.GraphicsDevice.Viewport);
+            camPos = camera.Position;
 
         }
 
@@ -47,9 +51,21 @@ namespace MarioGame.Theming.Scenes
             _spriteBatch = new SpriteBatch(Stage.Game1.GraphicsDevice);
 
             Stage.LoadContent();
+            Layers.Add(new Layer(camera, new Vector2(0.5f, 1.0f)));
+            Layers.Add(new Layer(camera, new Vector2(1.0f, 1.0f)));
+            foreach (Entity e in _script._entities)
+            {
+                if(e is Cloud)
+                {
+                    Layers[0].Add(e._sprite);
+                }
+                else
+                {
+                    Layers[1].Add(e._sprite);
+                }
+            }
 
-            _script._entities.ForEach(e => Sprites.Add(e._sprite));
-            Sprites.ForEach(s => s.Load());
+            Layers.ForEach(l => l.Load());
             _script._entities.ForEach(e => e.LoadBoundingBox());
             //Allows for bounding boxes to be drawn in different colors
             rectanglePixel = new Texture2D(Stage.Game1.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
@@ -62,14 +78,18 @@ namespace MarioGame.Theming.Scenes
             Stage.Update(gameTime);
             _script.Update(gameTime);
             // TODO Should we update the sprites in script? That way we are only doing updates from one location
-            Sprites.ForEach(s => s.Update((float)gameTime.ElapsedGameTime.TotalSeconds));
+            Layers.ForEach(l => l.Sprites.ForEach(s => s.Update((float)gameTime.ElapsedGameTime.TotalSeconds)));
+            //camera.Position = new Vector2(camera.Position.X + 1, camera.Position.Y);
+            //camera.LookAt(_script.mario.position);
         }
 
         public void Draw(GameTime gameTime)
         {
             Stage.Draw(gameTime, _spriteBatch);
+            Layers.ForEach(l => l.Draw(_spriteBatch));
+            Vector2 parallax = new Vector2(1.0f);
+            _spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, camera.GetViewMatrix(parallax));
 
-            _spriteBatch.Begin();
             Sprites.ForEach(s => s.Draw(_spriteBatch));
             _script._entities.FindAll(e => !e._sprite.Visible).ForEach(e => drawRectangleBorder(_spriteBatch, e.boundingBox, 1, e.BoxColor));
             _spriteBatch.End();

@@ -18,9 +18,9 @@ namespace MarioGame.Theming
         public List<Entity> _entities { get; private set; }
 
         //possibile TODO: cache the getters if performance suffers
-        protected List<Block> _blocks { get { return _entities.FindAll(e => e is Block).ConvertAll(e => (Block) e); } }
-        protected List<Item> _items { get { return _entities.FindAll(e => e is Item).ConvertAll(e => (Item) e); } }
-        protected List<Enemy> _enemies { get { return _entities.FindAll(e => e is Enemy).ConvertAll(e => (Enemy) e); } }
+        public List<Block> _blocks { get { return _entities.FindAll(e => e is Block).ConvertAll(e => (Block) e); } }
+        public List<Item> _items { get { return _entities.FindAll(e => e is Item).ConvertAll(e => (Item) e); } }
+        public List<Enemy> _enemies { get { return _entities.FindAll(e => e is Enemy).ConvertAll(e => (Enemy) e); } }
 
         //TODO: clean up below line's code smell
         public Mario _mario { get { return (Mario)_entities.Find(e => e is Mario); } }
@@ -51,6 +51,19 @@ namespace MarioGame.Theming
 
         public void Update(GameTime gameTime)
         {
+	    if (mario.position.X >= Viewport.Width / 2.0f)
+            {
+                _scene.camera.LookAt(mario.position);
+            }
+            if(mario.CurrentActionState is JumpingMarioState)
+            {
+                if (mario.jumpTimer > 1.5)
+                {
+                    Console.WriteLine(mario.jumpTimer);
+                    MakeMarioFall();
+                }
+                mario.jumpTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            }
             List<int> entityPairs = new List<int>();
             _entities = _entities.FindAll(e => !e.Deleted);
             _entities.FindAll(e => e.Moving).ForEach(e =>

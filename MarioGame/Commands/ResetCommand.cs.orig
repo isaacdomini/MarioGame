@@ -6,7 +6,11 @@ namespace MarioGame.Commands
     {
         public ResetCommand(Game1 game) : base(game)
         {
+<<<<<<< HEAD
+
+=======
             
+>>>>>>> scrolling
         }
 
         public override void Execute()

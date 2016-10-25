@@ -1,0 +1,102 @@
+﻿using MarioGame.Collisions;
+using MarioGame.Core;
+using MarioGame.Sprites;
+using MarioGame.States;
+using MarioGame.Theming;
+using MarioGame.Theming.Scenes;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MarioGame.Entities
+{
+    public class KoopaTroopa : Enemy
+    {
+        protected KoopaTroopaSprite _koopaTroopaSprite { get { return (KoopaTroopaSprite)_enemySprite; } }
+        //public KoopaTroopaSprite eSprite;
+<<<<<<< HEAD
+        public static Vector2 shellMovingVelocity = new Vector2(2, 0);
+=======
+        private KoopaActionState eState;
+        public readonly static Vector2 movingVelocity = new Vector2(-1, 0);
+>>>>>>> scrolling
+        private int _height;
+        private int _width;
+        
+        KoopaStateMachine _stateMachine;
+
+        public KoopaTroopa(Vector2 position, ContentManager content) : base(position, content)
+        {
+            _stateMachine = new KoopaStateMachine(this);
+            ChangeActionState(_stateMachine.WalkState);
+            aState.Begin(aState);
+            isCollidable = true;
+<<<<<<< HEAD
+=======
+            _height = boundingBoxHeight;
+            _width = boundingBoxWidth;
+            _velocity = movingVelocity;
+>>>>>>> scrolling
+        }
+        //TODO: couldn't we delete this method and just let the parent method be used?
+        public void ChangeActionState(KoopaActionState newState)
+        {
+            aState = newState;
+            _koopaTroopaSprite.changeActionState(newState);
+        }
+
+        internal void SetShellVelocityToMoving()
+        {
+            this.setVelocity(movingVelocity);
+        }
+        public override void ChangeVelocityDirection()
+        {
+            Vector2 newVelocity = Velocity * -1;
+            this.setVelocity(newVelocity);
+            changeSpriteDirection();
+        }
+        public override void Update(Viewport viewport)
+        {
+            base.Update(viewport);
+            if (Position.X < 0)
+            {
+<<<<<<< HEAD
+                _position.X = 0;
+                ChangeShellVelocityDirection();
+=======
+                pos.X = 0;
+                ChangeVelocityDirection();
+>>>>>>> scrolling
+            }
+            else if (Position.X + _width > viewport.Width)
+            {
+<<<<<<< HEAD
+                _position.X = viewport.Width - _width;
+                ChangeShellVelocityDirection();
+            }
+        
+=======
+                pos.X = viewport.Width - _width;
+                ChangeVelocityDirection();
+            }
+            _position = pos;
+            //_position += _velocity;
+            boundingBox.X = (int)_position.X + 3;
+            boundingBox.Y = (int)_position.Y + 5;
+        }
+        public void ChangeToDeadState()
+        {
+            eState.ChangeToDead();
+>>>>>>> scrolling
+        }
+        public void changeSpriteDirection()
+        {
+            ((KoopaActionState)eState).changeSpriteDirection();
+        }
+    }
+}

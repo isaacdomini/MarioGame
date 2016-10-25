@@ -15,6 +15,7 @@ namespace MarioGame.States
         Dead,
         Crouching,
         Walking,
-        Running
+        Running,
+        Falling
     }
 }

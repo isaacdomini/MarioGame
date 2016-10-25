@@ -18,5 +18,6 @@ namespace MarioGame.States
             koopa.SetVelocityToWalk();
             koopa.ChangeActionState(_stateMachine.WalkState);
         }
+        
     }
 }

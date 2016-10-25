@@ -22,6 +22,7 @@ namespace MarioGame.Sprites
             SittingMario2 = 6, //I know he's not sitting . . .I'm just not sure exactly what that section of the sprite sheet is
             SittingMario1 = 7,
             JumpingMario = 8,
+            FallingMario = 8,
             DashingMario = 9,
             MovingMario3 = 10, //moving is the same sprites for Running and Walking action states
             MovingMario2 = 11,
@@ -55,6 +56,7 @@ namespace MarioGame.Sprites
                 { MarioActionStateEnum.Running.GetHashCode(), new List<int> {Frames.MovingMario1.GetHashCode(), Frames.MovingMario2.GetHashCode(), Frames.MovingMario3.GetHashCode(), Frames.MovingMario2.GetHashCode() } },//TODO: instead of {1, 2, 3} may have to do {1, 2, 3, 2} or something like that
                 { MarioActionStateEnum.Crouching.GetHashCode(), new List<int> {Frames.CrouchingMario.GetHashCode() } },
                 { MarioActionStateEnum.Jumping.GetHashCode(), new List<int> {Frames.JumpingMario.GetHashCode() } },
+                { MarioActionStateEnum.Falling.GetHashCode(), new List<int> {Frames.FallingMario.GetHashCode() } },
                 { MarioActionStateEnum.Sitting.GetHashCode(), new List<int> {Frames.SittingMario1.GetHashCode(), Frames.SittingMario2.GetHashCode() } },
                 { MarioActionStateEnum.Swimming.GetHashCode(), new List<int> {Frames.SwimmingMarioStart.GetHashCode(), Frames.SwimmingMarioAfterStart.GetHashCode(), Frames.SwimmingMarioMiddle.GetHashCode(), Frames.SwimmingMarioBeforeEnd.GetHashCode(), Frames.SwimmingMarioEnd.GetHashCode() }},
                 { MarioActionStateEnum.Dead.GetHashCode(), new List<int> {Frames.DeadMario.GetHashCode() } }

@@ -1,0 +1,336 @@
+﻿using Microsoft.Xna.Framework;
+using MarioGame.Sprites;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
+using MarioGame.States;
+using MarioGame.Core;
+using MarioGame.States.BlockStates.PowerUpStates;
+using MarioGame.Theming;
+using System;
+
+namespace MarioGame.Entities
+{
+    public class Mario : PowerUpEntity
+    {
+<<<<<<< HEAD
+        private float secondsOfInvincibilityRemaining = 0.0f;
+        public bool Invincible
+=======
+        public static int invincibleTimer=0;
+        public float jumpTimer = 0;
+        // Could be useful for casting in certain circumstances
+        public MarioPowerUpState PowerUpState
+>>>>>>> scrolling
+        {
+            get
+            {
+                if (secondsOfInvincibilityRemaining > 0 || pState is FireStarState || pState is StandardStarState || pState is SuperStarState)
+                    return true;
+                else
+                    return false;
+            }
+        }
+        // Could be useful for casting in certain circumstances
+        public MarioPowerUpState marioPowerUpState { get { return (MarioPowerUpState)pState; } }
+        public MarioActionState marioActionState { get { return (MarioActionState)aState; } }
+        // TODO: maybe we don't have to give the casted variable a new name, but rather just use the new keyword and the subclass type
+        public MarioSprite _marioSprite { get { return (MarioSprite)_sprite; } }
+        private int _width;
+        private int _height;
+
+        // Velocity variables
+        private readonly static Vector2 jumpingVelocity = new Vector2(0, velocityConstant * -1);
+        private readonly static Vector2 dashVelocity = new Vector2(velocityConstant * 2, 0);
+
+<<<<<<< HEAD
+        private static int superBoundingBoxWidth = 20;
+=======
+
+        private static int superBoundingBoxWidth = 30;
+>>>>>>> scrolling
+        private static int superBoundingBoxHeight = 36;
+
+        private static int standardBoundingBoxWidth = 20;
+        private static int standardBoundingBoxHeight = 20;
+        private enum SpaceBarAction
+        {
+            walk,
+            run
+        }
+
+        private SpaceBarAction spaceBarAction;
+
+        MarioActionStateMachine marioActionStateMachine;
+
+        MarioPowerUpStateMachine marioPowerUpStateMachine;
+
+        public Mario(Vector2 position, ContentManager content) : base(position, content)
+        {
+            marioActionStateMachine = new MarioActionStateMachine(this);
+            marioPowerUpStateMachine = new MarioPowerUpStateMachine(this);           
+            aState = marioActionStateMachine.IdleMarioState; //TODO: make marioActionState a casted getter of aState?
+            pState = marioPowerUpStateMachine.StandardState;
+
+            direction = Directions.Right;
+            spaceBarAction = SpaceBarAction.run;
+            _height = standardBoundingBoxHeight;
+            _width = standardBoundingBoxWidth;
+        }
+        protected override void setUpBoundingBoxProperties()
+        {
+            int sideMargin = 0, topBottomMargin = 0;
+            if (marioPowerUpState is FireStarState || marioPowerUpState is SuperState || marioPowerUpState is FireState || marioPowerUpState is SuperStarState)
+            {
+                boundingBoxSize = new Point(superBoundingBoxWidth, superBoundingBoxHeight);
+            }
+<<<<<<< HEAD
+            else
+            {
+                boundingBoxSize = new Point(standardBoundingBoxWidth, standardBoundingBoxHeight);
+                topBottomMargin = 16;
+            }
+            boundingBoxOffset = new Point(sideMargin, topBottomMargin);
+        }
+        private void OnInvincibilityEnded()
+        {
+            if(marioPowerUpState is FireStarState)
+            {
+               ChangeToFireState();
+            }
+            else if (marioPowerUpState is StandardStarState)
+            {
+                ChangeToStandardState();
+            }
+            else if (marioPowerUpState is SuperStarState)
+=======
+            base.Update();
+            // Maybe just set velocity to zero for all this? - Ricky
+            Vector2 pos = _position;
+
+            _position = pos;
+            
+            if(PowerUpState.powerUpState != MarioPowerUpStateEnum.Standard || PowerUpState.powerUpState != MarioPowerUpStateEnum.StandardStar)
+>>>>>>> scrolling
+            {
+                ChangeToSuperState();
+            }
+        }
+        private void UpdateInvincibilityStatus()
+        {
+            if (secondsOfInvincibilityRemaining > 0)
+            {
+                secondsOfInvincibilityRemaining -= (GlobalConstants.MILLISECONDS_PER_FRAME / 1000);
+                if (secondsOfInvincibilityRemaining <= 0)
+                {
+                    OnInvincibilityEnded();
+                }
+            }
+        }
+        public override void Update(Viewport viewport)
+        {
+            base.Update(viewport);
+            UpdateInvincibilityStatus();
+            if (marioPowerUpState is DeadState)
+            {
+                SetVelocityToIdle();// _velocity = idleVelocity;
+            }
+            
+            if (Position.X < 0 || Position.X + _width > viewport.Width || Position.Y < 0 || Position.Y + _height > viewport.Height ){
+                SetVelocityToIdle();
+            }
+
+        }
+        public bool checkMarioJumping()
+        {
+            return this.Velocity.Equals(jumpingVelocity);
+        }
+        public void ChangeActionState(MarioActionState state)
+        {
+            base.ChangeActionState(state);
+            _marioSprite.changeActionState(state);
+        }
+        public void ChangePowerUpState(MarioPowerUpState state)
+        {
+            Console.WriteLine("state passed into Mario.ChangePowerUpState is DeadState?" + (state is DeadState)); 
+            base.ChangePowerUpState(state);
+            LoadBoundingBox();
+            _marioSprite.changePowerUp(state);//TODO: can we push _marioSprite.changePowerUp inside of base.ChangePowerUpState, or will doing so lose the polymorphism (e.g. will it call AnimatedSprite.changePowerUp rather than _marioSprite.changePowerUp
+        }
+        public void Jump()
+        {
+            if (!(marioPowerUpState is DeadState))
+            {
+                marioActionState.Jump();
+            }
+        }
+        public void Crouch()
+        {
+            //TODO: make actionState take a StateFactory so the way we check pState and action State below can be consistent
+            if (marioPowerUpState is StandardState && (marioActionState).actionState == MarioActionStateEnum.Idle)
+            {
+                marioActionState.Fall();
+            }
+            else if (!(marioPowerUpState is DeadState))
+            {
+                marioActionState.Crouch();
+            }
+        }
+        public void Fall()
+        {
+                ((MarioActionState)aState).Fall();
+        }
+        public void MoveLeft()
+        {
+            Console.WriteLine("mario.MoveLeft called");
+            if (!(marioPowerUpState is DeadState))
+            {
+                Console.WriteLine("Mario is not in dead State");
+                marioActionState.MoveLeft();
+            }
+            else
+            {
+                Console.WriteLine("mario is DeadState");
+            }
+        }
+        public void MoveRight()
+        {
+            Console.WriteLine("mario.MoveRight called");
+            if (!(marioPowerUpState is DeadState))
+            {
+                marioActionState.MoveRight();
+            }
+        }
+        internal void onHitByEnemy()
+        {
+            marioPowerUpState.onHitByEnemy();
+        }
+        public void ChangeToFireState()
+        {
+            marioPowerUpState.ChangeToFire();
+        }
+        public void ChangeToStandardState()
+        {
+            marioPowerUpState.ChangeToStandard();
+        }
+        public void ChangeToSuperState()
+        {
+            marioPowerUpState.ChangeToSuper();
+        }
+        public void ChangeToStarState()
+        {
+            marioPowerUpState.ChangeToStar();
+        }
+        public void ChangeToDeadState()
+        {
+            marioPowerUpState.ChangeToDead();
+        }
+        //Todo: I don't like that we have a method called DashOrThrowFireball. I think we should have a Dash() method and a throwFireball() method, and which one gets called gets handled in the State classes
+        public void DashOrThrowFireball()
+        {
+            //TODO: Ricky do this?
+            if (pState is FireState || pState is FireStarState)
+            {
+                // TODO: Mario entity adds fireball to scene
+
+            }
+            else if (pState is SuperState)
+            {
+                if (spaceBarAction == SpaceBarAction.walk)
+                {
+                    _velocity = Velocity / 2;
+                    spaceBarAction = SpaceBarAction.run;
+                }
+                else if (spaceBarAction == SpaceBarAction.run)
+                {
+                    _velocity = Velocity * 2;
+                    spaceBarAction = SpaceBarAction.walk;
+                }
+            }
+        }
+        
+        public void SetVelocityToJumping()
+        {
+            this.setVelocity(jumpingVelocity);
+        }
+        public override void Halt()
+        {
+            _position -= Velocity;
+            marioActionState.Halt();
+        }
+        private void onCollideEnemy(Enemy enemy, Sides side)
+        {
+            Console.WriteLine("mario collided an enemy");
+            if (!Invincible)
+            {
+                if (!enemy.Dead && side != Sides.Bottom)
+                {
+                    Console.WriteLine("Enemy was alive and mario did not hit the top of the enemy, meaning we are calling marioPowerUpState.onHitByEnemy()");
+                    Console.WriteLine("is mario dead before marioPowerUpState.onHitByEnemy? " + (marioPowerUpState is DeadState));
+                    marioPowerUpState.onHitByEnemy();
+                    Console.WriteLine("is mario dead after marioPowerUpState.onHitByEnemy? " + (marioPowerUpState is DeadState));
+                }
+                else
+                {
+                    Halt();
+                    Console.WriteLine("Enemy was Dead and/or mario hit the top of the enemy, meaning this does not affect mario.");
+                }
+            }
+        }
+        protected override void onBlockSideCollision()
+        {
+            _position.X -= 2 * Velocity.X;
+            _velocity.X = 0;
+            marioActionState.Halt();
+        }
+        public override void onBlockBottomCollision()
+        {
+            base.onBlockBottomCollision();
+            Halt();
+        }
+        public override void onBlockTopCollision()
+        {
+            base.onBlockTopCollision();
+            marioActionState.Fall();
+        }
+        private void onCollideItem(Item item, Sides side)
+        {
+            if (item is Coin)
+            {
+                //Add code to add coin to total coins
+            }
+            else if (item is Star)
+            {
+                ChangeToStarState();
+            }
+            else if (item is FireFlower)
+            {
+                ChangeToFireState();
+            }
+            else if (item is Mushroom1Up)
+            {
+                //Add code to add extra life
+            }
+            else if (item is MushroomSuper)
+            {
+                ChangeToSuperState();
+            }
+        }
+        public override void onCollide(IEntity otherObject, Sides side)
+        {
+            base.onCollide(otherObject, side);
+            if (otherObject is Enemy)
+            {
+                onCollideEnemy((Enemy)otherObject, side);
+            }
+            else if (otherObject is Item)
+            {
+                onCollideItem((Item)otherObject, side);
+            }
+       }
+        public void setInvincible(float seconds)
+        {
+            secondsOfInvincibilityRemaining = seconds;
+        }
+    }
+
+}

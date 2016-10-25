@@ -23,5 +23,16 @@ namespace MarioGame.States
         {
             _stateMachine.DeadState.Begin(this);
         }
+        public void changeSpriteDirection()
+        {
+            if (koopa.isFacingRight())
+            {
+                koopa.turnLeft();
+            }
+            else
+            {
+                koopa.turnRight();
+            }
+        }
     }
 }

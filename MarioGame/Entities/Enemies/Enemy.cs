@@ -54,5 +54,6 @@ namespace MarioGame.Entities
         {
             _enemyActionState.ChangeToDead();
         }
+        public virtual void ChangeVelocityDirection() { }
     }
 }

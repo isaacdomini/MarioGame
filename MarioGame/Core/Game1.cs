@@ -28,7 +28,6 @@ namespace MarioGame.Core
             _scene = 1;
             Console.Out.WriteLine(_scenes.Count.ToString());
         }
-
         public Scene Scene
         {
             get { return _scenes[_scene - 1]; }
