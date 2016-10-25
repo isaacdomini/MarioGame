@@ -109,19 +109,8 @@ namespace MarioGame.Entities
         {
             base.Update(viewport, gameTime);
             UpdateInvincibilityStatus();
-            if (marioPowerUpState is DeadState)
-            {
-                SetVelocityToIdle();// _velocity = idleVelocity;
-            }
 
-            if(marioActionState is JumpingMarioState)
-            {
-                if (jumpTimer > 1.5)
-                {
-                    marioActionState.Fall();
-                }
-                jumpTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            }
+            marioActionState.UpdateEntity(gameTime);
         }
         public void ChangeActionState(MarioActionState state)
         {
@@ -136,6 +125,7 @@ namespace MarioGame.Entities
         }
         public void Jump()
         {
+            //TODO: factor this logic somehow into marioPowerUpState so that mario doesn't have to keep track of what power up state he is inn
             if (!(marioPowerUpState is DeadState))
             {
                 marioActionState.Jump();

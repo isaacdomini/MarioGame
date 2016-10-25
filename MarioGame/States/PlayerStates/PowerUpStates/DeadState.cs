@@ -13,6 +13,7 @@ namespace MarioGame.States
         public override void Begin(MarioPowerUpState prevState)
         {
             _mario.ChangePowerUpState(_stateMachine.DeadState);
+            _mario.SetVelocityToIdle();
         }
     }
 }

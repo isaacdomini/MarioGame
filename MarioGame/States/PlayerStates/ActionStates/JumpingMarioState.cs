@@ -1,8 +1,11 @@
 ﻿using MarioGame.Entities;
+using Microsoft.Xna.Framework;
+
 namespace MarioGame.States
 {
     class JumpingMarioState : MarioActionState
     {
+        private float _jumpTimer = 0.0f;
         public JumpingMarioState(Mario entity, MarioActionStateMachine stateMachine) : base(entity, stateMachine)
         {
             actionState = MarioActionStateEnum.Jumping;
@@ -12,6 +15,11 @@ namespace MarioGame.States
         {
             _mario.ChangeActionState(stateMachine.JumpingMarioState);
             _mario.SetVelocityToJumping();
+        }
+
+        public override void End()//TODO: currently i dont think this method is getting called correctly. something with a null error about _prevState in state.Begin();
+        {
+            _jumpTimer = 0.0f;
         }
         public override void Fall()
         {
@@ -43,6 +51,20 @@ namespace MarioGame.States
             else
             {
                 _mario.turnLeft();
+            }
+        }
+
+        public override void UpdateEntity(GameTime gameTime)
+        {
+            base.UpdateEntity(gameTime);
+            if (_jumpTimer > 1.5)
+            {
+                stateMachine.FallingMarioState.Begin(this);
+                _jumpTimer = 0.0f; // todo make it so that the End() method correctly gets called so we don't have to do this.
+            }
+            else
+            {
+            _jumpTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
         }
     }

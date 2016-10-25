@@ -39,10 +39,13 @@ namespace MarioGame.States
             }
         }
 
+        public virtual void Fall()
+        {
+        }
+
         public virtual void Crouch() {
             stateMachine.CrouchingMarioState.Begin(this);
         }
-        public virtual void Fall() { _mario.jumpTimer = 0.0f; }
         public void Halt()
         {
             stateMachine.IdleMarioState.Begin(this);
