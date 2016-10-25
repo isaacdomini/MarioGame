@@ -2,11 +2,11 @@
 
 namespace MarioGame.States
 {
-    internal class WalkingGoombaState : GoombaActionState
+    internal class GoombaWalkingState : GoombaActionState
     {
         //private Goomba enemyEntity;
 
-        public WalkingGoombaState(Goomba enemyEntity, GoombaStateMachine stateMachine) : base(enemyEntity, stateMachine)
+        public GoombaWalkingState(Goomba enemyEntity, GoombaStateMachine stateMachine) : base(enemyEntity, stateMachine)
         {
             EnemyState = EnemyActionStateEnum.Walking;
         }

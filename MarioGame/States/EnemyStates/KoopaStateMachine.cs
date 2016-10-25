@@ -28,8 +28,8 @@ namespace MarioGame.States
         public KoopaStateMachine(KoopaTroopa koopa)
         {
             _koopa = koopa;
-            dead = new DeadKoopaState(_koopa, this);
-            walking = new WalkingKoopaState(_koopa, this);
+            dead = new KoopaDeadState(_koopa, this);
+            walking = new KoopaWalkingState(_koopa, this);
             bouncing = new KoopaBouncingState(_koopa, this);
         }
 

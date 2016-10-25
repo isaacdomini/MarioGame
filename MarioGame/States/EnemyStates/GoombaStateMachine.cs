@@ -24,8 +24,8 @@ namespace MarioGame.States
         public GoombaStateMachine(Goomba goomba)
         {
             _goomba = goomba;
-            dead = new DeadGoombaState(_goomba, this);
-            walking = new WalkingGoombaState(_goomba, this);
+            dead = new GoombaDeadState(_goomba, this);
+            walking = new GoombaWalkingState(_goomba, this);
 
         }
     }

@@ -4,9 +4,9 @@ using Microsoft.Xna.Framework;
 
 namespace MarioGame.States
 {
-    internal class DeadKoopaState : KoopaActionState
+    internal class KoopaDeadState : KoopaActionState
     {
-        public DeadKoopaState(KoopaTroopa entity, KoopaStateMachine stateMachine) : base(entity, stateMachine)
+        public KoopaDeadState(KoopaTroopa entity, KoopaStateMachine stateMachine) : base(entity, stateMachine)
         {
             EnemyState = EnemyActionStateEnum.Dead;
         }

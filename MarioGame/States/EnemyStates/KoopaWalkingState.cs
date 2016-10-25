@@ -3,11 +3,11 @@
 
 namespace MarioGame.States
 {
-    internal class WalkingKoopaState : KoopaActionState
+    internal class KoopaWalkingState : KoopaActionState
     {
         //private KoopaTroopaEntity enemyEntity;
 
-        public WalkingKoopaState(KoopaTroopa enemyEntity, KoopaStateMachine stateMachine) : base(enemyEntity, stateMachine)
+        public KoopaWalkingState(KoopaTroopa enemyEntity, KoopaStateMachine stateMachine) : base(enemyEntity, stateMachine)
         {
             EnemyState = EnemyActionStateEnum.Walking;
         }

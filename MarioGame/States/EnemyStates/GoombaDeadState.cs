@@ -2,9 +2,9 @@
 
 namespace MarioGame.States
 {
-    internal class DeadGoombaState : GoombaActionState
+    internal class GoombaDeadState : GoombaActionState
     {
-        public DeadGoombaState(Goomba entity, GoombaStateMachine stateMachine) : base(entity, stateMachine)
+        public GoombaDeadState(Goomba entity, GoombaStateMachine stateMachine) : base(entity, stateMachine)
         {
             EnemyState = EnemyActionStateEnum.Dead;
         }
