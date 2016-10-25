@@ -31,13 +31,7 @@ namespace MarioGame.Entities
             {
                 if (side == Sides.Top)
                 {
-                    IsDead = !IsDead;
                     EnemyActionState.JumpedOn(side); 
-                }
-                if (IsDead && (side == Sides.Left || side == Sides.Right))
-                {
-                    IsDead = !IsDead;
-                    EnemyActionState.JumpedOn(side);
                 }
             }
             if(otherObject is Block)
