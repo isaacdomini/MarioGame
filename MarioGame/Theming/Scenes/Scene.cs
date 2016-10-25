@@ -87,7 +87,6 @@ namespace MarioGame.Theming.Scenes
         {
             Stage.Draw(gameTime, _spriteBatch);
             Layers.ForEach(l => l.Draw(_spriteBatch));
-            Layers.ForEach(l => l.Draw(_spriteBatch));
             _spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, camera.GetViewMatrix(new Vector2(1.0f)));
             _script._entities.FindAll(e => (!e._sprite.Visible)&& !(e is Cloud)).
                 ForEach(e => drawRectangleBorder(_spriteBatch, e.boundingBox, 1, e.BoxColor));
