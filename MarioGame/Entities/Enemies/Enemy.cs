@@ -14,6 +14,7 @@ namespace MarioGame.Entities
         protected bool _isDead;
         public bool Dead { get { return _isDead; } }
         protected bool _hurts;
+        private readonly static Vector2 fallingVelocity = new Vector2(0, velocityConstant * 1);
         public bool Hurts { get { return _hurts; } }
         public Enemy(Vector2 position, ContentManager content) : base(position, content)
         {
@@ -53,6 +54,10 @@ namespace MarioGame.Entities
         public void ChangeToDeadState()
         {
             _enemyActionState.ChangeToDead();
+        }
+        public void SetVelocityToFalling()
+        {
+            this.setVelocity(fallingVelocity);
         }
         public virtual void ChangeVelocityDirection() { }
     }

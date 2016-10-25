@@ -111,13 +111,21 @@ namespace MarioGame.Entities
                 }
                 // TODO: Begin bumping sequence
                 // TODO: If there is no item, change to used.
+                ChangeToUsed();
                 // TODO: If there is an item, display item, and bump
             //else break
         }
         // Only called when mario is super
         public void Break()
         {
-            // TODO: Begin breaking sequence
+            if (this.CurrentActionState is QuestionBlockState /*or  bumpable blockstate*/)
+            {
+                this.Bump();
+            }
+            else
+            {
+                // TODO: Begin breaking sequence
+            }
         }
         public void Reveal()
         {
