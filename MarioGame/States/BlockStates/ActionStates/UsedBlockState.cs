@@ -6,12 +6,12 @@ namespace MarioGame.States
     {
         public UsedBlockState(Block entity, BlockActionStateMachine stateMachine) : base(entity, stateMachine)
         {
-            bState = BlockActionStateEnum.UsedBlock;
+            BState = BlockActionStateEnum.UsedBlock;
         }
         public override void Begin(IState prevState)
         {
             base.Begin(prevState);
-            block.ChangeBlockActionState(stateMachine.UsedState);
+            Block.ChangeBlockActionState(StateMachine.UsedState);
         }
     }
 }

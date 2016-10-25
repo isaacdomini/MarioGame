@@ -97,13 +97,13 @@ namespace MarioGame.Sprites
         {
             base.ChangePowerUp(marioPowerUpState);
             // Because on the sprite sheet, dead state is a frame set, not a row set
-            if (marioPowerUpState.powerUpState == MarioPowerUpStateEnum.Dead)
+            if (marioPowerUpState.PowerUpState == MarioPowerUpStateEnum.Dead)
             {
                 FrameSet = FrameSets[MarioActionStateEnum.Dead.GetHashCode()];
                 FrameSetPosition = 0;
             }
            
-            RowSet = RowSets[marioPowerUpState.powerUpState.GetHashCode()];
+            RowSet = RowSets[marioPowerUpState.PowerUpState.GetHashCode()];
         }
     }
 }

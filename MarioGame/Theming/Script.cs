@@ -15,147 +15,124 @@ namespace MarioGame.Theming
     {
         private readonly Scene _scene;
 
-        public List<Entity> _entities { get; private set; }
+        public List<Entity> Entities { get; private set; }
 
         //possibile TODO: cache the getters if performance suffers
-        public List<Block> _blocks { get { return _entities.FindAll(e => e is Block).ConvertAll(e => (Block) e); } }
-        public List<Item> _items { get { return _entities.FindAll(e => e is Item).ConvertAll(e => (Item) e); } }
-        public List<Enemy> _enemies { get { return _entities.FindAll(e => e is Enemy).ConvertAll(e => (Enemy) e); } }
+        public List<Block> Blocks { get { return Entities.FindAll(e => e is Block).ConvertAll(e => (Block) e); } }
+        public List<Item> Items { get { return Entities.FindAll(e => e is Item).ConvertAll(e => (Item) e); } }
+        public List<Enemy> Enemies { get { return Entities.FindAll(e => e is Enemy).ConvertAll(e => (Enemy) e); } }
 
         //TODO: clean up below line's code smell
-        public Mario _mario { get { return (Mario)_entities.Find(e => e is Mario); } }
+        public Mario Mario { get { return (Mario)Entities.Find(e => e is Mario); } }
         public Script(Scene scene)
         {
             _scene = scene;
         }
 
-        private Game1 Game1
-        {
-            get { return _scene.Stage.Game1; }
-        }
-
-        private GraphicsDeviceManager GraphicsDeviceManager
-        {
-            get { return _scene.Stage.GraphicsDevice; }
-        }
-
-        private Viewport Viewport
-        {
-            get { return GraphicsDeviceManager.GraphicsDevice.Viewport; }
-        }
+        private Game1 Game1 => _scene.Stage.Game1;
+        private GraphicsDeviceManager GraphicsDeviceManager => _scene.Stage.GraphicsDevice;
+        private Viewport Viewport => GraphicsDeviceManager.GraphicsDevice.Viewport;
 
         public void Initialize()
         {
-		    _entities = new List<Entity>();
+		    Entities = new List<Entity>();
         }
 
         public void Update(GameTime gameTime)
         {
             UpdateCamera(gameTime);
-            List<int> entityPairs = new List<int>();
-            _entities = _entities.FindAll(e => !e.Deleted);
-            _entities.FindAll(e => e.Moving).ForEach(e =>
+            var entityPairs = new List<int>();
+            Entities = Entities.FindAll(e => !e.Deleted);
+            Entities.FindAll(e => e.Moving).ForEach(e =>
            {
-               _entities.FindAll(e2 => e.BoundingBox.Intersects(e2.BoundingBox)).ForEach(e2 =>
+               Entities.FindAll(e2 => e.BoundingBox.Intersects(e2.BoundingBox)).ForEach(e2 =>
                {
                    if(!entityPairs.Contains(e.GetHashCode() ^ e2.GetHashCode()))
                    {
-                       Sides eSide = CollisionHandler.GetIntersectingSide(e.BoundingBox, e2.BoundingBox);
+                       var eSide = CollisionHandler.GetIntersectingSide(e.BoundingBox, e2.BoundingBox);
                        e.OnCollide(e2, eSide);
                        e2.OnCollide(e, Util.flip(eSide));
                        entityPairs.Add(e.GetHashCode() ^ e2.GetHashCode());
                    }
-                   else
-                   {
-                   }
                 });
 
            });
-            _entities.ForEach(e => e.Update(Viewport, gameTime));
+            Entities.ForEach(e => e.Update(Viewport, gameTime));
 
         }
         private void UpdateCamera(GameTime gameTime)
         {
 
-            if (_mario.Position.X >= Viewport.Width / 2.0f)
+            if (Mario.Position.X >= Viewport.Width / 2.0f)
             {
-                _scene.camera.LookAt(_mario.Position);
+                _scene.Camera.LookAt(Mario.Position);
             }
         }
 
         public void AddEntity(Entity entity)
         {
-            _entities.Add(entity);
+            Entities.Add(entity);
         }
 
         internal void MakeMarioJump()
         {
-            _mario.Jump();
+            Mario.Jump();
         }
         internal void MakeMarioCrouch()
         {
-            _mario.Crouch();
+            Mario.Crouch();
         }
         internal void MakeMarioDashOrThrowFireball()
         {
-            _mario.DashOrThrowFireball();
+            Mario.DashOrThrowFireball();
         }
         internal void MakeMarioMoveLeft()
         {
-            _mario.MoveLeft();
+            Mario.MoveLeft();
         }
         internal void MakeMarioMoveRight()
         {
-            _mario.MoveRight();
+            Mario.MoveRight();
         }
         internal void MakeMarioFire()
         {
-            _mario.ChangeToFireState();
+            Mario.ChangeToFireState();
         }
         internal void MakeMarioStandard()
         {
-            _mario.ChangeToStandardState();
+            Mario.ChangeToStandardState();
         }
         internal void MakeMarioSuper()
         {
-            _mario.ChangeToSuperState();
+            Mario.ChangeToSuperState();
         }
         internal void MakeMarioDead()
         {
-            _mario.ChangeToDeadState();
+            Mario.ChangeToDeadState();
         }
         internal void BrickBumpOrBreak()
         {
-            foreach (var block in _blocks)
+            foreach (var block in Blocks)
             {
-                if (block.CurrentActionState is BrickBlockState)
+                if (!(block.CurrentActionState is BrickBlockState)) continue;
+                if (Mario.MarioPowerUpState is SuperState)
                 {
-                    if (_mario.MarioPowerUpState is SuperState)
-                    {
-                        block.Break();
-                    }
-                    else if (_mario.MarioPowerUpState is StandardState)
-                    {
-                        block.Bump();
-                        block.ChangeToUsed();
-                    }
+                    block.Break();
+                }
+                else if (Mario.MarioPowerUpState is StandardState)
+                {
+                    block.Bump();
+                    block.ChangeToUsed();
                 }
             }
         }
         internal void ShowHiddenBlock()
         {
-            foreach(Block block in _blocks)
-            {
-                block.Reveal();
-            }
+            Blocks.ForEach(b => b.Reveal());
         }
         internal void ChangeQuestionToUsed()
         {
-            foreach (Block block in _blocks)
-            {
-                if (block.CurrentActionState is QuestionBlockState)
-                block.ChangeToUsed();
-            }
+            Blocks.FindAll(b => b.CurrentActionState is QuestionBlockState).ForEach(b => b.ChangeToUsed());
         }
     }
 }

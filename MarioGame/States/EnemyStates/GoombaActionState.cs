@@ -4,14 +4,14 @@ namespace MarioGame.States
 {
     public class GoombaActionState : EnemyActionState
     {
-        public EnemyActionStateEnum enemyState
+        public EnemyActionStateEnum EnemyState
         { get; protected set; }
-        protected Goomba goomba;
-        protected GoombaStateMachine _stateMachine;
+        protected Goomba Goomba;
+        protected GoombaStateMachine StateMachine;
         public GoombaActionState(Goomba entity, GoombaStateMachine stateMachine) : base(entity)
         {
-            _stateMachine = stateMachine;
-            goomba = entity;
+            StateMachine = stateMachine;
+            Goomba = entity;
         }
 
         public override void Begin(IState prevState)
@@ -20,7 +20,7 @@ namespace MarioGame.States
         }
         public override void ChangeToDead()
         {
-            _stateMachine.DeadGoomba.Begin(this);
+            StateMachine.DeadGoomba.Begin(this);
         }
     }
 }

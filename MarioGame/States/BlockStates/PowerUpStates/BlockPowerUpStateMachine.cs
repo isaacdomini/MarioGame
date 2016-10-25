@@ -10,24 +10,15 @@ namespace MarioGame.States
 {
     public class BlockPowerUpStateMachine
     {
-        Block _block;
-        VisibleState visible;
-        HiddenState hidden;
-        
-        internal HiddenState HiddenState
-        {
-            get { return hidden; }
-        }
-        internal VisibleState VisibleState
-        {
-            get { return visible; }
-        }
+        internal HiddenState HiddenState { get; }
+
+        internal VisibleState VisibleState { get; }
 
         public BlockPowerUpStateMachine(Block block)
         {
-            _block = block;
-            hidden = new HiddenState(_block, this);
-            visible = new VisibleState(_block, this);
+            var block1 = block;
+            HiddenState = new HiddenState(block1, this);
+            VisibleState = new VisibleState(block1, this);
         }
     }
 }

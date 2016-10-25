@@ -4,14 +4,14 @@ namespace MarioGame.States
 {
     public class KoopaActionState : EnemyActionState
     {
-        public EnemyActionStateEnum enemyState
+        public EnemyActionStateEnum EnemyState
         { get; protected set; }
-        public KoopaTroopa koopa;
-        protected KoopaStateMachine _stateMachine;
+        public KoopaTroopa Koopa;
+        protected KoopaStateMachine StateMachine;
         public KoopaActionState(KoopaTroopa entity, KoopaStateMachine stateMachine) : base(entity)
         {
-            _stateMachine = stateMachine;
-            koopa = entity;
+            StateMachine = stateMachine;
+            Koopa = entity;
         }
 
         public override void Begin(IState prevState)
@@ -21,17 +21,17 @@ namespace MarioGame.States
 
         public override void ChangeToDead()
         {
-            _stateMachine.DeadState.Begin(this);
+            StateMachine.DeadState.Begin(this);
         }
-        public void changeSpriteDirection()
+        public void ChangeSpriteDirection()
         {
-            if (koopa.Direction == Core.Directions.Right)
+            if (Koopa.Direction == Core.Directions.Right)
             {
-                koopa.turnLeft();
+                Koopa.turnLeft();
             }
             else
             {
-                koopa.turnRight();
+                Koopa.turnRight();
             }
         }
     }

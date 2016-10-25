@@ -4,29 +4,22 @@ using Microsoft.Xna.Framework;
 
 namespace MarioGame.States
 {
-    class DeadKoopaState : KoopaActionState
+    internal class DeadKoopaState : KoopaActionState
     {
         public DeadKoopaState(KoopaTroopa entity, KoopaStateMachine stateMachine) : base(entity, stateMachine)
         {
-            enemyState = EnemyActionStateEnum.Dead;
+            EnemyState = EnemyActionStateEnum.Dead;
         }
         public override void Begin(IState prevState)
         {
             base.Begin(prevState);
-            koopa.SetVelocityToIdle();
-            koopa.ChangeActionState(_stateMachine.DeadState);
+            Koopa.SetVelocityToIdle();
+            Koopa.ChangeActionState(StateMachine.DeadState);
         }
         public override void JumpedOn(Sides side)
         {
-            if(side == Sides.Right)
-            {
-                KoopaTroopa.shellMovingVelocity= new Vector2(-2, 0);
-            }
-            else
-            {
-                KoopaTroopa.shellMovingVelocity = new Vector2(2, 0);
-            }
-            _stateMachine.BouncingState.Begin(this);
+            KoopaTroopa.shellMovingVelocity = side == Sides.Right ? new Vector2(-2, 0) : new Vector2(2, 0); //TODO put this line in BouncingState.Begin
+            StateMachine.BouncingState.Begin(this);
         }
     }
 }

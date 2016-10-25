@@ -30,7 +30,7 @@ namespace MarioGame.Entities
             PowerUpStateMachine = new BlockPowerUpStateMachine(this);
             AState = ActionStateMachine.BrickState;
             // Temporary
-            AState._prevState = ActionStateMachine.BrickState;
+            AState.PrevState = ActionStateMachine.BrickState;
             PState = PowerUpStateMachine.VisibleState;
             BlockActionState = (BlockActionState)AState;
             BlockPowerUpState = (BlockPowerUpState)PState;

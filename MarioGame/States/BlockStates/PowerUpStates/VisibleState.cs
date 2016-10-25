@@ -11,11 +11,11 @@ namespace MarioGame.States.BlockStates.PowerUpStates
     {
         public VisibleState(Block block, BlockPowerUpStateMachine stateMachine): base(block, stateMachine)
         {
-            powerUpStateEnum = BlockPowerUpStateEnum.Visible;
+            PowerUpStateEnum = BlockPowerUpStateEnum.Visible;
         }
         public override void Begin(IState prevState)
         {
-            block.ChangeBlockPowerUpState(stateMachine.VisibleState);
+            Block.ChangeBlockPowerUpState(StateMachine.VisibleState);
         }
     }
 }

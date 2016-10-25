@@ -198,7 +198,7 @@ namespace MarioGame.Entities
             if (Invincible) return;
             if (!enemy.Dead && side != Sides.Bottom)
             {
-                MarioPowerUpState.onHitByEnemy();
+                MarioPowerUpState.OnHitByEnemy();
             }
             else
             {

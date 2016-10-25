@@ -32,8 +32,7 @@ namespace MarioGame.Theming
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, _camera.GetViewMatrix(Parallax));
-            foreach (ISprite sprite in Sprites)
-                sprite.Draw(spriteBatch);
+            Sprites.ForEach(s => s.Draw(spriteBatch));
             spriteBatch.End();
         }
 

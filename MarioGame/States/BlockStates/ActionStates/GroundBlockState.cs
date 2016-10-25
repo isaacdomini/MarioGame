@@ -11,12 +11,12 @@ namespace MarioGame.States
     {
         public GroundBlockState(Block block, BlockActionStateMachine stateMachine): base(block, stateMachine)
         {
-            bState = BlockActionStateEnum.GroundBlock;
+            BState = BlockActionStateEnum.GroundBlock;
         }
         public override void Begin(IState prevState)
         {
             base.Begin(prevState);
-            block.ChangeBlockActionState(stateMachine.GroundState);
+            Block.ChangeBlockActionState(StateMachine.GroundState);
         }
     }
 }

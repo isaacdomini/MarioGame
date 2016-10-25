@@ -9,25 +9,25 @@ namespace MarioGame.States
 {
     public class BlockPowerUpState : PowerUpState
     {
-        public BlockPowerUpStateEnum powerUpStateEnum
+        public BlockPowerUpStateEnum PowerUpStateEnum
         {
             get; protected set;
         }
-        protected BlockPowerUpStateMachine stateMachine;
-        protected Block block;
+        protected BlockPowerUpStateMachine StateMachine;
+        protected Block Block;
         public BlockPowerUpState(Block entity, BlockPowerUpStateMachine stateMachine) : base(entity)
         {
-            block = entity;
-            this.stateMachine = stateMachine;
+            Block = entity;
+            this.StateMachine = stateMachine;
         }
 
         public BlockPowerUpState(IEntity entity, BlockPowerUpStateEnum visibility) : base(entity)
         {
-            powerUpStateEnum = visibility;
+            PowerUpStateEnum = visibility;
         }
         public virtual void Reveal()
         {
-            stateMachine.VisibleState.Begin(this);
+            StateMachine.VisibleState.Begin(this);
         }
     }
 }

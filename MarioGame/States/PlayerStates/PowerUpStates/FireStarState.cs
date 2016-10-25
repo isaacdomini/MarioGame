@@ -2,15 +2,15 @@
 
 namespace MarioGame.States
 {
-    class FireStarState : MarioPowerUpState
+    internal class FireStarState : MarioPowerUpState
     {
         public FireStarState(Mario entity, MarioPowerUpStateMachine stateMachine) : base(entity, stateMachine)
         {
-            powerUpState = MarioPowerUpStateEnum.FireStar;
+            PowerUpState = MarioPowerUpStateEnum.FireStar;
         }
-        public override void onInvincibilityEnded()
+        public override void OnInvincibilityEnded()
         {
-            _mario.ChangePowerUpState(_stateMachine.FireState);
+            Mario.ChangePowerUpState(StateMachine.FireState);
         }
     }
 }

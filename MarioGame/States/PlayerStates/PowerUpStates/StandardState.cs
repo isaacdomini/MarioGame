@@ -6,15 +6,15 @@ namespace MarioGame.States
     {
         public StandardState(Mario entity, MarioPowerUpStateMachine stateMachine) : base(entity, stateMachine)
         {
-            powerUpState = MarioPowerUpStateEnum.Standard;
-            _mario.IsCollidable = true;
+            PowerUpState = MarioPowerUpStateEnum.Standard;
+            Mario.IsCollidable = true;
         }
         public override void ChangeToStar()
         {
             base.ChangeToStar();
-            _mario.ChangePowerUpState(_stateMachine.StandardStarState);
+            Mario.ChangePowerUpState(StateMachine.StandardStarState);
         }
-        public override void onHitByEnemy()
+        public override void OnHitByEnemy()
         {
             ChangeToDead();
         }

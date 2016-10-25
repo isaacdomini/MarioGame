@@ -6,18 +6,18 @@ namespace MarioGame.States
     {
         public SuperState(Mario entity, MarioPowerUpStateMachine stateMachine) : base(entity, stateMachine)
         {
-            powerUpState = MarioPowerUpStateEnum.Super;
-            _mario.IsCollidable = true;
+            PowerUpState = MarioPowerUpStateEnum.Super;
+            Mario.IsCollidable = true;
         }
         public override void ChangeToStar()
         {
             base.ChangeToStar();
-            _mario.ChangePowerUpState(_stateMachine.SuperStarState);
+            Mario.ChangePowerUpState(StateMachine.SuperStarState);
         }
-        public override void onHitByEnemy()
+        public override void OnHitByEnemy()
         {
             ChangeToStandard();
-            _mario.SetInvincible(1);
+            Mario.SetInvincible(1);
         }
     }
 }

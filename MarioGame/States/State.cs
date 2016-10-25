@@ -10,17 +10,17 @@ namespace MarioGame.States
 {
     public abstract class State: IState
     {
-        public IState _prevState { get; set; }
-        protected IEntity _entity;
+        public IState PrevState { get; set; }
+        protected IEntity Entity;
         public State(IEntity entity)
         {
-            _entity = entity;
+            Entity = entity;
         }
 
         public virtual void Begin(IState prevState)
         {
-            _prevState?.End(); //TODO: << make it so that we don't need this null check. Rather make it so that we can know for sure that _prevState is not null.
-            _prevState = prevState;
+            PrevState?.End(); //TODO: << make it so that we don't need this null check. Rather make it so that we can know for sure that _prevState is not null.
+            PrevState = prevState;
         }
         public virtual void End() {}
 

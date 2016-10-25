@@ -10,55 +10,30 @@ namespace MarioGame.States
 {
     public class MarioPowerUpStateMachine
     {
-        Mario _mario;
+        internal MarioPowerUpState StandardState { get; }
 
-        MarioPowerUpState standard;
-        MarioPowerUpState super;
-        MarioPowerUpState fire;
-        MarioPowerUpState dead;
-        MarioPowerUpState firestar;
-        MarioPowerUpState superstar;
-        MarioPowerUpState standardstar;
-        internal MarioPowerUpState StandardState
-        {
-            get { return standard; }
-        }
-        internal MarioPowerUpState SuperState
-        {
-            get { return super; }
-        }
-        internal MarioPowerUpState FireState
-        {
-            get { return fire; }
-        }
-        internal MarioPowerUpState DeadState
-        {
-            get { return dead; }
-        }
-        internal MarioPowerUpState SuperStarState
-        {
-            get { return superstar; }
-        }
-        internal MarioPowerUpState StandardStarState
-        {
-            get { return standardstar; }
-        }
-        internal MarioPowerUpState FireStarState
-        {
-            get { return firestar; }
-        }
+        internal MarioPowerUpState SuperState { get; }
+
+        internal MarioPowerUpState FireState { get; }
+
+        internal MarioPowerUpState DeadState { get; }
+
+        internal MarioPowerUpState SuperStarState { get; }
+
+        internal MarioPowerUpState StandardStarState { get; }
+
+        internal MarioPowerUpState FireStarState { get; }
         // TODO: Add this when needed
         //        MarioActionState star;
         public MarioPowerUpStateMachine(Mario mario)
         {
-            _mario = mario;
-            standard = new StandardState(_mario, this);
-            super = new SuperState(_mario, this);
-            fire = new FireState(_mario, this);
-            dead = new DeadState(_mario, this);
-            standardstar = new StandardStarState(_mario,this);
-            firestar = new FireStarState(_mario, this);
-            superstar = new SuperStarState(_mario, this);
+            StandardState = new StandardState(mario, this);
+            SuperState = new SuperState(mario, this);
+            FireState = new FireState(mario, this);
+            DeadState = new DeadState(mario, this);
+            StandardStarState = new StandardStarState(mario,this);
+            FireStarState = new FireStarState(mario, this);
+            SuperStarState = new SuperStarState(mario, this);
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace MarioGame.States
 {
-    class CrouchingMarioState : MarioActionState
+    internal class CrouchingMarioState : MarioActionState
     {
         //TODO: Shouldn't this state only be able to be called when in Giant Mario Power State?
         public CrouchingMarioState(Mario entity, MarioActionStateMachine stateMachine) : base(entity, stateMachine)
@@ -11,12 +11,12 @@ namespace MarioGame.States
         }
         public override void Begin(MarioActionState prevState)
         {
-            _mario.ChangeActionState(stateMachine.CrouchingMarioState);
-            _mario.SetVelocityToFalling();
+            Mario.ChangeActionState(StateMachine.CrouchingMarioState);
+            Mario.SetVelocityToFalling();
         }
         public override void Jump()
         {
-            stateMachine.IdleMarioState.Begin(this);
+            StateMachine.IdleMarioState.Begin(this);
         }
     }
 }

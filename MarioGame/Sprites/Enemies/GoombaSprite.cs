@@ -36,7 +36,7 @@ namespace MarioGame.Sprites
         
         public void ChangeActionState(GoombaActionState goombaActionState)
         {
-            FrameSet = FrameSets[goombaActionState.enemyState.GetHashCode()];
+            FrameSet = FrameSets[goombaActionState.EnemyState.GetHashCode()];
             FrameSetPosition = 0;
         }
     }

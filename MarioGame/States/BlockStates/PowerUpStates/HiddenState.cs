@@ -11,15 +11,15 @@ namespace MarioGame.States.BlockStates.PowerUpStates
     {
         public HiddenState(Block block, BlockPowerUpStateMachine stateMachine) : base(block, stateMachine)
         {
-            powerUpStateEnum = BlockPowerUpStateEnum.Hidden;
+            PowerUpStateEnum = BlockPowerUpStateEnum.Hidden;
         }
         public override void Begin(IState prevState)
         {
-            block.ChangeBlockPowerUpState(stateMachine.HiddenState);
+            Block.ChangeBlockPowerUpState(StateMachine.HiddenState);
         }
         public override void Reveal()
         {
-            stateMachine.VisibleState.Begin(this);
+            StateMachine.VisibleState.Begin(this);
         }
     }
 }

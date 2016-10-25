@@ -11,16 +11,16 @@ namespace MarioGame.States
     {
         public QuestionBlockState(Block block, BlockActionStateMachine stateMachine) : base(block, stateMachine)
         {
-            bState = BlockActionStateEnum.QuestionBlock;
+            BState = BlockActionStateEnum.QuestionBlock;
         }
         public override void Begin(IState prevState)
         {
             base.Begin(prevState);
-            block.ChangeBlockActionState(stateMachine.QuestionState);
+            Block.ChangeBlockActionState(StateMachine.QuestionState);
         }
         public override void ChangeToUsed()
         {
-            stateMachine.UsedState.Begin(this);
+            StateMachine.UsedState.Begin(this);
         }
     }
 }

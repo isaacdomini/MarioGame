@@ -2,18 +2,18 @@
 
 namespace MarioGame.States
 {
-    class DeadState : MarioPowerUpState
+    internal class DeadState : MarioPowerUpState
     {
         public DeadState(Mario entity, MarioPowerUpStateMachine stateMachine) : base(entity, stateMachine)
         {
-            powerUpState = MarioPowerUpStateEnum.Dead;
-            _mario.IsCollidable = false;
+            PowerUpState = MarioPowerUpStateEnum.Dead;
+            Mario.IsCollidable = false;
         }
 
         public override void Begin(MarioPowerUpState prevState)
         {
-            _mario.ChangePowerUpState(_stateMachine.DeadState);
-            _mario.SetVelocityToIdle();
+            Mario.ChangePowerUpState(StateMachine.DeadState);
+            Mario.SetVelocityToIdle();
         }
     }
 }

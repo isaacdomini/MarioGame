@@ -9,50 +9,28 @@ namespace MarioGame.States
 {
     public class MarioActionStateMachine
     {
-        MarioActionState crouchingMarioState;
-        MarioActionState idleMarioState;
-        MarioActionState jumpMarioState;
-        MarioActionState runMarioState;
-        MarioActionState walkMarioState;
-        MarioActionState fallingMarioState;
+        internal MarioActionState CrouchingMarioState { get; }
+
+        internal MarioActionState IdleMarioState { get; }
+
+        internal MarioActionState WalkingMarioState { get; }
+
+        internal MarioActionState RunningMarioState { get; }
+
+        internal MarioActionState JumpingMarioState { get; }
+
+        internal MarioActionState FallingMarioState { get; }
 
 
-        internal MarioActionState CrouchingMarioState
-        {
-            get { return crouchingMarioState; }
-        }
-        internal MarioActionState IdleMarioState
-        {
-            get { return idleMarioState; }
-        }
-        internal MarioActionState WalkingMarioState
-        {
-            get { return walkMarioState; }
-        }
-        internal MarioActionState RunningMarioState
-        {
-            get { return runMarioState; }
-        }
-        internal MarioActionState JumpingMarioState
-        {
-            get { return jumpMarioState; }
-        }
-        internal MarioActionState FallingMarioState
-        {
-            get { return fallingMarioState; }
-        }
-
-
-        Mario _mario;
         public MarioActionStateMachine(Mario mario)
         {
-            _mario = mario;
-            walkMarioState = new WalkingMarioState(_mario, this);
-            runMarioState = new RunningMarioState(_mario, this);
-            jumpMarioState = new JumpingMarioState(_mario, this);
-            crouchingMarioState = new CrouchingMarioState(_mario, this);
-            idleMarioState = new IdleMarioState(_mario, this);
-            fallingMarioState = new FallingMarioState(_mario, this);
+            var mario1 = mario;
+            WalkingMarioState = new WalkingMarioState(mario1, this);
+            RunningMarioState = new RunningMarioState(mario1, this);
+            JumpingMarioState = new JumpingMarioState(mario1, this);
+            CrouchingMarioState = new CrouchingMarioState(mario1, this);
+            IdleMarioState = new IdleMarioState(mario1, this);
+            FallingMarioState = new FallingMarioState(mario1, this);
         }
     }
 }

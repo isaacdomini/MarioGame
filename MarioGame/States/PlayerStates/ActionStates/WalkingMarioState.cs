@@ -11,22 +11,22 @@ namespace MarioGame.States
         }
         public override void Begin(MarioActionState prevState)
         {
-            _mario.ChangeActionState(stateMachine.WalkingMarioState);
-            _mario.SetVelocityToWalk();
+            Mario.ChangeActionState(StateMachine.WalkingMarioState);
+            Mario.SetVelocityToWalk();
         }
 
         public override void MoveLeft()
         {
-            if (_mario.FacingRight)
+            if (Mario.FacingRight)
             {
-                stateMachine.IdleMarioState.Begin(this);
+                StateMachine.IdleMarioState.Begin(this);
             }
         }
         public override void MoveRight()
         {
-            if (_mario.FacingLeft)
+            if (Mario.FacingLeft)
             {
-                stateMachine.IdleMarioState.Begin(this);
+                StateMachine.IdleMarioState.Begin(this);
             }
         }
     }

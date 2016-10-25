@@ -14,13 +14,13 @@ namespace MarioGame.States
     {
         public KoopaBouncingState(KoopaTroopa entity, KoopaStateMachine stateMachine) : base(entity, stateMachine)
         {
-            enemyState = EnemyActionStateEnum.Dead;
+            EnemyState = EnemyActionStateEnum.Dead;
         }
         public override void Begin(IState prevState)
         {
             base.Begin(prevState);
-            koopa.ChangeActionState(_stateMachine.BouncingState);
-            koopa.SetShellVelocityToMoving();
+            Koopa.ChangeActionState(StateMachine.BouncingState);
+            Koopa.SetShellVelocityToMoving();
         }
         public override void JumpedOn(Sides side)
         {

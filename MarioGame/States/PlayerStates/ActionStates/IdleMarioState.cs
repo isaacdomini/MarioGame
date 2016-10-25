@@ -2,7 +2,7 @@
 
 namespace MarioGame.States
 {
-    class IdleMarioState : MarioActionState
+    internal class IdleMarioState : MarioActionState
     {
         public IdleMarioState(Mario entity, MarioActionStateMachine stateMachine) : base(entity, stateMachine)
         {
@@ -10,31 +10,31 @@ namespace MarioGame.States
         }
         public override void Begin(MarioActionState prevState)
         {
-            _mario.ChangeActionState(stateMachine.IdleMarioState);
-            _mario.SetVelocityToIdle();
+            Mario.ChangeActionState(StateMachine.IdleMarioState);
+            Mario.SetVelocityToIdle();
         }
         public override void Fall()
         {
             base.Fall();
-            stateMachine.FallingMarioState.Begin(this);
+            StateMachine.FallingMarioState.Begin(this);
         }
         public override void MoveLeft()
         {
-            if (_mario.FacingLeft) { 
-                stateMachine.WalkingMarioState.Begin(this);
-            } else if (_mario.FacingRight)
+            if (Mario.FacingLeft) { 
+                StateMachine.WalkingMarioState.Begin(this);
+            } else if (Mario.FacingRight)
             {
-                _mario.turnLeft();
+                Mario.turnLeft();
             }
         }
         public override void MoveRight()
         {
-            if (_mario.FacingLeft)
+            if (Mario.FacingLeft)
             {
-                _mario.turnRight();
-            } else if (_mario.FacingRight)
+                Mario.turnRight();
+            } else if (Mario.FacingRight)
             {
-                stateMachine.WalkingMarioState.Begin(this);
+                StateMachine.WalkingMarioState.Begin(this);
             }
         }
     }

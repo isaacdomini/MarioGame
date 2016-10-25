@@ -5,15 +5,15 @@ namespace MarioGame.States
 {
     public class MarioPowerUpState : PowerUpState
     {
-        public MarioPowerUpStateEnum powerUpState
+        public MarioPowerUpStateEnum PowerUpState
         {
             get; protected set;
         }
-        protected Mario _mario { get { return (Mario)_entity; } }
-        protected MarioPowerUpStateMachine _stateMachine;
+        protected Mario Mario => (Mario)Entity;
+        protected MarioPowerUpStateMachine StateMachine;
         public MarioPowerUpState(Mario mario, MarioPowerUpStateMachine stateMachine) : base(mario)
         {
-            _stateMachine = stateMachine;
+            StateMachine = stateMachine;
         }
         public virtual void Begin(MarioPowerUpState prevState)
         {
@@ -21,25 +21,25 @@ namespace MarioGame.States
         }
         public virtual void ChangeToStandard()
         {
-            _mario.ChangePowerUpState(_stateMachine.StandardState);
+            Mario.ChangePowerUpState(StateMachine.StandardState);
         }
         public virtual void ChangeToDead()
         {
             //_mario.marioPowerUpState.powerUpState = 
-            _stateMachine.DeadState.Begin(this);
+            StateMachine.DeadState.Begin(this);
         }
         public virtual void ChangeToSuper()
         {
-            _mario.ChangePowerUpState(_stateMachine.SuperState);
+            Mario.ChangePowerUpState(StateMachine.SuperState);
         }
         public virtual void ChangeToFire()
         {
-            _mario.ChangePowerUpState(_stateMachine.FireState);
+            Mario.ChangePowerUpState(StateMachine.FireState);
         }
         public virtual void ChangeToStar() {
-            _mario.SetInvincible(10);
+            Mario.SetInvincible(10);
         }
-        public virtual void onHitByEnemy() { }
-        public virtual void onInvincibilityEnded() { }
+        public virtual void OnHitByEnemy() { }
+        public virtual void OnInvincibilityEnded() { }
     }
 }

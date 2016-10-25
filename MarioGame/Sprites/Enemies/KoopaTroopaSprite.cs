@@ -38,7 +38,7 @@ namespace MarioGame.Sprites
 
         public void changeActionState(KoopaActionState koopaActionState)
         {
-            FrameSet = FrameSets[koopaActionState.enemyState.GetHashCode()];
+            FrameSet = FrameSets[koopaActionState.EnemyState.GetHashCode()];
             FrameSetPosition = 0;
         }
 

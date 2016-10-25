@@ -6,11 +6,11 @@ namespace MarioGame.States
     {
         public StandardStarState(Mario entity, MarioPowerUpStateMachine stateMachine) : base(entity, stateMachine)
         {
-            powerUpState = MarioPowerUpStateEnum.StandardStar;
+            PowerUpState = MarioPowerUpStateEnum.StandardStar;
         }
-        public override void onInvincibilityEnded()
+        public override void OnInvincibilityEnded()
         {
-            _mario.ChangePowerUpState(_stateMachine.StandardState);
+            Mario.ChangePowerUpState(StateMachine.StandardState);
         }
     }
 }

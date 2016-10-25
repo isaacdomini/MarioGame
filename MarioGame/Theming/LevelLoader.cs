@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -13,27 +14,28 @@ using System.Threading.Tasks;
 
 namespace MarioGame.Theming
 {
-    static class LevelLoader
+    internal static class LevelLoader
     {
-        static private int blockWidth = 30; // each intereger in location is a multiple of blockWidth. e.g. each block in our scene may be 20 pixels width. So if we have a block at an x location of 10, that block's x position would actually be at pixel 200
-        public static Entity createEntity(string klass, Vector2 location, ContentManager content)
+        private static int _blockWidth = 30; // each intereger in location is a multiple of blockWidth. e.g. each block in our scene may be 20 pixels width. So if we have a block at an x location of 10, that block's x position would actually be at pixel 200
+        public static Entity CreateEntity(string klass, Vector2 location, ContentManager content)
         {
-            Type type = Type.GetType(typeof(Entity).Namespace + "." + klass);
-            return (Entity)Activator.CreateInstance(type, location * blockWidth, content);
+            var type = Type.GetType(typeof(Entity).Namespace + "." + klass);
+            Debug.Assert(type != null, "type != null");
+            return (Entity)Activator.CreateInstance(type, location * _blockWidth, content);
         }
 
-        public static void addTileMapToScript(String tileMapFile, Script script, ContentManager content)
+        public static void AddTileMapToScript(String tileMapFile, Script script, ContentManager content)
         {
 
-            string json = File.ReadAllText(tileMapFile);
-            Level level = JsonConvert.DeserializeObject<Level>(json);
+            var json = File.ReadAllText(tileMapFile);
+            var level = JsonConvert.DeserializeObject<Level>(json);
 
             level.entities.FindAll(e => e.rowColumns != null).ForEach(e =>
             {
                 e.rowColumns.ForEach(rc =>
                 {
                 rc.columns.ForEach(c => {
-                    Entity entity = createEntity(e.type, new Vector2(c, rc.row), content);
+                    var entity = CreateEntity(e.type, new Vector2(c, rc.row), content);
                     script.AddEntity(entity);
                     if (e.actionState != null)
                     {
@@ -46,7 +48,7 @@ namespace MarioGame.Theming
                     if (e.powerUpState != null)
                     {
                         if (entity is Block)
-                        {
+                        {//TODO: get rid of check for block in case we want to init mario to a certain power up state. also get rid of block power up states.
                             ((Block)entity).SetBlockPowerUpState(e.powerUpState);
                         }
                     }
@@ -58,13 +60,13 @@ namespace MarioGame.Theming
             {
                 e.rowColumnWithHiddenItems.ForEach(instance =>
                 {
-                    Entity entity = createEntity(e.type, new Vector2(instance.column, instance.row), content);
+                    var entity = CreateEntity(e.type, new Vector2(instance.column, instance.row), content);
                     script.AddEntity(entity);
                     instance.hiddenItems.ForEach(h =>
                     {
                         while (h.amount-- > 0)
                         {
-                            ContainableHidableEntity hiddenItem = (ContainableHidableEntity)createEntity(h.type, new Vector2(instance.column, instance.row), content);
+                            var hiddenItem = (ContainableHidableEntity)CreateEntity(h.type, new Vector2(instance.column, instance.row), content);
                             hiddenItem.Hide();
                             ((IContainer)entity).AddContainedItem(hiddenItem);
                         }

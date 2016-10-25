@@ -59,12 +59,12 @@ namespace MarioGame.Sprites
         public void ChangeActionState(BlockActionState actionState)
         {
             base.ChangeActionState(actionState);
-            FrameSet = FrameSets[actionState.bState.GetHashCode()];
+            FrameSet = FrameSets[actionState.BState.GetHashCode()];
         }
         public void ChangePowerUp(BlockPowerUpState powerUpState)
         {
             base.ChangePowerUp(powerUpState);
-            RowSet = RowSets[powerUpState.powerUpStateEnum.GetHashCode()];
+            RowSet = RowSets[powerUpState.PowerUpStateEnum.GetHashCode()];
         }
 
     }
