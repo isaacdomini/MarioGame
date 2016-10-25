@@ -1,10 +1,13 @@
 ﻿using MarioGame.Entities;
+using Microsoft.Xna.Framework;
 
 namespace MarioGame.States
 {
     internal class GoombaDeadState : GoombaActionState
     {
-        public GoombaDeadState(Goomba entity, GoombaStateMachine stateMachine) : base(entity, stateMachine)
+        private float _deleteTimer = 0.0f;
+        public DeadGoombaState(Goomba entity, GoombaStateMachine stateMachine) : base(entity, stateMachine)
+
         {
             EnemyState = EnemyActionStateEnum.Dead;
         }
@@ -13,6 +16,20 @@ namespace MarioGame.States
             base.Begin(prevState);
             Goomba.SetVelocityToIdle();
             Goomba.ChangeActionState(StateMachine.DeadGoomba);
+
+        }
+
+        public override void UpdateEntity(GameTime gameTime)
+        {
+            if (_deleteTimer > 1)
+            {
+                _deleteTimer = 0.0f;
+                Goomba.Delete();
+            }
+            else
+            {
+                _deleteTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            }
         }
     }
 }

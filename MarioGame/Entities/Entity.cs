@@ -43,10 +43,10 @@ namespace MarioGame.Entities
         public readonly static Vector2 idleVelocity = new Vector2(0, 0);
         public bool Moving { get { return !Velocity.Equals(idleVelocity); } }
         public bool Deleted { get; private set; }
-        protected void Delete()
+        public void Delete()
         {
             Deleted = true;
-            //_sprite.Visible = true;
+            Sprite.Visible = true;
         }
         protected static int BoundingBoxWidth = 10;
         public Rectangle BoundingBox;
