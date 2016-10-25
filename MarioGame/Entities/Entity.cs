@@ -49,7 +49,7 @@ namespace MarioGame.Entities
         protected void Delete()
         {
             Deleted = true;
-            _sprite.Visible = true;
+            //_sprite.Visible = true;
         }
         protected static int boundingBoxWidth = 10;
         public Rectangle boundingBox;
