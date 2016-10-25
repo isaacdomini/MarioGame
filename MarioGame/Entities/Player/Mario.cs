@@ -123,10 +123,6 @@ namespace MarioGame.Entities
                 jumpTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
         }
-        public bool checkMarioJumping()
-        {
-            return this.Velocity.Equals(jumpingVelocity);
-        }
         public void ChangeActionState(MarioActionState state)
         {
             base.ChangeActionState(state);
@@ -170,10 +166,6 @@ namespace MarioGame.Entities
             {
                 marioActionState.MoveRight();
             }
-        }
-        internal void onHitByEnemy()
-        {
-            marioPowerUpState.onHitByEnemy();
         }
         public void ChangeToFireState()
         {
