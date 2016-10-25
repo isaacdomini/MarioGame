@@ -34,11 +34,11 @@ namespace MarioGame.Entities
         public bool FacingRight => Direction == Directions.Right;
         protected Vector2 _velocity;
         public Vector2 Velocity { get { return _velocity; } }
-        public static readonly int velocityConstant = 1;
-        private static readonly Vector2 walkingVelocity = new Vector2(velocityConstant * 1, 0);
-        protected static readonly Vector2 fallingVelocity = new Vector2(0, velocityConstant * 1);
-        public static readonly Vector2 idleVelocity = new Vector2(0, 0);
-        public bool Moving { get { return !Velocity.Equals(idleVelocity); } }
+        public static readonly int VelocityConstant = 1;
+        private static readonly Vector2 WalkingVelocity = new Vector2(VelocityConstant * 1, 0);
+        protected static readonly Vector2 fallingVelocity = new Vector2(0, VelocityConstant * 1);
+        public static readonly Vector2 IdleVelocity = new Vector2(0, 0);
+        public bool Moving => !Velocity.Equals(IdleVelocity);
         public bool Deleted { get; private set; }
         public void Delete()
         {
@@ -100,7 +100,7 @@ namespace MarioGame.Entities
         }
         public virtual void SetVelocityToIdle()
         {
-            SetVelocity(idleVelocity);
+            SetVelocity(IdleVelocity);
         }
         public virtual void SetVelocityToFalling()
         {
@@ -108,7 +108,7 @@ namespace MarioGame.Entities
         }
         public virtual void SetVelocityToWalk()
         {
-            SetVelocity(walkingVelocity);
+            SetVelocity(WalkingVelocity);
             if (FacingLeft)
             {
                 //TODO: how does below line work

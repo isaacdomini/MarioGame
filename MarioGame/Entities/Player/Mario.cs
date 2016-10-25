@@ -21,8 +21,8 @@ namespace MarioGame.Entities
         protected MarioSprite MarioSprite => (MarioSprite)Sprite;
 
         // Velocity variables
-        private static readonly Vector2 JumpingVelocity = new Vector2(0, velocityConstant * -1);
-        private static readonly Vector2 DashVelocity = new Vector2(velocityConstant * 2, 0);
+        private static readonly Vector2 JumpingVelocity = new Vector2(0, VelocityConstant * -1);
+        private static readonly Vector2 DashVelocity = new Vector2(VelocityConstant * 2, 0);
 
         private const int SuperBoundingBoxWidth = 20;
         private const int SuperBoundingBoxHeight = 36;

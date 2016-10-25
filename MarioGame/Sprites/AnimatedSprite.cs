@@ -30,10 +30,9 @@ namespace MarioGame.Sprites
 
         protected float TotalElapsed, TimePerFrame;
 
-        protected SpriteEffects Flipped {
-            get; set;
-        }
-        
+        protected Directions Direction => Entity.Direction;
+        protected SpriteEffects Flipped => Direction == Directions.Right ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+
         public AnimatedSprite(ContentManager content, Entity entity) : base(content, entity)
         {
             RowSets = new Dictionary<int, List<int>>
@@ -94,15 +93,6 @@ namespace MarioGame.Sprites
         }
         public void ChangeDirection(Directions newDirection)
         {
-            switch (newDirection)
-            {
-                case Directions.Left:
-                    Flipped = SpriteEffects.None;
-                    break;
-                case Directions.Right:
-                    Flipped = SpriteEffects.FlipHorizontally;
-                    break;
-            }
         }
 
         public void ChangeActionState(ActionState actionState)

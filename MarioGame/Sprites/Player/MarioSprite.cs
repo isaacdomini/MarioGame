@@ -77,7 +77,6 @@ namespace MarioGame.Sprites
             FrameSetPosition = 0;
 
             // Begin with sprite facing right
-            Flipped = SpriteEffects.FlipHorizontally;
 
             RowSet = RowSets[MarioPowerUpStateEnum.Standard.GetHashCode()];
             RowSetPosition = 0;

@@ -9,7 +9,7 @@ namespace MarioGame.Entities
     public abstract class Item : ContainableHidableEntity
     {
         public Vector2 MovingVelocity = new Vector2(.5f, 0);
-        private static readonly Vector2 FallingVelocity = new Vector2(0, velocityConstant * 1); //todo: can we just let this inherit/ override the parent?
+        private static readonly Vector2 FallingVelocity = new Vector2(0, VelocityConstant * 1); //todo: can we just let this inherit/ override the parent?
 
         public Item(Vector2 position, ContentManager content) : base(position, content)
         {
