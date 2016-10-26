@@ -88,12 +88,13 @@ namespace MarioGame.Theming.Scenes
         {
             Stage.Draw(gameTime, _spriteBatch);
             Layers.ForEach(l => l.Draw(_spriteBatch));
-            _spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Camera.GetViewMatrix(new Vector2(1.0f)));
-            Script.Entities.FindAll(e => (!e.Sprite.Visible)&& !(e is Cloud)).//TODO: make it so that bounding boxes are handled in the specific entities sprite's draw method
-                ForEach(e => DrawRectangleBorder(_spriteBatch, e.BoundingBox, 1, e.BoxColor));
-            _spriteBatch.End();
+            
             if (DrawBox)
             {
+                _spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Camera.GetViewMatrix(new Vector2(1.0f)));
+                Script.Entities.FindAll(e => (!e.Sprite.Visible) && !(e is Cloud)).//TODO: make it so that bounding boxes are handled in the specific entities sprite's draw method
+                    ForEach(e => DrawRectangleBorder(_spriteBatch, e.BoundingBox, 1, e.BoxColor));
+                _spriteBatch.End();
                 _spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Camera.GetViewMatrix(new Vector2(1.0f)));
                  Script.Entities.FindAll(e => (!e.Sprite.Visible)&& !(e is Cloud)).
                      ForEach(e => DrawRectangleBorder(_spriteBatch, e.BoundingBox, 1, e.BoxColor));
