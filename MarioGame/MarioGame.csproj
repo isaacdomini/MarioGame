@@ -47,6 +47,7 @@
     <Compile Include="Commands\DeadStateCommand.cs" />
     <Compile Include="Commands\DisplayGoomba.cs" />
     <Compile Include="Commands\DisplayKoopaTroopa.cs" />
+    <Compile Include="Commands\DrawBoundingBoxes.cs" />
     <Compile Include="Commands\FireStateCommand.cs" />
     <Compile Include="Commands\GameCommand.cs" />
     <Compile Include="Commands\ICommand.cs" />

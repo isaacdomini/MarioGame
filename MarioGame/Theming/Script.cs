@@ -134,5 +134,9 @@ namespace MarioGame.Theming
         {
             Blocks.FindAll(b => b.CurrentActionState is QuestionBlockState).ForEach(b => b.ChangeToUsed());
         }
+        internal void DrawBoundingBoxes()
+        {
+            _scene.DrawBoundingBoxes();
+        }
     }
 }

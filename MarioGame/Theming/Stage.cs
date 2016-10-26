@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MarioGame.Commands.BlockCommands;
+using MarioGame.Theming.Scenes;
 
 namespace MarioGame.Theming
 {
@@ -66,6 +67,8 @@ namespace MarioGame.Theming
             _controllers[1].AddCommand((int)Buttons.B, new DashOrThrowFireballCommand(Game1.Scene.Script));
             _controllers[1].AddCommand((int)Buttons.A, new JumpCommand(Game1.Scene.Script));
 
+            //Adds command to show bounding boxes
+            _controllers[0].AddCommand((int)Keys.C, new DrawBoundingBoxes(Game1.Scene.Script));
         }
         public void LoadContent()
         {
