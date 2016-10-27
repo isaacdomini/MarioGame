@@ -92,6 +92,7 @@ namespace MarioGame.Entities
                 // TODO: Begin bumping sequence
                 // TODO: If there is no item, change to used.
                 ChangeToUsed();
+            _isVisible = true;
                 // TODO: If there is an item, display item, and bump
             //else break
         }
