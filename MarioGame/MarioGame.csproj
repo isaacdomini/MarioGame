@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -13,7 +13,8 @@
     <AssemblyName>MarioGame</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MonoGamePlatform>Windows</MonoGamePlatform>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -106,6 +107,7 @@
     <Compile Include="Sprites\ISprite.cs" />
     <Compile Include="Sprites\ItemSprites\CoinSprite.cs" />
     <Compile Include="Sprites\ItemSprites\FireFlowerSprite.cs" />
+    <Compile Include="Sprites\HidableSprite.cs" />
     <Compile Include="Sprites\ItemSprites\Mushroom1UpSprite.cs" />
     <Compile Include="Sprites\ItemSprites\MushroomSuperSprite.cs" />
     <Compile Include="Sprites\ItemSprites\StarSprite.cs" />
@@ -119,9 +121,6 @@
     <Compile Include="States\BlockStates\ActionStates\QuestionBlock.cs" />
     <Compile Include="States\BlockStates\ActionStates\StepBlockState.cs" />
     <Compile Include="States\BlockStates\ActionStates\UsedBlockState.cs" />
-    <Compile Include="States\BlockStates\PowerUpStates\BlockPowerUpStateMachine.cs" />
-    <Compile Include="States\BlockStates\PowerUpStates\HiddenState.cs" />
-    <Compile Include="States\BlockStates\PowerUpStates\VisibleState.cs" />
     <Compile Include="States\EnemyStates\GoombaDeadState.cs" />
     <Compile Include="States\EnemyStates\KoopaDeadState.cs" />
     <Compile Include="States\EnemyStates\EnemyActionState.cs" />
@@ -142,8 +141,6 @@
     <Compile Include="States\PlayerStates\ActionStates\JumpingMarioState.cs" />
     <Compile Include="States\PlayerStates\ActionStates\RunningMarioState.cs" />
     <Compile Include="States\PlayerStates\ActionStates\WalkingMarioState.cs" />
-    <Compile Include="States\BlockStates\PowerUpStates\BlockPowerUpState.cs" />
-    <Compile Include="States\BlockStates\PowerUpStates\BlockPowerUpStateEnum.cs" />
     <Compile Include="States\PlayerStates\ActionStates\MarioActionState.cs" />
     <Compile Include="States\PlayerStates\ActionStates\MarioActionStateEnum.cs" />
     <Compile Include="States\PlayerStates\ActionStates\MarioActionStateMachine.cs" />
@@ -188,6 +185,7 @@
     </MonoGameContentReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="bin\Windows\x86\Debug\Level1.json" />
     <None Include="bin\Windows\x86\Debug\MarioGame.vshost.exe.manifest" />
     <None Include="Content\bin\Windows\brick1.xnb" />

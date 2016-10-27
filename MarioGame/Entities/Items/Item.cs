@@ -18,12 +18,12 @@ namespace MarioGame.Entities
 
         public override void Hide()
         {
-            this.Sprite.Hide();
+            _isVisible = false;
         }
 
         public override void Show()
         {
-            this.Sprite.Show();
+            _isVisible = false;
         }
 
         public override void LeaveContainer()

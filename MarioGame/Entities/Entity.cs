@@ -1,7 +1,6 @@
 ﻿using MarioGame.Core;
 using MarioGame.Sprites;
 using MarioGame.States;
-using MarioGame.States.BlockStates.PowerUpStates;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -44,7 +43,6 @@ namespace MarioGame.Entities
         public void Delete()
         {
             Deleted = true;
-            Sprite.Visible = true;
         }
         protected static int BoundingBoxWidth = 10;
         public Rectangle BoundingBox;
@@ -130,10 +128,6 @@ namespace MarioGame.Entities
                 SetXVelocity(Velocity * -1);
             }
         }
-        public virtual void MakeInvisible()
-        {
-            Sprite.Visible = true;
-        }
         public virtual void FlipHorizontalVelocity()
         {
             _velocity = -1 * _velocity;
@@ -169,7 +163,7 @@ namespace MarioGame.Entities
         }
         protected virtual void OnCollideBlock(Block block, Sides side)
         {
-            if (block.CurrentPowerUpState is HiddenState)
+            if (!block.IsVisible)
             {
                 if (side == Sides.Top)
                 {

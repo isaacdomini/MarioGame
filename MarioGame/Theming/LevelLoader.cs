@@ -30,9 +30,9 @@ namespace MarioGame.Theming
             var json = File.ReadAllText(tileMapFile);
             var level = JsonConvert.DeserializeObject<Level>(json);
 
-            level.entities.FindAll(e => e.rowColumns != null).ForEach(e =>
+            level.entities.FindAll(e => e.position != null).ForEach(e =>
             {
-                e.rowColumns.ForEach(rc =>
+                e.position.ForEach(rc =>
                 {
                 rc.columns.ForEach(c => {
                     var entity = CreateEntity(e.type, new Vector2(c, rc.row), content);
@@ -45,23 +45,53 @@ namespace MarioGame.Theming
                             ((Block)entity).SetBlockActionState(e.actionState);
                         }
                     }
-                    if (e.powerUpState != null)
+                    if (e.visibility != null)
                     {
                         if (entity is Block)
                         {//TODO: get rid of check for block in case we want to init mario to a certain power up state. also get rid of block power up states.
-                            ((Block)entity).SetBlockPowerUpState(e.powerUpState);
+                            if (e.visibility == "Hidden")
+                            {
+                                ((Block)entity).Hide();
+                            }
+                            else
+                            {
+                                ((Block)entity).Show();
+                            }
+
                         }
                     }
                     });
                 });
             });
 
-            level.entities.FindAll(e => e.rowColumnWithHiddenItems != null).ForEach(e =>
+            level.entities.FindAll(e => e.positionWithHiddenItems != null).ForEach(e =>
             {
-                e.rowColumnWithHiddenItems.ForEach(instance =>
+                e.positionWithHiddenItems.ForEach(instance =>
                 {
                     var entity = CreateEntity(e.type, new Vector2(instance.column, instance.row), content);
                     script.AddEntity(entity);
+                    if (e.actionState != null)
+                    {
+                        //TODO: make it so that we dont have to check what type each entity is 
+                        if (entity is Block)
+                        {
+                            ((Block)entity).SetBlockActionState(e.actionState);
+                        }
+                    }
+                    if (e.visibility != null)
+                    {
+                        if (entity is Block)
+                        {//TODO: get rid of check for block in case we want to init mario to a certain power up state. also get rid of block power up states.
+                            if (e.visibility == "Hidden")
+                            {
+                                ((Block)entity).Hide();
+                            }
+                            else
+                            {
+                                ((Block)entity).Show();
+                            }
+                        }
+                    }
                     instance.hiddenItems.ForEach(h =>
                     {
                         while (h.amount-- > 0)
@@ -78,7 +108,7 @@ namespace MarioGame.Theming
         }
     }
 
-    public class RowColumn
+    public class position
     {
         public float row { get; set; }
         public List<float> columns { get; set; }
@@ -90,7 +120,7 @@ namespace MarioGame.Theming
         public int amount { get; set; }
     }
 
-    public class RowColumnWithHiddenItem
+    public class positionWithHiddenItem
     {
         public float row { get; set; }
         public float column { get; set; }
@@ -100,9 +130,9 @@ namespace MarioGame.Theming
     public class JEntity
     {
         public string type { get; set; }
-        public List<RowColumn> rowColumns { get; set; }
-        public List<RowColumnWithHiddenItem> rowColumnWithHiddenItems { get; set; }
-        public string powerUpState { get; set; }
+        public List<position> position { get; set; }
+        public List<positionWithHiddenItem> positionWithHiddenItems { get; set; }
+        public string visibility { get; set; }
         public string actionState { get; set; }
     }
 

@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MarioGame.Sprites
 {
-    public class MushroomSuperSprite : AnimatedSprite //TODO: refactor this class to use either ANimated Sprite or Sprite
+    public class MushroomSuperSprite : HidableSprite //TODO: refactor this class to use either ANimated Sprite or Sprite
     {
         public MushroomSuperSprite(ContentManager content, Entity entity) : base(content, entity)
         {

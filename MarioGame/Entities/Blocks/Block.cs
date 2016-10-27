@@ -9,31 +9,32 @@ using MarioGame.Core;
 
 namespace MarioGame.Entities
 {
-    public class Block : PowerUpEntity, IContainer
+    public class Block : Entity, IContainer, IHidable
     {
         // Could be useful for casting in certain circumstances
         protected BlockSprite BlockSprite;
         public BlockActionState BlockActionState;
-        public BlockPowerUpState BlockPowerUpState;
         protected BlockActionStateMachine ActionStateMachine;
-        protected BlockPowerUpStateMachine PowerUpStateMachine;
-        List<IContainable> _containedItems = new List<IContainable>();
-
-        protected bool IsVisible;
+        Queue<IContainable> _containedItems = new Queue<IContainable>();
         private int _tickCount;
 
-        public bool Visibility;
+        protected bool _isVisible;
+
+        public bool IsVisible
+        {
+            get
+            {
+                return _isVisible;
+            }
+        }
 
         public Block(Vector2 position, ContentManager content) : base(position, content)
         {
             ActionStateMachine = new BlockActionStateMachine(this);
-            PowerUpStateMachine = new BlockPowerUpStateMachine(this);
             AState = ActionStateMachine.BrickState;
             // Temporary
             AState.PrevState = ActionStateMachine.BrickState;
-            PState = PowerUpStateMachine.VisibleState;
             BlockActionState = (BlockActionState)AState;
-            BlockPowerUpState = (BlockPowerUpState)PState;
             BlockSprite = (BlockSprite)Sprite;
             _tickCount = 0;
             floating = true;
@@ -62,28 +63,10 @@ namespace MarioGame.Entities
             }
 
         }
-        public void SetBlockPowerUpState(string state)
-        {
-            if (state.Equals("HiddenState"))
-            {
-                PowerUpStateMachine.HiddenState.Begin(PState);
-                //this.ChangeBlockPowerUpState(pState);
-            }
-            else if (state.Equals("VisibleState"))
-            {
-                PowerUpStateMachine.VisibleState.Begin(PState);
-            }
-        }
         public void ChangeBlockActionState(BlockActionState state)
         {
             base.ChangeActionState(state);
             BlockSprite.ChangeActionState(state);
-        }
-
-        public void ChangeBlockPowerUpState(BlockPowerUpState state)
-        {
-            base.ChangePowerUpState(state);
-            BlockSprite.ChangePowerUp(state);
         }
 
         public void ChangeToUsed()
@@ -124,10 +107,6 @@ namespace MarioGame.Entities
                 // TODO: Begin breaking sequence
             }
         }
-        public void Reveal()
-        {
-            ((BlockPowerUpState)PState).Reveal();
-        }
 
         public override void Update(Viewport viewport, GameTime gameTime)
         {
@@ -154,17 +133,27 @@ namespace MarioGame.Entities
 
         public void AddContainedItem(IContainable containedItem)
         {
-            _containedItems.Add(containedItem);
+            _containedItems.Enqueue(containedItem);
         }
 
         public IContainable PopContainedItem()
         {
-            throw new NotImplementedException();
+            return _containedItems.Dequeue();
         }
 
         public bool HasItems()
         {
-            throw new NotImplementedException();
+            return _containedItems.Count > 0;
+        }
+
+        public void Hide()
+        {
+            _isVisible = false;
+        }
+
+        public void Show()
+        {
+            _isVisible = true;
         }
     }
 }

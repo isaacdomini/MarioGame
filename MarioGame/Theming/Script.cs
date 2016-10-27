@@ -7,7 +7,6 @@ using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using System;
 using MarioGame.States;
-using MarioGame.States.BlockStates.PowerUpStates;
 
 namespace MarioGame.Theming
 {
@@ -128,7 +127,7 @@ namespace MarioGame.Theming
         }
         internal void ShowHiddenBlock()
         {
-            Blocks.ForEach(b => b.Reveal());
+            Blocks.ForEach(b => b.Show());
         }
         internal void ChangeQuestionToUsed()
         {

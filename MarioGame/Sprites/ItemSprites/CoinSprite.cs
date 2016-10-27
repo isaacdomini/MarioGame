@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace MarioGame.Sprites
 {
-    public class CoinSprite : AnimatedSprite //TODO: refactor this class to use either ANimated Sprite or Sprite
+    public class CoinSprite : HidableSprite //TODO: refactor this class to use either ANimated Sprite or Sprite
     {
         public enum Frames
         {

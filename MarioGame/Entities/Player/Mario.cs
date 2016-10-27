@@ -4,7 +4,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using MarioGame.States;
 using MarioGame.Core;
-using MarioGame.States.BlockStates.PowerUpStates;
 using MarioGame.Theming;
 using System;
 

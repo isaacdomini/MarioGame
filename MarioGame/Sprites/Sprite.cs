@@ -25,16 +25,11 @@ namespace MarioGame.Sprites
             Entity = entity;
             Content = content;
         }
-
-        public bool Visible { get; set; }
        
 
         public virtual void Draw(SpriteBatch batch)
         {
-            if (Visible)
-            {
-                batch.Draw(Texture, Position);
-            }
+            batch.Draw(Texture, Position);
         }
 
         public virtual void Load(int framesPerSecond = 5)
@@ -45,15 +40,6 @@ namespace MarioGame.Sprites
 
         public virtual void Update(float elapsed)
         {
-            throw new NotImplementedException();
-        }
-        public void Show()
-        {
-            this.Visible = true;
-        }
-        public void Hide()
-        {
-            this.Visible = false;
         }
     }
 }

@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MarioGame.States
+namespace MarioGame.States.BlockStates.ActionStates
 {
-    public enum BlockPowerUpStateEnum
+    class BreakBlock
     {
-        Visible,
-        Hidden
     }
 }

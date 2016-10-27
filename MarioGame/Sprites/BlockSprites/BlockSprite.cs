@@ -9,7 +9,7 @@ using MarioGame.States;
 
 namespace MarioGame.Sprites
 {
-    public class BlockSprite : AnimatedSprite
+    public class BlockSprite : HidableSprite
     {
         public enum Frames
         {
@@ -44,10 +44,9 @@ namespace MarioGame.Sprites
             };
             RowSets = new Dictionary<int, List<int>>
             {
-                {BlockPowerUpStateEnum.Visible.GetHashCode(), new List<int> {Rows.Visible.GetHashCode() } },
-                { BlockPowerUpStateEnum.Hidden.GetHashCode(), new List<int> {Rows.Hidden.GetHashCode() } }
+                {Rows.Visible.GetHashCode(), new List<int> {Rows.Visible.GetHashCode() } }
             };
-            RowSet = RowSets[BlockPowerUpStateEnum.Visible.GetHashCode()];
+            RowSet = RowSets[Rows.Visible.GetHashCode()];
             FrameSet = FrameSets[BlockActionStateEnum.BrickBlock.GetHashCode()];
 
         }
@@ -56,15 +55,17 @@ namespace MarioGame.Sprites
             base.Load(framesPerSecond);
             FrameHeight = 16;
         }
+        public override void Draw(SpriteBatch batch)
+        {
+            if (isVisible)
+            {
+                base.Draw(batch);
+            }
+        }
         public void ChangeActionState(BlockActionState actionState)
         {
             base.ChangeActionState(actionState);
             FrameSet = FrameSets[actionState.BState.GetHashCode()];
-        }
-        public void ChangePowerUp(BlockPowerUpState powerUpState)
-        {
-            base.ChangePowerUp(powerUpState);
-            RowSet = RowSets[powerUpState.PowerUpStateEnum.GetHashCode()];
         }
 
     }
