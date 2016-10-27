@@ -50,17 +50,28 @@
     },
     {
       "type": "Block",
+      "actionState": "BrickBlockState",
+      "visibility": "Hidden",
+      "position": [
+        {
+          "row": 12.69,
+          "columns": [ 1 ]
+        }
+      ]
+    },
+    {
+      "type": "Block",
       "actionState": "GroundBlockState",
       "position": [
         {
           "row": 15,
-          "columns": [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5, 13, 13.5, 14, 14.5, 15, 15.5, 16, 16.5, 17, 17.5, 18, 18.5, 19, 19.5, 20, 20.5, 21, 21.5, 22, 22.5, 23, 23.5, 24, 24.5, 25, 25.5, 26, 26.5, 27, 27.5]
+          "columns": [ 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5, 13, 13.5, 14, 14.5, 15, 15.5, 16, 16.5, 17, 17.5, 18, 18.5, 19, 19.5, 20, 20.5, 21, 21.5, 22, 22.5, 23, 23.5, 24, 24.5, 25, 25.5, 26, 26.5, 27, 27.5 ]
         },
         {
           "row": 15.5,
-          "columns": [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5, 13, 13.5, 14, 14.5, 15, 15.5, 16, 16.5, 17, 17.5, 18, 18.5, 19, 19.5, 20, 20.5, 21, 21.5, 22, 22.5, 23, 23.5, 24, 24.5, 25, 25.5, 26, 26.5, 27, 27.5]
+          "columns": [ 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5, 13, 13.5, 14, 14.5, 15, 15.5, 16, 16.5, 17, 17.5, 18, 18.5, 19, 19.5, 20, 20.5, 21, 21.5, 22, 22.5, 23, 23.5, 24, 24.5, 25, 25.5, 26, 26.5, 27, 27.5 ]
         }
-      ] 
+      ]
     },
     {
       "type": "Block",
@@ -73,7 +84,7 @@
             {
               "type": "Coin",
               "amount": 2
-            } 
+            }
           ]
         },
         {
@@ -83,7 +94,7 @@
             {
               "type": "MushroomSuper",
               "amount": 1
-            } 
+            }
           ]
         },
         {
@@ -96,63 +107,15 @@
             },
             {
               "type": "Mushroom1Up",
-              "amount":  1
+              "amount": 1
             }
           ]
-        }
-      ],
-      "position": [
-        {
-          "row": 11,
-          "columns": [ 16 ]
-        },
-        {
-          "row": 11,
-          "columns": [ 17 ]
-        }
-      ]
-    },
-    {
-      "type": "Block",
-      "actionState": "QuestionBlockState",
-      "powerUpState": "Hidden",
-      "positionWithHiddenItems": [
-        {
-          "row": 11,
-          "column": 25,
-          "hiddenItems": [
-            {
-              "type": "Coin",
-              "amount": 2
-            } 
-          ]
-        },
-        {
-          "row": 11,
-          "column": 26,
-          "hiddenItems": [
-            {
-              "type": "MushroomSuper",
-              "amount": 1
-            } 
-          ]
-        }
-      ],
-      "position": [
-        {
-          "row": 11,
-          "columns": [ 27 ]
-        },
-        {
-          "row": 11,
-          "columns": [ 28 ]
         }
       ]
     },
     {
       "type": "Block",
       "actionState": "BrickBlockState",
-      "powerUpState": "Hidden",
       "positionWithHiddenItems": [
         {
           "row": 11,
@@ -161,7 +124,7 @@
             {
               "type": "Coin",
               "amount": 2
-            } 
+            }
           ]
         },
         {
@@ -171,20 +134,10 @@
             {
               "type": "MushroomSuper",
               "amount": 1
-            } 
+            }
           ]
         }
-        
-      ],
-      "position": [
-        {
-          "row": 11,
-          "columns": [ 31 ]
-        },
-        {
-          "row": 11,
-          "columns": [ 32 ]
-        }
+
       ]
     },
     {
@@ -205,18 +158,8 @@
           "row": 11,
           "columns": [ 5 ]
         }
-      ] 
+      ]
     },
-    {"type": "Block",
-		"actionState": "BrickBlockState",
-		"powerUpState": "Hidden",
-		"position": [
-			{
-				"row": 11,
-				"columns": [4]
-			}
-		]
-		},
     {
       "type": "Block",
       "actionState": "StepBlockState",

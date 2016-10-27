@@ -60,7 +60,14 @@ namespace MarioGame.Theming
 
                         }
                     }
-                    });
+                    else
+                    {
+                        if (entity is Block)
+                        {
+                            ((Block)entity).Show();
+                        }
+                    }
+                });
                 });
             });
 
@@ -90,6 +97,13 @@ namespace MarioGame.Theming
                             {
                                 ((Block)entity).Show();
                             }
+                        }
+                    }
+                    else
+                    {
+                        if (entity is Block)
+                        {
+                            ((Block)entity).Show();
                         }
                     }
                     instance.hiddenItems.ForEach(h =>
