@@ -40,12 +40,15 @@ namespace MarioGame.Theming
             _controllers[0].AddCommand((int)Keys.W, new JumpCommand(Game1.Scene.Script));
             _controllers[0].AddHeldCommand((int)Keys.W, new JumpCommand(Game1.Scene.Script));
             _controllers[0].AddCommand((int)Keys.Up, new JumpCommand(Game1.Scene.Script));
+            _controllers[0].AddHeldCommand((int)Keys.Up, new JumpCommand(Game1.Scene.Script));
 
             // Adding movement commands (Needs updated with actual commands)
             _controllers[0].AddCommand((int)Keys.Left, new MoveLeftCommand(Game1.Scene.Script));
+            _controllers[0].AddHeldCommand((int)Keys.Left, new MoveLeftCommand(Game1.Scene.Script));
             _controllers[0].AddCommand((int)Keys.A, new MoveLeftCommand(Game1.Scene.Script));
             _controllers[0].AddHeldCommand((int)Keys.A, new MoveLeftCommand(Game1.Scene.Script));
             _controllers[0].AddCommand((int)Keys.Right, new MoveRightCommand(Game1.Scene.Script));
+            _controllers[0].AddHeldCommand((int)Keys.Right, new MoveRightCommand(Game1.Scene.Script));
             _controllers[0].AddCommand((int)Keys.D, new MoveRightCommand(Game1.Scene.Script));
             _controllers[0].AddHeldCommand((int)Keys.D, new MoveRightCommand(Game1.Scene.Script));
             _controllers[0].AddCommand((int)Keys.Down, new CrouchCommand(Game1.Scene.Script));
