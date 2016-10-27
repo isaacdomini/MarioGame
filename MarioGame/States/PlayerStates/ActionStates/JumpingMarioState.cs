@@ -49,11 +49,6 @@ namespace MarioGame.States
             {
                 Mario.SetYVelocity(new Vector2(Mario.Velocity.X, MathHelper.Clamp(Mario.Velocity.Y - _jumpTimer, -2, 2)));
             }
-            else
-            {
-                System.Console.WriteLine("Here");
-                Mario.SetYVelocity(new Vector2(Mario.Velocity.X, -.1f));
-            }
         }
     }
 }

@@ -63,19 +63,16 @@ namespace MarioGame.States
         {
             if (Mario.Velocity.Y > .2f)
             {
-                System.Console.WriteLine("Falling");
                 if(!Mario.MarioActionState.Equals(StateMachine.FallingMarioState))
                     Mario.ChangeActionState(StateMachine.FallingMarioState);
             }
             else if (Mario.Velocity.Y < 0)
             {
-                System.Console.WriteLine("Jumping");
                 if (!Mario.MarioActionState.Equals(StateMachine.JumpingMarioState))
                     Mario.ChangeActionState(StateMachine.JumpingMarioState);
             }
             else if (Mario.Velocity.X < .001f && Mario.Velocity.X > -.001f)
             {
-                System.Console.WriteLine("Idle");
                 if (!Mario.MarioActionState.Equals(StateMachine.IdleMarioState))
                     Mario.ChangeActionState(StateMachine.IdleMarioState);
             }
