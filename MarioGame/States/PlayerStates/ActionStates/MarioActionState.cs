@@ -1,5 +1,6 @@
 ﻿using System;
 using MarioGame.Entities;
+using Microsoft.Xna.Framework;
 
 namespace MarioGame.States
 {
@@ -25,20 +26,28 @@ namespace MarioGame.States
             StateMachine.JumpingMarioState.Begin(this);
         }
 
-        public virtual void MoveRight() {
-            if (Mario.FacingLeft)
-            {
-                Mario.TurnRight();
-            }
-        }
-
-        public virtual void MoveLeft() {
+        public virtual void MoveLeft()
+        {
             if (Mario.FacingRight)
             {
                 Mario.TurnLeft();
             }
+            else
+            {
+                Mario.SetXVelocity(Vector2.One * -1);
+            }
         }
-
+        public virtual void MoveRight()
+        {
+            if (Mario.FacingLeft)
+            {
+                Mario.TurnRight();
+            }
+            else
+            {
+                Mario.SetXVelocity(Vector2.One);
+            }
+        }
         public virtual void Fall()
         {
         }
@@ -49,6 +58,32 @@ namespace MarioGame.States
         public void Halt()
         {
             StateMachine.IdleMarioState.Begin(this);
+        }
+        public override void UpdateEntity(GameTime gametime)
+        {
+            if (Mario.Velocity.Y > .2f)
+            {
+                System.Console.WriteLine("Falling");
+                if(!Mario.MarioActionState.Equals(StateMachine.FallingMarioState))
+                    Mario.ChangeActionState(StateMachine.FallingMarioState);
+            }
+            else if (Mario.Velocity.Y < 0)
+            {
+                System.Console.WriteLine("Jumping");
+                if (!Mario.MarioActionState.Equals(StateMachine.JumpingMarioState))
+                    Mario.ChangeActionState(StateMachine.JumpingMarioState);
+            }
+            else if (Mario.Velocity.X < .001f && Mario.Velocity.X > -.001f)
+            {
+                System.Console.WriteLine("Idle");
+                if (!Mario.MarioActionState.Equals(StateMachine.IdleMarioState))
+                    Mario.ChangeActionState(StateMachine.IdleMarioState);
+            }
+            else
+            {
+                if (!Mario.MarioActionState.Equals(StateMachine.WalkingMarioState))
+                    Mario.ChangeActionState(StateMachine.IdleMarioState);
+            }
         }
     }
 }

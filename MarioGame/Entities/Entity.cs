@@ -17,6 +17,7 @@ namespace MarioGame.Entities
         protected ActionState AState;
         public bool IsCollidable;
         private bool _colliding;
+        protected bool floating;
         public Directions Direction
         {
             get; protected set;
@@ -68,6 +69,7 @@ namespace MarioGame.Entities
 
             _position = position;
             _colliding = false;
+            floating = false;
         }
         /** must be called after _sprite.Load() because boudningBoxSize reads from _sprite.FrameWidth/Height which aren't set until after _sprite.Load. LoadBoundingBox  is called in Scene. */
         public virtual void LoadBoundingBox()
@@ -90,13 +92,26 @@ namespace MarioGame.Entities
         public virtual void Update(Viewport viewport, GameTime gameTime)
         {
             _position += Velocity;
+            if(!floating)
+                _velocity.Y = MathHelper.Clamp(Velocity.Y + .05f, -4, 4);
             BoundingBox.Location = Util.VectorToPoint(Position) + BoundingBoxOffset;
             BoxColor = _colliding ? CollidingBoxColor : RegularBoxColor;
             _colliding = false;
         }
         public virtual void SetVelocity(Vector2 newVelocity)
         {
-            _velocity = newVelocity;
+            SetXVelocity(newVelocity);
+            SetYVelocity(newVelocity);
+        }
+
+        public virtual void SetXVelocity(Vector2 newVelocity)
+        {
+            _velocity.X = newVelocity.X;
+        }
+
+        public virtual void SetYVelocity(Vector2 newVelocity)
+        {
+            _velocity.Y = newVelocity.Y;
         }
         public virtual void SetVelocityToIdle()
         {
@@ -104,15 +119,15 @@ namespace MarioGame.Entities
         }
         public virtual void SetVelocityToFalling()
         {
-            SetVelocity(fallingVelocity);
+            SetYVelocity(fallingVelocity);
         }
         public virtual void SetVelocityToWalk()
         {
-            SetVelocity(WalkingVelocity);
+            SetXVelocity(WalkingVelocity);
             if (FacingLeft)
             {
                 //TODO: how does below line work
-                _velocity = Velocity * -1;
+                SetXVelocity(Velocity * -1);
             }
         }
         public virtual void MakeInvisible()
@@ -132,6 +147,16 @@ namespace MarioGame.Entities
             Sprite.ChangeDirection(Direction);
         }
         public virtual void Halt() { }
+
+        public virtual void HaltX()
+        {
+            SetXVelocity(Vector2.Zero);
+        }
+
+        public virtual void HaltY()
+        {
+            SetYVelocity(Vector2.Zero);
+        }
 
         /** onColide must be called before Update */
         public virtual void OnCollide(IEntity otherObject, Sides side)
@@ -171,13 +196,16 @@ namespace MarioGame.Entities
 
         public virtual void OnBlockBottomCollision()
         {
-            _position.Y -= 2 * Velocity.Y;
-            _velocity.Y = 0;
+            if (Velocity.Y > 0)
+            {
+                _position.Y -= 1.1f*Velocity.Y;
+                _velocity.Y = 0;
+            }
         }
 
         public virtual void OnBlockTopCollision()
         {
-            _position.Y -= 2 * Velocity.Y;
+            _position.Y -= 1.1f * Velocity.Y;
             _velocity.Y = 0;
         }
 

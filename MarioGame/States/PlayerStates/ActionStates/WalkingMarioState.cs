@@ -1,4 +1,5 @@
 ﻿using MarioGame.Entities;
+using Microsoft.Xna.Framework;
 
 namespace MarioGame.States
 {
@@ -13,21 +14,6 @@ namespace MarioGame.States
         {
             Mario.ChangeActionState(StateMachine.WalkingMarioState);
             Mario.SetVelocityToWalk();
-        }
-
-        public override void MoveLeft()
-        {
-            if (Mario.FacingRight)
-            {
-                StateMachine.IdleMarioState.Begin(this);
-            }
-        }
-        public override void MoveRight()
-        {
-            if (Mario.FacingLeft)
-            {
-                StateMachine.IdleMarioState.Begin(this);
-            }
         }
     }
 }

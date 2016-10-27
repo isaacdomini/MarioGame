@@ -16,12 +16,13 @@ namespace MarioGame.Entities
         public bool Invincible => _secondsOfInvincibilityRemaining > 0 || PState is FireStarState || PState is StandardStarState || PState is SuperStarState;
         // Could be useful for casting in certain circumstances
         public MarioPowerUpState MarioPowerUpState => (MarioPowerUpState)PState;
-        protected MarioActionState MarioActionState => (MarioActionState)AState;
+        public MarioActionState MarioActionState => (MarioActionState)AState;
+        private MarioActionStateMachine marioActionStateMachine;
         // TODO: maybe we don't have to give the casted variable a new name, but rather just use the new keyword and the subclass type
         protected MarioSprite MarioSprite => (MarioSprite)Sprite;
 
         // Velocity variables
-        private static readonly Vector2 JumpingVelocity = new Vector2(0, VelocityConstant * -1);
+        private static readonly Vector2 JumpingVelocity = new Vector2(0, VelocityConstant * -2);
         private static readonly Vector2 DashVelocity = new Vector2(VelocityConstant * 2, 0);
 
         private const int SuperBoundingBoxWidth = 20;
@@ -40,7 +41,7 @@ namespace MarioGame.Entities
 
         public Mario(Vector2 position, ContentManager content) : base(position, content)
         {
-            var marioActionStateMachine = new MarioActionStateMachine(this);
+            marioActionStateMachine = new MarioActionStateMachine(this);
             var marioPowerUpStateMachine = new MarioPowerUpStateMachine(this);           
             AState = marioActionStateMachine.IdleMarioState; //TODO: make marioActionState a casted getter of aState?
             PState = marioPowerUpStateMachine.StandardState;
@@ -90,9 +91,10 @@ namespace MarioGame.Entities
         public override void Update(Viewport viewport, GameTime gameTime)
         {
             base.Update(viewport, gameTime);
+            MarioActionState.UpdateEntity(gameTime);
             UpdateInvincibilityStatus();
 
-            MarioActionState.UpdateEntity(gameTime);
+            SetXVelocity(Vector2.Zero);
         }
         public void ChangeActionState(MarioActionState state)
         {
@@ -186,11 +188,13 @@ namespace MarioGame.Entities
         
         public void SetVelocityToJumping()
         {
-            this.SetVelocity(JumpingVelocity);
+            SetYVelocity(JumpingVelocity);
         }
         public override void Halt()
         {
             _position -= Velocity;
+            HaltX();
+            HaltY();
             MarioActionState.Halt();
         }
         private void OnCollideEnemy(Enemy enemy, Sides side)
@@ -208,18 +212,19 @@ namespace MarioGame.Entities
         protected override void OnBlockSideCollision()
         {
             _position.X -= 2 * Velocity.X;
-            _velocity.X = 0;
+            HaltX();
             MarioActionState.Halt();
         }
         public override void OnBlockBottomCollision()
         {
             base.OnBlockBottomCollision();
-            Halt();
+            HaltY();
+            //ChangeActionState(marioActionStateMachine.IdleMarioState);
         }
         public override void OnBlockTopCollision()
         {
             base.OnBlockTopCollision();
-            MarioActionState.Fall();
+            //MarioActionState.Fall();
         }
         private void OnCollideItem(Item item, Sides side)
         {

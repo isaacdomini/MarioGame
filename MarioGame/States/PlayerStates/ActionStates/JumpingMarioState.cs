@@ -5,7 +5,7 @@ namespace MarioGame.States
 {
     internal class JumpingMarioState : MarioActionState
     {
-        private float _jumpTimer = 0.0f;
+        private float _jumpTimer;
         public JumpingMarioState(Mario entity, MarioActionStateMachine stateMachine) : base(entity, stateMachine)
         {
             actionState = MarioActionStateEnum.Jumping;
@@ -15,11 +15,11 @@ namespace MarioGame.States
         {
             Mario.ChangeActionState(StateMachine.JumpingMarioState);
             Mario.SetVelocityToJumping();
+            _jumpTimer = .75f;
         }
 
         public override void End()//TODO: currently i dont think this method is getting called correctly. something with a null error about _prevState in state.Begin();
         {
-            _jumpTimer = 0.0f;
         }
         public override void Fall()
         {
@@ -31,40 +31,28 @@ namespace MarioGame.States
         {
             StateMachine.IdleMarioState.Begin(this);
         }
-        public override void MoveRight()
-        {
-            if (Mario.FacingRight)
-            {
-                StateMachine.WalkingMarioState.Begin(this);
-            }
-            else
-            {
-                Mario.TurnRight();
-            }
-        }
-        public override void MoveLeft()
-        {
-            if (Mario.FacingLeft)
-            {
-                StateMachine.WalkingMarioState.Begin(this);
-            }
-            else
-            {
-                Mario.TurnLeft();
-            }
-        }
 
         public override void UpdateEntity(GameTime gameTime)
         {
-            base.UpdateEntity(gameTime);
-            if (_jumpTimer > 1.5)
+            //base.UpdateEntity(gameTime);
+            if (Mario.Velocity.Y > -.01f)
             {
-                StateMachine.FallingMarioState.Begin(this);
-                _jumpTimer = 0.0f; // todo make it so that the End() method correctly gets called so we don't have to do this.
+                Mario.SetYVelocity(new Vector2(Mario.Velocity.X, .21f));
+                Mario.ChangeActionState(StateMachine.FallingMarioState);
+            }
+            _jumpTimer -= .01f;
+        }
+
+        public override void Jump()
+        {
+            if (Mario.Velocity.Y < 0)
+            {
+                Mario.SetYVelocity(new Vector2(Mario.Velocity.X, MathHelper.Clamp(Mario.Velocity.Y - _jumpTimer, -2, 2)));
             }
             else
             {
-            _jumpTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                System.Console.WriteLine("Here");
+                Mario.SetYVelocity(new Vector2(Mario.Velocity.X, -.1f));
             }
         }
     }

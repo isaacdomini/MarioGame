@@ -12,11 +12,11 @@ namespace MarioGame.States
         public override void Begin(MarioActionState prevState)
         {
             Mario.ChangeActionState(StateMachine.FallingMarioState);
-            Mario.SetVelocityToFalling();
+            //Mario.SetVelocityToFalling();
         }
         public override void Jump()
         {
-            StateMachine.IdleMarioState.Begin(this);
+            //StateMachine.IdleMarioState.Begin(this);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace MarioGame.States
         public override void Begin(MarioActionState prevState)
         {
             Mario.ChangeActionState(StateMachine.IdleMarioState);
-            Mario.SetVelocityToIdle();
+            //Mario.SetVelocityToIdle();
         }
         public override void Fall()
         {

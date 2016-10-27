@@ -11,11 +11,13 @@ namespace MarioGame.Controllers
     {
         private GamePadState _previousState;
         public Dictionary<Buttons, ICommand> Dictionary { get; set; }
+        public Dictionary<Buttons, ICommand> HeldDictionary { get; set; }
 
         public GamepadController()
         {
             _previousState = GamePad.GetState(PlayerIndex.One);
             Dictionary = new Dictionary<Buttons, ICommand>();
+            HeldDictionary = new Dictionary<Buttons, ICommand>();
         }
 
         public void AddCommand(int key, ICommand command)
@@ -24,6 +26,14 @@ namespace MarioGame.Controllers
             foreach (var keys in keyList)
             {
                 if ((int)keys == key) Dictionary.Add(keys, command);
+            }
+        }
+        public void AddHeldCommand(int key, ICommand command)
+        {
+            var keyList = (Buttons[])Enum.GetValues(typeof(Buttons));
+            foreach (var keys in keyList)
+            {
+                if ((int)keys == key) HeldDictionary.Add(keys, command);
             }
         }
 

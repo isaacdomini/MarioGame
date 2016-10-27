@@ -36,6 +36,7 @@ namespace MarioGame.Entities
             BlockPowerUpState = (BlockPowerUpState)PState;
             BlockSprite = (BlockSprite)Sprite;
             _tickCount = 0;
+            floating = true;
         }
         public void SetBlockActionState(string state)
         {
