@@ -13,7 +13,7 @@ namespace MarioGame.Entities
     {
         protected BlockActionStateMachine ActionStateMachine;
         Queue<IContainable> _containedItems = new Queue<IContainable>();
-        private int _tickCount;
+        protected int _tickCount;
 
         protected bool _isVisible;
 
@@ -83,7 +83,7 @@ namespace MarioGame.Entities
             ((BlockActionState)AState).ChangeToGround();
         }
 
-        public void Bump()
+        public virtual void Bump()
         {
             //if bumpable
             if (AState is BrickBlockState || AState is QuestionBlockState)
@@ -96,6 +96,7 @@ namespace MarioGame.Entities
                 if (HasItems())
                 {
                    IContainable poppedItem = PopContainedItem();
+                   poppedItem.LeaveContainer();
                     // TODO: Make poppedItem appear and pop out
                 } else if (AState is BrickBlockState)
                 {
@@ -113,7 +114,7 @@ namespace MarioGame.Entities
             }
             else
             {
-                // TODO: Begin breaking sequence
+                
             }
         }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MarioGame.States.BlockStates.ActionStates
 {
-    class BreakBlock
+    class StandardState
     {
     }
 }

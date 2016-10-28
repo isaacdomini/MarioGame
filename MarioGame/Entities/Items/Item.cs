@@ -28,7 +28,7 @@ namespace MarioGame.Entities
 
         public override void LeaveContainer()
         {
-            throw new NotImplementedException();
+            Show(); 
         }
         public override void OnCollide(IEntity otherObject, Sides side)
         {
