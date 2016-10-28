@@ -1,10 +1,10 @@
-﻿using MarioGame.Entities;
+﻿using System;
+using MarioGame.Entities;
 
 namespace MarioGame.States
 {
     public class BlockActionState : ActionState
     {
-        protected Block Block;
         protected BlockActionStateMachine StateMachine;
         public BlockActionStateEnum BState
         {
@@ -13,7 +13,6 @@ namespace MarioGame.States
 
         public BlockActionState(Block entity, BlockActionStateMachine stateMachine) : base(entity)
         {
-            Block = entity;
             this.StateMachine = stateMachine;
         }
 
@@ -21,7 +20,9 @@ namespace MarioGame.States
         public virtual void Reveal() { }
         public virtual void Break() { }
         public virtual void ChangeToUsed() { }
-
+        public virtual void ChangeToStep() { }
+        public virtual void ChangeToQuestion() { }
+        public virtual void ChangeToGround() { }
     }
 }
 

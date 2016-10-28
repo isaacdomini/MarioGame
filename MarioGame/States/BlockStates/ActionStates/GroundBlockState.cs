@@ -16,7 +16,27 @@ namespace MarioGame.States
         public override void Begin(IState prevState)
         {
             base.Begin(prevState);
-            Block.ChangeBlockActionState(StateMachine.GroundState);
+            ((Block)Entity).ChangeActionState(StateMachine.GroundState);
+        }
+        public override void End()
+        {
+            base.End();
+            PrevState = this;
+        }
+        public override void ChangeToUsed()
+        {
+            this.End();
+            StateMachine.UsedState.Begin(this);
+        }
+        public override void ChangeToStep()
+        {
+            this.End();
+            StateMachine.StepState.Begin(this);
+        }
+        public override void ChangeToQuestion()
+        {
+            this.End();
+            StateMachine.QuestionState.Begin(this);
         }
     }
 }

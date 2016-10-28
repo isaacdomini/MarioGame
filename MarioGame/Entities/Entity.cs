@@ -11,7 +11,12 @@ namespace MarioGame.Entities
 {
     public abstract class Entity : IEntity, ICollidable
     {
-        public AnimatedSprite Sprite;
+        public AnimatedSprite Sprite
+        {
+            get { return _sprite; }
+        }
+
+        protected AnimatedSprite _sprite;
         
         protected ActionState AState;
         public bool IsCollidable;
@@ -21,7 +26,6 @@ namespace MarioGame.Entities
         {
             get; protected set;
         }
-
         public ActionState CurrentActionState => this.AState;
 
         protected Vector2 _position;
@@ -63,7 +67,7 @@ namespace MarioGame.Entities
             var namespaceAndClass = typeof(Sprite).Namespace + "." + spriteClass;
             var type = Type.GetType(namespaceAndClass);
             Debug.Assert(type != null, "type != null");
-            Sprite = (AnimatedSprite)Activator.CreateInstance(type, content, this);
+            _sprite = (AnimatedSprite)Activator.CreateInstance(type, content, this);
 
             _position = position;
             _colliding = false;

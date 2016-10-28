@@ -11,9 +11,6 @@ namespace MarioGame.Entities
 {
     public class Block : Entity, IContainer, IHidable
     {
-        // Could be useful for casting in certain circumstances
-        protected BlockSprite BlockSprite;
-        public BlockActionState BlockActionState;
         protected BlockActionStateMachine ActionStateMachine;
         Queue<IContainable> _containedItems = new Queue<IContainable>();
         private int _tickCount;
@@ -32,10 +29,6 @@ namespace MarioGame.Entities
         {
             ActionStateMachine = new BlockActionStateMachine(this);
             AState = ActionStateMachine.BrickState;
-            // Temporary
-            AState.PrevState = ActionStateMachine.BrickState;
-            BlockActionState = (BlockActionState)AState;
-            BlockSprite = (BlockSprite)Sprite;
             _tickCount = 0;
             floating = true;
         }
@@ -43,58 +36,73 @@ namespace MarioGame.Entities
         {
             if (state.Equals("UsedBlockState"))
             {
-                ActionStateMachine.UsedState.Begin(AState);
-            }
-            else if (state.Equals("BrickBlockState"))
-            {
-                ActionStateMachine.BrickState.Begin(AState);
+                ChangeToUsed();
             }
             else if (state.Equals("GroundBlockState"))
             {
-                ActionStateMachine.GroundState.Begin(AState);
+                ChangeToGround();
             }
             else if (state.Equals("QuestionBlockState"))
             {
-                ActionStateMachine.QuestionState.Begin(AState);
+                ChangeToQuestion();
             }
             else if (state.Equals("StepBlockState"))
             {
-                ActionStateMachine.StepState.Begin(AState);
+                ChangeToStep();
             }
 
         }
-        public void ChangeBlockActionState(BlockActionState state)
+        public override void OnCollide(IEntity otherObject, Sides side)
+        {
+            if (!(otherObject is Mario)) return;
+            if (side == Sides.Bottom)
+            {
+                Bump();
+            }
+        }
+        public void ChangeActionState(BlockActionState state)
         {
             base.ChangeActionState(state);
-            BlockSprite.ChangeActionState(state);
+            ((BlockSprite)Sprite).ChangeActionState(state);
         }
 
         public void ChangeToUsed()
         {
             ((BlockActionState)AState).ChangeToUsed();
         }
-        public override void OnCollide(IEntity otherObject, Sides side)
+        private void ChangeToStep()
         {
-            if (!(otherObject is Mario)) return;
-            if(side == Sides.Bottom)
-            {
-                Bump();
-            }
+            ((BlockActionState)AState).ChangeToStep();
         }
+        private void ChangeToQuestion()
+        {
+            ((BlockActionState)AState).ChangeToQuestion();
+        }
+        private void ChangeToGround()
+        {
+            ((BlockActionState)AState).ChangeToGround();
+        }
+
         public void Bump()
         {
             //if bumpable
-                if(_tickCount == 0)
+            if (AState is BrickBlockState || AState is QuestionBlockState)
+            {
+                if (_tickCount == 0)
                 {
                     _tickCount = 10;
                     _velocity.Y = -1;
                 }
-                // TODO: Begin bumping sequence
-                // TODO: If there is no item, change to used.
-                ChangeToUsed();
-            _isVisible = true;
-                // TODO: If there is an item, display item, and bump
-            //else break
+                if (HasItems())
+                {
+                   IContainable poppedItem = PopContainedItem();
+                    // TODO: Make poppedItem appear and pop out
+                } else if (AState is BrickBlockState)
+                {
+                    ChangeToUsed();
+                }
+                _isVisible = true;
+            }
         }
         // Only called when mario is super
         public void Break()
