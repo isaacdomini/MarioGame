@@ -15,7 +15,7 @@ namespace MarioGame.Theming.Scenes
         private SpriteBatch _spriteBatch;
         public Camera Camera;
         private Vector2 _camPos;
-        public bool DrawBox=true;
+        public bool DrawBox=false;
 
 
         public Scene(Stage stage)

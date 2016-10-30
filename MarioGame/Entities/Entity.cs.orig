@@ -1,6 +1,11 @@
 ﻿using MarioGame.Core;
 using MarioGame.Sprites;
 using MarioGame.States;
+<<<<<<< HEAD
+=======
+using MarioGame.States.BlockStates.PowerUpStates;
+using MarioGame.Theming;
+>>>>>>> Added sprite for hills and added sprite sheet for the finish line. I couldn't get the finish line to show up in the game because I kept getting an error.
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -22,7 +27,6 @@ namespace MarioGame.Entities
         public bool IsCollidable;
         private bool _colliding;
         protected bool floating;
-        public bool _isVisible=true;
         public Directions Direction
         {
             get; protected set;
@@ -48,7 +52,6 @@ namespace MarioGame.Entities
         public void Delete()
         {
             Deleted = true;
-            _isVisible = false;
         }
         protected static int BoundingBoxWidth = 10;
         public Rectangle BoundingBox;
@@ -210,5 +213,6 @@ namespace MarioGame.Entities
         }
 
         protected virtual void OnBlockSideCollision() { }
+
     }
 }
