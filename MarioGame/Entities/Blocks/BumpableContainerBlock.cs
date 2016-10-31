@@ -26,6 +26,10 @@ namespace MarioGame.Entities.Blocks
                 poppedItem.LeaveContainer();
                 // TODO: Make poppedItem appear and pop out
             }
+            else
+            {
+                
+            }
             _isVisible = true;
         }
     }

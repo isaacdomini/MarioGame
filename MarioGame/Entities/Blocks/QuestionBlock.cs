@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace MarioGame.Entities.Blocks
 {
-    class QuestionBlock : Block, IBumpable
+    class QuestionBlock : BumpableContainerBlock
     {
         public QuestionBlock(Vector2 position, ContentManager content) : base(position, content)
         {

@@ -76,6 +76,11 @@
     <Compile Include="Core\Utils.cs" />
     <Compile Include="Entities\BackgroundItems\Cloud.cs" />
     <Compile Include="Entities\Blocks\Block.cs" />
+    <Compile Include="Entities\Blocks\BrickBlock.cs" />
+    <Compile Include="Entities\Blocks\BumpableContainerBlock.cs" />
+    <Compile Include="Entities\Blocks\GroundBlock.cs" />
+    <Compile Include="Entities\Blocks\QuestionBlock.cs" />
+    <Compile Include="Entities\Blocks\StepBlock.cs" />
     <Compile Include="Entities\ContainableHidableEntity.cs" />
     <Compile Include="Entities\Enemies\Enemy.cs" />
     <Compile Include="Entities\IBumpable.cs" />
@@ -116,9 +121,12 @@
     <Compile Include="States\BlockStates\ActionStates\BlockActionState.cs" />
     <Compile Include="States\BlockStates\ActionStates\BlockActionStateEnum.cs" />
     <Compile Include="States\BlockStates\ActionStates\BlockActionStateMachine.cs" />
+    <Compile Include="States\BlockStates\ActionStates\BreakingState.cs" />
     <Compile Include="States\BlockStates\ActionStates\BrickBlockState.cs" />
+    <Compile Include="States\BlockStates\ActionStates\BumpingState.cs" />
     <Compile Include="States\BlockStates\ActionStates\GroundBlockState.cs" />
     <Compile Include="States\BlockStates\ActionStates\QuestionBlock.cs" />
+    <Compile Include="States\BlockStates\ActionStates\StandardState.cs" />
     <Compile Include="States\BlockStates\ActionStates\StepBlockState.cs" />
     <Compile Include="States\BlockStates\ActionStates\UsedBlockState.cs" />
     <Compile Include="States\EnemyStates\GoombaDeadState.cs" />
