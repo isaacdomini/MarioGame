@@ -19,7 +19,8 @@ namespace MarioGame.Theming
         public List<Block> Blocks { get { return Entities.FindAll(e => e is Block).ConvertAll(e => (Block) e); } }
         public List<Item> Items { get { return Entities.FindAll(e => e is Item).ConvertAll(e => (Item) e); } }
         public List<Enemy> Enemies { get { return Entities.FindAll(e => e is Enemy).ConvertAll(e => (Enemy) e); } }
-
+        public float LevelWidth;
+ 
         //TODO: clean up below line's code smell
         public Mario Mario { get { return (Mario)Entities.Find(e => e is Mario); } }
         public Script(Scene scene)
@@ -78,8 +79,13 @@ namespace MarioGame.Theming
         }
         private void UpdateCamera(GameTime gameTime)
         {
-
-            if (Mario.Position.X >= Viewport.Width / 3.0f)
+            
+            if(Mario.Position.X >= (GlobalConstants.GridWidth * LevelWidth) - (Viewport.Width / 3.0f))
+            {
+                _scene.Camera.LookAt(new Vector2((GlobalConstants.GridWidth * LevelWidth) - (Viewport.Width / 3.0f),0));
+                _scene.updateItemVisibility();
+            }
+            else if (Mario.Position.X >= Viewport.Width / 3.0f)
             {
                 _scene.Camera.LookAt(Mario.Position);
                 _scene.updateItemVisibility();

@@ -29,7 +29,7 @@ namespace MarioGame.Theming
                 _position = value;
 
                 // If there's a limit set and there's no zoom or rotation clamp the position
-                if (Limits == null || Rotation != 0.0f) return;
+                if (Limits == null || Zoom !=1.0f || Rotation != 0.0f) return;
                 _position.X = MathHelper.Clamp(_position.X, Limits.Value.X, Limits.Value.X + Limits.Value.Width - _viewport.Width);
                 _position.Y = MathHelper.Clamp(_position.Y, Limits.Value.Y, Limits.Value.Y + Limits.Value.Height - _viewport.Height);
             }

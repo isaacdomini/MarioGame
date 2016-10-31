@@ -16,12 +16,11 @@ namespace MarioGame.Theming
 {
     internal static class LevelLoader
     {
-        private static int _blockWidth = 16; // each intereger in location is a multiple of blockWidth. e.g. each block in our scene may be 20 pixels width. So if we have a block at an x location of 10, that block's x position would actually be at pixel 200
         public static Entity CreateEntity(string klass, Vector2 location, ContentManager content)
         {
             var type = Type.GetType(typeof(Entity).Namespace + "." + klass);
             Debug.Assert(type != null, "type != null");
-            return (Entity)Activator.CreateInstance(type, location * _blockWidth, content);
+            return (Entity)Activator.CreateInstance(type, location * GlobalConstants.GridWidth, content);
         }
 
         public static void AddTileMapToScript(String tileMapFile, Script script, ContentManager content)
@@ -29,7 +28,7 @@ namespace MarioGame.Theming
 
             var json = File.ReadAllText(tileMapFile);
             var level = JsonConvert.DeserializeObject<Level>(json);
-
+            script.LevelWidth = level.width;
             level.entities.FindAll(e => e.position != null).ForEach(e =>
             {
                 e.position.ForEach(rc =>

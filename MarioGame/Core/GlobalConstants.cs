@@ -8,8 +8,8 @@ namespace MarioGame.Theming
 {
     public static class GlobalConstants
     {
-        public static int GridHeight = 30;
-        public static int GridWidth = 30;
+        public static int GridHeight = 16;
+        public static int GridWidth = 16;
         public const float MillisecondsPerFrame = 16;
     }
 }
