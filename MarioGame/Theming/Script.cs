@@ -56,6 +56,7 @@ namespace MarioGame.Theming
 
            });
             Entities.ForEach(e => e.Update(Viewport, gameTime));
+            Console.WriteLine(Mario.Position.X);
 
         }
         public void updateItemVisibility(Layer layer)
@@ -78,7 +79,7 @@ namespace MarioGame.Theming
         private void UpdateCamera(GameTime gameTime)
         {
 
-            if (Mario.Position.X >= Viewport.Width / 2.0f)
+            if (Mario.Position.X >= Viewport.Width / 3.0f)
             {
                 _scene.Camera.LookAt(Mario.Position);
                 _scene.updateItemVisibility();

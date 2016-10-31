@@ -16,7 +16,7 @@ namespace MarioGame.Theming
 {
     internal static class LevelLoader
     {
-        private static int _blockWidth = 30; // each intereger in location is a multiple of blockWidth. e.g. each block in our scene may be 20 pixels width. So if we have a block at an x location of 10, that block's x position would actually be at pixel 200
+        private static int _blockWidth = 16; // each intereger in location is a multiple of blockWidth. e.g. each block in our scene may be 20 pixels width. So if we have a block at an x location of 10, that block's x position would actually be at pixel 200
         public static Entity CreateEntity(string klass, Vector2 location, ContentManager content)
         {
             var type = Type.GetType(typeof(Entity).Namespace + "." + klass);

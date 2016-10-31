@@ -162,6 +162,16 @@
     },
     {
       "type": "Block",
+      "actionState": "UsedBlockState",
+      "position": [
+        {
+          "row": 1,
+          "columns": [ 1 ]
+        }
+      ]
+    },
+    {
+      "type": "Block",
       "actionState": "StepBlockState",
       "position": [
         {
