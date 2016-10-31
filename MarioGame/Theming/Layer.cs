@@ -36,6 +36,15 @@ namespace MarioGame.Theming
             spriteBatch.End();
         }
 
-        private readonly Camera _camera;
+        public readonly Camera _camera;
+
+        public Vector2 WorldToScreen(Vector2 worldPosition)
+        {
+            return Vector2.Transform(worldPosition, _camera.GetViewMatrix(Parallax));
+        }
+        public Vector2 ScreenToWorld(Vector2 screenPosition)
+        {
+            return Vector2.Transform(screenPosition, Matrix.Invert(_camera.GetViewMatrix(Parallax)));
+        }
     }
 }

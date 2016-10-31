@@ -13,7 +13,6 @@ namespace MarioGame.Theming
     public class Script
     {
         private readonly Scene _scene;
-
         public List<Entity> Entities { get; private set; }
 
         //possibile TODO: cache the getters if performance suffers
@@ -59,12 +58,30 @@ namespace MarioGame.Theming
             Entities.ForEach(e => e.Update(Viewport, gameTime));
 
         }
+        public void updateItemVisibility(Layer layer)
+        {
+            Entities = Entities.FindAll(e => !e.Deleted);
+            foreach (Entity e in Entities)
+            {
+                if (layer.WorldToScreen(e.Position).X > (layer._camera._viewport.Bounds.Right))
+                {
+                    e._isVisible = false;
+                    e.IsCollidable = false;
+                }
+                else
+                {
+                    e._isVisible = true;
+                    e.IsCollidable = true;
+                }
+            }
+        }
         private void UpdateCamera(GameTime gameTime)
         {
 
             if (Mario.Position.X >= Viewport.Width / 2.0f)
             {
                 _scene.Camera.LookAt(Mario.Position);
+                _scene.updateItemVisibility();
             }
         }
 
@@ -137,5 +154,6 @@ namespace MarioGame.Theming
         {
             _scene.DrawBoundingBoxes();
         }
+
     }
 }

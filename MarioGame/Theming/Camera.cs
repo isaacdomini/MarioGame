@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using MarioGame.Theming.Scenes;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -95,7 +96,7 @@ namespace MarioGame.Theming
             Position += displacement;
         }
 
-        private readonly Viewport _viewport;
+        public readonly Viewport _viewport;
         private Vector2 _position;
         private Rectangle? _limits;
     }

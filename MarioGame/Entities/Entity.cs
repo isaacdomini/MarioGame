@@ -1,6 +1,8 @@
 ﻿using MarioGame.Core;
 using MarioGame.Sprites;
 using MarioGame.States;
+using MarioGame.Theming;
+using MarioGame.Theming.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -78,9 +80,11 @@ namespace MarioGame.Entities
         /** must be called after _sprite.Load() because boudningBoxSize reads from _sprite.FrameWidth/Height which aren't set until after _sprite.Load. LoadBoundingBox  is called in Scene. */
         public virtual void LoadBoundingBox()
         {
-            SetUpBoundingBoxProperties();
-            BoundingBox = new Rectangle(Util.VectorToPoint(Position) + BoundingBoxOffset, BoundingBoxSize);
-            BoxColor = RegularBoxColor; 
+            {
+                SetUpBoundingBoxProperties();
+                BoundingBox = new Rectangle(Util.VectorToPoint(Position) + BoundingBoxOffset, BoundingBoxSize);
+                BoxColor = RegularBoxColor;
+            }
         }
         protected virtual void SetUpBoundingBoxProperties()
         {
@@ -95,12 +99,15 @@ namespace MarioGame.Entities
         }
         public virtual void Update(Viewport viewport, GameTime gameTime)
         {
-            _position += Velocity;
-            if(!floating)
-                _velocity.Y = MathHelper.Clamp(Velocity.Y + .05f, -4, 4);
-            BoundingBox.Location = Util.VectorToPoint(Position) + BoundingBoxOffset;
-            BoxColor = _colliding ? CollidingBoxColor : RegularBoxColor;
-            _colliding = false;
+            if (_isVisible)
+            {
+                _position += Velocity;
+                if (!floating)
+                    _velocity.Y = MathHelper.Clamp(Velocity.Y + .05f, -4, 4);
+                BoundingBox.Location = Util.VectorToPoint(Position) + BoundingBoxOffset;
+                BoxColor = _colliding ? CollidingBoxColor : RegularBoxColor;
+                _colliding = false;
+            }
         }
         public virtual void SetVelocity(Vector2 newVelocity)
         {

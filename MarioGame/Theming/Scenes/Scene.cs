@@ -63,25 +63,32 @@ namespace MarioGame.Theming.Scenes
                 else
                 {
                     Layers[1].Add(e.Sprite);
+                    updateItemVisibility();
                 }
             }
 
             Layers.ForEach(l => l.Load());
+            
             Script.Entities.ForEach(e => e.LoadBoundingBox());
             //Allows for bounding boxes to be drawn in different colors
             RectanglePixel = new Texture2D(Stage.Game1.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             RectanglePixel.SetData(new[] { Color.White });
 
         }
-
+        public void updateItemVisibility()
+        {
+            Script.updateItemVisibility(Layers[1]);
+        }
         public void Update(GameTime gameTime)
         {
             Stage.Update(gameTime);
             Script.Update(gameTime);
             // TODO Should we update the sprites in script? That way we are only doing updates from one location
             Layers.ForEach(l => l.Sprites.ForEach(s => s.Update((float)gameTime.ElapsedGameTime.TotalSeconds)));
+            //Layers.ForEach(l => Script.updateItemVisibility(l));
             //camera.Position = new Vector2(camera.Position.X + 1, camera.Position.Y);
             //camera.LookAt(_script.mario.position);
+
         }
 
         public void Draw(GameTime gameTime)
