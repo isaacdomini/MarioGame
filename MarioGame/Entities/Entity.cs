@@ -58,7 +58,7 @@ namespace MarioGame.Entities
         protected Point BoundingBoxOffset = new Point(0,0);
         protected Color RegularBoxColor = Color.Yellow;
         protected Color CollidingBoxColor = Color.Black;
-        protected float BoxPercentSizeOfEntity = 1.0f;
+        public float BoxPercentSizeOfEntity = 1.0f;
         public Color BoxColor;
         protected virtual void PreConstructor() {
         }
