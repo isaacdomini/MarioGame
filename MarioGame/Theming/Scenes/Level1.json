@@ -170,8 +170,7 @@
     },
     
     {
-      "type": "Block",
-      "actionState": "StepBlockState",
+      "type": "StepBlock",
       "position": [
         {
           "row": 19,
