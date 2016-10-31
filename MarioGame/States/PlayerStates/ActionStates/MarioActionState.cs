@@ -34,7 +34,7 @@ namespace MarioGame.States
             }
             else
             {
-                Mario.SetXVelocity(Vector2.One * -1);
+                Mario.SetXVelocity(Vector2.One * -1.75f);
             }
         }
         public virtual void MoveRight()
@@ -45,7 +45,7 @@ namespace MarioGame.States
             }
             else
             {
-                Mario.SetXVelocity(Vector2.One);
+                Mario.SetXVelocity(Vector2.One * 1.75f);
             }
         }
         public virtual void Fall()

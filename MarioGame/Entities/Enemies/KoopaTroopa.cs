@@ -57,12 +57,12 @@ namespace MarioGame.Entities
                 ChangeShellVelocityDirection();
                 TurnRight();
             }
-            else if (Position.X + _width > viewport.Width)
+            /*else if (Position.X + _width > viewport.Width)
             {
                 _position.X = viewport.Width - _width;
                 ChangeShellVelocityDirection();
                 TurnLeft();
-            }
+            }*/
         }
     }
 }
