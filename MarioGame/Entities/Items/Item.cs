@@ -13,6 +13,7 @@ namespace MarioGame.Entities
 
         public Item(Vector2 position, ContentManager content) : base(position, content)
         {
+            IsCollidable = true;
             BoxPercentSizeOfEntity = 1.2f;
         }
 

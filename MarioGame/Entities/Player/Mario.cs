@@ -44,7 +44,7 @@ namespace MarioGame.Entities
             var marioPowerUpStateMachine = new MarioPowerUpStateMachine(this);           
             AState = marioActionStateMachine.IdleMarioState; //TODO: make marioActionState a casted getter of aState?
             PState = marioPowerUpStateMachine.StandardState;
-
+            IsCollidable = true;
             Direction = Directions.Right;
             _spaceBarAction = SpaceBarAction.Run;
         }
@@ -219,6 +219,7 @@ namespace MarioGame.Entities
         {
             base.OnBlockBottomCollision();
             HaltY();
+
             //ChangeActionState(marioActionStateMachine.IdleMarioState);
         }
         public override void OnBlockTopCollision()

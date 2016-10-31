@@ -1,4 +1,5 @@
 using MarioGame.Entities;
+using MarioGame.States.BlockStates;
 
 namespace MarioGame.States
 {
@@ -6,7 +7,7 @@ namespace MarioGame.States
     {
         public UsedBlockState(Block entity, BlockActionStateMachine stateMachine) : base(entity, stateMachine)
         {
-            BState = BlockActionStateEnum.UsedBlock;
+            BState = BlockActionStateEnum.Used;
         }
         public override void Begin(IState prevState)
         {
@@ -22,21 +23,6 @@ namespace MarioGame.States
         {
             this.End();
             StateMachine.UsedState.Begin(this);
-        }
-        public override void ChangeToStep()
-        {
-            this.End();
-            StateMachine.StepState.Begin(this);
-        }
-        public override void ChangeToGround()
-        {
-            this.End();
-            StateMachine.GroundState.Begin(this);
-        }
-        public override void ChangeToQuestion()
-        {
-            this.End();
-            StateMachine.QuestionState.Begin(this);
         }
     }
 }

@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MarioGame.States.BlockStates.ActionStates
+namespace MarioGame.States
 {
-    class StandardState
+    public enum BlockActionStateEnum
     {
+        Standard,
+        Bumping,
+        Breaking,
+        Used
     }
 }

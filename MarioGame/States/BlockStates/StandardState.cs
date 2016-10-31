@@ -5,18 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MarioGame.States
+namespace MarioGame.States.BlockStates
 {
-    public class GroundBlockState : BlockActionState
+    public class StandardState : BlockActionState
     {
-        public GroundBlockState(Block block, BlockActionStateMachine stateMachine): base(block, stateMachine)
+        public StandardState(Block block, BlockActionStateMachine stateMachine) : base(block, stateMachine)
         {
-            BState = BlockActionStateEnum.GroundBlock;
+            BState = BlockActionStateEnum.Standard;
         }
         public override void Begin(IState prevState)
         {
             base.Begin(prevState);
-            ((Block)Entity).ChangeActionState(StateMachine.GroundState);
+            ((Block)Entity).ChangeActionState(StateMachine.StandardState);
         }
         public override void End()
         {
@@ -28,15 +28,15 @@ namespace MarioGame.States
             this.End();
             StateMachine.UsedState.Begin(this);
         }
-        public override void ChangeToStep()
+        public override void Bump()
         {
             this.End();
-            StateMachine.StepState.Begin(this);
+            StateMachine.BumpingState.Begin(this);
         }
-        public override void ChangeToQuestion()
+        public override void Break()
         {
             this.End();
-            StateMachine.QuestionState.Begin(this);
+            StateMachine.BreakingState.Begin(this);
         }
     }
 }

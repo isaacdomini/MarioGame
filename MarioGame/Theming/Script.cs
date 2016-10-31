@@ -49,9 +49,15 @@ namespace MarioGame.Theming
                    if(!entityPairs.Contains(e.GetHashCode() ^ e2.GetHashCode()))
                    {
                        var eSide = CollisionHandler.GetIntersectingSide(e.BoundingBox, e2.BoundingBox);
-                       e.OnCollide(e2, eSide);
-                       e2.OnCollide(e, Util.flip(eSide));
-                       entityPairs.Add(e.GetHashCode() ^ e2.GetHashCode());
+                       var eOwnSide = CollisionHandler.GetIntersectingSide(e2.BoundingBox, e.BoundingBox);
+                       // This would only be true when the bottom of a hidden block collides with the bottom of Mario
+                       if (eSide != eOwnSide)
+                       {
+                           e.OnCollide(e2, eSide);
+                           e2.OnCollide(e, Util.flip(eSide));
+                           entityPairs.Add(e.GetHashCode() ^ e2.GetHashCode());
+                       }
+            
                    }
                 });
 
@@ -137,25 +143,25 @@ namespace MarioGame.Theming
         {
             foreach (var block in Blocks)
             {
-                if (!(block.CurrentActionState is BrickBlockState)) continue;
-                if (Mario.MarioPowerUpState is SuperState)
-                {
-                    block.Break();
-                }
-                else if (Mario.MarioPowerUpState is StandardState)
+                if (!(block is BrickBlock)) continue;
+                if (Mario.MarioPowerUpState is StandardState)
                 {
                     block.Bump();
                     block.ChangeToUsed();
                 }
+                else 
+                {
+                    block.Break();
+                }
             }
+        }
+        internal void ChangeQuestionToUsed()
+        {
+            Blocks.FindAll(b => b is QuestionBlock).ForEach(b => b.ChangeToUsed());
         }
         internal void ShowHiddenBlock()
         {
             Blocks.ForEach(b => b.Show());
-        }
-        internal void ChangeQuestionToUsed()
-        {
-            Blocks.FindAll(b => b.CurrentActionState is QuestionBlockState).ForEach(b => b.ChangeToUsed());
         }
         internal void DrawBoundingBoxes()
         {

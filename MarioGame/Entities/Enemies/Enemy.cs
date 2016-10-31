@@ -16,6 +16,7 @@ namespace MarioGame.Entities
 
         public Enemy(Vector2 position, ContentManager content) : base(position, content)
         {
+            IsCollidable = true;
             IsDead = false;
             BoxPercentSizeOfEntity = .5f;
         }

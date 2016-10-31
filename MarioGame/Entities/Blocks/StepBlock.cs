@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 
-namespace MarioGame.Entities.Blocks
+namespace MarioGame.Entities
 {
     class StepBlock : Block
     {

@@ -1,5 +1,6 @@
 ﻿using System;
 using MarioGame.Entities;
+using MarioGame.States.BlockStates;
 
 namespace MarioGame.States
 {
@@ -17,12 +18,9 @@ namespace MarioGame.States
         }
 
         public virtual void Bump() { }
-        public virtual void Reveal() { }
         public virtual void Break() { }
         public virtual void ChangeToUsed() { }
-        public virtual void ChangeToStep() { }
-        public virtual void ChangeToQuestion() { }
-        public virtual void ChangeToGround() { }
+        public virtual void ChangeToStandard() { }
     }
 }
 
