@@ -201,7 +201,10 @@ namespace MarioGame.Entities
             if (Invincible) return;
             if ((enemy.IsVisible || enemy.CurrentActionState is KoopaBouncingState) && side != Sides.Bottom)
             {
-                MarioPowerUpState.OnHitByEnemy();
+                if(!(enemy.Velocity.Equals(new Vector2(0,0))))
+                {
+                    MarioPowerUpState.OnHitByEnemy();
+                }
             }
             else
             {

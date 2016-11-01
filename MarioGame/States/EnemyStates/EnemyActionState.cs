@@ -28,6 +28,7 @@ namespace MarioGame.States
         }
         public virtual void JumpedOn(Sides side)
         {
+            //if()
             ChangeToDead();
         }
         public virtual void ChangeToDead() { }

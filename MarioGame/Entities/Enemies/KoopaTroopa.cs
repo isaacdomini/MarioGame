@@ -61,10 +61,9 @@ namespace MarioGame.Entities
             }*/
         }
 
-        //We shouldn't have to have this since it only calls the base method
-        //public override void OnCollide(IEntity otherObject, Sides side, Sides otherSide)
-        //{
-        //    base.OnCollide(otherObject, side, otherSide);
-        //}
+        public override void OnCollide(IEntity otherObject, Sides side, Sides otherSide)
+        {
+            base.OnCollide(otherObject, side, otherSide);
+        }
     }
 }
