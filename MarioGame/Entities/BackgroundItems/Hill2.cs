@@ -8,12 +8,10 @@ using System.Threading.Tasks;
 
 namespace MarioGame.Entities
 {
-    internal class Cloud : Entity
+    internal class Hill2 : BackgroundItem
     {
-        public Cloud(Vector2 position, ContentManager content) : base(position, content)
+        public Hill2(Vector2 position, ContentManager content) : base(position, content)
         {
-            floating = true;
-            BoxPercentSizeOfEntity = 0f;
         }
 
     }

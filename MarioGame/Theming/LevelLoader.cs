@@ -36,6 +36,10 @@ namespace MarioGame.Theming
                 rc.columns.ForEach(c => {
                     var entity = CreateEntity(e.type, new Vector2(c, rc.row), content);
                     script.AddEntity(entity);
+                    if(entity is BackgroundItem)
+                    {
+                        ((BackgroundItem)entity).Layer = e.backgroundlayer;
+                    }
                     if (e.actionState != null)
                     {
                         //TODO: make it so that we dont have to check what type each entity is 
@@ -147,6 +151,8 @@ namespace MarioGame.Theming
         public List<positionWithHiddenItem> positionWithHiddenItems { get; set; }
         public string visibility { get; set; }
         public string actionState { get; set; }
+        public string backgroundtype { get; set; }
+        public int backgroundlayer { get; set; }
     }
 
     public class Level
