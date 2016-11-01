@@ -21,7 +21,7 @@ namespace MarioGame.Entities
         }
         public override void Update(Viewport viewport, int elapsedMilliseconds)
         {
-            if (revealing)
+            if (Revealing)
             {
                 base.Update(viewport, elapsedMilliseconds);
             }
