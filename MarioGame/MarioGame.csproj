@@ -85,6 +85,7 @@
     <Compile Include="Entities\BackgroundItems\Cloud1.cs" />
     <Compile Include="Entities\BackgroundItems\BackgroundItem.cs" />
     <Compile Include="Entities\Blocks\Block.cs" />
+    <Compile Include="Entities\Blocks\BlockPiece.cs" />
     <Compile Include="Entities\Blocks\BrickBlock.cs" />
     <Compile Include="Entities\Blocks\BumpableContainerBlock.cs" />
     <Compile Include="Entities\Blocks\GroundBlock.cs" />
@@ -120,6 +121,7 @@
     <Compile Include="Sprites\BackgroundItems\Cloud2Sprite.cs" />
     <Compile Include="Sprites\BackgroundItems\Cloud1Sprite.cs" />
     <Compile Include="Sprites\BackgroundItems\BackgroundItemSprite.cs" />
+    <Compile Include="Sprites\BlockSprites\BlockPieceSprite.cs" />
     <Compile Include="Sprites\BlockSprites\BlockSprite.cs" />
     <Compile Include="Sprites\BlockSprites\BrickBlockSprite.cs" />
     <Compile Include="Sprites\BlockSprites\GroundBlockSprite.cs" />

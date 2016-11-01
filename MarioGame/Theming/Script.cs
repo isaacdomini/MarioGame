@@ -148,7 +148,6 @@ namespace MarioGame.Theming
                 if (Mario.MarioPowerUpState is StandardState)
                 {
                     block.Bump();
-                    block.ChangeToUsed();
                 }
                 else 
                 {

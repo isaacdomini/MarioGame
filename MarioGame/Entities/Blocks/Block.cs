@@ -17,13 +17,7 @@ namespace MarioGame.Entities
         protected BlockActionStateEnum BEntity;
         protected bool _isVisible;
 
-        public bool IsVisible
-        {
-            get
-            {
-                return _isVisible;
-            }
-        }
+        public bool IsVisible => _isVisible;
 
         public Block(Vector2 position, ContentManager content) : base(position, content)
         {
@@ -48,7 +42,7 @@ namespace MarioGame.Entities
         public virtual void ChangeToUsed() { }
         public virtual void Bump() { }
         // Only called when mario is super
-        public virtual void Break() { }
+        public virtual void Break() { }//TODO: only brickBlocks should have a break method
         public virtual void ChangeToStandard() { }
 
         public override void Update(Viewport viewport, GameTime gameTime)
