@@ -22,7 +22,7 @@ namespace MarioGame.States
         public override void UpdateEntity(int elapsedMilliseconds)
         {
             _elapsedMilliseconds += elapsedMilliseconds;
-            if (elapsedMilliseconds > 1000)
+            if (_elapsedMilliseconds > 1000)
             {
                 _elapsedMilliseconds = 0;
                 Goomba.Delete();
