@@ -199,14 +199,14 @@ namespace MarioGame.Entities
         private void OnCollideEnemy(Enemy enemy, Sides side)
         {
             if (Invincible) return;
-            if (!enemy.IsVisible && side != Sides.Bottom)
+            if ((enemy.IsVisible || enemy.CurrentActionState is KoopaBouncingState) && side != Sides.Bottom)
             {
                 MarioPowerUpState.OnHitByEnemy();
             }
             else
             {
-                Halt();
-                _position -= new Vector2(0, 15);
+                    Halt();
+                    _position -= new Vector2(0, 15);
             }
         }
         protected override void OnBlockSideCollision(Sides side)
