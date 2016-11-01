@@ -15,10 +15,10 @@ namespace MarioGame.Entities
         public BrickBlock(Vector2 position, ContentManager content) : base(position, content)
         {
         }
-        public override void OnCollide(IEntity otherObject, Sides side)
+        public override void OnCollide(IEntity otherObject, Sides side, Sides otherSide)
         {
             if (!(otherObject is Mario)) return;
-            if (side == Sides.Bottom)
+            if (side == Sides.Bottom && otherSide == Sides.Top && ((Mario)otherObject).Velocity.Y <= 0)
             {
                 if (((Mario)otherObject).MarioPowerUpState.PowerUpState == MarioPowerUpStateEnum.Standard)
                 {

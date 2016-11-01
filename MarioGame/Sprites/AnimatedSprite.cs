@@ -82,7 +82,7 @@ namespace MarioGame.Sprites
 
         public override void Draw(SpriteBatch batch)
         {
-            if(!Entity._isVisible)
+            if(!Entity._isOnScreen)
             {
                 return;
             }

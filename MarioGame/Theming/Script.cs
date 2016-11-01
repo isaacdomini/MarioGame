@@ -51,12 +51,9 @@ namespace MarioGame.Theming
                        var eSide = CollisionHandler.GetIntersectingSide(e.BoundingBox, e2.BoundingBox);
                        var e2Side = CollisionHandler.GetIntersectingSide(e2.BoundingBox, e.BoundingBox);
                        // This would only be true when the bottom of a hidden block collides with the bottom of Mario
-                       if (eSide != e2Side)
-                       {
-                           e.OnCollide(e2, eSide);
-                           e2.OnCollide(e, e2Side);
-                           entityPairs.Add(e.GetHashCode() ^ e2.GetHashCode());
-                       }
+                       e.OnCollide(e2, eSide, e2Side);
+                       e2.OnCollide(e, e2Side, eSide);
+                       entityPairs.Add(e.GetHashCode() ^ e2.GetHashCode());
 
                    }
                 });
@@ -73,12 +70,12 @@ namespace MarioGame.Theming
             {
                 if (layer.WorldToScreen(e.Position).X > (layer._camera._viewport.Bounds.Right))
                 {
-                    e._isVisible = false;
+                    e._isOnScreen = false;
                     e.IsCollidable = false;
                 }
                 else
                 {
-                    e._isVisible = true;
+                    e._isOnScreen = true;
                     e.IsCollidable = true;
                 }
             }

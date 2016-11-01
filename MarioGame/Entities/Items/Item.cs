@@ -31,9 +31,9 @@ namespace MarioGame.Entities
         {
             Show(); 
         }
-        public override void OnCollide(IEntity otherObject, Sides side)
+        public override void OnCollide(IEntity otherObject, Sides side, Sides otherSide)
         {
-            base.OnCollide(otherObject, side);
+            base.OnCollide(otherObject, side, otherSide);
             if (otherObject is Mario)
             {
                 Delete();

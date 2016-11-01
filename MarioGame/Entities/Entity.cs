@@ -24,7 +24,7 @@ namespace MarioGame.Entities
         public bool IsCollidable;
         private bool _colliding;
         protected bool floating;
-        public bool _isVisible=true;
+        public bool _isOnScreen;
         public Directions Direction
         {
             get; protected set;
@@ -50,7 +50,7 @@ namespace MarioGame.Entities
         public void Delete()
         {
             Deleted = true;
-            _isVisible = false;
+            _isOnScreen = false;
         }
         protected static int BoundingBoxWidth = 10;
         public Rectangle BoundingBox;
@@ -80,11 +80,9 @@ namespace MarioGame.Entities
         /** must be called after _sprite.Load() because boudningBoxSize reads from _sprite.FrameWidth/Height which aren't set until after _sprite.Load. LoadBoundingBox  is called in Scene. */
         public virtual void LoadBoundingBox()
         {
-            {
-                SetUpBoundingBoxProperties();
-                BoundingBox = new Rectangle(Util.VectorToPoint(Position) + BoundingBoxOffset, BoundingBoxSize);
-                BoxColor = RegularBoxColor;
-            }
+            SetUpBoundingBoxProperties();
+            BoundingBox = new Rectangle(Util.VectorToPoint(Position) + BoundingBoxOffset, BoundingBoxSize);
+            BoxColor = RegularBoxColor;
         }
         protected virtual void SetUpBoundingBoxProperties()
         {
@@ -99,7 +97,7 @@ namespace MarioGame.Entities
         }
         public virtual void Update(Viewport viewport, GameTime gameTime)
         {
-            if (_isVisible)
+            if (_isOnScreen)
             {
                 _position += Velocity;
                 if (!floating)
@@ -166,21 +164,24 @@ namespace MarioGame.Entities
         }
 
         /** onColide must be called before Update */
-        public virtual void OnCollide(IEntity otherObject, Sides side)
+        public virtual void OnCollide(IEntity otherObject, Sides ownSide, Sides otherSide)
         {
             _colliding = true;
             if(otherObject is Block)
             {
-                OnCollideBlock((Block) otherObject, side);
+                OnCollideBlock((Block) otherObject, ownSide, otherSide);
             }
         }
-        protected virtual void OnCollideBlock(Block block, Sides side)
+        protected virtual void OnCollideBlock(Block block, Sides side, Sides blockSide)
         {
             if (!block.IsVisible)
             {
-                if (side == Sides.Top)
+                if (this is Mario)
                 {
-                    Halt();
+                    if (side == Sides.Top && blockSide == Sides.Bottom && ((Mario)this).Velocity.Y < 0)
+                    {
+                        Halt();
+                    }
                 }
             }
             else

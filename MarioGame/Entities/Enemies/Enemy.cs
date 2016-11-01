@@ -25,10 +25,10 @@ namespace MarioGame.Entities
             Position -= Velocity;
             EnemyActionState.Halt();
         }
-        public override void OnCollide(IEntity otherObject, Sides side)
+        public override void OnCollide(IEntity otherObject, Sides side, Sides otherSide)
         {
-            base.OnCollide(otherObject, side);
-            if (otherObject is Mario )
+            base.OnCollide(otherObject, side, otherSide);
+            if (otherObject is Mario)
             {
                 if (side == Sides.Top)
                 {

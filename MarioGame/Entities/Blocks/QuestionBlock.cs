@@ -15,10 +15,10 @@ namespace MarioGame.Entities
         public QuestionBlock(Vector2 position, ContentManager content) : base(position, content)
         {
         }
-        public override void OnCollide(IEntity otherObject, Sides side)
+        public override void OnCollide(IEntity otherObject, Sides side, Sides otherSide)
         {
             if (!(otherObject is Mario)) return;
-            if (side == Sides.Bottom)
+            if (side == Sides.Bottom && otherSide == Sides.Top)
             {
                 Bump();
             }
