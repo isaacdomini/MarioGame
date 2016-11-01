@@ -10,25 +10,21 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MarioGame.Entities
 {
-    public abstract class ContainableHidableEntity : Entity, IContainable, IHidable
+    public abstract class ContainableHidableEntity : HidableEntity, IContainable
     {
         int _tickCount;
         protected bool Revealing { get; private set; }
         public ContainableHidableEntity(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities, float xVelocity = 0, float yVelocity = 0) : base(position, content, addToScriptEntities, xVelocity: xVelocity, yVelocity: yVelocity)
         {
         }
-        protected bool _isVisible;
-
-        public bool IsVisible => _isVisible;
-
         public abstract void LeaveContainer();
-        public void Hide()
+        public override void Hide()
         {
-            _isVisible = false;
+            base.Hide();
             Revealing = false;
         }
 
-        public void Show()
+        public override void Show()
         {
             _tickCount = 10;
             Revealing = true;

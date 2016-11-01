@@ -93,6 +93,7 @@
     <Compile Include="Entities\Blocks\StepBlock.cs" />
     <Compile Include="Entities\ContainableHidableEntity.cs" />
     <Compile Include="Entities\Enemies\Enemy.cs" />
+    <Compile Include="Entities\HidableEntity.cs" />
     <Compile Include="Entities\IBumpable.cs" />
     <Compile Include="Entities\Enemies\Goomba.cs" />
     <Compile Include="Entities\Enemies\KoopaTroopa.cs" />

@@ -11,13 +11,11 @@ using MarioGame.States.BlockStates.ActionStates;
 
 namespace MarioGame.Entities
 {
-    public abstract class Block : Entity, IHidable
+    public abstract class Block : HidableEntity
     {
         protected BlockActionStateMachine ActionStateMachine;
         protected BlockActionStateEnum BEntity;
-        protected bool _isVisible;
 
-        public bool IsVisible => _isVisible;
 
         public Block(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content, addToScriptEntities)
         {
@@ -31,7 +29,6 @@ namespace MarioGame.Entities
             {
                 ChangeToUsed();
             }
-
         }
         public void ChangeActionState(BlockActionState state)
         {
@@ -47,16 +44,6 @@ namespace MarioGame.Entities
         public override void Update(Viewport viewport, int elapsedMilliseconds)
         {
             base.Update(viewport, elapsedMilliseconds);
-        }
-
-        public void Hide()
-        {
-            _isVisible = false;
-        }
-
-        public void Show()
-        {
-            _isVisible = true;
         }
     }
 }

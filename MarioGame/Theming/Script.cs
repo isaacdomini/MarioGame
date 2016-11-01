@@ -67,14 +67,14 @@ namespace MarioGame.Theming
                 {
                     if (e is IHidable)
                     {
-                        ((IHidable)e).Hide();
+                        ((IHidable)e).OffScreen();
                     }
                 }
                 else
                 {
                     if(e is IHidable)
                     {
-                        ((IHidable)e).Show();
+                        ((IHidable)e).OnScreen();
                     }
                 }
             }

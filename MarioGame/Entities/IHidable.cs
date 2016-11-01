@@ -13,7 +13,13 @@ namespace MarioGame.Entities
         {
             get;
         }
+        bool OnCurrentScreen
+        {
+            get;
+        }
         void Hide();
         void Show();
+        void OnScreen();
+        void OffScreen();
     }
 }

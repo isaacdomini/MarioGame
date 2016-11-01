@@ -15,12 +15,13 @@ namespace MarioGame.Sprites
         {
             get { return ((IHidable)Entity).IsVisible; }
         }
+        public bool isOnScreen => ((IHidable)Entity).OnCurrentScreen;
         public HidableSprite(ContentManager content, Entity entity) : base(content, entity)
         {
         }
         public override void Draw(SpriteBatch batch)
         {
-            if (isVisible)
+            if (isVisible && isOnScreen)
             {
                 base.Draw(batch);
             }

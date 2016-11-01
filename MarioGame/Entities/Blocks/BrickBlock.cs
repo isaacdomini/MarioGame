@@ -40,7 +40,7 @@ namespace MarioGame.Entities
             {
                 Break();
             }
-            else
+            else if (mario.Velocity.Y <= 0)
             {
                 Bump();
             }

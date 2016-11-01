@@ -7,15 +7,13 @@ using System;
 
 namespace MarioGame.Entities
 {
-    public class Enemy : Entity, IHidable
+    public class Enemy : HidableEntity
     {
         public AnimatedSprite EnemySprite => Sprite;
         protected EnemyActionState EnemyActionState => (EnemyActionState)AState;
-        protected bool IsDead;
-        public bool IsVisible => !IsDead;
         public Enemy(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content, addToScriptEntities)
         {
-            IsDead = false;
+            _isVisible = true;
             BoxPercentSizeOfEntity = .5f;
         }
         public override void Halt()
@@ -52,16 +50,6 @@ namespace MarioGame.Entities
         {
             Hide();
             base.Delete();
-        }
-
-        public void Hide()
-        {
-            IsDead = true;
-        }
-
-        public void Show()
-        {
-            IsDead = false;
         }
     }
 }

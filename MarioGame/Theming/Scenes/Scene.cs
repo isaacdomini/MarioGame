@@ -44,9 +44,6 @@ namespace MarioGame.Theming.Scenes
             LevelLoader.AddTileMapToScript("Level1.json", Script, Stage.Game1.Content);
             Camera = new Camera(Stage.Game1.GraphicsDevice.Viewport);
             _camPos = Camera.Position;
-
-
-
         }
 
         public void LoadContent()
