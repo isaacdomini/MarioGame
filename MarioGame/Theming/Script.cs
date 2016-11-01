@@ -49,15 +49,15 @@ namespace MarioGame.Theming
                    if(!entityPairs.Contains(e.GetHashCode() ^ e2.GetHashCode()))
                    {
                        var eSide = CollisionHandler.GetIntersectingSide(e.BoundingBox, e2.BoundingBox);
-                       var eOwnSide = CollisionHandler.GetIntersectingSide(e2.BoundingBox, e.BoundingBox);
+                       var e2Side = CollisionHandler.GetIntersectingSide(e2.BoundingBox, e.BoundingBox);
                        // This would only be true when the bottom of a hidden block collides with the bottom of Mario
-                       if (eSide != eOwnSide)
+                       if (eSide != e2Side)
                        {
                            e.OnCollide(e2, eSide);
-                           e2.OnCollide(e, Util.flip(eSide));
+                           e2.OnCollide(e, e2Side);
                            entityPairs.Add(e.GetHashCode() ^ e2.GetHashCode());
                        }
-            
+
                    }
                 });
 
