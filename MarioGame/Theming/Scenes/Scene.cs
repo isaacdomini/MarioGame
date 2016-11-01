@@ -51,17 +51,18 @@ namespace MarioGame.Theming.Scenes
             _spriteBatch = new SpriteBatch(Stage.Game1.GraphicsDevice);
 
             Stage.LoadContent();
+            Layers.Add(new Layer(Camera, new Vector2(0.1f, 1.0f)));
             Layers.Add(new Layer(Camera, new Vector2(0.5f, 1.0f)));
             Layers.Add(new Layer(Camera, new Vector2(1.0f, 1.0f)));
             foreach (Entity e in Script.Entities)
             {
                 if(e is BackgroundItem)
                 {
-                    Layers[0].Add(e.Sprite);
+                    Layers[((BackgroundItem)e).Layer].Add(e.Sprite);
                 }
                 else
                 {
-                    Layers[1].Add(e.Sprite);
+                    Layers[2].Add(e.Sprite);
                     updateItemVisibility();
                 }
             }
@@ -99,10 +100,6 @@ namespace MarioGame.Theming.Scenes
             {
                 _spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Camera.GetViewMatrix(new Vector2(1.0f)));
                 Script.Entities.FindAll(e => !(e is BackgroundItem)).//TODO: make it so that bounding boxes are handled in the specific entities sprite's draw method
-                    ForEach(e => DrawRectangleBorder(_spriteBatch, e.BoundingBox, 1, e.BoxColor));
-                _spriteBatch.End();
-                _spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Camera.GetViewMatrix(new Vector2(0.5f)));
-                Script.Entities.FindAll(e => (e is BackgroundItem)).
                     ForEach(e => DrawRectangleBorder(_spriteBatch, e.BoundingBox, 1, e.BoxColor));
                 _spriteBatch.End();
             }

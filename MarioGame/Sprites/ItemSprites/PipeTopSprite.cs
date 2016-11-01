@@ -9,21 +9,21 @@ using MarioGame.States;
 
 namespace MarioGame.Sprites
 {
-    public class PipeSectionSprite : BlockSprite
+    public class PipeTopSprite : AnimatedSprite
     {
         public enum Frames
         {
-            StepBlock = 0
+            PipeSection = 0
         }
-        public PipeSectionSprite(ContentManager content, Entity entity) : base(content, entity)
+        public PipeTopSprite(ContentManager content, Entity entity) : base(content, entity)
         {
-            AssetName = "pipesection";
+            AssetName = "pipetop";
             NumberOfFramesPerRow = 1;
             //Each state has a frameSet
             FrameSets = new Dictionary<int, List<int>> {
-                { BlockActionStateEnum.Standard.GetHashCode(), new List<int> { Frames.StepBlock.GetHashCode() } }
+                { 0, new List<int> { Frames.PipeSection.GetHashCode() } }
             };
-            FrameSet = FrameSets[BlockActionStateEnum.Standard.GetHashCode()];
+            FrameSet = FrameSets[0];
         }
     }
 }

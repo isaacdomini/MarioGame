@@ -49,6 +49,15 @@
       ]
     },
     {
+      "type": "PipeSection",
+      "position": [
+        {
+          "row": 19,
+          "columns": [ 30 ]
+        }
+      ]
+    },
+    {
       "type": "BrickBlock",
       "visibility": "Hidden",
       "position": [
