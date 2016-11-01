@@ -10,45 +10,43 @@ namespace MarioGame.Entities
     {
         public Vector2 MovingVelocity = new Vector2(.5f, 0);
         private static readonly Vector2 FallingVelocity = new Vector2(0, VelocityConstant * 1); //todo: can we just let this inherit/ override the parent?
+        protected static int itemHeight = 16;
 
         public Item(Vector2 position, ContentManager content) : base(position, content)
         {
-            IsCollidable = true;
             BoxPercentSizeOfEntity = 1.2f;
-        }
-
-        public override void Hide()
-        {
-            _isVisible = false;
-        }
-
-        public override void Show()
-        {
-            _isVisible = false;
         }
 
         public override void LeaveContainer()
         {
-            Show(); 
+            _position.Y -= itemHeight;
+            Show();
         }
         public override void OnCollide(IEntity otherObject, Sides side, Sides otherSide)
         {
-            base.OnCollide(otherObject, side, otherSide);
-            if (otherObject is Mario)
+            if (IsVisible)
             {
-                Delete();
-            }
-            if (otherObject is Block)
-            {
-                if (((Block)otherObject).IsVisible == true)
+                base.OnCollide(otherObject, side, otherSide);
+                if (otherObject is Mario)
                 {
-                    if (side == Sides.Left || side == Sides.Right)
+                    Delete();
+                }
+                if (otherObject is Block)
+                {
+                    if (((Block)otherObject).IsVisible == true)
                     {
-                        this.FlipHorizontalVelocity();
+                        if (side == Sides.Left || side == Sides.Right)
+                        {
+                            this.FlipHorizontalVelocity();
+                        }
                     }
                 }
-
             }
+        }
+        public override void Delete()
+        {
+            Hide();
+            base.Delete();
         }
     }
 }

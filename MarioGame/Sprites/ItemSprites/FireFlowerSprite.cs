@@ -27,6 +27,13 @@ namespace MarioGame.Sprites
             };
             FrameSet = FrameSets[Frames.Blue.GetHashCode()];
         }
+        public override void Draw(SpriteBatch batch)
+        {
+            if (isVisible)
+            {
+                base.Draw(batch);
+            }
+        }
     }
 }
 

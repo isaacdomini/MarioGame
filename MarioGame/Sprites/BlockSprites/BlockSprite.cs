@@ -31,18 +31,10 @@ namespace MarioGame.Sprites
             base.Load(framesPerSecond);
             FrameHeight = 16;
         }
-        public override void Draw(SpriteBatch batch)
-        {
-            if (isVisible)
-            {
-                base.Draw(batch);
-            }
-        }
         public void ChangeActionState(BlockActionState actionState)
         {
             base.ChangeActionState(actionState);
             FrameSet = FrameSets[actionState.BState.GetHashCode()];
         }
-
     }
 }

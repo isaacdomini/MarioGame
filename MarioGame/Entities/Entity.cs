@@ -21,10 +21,8 @@ namespace MarioGame.Entities
         protected AnimatedSprite _sprite;
         
         protected ActionState AState;
-        public bool IsCollidable;
         private bool _colliding;
         protected bool floating;
-        public bool _isOnScreen;
         public Directions Direction
         {
             get; protected set;
@@ -47,10 +45,9 @@ namespace MarioGame.Entities
         public static readonly Vector2 IdleVelocity = new Vector2(0, 0);
         public bool Moving => !Velocity.Equals(IdleVelocity);
         public bool Deleted { get; private set; }
-        public void Delete()
+        public virtual void Delete()
         {
             Deleted = true;
-            _isOnScreen = false;
         }
         protected static int BoundingBoxWidth = 10;
         public Rectangle BoundingBox;
@@ -97,15 +94,12 @@ namespace MarioGame.Entities
         }
         public virtual void Update(Viewport viewport, GameTime gameTime)
         {
-            if (_isOnScreen)
-            {
-                _position += Velocity;
-                if (!floating)
-                    _velocity.Y = MathHelper.Clamp(Velocity.Y + .05f, -4, 4);
-                BoundingBox.Location = Util.VectorToPoint(Position) + BoundingBoxOffset;
-                BoxColor = _colliding ? CollidingBoxColor : RegularBoxColor;
-                _colliding = false;
-            }
+            _position += Velocity;
+            if (!floating)
+                _velocity.Y = MathHelper.Clamp(Velocity.Y + .05f, -4, 4);
+            BoundingBox.Location = Util.VectorToPoint(Position) + BoundingBoxOffset;
+            BoxColor = _colliding ? CollidingBoxColor : RegularBoxColor;
+            _colliding = false;
         }
         public virtual void SetVelocity(Vector2 newVelocity)
         {

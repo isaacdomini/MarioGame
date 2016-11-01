@@ -82,13 +82,8 @@ namespace MarioGame.Sprites
 
         public override void Draw(SpriteBatch batch)
         {
-            if(!Entity._isOnScreen)
-            {
-                return;
-            }
             var sourceRect = new Rectangle(((int)FrameSet[FrameSetPosition]) * FrameWidth, ((int)RowSet[RowSetPosition]) * FrameHeight, FrameWidth, FrameHeight);
-            batch.Draw(texture: Texture, position: Position, sourceRectangle: sourceRect, color: Color.White, effects : Flipped);
-     
+            batch.Draw(texture: Texture, position: Position, sourceRectangle: sourceRect, color: Color.White, effects: Flipped);
         }
         public void ChangeDirection(Directions newDirection)
         {

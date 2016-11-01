@@ -18,7 +18,6 @@ namespace MarioGame.Entities
             var stateMachine = new GoombaStateMachine(this);
             ChangeActionState(stateMachine.WalkingState);
             AState.Begin(AState);
-            IsCollidable = true;
         }
         //TODO: couldn't we just inherit ChangeActionState from some parent
         public void ChangeActionState(GoombaActionState newState)

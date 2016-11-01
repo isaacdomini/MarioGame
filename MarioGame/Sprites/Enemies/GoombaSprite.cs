@@ -17,7 +17,7 @@ namespace MarioGame.Sprites
         Dead = 2,
     }
 
-    public class GoombaSprite : AnimatedSprite
+    public class GoombaSprite : HidableSprite
     {
         public GoombaSprite(ContentManager content, Entity entity) : base(content, entity)
         {

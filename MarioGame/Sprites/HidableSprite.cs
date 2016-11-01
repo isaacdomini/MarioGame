@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MarioGame.Entities;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MarioGame.Sprites
 {
@@ -17,6 +18,12 @@ namespace MarioGame.Sprites
         public HidableSprite(ContentManager content, Entity entity) : base(content, entity)
         {
         }
-
+        public override void Draw(SpriteBatch batch)
+        {
+            if (isVisible)
+            {
+                base.Draw(batch);
+            }
+        }
     }
 }

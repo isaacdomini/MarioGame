@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MarioGame.Core;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MarioGame.Entities
 {
     public abstract class ContainableHidableEntity : Entity, IContainable, IHidable
     {
+        int _tickCount;
+        bool revealing;
         public ContainableHidableEntity(Vector2 position, ContentManager content, float xVelocity = 0, float yVelocity = 0) : base(position, content, xVelocity, yVelocity)
         {
         }
@@ -22,9 +26,38 @@ namespace MarioGame.Entities
                 return _isVisible;
             }
         }
-
-        public abstract void Hide();
+        
         public abstract void LeaveContainer();
-        public abstract void Show();
+        public void Hide()
+        {
+            _isVisible = false;
+            revealing = false;
+        }
+
+        public void Show()
+        {
+            _tickCount = 10;
+            revealing = true;
+        }
+        public override void Update(Viewport viewport, GameTime gameTime)
+        {
+            if (IsVisible)
+            {
+                base.Update(viewport, gameTime);
+            }
+            else if (_tickCount > 0)
+            {
+                _tickCount--;
+            } else if (_tickCount == 0 && revealing == true)
+            {
+                _isVisible = true;
+                revealing = false;
+            }
+        }
+        public override void OnCollide(IEntity otherObject, Sides ownSide, Sides otherSide)
+        {
+            if (IsVisible)
+            base.OnCollide(otherObject, ownSide, otherSide);
+        }
     }
 }

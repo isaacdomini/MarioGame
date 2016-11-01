@@ -32,7 +32,6 @@ namespace MarioGame.Entities
         }
         public override void Break()
         {
-            IsCollidable = false;
             ((BlockActionState)AState).Break();
         }
     }

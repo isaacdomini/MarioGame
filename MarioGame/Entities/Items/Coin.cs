@@ -8,7 +8,6 @@ namespace MarioGame.Entities
     {
         public Coin(Vector2 position, ContentManager content) : base(position, content)
         {
-            IsCollidable = true;
         }
     }
 }

@@ -7,7 +7,6 @@ namespace MarioGame.States
         public FireState(Mario entity, MarioPowerUpStateMachine stateMachine) : base(entity, stateMachine)
         {
             PowerUpState = MarioPowerUpStateEnum.Fire;
-            Mario.IsCollidable = true;
         }
         public override void ChangeToStar()
         {

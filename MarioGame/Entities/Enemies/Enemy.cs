@@ -7,16 +7,14 @@ using System;
 
 namespace MarioGame.Entities
 {
-    public class Enemy : Entity
+    public class Enemy : Entity, IHidable
     {
         public AnimatedSprite EnemySprite => Sprite;
         protected EnemyActionState EnemyActionState => (EnemyActionState)AState;
         protected bool IsDead;
-        public bool Dead => IsDead;
-
+        public bool IsVisible => !IsDead;
         public Enemy(Vector2 position, ContentManager content) : base(position, content)
         {
-            IsCollidable = true;
             IsDead = false;
             BoxPercentSizeOfEntity = .5f;
         }
@@ -49,6 +47,21 @@ namespace MarioGame.Entities
                     EnemyActionState.HitBlock();
                 }
             }
+        }
+        public override void Delete()
+        {
+            Hide();
+            base.Delete();
+        }
+
+        public void Hide()
+        {
+            IsDead = true;
+        }
+
+        public void Show()
+        {
+            IsDead = false;
         }
     }
 }

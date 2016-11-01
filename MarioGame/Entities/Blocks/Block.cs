@@ -29,7 +29,6 @@ namespace MarioGame.Entities
         {
             ActionStateMachine = new BlockActionStateMachine(this);
             AState = ActionStateMachine.StandardState;
-            IsCollidable = true;
             floating = true;
         }
         public void SetBlockActionState(string state)

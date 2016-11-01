@@ -114,8 +114,9 @@ namespace MarioGame.Theming
                         while (h.amount-- > 0)
                         {
                             var hiddenItem = (ContainableHidableEntity)CreateEntity(h.type, new Vector2(instance.column, instance.row), content);
-                            hiddenItem.Hide();
                             ((IContainer)entity).AddContainedItem(hiddenItem);
+                            script.AddEntity(hiddenItem);
+                            hiddenItem.Hide();
                         }
                     });
 

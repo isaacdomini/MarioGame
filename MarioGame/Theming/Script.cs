@@ -70,13 +70,11 @@ namespace MarioGame.Theming
             {
                 if (layer.WorldToScreen(e.Position).X > (layer._camera._viewport.Bounds.Right))
                 {
-                    e._isOnScreen = false;
-                    e.IsCollidable = false;
-                }
-                else
-                {
-                    e._isOnScreen = true;
-                    e.IsCollidable = true;
+                    if (e is IHidable)
+                    {
+                        ((IHidable)e).Hide();
+                    }
+
                 }
             }
         }

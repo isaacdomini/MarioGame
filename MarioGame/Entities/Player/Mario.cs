@@ -44,7 +44,6 @@ namespace MarioGame.Entities
             var marioPowerUpStateMachine = new MarioPowerUpStateMachine(this);           
             AState = marioActionStateMachine.IdleMarioState; //TODO: make marioActionState a casted getter of aState?
             PState = marioPowerUpStateMachine.StandardState;
-            IsCollidable = true;
             Direction = Directions.Right;
             _spaceBarAction = SpaceBarAction.Run;
         }
@@ -199,7 +198,7 @@ namespace MarioGame.Entities
         private void OnCollideEnemy(Enemy enemy, Sides side)
         {
             if (Invincible) return;
-            if (!enemy.Dead && side != Sides.Bottom)
+            if (!enemy.IsVisible && side != Sides.Bottom)
             {
                 MarioPowerUpState.OnHitByEnemy();
             }
@@ -232,26 +231,30 @@ namespace MarioGame.Entities
         }
         private void OnCollideItem(Item item, Sides side)
         {
-            if (item is Coin)
+            if (item.IsVisible)
             {
-                //Add code to add coin to total coins
+                if (item is Coin)
+                {
+                    //Add code to add coin to total coins
+                }
+                else if (item is Star)
+                {
+                    ChangeToStarState();
+                }
+                else if (item is FireFlower)
+                {
+                    ChangeToFireState();
+                }
+                else if (item is Mushroom1Up)
+                {
+                    //Add code to add extra life
+                }
+                else if (item is MushroomSuper)
+                {
+                    ChangeToSuperState();
+                }
             }
-            else if (item is Star)
-            {
-                ChangeToStarState();
-            }
-            else if (item is FireFlower)
-            {
-                ChangeToFireState();
-            }
-            else if (item is Mushroom1Up)
-            {
-                //Add code to add extra life
-            }
-            else if (item is MushroomSuper)
-            {
-                ChangeToSuperState();
-            }
+
         }
         public override void OnCollide(IEntity otherObject, Sides side, Sides otherSide)
         {
@@ -262,6 +265,7 @@ namespace MarioGame.Entities
             }
             else if (otherObject is Item)
             {
+                
                 OnCollideItem((Item)otherObject, side);
             }
        }

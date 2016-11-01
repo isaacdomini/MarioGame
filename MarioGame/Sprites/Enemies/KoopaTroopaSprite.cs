@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace MarioGame.Sprites
 {
-    public class KoopaTroopaSprite : AnimatedSprite
+    public class KoopaTroopaSprite : HidableSprite
     {
         public enum Frames
         {

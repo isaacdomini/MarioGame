@@ -11,6 +11,13 @@ namespace MarioGame.Sprites
         {
             AssetName = "mushroom1Up";
         }
+        public override void Draw(SpriteBatch batch)
+        {
+            if (isVisible)
+            {
+                base.Draw(batch);
+            }
+        }
     }
 }
 

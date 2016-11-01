@@ -9,7 +9,6 @@ namespace MarioGame.Entities
     {
         public MushroomSuper(Vector2 position, ContentManager content) : base(position, content)
         {
-            IsCollidable = true;
             _velocity = -1 * MovingVelocity;
         }
 

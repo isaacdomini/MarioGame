@@ -27,7 +27,6 @@ namespace MarioGame.Entities
             var stateMachine = new KoopaStateMachine(this);
             ChangeActionState(stateMachine.WalkingState);
             AState.Begin(AState);
-            IsCollidable = true;
         }
         //TODO: couldn't we delete this method and just let the parent method be used?
         public void ChangeActionState(KoopaActionState newState)
