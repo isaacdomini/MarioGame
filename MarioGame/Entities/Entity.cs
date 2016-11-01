@@ -188,7 +188,7 @@ namespace MarioGame.Entities
             {
                 if (side == Sides.Left || side == Sides.Right)
                 {
-                    OnBlockSideCollision();
+                    OnBlockSideCollision(side);
                 }
                 else if (side == Sides.Top)
                 {
@@ -217,6 +217,6 @@ namespace MarioGame.Entities
             _velocity.Y = 0;
         }
 
-        protected virtual void OnBlockSideCollision() { }
+        protected virtual void OnBlockSideCollision(Sides side) { }
     }
 }

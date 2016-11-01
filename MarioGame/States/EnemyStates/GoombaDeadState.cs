@@ -10,6 +10,7 @@ namespace MarioGame.States
 
         {
             EnemyState = EnemyActionStateEnum.Dead;
+            entity.IsCollidable = false;
         }
         public override void Begin(IState prevState)
         {

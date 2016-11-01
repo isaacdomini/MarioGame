@@ -209,9 +209,12 @@ namespace MarioGame.Entities
                 _position -= new Vector2(0, 15);
             }
         }
-        protected override void OnBlockSideCollision()
+        protected override void OnBlockSideCollision(Sides side)
         {
-            _position.X -= 2 * Velocity.X;
+            if (side == Sides.Right)
+                _position.X -= 2;
+            else
+                _position.X += 2;
             HaltX();
             MarioActionState.Halt();
         }
