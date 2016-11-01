@@ -48,8 +48,12 @@ namespace MarioGame.Entities
         }
         public virtual void Break()
         {
-            CreateBlockPieces(_content);
-            Delete();
+            if (!(AState is StandardState))//TODO: make it so that BrickBlock doesn't have to know what state it is in. Having to know is totally against the point of states
+            {
+                CreateBlockPieces(_content);
+                Delete();
+            }
+
         }
     }
 }

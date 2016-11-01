@@ -18,7 +18,8 @@ namespace MarioGame.Entities
     {
         private Partitions _partition;
         private int millisecondsElapsed;
-        private int millisecondsUntilDeletion = 500;
+        private int millisecondsUntilDeletion = 550;
+        private const float breakSpeed = 1;
 
        
         public BlockPiece(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities, Partitions partition) : base(position, content, addToScriptEntities)
@@ -27,20 +28,20 @@ namespace MarioGame.Entities
             switch (partition)
             {
                 case Partitions.TopLeft:
-                    _velocity.Y = -3;
-                    _velocity.X = -3; //TODO: change xVelocity with speed and direction
+                    _velocity.Y = -1 * breakSpeed;
+                    _velocity.X = -1*breakSpeed; //TODO: change xVelocity with speed and direction
                     break;
                 case Partitions.TopRight:
-                    _velocity.Y = -3;
-                    _velocity.X = 3;
+                    _velocity.Y = -1 * breakSpeed;
+                    _velocity.X = 1*breakSpeed;
                     break;
                 case Partitions.BottomLeft:
-                    _velocity.Y = 3;
-                    _velocity.X = -3;
+                    _velocity.Y = 1*breakSpeed;
+                    _velocity.X = -1 * breakSpeed;
                     break;
                 case Partitions.BottomRight:
-                    _velocity.Y = 3;
-                    _velocity.X = 3;
+                    _velocity.Y = 1 * breakSpeed;
+                    _velocity.X = 1 * breakSpeed;
                     break;
             }
         }
@@ -53,6 +54,12 @@ namespace MarioGame.Entities
             {
                 Delete();
             }
+        }
+
+        public override void OnBlockBottomCollision()
+        {
+            base.OnBlockBottomCollision();
+            _velocity.X = 0;
         }
     }
 }
