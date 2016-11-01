@@ -1,4 +1,5 @@
-﻿using MarioGame.Entities;
+﻿using MarioGame.Core;
+using MarioGame.Entities;
 
 
 namespace MarioGame.States
@@ -23,5 +24,11 @@ namespace MarioGame.States
             StateMachine.DeadState.Begin(this);
         }
 
+        public override void JumpedOn(Sides side)
+        {
+            //base.JumpedOn(side);
+            if(side == Sides.Top)
+                ChangeToDead();
+        }
     }
 }

@@ -11,7 +11,7 @@ namespace MarioGame.Entities
 {
     public class Mario : PowerUpEntity
     {
-        private float _secondsOfInvincibilityRemaining = 0.0f;
+        //private float _secondsOfInvincibilityRemaining = 0.0f;
         public bool Invincible => _secondsOfInvincibilityRemaining > 0 || PState is FireStarState || PState is StandardStarState || PState is SuperStarState;
         // Could be useful for casting in certain circumstances
         public MarioPowerUpState MarioPowerUpState => (MarioPowerUpState)PState;
@@ -199,17 +199,17 @@ namespace MarioGame.Entities
         private void OnCollideEnemy(Enemy enemy, Sides side)
         {
             if (Invincible) return;
-            if ((enemy.IsVisible || enemy.CurrentActionState is KoopaBouncingState) && side != Sides.Bottom)
+            if (enemy.IsVisible && side != Sides.Bottom )
             {
-                if(!(enemy.Velocity.Equals(new Vector2(0,0))))
+                if (enemy._secondsOfInvincibilityRemaining <= 0)
                 {
                     MarioPowerUpState.OnHitByEnemy();
                 }
             }
             else
             {
-                    Halt();
-                    _position -= new Vector2(0, 15);
+                Halt();
+                _position -= new Vector2(0, 15);
             }
         }
         protected override void OnBlockSideCollision(Sides side)

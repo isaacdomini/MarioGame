@@ -19,7 +19,7 @@ namespace MarioGame.Entities
         }
 
         protected AnimatedSprite _sprite;
-        
+        public float _secondsOfInvincibilityRemaining = 0.0f;
         protected ActionState AState;
         private bool _colliding;
         protected bool floating;

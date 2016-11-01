@@ -30,10 +30,10 @@ namespace MarioGame.Entities
             {
                 //if (side == Sides.Top)
                 //{
-                    EnemyActionState.JumpedOn(side); 
+                EnemyActionState.JumpedOn(side);
                 //}
             }
-            if(otherObject is Block)
+            if (otherObject is Block)
             {
                 if(side == Sides.Left || side == Sides.Right)
                 {

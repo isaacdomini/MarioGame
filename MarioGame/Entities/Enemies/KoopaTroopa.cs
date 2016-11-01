@@ -53,6 +53,10 @@ namespace MarioGame.Entities
                 ChangeShellVelocityDirection();
                 TurnRight();
             }
+            if (_secondsOfInvincibilityRemaining > 0)
+            {
+                _secondsOfInvincibilityRemaining--;
+            }
             /*else if (Position.X + _width > viewport.Width)
             {
                 _position.X = viewport.Width - _width;

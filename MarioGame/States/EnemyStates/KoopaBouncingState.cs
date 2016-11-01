@@ -21,11 +21,17 @@ namespace MarioGame.States
             base.Begin(prevState);
             Koopa.ChangeActionState(StateMachine.BouncingState);
             Koopa.SetShellVelocityToMoving();
+            Koopa._secondsOfInvincibilityRemaining = 50f;
         }
         public override void JumpedOn(Sides side)
         {
             base.JumpedOn(side);
             ChangeToDead();
+        }
+
+        public override void ChangeToDead()
+        {
+            StateMachine.DeadState.Begin(this);
         }
     }
 }
