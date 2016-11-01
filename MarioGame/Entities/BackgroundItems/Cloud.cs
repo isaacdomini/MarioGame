@@ -13,6 +13,7 @@ namespace MarioGame.Entities
         public Cloud(Vector2 position, ContentManager content) : base(position, content)
         {
             floating = true;
+            BoxPercentSizeOfEntity = 0f;
         }
 
     }
