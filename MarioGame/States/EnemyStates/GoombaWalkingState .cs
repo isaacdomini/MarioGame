@@ -1,4 +1,5 @@
-﻿using MarioGame.Entities;
+﻿using MarioGame.Core;
+using MarioGame.Entities;
 
 namespace MarioGame.States
 {
@@ -16,6 +17,14 @@ namespace MarioGame.States
             Goomba.SetVelocityToWalk();
             Goomba.ChangeActionState(StateMachine.WalkingState);
         }
-        
+
+        public override void JumpedOn(Sides side)
+        {
+            if(side == Sides.Top)
+            {
+                base.JumpedOn(side);
+            }
+        }
+
     }
 }
