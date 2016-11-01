@@ -98,6 +98,10 @@ namespace MarioGame.Theming
         {
             Entities.Add(entity);
         }
+        public void RemoveEntity(Entity entity)
+        {
+            Entities.Remove(entity);
+        }
 
         internal void MakeMarioJump()
         {

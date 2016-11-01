@@ -15,15 +15,19 @@ namespace MarioGame.Theming
         {
             _camera = camera;
             Parallax = parallax;
-            Sprites = new List<ISprite>();
+            Sprites = new List<Sprite>();
         }
 
         public Vector2 Parallax { get; set; }
-        public List<ISprite> Sprites { get; private set; }
+        public List<Sprite> Sprites { get; private set; }
 
-        public void Add(ISprite sprite)
+        public void Add(Sprite sprite)
         {
             this.Sprites.Add(sprite);
+        }
+        public void Remove(Sprite sprite)
+        {
+            this.Sprites.Remove(sprite);
         }
         public void Load()
         {
@@ -32,6 +36,7 @@ namespace MarioGame.Theming
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, _camera.GetViewMatrix(Parallax));
+            Sprites = Sprites.FindAll(s => !s.Deleted);
             Sprites.ForEach(s => s.Draw(spriteBatch));
             spriteBatch.End();
         }

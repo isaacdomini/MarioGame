@@ -17,8 +17,8 @@ namespace MarioGame.Sprites
         protected string AssetName;
         protected ContentManager Content;
         protected Entity Entity;
-
         public Vector2 Position => Entity.Position;
+        public bool Deleted => Entity.Deleted;
 
         public Sprite(ContentManager content, Entity entity)
         {

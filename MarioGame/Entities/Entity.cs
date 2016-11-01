@@ -48,6 +48,7 @@ namespace MarioGame.Entities
         public virtual void Delete()
         {
             Deleted = true;
+            
         }
         protected static int BoundingBoxWidth = 10;
         public Rectangle BoundingBox;
