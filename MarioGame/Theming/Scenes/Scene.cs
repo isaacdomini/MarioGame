@@ -59,11 +59,6 @@ namespace MarioGame.Theming.Scenes
             Layers[ActionLayer].Add(s);
         }
 
-        public void AddBackgroundSprite(Sprite s)
-        {
-            Layers[BackgroundLayer].Add(s);
-        }
-
         public void AddToLayer(int layer, Sprite s)
         {
             Layers[layer].Add(s);
