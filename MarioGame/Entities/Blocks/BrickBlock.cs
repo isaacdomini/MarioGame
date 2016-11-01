@@ -29,6 +29,7 @@ namespace MarioGame.Entities
                 new BlockPiece(_position + new Vector2(Width/2, Height/2), content, AddToScriptEntities, Partitions.BottomRight)
             };
             _blockPieces.ForEach(b => AddToScriptEntities(b));
+            _blockPieces.ConvertAll(b => b.Sprite).ForEach(s => s.Load());
         }
 
         public override void OnCollide(IEntity otherObject, Sides side, Sides otherSide)
@@ -49,7 +50,6 @@ namespace MarioGame.Entities
         {
             CreateBlockPieces(_content);
             Delete();
-            Console.WriteLine("Break just called on " + this);
         }
     }
 }

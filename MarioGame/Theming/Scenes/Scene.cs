@@ -17,6 +17,7 @@ namespace MarioGame.Theming.Scenes
         private Vector2 _camPos;
         public bool DrawBox=false;
 
+        public Script Script { get; }
 
         public Scene(Stage stage)
         {
@@ -24,7 +25,8 @@ namespace MarioGame.Theming.Scenes
             Script = new Script(this);
         }
 
-        private List<Layer> Layers { get; set; }
+        public List<Layer> Layers { get; set; }
+        private const int ActionLayer = 2;
         public Stage Stage { get; }
 
         public void Dispose()
@@ -37,36 +39,42 @@ namespace MarioGame.Theming.Scenes
         {
             Stage.Initialize();
             Script.Initialize();
-            Layers = new List<Layer>();
+
+            Camera = new Camera(Stage.Game1.GraphicsDevice.Viewport);
+            Layers = new List<Layer>
+            {
+                new Layer(Camera, new Vector2(0.1f, 1.0f)),
+                new Layer(Camera, new Vector2(0.5f, 1.0f)),
+                new Layer(Camera, new Vector2(1.0f, 1.0f))
+            };
             var middle = new Vector2(Stage.Game1.GraphicsDevice.Viewport.Width/2f,
                 Stage.Game1.GraphicsDevice.Viewport.Height/2f);
 
             LevelLoader.AddTileMapToScript("Level1.json", Script, Stage.Game1.Content);
-            Camera = new Camera(Stage.Game1.GraphicsDevice.Viewport);
             _camPos = Camera.Position;
         }
 
+        public void AddActionSprite(Sprite s)
+        {
+            Layers[ActionLayer].Add(s);
+        }
+
+        public void AddBackgroundSprite(Sprite s)
+        {
+            Layers[BackgroundLayer].Add(s);
+        }
+
+        public void AddToLayer(int layer, Sprite s)
+        {
+            Layers[layer].Add(s);
+        }
         public void LoadContent()
         {
             _spriteBatch = new SpriteBatch(Stage.Game1.GraphicsDevice);
 
             Stage.LoadContent();
-            Layers.Add(new Layer(Camera, new Vector2(0.1f, 1.0f)));
-            Layers.Add(new Layer(Camera, new Vector2(0.5f, 1.0f)));
-            Layers.Add(new Layer(Camera, new Vector2(1.0f, 1.0f)));
-            foreach (Entity e in Script.Entities)
-            {
-                if(e is BackgroundItem)
-                {
-                    Layers[((BackgroundItem)e).Layer].Add(e.Sprite);
-                }
-                else
-                {
-                    Layers[2].Add(e.Sprite);
-                    updateItemVisibility();
-                }
-            }
 
+            UpdateItemVisibility();
             Layers.ForEach(l => l.Load());
             
             Script.Entities.ForEach(e => e.LoadBoundingBox());
@@ -75,9 +83,9 @@ namespace MarioGame.Theming.Scenes
             RectanglePixel.SetData(new[] { Color.White });
 
         }
-        public void updateItemVisibility()
+        public void UpdateItemVisibility()
         {
-            Script.updateItemVisibility(Layers[2]);
+            Script.updateItemVisibility(Layers[ActionLayer]);
         }
         public void Update(GameTime gameTime)
         {
@@ -130,6 +138,5 @@ namespace MarioGame.Theming.Scenes
                 _spriteBatch.Dispose();
         }
 
-        public Script Script { get; }
     }
 }

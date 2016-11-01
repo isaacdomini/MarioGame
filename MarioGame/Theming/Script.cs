@@ -85,18 +85,27 @@ namespace MarioGame.Theming
             if(Mario.Position.X >= (GlobalConstants.GridWidth * LevelWidth) - (Viewport.Width / 3.0f))
             {
                 _scene.Camera.LookAt(new Vector2((GlobalConstants.GridWidth * LevelWidth) - (Viewport.Width / 3.0f),0));
-                _scene.updateItemVisibility();
+                _scene.UpdateItemVisibility();
             }
             else if (Mario.Position.X >= Viewport.Width / 3.0f)
             {
                 _scene.Camera.LookAt(Mario.Position);
-                _scene.updateItemVisibility();
+                _scene.UpdateItemVisibility();
             }
         }
 
         public void AddEntity(Entity entity)
         {
             Entities.Add(entity);
+            if (entity is BackgroundItem)
+            {
+                _scene.AddToLayer(((BackgroundItem) entity).Layer, entity.Sprite);
+            }
+            else
+            {
+                _scene.AddActionSprite(entity.Sprite);
+            }
+
         }
         public void RemoveEntity(Entity entity)
         {
