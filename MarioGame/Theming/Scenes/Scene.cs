@@ -51,17 +51,18 @@ namespace MarioGame.Theming.Scenes
             _spriteBatch = new SpriteBatch(Stage.Game1.GraphicsDevice);
 
             Stage.LoadContent();
+            Layers.Add(new Layer(Camera, new Vector2(0.1f, 1.0f)));
             Layers.Add(new Layer(Camera, new Vector2(0.5f, 1.0f)));
             Layers.Add(new Layer(Camera, new Vector2(1.0f, 1.0f)));
             foreach (Entity e in Script.Entities)
             {
                 if(e is BackgroundItem)
                 {
-                    Layers[0].Add(e.Sprite);
+                    Layers[((BackgroundItem)e).Layer].Add(e.Sprite);
                 }
                 else
                 {
-                    Layers[1].Add(e.Sprite);
+                    Layers[2].Add(e.Sprite);
                     updateItemVisibility();
                 }
             }
@@ -76,7 +77,7 @@ namespace MarioGame.Theming.Scenes
         }
         public void updateItemVisibility()
         {
-            Script.updateItemVisibility(Layers[1]);
+            Script.updateItemVisibility(Layers[2]);
         }
         public void Update(GameTime gameTime)
         {
@@ -87,7 +88,6 @@ namespace MarioGame.Theming.Scenes
             //Layers.ForEach(l => Script.updateItemVisibility(l));
             //camera.Position = new Vector2(camera.Position.X + 1, camera.Position.Y);
             //camera.LookAt(_script.mario.position);
-
         }
 
         public void Draw(GameTime gameTime)
