@@ -206,8 +206,7 @@ namespace MarioGame.Entities
             else
             {
                 Halt();
-                //_position -= 4*Velocity;
-
+                _position -= new Vector2(0, 15);
             }
         }
         protected override void OnBlockSideCollision()

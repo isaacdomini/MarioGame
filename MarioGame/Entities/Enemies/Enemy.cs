@@ -17,7 +17,7 @@ namespace MarioGame.Entities
         public Enemy(Vector2 position, ContentManager content) : base(position, content)
         {
             IsDead = false;
-            BoxPercentSizeOfEntity = .6f;
+            BoxPercentSizeOfEntity = .5f;
         }
         public override void Halt()
         {

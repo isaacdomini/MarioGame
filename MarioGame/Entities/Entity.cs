@@ -90,7 +90,7 @@ namespace MarioGame.Entities
         {
             BoundingBoxSize = new Point((int) (Sprite.FrameWidth * BoxPercentSizeOfEntity), (int) (Sprite.FrameHeight * BoxPercentSizeOfEntity));
             var sideMargin = (int) ((1.0f - BoxPercentSizeOfEntity) / 2.0 * Sprite.FrameWidth);
-            var topBottomMargin = (int)((1.0f - BoxPercentSizeOfEntity)/2 * Sprite.FrameHeight);
+            var topBottomMargin = (int)((1.0f - BoxPercentSizeOfEntity) * Sprite.FrameHeight);
             BoundingBoxOffset = new Point(sideMargin, topBottomMargin);
         }
         public virtual void ChangeActionState(ActionState state)
