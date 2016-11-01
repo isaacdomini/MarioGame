@@ -1,0 +1,20 @@
+Code Review
+Date: 11/1/16
+Author: Adam Roller
+File Being Reivewed: MarioGame/Entities/Entity.cs
+Author of File:Everyone
+Time Spent: ~20 minutes.
+Comments:
+Unnecessary imports, just pointing it out before I remove them.
+Variables are jumbled and could use some cleaning up. In particular it might be useful to group get and set method variables at the bottom of the list to not break up the section.
+The public ACtionState CurrentActionState is never used from what I can tell so it can be removed to just allow the AState variable to be used.
+The void PreConstructor is never actually used for anything or overwritten so it can be removed.
+In the Constructor:
+	-the var spriteClass can be gotten rid of and just put into the next line as it's not too long of a sequence.
+SetUpBoundingBoxProperties:
+	-Magic floating numbers are present, should put those in variables or a Class
+	-May want to actually move this code into LoadBoundingBox
+Halt:
+	-Might want to add some behavior for this even though it's overwritten a lot.
+
+More magic numbers in OnBlockBottomCollision and OnBlockTopCollision, again make them vairables or in a class.
