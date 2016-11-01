@@ -12,7 +12,7 @@ namespace MarioGame.Entities
 {
     public interface IEntity 
     {
-        void Update(Viewport viewport, GameTime gameTime);
+        void Update(Viewport viewport, int elapsedMilliseconds);
         void ChangeActionState(ActionState newstate);
         Vector2 Position { get; }
         ActionState CurrentActionState { get; }

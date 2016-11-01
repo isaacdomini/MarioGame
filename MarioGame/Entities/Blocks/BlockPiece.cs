@@ -45,10 +45,11 @@ namespace MarioGame.Entities
             }
         }
 
-        public override void Update(Viewport viewport, GameTime gameTime)
+        public override void Update(Viewport viewport, int elapsedMilliseconds)
         {
-            base.Update(viewport, gameTime);
-            millisecondsElapsed += gameTime.ElapsedGameTime.Milliseconds; //TODO: make it so that user doesn't have to know the structure of gameTime
+            base.Update(viewport, elapsedMilliseconds);
+            Console.WriteLine("Block pieces update called");
+            millisecondsElapsed += elapsedMilliseconds; //TODO: make it so that user doesn't have to know the structure of gameTime
             if (millisecondsElapsed > millisecondsUntilDeletion)
             {
                 Delete();

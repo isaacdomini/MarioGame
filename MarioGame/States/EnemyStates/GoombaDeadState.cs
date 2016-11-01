@@ -5,7 +5,7 @@ namespace MarioGame.States
 {
     internal class GoombaDeadState : GoombaActionState
     {
-        private float _deleteTimer = 0.0f;
+        private int _elapsedMilliseconds;
         public GoombaDeadState(Goomba entity, GoombaStateMachine stateMachine) : base(entity, stateMachine)
 
         {
@@ -16,24 +16,22 @@ namespace MarioGame.States
             base.Begin(prevState);
             Goomba.SetVelocityToIdle();
             Goomba.ChangeActionState(StateMachine.DeadState);
+            _elapsedMilliseconds = 0;
         }
 
-        public override void UpdateEntity(GameTime gameTime)
+        public override void UpdateEntity(int elapsedMilliseconds)
         {
-            if (_deleteTimer > 1)
+            _elapsedMilliseconds += elapsedMilliseconds;
+            if (elapsedMilliseconds > 1000)
             {
-                _deleteTimer = 0.0f;
+                _elapsedMilliseconds = 0;
                 Goomba.Delete();
-            }
-            else
-            {
-                _deleteTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
         }
 
         public override void ChangeToDead()
         {
-            //Do nothing
+            //Do nothing. Intentionally left blank as base is not nothing
         }
     }
 }

@@ -20,9 +20,9 @@ namespace MarioGame.Entities
             _tickCount = 0;
 
         }
-        public override void Update(Viewport viewport, GameTime gameTime)
+        public override void Update(Viewport viewport, int elapsedMilliseconds)
         {
-            base.Update(viewport, gameTime);
+            base.Update(viewport, elapsedMilliseconds);
             if (_tickCount > 1)
             {
                 _tickCount--;

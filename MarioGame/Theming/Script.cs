@@ -43,24 +43,19 @@ namespace MarioGame.Theming
             var entityPairs = new List<int>();
             Entities = Entities.FindAll(e => !e.Deleted);
             Entities.FindAll(e => e.Moving).ForEach(e =>
-           {
+            {
                Entities.FindAll(e2 => e.BoundingBox.Intersects(e2.BoundingBox)).ForEach(e2 =>
                {
-                   if(!entityPairs.Contains(e.GetHashCode() ^ e2.GetHashCode()))
-                   {
-                       var eSide = CollisionHandler.GetIntersectingSide(e.BoundingBox, e2.BoundingBox);
-                       var e2Side = CollisionHandler.GetIntersectingSide(e2.BoundingBox, e.BoundingBox);
-                       // This would only be true when the bottom of a hidden block collides with the bottom of Mario
-                       e.OnCollide(e2, eSide, e2Side);
-                       e2.OnCollide(e, e2Side, eSide);
-                       entityPairs.Add(e.GetHashCode() ^ e2.GetHashCode());
-
-                   }
-                });
-
-           });
-            Entities.ForEach(e => e.Update(Viewport, gameTime));
-            Console.WriteLine(Mario.Position.X);
+                   if (entityPairs.Contains(e.GetHashCode() ^ e2.GetHashCode())) return;
+                   var eSide = CollisionHandler.GetIntersectingSide(e.BoundingBox, e2.BoundingBox);
+                   var e2Side = CollisionHandler.GetIntersectingSide(e2.BoundingBox, e.BoundingBox);
+                   // This would only be true when the bottom of a hidden block collides with the bottom of Mario
+                   e.OnCollide(e2, eSide, e2Side);
+                   e2.OnCollide(e, e2Side, eSide);
+                   entityPairs.Add(e.GetHashCode() ^ e2.GetHashCode());
+               });
+            });
+            Entities.ForEach(e => e.Update(Viewport, gameTime.ElapsedGameTime.Milliseconds));
 
         }
         public void updateItemVisibility(Layer layer)

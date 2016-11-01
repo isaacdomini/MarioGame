@@ -32,7 +32,7 @@ namespace MarioGame.States
             StateMachine.IdleMarioState.Begin(this);
         }
 
-        public override void UpdateEntity(GameTime gameTime)
+        public override void UpdateEntity(int elapsedMilliseconds)
         {
             //base.UpdateEntity(gameTime);
             if (Mario.Velocity.Y > -.01f)

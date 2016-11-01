@@ -44,9 +44,9 @@ namespace MarioGame.Entities
             var newVelocity = Velocity * -1;
             this.SetVelocity(newVelocity);
         }
-        public override void Update(Viewport viewport, GameTime gameTime)
+        public override void Update(Viewport viewport, int elapsedMilliseconds)
         {
-            base.Update(viewport, gameTime);
+            base.Update(viewport, elapsedMilliseconds);
             if (Position.X < 0)
             {
                 _position.X = 0;

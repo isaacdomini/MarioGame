@@ -87,10 +87,10 @@ namespace MarioGame.Entities
                 OnInvincibilityEnded();
             }
         }
-        public override void Update(Viewport viewport, GameTime gameTime)
+        public override void Update(Viewport viewport, int elapsedMilliseconds)
         {
-            base.Update(viewport, gameTime);
-            MarioActionState.UpdateEntity(gameTime);
+            base.Update(viewport, elapsedMilliseconds);
+            MarioActionState.UpdateEntity(elapsedMilliseconds);
             UpdateInvincibilityStatus();
 
             SetXVelocity(Vector2.Zero);

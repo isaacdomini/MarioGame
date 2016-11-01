@@ -23,7 +23,7 @@ namespace MarioGame.States
         }
         public virtual void End() {}
 
-        public virtual void UpdateEntity(GameTime gameTime)
+        public virtual void UpdateEntity(int elapsedMilliseconds)
         {
         }
     }

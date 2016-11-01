@@ -39,11 +39,11 @@ namespace MarioGame.Entities
             _tickCount = 10;
             revealing = true;
         }
-        public override void Update(Viewport viewport, GameTime gameTime)
+        public override void Update(Viewport viewport, int elapsedMilliseconds)
         {
             if (IsVisible)
             {
-                base.Update(viewport, gameTime);
+                base.Update(viewport, elapsedMilliseconds);
             }
             else if (_tickCount > 0)
             {

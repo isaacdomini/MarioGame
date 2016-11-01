@@ -44,9 +44,9 @@ namespace MarioGame.Entities
         // Only called when mario is super
         public virtual void ChangeToStandard() { }
 
-        public override void Update(Viewport viewport, GameTime gameTime)
+        public override void Update(Viewport viewport, int elapsedMilliseconds)
         {
-            base.Update(viewport, gameTime);
+            base.Update(viewport, elapsedMilliseconds);
         }
 
         public void Hide()

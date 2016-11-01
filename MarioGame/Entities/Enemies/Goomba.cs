@@ -26,10 +26,10 @@ namespace MarioGame.Entities
             AState = newState;
             GoombaSprite.ChangeActionState(newState);
         }
-        public override void Update(Viewport viewport, GameTime gameTime)
+        public override void Update(Viewport viewport, int elapsedMilliseconds)
         {
-            base.Update(viewport, gameTime);
-            AState.UpdateEntity(gameTime);
+            base.Update(viewport, elapsedMilliseconds);
+            AState.UpdateEntity(elapsedMilliseconds);
         }
     }
 }

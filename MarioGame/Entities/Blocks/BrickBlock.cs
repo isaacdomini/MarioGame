@@ -49,6 +49,7 @@ namespace MarioGame.Entities
         {
             CreateBlockPieces(_content);
             Delete();
+            Console.WriteLine("Break just called on " + this);
         }
     }
 }

@@ -97,7 +97,7 @@ namespace MarioGame.Entities
         {
             AState = state;
         }
-        public virtual void Update(Viewport viewport, GameTime gameTime)
+        public virtual void Update(Viewport viewport, int elapsedMilliseconds)
         {
             _position += Velocity;
             if (!floating)

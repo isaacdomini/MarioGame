@@ -13,7 +13,7 @@ namespace MarioGame.Entities
             _velocity = -1 * MovingVelocity;
         }
 
-        public override void Update(Viewport viewport, GameTime gameTime)
+        public override void Update(Viewport viewport, int elapsedMilliseconds)
         {
             if (((MushroomSuperSprite)Sprite).isVisible == false)
             {
@@ -21,7 +21,7 @@ namespace MarioGame.Entities
                 BoundingBox.Y = (int)_position.Y;
 
             }
-            base.Update(viewport, gameTime);
+            base.Update(viewport, elapsedMilliseconds);
         }
     }
 }

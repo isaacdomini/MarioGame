@@ -13,7 +13,7 @@ namespace MarioGame.Entities
             _velocity = MovingVelocity;
         }
 
-        public override void Update(Viewport viewport, GameTime gameTime)
+        public override void Update(Viewport viewport, int elapsedMilliseconds)
         {
             if (Sprite is BlockSprite)
             {
@@ -24,7 +24,7 @@ namespace MarioGame.Entities
                 }
 
             }
-            base.Update(viewport, gameTime);
+            base.Update(viewport, elapsedMilliseconds);
         }
     }
 }

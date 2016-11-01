@@ -19,16 +19,16 @@ namespace MarioGame.Entities
             timeTillDisappear = 10;
             base.LeaveContainer();
         }
-        public override void Update(Viewport viewport, GameTime gameTime)
+        public override void Update(Viewport viewport, int elapsedMilliseconds)
         {
             if (revealing)
             {
-                base.Update(viewport, gameTime);
+                base.Update(viewport, elapsedMilliseconds);
             }
             else if (timeTillDisappear > 0)
             {
                 timeTillDisappear--;
-                base.Update(viewport, gameTime);
+                base.Update(viewport, elapsedMilliseconds);
             }
             else if (timeTillDisappear == 0 && IsVisible)
             {
