@@ -38,6 +38,16 @@ namespace MarioGame.States
         }
         public virtual void ChangeToStar() {
             Mario.SetInvincible(10);
+            if (Mario.CurrentPowerUpState is StandardState)
+            {
+                Mario.ChangePowerUpState(StateMachine.StandardStarState);
+                StateMachine.StandardStarState.Begin(this);
+            }
+            else
+            {
+                Mario.ChangePowerUpState(StateMachine.SuperStarState);
+                StateMachine.SuperStarState.Begin(this);
+            }
         }
         public virtual void OnHitByEnemy() { }
         public virtual void OnInvincibilityEnded() { }
