@@ -26,5 +26,10 @@ namespace MarioGame.States
         {
             //do nothing
         }
+
+        public override void HitByMarioSide()
+        {
+            
+        }
     }
 }

@@ -35,5 +35,10 @@ namespace MarioGame.States
                 Koopa.TurnRight();
             }
         }
+
+        public virtual void HitByMarioSide()
+        {
+           Koopa.SetShellVelocityToMoving(); 
+        }
     }
 }

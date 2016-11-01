@@ -17,7 +17,8 @@ namespace MarioGame.Entities
 {
     public class KoopaTroopa : Enemy
     {
-        protected KoopaTroopaSprite KoopaTroopaSprite => (KoopaTroopaSprite)EnemySprite;
+        protected KoopaTroopaSprite KoopaTroopaSprite => (KoopaTroopaSprite) EnemySprite;
+        protected KoopaActionState KoopaActionState => (KoopaActionState) EnemyActionState;
         //public KoopaTroopaSprite eSprite;
         public static Vector2 ShellMovingVelocity = new Vector2(2, 0);
 
@@ -59,6 +60,15 @@ namespace MarioGame.Entities
                 ChangeShellVelocityDirection();
                 TurnLeft();
             }*/
+        }
+
+        public override void OnCollide(IEntity otherObject, Sides side, Sides otherSide)
+        {
+            base.OnCollide(otherObject, side, otherSide);
+            if (otherObject is Mario)
+            {
+                KoopaActionState.HitByMarioSide();
+            }
         }
     }
 }
