@@ -61,13 +61,10 @@ namespace MarioGame.Entities
             }*/
         }
 
-        public override void OnCollide(IEntity otherObject, Sides side, Sides otherSide)
-        {
-            base.OnCollide(otherObject, side, otherSide);
-            if (otherObject is Mario)
-            {
-                KoopaActionState.HitByMarioSide();
-            }
-        }
+        //We shouldn't have to have this since it only calls the base method
+        //public override void OnCollide(IEntity otherObject, Sides side, Sides otherSide)
+        //{
+        //    base.OnCollide(otherObject, side, otherSide);
+        //}
     }
 }

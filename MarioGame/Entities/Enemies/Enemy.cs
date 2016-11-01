@@ -28,10 +28,10 @@ namespace MarioGame.Entities
             base.OnCollide(otherObject, side, otherSide);
             if (otherObject is Mario)
             {
-                if (side == Sides.Top)
-                {
+                //if (side == Sides.Top)
+                //{
                     EnemyActionState.JumpedOn(side); 
-                }
+                //}
             }
             if(otherObject is Block)
             {
