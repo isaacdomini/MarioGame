@@ -13,31 +13,25 @@ namespace MarioGame.Entities
     public abstract class ContainableHidableEntity : Entity, IContainable, IHidable
     {
         int _tickCount;
-        protected bool revealing { get; private set; }
+        protected bool Revealing { get; private set; }
         public ContainableHidableEntity(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities, float xVelocity = 0, float yVelocity = 0) : base(position, content, addToScriptEntities, xVelocity: xVelocity, yVelocity: yVelocity)
         {
         }
         protected bool _isVisible;
 
-        public bool IsVisible
-        {
-            get
-            {
-                return _isVisible;
-            }
-        }
-        
+        public bool IsVisible => _isVisible;
+
         public abstract void LeaveContainer();
         public void Hide()
         {
             _isVisible = false;
-            revealing = false;
+            Revealing = false;
         }
 
         public void Show()
         {
             _tickCount = 10;
-            revealing = true;
+            Revealing = true;
         }
         public override void Update(Viewport viewport, int elapsedMilliseconds)
         {
@@ -48,10 +42,10 @@ namespace MarioGame.Entities
             else if (_tickCount > 0)
             {
                 _tickCount--;
-            } else if (_tickCount == 0 && revealing == true)
+            } else if (_tickCount == 0 && Revealing == true)
             {
                 _isVisible = true;
-                revealing = false;
+                Revealing = false;
             }
         }
         public override void OnCollide(IEntity otherObject, Sides ownSide, Sides otherSide)
