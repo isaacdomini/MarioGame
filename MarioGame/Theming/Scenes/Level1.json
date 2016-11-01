@@ -5,6 +5,7 @@
   "entities": [
     {
       "type": "Cloud1",
+      "backgroundlayer" : 0,
       "position": [
         {
           "row": 5,
@@ -14,6 +15,7 @@
     },
     {
       "type": "Cloud2",
+      "backgroundlayer" : 0,
       "position": [
         {
           "row": 7,
@@ -23,6 +25,7 @@
     },
     {
       "type": "Hill1",
+      "backgroundlayer" : 1,
       "position": [
         {
           "row": 9,
@@ -32,6 +35,7 @@
     },
     {
       "type": "Bush3",
+      "backgroundlayer" : 1,
       "position": [
         {
           "row": 11,
@@ -41,6 +45,7 @@
     },
     {
       "type": "Hill2",
+      "backgroundlayer" : 1,
       "position": [
         {
           "row": 13,

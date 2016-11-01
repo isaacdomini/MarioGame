@@ -14,6 +14,7 @@ namespace MarioGame.Entities
         public BackgroundItem(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content, addToScriptEntities)
         {
             floating = true;
+            BoxPercentSizeOfEntity = 0f;
         }
 
     }

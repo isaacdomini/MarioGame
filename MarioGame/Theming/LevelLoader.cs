@@ -35,7 +35,6 @@ namespace MarioGame.Theming
                 {
                 rc.columns.ForEach(c => {
                     var entity = CreateEntity(e.type, new Vector2(c, rc.row), content, script.AddEntity);
-                    script.AddEntity(entity);
                     if(entity is BackgroundItem)
                     {
                         ((BackgroundItem)entity).Layer = e.backgroundlayer;
@@ -70,6 +69,8 @@ namespace MarioGame.Theming
                             ((Block)entity).Show();
                         }
                     }
+                    script.AddEntity(entity);
+
                 });
                 });
             });
