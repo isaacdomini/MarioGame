@@ -40,10 +40,14 @@ namespace MarioGame.Entities
             }
             if (otherObject is Block)
             {
-                if (side == Sides.Left || side == Sides.Right)
+                if (((Block)otherObject).IsVisible == true)
                 {
-                    this.FlipHorizontalVelocity();
+                    if (side == Sides.Left || side == Sides.Right)
+                    {
+                        this.FlipHorizontalVelocity();
+                    }
                 }
+
             }
         }
     }

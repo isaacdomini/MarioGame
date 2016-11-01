@@ -20,8 +20,6 @@ namespace MarioGame.Entities
         protected KoopaTroopaSprite _koopaTroopaSprite { get { return (KoopaTroopaSprite)EnemySprite; } }
         //public KoopaTroopaSprite eSprite;
         public static Vector2 shellMovingVelocity = new Vector2(2, 0);
-        private int _height;
-        private int _width;
         
         KoopaStateMachine _stateMachine;
 

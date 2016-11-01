@@ -9,8 +9,6 @@ namespace MarioGame.Entities
     {
         public Star(Vector2 position, ContentManager content) : base(position, content)
         {
-            int _height = 40;
-            int _width = 20;
             IsCollidable = true;
             _velocity = MovingVelocity;
         }

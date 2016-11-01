@@ -45,28 +45,26 @@ namespace MarioGame.Entities
         }
         public override void Bump()
         {
-            if (AState is UsedBlockState)
+            if (!(AState is UsedBlockState))
             {
-                return;
+                ((BlockActionState)AState).Bump();
+                if (_tickCount == 0)
+                {
+                    _tickCount = 10;
+                    _velocity.Y = -1;
+                }
+                if (HasItems())
+                {
+                    IContainable poppedItem = PopContainedItem();
+                    poppedItem.LeaveContainer();
+                    // TODO: Make poppedItem appear and pop out
+                }
+                else
+                {
+                    ((BlockActionState)AState).ChangeToUsed();
+                }
+                _isVisible = true;
             }
-            ((BlockActionState)AState).Bump();
-            if (_tickCount == 0)
-            {
-                _tickCount = 10;
-                _velocity.Y = -1;
-            }
-            if (HasItems())
-            {
-                IContainable poppedItem = PopContainedItem();
-                poppedItem.LeaveContainer();
-                // TODO: Make poppedItem appear and pop out
-            }
-            else
-            {
-                ((BlockActionState)AState).ChangeToUsed();
-            }
-            _isVisible = true;
-
         }
         public override void ChangeToStandard()
         {
