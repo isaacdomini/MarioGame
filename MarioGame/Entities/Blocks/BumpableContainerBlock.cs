@@ -45,7 +45,7 @@ namespace MarioGame.Entities
         }
         public override void Bump()
         {
-            if (!(AState is UsedBlockState))
+            if (!(AState is UsedBlockState) && !(AState is BumpingState))
             {
                 ((BlockActionState)AState).Bump();
                 if (_tickCount == 0)
@@ -57,12 +57,9 @@ namespace MarioGame.Entities
                 {
                     IContainable poppedItem = PopContainedItem();
                     poppedItem.LeaveContainer();
-                    // TODO: Make poppedItem appear and pop out
+                    
                 }
-                else
-                {
-                    ((BlockActionState)AState).ChangeToUsed();
-                }
+                if (!HasItems()) ((BlockActionState)AState).ChangeToUsed();
                 _isVisible = true;
             }
         }

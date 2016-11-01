@@ -18,11 +18,7 @@ namespace MarioGame.States
         {
             base.Begin(prevState);
         }
-
-        public override void ChangeToDead()
-        {
-            StateMachine.DeadState.Begin(this);
-        }
+        
         public void ChangeSpriteDirection()
         {
   
@@ -38,7 +34,7 @@ namespace MarioGame.States
 
         public virtual void HitByMarioSide()
         {
-           Koopa.SetShellVelocityToMoving(); 
+           
         }
     }
 }

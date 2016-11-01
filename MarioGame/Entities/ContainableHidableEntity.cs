@@ -13,7 +13,7 @@ namespace MarioGame.Entities
     public abstract class ContainableHidableEntity : Entity, IContainable, IHidable
     {
         int _tickCount;
-        bool revealing;
+        protected bool revealing { get; private set; }
         public ContainableHidableEntity(Vector2 position, ContentManager content, float xVelocity = 0, float yVelocity = 0) : base(position, content, xVelocity, yVelocity)
         {
         }

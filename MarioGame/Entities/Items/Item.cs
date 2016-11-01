@@ -24,7 +24,7 @@ namespace MarioGame.Entities
         }
         public override void OnCollide(IEntity otherObject, Sides side, Sides otherSide)
         {
-            if (IsVisible)
+            if (IsVisible && !(this is Coin))
             {
                 base.OnCollide(otherObject, side, otherSide);
                 if (otherObject is Mario)

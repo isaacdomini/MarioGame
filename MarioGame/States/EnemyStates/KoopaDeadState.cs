@@ -22,14 +22,9 @@ namespace MarioGame.States
             StateMachine.BouncingState.Begin(this);
         }
 
-        public override void ChangeToDead()
-        {
-            //do nothing
-        }
-
         public override void HitByMarioSide()
         {
-            
+            Koopa.SetShellVelocityToMoving();
         }
     }
 }

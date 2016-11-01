@@ -45,6 +45,8 @@ namespace MarioGame.Theming.Scenes
             Camera = new Camera(Stage.Game1.GraphicsDevice.Viewport);
             _camPos = Camera.Position;
 
+
+
         }
 
         public void LoadContent()
