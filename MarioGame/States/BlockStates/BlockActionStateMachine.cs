@@ -15,7 +15,6 @@ namespace MarioGame.States.BlockStates
 
         internal BumpingState BumpingState { get; }
 
-        internal BreakingState BreakingState { get; }
         
         public BlockActionStateMachine(Entities.Block block)
         {
@@ -23,7 +22,6 @@ namespace MarioGame.States.BlockStates
             UsedState = new UsedBlockState(block1, this);
             StandardState = new StandardState(block1, this);
             BumpingState = new BumpingState(block1, this);
-            BreakingState = new BreakingState(block1, this);
         }
     }
 }

@@ -33,10 +33,5 @@ namespace MarioGame.States.BlockStates
             this.End();
             StateMachine.BumpingState.Begin(this);
         }
-        public override void Break()
-        {
-            this.End();
-            StateMachine.BreakingState.Begin(this);
-        }
     }
 }

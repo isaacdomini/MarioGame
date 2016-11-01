@@ -42,7 +42,6 @@ namespace MarioGame.Entities
         public virtual void ChangeToUsed() { }
         public virtual void Bump() { }
         // Only called when mario is super
-        public virtual void Break() { }//TODO: only brickBlocks should have a break method
         public virtual void ChangeToStandard() { }
 
         public override void Update(Viewport viewport, GameTime gameTime)

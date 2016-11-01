@@ -40,10 +40,8 @@ namespace MarioGame.Entities
                 Bump();
             }
         }
-        public override void Break()
+        public virtual void Break()
         {
-            base.Break();
-            ((BlockActionState)AState).Break();
         }
     }
 }

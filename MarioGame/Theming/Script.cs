@@ -142,18 +142,18 @@ namespace MarioGame.Theming
         }
         internal void BrickBumpOrBreak()
         {
-            foreach (var block in Blocks)
+            Blocks.FindAll(b => b is BrickBlock).ForEach(block =>
             {
-                if (!(block is BrickBlock)) continue;
-                if (Mario.MarioPowerUpState is StandardState)
+                var brickBlock = (BrickBlock) block;
+                if (Mario.CanBreakBricks)
                 {
-                    block.Bump();
+                    brickBlock.Break();
                 }
-                else 
+                else
                 {
-                    block.Break();
+                    brickBlock.Bump();
                 }
-            }
+            });
         }
         internal void ChangeQuestionToUsed()
         {

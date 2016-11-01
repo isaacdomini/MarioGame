@@ -141,7 +141,6 @@
     <Compile Include="States\BlockStates\BlockActionState.cs" />
     <Compile Include="States\BlockStates\BlockActionStateEnum.cs" />
     <Compile Include="States\BlockStates\BlockActionStateMachine.cs" />
-    <Compile Include="States\BlockStates\BreakingState.cs" />
     <Compile Include="States\BlockStates\BumpingState.cs" />
     <Compile Include="States\BlockStates\StandardState.cs" />
     <Compile Include="States\BlockStates\UsedBlockState.cs" />
