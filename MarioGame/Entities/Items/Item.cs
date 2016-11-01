@@ -15,6 +15,7 @@ namespace MarioGame.Entities
         public Item(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content,addToScriptEntities)
         {
             BoxPercentSizeOfEntity = 1.2f;
+            _isVisible = true;
         }
 
         public override void LeaveContainer()

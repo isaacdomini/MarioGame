@@ -50,9 +50,17 @@ namespace MarioGame.Theming
                    var eSide = CollisionHandler.GetIntersectingSide(e.BoundingBox, e2.BoundingBox);
                    var e2Side = CollisionHandler.GetIntersectingSide(e2.BoundingBox, e.BoundingBox);
                    // This would only be true when the bottom of a hidden block collides with the bottom of Mario
-                   e.OnCollide(e2, eSide, e2Side);
-                   e2.OnCollide(e, e2Side, eSide);
-                   entityPairs.Add(e.GetHashCode() ^ e2.GetHashCode());
+                   if (!(e is Item))
+                   {
+                       e.OnCollide(e2, eSide, e2Side);
+                       e2.OnCollide(e, e2Side, eSide);
+                   }
+                   else
+                   {
+                       e2.OnCollide(e, e2Side, eSide);
+                       e.OnCollide(e2, eSide, e2Side);
+                   }
+                       entityPairs.Add(e.GetHashCode() ^ e2.GetHashCode());
                });
             });
             Entities.ForEach(e => e.Update(Viewport, gameTime.ElapsedGameTime.Milliseconds));
