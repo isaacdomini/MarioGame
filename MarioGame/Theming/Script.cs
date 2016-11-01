@@ -74,7 +74,13 @@ namespace MarioGame.Theming
                     {
                         ((IHidable)e).Hide();
                     }
-
+                }
+                else
+                {
+                    if(e is IHidable)
+                    {
+                        ((IHidable)e).Show();
+                    }
                 }
             }
         }
