@@ -44,6 +44,7 @@
     <Compile Include="Commands\BlockCommands\BumpOrBreakBrick.cs" />
     <Compile Include="Commands\BlockCommands\ChangeQuestionToUsedState.cs" />
     <Compile Include="Commands\BlockCommands\ShowHiddenBlock.cs" />
+    <Compile Include="Commands\AddEntityCommand.cs" />
     <Compile Include="Commands\CrouchCommand.cs" />
     <Compile Include="Commands\DashOrThrowFireballCommand.cs" />
     <Compile Include="Commands\DeadStateCommand.cs" />

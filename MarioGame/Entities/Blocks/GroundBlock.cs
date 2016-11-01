@@ -11,7 +11,7 @@ namespace MarioGame.Entities
 {
     class GroundBlock : Block
     {
-        public GroundBlock(Vector2 position, ContentManager content) : base(position, content)
+        public GroundBlock(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content, addToScriptEntities)
         {
         }
     }

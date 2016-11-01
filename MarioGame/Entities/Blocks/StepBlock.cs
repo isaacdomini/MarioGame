@@ -10,7 +10,7 @@ namespace MarioGame.Entities
 {
     class StepBlock : Block
     {
-        public StepBlock(Vector2 position, ContentManager content) : base(position, content)
+        public StepBlock(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content, addToScriptEntities)
         {
         }
     }

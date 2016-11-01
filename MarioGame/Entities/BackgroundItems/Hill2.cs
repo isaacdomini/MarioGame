@@ -10,7 +10,7 @@ namespace MarioGame.Entities
 {
     internal class Hill2 : BackgroundItem
     {
-        public Hill2(Vector2 position, ContentManager content) : base(position, content)
+        public Hill2(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content, addToScriptEntities)
         {
         }
 

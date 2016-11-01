@@ -39,7 +39,7 @@ namespace MarioGame.Entities
 
         private SpaceBarAction _spaceBarAction;
 
-        public Mario(Vector2 position, ContentManager content) : base(position, content)
+        public Mario(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content, addToScriptEntities)
         {
             marioActionStateMachine = new MarioActionStateMachine(this);
             var marioPowerUpStateMachine = new MarioPowerUpStateMachine(this);           

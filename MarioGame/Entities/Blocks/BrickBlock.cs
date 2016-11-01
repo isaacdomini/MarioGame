@@ -12,18 +12,23 @@ namespace MarioGame.Entities
 {
     class BrickBlock : BumpableContainerBlock
     {
-        private List<BlockPiece> blockPieces;
-        private int _width = 16, _height = 16; //TODO somehow calculate this width via the sprite and not hardcode. Or maybe at least from a global constants variable.
-        public BrickBlock(Vector2 position, ContentManager content) : base(position, content)
+        private List<BlockPiece> _blockPieces;
+        private readonly ContentManager _content;
+        public BrickBlock(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content, addToScriptEntities)
         {
+            _content = content;
         }
 
         private void CreateBlockPieces(ContentManager content)
         {
-            //blockPieces.Add(new BlockPiece(_position,content, Partitions.TopLeft));
-            //blockPieces.Add(new BlockPiece(_position + new Vector2(_width / 2, 0),content, Partitions.TopRight));
-            //blockPieces.Add(new BlockPiece(_position + new Vector2(0, _width /2),content, Partitions.BottomLeft));
-            //blockPieces.Add(new BlockPiece(_position + new Vector2(_width/2, _width / 2),content, Partitions.BottomRight));
+            _blockPieces = new List<BlockPiece>
+            {
+                new BlockPiece(_position, content, AddToScriptEntities, Partitions.TopLeft),
+                new BlockPiece(_position + new Vector2(Width/2, 0), content, AddToScriptEntities, Partitions.TopRight),
+                new BlockPiece(_position + new Vector2(0, Height/2), content, AddToScriptEntities, Partitions.BottomLeft),
+                new BlockPiece(_position + new Vector2(Width/2, Height/2), content, AddToScriptEntities, Partitions.BottomRight)
+            };
+            _blockPieces.ForEach(b => AddToScriptEntities(b));
         }
 
         public override void OnCollide(IEntity otherObject, Sides side, Sides otherSide)
@@ -42,6 +47,8 @@ namespace MarioGame.Entities
         }
         public virtual void Break()
         {
+            CreateBlockPieces(_content);
+            Delete();
         }
     }
 }

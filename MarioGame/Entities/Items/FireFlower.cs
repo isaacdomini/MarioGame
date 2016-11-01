@@ -6,7 +6,7 @@ namespace MarioGame.Entities
 {
     public class FireFlower : Item
     {
-        public FireFlower(Vector2 position, ContentManager content) : base(position, content)
+        public FireFlower(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content,addToScriptEntities)
         {
         }
     }

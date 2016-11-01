@@ -16,14 +16,14 @@ namespace MarioGame.Theming
 {
     internal static class LevelLoader
     {
-        public static Entity CreateEntity(string klass, Vector2 location, ContentManager content)
+        public static Entity CreateEntity(string klass, Vector2 location, ContentManager content, Action<Entity> addToEntities)
         {
             var type = Type.GetType(typeof(Entity).Namespace + "." + klass);
             Debug.Assert(type != null, "type != null");
-            return (Entity)Activator.CreateInstance(type, location * GlobalConstants.GridWidth, content);
+            return (Entity)Activator.CreateInstance(type, location * GlobalConstants.GridWidth, content, addToEntities);
         }
 
-        public static void AddTileMapToScript(String tileMapFile, Script script, ContentManager content)
+        public static void AddTileMapToScript(string tileMapFile, Script script, ContentManager content)
         {
 
             var json = File.ReadAllText(tileMapFile);
@@ -34,7 +34,7 @@ namespace MarioGame.Theming
                 e.position.ForEach(rc =>
                 {
                 rc.columns.ForEach(c => {
-                    var entity = CreateEntity(e.type, new Vector2(c, rc.row), content);
+                    var entity = CreateEntity(e.type, new Vector2(c, rc.row), content, script.AddEntity);
                     script.AddEntity(entity);
                     if(entity is BackgroundItem)
                     {
@@ -78,7 +78,7 @@ namespace MarioGame.Theming
             {
                 e.positionWithHiddenItems.ForEach(instance =>
                 {
-                    var entity = CreateEntity(e.type, new Vector2(instance.column, instance.row), content);
+                    var entity = CreateEntity(e.type, new Vector2(instance.column, instance.row), content, script.AddEntity);
                     script.AddEntity(entity);
                     if (e.actionState != null)
                     {
@@ -113,7 +113,7 @@ namespace MarioGame.Theming
                     {
                         while (h.amount-- > 0)
                         {
-                            var hiddenItem = (ContainableHidableEntity)CreateEntity(h.type, new Vector2(instance.column, instance.row), content);
+                            var hiddenItem = (ContainableHidableEntity)CreateEntity(h.type, new Vector2(instance.column, instance.row), content, script.AddEntity);
                             ((IContainer)entity).AddContainedItem(hiddenItem);
                             script.AddEntity(hiddenItem);
                             hiddenItem.Hide();

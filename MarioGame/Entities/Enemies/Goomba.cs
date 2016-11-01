@@ -1,4 +1,5 @@
 ﻿
+using System;
 using MarioGame.Sprites;
 using Microsoft.Xna.Framework.Graphics;
 using MarioGame.States;
@@ -13,7 +14,7 @@ namespace MarioGame.Entities
         //public GoombaSprite eSprite;
         private GoombaSprite GoombaSprite => (GoombaSprite)Sprite;
 
-        public Goomba(Vector2 position, ContentManager content) : base(position, content)
+        public Goomba(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content,addToScriptEntities)
         {
             var stateMachine = new GoombaStateMachine(this);
             ChangeActionState(stateMachine.WalkingState);

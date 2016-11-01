@@ -22,7 +22,7 @@ namespace MarioGame.Entities
         //public KoopaTroopaSprite eSprite;
         public static Vector2 ShellMovingVelocity = new Vector2(2, 0);
 
-        public KoopaTroopa(Vector2 position, ContentManager content) : base(position, content)
+        public KoopaTroopa(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content,addToScriptEntities)
         {
             var stateMachine = new KoopaStateMachine(this);
             ChangeActionState(stateMachine.WalkingState);

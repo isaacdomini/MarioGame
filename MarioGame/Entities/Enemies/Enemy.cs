@@ -13,7 +13,7 @@ namespace MarioGame.Entities
         protected EnemyActionState EnemyActionState => (EnemyActionState)AState;
         protected bool IsDead;
         public bool IsVisible => !IsDead;
-        public Enemy(Vector2 position, ContentManager content) : base(position, content)
+        public Enemy(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content, addToScriptEntities)
         {
             IsDead = false;
             BoxPercentSizeOfEntity = .5f;

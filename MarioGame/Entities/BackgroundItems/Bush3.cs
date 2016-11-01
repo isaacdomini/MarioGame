@@ -10,7 +10,7 @@ namespace MarioGame.Entities
 {
     internal class Bush3 : BackgroundItem
     {
-        public Bush3(Vector2 position, ContentManager content) : base(position, content)
+        public Bush3(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content, addToScriptEntities)
         {
         }
 

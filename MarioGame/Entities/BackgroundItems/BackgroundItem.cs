@@ -10,8 +10,8 @@ namespace MarioGame.Entities
 {
     internal class BackgroundItem : Entity
     {
-        public int Layer;
-        public BackgroundItem(Vector2 position, ContentManager content) : base(position, content)
+        public int Layer;// TODO: Should this actually be public? Could we have a public wrapper for a protected setter?
+        public BackgroundItem(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content, addToScriptEntities)
         {
             floating = true;
         }

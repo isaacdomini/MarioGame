@@ -15,7 +15,7 @@ namespace MarioGame.Entities
     {
         Queue<IContainable> _containedItems = new Queue<IContainable>();
         protected int _tickCount;
-        public BumpableContainerBlock(Vector2 position, ContentManager content) : base(position, content)
+        public BumpableContainerBlock(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content, addToScriptEntities)
         {
             _tickCount = 0;
 

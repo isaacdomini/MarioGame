@@ -9,7 +9,7 @@ namespace MarioGame.Entities
     {
         private int coinPoppedVelocity = -5;
         private int timeTillDisappear; 
-        public Coin(Vector2 position, ContentManager content) : base(position, content)
+        public Coin(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content,addToScriptEntities)
         {
             floating = true;
         }

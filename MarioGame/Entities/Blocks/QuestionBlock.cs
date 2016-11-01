@@ -12,7 +12,7 @@ namespace MarioGame.Entities
 {
     class QuestionBlock : BumpableContainerBlock
     {
-        public QuestionBlock(Vector2 position, ContentManager content) : base(position, content)
+        public QuestionBlock(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content, addToScriptEntities)
         {
         }
         public override void OnCollide(IEntity otherObject, Sides side, Sides otherSide)

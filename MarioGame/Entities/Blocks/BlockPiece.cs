@@ -16,8 +16,43 @@ namespace MarioGame.Entities
 
     public class BlockPiece : Entity
     {
-        public BlockPiece(Vector2 position, ContentManager content) : base(position, content)
+        private Partitions _partition;
+        private int millisecondsElapsed;
+        private int millisecondsUntilDeletion = 500;
+
+       
+        public BlockPiece(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities, Partitions partition) : base(position, content, addToScriptEntities)
         {
+            _partition = partition;
+            switch (partition)
+            {
+                case Partitions.TopLeft:
+                    _velocity.Y = -3;
+                    _velocity.X = -3; //TODO: change xVelocity with speed and direction
+                    break;
+                case Partitions.TopRight:
+                    _velocity.Y = -3;
+                    _velocity.X = 3;
+                    break;
+                case Partitions.BottomLeft:
+                    _velocity.Y = 3;
+                    _velocity.X = -3;
+                    break;
+                case Partitions.BottomRight:
+                    _velocity.Y = 3;
+                    _velocity.X = 3;
+                    break;
+            }
+        }
+
+        public override void Update(Viewport viewport, GameTime gameTime)
+        {
+            base.Update(viewport, gameTime);
+            millisecondsElapsed += gameTime.ElapsedGameTime.Milliseconds; //TODO: make it so that user doesn't have to know the structure of gameTime
+            if (millisecondsElapsed > millisecondsUntilDeletion)
+            {
+                Delete();
+            }
         }
     }
 }

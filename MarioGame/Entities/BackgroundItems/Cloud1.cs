@@ -10,7 +10,7 @@ namespace MarioGame.Entities
 {
     internal class Cloud1 : BackgroundItem
     {
-        public Cloud1(Vector2 position, ContentManager content) : base(position, content)
+        public Cloud1(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content, addToScriptEntities)
         {
         }
 

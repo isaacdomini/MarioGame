@@ -1,4 +1,5 @@
-﻿using MarioGame.Sprites;
+﻿using System;
+using MarioGame.Sprites;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -7,7 +8,7 @@ namespace MarioGame.Entities
 {
     public class Mushroom1Up : Item
     {
-        public Mushroom1Up(Vector2 position, ContentManager content) : base(position, content)
+        public Mushroom1Up(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content,addToScriptEntities)
         {
             _velocity = MovingVelocity;
         }

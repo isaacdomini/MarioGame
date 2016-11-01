@@ -12,7 +12,7 @@ namespace MarioGame.Entities
         private static readonly Vector2 FallingVelocity = new Vector2(0, VelocityConstant * 1); //todo: can we just let this inherit/ override the parent?
         protected static int itemHeight = 16;
 
-        public Item(Vector2 position, ContentManager content) : base(position, content)
+        public Item(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content,addToScriptEntities)
         {
             BoxPercentSizeOfEntity = 1.2f;
         }

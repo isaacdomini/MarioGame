@@ -57,9 +57,12 @@ namespace MarioGame.Entities
         protected Color CollidingBoxColor = Color.Black;
         public float BoxPercentSizeOfEntity = 1.0f;
         public Color BoxColor;
+        public int Width => _sprite.FrameWidth;
+        public int Height => _sprite.FrameHeight;
+        protected Action<Entity> AddToScriptEntities;
         protected virtual void PreConstructor() {
         }
-        public Entity(Vector2 position, ContentManager content, float xVelocity = 0, float yVelocity = 0)
+        public Entity(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities, float xVelocity = 0, float yVelocity = 0)
         {
             PreConstructor();
             _velocity = new Vector2(xVelocity, yVelocity);
@@ -73,6 +76,8 @@ namespace MarioGame.Entities
             _position = position;
             _colliding = false;
             floating = false;
+
+            AddToScriptEntities = addToScriptEntities;
         }
         /** must be called after _sprite.Load() because boudningBoxSize reads from _sprite.FrameWidth/Height which aren't set until after _sprite.Load. LoadBoundingBox  is called in Scene. */
         public virtual void LoadBoundingBox()
