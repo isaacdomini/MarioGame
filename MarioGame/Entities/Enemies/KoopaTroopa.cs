@@ -17,16 +17,14 @@ namespace MarioGame.Entities
 {
     public class KoopaTroopa : Enemy
     {
-        protected KoopaTroopaSprite _koopaTroopaSprite { get { return (KoopaTroopaSprite)EnemySprite; } }
+        protected KoopaTroopaSprite KoopaTroopaSprite => (KoopaTroopaSprite)EnemySprite;
         //public KoopaTroopaSprite eSprite;
-        public static Vector2 shellMovingVelocity = new Vector2(2, 0);
-        
-        KoopaStateMachine _stateMachine;
+        public static Vector2 ShellMovingVelocity = new Vector2(2, 0);
 
         public KoopaTroopa(Vector2 position, ContentManager content) : base(position, content)
         {
-            _stateMachine = new KoopaStateMachine(this);
-            ChangeActionState(_stateMachine.WalkingState);
+            var stateMachine = new KoopaStateMachine(this);
+            ChangeActionState(stateMachine.WalkingState);
             AState.Begin(AState);
             IsCollidable = true;
         }
@@ -34,12 +32,12 @@ namespace MarioGame.Entities
         public void ChangeActionState(KoopaActionState newState)
         {
             AState = newState;
-            _koopaTroopaSprite.changeActionState(newState);
+            KoopaTroopaSprite.changeActionState(newState);
         }
 
         internal void SetShellVelocityToMoving()
         {
-            this.SetVelocity(shellMovingVelocity);
+            this.SetVelocity(ShellMovingVelocity);
         }
         public void ChangeShellVelocityDirection()
         {
