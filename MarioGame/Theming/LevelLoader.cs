@@ -28,35 +28,35 @@ namespace MarioGame.Theming
 
             var json = File.ReadAllText(tileMapFile);
             var level = JsonConvert.DeserializeObject<Level>(json);
-            script.LevelWidth = level.Width;
-            level.Entities.FindAll(e => e.Position != null).ForEach(e =>
+            script.LevelWidth = level.width;
+            level.entities.FindAll(e => e.position != null).ForEach(e =>
             {
-                e.Position.ForEach(rc =>
+                e.position.ForEach(rc =>
                 {
-                rc.Columns.ForEach(c => {
-                    var entity = CreateEntity(e.Type, new Vector2(c, rc.Row), content, script.AddEntity);
+                rc.columns.ForEach(c => {
+                    var entity = CreateEntity(e.type, new Vector2(c, rc.row), content, script.AddEntity);
                     script.AddEntity(entity);
                     if(entity is Mario)
                     {
-                        ((Mario)entity).LevelWidth = level.Width*GlobalConstants.GridWidth;
+                        ((Mario)entity).LevelWidth = level.width*GlobalConstants.GridWidth;
                     }
                     if(entity is BackgroundItem)
                     {
-                        ((BackgroundItem)entity).Layer = e.BackgroundLayer;
+                        ((BackgroundItem)entity).Layer = e.backgroundlayer;
                     }
-                    if (e.ActionState != null)
+                    if (e.actionState != null)
                     {
                         //TODO: make it so that we dont have to check what type each entity is 
                         if (entity is Block)
                         {
-                            ((Block)entity).SetBlockActionState(e.ActionState);
+                            ((Block)entity).SetBlockActionState(e.actionState);
                         }
                     }
-                    if (e.Visibility != null)
+                    if (e.visibility != null)
                     {
                         if (entity is Block)
                         {//TODO: get rid of check for block in case we want to init mario to a certain power up state. also get rid of block power up states.
-                            if (e.Visibility == "Hidden")
+                            if (e.visibility == "Hidden")
                             {
                                 ((Block)entity).Hide();
                             }
@@ -78,25 +78,25 @@ namespace MarioGame.Theming
                 });
             });
 
-            level.Entities.FindAll(e => e.PositionWithHiddenItems != null).ForEach(e =>
+            level.entities.FindAll(e => e.positionWithHiddenItems != null).ForEach(e =>
             {
-                e.PositionWithHiddenItems.ForEach(instance =>
+                e.positionWithHiddenItems.ForEach(instance =>
                 {
-                    var entity = CreateEntity(e.Type, new Vector2(instance.Column, instance.Row), content, script.AddEntity);
+                    var entity = CreateEntity(e.type, new Vector2(instance.column, instance.row), content, script.AddEntity);
                     script.AddEntity(entity);
-                    if (e.ActionState != null)
+                    if (e.actionState != null)
                     {
                         //TODO: make it so that we dont have to check what type each entity is 
                         if (entity is Block)
                         {
-                            ((Block)entity).SetBlockActionState(e.ActionState);
+                            ((Block)entity).SetBlockActionState(e.actionState);
                         }
                     }
-                    if (e.Visibility != null)
+                    if (e.visibility != null)
                     {
                         if (entity is Block)
                         {//TODO: get rid of check for block in case we want to init mario to a certain power up state. also get rid of block power up states.
-                            if (e.Visibility == "Hidden")
+                            if (e.visibility == "Hidden")
                             {
                                 ((Block)entity).Hide();
                             }
@@ -113,11 +113,11 @@ namespace MarioGame.Theming
                             ((Block)entity).Show();
                         }
                     }
-                    instance.HiddenItems.ForEach(h =>
+                    instance.hiddenItems.ForEach(h =>
                     {
-                        while (h.Amount-- > 0)
+                        while (h.amount-- > 0)
                         {
-                            var hiddenItem = (ContainableHidableEntity)CreateEntity(h.Type, new Vector2(instance.Column, instance.Row), content, script.AddEntity);
+                            var hiddenItem = (ContainableHidableEntity)CreateEntity(h.type, new Vector2(instance.column, instance.row), content, script.AddEntity);
                             ((IContainer)entity).AddContainedItem(hiddenItem);
                             script.AddEntity(hiddenItem);
                             hiddenItem.Hide();
@@ -132,39 +132,39 @@ namespace MarioGame.Theming
 
     internal class Position
     {
-        internal float Row { get; set; }
-        internal List<float> Columns { get; set; }
+        public float row { get; set; }
+        public List<float> columns { get; set; }
     }
 
     internal class HiddenItem
     {
-        internal string Type { get; set; }
-        internal int Amount { get; set; }
+        internal string type { get; set; }
+        internal int amount { get; set; }
     }
 
-    internal class PositionWithHiddenItem
+    public class positionWithHiddenItem
     {
-        internal float Row { get; set; }
-        internal float Column { get; set; }
-        internal List<HiddenItem> HiddenItems { get; set; }
+        public float row { get; set; }
+        public float column { get; set; }
+        public List<HiddenItem> hiddenItems { get; set; }
     }
 
     internal class JEntity
     {
-        internal string Type { get; set; }
-        internal List<Position> Position { get; set; }
-        internal List<PositionWithHiddenItem> PositionWithHiddenItems { get; set; }
-        internal string Visibility { get; set; }
-        internal string ActionState { get; set; }
-        internal string Backgroundtype { get; set; }
-        internal int BackgroundLayer { get; set; }
+        public string type { get; set; }
+        public List<position> position { get; set; }
+        public List<positionWithHiddenItem> positionWithHiddenItems { get; set; }
+        public string visibility { get; set; }
+        public string actionState { get; set; }
+        public string backgroundtype { get; set; }
+        public int backgroundlayer { get; set; }
     }
 
     internal class Level
     {
-        internal int Width { get; set; }
-        internal int Height { get; set; }
-        internal List<int> Checkpoints { get; set; }
-        internal List<JEntity> Entities { get; set; }
+        public int width { get; set; }
+        public int height { get; set; }
+        public List<int> checkpoints { get; set; }
+        public List<JEntity> entities { get; set; }
     }
 }
