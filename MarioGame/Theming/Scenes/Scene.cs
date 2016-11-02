@@ -25,7 +25,7 @@ namespace MarioGame.Theming.Scenes
             Script = new Script(this);
         }
 
-        public List<Layer> Layers { get; set; }
+        private List<Layer> _layers { get; set; }
         private const int ActionLayer = 2;
         public Stage Stage { get; }
 
@@ -41,7 +41,7 @@ namespace MarioGame.Theming.Scenes
             Script.Initialize();
 
             Camera = new Camera(Stage.Game1.GraphicsDevice.Viewport);
-            Layers = new List<Layer>
+            _layers = new List<Layer>
             {
                 new Layer(Camera, new Vector2(0.1f, 1.0f)),
                 new Layer(Camera, new Vector2(0.5f, 1.0f)),
@@ -56,19 +56,19 @@ namespace MarioGame.Theming.Scenes
 
         public void AddActionSprite(Sprite s)
         {
-            Layers[ActionLayer].Add(s);
+            _layers[ActionLayer].Add(s);
         }
 
         public void AddToLayer(int layer, Sprite s)
         {
-            Layers[layer].Add(s);
+            _layers[layer].Add(s);
         }
         public void LoadContent()
         {
             _spriteBatch = new SpriteBatch(Stage.Game1.GraphicsDevice);
 
             UpdateItemVisibility();
-            Layers.ForEach(l => l.Load());
+            _layers.ForEach(l => l.Load());
             
             Script.Entities.ForEach(e => e.LoadBoundingBox());
             //Allows for bounding boxes to be drawn in different colors
@@ -77,15 +77,15 @@ namespace MarioGame.Theming.Scenes
         }
         public void UpdateItemVisibility()
         {
-            Script.updateItemVisibility(Layers[ActionLayer]);
+            Script.updateItemVisibility(_layers[ActionLayer]);
         }
         public void Update(GameTime gameTime)
         {
             Stage.Update();
             Script.Update(gameTime);
             // TODO Should we update the sprites in script? That way we are only doing updates from one location
-            Layers.ForEach(l => l.Sprites.ForEach(s => s.Update((float)gameTime.ElapsedGameTime.TotalSeconds)));
-            //Layers.ForEach(l => Script.updateItemVisibility(l));
+            _layers.ForEach(l => l.Sprites.ForEach(s => s.Update((float)gameTime.ElapsedGameTime.TotalSeconds)));
+            //_layers.ForEach(l => Script.updateItemVisibility(l));
             //camera.Position = new Vector2(camera.Position.X + 1, camera.Position.Y);
             //camera.LookAt(_script.mario.position);
         }
@@ -93,7 +93,7 @@ namespace MarioGame.Theming.Scenes
         public void Draw(GameTime gameTime)
         {
             Stage.Draw();
-            Layers.ForEach(l => l.Draw(_spriteBatch));
+            _layers.ForEach(l => l.Draw(_spriteBatch));
             
             if (DrawBox)
             {

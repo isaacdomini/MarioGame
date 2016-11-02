@@ -130,41 +130,41 @@ namespace MarioGame.Theming
         }
     }
 
-    public class Position
+    internal class Position
     {
-        public float Row { get; set; }
-        public List<float> Columns { get; set; }
+        internal float Row { get; set; }
+        internal List<float> Columns { get; set; }
     }
 
-    public class HiddenItem
+    internal class HiddenItem
     {
-        public string Type { get; set; }
-        public int Amount { get; set; }
+        internal string Type { get; set; }
+        internal int Amount { get; set; }
     }
 
-    public class PositionWithHiddenItem
+    internal class PositionWithHiddenItem
     {
-        public float Row { get; set; }
-        public float Column { get; set; }
-        public List<HiddenItem> HiddenItems { get; set; }
+        internal float Row { get; set; }
+        internal float Column { get; set; }
+        internal List<HiddenItem> HiddenItems { get; set; }
     }
 
-    public class JEntity
+    internal class JEntity
     {
-        public string Type { get; set; }
-        public List<Position> Position { get; set; }
-        public List<PositionWithHiddenItem> PositionWithHiddenItems { get; set; }
-        public string Visibility { get; set; }
-        public string ActionState { get; set; }
-        public string Backgroundtype { get; set; }
-        public int BackgroundLayer { get; set; }
+        internal string Type { get; set; }
+        internal List<Position> Position { get; set; }
+        internal List<PositionWithHiddenItem> PositionWithHiddenItems { get; set; }
+        internal string Visibility { get; set; }
+        internal string ActionState { get; set; }
+        internal string Backgroundtype { get; set; }
+        internal int BackgroundLayer { get; set; }
     }
 
-    public class Level
+    internal class Level
     {
-        public int Width { get; set; }
-        public int Height { get; set; }
-        public List<int> Checkpoints { get; set; }
-        public List<JEntity> Entities { get; set; }
+        internal int Width { get; set; }
+        internal int Height { get; set; }
+        internal List<int> Checkpoints { get; set; }
+        internal List<JEntity> Entities { get; set; }
     }
 }
