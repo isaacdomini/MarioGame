@@ -19,8 +19,8 @@ namespace MarioGame.Theming
         public List<Block> Blocks { get { return Entities.FindAll(e => e is Block).ConvertAll(e => (Block) e); } }
         public List<Item> Items { get { return Entities.FindAll(e => e is Item).ConvertAll(e => (Item) e); } }
         public List<Enemy> Enemies { get { return Entities.FindAll(e => e is Enemy).ConvertAll(e => (Enemy) e); } }
-        public float LevelWidth;
- 
+        public float LevelWidth { get; set; }
+
         //TODO: clean up below line's code smell
         public Mario Mario { get { return (Mario)Entities.Find(e => e is Mario); } }
         public Script(Scene scene)
@@ -28,7 +28,6 @@ namespace MarioGame.Theming
             _scene = scene;
         }
 
-        private Game1 Game1 => _scene.Stage.Game1;
         private GraphicsDeviceManager GraphicsDeviceManager => _scene.Stage.GraphicsDevice;
         private Viewport Viewport => GraphicsDeviceManager.GraphicsDevice.Viewport;
 
@@ -39,7 +38,7 @@ namespace MarioGame.Theming
 
         public void Update(GameTime gameTime)
         {
-            UpdateCamera(gameTime);
+            UpdateCamera();
             var entityPairs = new List<int>();
             Entities = Entities.FindAll(e => !e.Deleted);
             Entities.FindAll(e => e.Moving).ForEach(e =>
@@ -87,7 +86,7 @@ namespace MarioGame.Theming
                 }
             }
         }
-        private void UpdateCamera(GameTime gameTime)
+        private void UpdateCamera()
         {
             
             if(Mario.Position.X >= (GlobalConstants.GridWidth * LevelWidth) - (Viewport.Width / 3.0f))

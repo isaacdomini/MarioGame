@@ -67,8 +67,6 @@ namespace MarioGame.Theming.Scenes
         {
             _spriteBatch = new SpriteBatch(Stage.Game1.GraphicsDevice);
 
-            Stage.LoadContent();
-
             UpdateItemVisibility();
             Layers.ForEach(l => l.Load());
             
@@ -76,7 +74,6 @@ namespace MarioGame.Theming.Scenes
             //Allows for bounding boxes to be drawn in different colors
             RectanglePixel = new Texture2D(Stage.Game1.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             RectanglePixel.SetData(new[] { Color.White });
-
         }
         public void UpdateItemVisibility()
         {
