@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MarioGame.Entities
 {
-    internal class Hill2 : BackgroundItem
+    public class Hill2 : BackgroundItem
     {
         public Hill2(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content, addToScriptEntities)
         {
