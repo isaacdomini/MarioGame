@@ -69,7 +69,7 @@ namespace MarioGame.Theming
             Entities = Entities.FindAll(e => !e.Deleted);
             foreach (Entity e in Entities)
             {
-                if (layer.WorldToScreen(e.Position).X > (layer._camera._viewport.Bounds.Right))
+                if (layer.WorldToScreen(e.Position).X > (layer.Camera.Viewport.Bounds.Right))
                 {
                     if (e is IHidable)
                     {

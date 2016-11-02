@@ -37,7 +37,8 @@ namespace MarioGame.Theming
             spriteBatch.End();
         }
 
-        public readonly Camera _camera;
+        private Camera _camera;
+        public Camera Camera => _camera;
 
         public Vector2 WorldToScreen(Vector2 worldPosition)
         {

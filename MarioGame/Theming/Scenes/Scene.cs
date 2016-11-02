@@ -13,8 +13,9 @@ namespace MarioGame.Theming.Scenes
         //Texture in order to draw bounding boxes on screen from sprint2
         private static Texture2D _rectanglePixel;
         private SpriteBatch _spriteBatch;
-        public Camera Camera;
-        public bool DrawBox=false;
+        private Camera _camera;
+        public Camera Camera => _camera;
+        private bool _drawBox=false;
 
         public Script Script { get; }
 
@@ -39,7 +40,7 @@ namespace MarioGame.Theming.Scenes
             Stage.Initialize();
             Script.Initialize();
 
-            Camera = new Camera(Stage.Game1.GraphicsDevice.Viewport);
+            _camera = new Camera(Stage.Game1.GraphicsDevice.Viewport);
             _layers = new List<Layer>
             {
                 new Layer(Camera, new Vector2(0.1f, 1.0f)),
@@ -93,7 +94,7 @@ namespace MarioGame.Theming.Scenes
             Stage.Draw();
             _layers.ForEach(l => l.Draw(_spriteBatch));
             
-            if (DrawBox)
+            if (_drawBox)
             {
                 _spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Camera.GetViewMatrix(new Vector2(1.0f)));
                 Script.Entities.FindAll(e => !(e is BackgroundItem)).//TODO: make it so that bounding boxes are handled in the specific entities sprite's draw method
@@ -108,7 +109,7 @@ namespace MarioGame.Theming.Scenes
         }
         public void DrawBoundingBoxes()
         {
-            DrawBox = !DrawBox;
+            _drawBox = !_drawBox;
         }
         public static void DrawRectangleBorder(SpriteBatch batch, Rectangle toDraw, Color borderColor)
         {
