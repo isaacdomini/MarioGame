@@ -10,7 +10,8 @@ namespace MarioGame.Entities
 {
     public class HidableEntity : Entity, IHidable
     {
-        protected bool _isVisible;
+        private bool _IsVisible;
+        protected bool _isVisible { get { return _IsVisible; }set { _IsVisible = value; } }
         public bool IsVisible => _isVisible;
         private bool _isOnCurrentScreen;
         protected bool IsOnCurrentScreen { get { return _isOnCurrentScreen; } set { _isOnCurrentScreen = value; } }

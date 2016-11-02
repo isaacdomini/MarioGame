@@ -13,14 +13,17 @@ namespace MarioGame.Sprites
 {
     public class Sprite : ISprite //TODO: Should we make this class abstract?
     {
-        protected Texture2D Texture;
-        protected string AssetName;
+        private Texture2D _texture;
+        public Texture2D Texture { get { return _texture; } set { _texture = value; } }
+        private string _assetName;
+        protected string AssetName { get { return _assetName; } set { _assetName = value; } }
         private ContentManager _content;
         protected ContentManager Content { get { return _content; } set { _content = value; } }
-        protected Entity Entity;
+        private Entity _entity;
+        public Entity Entity { get { return _entity; } set { _entity = value; } }
         public Vector2 Position => Entity.Position;
-        public bool Deleted => Entity.Deleted;
-
+        private bool _deleted => Entity.Deleted;
+        public bool Deleted { get { return _deleted; } }
         public Sprite(ContentManager content, Entity entity)
         {
             Entity = entity;

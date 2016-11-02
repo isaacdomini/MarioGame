@@ -13,14 +13,17 @@ namespace MarioGame.Sprites
     public abstract class AnimatedSprite : Sprite
     {
        
-        protected int NumberOfFramesPerRow; //number of frames in the row
-
+        private int _numberOfFramesPerRow; //number of frames in the row
+        protected int NumberOfFramesPerRow { get { return _numberOfFramesPerRow; } set { _numberOfFramesPerRow = value; } }
         //each action state uses a set of frames (e.g. frame numbers 7, 8, 9 on the specific row on the sprite sheet
-        protected IDictionary<int, List<int>> FrameSets; //TODO: somehow figure out how to declare the type of the dictionary as <String, Frames> . . .it gave me an error when doing that. This should also get rid of the pesky casting on line 81
-        protected List<int> FrameSet;
-        protected int FrameSetPosition; //this refers to the position in the frameset. e.g. if our frameSet was <7,8,9> if _frameSetPosition = 1 then _frameSet[_frameSetPosition] would equal 8
-
-        protected IDictionary<int, List<int>> RowSets;
+        private IDictionary<int, List<int>> _frameSets; //TODO: somehow figure out how to declare the type of the dictionary as <String, Frames> . . .it gave me an error when doing that. This should also get rid of the pesky casting on line 81
+        protected IDictionary<int, List<int>> FrameSets { get { return _frameSets; } set { _frameSets = value; } }
+        private List<int> _frameSet;
+        protected List<int> FrameSet { get { return _frameSet; } set { _frameSet = value; } }
+        private int _frameSetPosition; //this refers to the position in the frameset. e.g. if our frameSet was <7,8,9> if _frameSetPosition = 1 then _frameSet[_frameSetPosition] would equal 8
+        protected int FrameSetPosition { get { return _frameSetPosition; } set { _frameSetPosition = value; } }
+        private IDictionary<int, List<int>> _rowSets;
+        protected IDictionary<int, List<int>> RowSets { get { return _rowSets; } set { _rowSets = value; } }
         private List<int> _rowSet;
         protected List<int> RowSet { get { return _rowSet; } set { _rowSet = value; } }
         private int _rowSetPosition;
@@ -29,8 +32,9 @@ namespace MarioGame.Sprites
 
         public int FrameHeight { get; protected set; }
 
-        protected float TotalElapsed, TimePerFrame;
-
+        private float _totalElapsed, _timePerFrame;
+        protected float TotalElapsed { get { return _totalElapsed; } set { _totalElapsed = value; } }
+        protected float TimePerFrame { get { return _timePerFrame; } set { _timePerFrame = value; } }
         protected Directions Direction => Entity.Direction;
         protected SpriteEffects Flipped => Direction == Directions.Right ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
