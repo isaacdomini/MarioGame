@@ -11,6 +11,7 @@ namespace MarioGame.Entities
     public class BackgroundItem : Entity
     {
         public int Layer { get; set; }// TODO: Should this actually be public? Could we have a public wrapper for a protected setter?
+        private int _layer;// TODO: Should this actually be public? Could we have a public wrapper for a protected setter?
         public BackgroundItem(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content, addToScriptEntities)
         {
             floating = true;

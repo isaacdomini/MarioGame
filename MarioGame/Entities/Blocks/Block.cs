@@ -13,7 +13,8 @@ namespace MarioGame.Entities
 {
     public abstract class Block : HidableEntity
     {
-        protected BlockActionStateMachine ActionStateMachine;
+        private BlockActionStateMachine _actionStateMachine;
+        public BlockActionStateMachine ActionStateMachine { get { return _actionStateMachine; } set { _actionStateMachine = value; } }
         protected BlockActionStateEnum BEntity;
         protected BlockActionState BState => (BlockActionState) AState;
 

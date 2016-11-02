@@ -19,7 +19,9 @@ namespace MarioGame.Entities
         public float _secondsOfInvincibilityRemaining = 0.0f;
         protected ActionState AState;
         private bool _colliding;
-        protected bool floating;
+        private bool _floating;
+        protected bool floating { get { return _floating; } set { _floating = value; } }
+
         public Directions Direction
         {
             get; protected set;
@@ -50,7 +52,8 @@ namespace MarioGame.Entities
         protected const int BoundingBoxWidth = 10;
         public Rectangle BoundingBox;
         protected Point BoundingBoxSize;
-        protected Point BoundingBoxOffset = new Point(0,0);
+        private Point _boundingBoxOffset = new Point(0,0);
+        protected Point BoundingBoxOffset { get { return _boundingBoxOffset; } set { _boundingBoxOffset = value; } }
         protected Color RegularBoxColor = Color.Yellow;
         protected Color CollidingBoxColor = Color.Black;
         public float BoxPercentSizeOfEntity = 1.0f;

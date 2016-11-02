@@ -12,7 +12,8 @@ namespace MarioGame.Entities
     {
         protected bool _isVisible;
         public bool IsVisible => _isVisible;
-        protected bool _isOnCurrentScreen;
+        private bool _isOnCurrentScreen;
+        protected bool IsOnCurrentScreen { get { return _isOnCurrentScreen; } set { _isOnCurrentScreen = value; } }
         public bool OnCurrentScreen => _isOnCurrentScreen;
 
         public HidableEntity(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities, float xVelocity = 0, float yVelocity = 0) : base(position, content, addToScriptEntities, xVelocity, yVelocity)

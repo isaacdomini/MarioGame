@@ -15,7 +15,8 @@ namespace MarioGame.Sprites
     {
         protected Texture2D Texture;
         protected string AssetName;
-        protected ContentManager Content;
+        private ContentManager _content;
+        protected ContentManager Content { get { return _content; } set { _content = value; } }
         protected Entity Entity;
         public Vector2 Position => Entity.Position;
         public bool Deleted => Entity.Deleted;

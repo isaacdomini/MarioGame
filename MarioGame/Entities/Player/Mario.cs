@@ -174,11 +174,11 @@ namespace MarioGame.Entities
                 switch (_spaceBarAction)
                 {
                     case SpaceBarAction.Walk:
-                        _velocity = Velocity / 2;
+                        _velocity = _velocity / 2;
                         _spaceBarAction = SpaceBarAction.Run;
                         break;
                     case SpaceBarAction.Run:
-                        _velocity = Velocity * 2;
+                        _velocity = _velocity * 2;
                         _spaceBarAction = SpaceBarAction.Walk;
                         break;
                 }
@@ -191,7 +191,7 @@ namespace MarioGame.Entities
         }
         public override void Halt()
         {
-            _position -= Velocity;
+            _position -= _velocity;
             HaltX();
             HaltY();
             MarioActionState.Halt();

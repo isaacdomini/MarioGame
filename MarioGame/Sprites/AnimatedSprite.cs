@@ -21,9 +21,10 @@ namespace MarioGame.Sprites
         protected int FrameSetPosition; //this refers to the position in the frameset. e.g. if our frameSet was <7,8,9> if _frameSetPosition = 1 then _frameSet[_frameSetPosition] would equal 8
 
         protected IDictionary<int, List<int>> RowSets;
-        protected List<int> RowSet;
-        protected int RowSetPosition;
-
+        private List<int> _rowSet;
+        protected List<int> RowSet { get { return _rowSet; } set { _rowSet = value; } }
+        private int _rowSetPosition;
+        protected int RowSetPosition { get { return _rowSetPosition; } set { _rowSetPosition = value; } }
         public int FrameWidth { get; private set; }
 
         public int FrameHeight { get; protected set; }
