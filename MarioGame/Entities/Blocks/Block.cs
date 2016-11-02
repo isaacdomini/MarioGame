@@ -40,10 +40,5 @@ namespace MarioGame.Entities
         public virtual void Bump() { }
         // Only called when mario is super
         public virtual void ChangeToStandard() { }
-
-        public override void Update(Viewport viewport, int elapsedMilliseconds)
-        {
-            base.Update(viewport, elapsedMilliseconds);
-        }
     }
 }
