@@ -96,7 +96,8 @@ namespace MarioGame.Theming
             Position += displacement;
         }
 
-        public readonly Viewport _viewport;
+        private readonly Viewport _viewport;
+        public Viewport Viewport => _viewport;
         private Vector2 _position;
         private Rectangle? _limits;
     }

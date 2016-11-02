@@ -155,7 +155,6 @@
     <Compile Include="States\PlayerStates\ActionStates\FallingMarioState.cs" />
     <Compile Include="States\PlayerStates\ActionStates\IdleMarioState.cs" />
     <Compile Include="States\PlayerStates\ActionStates\JumpingMarioState.cs" />
-    <Compile Include="States\PlayerStates\ActionStates\RunningMarioState.cs" />
     <Compile Include="States\PlayerStates\ActionStates\WalkingMarioState.cs" />
     <Compile Include="States\PlayerStates\ActionStates\MarioActionState.cs" />
     <Compile Include="States\PlayerStates\ActionStates\MarioActionStateEnum.cs" />
