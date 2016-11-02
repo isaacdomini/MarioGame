@@ -37,6 +37,7 @@ namespace MarioGame.Entities
         }
 
         private SpaceBarAction _spaceBarAction;
+        internal float LevelWidth;
 
         public Mario(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content, addToScriptEntities)
         {
@@ -91,7 +92,7 @@ namespace MarioGame.Entities
             base.Update(viewport, elapsedMilliseconds);
             MarioActionState.UpdateEntity(elapsedMilliseconds);
             UpdateInvincibilityStatus();
-
+            MarioActionState.CheckForLevelEdges();
             SetXVelocity(Vector2.Zero);
         }
         public void ChangeActionState(MarioActionState state)
