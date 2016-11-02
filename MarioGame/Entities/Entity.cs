@@ -13,10 +13,7 @@ namespace MarioGame.Entities
 {
     public abstract class Entity : IEntity, ICollidable
     {
-        public AnimatedSprite Sprite
-        {
-            get { return _sprite; }
-        }
+        public AnimatedSprite Sprite => _sprite;
 
         protected AnimatedSprite _sprite;
         public float _secondsOfInvincibilityRemaining = 0.0f;

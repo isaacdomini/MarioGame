@@ -34,5 +34,11 @@ namespace MarioGame.States.BlockStates
             StateMachine.BumpingState.Begin(this);
         }
 
+        public override void Break()
+        {
+            var block = Block as BrickBlock;
+            block?.BreakIntoPieces();
+        }
+
     }
 }

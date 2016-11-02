@@ -7,6 +7,7 @@ namespace MarioGame.States
     public class BlockActionState : ActionState
     {
         protected BlockActionStateMachine StateMachine;
+        protected Block Block => (Block) Entity;
         public BlockActionStateEnum BState
         {
             get; protected set;

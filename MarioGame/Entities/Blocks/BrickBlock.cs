@@ -39,21 +39,23 @@ namespace MarioGame.Entities
 
             if (mario.CanBreakBricks)
             {
-                Break();
+                BState.Break();
             }
             else if (mario.Velocity.Y <= 0)
             {
                 Bump();
             }
         }
+
         public virtual void Break()
         {
-            if (!(AState is StandardState))//TODO: make it so that BrickBlock doesn't have to know what state it is in. Having to know is totally against the point of states
-            {
-                CreateBlockPieces(_content);
-                Delete();
-            }
+            BState.Break();
+        }
 
+        public virtual void BreakIntoPieces()
+        {
+            CreateBlockPieces(_content);
+            Delete();
         }
     }
 }
