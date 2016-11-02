@@ -86,16 +86,6 @@ namespace MarioGame.Theming
             Position = new Vector2(position.X - _viewport.Width / 3.0f, Position.Y);
         }
 
-        public void Move(Vector2 displacement, bool respectRotation = false)
-        {
-            if (respectRotation)
-            {
-                displacement = Vector2.Transform(displacement, Matrix.CreateRotationZ(-Rotation));
-            }
-
-            Position += displacement;
-        }
-
         private readonly Viewport _viewport;
         public Viewport Viewport => _viewport;
         private Vector2 _position;

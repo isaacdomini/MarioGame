@@ -27,7 +27,7 @@ namespace MarioGame.Theming
         }
         public void Load()
         {
-            Sprites.ForEach(s => s.Load());
+            Sprites.ForEach(s => s.Load(GlobalConstants.FramesPerSecond));
         }
         public void Draw(SpriteBatch spriteBatch)
         {

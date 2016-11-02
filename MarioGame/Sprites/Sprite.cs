@@ -18,6 +18,7 @@ namespace MarioGame.Sprites
         private string _assetName;
         protected string AssetName { get { return _assetName; } set { _assetName = value; } }
         private ContentManager _content;
+        private const int FramesPerSecond = 5;
         protected ContentManager Content { get { return _content; } set { _content = value; } }
         private Entity _entity;
         public Entity Entity { get { return _entity; } set { _entity = value; } }
@@ -36,10 +37,14 @@ namespace MarioGame.Sprites
             batch.Draw(Texture, Position);
         }
 
-        public virtual void Load(int framesPerSecond = 5)
+        public virtual void Load(int framesPerSecond)
         {
-
             Texture = Content.Load<Texture2D>(AssetName);
+        }
+
+        public virtual void Load()
+        {
+            Load(FramesPerSecond);
         }
 
         public virtual void Update(float elapsed)

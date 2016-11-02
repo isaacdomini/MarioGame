@@ -84,7 +84,7 @@ namespace MarioGame.Sprites
             RowSetPosition = 0;
         }
 
-        public override void Load(int framesPerSecond = 5)
+        public override void Load(int framesPerSecond )
         {
             base.Load(framesPerSecond);
             FrameHeight = 40;

@@ -70,8 +70,9 @@ namespace MarioGame.Sprites
         }
 
         //NOTE: Child class must set _numberOfChildren
-        public override void Load(int framesPerSecond = 5)
+        public override void Load(int framesPerSecond)
         {
+            base.Load(framesPerSecond);
             Texture = Content.Load<Texture2D>(AssetName);
 
             FrameHeight = Texture.Height;

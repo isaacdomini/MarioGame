@@ -11,5 +11,6 @@ namespace MarioGame.Theming
         public const int GridHeight = 16;
         public const int GridWidth = 16;
         public const float MillisecondsPerFrame = 16;
+        public const int FramesPerSecond = 5;
     }
 }

@@ -5,7 +5,7 @@ namespace MarioGame.Sprites
 {
     public interface ISprite
     {
-        void Load(int framesPerSecond = 5);
+        void Load(int framesPerSecond);
         void Update(float elapsed);
         void Draw(SpriteBatch batch);
     }

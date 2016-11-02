@@ -27,7 +27,7 @@ namespace MarioGame.Sprites
             RowSet = RowSets[Rows.Visible.GetHashCode()];
 
         }
-        public override void Load(int framesPerSecond = 5)
+        public override void Load(int framesPerSecond)
         {
             base.Load(framesPerSecond);
             FrameHeight = 16;

@@ -22,10 +22,7 @@ namespace MarioGame.Theming
 
         public Game1 Game1 { get; set; }
 
-        public GraphicsDeviceManager GraphicsDevice
-        {
-            get { return Game1.Graphics; }
-        }
+        public GraphicsDeviceManager GraphicsDevice => Game1.Graphics;
 
         public void Initialize()
         {
