@@ -15,9 +15,12 @@ namespace MarioGame.Entities
     {
         public AnimatedSprite Sprite => _sprite;
 
-        protected AnimatedSprite _sprite;
-        public float _secondsOfInvincibilityRemaining = 0.0f;
-        protected ActionState AState;
+        private AnimatedSprite _Sprite;
+        public AnimatedSprite _sprite { get; set; }
+        private float SecondsOfInvincibilityRemaining = 0.0f;
+        public float _secondsOfInvincibilityRemaining { get; set; }
+        private ActionState aState;
+        public ActionState AState { get; set; }
         private bool _colliding;
         private bool _floating;
         protected bool floating { get { return _floating; } set { _floating = value; } }
@@ -51,16 +54,23 @@ namespace MarioGame.Entities
         }
         protected const int BoundingBoxWidth = 10;
         public Rectangle BoundingBox;
-        protected Point BoundingBoxSize;
+        private Point _boundingBoxSize;
+        protected Point BoundingBoxSize { get; set; }
         private Point _boundingBoxOffset = new Point(0,0);
         protected Point BoundingBoxOffset { get { return _boundingBoxOffset; } set { _boundingBoxOffset = value; } }
-        protected Color RegularBoxColor = Color.Yellow;
-        protected Color CollidingBoxColor = Color.Black;
-        public float BoxPercentSizeOfEntity = 1.0f;
-        public Color BoxColor;
-        public int Width => _sprite.FrameWidth;
-        public int Height => _sprite.FrameHeight;
-        protected Action<Entity> AddToScriptEntities;
+        private Color RegularBoxColor = Color.Yellow;
+        private Color CollidingBoxColor = Color.Black;
+        private float _boxPercentSizeOfEntity = 1.0f;
+        public float BoxPercentSizeOfEntity { get { return _boxPercentSizeOfEntity; } set { _boxPercentSizeOfEntity = value; } }
+        private Color _boxColor;
+        public Color BoxColor { get { return _boxColor; } set { _boxColor = value; } }
+        private int _width => _sprite.FrameWidth;
+        public int Width { get { return _width; } }
+        private int _height => _sprite.FrameHeight;
+        public int Height { get { return _height; } }
+        private Action<Entity> _addToScriptEntities;
+        public Action<Entity> AddToScriptEntities { get { return _addToScriptEntities; } set { _addToScriptEntities = value; } }
+        protected virtual void PreConstructor() {}
         public Entity(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities, float xVelocity = 0, float yVelocity = 0)
         {
             _velocity = new Vector2(xVelocity, yVelocity);

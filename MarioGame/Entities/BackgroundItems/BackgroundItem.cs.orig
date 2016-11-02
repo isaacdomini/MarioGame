@@ -1,0 +1,26 @@
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MarioGame.Entities
+{
+    public class BackgroundItem : Entity
+    {
+<<<<<<< HEAD
+        public int Layer { get; set; }// TODO: Should this actually be public? Could we have a public wrapper for a protected setter?
+=======
+        private int _layer;// TODO: Should this actually be public? Could we have a public wrapper for a protected setter?
+        public int Layer { get { return _layer; } set { _layer =value;} }
+>>>>>>> fixed warnings
+        public BackgroundItem(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content, addToScriptEntities)
+        {
+            floating = true;
+            BoxPercentSizeOfEntity = 0f;
+        }
+
+    }
+}

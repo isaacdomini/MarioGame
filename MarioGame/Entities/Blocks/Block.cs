@@ -15,7 +15,8 @@ namespace MarioGame.Entities
     {
         private BlockActionStateMachine _actionStateMachine;
         public BlockActionStateMachine ActionStateMachine { get { return _actionStateMachine; } set { _actionStateMachine = value; } }
-        protected BlockActionStateEnum BEntity;
+        private BlockActionStateEnum _BEntity;
+        protected BlockActionStateEnum BEntity { get; set; }
         protected BlockActionState BState => (BlockActionState) AState;
 
         public Block(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content, addToScriptEntities)
