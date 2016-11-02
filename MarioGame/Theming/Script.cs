@@ -20,7 +20,6 @@ namespace MarioGame.Theming
         public List<Item> Items { get { return Entities.FindAll(e => e is Item).ConvertAll(e => (Item) e); } }
         public List<Enemy> Enemies { get { return Entities.FindAll(e => e is Enemy).ConvertAll(e => (Enemy) e); } }
         public float LevelWidth { get; set; }
-        private float _levelWidth;
         //TODO: clean up below line's code smell
         public Mario Mario { get { return (Mario)Entities.Find(e => e is Mario); } }
         public Script(Scene scene)
