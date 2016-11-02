@@ -1,0 +1,10 @@
+John Simerlink
+11/1/2016
+Sprint 3
+
+Title: LevelLoader.Cs
+Authors: Erin George, Cyriac Thundathil, John Simerlink, Ricky Renner
+
+The simplicity of this class has been butchered and it makes me want to cry. Why is AddTileMapToScript so long? It has a cyclomatic complexity of 26. Why do we need to check so many times what type each object is and have custom logic based on that? Perhaps to prevent having to do all of this custom logic just to initialize objects we could have each subclass of entity have some sort of initialize method that handles such custom logic, so that we can reduce the length of this method. This way construction logic could be separated between each class in the way we separated collision logic with an OnCollide method in each class. Maybe we shouldn't have individual init() methods - I don't know; I spent like 30 seconds thinking about this - but perhaps we could at least split up the AddTileMapToScript method into several smaller methods
+
+Time spent on Code Review: 4 minutes
