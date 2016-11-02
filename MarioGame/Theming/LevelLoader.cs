@@ -130,16 +130,16 @@ namespace MarioGame.Theming
         }
     }
 
-    internal class Position
+    public class Position
     {
         public float row { get; set; }
         public List<float> columns { get; set; }
     }
 
-    internal class HiddenItem
+    public class HiddenItem
     {
-        internal string type { get; set; }
-        internal int amount { get; set; }
+        public string type { get; set; }
+        public int amount { get; set; }
     }
 
     public class positionWithHiddenItem
@@ -149,10 +149,10 @@ namespace MarioGame.Theming
         public List<HiddenItem> hiddenItems { get; set; }
     }
 
-    internal class JEntity
+    public class JEntity
     {
         public string type { get; set; }
-        public List<position> position { get; set; }
+        public List<Position> position { get; set; }
         public List<positionWithHiddenItem> positionWithHiddenItems { get; set; }
         public string visibility { get; set; }
         public string actionState { get; set; }
@@ -160,7 +160,7 @@ namespace MarioGame.Theming
         public int backgroundlayer { get; set; }
     }
 
-    internal class Level
+    public class Level
     {
         public int width { get; set; }
         public int height { get; set; }
