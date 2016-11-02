@@ -21,7 +21,7 @@ namespace MarioGame.States
         {
             PrevState = prevState;
         }
-        public virtual void End() {}
+        public virtual void EndState() {}
 
         public virtual void UpdateEntity(int elapsedMilliseconds)
         {

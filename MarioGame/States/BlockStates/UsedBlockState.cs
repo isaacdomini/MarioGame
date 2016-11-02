@@ -14,14 +14,14 @@ namespace MarioGame.States
             base.Begin(prevState);
             ((Block)Entity).ChangeActionState(StateMachine.UsedState);
         }
-        public override void End()
+        public override void EndState()
         {
-            base.End();
+            base.EndState();
             PrevState = this;
         }
         public override void ChangeToUsed()
         {
-            this.End();
+            this.EndState();
             StateMachine.UsedState.Begin(this);
         }
     }

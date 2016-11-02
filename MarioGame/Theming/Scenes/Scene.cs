@@ -88,7 +88,7 @@ namespace MarioGame.Theming.Scenes
             //camera.LookAt(_script.mario.position);
         }
 
-        public void Draw(GameTime gameTime)
+        public void Draw()
         {
             Stage.Draw();
             _layers.ForEach(l => l.Draw(_spriteBatch));
@@ -97,11 +97,11 @@ namespace MarioGame.Theming.Scenes
             {
                 _spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Camera.GetViewMatrix(new Vector2(1.0f)));
                 Script.Entities.FindAll(e => !(e is BackgroundItem)).//TODO: make it so that bounding boxes are handled in the specific entities sprite's draw method
-                    ForEach(e => DrawRectangleBorder(_spriteBatch, e.BoundingBox, 1, e.BoxColor));
+                    ForEach(e => DrawRectangleBorder(_spriteBatch, e.BoundingBox, e.BoxColor));
                 _spriteBatch.End();
                 _spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Camera.GetViewMatrix(new Vector2(0.5f)));
                 Script.Entities.FindAll(e => (e is BackgroundItem)).
-                    ForEach(e => DrawRectangleBorder(_spriteBatch, e.BoundingBox, 1, e.BoxColor));
+                    ForEach(e => DrawRectangleBorder(_spriteBatch, e.BoundingBox, e.BoxColor));
                 _spriteBatch.End();
             }
 
@@ -110,7 +110,7 @@ namespace MarioGame.Theming.Scenes
         {
             DrawBox = !DrawBox;
         }
-        public static void DrawRectangleBorder(SpriteBatch batch, Rectangle toDraw, int borderThickness, Color borderColor)
+        public static void DrawRectangleBorder(SpriteBatch batch, Rectangle toDraw, Color borderColor)
         {
             // Draw top line
             batch.Draw(Scene._rectanglePixel, new Rectangle((toDraw.X), toDraw.Y, toDraw.Width, 1), borderColor);

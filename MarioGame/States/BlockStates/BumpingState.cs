@@ -19,19 +19,19 @@ namespace MarioGame.States.BlockStates.ActionStates
             base.Begin(prevState);
             ((Block)Entity).ChangeActionState(StateMachine.BumpingState);
         }
-        public override void End()
+        public override void EndState()
         {
-            base.End();
+            base.EndState();
             PrevState = this;
         }
         public override void ChangeToUsed()
         {
-            this.End();
+            this.EndState();
             StateMachine.UsedState.Begin(this);
         }
         public override void ChangeToStandard()
         {
-            this.End();
+            this.EndState();
             StateMachine.StandardState.Begin(this);
         }
     }

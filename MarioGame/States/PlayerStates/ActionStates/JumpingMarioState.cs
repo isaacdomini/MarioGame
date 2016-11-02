@@ -18,7 +18,7 @@ namespace MarioGame.States
             _jumpTimer = .75f;
         }
 
-        public override void End()//TODO: currently i dont think this method is getting called correctly. something with a null error about _prevState in state.Begin();
+        public override void EndState()//TODO: currently i dont think this method is getting called correctly. something with a null error about _prevState in state.Begin();
         {
         }
         public override void Fall()

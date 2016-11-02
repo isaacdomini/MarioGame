@@ -15,8 +15,6 @@ namespace MarioGame.States
 
         internal MarioActionState WalkingMarioState { get; }
 
-        internal MarioActionState RunningMarioState { get; }
-
         internal MarioActionState JumpingMarioState { get; }
 
         internal MarioActionState FallingMarioState { get; }
@@ -26,7 +24,6 @@ namespace MarioGame.States
         {
             var mario1 = mario;
             WalkingMarioState = new WalkingMarioState(mario1, this);
-            RunningMarioState = new RunningMarioState(mario1, this);
             JumpingMarioState = new JumpingMarioState(mario1, this);
             CrouchingMarioState = new CrouchingMarioState(mario1, this);
             IdleMarioState = new IdleMarioState(mario1, this);

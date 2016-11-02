@@ -81,7 +81,7 @@ namespace MarioGame.Core
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            _scenes[_scene - 1].Draw(gameTime);
+            _scenes[_scene - 1].Draw();
 
             base.Draw(gameTime);
         }
