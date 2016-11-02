@@ -1,0 +1,17 @@
+Ricky Renner
+11/1/2016
+Sprint 3
+
+Title: KoopaBouncingState.cs
+Authors: Erin George, Cyriac Thundathil, John Simerlink
+
+Pretty short class, but handling states are usually short but important. So far, it is not certain what previous state is used for, 
+and it is also not certain whether the old state ever ends. Also, JumpedOn method calls ChangeToDead(), but the base class also does the same, so this
+seems unnecessary. Otherwise, the begin method seems to be handling things pretty well by calling methods in entity and setting invincibility for
+a split second so that the scene does not render another state change a split second afterwards. As long as the rest of the state classes are following suit
+this is a really good implementation of a state class.
+
+This took me 30 minutes to complete.
+
+As I said earlier, just understanding what the base class and the specific state class are doing for the particular JumpedOn method, that would be 
+something very easy to fix.
