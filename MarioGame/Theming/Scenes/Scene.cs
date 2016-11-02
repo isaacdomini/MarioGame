@@ -84,7 +84,7 @@ namespace MarioGame.Theming.Scenes
         }
         public void Update(GameTime gameTime)
         {
-            Stage.Update(gameTime);
+            Stage.Update();
             Script.Update(gameTime);
             // TODO Should we update the sprites in script? That way we are only doing updates from one location
             Layers.ForEach(l => l.Sprites.ForEach(s => s.Update((float)gameTime.ElapsedGameTime.TotalSeconds)));
@@ -95,7 +95,7 @@ namespace MarioGame.Theming.Scenes
 
         public void Draw(GameTime gameTime)
         {
-            Stage.Draw(gameTime, _spriteBatch);
+            Stage.Draw();
             Layers.ForEach(l => l.Draw(_spriteBatch));
             
             if (DrawBox)
