@@ -15,7 +15,7 @@ namespace MarioGame.States
         private MarioActionStateMachine _stateMachine;
         protected MarioActionStateMachine StateMachine => _stateMachine;
 
-        public MarioActionState(Mario entity, MarioActionStateMachine stateMachine) : base(entity)
+        internal MarioActionState(Mario entity, MarioActionStateMachine stateMachine) : base(entity)
         {
             _stateMachine = stateMachine;
         }

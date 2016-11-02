@@ -14,7 +14,8 @@ namespace MarioGame.Entities
     {
         int _tickCount;
         protected bool Revealing { get; private set; }
-        public ContainableHidableEntity(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities, float xVelocity = 0, float yVelocity = 0) : base(position, content, addToScriptEntities, xVelocity: xVelocity, yVelocity: yVelocity)
+
+        internal ContainableHidableEntity(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities, float xVelocity = 0, float yVelocity = 0) : base(position, content, addToScriptEntities, xVelocity: xVelocity, yVelocity: yVelocity)
         {
         }
         public abstract void LeaveContainer();

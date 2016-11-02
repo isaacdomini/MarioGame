@@ -71,7 +71,8 @@ namespace MarioGame.Entities
         private Action<Entity> _addToScriptEntities;
         public Action<Entity> AddToScriptEntities { get { return _addToScriptEntities; } set { _addToScriptEntities = value; } }
         protected virtual void PreConstructor() {}
-        public Entity(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities, float xVelocity = 0, float yVelocity = 0)
+
+        internal Entity(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities, float xVelocity = 0, float yVelocity = 0)
         {
             _velocity = new Vector2(xVelocity, yVelocity);
 

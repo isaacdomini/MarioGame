@@ -49,7 +49,7 @@ namespace MarioGame.Sprites
         protected Directions Direction => Entity.Direction;
         protected SpriteEffects Flipped => Direction == Directions.Right ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
-        public AnimatedSprite(ContentManager content, Entity entity) : base(content, entity)
+        internal AnimatedSprite(ContentManager content, Entity entity) : base(content, entity)
         {
             RowSets = new Dictionary<int, Collection<int>>
             {

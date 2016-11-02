@@ -10,7 +10,8 @@ namespace MarioGame.Entities
     {
         private Vector2 _movingVelocity = new Vector2(.5f, 0);
         public Vector2 MovingVelocity { get { return _movingVelocity; }set { _movingVelocity = value; } }
-        public Item(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content,addToScriptEntities)
+
+        internal Item(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content,addToScriptEntities)
         {
             BoxPercentSizeOfEntity = 1.2f;
             _isVisible = true;

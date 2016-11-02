@@ -13,7 +13,8 @@ namespace MarioGame.States
         public IState PrevState { get; protected set; }
         private IEntity _entity;
         protected IEntity Entity => _entity;
-        public State(IEntity entity)
+
+        internal State(IEntity entity)
         {
             _entity = entity;
         }
