@@ -80,12 +80,12 @@ namespace MarioGame.Theming
         {
         }
 
-        public void Update(GameTime gameTime)
+        public void Update()
         {
             _controllers.ForEach(c => c.UpdateInput());
         }
 
-        public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        public void Draw()
         {
             GraphicsDevice.GraphicsDevice.Clear(Color.CornflowerBlue);
         }

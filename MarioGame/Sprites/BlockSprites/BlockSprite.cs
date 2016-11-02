@@ -33,7 +33,7 @@ namespace MarioGame.Sprites
         }
         public void ChangeActionState(BlockActionState actionState)
         {
-            base.ChangeActionState(actionState);
+            base.ChangeActionState();
             FrameSet = FrameSets[actionState.BState.GetHashCode()];
         }
     }

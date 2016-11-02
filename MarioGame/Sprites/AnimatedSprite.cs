@@ -86,11 +86,11 @@ namespace MarioGame.Sprites
             batch.Draw(texture: Texture, position: Position, sourceRectangle: sourceRect, color: Color.White, effects: Flipped);
         }
 
-        public void ChangeActionState(ActionState actionState)
+        public virtual void ChangeActionState()
         {
             FrameSetPosition = 0;
         }
-        public void ChangePowerUp(PowerUpState powerUpState)
+        public virtual void ChangePowerUp()
         {
             RowSetPosition = 0;
         }
