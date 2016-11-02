@@ -12,11 +12,12 @@ namespace MarioGame.States
             get; protected set; //TODO: make this read from some shared enum with Sprites
         }
         protected Mario Mario => (Mario)Entity;
-        protected MarioActionStateMachine StateMachine;
+        private MarioActionStateMachine _stateMachine;
+        protected MarioActionStateMachine StateMachine => _stateMachine;
 
         public MarioActionState(Mario entity, MarioActionStateMachine stateMachine) : base(entity)
         {
-            this.StateMachine = stateMachine;
+            _stateMachine = stateMachine;
         }
 
         public virtual void Begin(MarioActionState prevState)

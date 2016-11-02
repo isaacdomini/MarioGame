@@ -6,12 +6,15 @@ namespace MarioGame.States
     {
         public EnemyActionStateEnum EnemyState
         { get; protected set; }
-        protected Goomba Goomba;
-        protected GoombaStateMachine StateMachine;
+
+        private Goomba _goomba;
+        protected Goomba Goomba => _goomba;
+        private GoombaStateMachine _stateMachine;
+        protected GoombaStateMachine StateMachine => _stateMachine;
         public GoombaActionState(Goomba entity, GoombaStateMachine stateMachine) : base(entity)
         {
-            StateMachine = stateMachine;
-            Goomba = entity;
+            _stateMachine = stateMachine;
+            _goomba = entity;
         }
 
         public override void Begin(IState prevState)

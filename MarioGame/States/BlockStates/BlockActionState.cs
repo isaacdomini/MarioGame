@@ -6,7 +6,8 @@ namespace MarioGame.States
 {
     public class BlockActionState : ActionState
     {
-        protected BlockActionStateMachine StateMachine;
+        private BlockActionStateMachine _stateMachine;
+        protected BlockActionStateMachine StateMachine => _stateMachine;
         protected Block Block => (Block) Entity;
         public BlockActionStateEnum BState
         {
@@ -15,7 +16,7 @@ namespace MarioGame.States
 
         public BlockActionState(Block entity, BlockActionStateMachine stateMachine) : base(entity)
         {
-            this.StateMachine = stateMachine;
+            _stateMachine = stateMachine;
         }
 
         public virtual void Bump() { }
