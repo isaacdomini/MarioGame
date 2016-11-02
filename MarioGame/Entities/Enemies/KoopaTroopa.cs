@@ -21,6 +21,7 @@ namespace MarioGame.Entities
         protected KoopaActionState KoopaActionState => (KoopaActionState) EnemyActionState;
         //public KoopaTroopaSprite eSprite;
         public static Vector2 ShellMovingVelocity = new Vector2(2, 0);
+        
 
         public KoopaTroopa(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content,addToScriptEntities)
         {

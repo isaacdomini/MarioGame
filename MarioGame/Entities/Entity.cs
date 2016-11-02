@@ -47,7 +47,7 @@ namespace MarioGame.Entities
             Deleted = true;
             
         }
-        protected static int BoundingBoxWidth = 10;
+        protected const int BoundingBoxWidth = 10;
         public Rectangle BoundingBox;
         protected Point BoundingBoxSize;
         protected Point BoundingBoxOffset = new Point(0,0);
