@@ -1,0 +1,14 @@
+Cyriac Domini Thundathil
+11/1/2016
+Sprint 1
+LevelLoader.cs
+Multiple Authors
+I know this file was heavily refactored to have very simple and readable code,
+but with the addition of diffrent block states, the file seems to be more clustered
+now. There are about 34 lines of nested ifs andloops just for the blocks.
+And many of the checks seems to be sort of redundant (I havent looked deep into 
+this file). 
+Number of minutes taken to complete the review 20mins
+One good change would be to move the move the code for the block creation into 
+a different method and then refactor the block checks in that method. To make this work easier, I also think changing the format of blocks in the json file woul
+be helpful
