@@ -10,8 +10,8 @@ namespace MarioGame.Controllers
     public class GamepadController : IController
     {
         private GamePadState _previousState;
-        public Dictionary<Buttons, ICommand> Dictionary { get; set; }
-        public Dictionary<Buttons, ICommand> HeldDictionary { get; set; }
+        public Dictionary<Buttons, ICommand> Dictionary { get;  }
+        public Dictionary<Buttons, ICommand> HeldDictionary { get; }
 
         public GamepadController()
         {

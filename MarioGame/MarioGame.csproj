@@ -47,24 +47,16 @@
     <Compile Include="Commands\CrouchCommand.cs" />
     <Compile Include="Commands\DashOrThrowFireballCommand.cs" />
     <Compile Include="Commands\DeadStateCommand.cs" />
-    <Compile Include="Commands\DisplayGoomba.cs" />
-    <Compile Include="Commands\DisplayKoopaTroopa.cs" />
     <Compile Include="Commands\DrawBoundingBoxes.cs" />
     <Compile Include="Commands\FireStateCommand.cs" />
     <Compile Include="Commands\GameCommand.cs" />
     <Compile Include="Commands\ICommand.cs" />
-    <Compile Include="Commands\ItemCommands\DisplayCoins.cs" />
-    <Compile Include="Commands\ItemCommands\DisplayFireFlower.cs" />
-    <Compile Include="Commands\ItemCommands\DisplayMushroom1Up.cs" />
-    <Compile Include="Commands\ItemCommands\DisplayMushroomSuper.cs" />
-    <Compile Include="Commands\ItemCommands\DisplayStar.cs" />
     <Compile Include="Commands\JumpCommand.cs" />
     <Compile Include="Commands\MoveLeftCommand.cs" />
     <Compile Include="Commands\MoveRightCommand.cs" />
     <Compile Include="Commands\PauseCommand.cs" />
     <Compile Include="Commands\QuitCommand.cs" />
     <Compile Include="Commands\ResetCommand.cs" />
-    <Compile Include="Commands\SceneCommand.cs" />
     <Compile Include="Commands\ScriptCommand.cs" />
     <Compile Include="Commands\StandardStateCommand.cs" />
     <Compile Include="Commands\SuperStateCommand.cs" />
@@ -233,6 +225,7 @@
     <None Include="Theming\Scenes\Level2.json" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Commands\ItemCommands\" />
     <Folder Include="obj\x86\Debug\TempPE\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

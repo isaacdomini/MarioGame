@@ -22,7 +22,6 @@ namespace MarioGame.Entities
 
         // Velocity variables
         private static readonly Vector2 JumpingVelocity = new Vector2(0, VelocityConstant * -2);
-        private static readonly Vector2 DashVelocity = new Vector2(VelocityConstant * 2, 0);
 
         private const int SuperBoundingBoxWidth = 20;
         private const int SuperBoundingBoxHeight = 36;
@@ -233,7 +232,7 @@ namespace MarioGame.Entities
             base.OnBlockTopCollision();
             //MarioActionState.Fall();
         }
-        private void OnCollideItem(Item item, Sides side)
+        private void OnCollideItem(Item item)
         {
             if (item.IsVisible)
             {
@@ -270,7 +269,7 @@ namespace MarioGame.Entities
             else if (otherObject is Item)
             {
                 
-                OnCollideItem((Item)otherObject, side);
+                OnCollideItem((Item)otherObject);
             }
        }
         public void SetInvincible(float seconds)

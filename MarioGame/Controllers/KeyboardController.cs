@@ -36,7 +36,7 @@ namespace MarioGame.Controllers
         }
 
         public Dictionary<Keys, ICommand> Dictionary { get; set; }
-        public Dictionary<Keys, ICommand> HeldDictionary { get; set; }
+        public Dictionary<Keys, ICommand> HeldDictionary { get; }
 
         public void UpdateInput()
         {

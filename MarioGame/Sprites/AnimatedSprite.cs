@@ -85,9 +85,6 @@ namespace MarioGame.Sprites
             var sourceRect = new Rectangle(((int)FrameSet[FrameSetPosition]) * FrameWidth, ((int)RowSet[RowSetPosition]) * FrameHeight, FrameWidth, FrameHeight);
             batch.Draw(texture: Texture, position: Position, sourceRectangle: sourceRect, color: Color.White, effects: Flipped);
         }
-        public void ChangeDirection(Directions newDirection)
-        {
-        }
 
         public void ChangeActionState(ActionState actionState)
         {

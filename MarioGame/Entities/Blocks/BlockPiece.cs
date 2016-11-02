@@ -25,7 +25,7 @@ namespace MarioGame.Entities
         public BlockPiece(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities, Partitions partition) : base(position, content, addToScriptEntities)
         {
             _partition = partition;
-            switch (partition)
+            switch (_partition)
             {
                 case Partitions.TopLeft:
                     _velocity.Y = -1 * breakSpeed;

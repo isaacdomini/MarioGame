@@ -142,11 +142,9 @@ namespace MarioGame.Entities
         }
         public virtual void TurnLeft() {
             Direction = Directions.Left;
-            Sprite.ChangeDirection(Direction);
         }
         public virtual void TurnRight() {
             Direction = Directions.Right;
-            Sprite.ChangeDirection(Direction);
         }
         public virtual void Halt() { }
 
