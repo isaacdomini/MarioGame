@@ -14,6 +14,7 @@ namespace MarioGame.Sprites
         public enum Frames
         {
             //frames are all facing left. Except DeadMario who is facing the computer user.
+            None = 0,
             SwimmingMarioEnd = 1,
             SwimmingMarioBeforeEnd = 2,
             SwimmingMarioMiddle = 3,
