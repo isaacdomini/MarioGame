@@ -6,30 +6,15 @@ namespace MarioGame.States
     {
         public EnemyActionStateEnum EnemyState
         { get; protected set; }
-        public KoopaTroopa Koopa;
-        protected KoopaStateMachine StateMachine;
+
+        private KoopaTroopa _koopa;
+        public KoopaTroopa Koopa => _koopa;
+        private KoopaStateMachine _stateMachine;
+        protected KoopaStateMachine StateMachine => _stateMachine;
         public KoopaActionState(KoopaTroopa entity, KoopaStateMachine stateMachine) : base(entity)
         {
-            StateMachine = stateMachine;
-            Koopa = entity;
-        }
-
-        public override void Begin(IState prevState)
-        {
-            base.Begin(prevState);
-        }
-        
-        public void ChangeSpriteDirection()
-        {
-  
-            if (Koopa.Direction == Core.Directions.Right)
-            {
-                Koopa.TurnLeft();
-            }
-            else
-            {
-                Koopa.TurnRight();
-            }
+            _stateMachine = stateMachine;
+            _koopa = entity;
         }
 
         public virtual void HitByMarioSide()

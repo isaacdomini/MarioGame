@@ -11,10 +11,11 @@ namespace MarioGame.States
     public abstract class State: IState
     {
         public IState PrevState { get; protected set; }
-        protected IEntity Entity;
+        private IEntity _entity;
+        protected IEntity Entity => _entity;
         public State(IEntity entity)
         {
-            Entity = entity;
+            _entity = entity;
         }
 
         public virtual void Begin(IState prevState)

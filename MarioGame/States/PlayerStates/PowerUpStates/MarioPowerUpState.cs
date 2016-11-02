@@ -10,10 +10,11 @@ namespace MarioGame.States
             get; protected set;
         }
         protected Mario Mario => (Mario)Entity;
-        protected MarioPowerUpStateMachine StateMachine;
+        private MarioPowerUpStateMachine _stateMachine;
+        protected MarioPowerUpStateMachine StateMachine => _stateMachine;
         public MarioPowerUpState(Mario mario, MarioPowerUpStateMachine stateMachine) : base(mario)
         {
-            StateMachine = stateMachine;
+            _stateMachine = stateMachine;
         }
         public virtual void Begin(MarioPowerUpState prevState)
         {
