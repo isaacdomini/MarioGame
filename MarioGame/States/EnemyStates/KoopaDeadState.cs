@@ -18,7 +18,14 @@ namespace MarioGame.States
         }
         public override void JumpedOn(Sides side)
         {
-            KoopaTroopa.ShellMovingVelocity = side == Sides.Right ? new Vector2(-2, 0) : new Vector2(2, 0); //TODO put this line in BouncingState.Begin
+            if (side == Sides.Right)
+            {
+                Koopa.TurnLeft();
+            }
+            else
+            {
+                Koopa.TurnRight();
+            }
             StateMachine.BouncingState.Begin(this);
         }
 

@@ -20,8 +20,10 @@ namespace MarioGame.Entities
         protected KoopaTroopaSprite KoopaTroopaSprite => (KoopaTroopaSprite) EnemySprite;
         protected KoopaActionState KoopaActionState => (KoopaActionState) EnemyActionState;
         //public KoopaTroopaSprite eSprite;
-        public static Vector2 ShellMovingVelocity = new Vector2(2, 0);
-        
+
+        private const float ShellMovingXSpeed = 2f;
+        private Vector2 ShellMovingVelocity => new Vector2(FacingLeft ? -1*ShellMovingXSpeed : ShellMovingXSpeed, 0);
+
 
         public KoopaTroopa(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content,addToScriptEntities)
         {
@@ -40,18 +42,13 @@ namespace MarioGame.Entities
         {
             this.SetVelocity(ShellMovingVelocity);
         }
-        public void ChangeShellVelocityDirection()
-        {
-            var newVelocity = Velocity * -1;
-            this.SetVelocity(newVelocity);
-        }
+
         public override void Update(Viewport viewport, int elapsedMilliseconds)
         {
             base.Update(viewport, elapsedMilliseconds);
             if (Position.X < 0)
             {
                 _position.X = 0;
-                ChangeShellVelocityDirection();
                 TurnRight();
             }
             if (_secondsOfInvincibilityRemaining > 0)

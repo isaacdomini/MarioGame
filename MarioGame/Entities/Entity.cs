@@ -61,10 +61,8 @@ namespace MarioGame.Entities
         public int Width => _sprite.FrameWidth;
         public int Height => _sprite.FrameHeight;
         protected Action<Entity> AddToScriptEntities;
-        protected virtual void PreConstructor() {}
         public Entity(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities, float xVelocity = 0, float yVelocity = 0)
         {
-            PreConstructor();
             _velocity = new Vector2(xVelocity, yVelocity);
 
             var spriteClass = this.GetType().Name + "Sprite";
@@ -147,6 +145,11 @@ namespace MarioGame.Entities
         }
         public virtual void TurnRight() {
             Direction = Directions.Right;
+        }
+
+        public virtual void ChangeDirection()
+        {
+            Direction = FacingLeft ? Directions.Right : FacingRight ? Directions.Left : Directions.None;
         }
         public virtual void Halt() { }
 
