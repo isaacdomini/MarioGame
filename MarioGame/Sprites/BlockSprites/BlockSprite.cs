@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 using MarioGame.Entities;
 using System.Collections.Generic;
 using System.Collections;
+using System.Collections.ObjectModel;
 using MarioGame.States;
 
 namespace MarioGame.Sprites
@@ -19,9 +20,9 @@ namespace MarioGame.Sprites
 
         public BlockSprite(ContentManager content, Entity entity) : base(content, entity)
         {
-            RowSets = new Dictionary<int, List<int>>
+            RowSets = new Dictionary<int, Collection<int>>
             {
-                {Rows.Visible.GetHashCode(), new List<int> {Rows.Visible.GetHashCode() } }
+                {Rows.Visible.GetHashCode(), new Collection<int> {Rows.Visible.GetHashCode() } }
             };
             RowSet = RowSets[Rows.Visible.GetHashCode()];
 

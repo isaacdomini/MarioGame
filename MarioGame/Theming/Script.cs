@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using System;
+using System.Collections.ObjectModel;
 using MarioGame.States;
 
 namespace MarioGame.Theming
@@ -15,7 +16,7 @@ namespace MarioGame.Theming
         private readonly Scene _scene;
         public List<Entity> Entities { get; private set; }
 
-        //possibile TODO: cache the getters if performance suffers
+        //possibile TODO: cache the getters if performance suffer
         public List<Block> Blocks { get { return Entities.FindAll(e => e is Block).ConvertAll(e => (Block) e); } }
         public List<Item> Items { get { return Entities.FindAll(e => e is Item).ConvertAll(e => (Item) e); } }
         public List<Enemy> Enemies { get { return Entities.FindAll(e => e is Enemy).ConvertAll(e => (Enemy) e); } }

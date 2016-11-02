@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace MarioGame.Sprites
 {
@@ -28,15 +29,15 @@ namespace MarioGame.Sprites
             AssetName = "backs";
             NumberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
 
-            FrameSets = new Dictionary<int, List<int>> {
-                {Frames.Hill1.GetHashCode(), new List<int>{Frames.Hill1.GetHashCode()} },
-                {Frames.Hill2.GetHashCode(), new List<int>{Frames.Hill2.GetHashCode()} },
-                {Frames.Cloud1.GetHashCode(), new List<int>{Frames.Cloud1.GetHashCode()} },
-                {Frames.Cloud2.GetHashCode(), new List<int>{Frames.Cloud2.GetHashCode()} },
-                {Frames.Cloud3.GetHashCode(), new List<int>{Frames.Cloud3.GetHashCode()} },
-                {Frames.Bush1.GetHashCode(), new List<int>{Frames.Bush1.GetHashCode()} },
-                {Frames.Bush2.GetHashCode(), new List<int>{Frames.Bush2.GetHashCode()} },
-                {Frames.Bush3.GetHashCode(), new List<int>{Frames.Bush3.GetHashCode()} }
+            FrameSets = new Dictionary<int, Collection<int>> {
+                {Frames.Hill1.GetHashCode(), new Collection<int>{Frames.Hill1.GetHashCode()} },
+                {Frames.Hill2.GetHashCode(), new Collection<int>{Frames.Hill2.GetHashCode()} },
+                {Frames.Cloud1.GetHashCode(), new Collection<int>{Frames.Cloud1.GetHashCode()} },
+                {Frames.Cloud2.GetHashCode(), new Collection<int>{Frames.Cloud2.GetHashCode()} },
+                {Frames.Cloud3.GetHashCode(), new Collection<int>{Frames.Cloud3.GetHashCode()} },
+                {Frames.Bush1.GetHashCode(), new Collection<int>{Frames.Bush1.GetHashCode()} },
+                {Frames.Bush2.GetHashCode(), new Collection<int>{Frames.Bush2.GetHashCode()} },
+                {Frames.Bush3.GetHashCode(), new Collection<int>{Frames.Bush3.GetHashCode()} }
             };
             RowSetPosition = 0;
             NumberOfFramesPerRow = 8;

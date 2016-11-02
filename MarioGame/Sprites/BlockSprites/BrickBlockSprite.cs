@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,10 +22,10 @@ namespace MarioGame.Sprites
             AssetName = "brickblock";
             NumberOfFramesPerRow = 2;
             //Each state has a frameSet
-            FrameSets = new Dictionary<int, List<int>> {
-                { BlockActionStateEnum.Standard.GetHashCode(), new List<int> { Frames.BrickBlock.GetHashCode() } },
-                { BlockActionStateEnum.Bumping.GetHashCode(), new List<int> { Frames.BrickBlock.GetHashCode() } },
-                { BlockActionStateEnum.Used.GetHashCode(), new List<int> { Frames.UsedBlock.GetHashCode() } }
+            FrameSets = new Dictionary<int, Collection<int>> {
+                { BlockActionStateEnum.Standard.GetHashCode(), new Collection<int> { Frames.BrickBlock.GetHashCode() } },
+                { BlockActionStateEnum.Bumping.GetHashCode(), new Collection<int> { Frames.BrickBlock.GetHashCode() } },
+                { BlockActionStateEnum.Used.GetHashCode(), new Collection<int> { Frames.UsedBlock.GetHashCode() } }
             };
             FrameSet = FrameSets[BlockActionStateEnum.Standard.GetHashCode()];
         }

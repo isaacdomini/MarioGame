@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -163,7 +164,7 @@ namespace MarioGame.Theming
     {
         public int width { get; set; }
         public int height { get; set; }
-        public List<int> checkpoints { get; set; }
+        public Collection<int> checkpoints { get; set; }
         public List<JEntity> entities { get; set; }
     }
 }

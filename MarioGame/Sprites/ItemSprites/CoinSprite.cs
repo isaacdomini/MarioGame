@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace MarioGame.Sprites
 {
@@ -25,8 +26,8 @@ namespace MarioGame.Sprites
             AssetName = "coin";
             NumberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
 
-            FrameSets = new Dictionary<int, List<int>> {
-                { 0, new List<int>{Frames.Full.GetHashCode(), Frames.Waning.GetHashCode(), Frames.Sliver.GetHashCode(), Frames.Waxing.GetHashCode() } },
+            FrameSets = new Dictionary<int, Collection<int>> {
+                { 0, new Collection<int>{Frames.Full.GetHashCode(), Frames.Waning.GetHashCode(), Frames.Sliver.GetHashCode(), Frames.Waxing.GetHashCode() } },
             };
             FrameSet = FrameSets[Frames.Full.GetHashCode()];
             FrameSetPosition = 0;

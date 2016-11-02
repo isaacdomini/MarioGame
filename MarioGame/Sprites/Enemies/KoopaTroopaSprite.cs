@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace MarioGame.Sprites
 {
@@ -27,9 +28,9 @@ namespace MarioGame.Sprites
             AssetName = "regularkoopa";
             NumberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
 
-            FrameSets = new Dictionary<int, List<int>> {
-                {EnemyActionStateEnum.Walking.GetHashCode(), new List<int>{Frames.MidWings.GetHashCode(), Frames.Wings.GetHashCode(), Frames.Walk.GetHashCode(), Frames.Walk2.GetHashCode()} },
-                {EnemyActionStateEnum.Dead.GetHashCode(), new List<int> { Frames.Dead.GetHashCode() } }
+            FrameSets = new Dictionary<int, Collection<int>> {
+                {EnemyActionStateEnum.Walking.GetHashCode(), new Collection<int>{Frames.MidWings.GetHashCode(), Frames.Wings.GetHashCode(), Frames.Walk.GetHashCode(), Frames.Walk2.GetHashCode()} },
+                {EnemyActionStateEnum.Dead.GetHashCode(), new Collection<int> { Frames.Dead.GetHashCode() } }
             };
             FrameSet = FrameSets[EnemyActionStateEnum.Walking.GetHashCode()];
             FrameSetPosition = 0;

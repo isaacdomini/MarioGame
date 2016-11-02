@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace MarioGame.Sprites
 {
@@ -22,8 +23,8 @@ namespace MarioGame.Sprites
             AssetName = "fireFlower";
             NumberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
 
-            FrameSets = new Dictionary<int, List<int>> {
-                { 0, new List<int> { Frames.Blue.GetHashCode(), Frames.Red.GetHashCode(), Frames.Purple.GetHashCode(), Frames.Halo.GetHashCode() } },
+            FrameSets = new Dictionary<int, Collection<int>> {
+                { 0, new Collection<int> { Frames.Blue.GetHashCode(), Frames.Red.GetHashCode(), Frames.Purple.GetHashCode(), Frames.Halo.GetHashCode() } },
             };
             FrameSet = FrameSets[Frames.Blue.GetHashCode()];
         }

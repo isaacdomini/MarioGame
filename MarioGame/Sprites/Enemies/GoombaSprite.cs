@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace MarioGame.Sprites
 {
@@ -24,9 +25,9 @@ namespace MarioGame.Sprites
             AssetName = "regulargoomba";
             NumberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
 
-            FrameSets = new Dictionary<int, List<int>> {
-                {EnemyActionStateEnum.Walking.GetHashCode(), new List<int>{Frames.Walk.GetHashCode(), Frames.Walk1.GetHashCode()} },
-                {EnemyActionStateEnum.Dead.GetHashCode(), new List<int> { Frames.Dead.GetHashCode() } }
+            FrameSets = new Dictionary<int, Collection<int>> {
+                {EnemyActionStateEnum.Walking.GetHashCode(), new Collection<int>{Frames.Walk.GetHashCode(), Frames.Walk1.GetHashCode()} },
+                {EnemyActionStateEnum.Dead.GetHashCode(), new Collection<int> { Frames.Dead.GetHashCode() } }
             };
             FrameSet = FrameSets[Frames.Walk.GetHashCode()];
             FrameSetPosition = 0;
