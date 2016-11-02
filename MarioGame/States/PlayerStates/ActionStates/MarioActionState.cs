@@ -1,6 +1,7 @@
 ﻿using System;
 using MarioGame.Entities;
 using Microsoft.Xna.Framework;
+using MarioGame.Theming;
 
 namespace MarioGame.States
 {
@@ -24,6 +25,13 @@ namespace MarioGame.States
         }
         public virtual void Jump() {
             StateMachine.JumpingMarioState.Begin(this);
+        }
+        public void CheckForLevelEdges()
+        {
+            if (Mario.Position.X < GlobalConstants.GridWidth||Mario.Position.X>Mario.LevelWidth)
+            {
+                Mario.Halt();
+            }
         }
 
         public virtual void MoveLeft()

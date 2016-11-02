@@ -58,8 +58,7 @@ namespace MarioGame.Entities
         public int Width => _sprite.FrameWidth;
         public int Height => _sprite.FrameHeight;
         protected Action<Entity> AddToScriptEntities;
-        protected virtual void PreConstructor() {
-        }
+        protected virtual void PreConstructor() {}
         public Entity(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities, float xVelocity = 0, float yVelocity = 0)
         {
             PreConstructor();
