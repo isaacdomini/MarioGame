@@ -11,6 +11,7 @@ namespace MarioGame.Sprites
 {
     public class KoopaTroopaSprite : HidableSprite
     {
+        [Flags]
         public enum Frames
         {
             //frames are all facing left. 

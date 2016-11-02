@@ -63,7 +63,6 @@ namespace MarioGame.Theming
                             {
                                 ((Block)entity).Show();
                             }
-
                         }
                     }
                     else
