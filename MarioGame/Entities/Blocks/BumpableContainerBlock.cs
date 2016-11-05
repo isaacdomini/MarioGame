@@ -57,6 +57,10 @@ namespace MarioGame.Entities
                 {
                     IContainable poppedItem = PopContainedItem();
                     poppedItem.LeaveContainer();
+                    if(poppedItem is Coin)
+                    {
+                        Mario.AddCoin();
+                    }
                     
                 }
                 if (!HasItems()) ((BlockActionState)AState).ChangeToUsed();

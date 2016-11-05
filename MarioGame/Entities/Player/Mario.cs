@@ -6,6 +6,7 @@ using MarioGame.States;
 using MarioGame.Core;
 using MarioGame.Theming;
 using System;
+using System.Collections.Generic;
 
 namespace MarioGame.Entities
 {
@@ -19,6 +20,7 @@ namespace MarioGame.Entities
         private MarioActionStateMachine marioActionStateMachine;
         // TODO: maybe we don't have to give the casted variable a new name, but rather just use the new keyword and the subclass type
         protected MarioSprite MarioSprite => (MarioSprite)Sprite;
+        public static Dictionary<String, int> Scoreboard = new Dictionary<String, int>();
 
         // Velocity variables
         private static readonly Vector2 JumpingVelocity = new Vector2(0, VelocityConstant * -2);
@@ -42,11 +44,32 @@ namespace MarioGame.Entities
         public Mario(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content, addToScriptEntities)
         {
             marioActionStateMachine = new MarioActionStateMachine(this);
-            var marioPowerUpStateMachine = new MarioPowerUpStateMachine(this);           
+            var marioPowerUpStateMachine = new MarioPowerUpStateMachine(this);
             AState = marioActionStateMachine.IdleMarioState; //TODO: make marioActionState a casted getter of aState?
             PState = marioPowerUpStateMachine.StandardState;
             Direction = Directions.Right;
             _spaceBarAction = SpaceBarAction.Run;
+            InitializeScoreboardList();
+
+        }
+        protected void InitializeScoreboardList()
+        {
+            if(!Scoreboard.ContainsKey("Coins"))
+                Scoreboard.Add("Coins", 0);
+            else
+                Scoreboard["Coins"]=0;
+            if (!Scoreboard.ContainsKey("Points"))
+                Scoreboard.Add("Points", 0);
+            else
+                Scoreboard["Points"] = 0;
+            if (!Scoreboard.ContainsKey("Lives"))
+                Scoreboard.Add("Lives", 3);
+            else
+                Scoreboard["Lives"] = 3;
+            if (!Scoreboard.ContainsKey("Time"))
+                Scoreboard.Add("Time", 400);
+            else
+                Scoreboard["Time"] = 400;
         }
         protected override void SetUpBoundingBoxProperties()
         {
@@ -239,26 +262,38 @@ namespace MarioGame.Entities
             {
                 if (item is Coin)
                 {
-                    //Add code to add coin to total coins
+                    AddCoin();
                 }
                 else if (item is Star)
                 {
                     ChangeToStarState();
+                    Scoreboard["Points"] += 1000;
                 }
                 else if (item is FireFlower)
                 {
                     ChangeToFireState();
+                    Scoreboard["Points"] += 1000;
                 }
                 else if (item is Mushroom1Up)
                 {
                     //Add code to add extra life
+                    Scoreboard["Lives"]++;
                 }
                 else if (item is MushroomSuper)
                 {
                     ChangeToSuperState();
+                    Scoreboard["Points"] += 1000;
                 }
             }
 
+        }
+        private static void checkCoinsForLife()
+        {
+            if(Scoreboard["Coins"]!=0 && Scoreboard["Coins"]%100==0)
+            {
+                Scoreboard["Lives"]++;
+                Scoreboard["Coins"] = 0;
+            }
         }
         public override void OnCollide(IEntity otherObject, Sides side, Sides otherSide)
         {
@@ -276,6 +311,12 @@ namespace MarioGame.Entities
         public void SetInvincible(float seconds)
         {
             _secondsOfInvincibilityRemaining = seconds;
+        }
+        public static void AddCoin()
+        {
+            Scoreboard["Coins"]++;
+            Scoreboard["Points"] += 200;
+            checkCoinsForLife();
         }
     }
 
