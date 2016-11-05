@@ -54,18 +54,30 @@ namespace MarioGame.Entities
         }
         protected void InitializeScoreboardList()
         {
-            if(!Scoreboard.ContainsKey("Coins"))
+            if (!Scoreboard.ContainsKey("Lives"))
+            {
+                ResetScoreboard();
+            }
+            else
+            {
+                if (Scoreboard["Lives"] == 0)
+                {
+                    ResetScoreboard();
+                }
+            }
+        }
+        private void ResetScoreboard()
+        {
+            if (!Scoreboard.ContainsKey("Coins"))
                 Scoreboard.Add("Coins", 0);
             else
-                Scoreboard["Coins"]=0;
+                Scoreboard["Coins"] = 0;
             if (!Scoreboard.ContainsKey("Points"))
                 Scoreboard.Add("Points", 0);
             else
                 Scoreboard["Points"] = 0;
             if (!Scoreboard.ContainsKey("Lives"))
                 Scoreboard.Add("Lives", 3);
-            else
-                Scoreboard["Lives"] = 3;
             if (!Scoreboard.ContainsKey("Time"))
                 Scoreboard.Add("Time", 400);
             else
@@ -276,7 +288,6 @@ namespace MarioGame.Entities
                 }
                 else if (item is Mushroom1Up)
                 {
-                    //Add code to add extra life
                     Scoreboard["Lives"]++;
                 }
                 else if (item is MushroomSuper)
@@ -285,7 +296,6 @@ namespace MarioGame.Entities
                     Scoreboard["Points"] += 1000;
                 }
             }
-
         }
         private static void checkCoinsForLife()
         {
