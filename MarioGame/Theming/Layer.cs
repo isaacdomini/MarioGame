@@ -1,4 +1,6 @@
-﻿using MarioGame.Sprites;
+﻿using MarioGame.Core;
+using MarioGame.Entities;
+using MarioGame.Sprites;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
@@ -35,6 +37,7 @@ namespace MarioGame.Theming
             Sprites = Sprites.FindAll(s => !s.Deleted);
             Sprites.ForEach(s => s.Draw(spriteBatch));
             spriteBatch.End();
+            Mario.drawScoreboard(spriteBatch);
         }
 
         private Camera _camera;

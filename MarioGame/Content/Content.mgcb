@@ -312,3 +312,10 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:backs.png
+
+#begin ScoreboardFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:ScoreboardFont.spritefont
+

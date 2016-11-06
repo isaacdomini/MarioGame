@@ -78,10 +78,24 @@ namespace MarioGame.Entities
                 Scoreboard["Points"] = 0;
             if (!Scoreboard.ContainsKey("Lives"))
                 Scoreboard.Add("Lives", 3);
+            else
+                Scoreboard["Lives"] = 3;
             if (!Scoreboard.ContainsKey("Time"))
                 Scoreboard.Add("Time", 400);
             else
                 Scoreboard["Time"] = 400;
+        }
+        internal static void drawScoreboard(SpriteBatch batch)
+        {
+            Vector2 scoreLocation = new Vector2(5, 5);
+            Vector2 spacing = new Vector2(150, 0);
+            batch.Begin();
+            foreach (KeyValuePair<String, int> pair in Scoreboard)
+            {
+                batch.DrawString(Game1.font, pair.Key +": " + pair.Value, scoreLocation, Color.Black);
+                scoreLocation = scoreLocation + spacing;
+            }
+            batch.End();
         }
         protected override void SetUpBoundingBoxProperties()
         {

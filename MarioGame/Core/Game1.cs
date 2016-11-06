@@ -15,6 +15,8 @@ namespace MarioGame.Core
     {
         private readonly int _scene;
         private readonly List<Scene> _scenes;
+        public static SpriteFont font;
+
 
         public Game1()
         {
@@ -50,6 +52,7 @@ namespace MarioGame.Core
         protected override void LoadContent()
         {
             _scenes[_scene - 1].LoadContent();
+            font = Content.Load<SpriteFont>("ScoreboardFont");
         }
 
         /// <summary>
@@ -82,7 +85,6 @@ namespace MarioGame.Core
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             _scenes[_scene - 1].Draw();
-
             base.Draw(gameTime);
         }
 
