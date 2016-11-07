@@ -143,6 +143,24 @@ namespace MarioGame.Entities
             UpdateInvincibilityStatus();
             MarioActionState.CheckForLevelEdges();
             SetXVelocity(Vector2.Zero);
+            UpdateTimer(elapsedMilliseconds);
+        }
+        private double timeTrack=0;
+        private void UpdateTimer(int elapsedMilliseconds)
+        {
+            if (Scoreboard["Time"] == 0)
+            {
+                //check lives and either restart game or game over screen
+            }
+            else
+            {
+                timeTrack = timeTrack + elapsedMilliseconds * .001;
+                if (timeTrack >= 1.0)
+                {
+                    Scoreboard["Time"] -= 1;
+                    timeTrack = 0;
+                }
+            }
         }
         public void ChangeActionState(MarioActionState state)
         {
