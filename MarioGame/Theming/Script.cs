@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System;
 using System.Collections.ObjectModel;
 using MarioGame.States;
+using MarioGame.Commands;
 
 namespace MarioGame.Theming
 {
@@ -15,7 +16,7 @@ namespace MarioGame.Theming
     {
         private readonly Scene _scene;
         public List<Entity> Entities { get; private set; }
-
+        internal ResetCommand resetCommand;
         //possibile TODO: cache the getters if performance suffer
         public List<Block> Blocks { get { return Entities.FindAll(e => e is Block).ConvertAll(e => (Block) e); } }
         public List<Item> Items { get { return Entities.FindAll(e => e is Item).ConvertAll(e => (Item) e); } }
@@ -182,6 +183,9 @@ namespace MarioGame.Theming
         {
             _scene.DrawBoundingBoxes();
         }
-
+        internal void ResetCommand()
+        {
+            resetCommand.Execute();
+        }
     }
 }

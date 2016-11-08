@@ -27,7 +27,7 @@ namespace MarioGame.States
         public virtual void ChangeToDead()
         {
             //_mario.marioPowerUpState.powerUpState = 
-            Mario.Scoreboard["Lives"]--;
+            Mario._scoreboard.LoseLife();
             StateMachine.DeadState.Begin(this);
         }
         public virtual void ChangeToSuper()

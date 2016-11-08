@@ -103,6 +103,7 @@
     <Compile Include="Entities\Items\Star.cs" />
     <Compile Include="Entities\Player\Mario.cs" />
     <Compile Include="Entities\PowerUpEntity.cs" />
+    <Compile Include="Entities\Scoreboard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sprites\AnimatedSprite.cs" />
     <Compile Include="Sprites\BackgroundItems\Bush2Sprite.cs" />

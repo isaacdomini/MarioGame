@@ -59,7 +59,7 @@ namespace MarioGame.Entities
                     poppedItem.LeaveContainer();
                     if(poppedItem is Coin)
                     {
-                        Mario.AddCoin();
+                        Mario._scoreboard.AddCoin();
                     }
                     
                 }
