@@ -5,11 +5,21 @@
   "entities": [
     {
       "type": "Cloud1",
-      "backgroundlayer" : 0,
+      "backgroundlayer": 0,
       "position": [
         {
           "row": 5,
           "columns": [ 5, 10, 15, 20, 25, 30 ]
+        }
+      ]
+    },
+    {
+      "type": "GreenPipe",
+      "backgroundlayer" : 0,
+      "position": [
+        {
+          "row": 8,
+          "columns": [ 5 ]
         }
       ]
     },

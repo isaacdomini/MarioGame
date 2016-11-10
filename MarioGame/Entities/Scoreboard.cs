@@ -101,5 +101,12 @@ namespace MarioGame.Entities
         {
             _scoreboard["Lives"] --;
         }
+
+        //Call this when mario hits the flagpole
+        public void FinishMultiplier(int time)
+        {
+            int multiplier = time / 100 + time%100;
+            _scoreboard["Points"] += time * multiplier;
+        }
     }
 }

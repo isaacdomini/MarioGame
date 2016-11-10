@@ -85,6 +85,7 @@
     <Compile Include="Entities\Blocks\StepBlock.cs" />
     <Compile Include="Entities\ContainableHidableEntity.cs" />
     <Compile Include="Entities\Enemies\Enemy.cs" />
+    <Compile Include="Entities\Enemies\Pirahna.cs" />
     <Compile Include="Entities\HidableEntity.cs" />
     <Compile Include="Entities\IBumpable.cs" />
     <Compile Include="Entities\Enemies\Goomba.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="Entities\IHidable.cs" />
     <Compile Include="Entities\Items\Coin.cs" />
     <Compile Include="Entities\Items\FireFlower.cs" />
+    <Compile Include="Entities\Blocks\GreenPipe.cs" />
     <Compile Include="Entities\Items\Item.cs" />
     <Compile Include="Entities\Items\Mushroom1Up.cs" />
     <Compile Include="Entities\Items\MushroomSuper.cs" />
@@ -123,10 +125,12 @@
     <Compile Include="Sprites\BlockSprites\StepBlockSprite.cs" />
     <Compile Include="Sprites\Enemies\GoombaSprite.cs" />
     <Compile Include="Sprites\Enemies\KoopaTroopaSprite.cs" />
+    <Compile Include="Sprites\Enemies\PirahnaSprite.cs" />
     <Compile Include="Sprites\ISprite.cs" />
     <Compile Include="Sprites\ItemSprites\CoinSprite.cs" />
     <Compile Include="Sprites\ItemSprites\FireFlowerSprite.cs" />
     <Compile Include="Sprites\HidableSprite.cs" />
+    <Compile Include="Sprites\BlockSprites\GreenPipe.cs" />
     <Compile Include="Sprites\ItemSprites\Mushroom1UpSprite.cs" />
     <Compile Include="Sprites\ItemSprites\MushroomSuperSprite.cs" />
     <Compile Include="Sprites\ItemSprites\StarSprite.cs" />
@@ -150,6 +154,10 @@
     <Compile Include="States\EnemyStates\KoopaStateMachine.cs" />
     <Compile Include="States\EnemyStates\GoombaWalkingState .cs" />
     <Compile Include="States\EnemyStates\KoopaWalkingState.cs" />
+    <Compile Include="States\EnemyStates\PirahnaActionState.cs" />
+    <Compile Include="States\EnemyStates\PirahnaAliveState.cs" />
+    <Compile Include="States\EnemyStates\PirahnaDeadState.cs" />
+    <Compile Include="States\EnemyStates\PirahnaStateMachine.cs" />
     <Compile Include="States\IState.cs" />
     <Compile Include="States\ActionState.cs" />
     <Compile Include="States\PlayerStates\ActionStates\CrouchingMarioState.cs" />
