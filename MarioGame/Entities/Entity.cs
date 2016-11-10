@@ -24,6 +24,7 @@ namespace MarioGame.Entities
         private bool _colliding;
         private bool _floating;
         protected bool floating { get { return _floating; } set { _floating = value; } }
+        private readonly Script Script;
 
         public Directions Direction
         {
@@ -70,6 +71,7 @@ namespace MarioGame.Entities
         public int Height { get { return _height; } }
         private Action<Entity> _addToScriptEntities;
         public Action<Entity> AddToScriptEntities { get { return _addToScriptEntities; } set { _addToScriptEntities = value; } }
+
         protected virtual void PreConstructor() {}
 
         internal Entity(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities, float xVelocity = 0, float yVelocity = 0)
@@ -207,11 +209,21 @@ namespace MarioGame.Entities
                 }
                 else if (side == Sides.Bottom)
                 {
-                    OnBlockBottomCollision();
+                    if (this is Mario && block is GreenPipe && aState is CrouchingMarioState)
+                    {
+                        GoToHiddenRoom();
+                    }
+                    else
+                    {
+                        OnBlockBottomCollision();
+                    }
                     //TODO: replace the below with simply letting gravity take over
                 }
             }
         }
+
+        protected virtual void GoToHiddenRoom() { }
+        protected virtual void LeaveHiddenRooom() { }
 
         public virtual void OnBlockBottomCollision()
         {

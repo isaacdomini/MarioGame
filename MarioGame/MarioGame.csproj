@@ -184,6 +184,7 @@
     <Compile Include="Core\GlobalConstants.cs" />
     <Compile Include="Theming\Layer.cs" />
     <Compile Include="Theming\LevelLoader.cs" />
+    <Compile Include="Theming\Scenes\HiddenScene.cs" />
     <Compile Include="Theming\Scenes\Scene.cs" />
     <Compile Include="Theming\Script.cs" />
     <Compile Include="Theming\Stage.cs" />
@@ -229,6 +230,7 @@
     <None Include="Content\obj\Windows\stepblock.mgcontent" />
     <None Include="Content\obj\Windows\usedblock.mgcontent" />
     <None Include="obj\x86\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="Theming\Scenes\HiddenLevel.json" />
     <None Include="Theming\Scenes\Level1.json" />
     <None Include="Theming\Scenes\Level2.json" />
   </ItemGroup>

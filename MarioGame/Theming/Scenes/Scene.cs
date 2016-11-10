@@ -11,9 +11,9 @@ namespace MarioGame.Theming.Scenes
     public class Scene : IDisposable
     {
         //Texture in order to draw bounding boxes on screen from sprint2
-        private static Texture2D _rectanglePixel;
-        private SpriteBatch _spriteBatch;
-        private Camera _camera;
+        protected static Texture2D _rectanglePixel;
+        protected SpriteBatch _spriteBatch;
+        protected Camera _camera;
         public Camera Camera => _camera;
         private bool _drawBox=false;
 
@@ -27,7 +27,7 @@ namespace MarioGame.Theming.Scenes
             paused = false;
         }
 
-        private List<Layer> _layers { get; set; }
+        protected List<Layer> _layers { get; set; }
         private const int ActionLayer = 2;
         public Stage Stage { get; }
 
@@ -37,7 +37,7 @@ namespace MarioGame.Theming.Scenes
             GC.SuppressFinalize(this);
         }
 
-        public void Initialize()
+        public virtual void Initialize()
         {
             Stage.Initialize();
             Script.Initialize();
@@ -52,7 +52,7 @@ namespace MarioGame.Theming.Scenes
             var middle = new Vector2(Stage.Game1.GraphicsDevice.Viewport.Width/2f,
                 Stage.Game1.GraphicsDevice.Viewport.Height/2f);
 
-            LevelLoader.AddTileMapToScript("Level1.json", Script, Stage.Game1.Content);
+            LevelLoader.AddTileMapToScript("Level1.json", Script, Stage.Game1);
         }
 
         public void AddActionSprite(Sprite s)

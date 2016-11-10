@@ -13,9 +13,10 @@ namespace MarioGame.Core
      * */
     public class Game1 : Game
     {
-        private readonly int _scene;
+        private int _scene;
         private readonly List<Scene> _scenes;
         public static SpriteFont font;
+        public Scene Scene => _scenes[_scene - 1];
 
 
         public Game1()
@@ -25,10 +26,9 @@ namespace MarioGame.Core
             Graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            _scenes = new List<Scene> {new Scene(stage)};
+            _scenes = new List<Scene> {new Scene(stage), new HiddenScene(stage)};
             _scene = 1;
         }
-        public Scene Scene => _scenes[_scene - 1];
 
         public GraphicsDeviceManager Graphics { get; private set; }
 
@@ -103,6 +103,13 @@ namespace MarioGame.Core
         {
             Scene.Pause();
         }
-
+        public void EnterHiddenScene()
+        {
+            _scene = 2;
+        }
+        public void ExitHiddenScene()
+        {
+            _scene = 1;
+        }
     }
 }

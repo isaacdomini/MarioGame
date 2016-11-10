@@ -41,6 +41,10 @@ namespace MarioGame.Entities
 
         private SpaceBarAction _spaceBarAction;
         internal float LevelWidth;
+        private Action _enterHiddenRoom;
+        public Action EnterHiddenRoom { get { return _enterHiddenRoom; } }
+        private Action _exitHiddenRoom;
+        public Action ExitHiddenRoom { get { return _exitHiddenRoom; } }
 
         public Mario(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content, addToScriptEntities)
         {
@@ -291,7 +295,23 @@ namespace MarioGame.Entities
         {
             _secondsOfInvincibilityRemaining = seconds;
         }
-        
+        internal void SetHiddenRoomEntry(Action enterHiddenScene)
+        {
+            _enterHiddenRoom = enterHiddenScene;
+        }
+
+        internal void SetHiddenRoomDeparture(Action exitHiddenScene)
+        {
+            _exitHiddenRoom = exitHiddenScene;
+        }
+        protected override void GoToHiddenRoom()
+        {
+            _enterHiddenRoom();
+        }
+        protected override void LeaveHiddenRooom()
+        {
+            _exitHiddenRoom();
+        }
     }
 
 }
