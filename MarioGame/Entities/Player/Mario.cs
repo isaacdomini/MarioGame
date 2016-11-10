@@ -206,7 +206,7 @@ namespace MarioGame.Entities
         private void OnCollideEnemy(Enemy enemy, Sides side)
         {
             if (Invincible) return;
-            if(enemy is Pirahna)
+            if(enemy is Pirahna && (MarioPowerUpState is StandardState || MarioPowerUpState is SuperState))
             {
                 MarioPowerUpState.OnHitByEnemy();
             }

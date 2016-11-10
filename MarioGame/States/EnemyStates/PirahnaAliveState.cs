@@ -19,7 +19,7 @@ namespace MarioGame.States
 
         public override void JumpedOn(Sides side)
         {
-            
+            ChangeToDead();   
         }
 
     }

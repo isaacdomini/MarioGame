@@ -34,7 +34,7 @@ namespace MarioGame.Entities
             base.OnCollide(otherObject, side, otherSide);
             if (otherObject is Mario)
             {
-                if (((Mario)otherObject).MarioPowerUpState is StandardStarState)
+                if (((Mario)otherObject).MarioPowerUpState is StandardStarState || ((Mario)otherObject).MarioPowerUpState is FireState || ((Mario)otherObject).MarioPowerUpState is SuperStarState)
                 {
                     EnemyActionState.JumpedOn(side);
                 }

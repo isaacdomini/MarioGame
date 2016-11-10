@@ -15,11 +15,19 @@
     },
     {
       "type": "GreenPipe",
-      "backgroundlayer" : 0,
       "position": [
         {
-          "row": 8,
-          "columns": [ 5 ]
+          "row": 18,
+          "columns": [ 40 ]
+        }
+      ]
+    },
+    {
+      "type": "Pirahna",
+      "position": [
+        {
+          "row": 17,
+          "columns": [ 40.5 ]
         }
       ]
     },
