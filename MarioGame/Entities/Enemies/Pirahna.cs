@@ -5,6 +5,7 @@ using MarioGame.States;
 using Microsoft.Xna.Framework;
 using MarioGame.Entities;
 using Microsoft.Xna.Framework.Content;
+using MarioGame.Core;
 
 namespace MarioGame.Entities
 {
@@ -27,6 +28,20 @@ namespace MarioGame.Entities
         {
             base.Update(viewport, elapsedMilliseconds);
             AState.UpdateEntity(elapsedMilliseconds);
+        }
+        public override void OnCollide(IEntity otherObject, Sides side, Sides otherSide)
+        {
+            base.OnCollide(otherObject, side, otherSide);
+            if (otherObject is Mario)
+            {
+                if (((Mario)otherObject).MarioPowerUpState is StandardStarState)
+                {
+                    EnemyActionState.JumpedOn(side);
+                }
+                else
+                    base.OnCollide(otherObject, Sides.Left, Sides.Right);
+            }
+
         }
     }
 }

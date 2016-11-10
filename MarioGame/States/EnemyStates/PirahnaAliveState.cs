@@ -19,10 +19,7 @@ namespace MarioGame.States
 
         public override void JumpedOn(Sides side)
         {
-            if (side == Sides.Top)
-            {
-                base.JumpedOn(side);
-            }
+            
         }
 
     }

@@ -5,18 +5,16 @@ namespace MarioGame.States
 {
     internal class PirahnaDeadState : PirahnaActionState
     {
+        Pirahna pirahna;
         private int _elapsedMilliseconds;
         public PirahnaDeadState(Pirahna entity, PirahnaStateMachine stateMachine) : base(entity, stateMachine)
-
         {
             EnemyState = EnemyActionStateEnum.Dead;
+            pirahna = entity;
         }
         public override void Begin(IState prevState)
         {
-            base.Begin(prevState);
-            Pirahna.SetVelocityToIdle();
-            //Pirahna.ChangeActionState(StateMachine.DeadState);
-            _elapsedMilliseconds = 0;
+            pirahna.Delete();
         }
 
         public override void UpdateEntity(int elapsedMilliseconds)
@@ -31,7 +29,7 @@ namespace MarioGame.States
 
         public override void ChangeToDead()
         {
-            //Do nothing. Intentionally left blank as base is not nothing
+            Pirahna.ChangeActionState(StateMachine.DeadState);
         }
     }
 }

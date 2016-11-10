@@ -206,7 +206,11 @@ namespace MarioGame.Entities
         private void OnCollideEnemy(Enemy enemy, Sides side)
         {
             if (Invincible) return;
-            if (enemy.IsVisible && side != Sides.Bottom )
+            if(enemy is Pirahna)
+            {
+                MarioPowerUpState.OnHitByEnemy();
+            }
+            else if (enemy.IsVisible && side != Sides.Bottom )
             {
                 if (enemy._secondsOfInvincibilityRemaining <= 0)
                 {
