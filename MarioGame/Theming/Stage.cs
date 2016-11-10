@@ -72,6 +72,9 @@ namespace MarioGame.Theming
 
             //Adds command to show bounding boxes
             _controllers[0].AddCommand((int)Keys.C, new DrawBoundingBoxes(Game1.Scene.Script));
+
+            // Add pause commands
+            _controllers[0].AddCommand((int)Keys.P, new PauseCommand(Game1));
         }
 
         public void Update()

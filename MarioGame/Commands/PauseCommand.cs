@@ -11,7 +11,7 @@ namespace MarioGame.Commands
 
         public override void Execute()
         {
-            //Game.PauseCommand();
+            Game.PauseCommand();
         }
     }
 }
