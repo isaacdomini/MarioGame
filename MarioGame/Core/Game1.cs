@@ -16,7 +16,6 @@ namespace MarioGame.Core
         private readonly int _scene;
         private readonly List<Scene> _scenes;
         public static SpriteFont font;
-        private bool paused;
 
 
         public Game1()
@@ -28,8 +27,6 @@ namespace MarioGame.Core
 
             _scenes = new List<Scene> {new Scene(stage)};
             _scene = 1;
-
-            paused = false;
         }
         public Scene Scene => _scenes[_scene - 1];
 
@@ -74,14 +71,10 @@ namespace MarioGame.Core
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (!paused) _scenes[_scene - 1].Update(gameTime);
-            else
-            {
-                
-            }
-
+            _scenes[_scene - 1].Update(gameTime);
             base.Update(gameTime);
         }
+
 
         /// <summary>
         ///     This is called when the game should draw itself.
@@ -108,7 +101,8 @@ namespace MarioGame.Core
         }
         public void PauseCommand()
         {
-            paused = !paused;
+            Scene.Pause();
         }
+
     }
 }

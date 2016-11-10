@@ -18,11 +18,13 @@ namespace MarioGame.Theming.Scenes
         private bool _drawBox=false;
 
         public Script Script { get; }
+        private bool paused;
 
         public Scene(Stage stage)
         {
             Stage = stage;
             Script = new Script(this);
+            paused = false;
         }
 
         private List<Layer> _layers { get; set; }
@@ -80,13 +82,21 @@ namespace MarioGame.Theming.Scenes
         }
         public void Update(GameTime gameTime)
         {
-            Stage.Update();
-            Script.Update(gameTime);
-            // TODO Should we update the sprites in script? That way we are only doing updates from one location
-            _layers.ForEach(l => l.Sprites.ForEach(s => s.Update((float)gameTime.ElapsedGameTime.TotalSeconds)));
-            //_layers.ForEach(l => Script.updateItemVisibility(l));
-            //camera.Position = new Vector2(camera.Position.X + 1, camera.Position.Y);
-            //camera.LookAt(_script.mario.position);
+            if (!paused)
+            {
+                Stage.Update();
+                Script.Update(gameTime);
+                // TODO Should we update the sprites in script? That way we are only doing updates from one location
+                _layers.ForEach(l => l.Sprites.ForEach(s => s.Update((float)gameTime.ElapsedGameTime.TotalSeconds)));
+                //_layers.ForEach(l => Script.updateItemVisibility(l));
+                //camera.Position = new Vector2(camera.Position.X + 1, camera.Position.Y);
+                //camera.LookAt(_script.mario.position);
+            }
+            else
+            {
+                Stage.CheckForResume();
+            }
+
         }
 
         public void Draw()
@@ -127,6 +137,10 @@ namespace MarioGame.Theming.Scenes
         {
             if (disposing)
                 _spriteBatch.Dispose();
+        }
+        internal void Pause()
+        {
+            paused = !paused;
         }
 
     }

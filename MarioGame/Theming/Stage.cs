@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MarioGame.Commands.BlockCommands;
 using MarioGame.Theming.Scenes;
+using System;
 
 namespace MarioGame.Theming
 {
@@ -75,6 +76,10 @@ namespace MarioGame.Theming
 
             // Add pause commands
             _controllers[0].AddCommand((int)Keys.P, new PauseCommand(Game1));
+            _controllers[0].AddPauseScreenKeys((int)Keys.P, new PauseCommand(Game1));
+
+            _controllers[1].AddCommand((int)Buttons.Back, new PauseCommand(Game1));
+            _controllers[1].AddPauseScreenKeys((int)Buttons.Back, new PauseCommand(Game1));
         }
 
         public void Update()
@@ -85,6 +90,11 @@ namespace MarioGame.Theming
         public void Draw()
         {
             GraphicsDevice.GraphicsDevice.Clear(Color.CornflowerBlue);
+        }
+
+        internal void CheckForResume()
+        {
+            _controllers.ForEach(c => c.CheckForResume());
         }
     }
 }
