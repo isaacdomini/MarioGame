@@ -78,7 +78,6 @@ namespace MarioGame.States
             {
                 if(!Mario.MarioActionState.Equals(StateMachine.FallingMarioState) && !Mario.MarioActionState.Equals(StateMachine.CrouchingMarioState))
                     Mario.ChangeActionState(StateMachine.FallingMarioState);
-                System.Console.WriteLine("switch-falling");
             }
             else if (Mario.Velocity.Y < 0)
             {
