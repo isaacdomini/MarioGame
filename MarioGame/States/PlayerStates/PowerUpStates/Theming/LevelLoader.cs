@@ -36,7 +36,7 @@ namespace MarioGame.Theming
             script.AudioManager = new AudioManager(game.Content.Load<Song>(level.song));
             foreach (string sfx in GlobalConstants.SFXFiles)
             {
-                script.AudioManager.AddSFX(sfx, content.Load<SoundEffect>("sounds\\" + sfx));
+                script.AudioManager.AddSFX(sfx, game.Content.Load<SoundEffect>("sounds\\" + sfx));
             }
             level.entities.FindAll(e => e.position != null).ForEach(e =>
             {

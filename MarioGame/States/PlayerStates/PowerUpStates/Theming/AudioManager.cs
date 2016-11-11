@@ -1,14 +1,20 @@
-﻿using Microsoft.Xna.Framework.Audio;
+﻿using MarioGame.Entities;
+using MarioGame.States;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
 using System.Collections.Generic;
 
 namespace MarioGame.Theming
 {
+    
     public class AudioManager
     {
         private Song _backgroundSong;
         private float _volume;
         private static Dictionary<string, SoundEffect> _dictionary;
+        public enum SFXnum
+        { up, breakblock, bump, coin, fireball, flagpole, gameover, jumpsmall, pipedown, powerdown, powerup, powerupappear, stomp, timewarning }
+
         public AudioManager(Song song)
         {
             _volume = 1.0f;
@@ -29,6 +35,10 @@ namespace MarioGame.Theming
         public void StartStarMode()
         {
 
+        }
+        public void SFXPlayer(IState state, IEntity entity)
+        {
+          
         }
     }
 }
