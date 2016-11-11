@@ -1,7 +1,7 @@
 ﻿{
   "width": 110,
   "height": 10,
-  "checkpoints":  [25, 40],
+  "checkpoints":  [43, 75],
   "entities": [
     {
       "type": "Cloud1",
