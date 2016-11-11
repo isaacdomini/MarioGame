@@ -24,7 +24,6 @@ namespace MarioGame.Entities
         private bool _colliding;
         private bool _floating;
         protected bool floating { get { return _floating; } set { _floating = value; } }
-        private readonly Script Script;
 
         public Directions Direction
         {
@@ -74,6 +73,12 @@ namespace MarioGame.Entities
 
         protected virtual void PreConstructor() {}
 
+        private static Script _script;
+        public static Script Script => _script;
+        internal static void RegisterScript(Script s)
+        {
+            _script = s;
+        }
         internal Entity(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities, float xVelocity = 0, float yVelocity = 0)
         {
             _velocity = new Vector2(xVelocity, yVelocity);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using MarioGame.Core;
 using MarioGame.Sprites;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -18,6 +19,10 @@ namespace MarioGame.Theming.Scenes
         private bool _drawBox=false;
 
         public Script Script { get; }
+        protected List<Layer> _layers { get; set; }
+        private const int ActionLayer = 2;
+        public Stage Stage { get; }
+        public Game1 Game1 => Stage.Game1;
         private bool paused;
 
         public Scene(Stage stage)
@@ -27,9 +32,6 @@ namespace MarioGame.Theming.Scenes
             paused = false;
         }
 
-        protected List<Layer> _layers { get; set; }
-        private const int ActionLayer = 2;
-        public Stage Stage { get; }
 
         public void Dispose()
         {

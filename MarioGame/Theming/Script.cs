@@ -16,7 +16,6 @@ namespace MarioGame.Theming
     {
         private readonly Scene _scene;
         public List<Entity> Entities { get; private set; }
-        internal ResetCommand resetCommand;
         //possibile TODO: cache the getters if performance suffer
         public List<Block> Blocks { get { return Entities.FindAll(e => e is Block).ConvertAll(e => (Block) e); } }
         public List<Item> Items { get { return Entities.FindAll(e => e is Item).ConvertAll(e => (Item) e); } }
@@ -35,6 +34,7 @@ namespace MarioGame.Theming
         public void Initialize()
         {
 		    Entities = new List<Entity>();
+            Entity.RegisterScript(this);
         }
 
         public void Update(GameTime gameTime)
@@ -183,9 +183,9 @@ namespace MarioGame.Theming
         {
             _scene.DrawBoundingBoxes();
         }
-        internal void ResetCommand()
+        internal void Reset()
         {
-            resetCommand.Execute();
+            _scene.Game1.ResetCommand();
         }
     }
 }

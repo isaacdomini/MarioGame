@@ -25,7 +25,7 @@ namespace MarioGame.Controllers
         public void AddCommand(int key, ICommand command)
         {
             var keyList = new List<Buttons>((Buttons[]) Enum.GetValues(typeof(Buttons)));
- 
+            
             foreach (var keys in keyList)
             {
                 if ((int)keys == key) Dictionary.Add(keys, command);

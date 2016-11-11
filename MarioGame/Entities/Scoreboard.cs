@@ -26,7 +26,7 @@ namespace MarioGame.Entities
             {
                 if (_scoreboard["Lives"] == 0)
                 {
-                    //Stage.game1.ResetCommand();
+                    //Stage.game1.Reset();
                     ResetScoreboard();
                 }
             }

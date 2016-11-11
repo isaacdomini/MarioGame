@@ -13,6 +13,7 @@ namespace MarioGame.States
         {
             Mario.ChangePowerUpState(StateMachine.DeadState);
             Mario.SetVelocityToIdle();
+            MarioGame.Entities.Entity.Script.Reset();
         }
     }
 }
