@@ -42,9 +42,9 @@ namespace MarioGame.Entities
         private SpaceBarAction _spaceBarAction;
         internal float LevelWidth;
         private Action _enterHiddenRoom;
-        public Action EnterHiddenRoom { get { return _enterHiddenRoom; } }
+        public Action EnterHiddenRoom => _enterHiddenRoom;
         private Action _exitHiddenRoom;
-        public Action ExitHiddenRoom { get { return _exitHiddenRoom; } }
+        public Action ExitHiddenRoom => _exitHiddenRoom;
 
         public Mario(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content, addToScriptEntities)
         {
@@ -175,12 +175,12 @@ namespace MarioGame.Entities
         public void DashOrThrowFireball()
         {
             //TODO: Ricky do this?
-            if (PState is FireState || PState is FireStarState)
+            if (MarioPowerUpState is FireState || MarioPowerUpState is FireStarState)
             {
                 // TODO: Mario entity adds fireball to scene
 
             }
-            else if (PState is SuperState)
+            else if (MarioPowerUpState is SuperState)
             {
                 switch (_spaceBarAction)
                 {
@@ -250,31 +250,29 @@ namespace MarioGame.Entities
         }
         private void OnCollideItem(Item item)
         {
-            if (item.IsVisible)
+            if (!item.IsVisible) return;
+            if (item is Coin)
             {
-                if (item is Coin)
-                {
-                    _scoreboard.AddCoin();
-                }
-                else if (item is Star)
-                {
-                    ChangeToStarState();
-                    _scoreboard.AddPoint(1000);
-                }
-                else if (item is FireFlower)
-                {
-                    ChangeToFireState();
-                    _scoreboard.AddPoint(1000);
-                }
-                else if (item is Mushroom1Up)
-                {
-                    _scoreboard.AddPoint(1000);
-                }
-                else if (item is MushroomSuper)
-                {
-                    ChangeToSuperState();
-                    _scoreboard.AddPoint(1000);
-                }
+                _scoreboard.AddCoin();
+            }
+            else if (item is Star)
+            {
+                ChangeToStarState();
+                _scoreboard.AddPoint(1000);
+            }
+            else if (item is FireFlower)
+            {
+                ChangeToFireState();
+                _scoreboard.AddPoint(1000);
+            }
+            else if (item is Mushroom1Up)
+            {
+                _scoreboard.AddPoint(1000);
+            }
+            else if (item is MushroomSuper)
+            {
+                ChangeToSuperState();
+                _scoreboard.AddPoint(1000);
             }
         }
         
