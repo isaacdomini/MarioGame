@@ -18,5 +18,10 @@ namespace MarioGame.States
         {
             StateMachine.IdleMarioState.Begin(this);
         }
+
+        public override void HitTopOfGreenPipe()
+        {
+            Mario.GoToHiddenRoom();
+        }
     }
 }

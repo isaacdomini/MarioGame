@@ -56,7 +56,7 @@ namespace MarioGame.Entities
             }
         }
 
-        public override void OnBlockBottomCollision()
+        protected override void OnBlockBottomCollision()
         {
             base.OnBlockBottomCollision();
             _velocity.X = 0;

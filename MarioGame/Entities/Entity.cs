@@ -182,53 +182,48 @@ namespace MarioGame.Entities
                 OnCollideBlock((Block) otherObject, ownSide, otherSide);
             }
         }
+
+        protected virtual void OnCollideHiddenBlock(Block block, Sides side, Sides blockSide)
+        {
+            
+        }
         protected virtual void OnCollideBlock(Block block, Sides side, Sides blockSide)
         {
             if (!block.IsVisible)
             {
-                if (this is Mario)
-                {
-                    if (side == Sides.Top && blockSide == Sides.Bottom && ((Mario)this).Velocity.Y < 0)
-                    {
-                        Halt();
-                    }
-                }
+                OnCollideHiddenBlock(block, side, blockSide);
+                return;
             }
-            else
+
+            switch (side)
             {
-                if (side == Sides.Left || side == Sides.Right)
-                {
+                case Sides.Left:
+                case Sides.Right:
                     OnBlockSideCollision(side);
-                }
-                else if (side == Sides.Top)
-                {
+                    break;
+                case Sides.Top:
                     OnBlockTopCollision();
-                }
-                else if (side == Sides.Bottom)
-                {
-                    if (this is Mario && block is GreenPipe && aState is CrouchingMarioState)
-                    {
-                        GoToHiddenRoom();
-                    }
-                    else
-                    {
-                        OnBlockBottomCollision();
-                    }
-                    //TODO: replace the below with simply letting gravity take over
-                }
+                    break;
+                case Sides.Bottom:
+                    OnBlockBottomCollision(block);
+                    break;
             }
         }
 
-        protected virtual void GoToHiddenRoom() { }
+        public virtual void GoToHiddenRoom() { }
         protected virtual void LeaveHiddenRooom() { }
 
-        public virtual void OnBlockBottomCollision()
+        protected virtual void OnBlockBottomCollision()
         {
             if (Velocity.Y > 0)
             {
                 _position.Y -= 1.1f*Velocity.Y;
                 _velocity.Y = 0;
             }
+        }
+        protected virtual void OnBlockBottomCollision(Block block)
+        {
+            OnBlockBottomCollision();
         }
 
         public virtual void OnBlockTopCollision()

@@ -207,6 +207,15 @@ namespace MarioGame.Entities
             HaltY();
             MarioActionState.Halt();
         }
+
+        protected override void OnCollideHiddenBlock(Block block, Sides side, Sides blockSide)
+        {
+            if (side == Sides.Top && blockSide == Sides.Bottom && Velocity.Y < 0)
+            {
+                Halt();
+            }
+        }
+
         private void OnCollideEnemy(Enemy enemy, Sides side)
         {
             if (Invincible) return;
@@ -236,17 +245,14 @@ namespace MarioGame.Entities
             HaltX();
             MarioActionState.Halt();
         }
-        public override void OnBlockBottomCollision()
+
+        protected override void OnBlockBottomCollision(Block block)
         {
             base.OnBlockBottomCollision();
-            HaltY();
-
-            //ChangeActionState(marioActionStateMachine.IdleMarioState);
-        }
-        public override void OnBlockTopCollision()
-        {
-            base.OnBlockTopCollision();
-            //MarioActionState.Fall();
+            if (block is GreenPipe)
+            {
+                MarioActionState.HitTopOfGreenPipe();
+            }
         }
         private void OnCollideItem(Item item)
         {
@@ -285,15 +291,10 @@ namespace MarioGame.Entities
             }
             else if (otherObject is Item)
             {
-                
                 OnCollideItem((Item)otherObject);
             }
        }
 
-        //protected override void OnCollideBlock(Block block, Sides side, Sides blockSide)
-        //{
-            
-        //}
         public void SetInvincible(float seconds)
         {
             _secondsOfInvincibilityRemaining = seconds;
@@ -307,7 +308,7 @@ namespace MarioGame.Entities
         {
             _exitHiddenRoom = exitHiddenScene;
         }
-        protected override void GoToHiddenRoom()
+        public override void GoToHiddenRoom()
         {
             _enterHiddenRoom();
         }

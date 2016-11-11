@@ -64,6 +64,10 @@ namespace MarioGame.States
         public virtual void Crouch() {
             StateMachine.CrouchingMarioState.Begin(this);
         }
+        public virtual void HitTopOfGreenPipe()
+        {
+            
+        }
         public void Halt()
         {
             StateMachine.IdleMarioState.Begin(this);
