@@ -11,7 +11,7 @@ namespace MarioGame.Entities
 {
     public class Scoreboard
     {
-        public static Dictionary<String, int> _scoreboard = new Dictionary<String, int>();
+        private static readonly Dictionary<string, int> _scoreboard = new Dictionary<string, int>();
         public Scoreboard() : base()
         {
             InitializeScoreboardList();
@@ -52,12 +52,12 @@ namespace MarioGame.Entities
         }
         public void drawScoreboard(SpriteBatch batch)
         {
-            Vector2 scoreLocation = new Vector2(5, 5);
-            Vector2 spacing = new Vector2(150, 0);
+            var scoreLocation = new Vector2(5, 5);
+            var spacing = new Vector2(150, 0);
             batch.Begin();
-            foreach (KeyValuePair<String, int> pair in _scoreboard)
+            foreach (var pair in _scoreboard)
             {
-                batch.DrawString(Game1.font, pair.Key + ": " + pair.Value, scoreLocation, Color.Black);
+                batch.DrawString(Game1.Font, pair.Key + ": " + pair.Value, scoreLocation, Color.Black);
                 scoreLocation = scoreLocation + spacing;
             }
             batch.End();

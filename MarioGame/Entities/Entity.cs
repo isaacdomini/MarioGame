@@ -14,23 +14,20 @@ namespace MarioGame.Entities
     public abstract class Entity : IEntity, ICollidable
     {
         public AnimatedSprite Sprite => _sprite;
-
-        private AnimatedSprite _Sprite;
-        public AnimatedSprite _sprite { get; set; }
-        private float SecondsOfInvincibilityRemaining = 0.0f;
-        public float _secondsOfInvincibilityRemaining { get; set; }
+        protected AnimatedSprite _sprite { get; set; }
+        
+        public float _secondsOfInvincibilityRemaining { get; set; }//TODO: Get this logic out of the base entity class. And also to check if invincible use some Invincible property that returns true if the timer is greater than zero . . .do this to enable the user of the invincibility property to not have knowledge of how invcibility works (e.g. it uses a timer)
         private ActionState aState;
         public ActionState AState { get; set; }
         private bool _colliding;
-        private bool _floating;
-        protected bool floating { get { return _floating; } set { _floating = value; } }
+        protected bool floating { get; set; }
 
         public Directions Direction
         {
             get; protected set;
         }
         public ActionState CurrentActionState => this.AState;
-
+        //NOTE: Position and _position are deliberately not using the auto-generated property getter set
         protected Vector2 _position;
         public Vector2 Position
         {
@@ -50,34 +47,29 @@ namespace MarioGame.Entities
         public virtual void Delete()
         {
             Deleted = true;
-            
         }
         protected const int BoundingBoxWidth = 10;
         public Rectangle BoundingBox;
-        private Point _boundingBoxSize;
         protected Point BoundingBoxSize { get; set; }
-        private Point _boundingBoxOffset = new Point(0,0);
-        protected Point BoundingBoxOffset { get { return _boundingBoxOffset; } set { _boundingBoxOffset = value; } }
+        protected Point BoundingBoxOffset { get; set; } = new Point(0,0);
         private Color RegularBoxColor = Color.Yellow;
         private Color CollidingBoxColor = Color.Black;
-        private float _boxPercentSizeOfEntity = 1.0f;
-        public float BoxPercentSizeOfEntity { get { return _boxPercentSizeOfEntity; } set { _boxPercentSizeOfEntity = value; } }
-        private Color _boxColor;
-        public Color BoxColor { get { return _boxColor; } set { _boxColor = value; } }
+        public float BoxPercentSizeOfEntity { get; set; } = 1.0f;
+        public Color BoxColor { get; set; }
+
         private int _width => _sprite.FrameWidth;
-        public int Width { get { return _width; } }
+        public int Width => _width;
         private int _height => _sprite.FrameHeight;
-        public int Height { get { return _height; } }
-        private Action<Entity> _addToScriptEntities;
-        public Action<Entity> AddToScriptEntities { get { return _addToScriptEntities; } set { _addToScriptEntities = value; } }
+        public int Height => _height;
+        public Action<Entity> AddToScriptEntities { get; set; }
 
         protected virtual void PreConstructor() {}
 
-        private static Script _script;
-        public static Script Script => _script;
+        public static Script Script { get; private set; }
+
         internal static void RegisterScript(Script s)
         {
-            _script = s;
+            Script = s;
         }
         internal Entity(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities, float xVelocity = 0, float yVelocity = 0)
         {

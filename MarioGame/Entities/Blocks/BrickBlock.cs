@@ -23,10 +23,10 @@ namespace MarioGame.Entities
         {
             _blockPieces = new List<BlockPiece>
             {
-                new BlockPiece(_position, content, AddToScriptEntities, Partitions.TopLeft),
-                new BlockPiece(_position + new Vector2(Width/2, 0), content, AddToScriptEntities, Partitions.TopRight),
-                new BlockPiece(_position + new Vector2(0, Height/2), content, AddToScriptEntities, Partitions.BottomLeft),
-                new BlockPiece(_position + new Vector2(Width/2, Height/2), content, AddToScriptEntities, Partitions.BottomRight)
+                new BlockPiece(Position, content, AddToScriptEntities, Partitions.TopLeft),
+                new BlockPiece(Position + new Vector2(Width/2, 0), content, AddToScriptEntities, Partitions.TopRight),
+                new BlockPiece(Position + new Vector2(0, Height/2), content, AddToScriptEntities, Partitions.BottomLeft),
+                new BlockPiece(Position + new Vector2(Width/2, Height/2), content, AddToScriptEntities, Partitions.BottomRight)
             };
             _blockPieces.ForEach(b => AddToScriptEntities(b));
             _blockPieces.ConvertAll(b => b.Sprite).ForEach(s => s.Load());

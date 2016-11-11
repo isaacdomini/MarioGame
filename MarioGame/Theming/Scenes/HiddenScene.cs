@@ -20,7 +20,7 @@ namespace MarioGame.Theming.Scenes
             Script.Initialize();
 
             _camera = new Camera(Stage.Game1.GraphicsDevice.Viewport);
-            _layers = new List<Layer>
+            Layers = new List<Layer>
             {
                 new Layer(Camera, new Vector2(0.1f, 1.0f)),
                 new Layer(Camera, new Vector2(0.5f, 1.0f)),

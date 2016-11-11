@@ -17,19 +17,20 @@ namespace MarioGame.Theming
         private readonly Scene _scene;
         public List<Entity> Entities { get; private set; }
         //possibile TODO: cache the getters if performance suffer
-        public List<Block> Blocks { get { return Entities.FindAll(e => e is Block).ConvertAll(e => (Block) e); } }
-        public List<Item> Items { get { return Entities.FindAll(e => e is Item).ConvertAll(e => (Item) e); } }
-        public List<Enemy> Enemies { get { return Entities.FindAll(e => e is Enemy).ConvertAll(e => (Enemy) e); } }
+        public List<Block> Blocks => Entities.FindAll(e => e is Block).ConvertAll(e => (Block) e);
+        public List<Item> Items => Entities.FindAll(e => e is Item).ConvertAll(e => (Item) e);
+        public List<Enemy> Enemies => Entities.FindAll(e => e is Enemy).ConvertAll(e => (Enemy) e);
+        public Mario Mario => (Mario)Entities.Find(e => e is Mario);
+        private GraphicsDeviceManager GraphicsDeviceManager => _scene.Stage.GraphicsDevice;
+        private Viewport Viewport => GraphicsDeviceManager.GraphicsDevice.Viewport;
         public float LevelWidth { get; set; }
         //TODO: clean up below line's code smell
-        public Mario Mario { get { return (Mario)Entities.Find(e => e is Mario); } }
+
         public Script(Scene scene)
         {
             _scene = scene;
         }
 
-        private GraphicsDeviceManager GraphicsDeviceManager => _scene.Stage.GraphicsDevice;
-        private Viewport Viewport => GraphicsDeviceManager.GraphicsDevice.Viewport;
 
         public void Initialize()
         {

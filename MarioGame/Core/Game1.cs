@@ -15,8 +15,10 @@ namespace MarioGame.Core
     {
         private int _scene;
         private readonly List<Scene> _scenes;
-        public static SpriteFont font;
+        private static SpriteFont _font;
+        public static SpriteFont Font => _font;
         public Scene Scene => _scenes[_scene - 1];
+        public GraphicsDeviceManager Graphics { get; private set; }
 
 
         public Game1()
@@ -30,7 +32,6 @@ namespace MarioGame.Core
             _scene = 1;
         }
 
-        public GraphicsDeviceManager Graphics { get; private set; }
 
         /// <summary>
         ///     Allows the game to perform any initialization it needs to before starting to run.
@@ -52,7 +53,7 @@ namespace MarioGame.Core
         protected override void LoadContent()
         {
             _scenes[_scene - 1].LoadContent();
-            font = Content.Load<SpriteFont>("ScoreboardFont");
+            _font = Content.Load<SpriteFont>("ScoreboardFont");
         }
 
         /// <summary>

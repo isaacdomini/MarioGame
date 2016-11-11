@@ -8,8 +8,7 @@ namespace MarioGame.Entities
 {
     public abstract class Item : ContainableHidableEntity
     {
-        private Vector2 _movingVelocity = new Vector2(.5f, 0);
-        public Vector2 MovingVelocity { get { return _movingVelocity; }set { _movingVelocity = value; } }
+        public Vector2 MovingVelocity { get; set; } = new Vector2(.5f, 0);
 
         internal Item(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content,addToScriptEntities)
         {
@@ -24,7 +23,7 @@ namespace MarioGame.Entities
         }
         public override void OnCollide(IEntity otherObject, Sides side, Sides otherSide)
         {
-            if (IsVisible && !(this is Coin))
+            if (IsVisible && !(this is Coin))//TODO: This is coin logic should be delegated polymorphically to the coin class
             {
                 base.OnCollide(otherObject, side, otherSide);
                 if (otherObject is Mario)
