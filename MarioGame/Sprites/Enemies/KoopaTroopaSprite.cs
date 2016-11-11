@@ -38,7 +38,7 @@ namespace MarioGame.Sprites
             NumberOfFramesPerRow = 10;
         }
 
-        public void changeActionState(KoopaActionState koopaActionState)
+        public void ChangeActionState(KoopaActionState koopaActionState)
         {
             FrameSet = FrameSets[koopaActionState.EnemyState.GetHashCode()];
             FrameSetPosition = 0;

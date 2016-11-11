@@ -76,12 +76,8 @@ namespace MarioGame.Sprites
             };
 
             FrameSet = FrameSets[MarioActionStateEnum.Idle.GetHashCode()];
-            FrameSetPosition = 0;
-
-            // Begin with sprite facing right
 
             RowSet = RowSets[MarioPowerUpStateEnum.Standard.GetHashCode()];
-            RowSetPosition = 0;
         }
 
         public override void Load(int framesPerSecond )

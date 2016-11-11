@@ -11,22 +11,25 @@ namespace MarioGame.Sprites
 {
     public class FireFlowerSprite : HidableSprite //TODO: refactor this class to use either ANimated Sprite or Sprite
     {
-        public enum Frames
+        private enum Frames
         {
             Blue = 0,
             Red = 1,
             Purple = 2,
             Halo = 3
         }
+
+        protected override void DefineFrameSets()
+        {
+            base.DefineFrameSets();
+            NumberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
+            FrameSets = new Dictionary<int, Collection<int>> {
+                {0, new Collection<int> { Frames.Blue.GetHashCode(), Frames.Red.GetHashCode(), Frames.Purple.GetHashCode(), Frames.Halo.GetHashCode() } },
+            };
+        }
         public FireFlowerSprite(ContentManager content, Entity entity) : base(content, entity)
         {
             AssetName = "fireFlower";
-            NumberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
-
-            FrameSets = new Dictionary<int, Collection<int>> {
-                { 0, new Collection<int> { Frames.Blue.GetHashCode(), Frames.Red.GetHashCode(), Frames.Purple.GetHashCode(), Frames.Halo.GetHashCode() } },
-            };
-            FrameSet = FrameSets[Frames.Blue.GetHashCode()];
         }
         public override void Draw(SpriteBatch batch)
         {

@@ -12,6 +12,7 @@ namespace MarioGame.Sprites
 {
     public class BlockSprite : HidableSprite
     {
+        //TODO: clean up this class because other classes inherit from it
         public enum Rows
         {
             Visible = 0,

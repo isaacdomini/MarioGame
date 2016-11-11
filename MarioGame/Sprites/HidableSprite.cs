@@ -11,10 +11,7 @@ namespace MarioGame.Sprites
 {
     public abstract class HidableSprite : AnimatedSprite
     {
-        public bool isVisible
-        {
-            get { return ((IHidable)Entity).IsVisible; }
-        }
+        public bool isVisible => ((IHidable)Entity).IsVisible;
         public bool isOnScreen => ((IHidable)Entity).OnCurrentScreen;
 
         internal HidableSprite(ContentManager content, Entity entity) : base(content, entity)

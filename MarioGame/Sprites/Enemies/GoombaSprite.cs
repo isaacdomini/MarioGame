@@ -10,29 +10,27 @@ using System.Collections.ObjectModel;
 
 namespace MarioGame.Sprites
 {
-    public enum Frames
-    {
-        //frames are all facing left. 
-        Walk = 0,
-        Walk1 = 1,
-        Dead = 2,
-    }
-
     public class GoombaSprite : HidableSprite
     {
-        public GoombaSprite(ContentManager content, Entity entity) : base(content, entity)
+        private enum Frames
         {
-            AssetName = "regulargoomba";
+            //frames are all facing left. 
+            Walk = 0,
+            Walk1 = 1,
+            Dead = 2,
+        }
+        protected override void DefineFrameSets()
+        {
+            base.DefineFrameSets();
             NumberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
-
             FrameSets = new Dictionary<int, Collection<int>> {
                 {EnemyActionStateEnum.Walking.GetHashCode(), new Collection<int>{Frames.Walk.GetHashCode(), Frames.Walk1.GetHashCode()} },
                 {EnemyActionStateEnum.Dead.GetHashCode(), new Collection<int> { Frames.Dead.GetHashCode() } }
             };
-            FrameSet = FrameSets[Frames.Walk.GetHashCode()];
-            FrameSetPosition = 0;
-            RowSetPosition = 0;
-            NumberOfFramesPerRow = 3;
+        }
+        public GoombaSprite(ContentManager content, Entity entity) : base(content, entity)
+        {
+            AssetName = "regulargoomba";
         }
         
         public void ChangeActionState(GoombaActionState goombaActionState)

@@ -12,7 +12,7 @@ namespace MarioGame.Entities
     public class Goomba : Enemy
     {
         //public GoombaSprite eSprite;
-        private GoombaSprite GoombaSprite => (GoombaSprite)Sprite;
+        private GoombaSprite GoombaSprite => (GoombaSprite)EnemySprite;
 
         public Goomba(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content,addToScriptEntities)
         {

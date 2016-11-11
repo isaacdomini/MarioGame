@@ -14,23 +14,23 @@ namespace MarioGame.Sprites
 
     public class PirahnaSprite : HidableSprite
     {
-        public enum Frames
+        private enum Frames
         {
             //frames are all facing left. 
             Open = 0,
             Closed = 1
         }
+        protected override void DefineFrameSets()
+        {
+            base.DefineFrameSets();
+            NumberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
+            FrameSets = new Dictionary<int, Collection<int>> {
+                {0, new Collection<int>{Frames.Open.GetHashCode(), Frames.Closed.GetHashCode() } },
+            };
+        }
         public PirahnaSprite(ContentManager content, Entity entity) : base(content, entity)
         {
             AssetName = "Pirahna";
-            NumberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
-
-            FrameSets = new Dictionary<int, Collection<int>> {
-                {EnemyActionStateEnum.Walking.GetHashCode(), new Collection<int>{Frames.Open.GetHashCode(), Frames.Closed.GetHashCode()} }};
-            FrameSet = FrameSets[Frames.Open.GetHashCode()];
-            FrameSetPosition = 0;
-            RowSetPosition = 0;
-            NumberOfFramesPerRow = 2;
         }
 
         public void ChangeActionState(PirahnaActionState pirahnaActionState)

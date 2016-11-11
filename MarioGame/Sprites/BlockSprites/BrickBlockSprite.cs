@@ -17,17 +17,20 @@ namespace MarioGame.Sprites
             BrickBlock = 0,
             UsedBlock = 1
         }
-        public BrickBlockSprite(ContentManager content, Entity entity) : base(content, entity)
+        protected override void DefineFrameSets()
         {
-            AssetName = "brickblock";
-            NumberOfFramesPerRow = 2;
+            base.DefineFrameSets();
+            NumberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
             //Each state has a frameSet
             FrameSets = new Dictionary<int, Collection<int>> {
                 { BlockActionStateEnum.Standard.GetHashCode(), new Collection<int> { Frames.BrickBlock.GetHashCode() } },
                 { BlockActionStateEnum.Bumping.GetHashCode(), new Collection<int> { Frames.BrickBlock.GetHashCode() } },
                 { BlockActionStateEnum.Used.GetHashCode(), new Collection<int> { Frames.UsedBlock.GetHashCode() } }
             };
-            FrameSet = FrameSets[BlockActionStateEnum.Standard.GetHashCode()];
+        }
+        public BrickBlockSprite(ContentManager content, Entity entity) : base(content, entity)
+        {
+            AssetName = "brickblock";
         }
     }
 }

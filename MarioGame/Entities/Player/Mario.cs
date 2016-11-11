@@ -289,6 +289,11 @@ namespace MarioGame.Entities
                 OnCollideItem((Item)otherObject);
             }
        }
+
+        //protected override void OnCollideBlock(Block block, Sides side, Sides blockSide)
+        //{
+            
+        //}
         public void SetInvincible(float seconds)
         {
             _secondsOfInvincibilityRemaining = seconds;

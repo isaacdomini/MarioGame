@@ -9,7 +9,6 @@ using Microsoft.Xna.Framework.Content;
 namespace MarioGame.Sprites
 {
     public class BlockPieceSprite : AnimatedSprite
-
     {
         public BlockPieceSprite(ContentManager content, Entity entity) : base(content, entity)
         {

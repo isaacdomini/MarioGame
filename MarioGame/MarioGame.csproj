@@ -130,7 +130,7 @@
     <Compile Include="Sprites\ItemSprites\CoinSprite.cs" />
     <Compile Include="Sprites\ItemSprites\FireFlowerSprite.cs" />
     <Compile Include="Sprites\HidableSprite.cs" />
-    <Compile Include="Sprites\BlockSprites\GreenPipe.cs" />
+    <Compile Include="Sprites\BlockSprites\GreenPipeSprite.cs" />
     <Compile Include="Sprites\ItemSprites\Mushroom1UpSprite.cs" />
     <Compile Include="Sprites\ItemSprites\MushroomSuperSprite.cs" />
     <Compile Include="Sprites\ItemSprites\StarSprite.cs" />

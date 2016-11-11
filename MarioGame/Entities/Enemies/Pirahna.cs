@@ -11,7 +11,7 @@ namespace MarioGame.Entities
 {
     public class Pirahna : Enemy
     {
-        private PirahnaSprite PirahnaSprite => (PirahnaSprite)Sprite;
+        private PirahnaSprite PirahnaSprite => (PirahnaSprite)EnemySprite;
 
         public Pirahna(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content, addToScriptEntities)
         {

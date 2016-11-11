@@ -35,7 +35,7 @@ namespace MarioGame.Entities
         public void ChangeActionState(KoopaActionState newState)
         {
             AState = newState;
-            KoopaTroopaSprite.changeActionState(newState);
+            KoopaTroopaSprite.ChangeActionState(newState);
         }
 
         internal void SetShellVelocityToMoving()

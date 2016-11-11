@@ -12,19 +12,9 @@ namespace MarioGame.Sprites
 {
     public class StepBlockSprite : BlockSprite
     {
-        public enum Frames
-        {
-            StepBlock = 0
-        }
         public StepBlockSprite(ContentManager content, Entity entity) : base(content, entity)
         {
             AssetName = "stepblock";
-            NumberOfFramesPerRow = 1;
-            //Each state has a frameSet
-            FrameSets = new Dictionary<int, Collection<int>> {
-                { BlockActionStateEnum.Standard.GetHashCode(), new Collection<int> { Frames.StepBlock.GetHashCode() } }
-            };
-            FrameSet = FrameSets[BlockActionStateEnum.Standard.GetHashCode()];
         }
     }
 }

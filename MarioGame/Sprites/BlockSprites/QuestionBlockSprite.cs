@@ -12,17 +12,18 @@ namespace MarioGame.Sprites
 {
     public class QuestionBlockSprite : BlockSprite
     {
-        public enum Frames
+        private enum Frames
         {
             QuestionBlock1 = 0,
             QuestionBlock2 = 1,
             QuestionBlock3 = 2,
             UsedBlock = 3
         }
-        public QuestionBlockSprite(ContentManager content, Entity entity) : base(content, entity)
+
+        protected override void DefineFrameSets()
         {
-            AssetName = "questionblock";
-            NumberOfFramesPerRow = 4;
+            base.DefineFrameSets();
+            NumberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
             //Each state has a frameSet
             FrameSets = new Dictionary<int, Collection<int>> {
                 { BlockActionStateEnum.Standard.GetHashCode(), new Collection<int> {Frames.QuestionBlock1.GetHashCode(), Frames.QuestionBlock2.GetHashCode(), Frames.QuestionBlock3.GetHashCode() } },
@@ -30,7 +31,11 @@ namespace MarioGame.Sprites
                 { BlockActionStateEnum.Used.GetHashCode(), new Collection<int> { Frames.UsedBlock.GetHashCode() } }
 
             };
-            FrameSet = FrameSets[BlockActionStateEnum.Standard.GetHashCode()];
+        }
+
+        public QuestionBlockSprite(ContentManager content, Entity entity) : base(content, entity)
+        {
+            AssetName = "questionblock";
         }
     }
 }

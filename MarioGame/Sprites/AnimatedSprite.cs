@@ -14,42 +14,32 @@ namespace MarioGame.Sprites
 {
     public abstract class AnimatedSprite : Sprite
     {
-       
-        private int _numberOfFramesPerRow; //number of frames in the row
-        protected int NumberOfFramesPerRow { get { return _numberOfFramesPerRow; } set { _numberOfFramesPerRow = value; } }
-        //each action state uses a set of frames (e.g. frame numbers 7, 8, 9 on the specific row on the sprite sheet
-        private int _frameSetPosition; //this refers to the position in the frameset. e.g. if our frameSet was <7,8,9> if _frameSetPosition = 1 then _frameSet[_frameSetPosition] would equal 8
-        protected int FrameSetPosition { get { return _frameSetPosition; } set { _frameSetPosition = value; } }
-
-        private IDictionary<int, Collection<int>> _frameSets;
-
-        protected IDictionary<int, Collection<int>> FrameSets
-        {
-            get { return _frameSets; }
-            set { _frameSets = value; }
-        }
+        protected IDictionary<int, Collection<int>> FrameSets { get; set; }
 
         //TODO: somehow figure out how to declare the type of the dictionary as <String, Frames> . . .it gave me an error when doing that. This should also get rid of the pesky casting on line 81
-        private Collection<int> _frameSet;
-        protected Collection<int> FrameSet { get { return _frameSet; } set { _frameSet = value; } }
+        protected Collection<int> FrameSet { get; set; }
 
-        private IDictionary<int, Collection<int>> _rowSets;
-        protected IDictionary<int, Collection<int>> RowSets { get { return _rowSets; } set { _rowSets = value; } }
-        private Collection<int> _rowSet;
-        protected Collection<int> RowSet { get { return _rowSet; } set { _rowSet = value; } }
-        private int _rowSetPosition;
-        protected int RowSetPosition { get { return _rowSetPosition; } set { _rowSetPosition = value; } }
+        protected IDictionary<int, Collection<int>> RowSets { get; set; }
+
+        protected Collection<int> RowSet { get; set; }
+
+        protected int RowSetPosition { get; set; }
+
+        //each action state uses a set of frames (e.g. frame numbers 7, 8, 9 on the specific row on the sprite sheet
+        protected int FrameSetPosition { get; set; }
+        protected int NumberOfFramesPerRow { get; set; }
         public int FrameWidth { get; private set; }
 
         public int FrameHeight { get; protected set; }
 
-        private float _totalElapsed, _timePerFrame;
-        protected float TotalElapsed { get { return _totalElapsed; } set { _totalElapsed = value; } }
-        protected float TimePerFrame { get { return _timePerFrame; } set { _timePerFrame = value; } }
+        protected float TotalElapsed { get; set; }
+
+        protected float TimePerFrame { get; set; }
+
         protected Directions Direction => Entity.Direction;
         protected SpriteEffects Flipped => Direction == Directions.Right ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
-        internal AnimatedSprite(ContentManager content, Entity entity) : base(content, entity)
+        protected virtual void DefineFrameSets()
         {
             RowSets = new Dictionary<int, Collection<int>>
             {
@@ -59,14 +49,20 @@ namespace MarioGame.Sprites
             {
                 {0, new Collection<int> {0 } }
             };
+            NumberOfFramesPerRow = 1;
+        }
+
+        protected virtual void SwitchToInitialFrameSet()
+        {
             RowSetPosition = 0;
             FrameSetPosition = 0;
-
             RowSet = (Collection<int>) RowSets[0];
             FrameSet = (Collection<int>) FrameSets[0];
-
-            NumberOfFramesPerRow = 1;
-
+        }
+        internal AnimatedSprite(ContentManager content, Entity entity) : base(content, entity)
+        {
+           DefineFrameSets();
+            SwitchToInitialFrameSet(); 
         }
 
         //NOTE: Child class must set _numberOfChildren

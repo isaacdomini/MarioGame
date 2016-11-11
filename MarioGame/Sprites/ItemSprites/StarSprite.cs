@@ -11,7 +11,7 @@ namespace MarioGame.Sprites
 {
     public class StarSprite : HidableSprite //TODO: refactor this class to use either ANimated Sprite or Sprite
     {
-        public enum Frames
+        private enum Frames
         {
             //frames are all facing left. Except DeadMario who is facing the computer user.
             Orange = 0,
@@ -19,16 +19,18 @@ namespace MarioGame.Sprites
             Maroon = 2,
             Red = 3
         }
-        public StarSprite(ContentManager content, Entity entity) : base(content, entity)
-        {
-            AssetName = "star";
-            NumberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
 
+        protected override void DefineFrameSets()
+        {
+            base.DefineFrameSets();
+            NumberOfFramesPerRow = Enum.GetNames(typeof(Frames)).Length;
             FrameSets = new Dictionary<int, Collection<int>> {
                 { 0, new Collection<int> { Frames.Orange.GetHashCode(), Frames.Yellow.GetHashCode(), Frames.Red.GetHashCode() } },
             };
-            FrameSet = FrameSets[Frames.Orange.GetHashCode()];
-
+        }
+        public StarSprite(ContentManager content, Entity entity) : base(content, entity)
+        {
+            AssetName = "star";
         }
         public override void Draw(SpriteBatch batch)
         {
