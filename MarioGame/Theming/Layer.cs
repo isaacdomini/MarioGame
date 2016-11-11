@@ -37,7 +37,6 @@ namespace MarioGame.Theming
             Sprites = Sprites.FindAll(s => !s.Deleted);
             Sprites.ForEach(s => s.Draw(spriteBatch));
             spriteBatch.End();
-            Mario._scoreboard.drawScoreboard(spriteBatch);
         }
 
         private Camera _camera;
