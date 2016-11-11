@@ -18,7 +18,6 @@ namespace MarioGame.Entities
         // Could be useful for casting in certain circumstances
         public MarioPowerUpState MarioPowerUpState => (MarioPowerUpState)PState;
         public MarioActionState MarioActionState => (MarioActionState)AState;
-        private MarioActionStateMachine marioActionStateMachine;
         // TODO: maybe we don't have to give the casted variable a new name, but rather just use the new keyword and the subclass type
         protected MarioSprite MarioSprite => (MarioSprite)Sprite;
         public static Scoreboard _scoreboard = new Scoreboard();
@@ -48,7 +47,7 @@ namespace MarioGame.Entities
 
         public Mario(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content, addToScriptEntities)
         {
-            marioActionStateMachine = new MarioActionStateMachine(this);
+            var marioActionStateMachine = new MarioActionStateMachine(this);
             var marioPowerUpStateMachine = new MarioPowerUpStateMachine(this);
             AState = marioActionStateMachine.IdleMarioState; //TODO: make marioActionState a casted getter of aState?
             PState = marioPowerUpStateMachine.StandardState;

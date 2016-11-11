@@ -24,7 +24,8 @@ namespace MarioGame.Controllers
 
         public void AddCommand(int key, ICommand command)
         {
-            var keyList = (Buttons[])Enum.GetValues(typeof(Buttons));
+            var keyList = new List<Buttons>((Buttons[]) Enum.GetValues(typeof(Buttons)));
+ 
             foreach (var keys in keyList)
             {
                 if ((int)keys == key) Dictionary.Add(keys, command);
@@ -41,11 +42,7 @@ namespace MarioGame.Controllers
         
         public void UpdateInput()
         {
-            var indeces = new List<PlayerIndex>();
-            indeces.Add(PlayerIndex.One);
-            indeces.Add(PlayerIndex.Two);
-            indeces.Add(PlayerIndex.Three);
-            indeces.Add(PlayerIndex.Four);
+            var indeces = new List<PlayerIndex> {PlayerIndex.One, PlayerIndex.Two, PlayerIndex.Three, PlayerIndex.Four};
             foreach (var index in indeces)
             {
                 var newState = GamePad.GetState(index);
@@ -62,11 +59,7 @@ namespace MarioGame.Controllers
 
         public void CheckForResume()
         {
-            var indeces = new List<PlayerIndex>();
-            indeces.Add(PlayerIndex.One);
-            indeces.Add(PlayerIndex.Two);
-            indeces.Add(PlayerIndex.Three);
-            indeces.Add(PlayerIndex.Four);
+            var indeces = new List<PlayerIndex> {PlayerIndex.One, PlayerIndex.Two, PlayerIndex.Three, PlayerIndex.Four};
             foreach (var index in indeces)
             {
                 var newState = GamePad.GetState(index);
@@ -83,11 +76,8 @@ namespace MarioGame.Controllers
 
         public void AddPauseScreenKeys(int key, ICommand command)
         {
-            var keyList = (Buttons[])Enum.GetValues(typeof(Buttons));
-            foreach (var keys in keyList)
-            {
-                if ((int)keys == key) PauseScreenKeys.Add(keys, command);
-            }
+            var keyList = new List<Buttons>((Buttons[]) Enum.GetValues(typeof(Buttons)));
+            keyList.FindAll(k => (int) k == key).ForEach(k => PauseScreenKeys.Add(k, command));
         }
     }
 }
