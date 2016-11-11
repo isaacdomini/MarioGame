@@ -31,7 +31,7 @@ namespace MarioGame.Entities
 
         private const int StandardBoundingBoxWidth = 20;
         private const int StandardBoundingBoxHeight = 20;
-        public bool CanBreakBricks => MarioPowerUpState is SuperState;
+        public bool CanBreakBricks => MarioPowerUpState is SuperState || MarioPowerUpState is SuperStarState || MarioPowerUpState is FireState || MarioPowerUpState is FireStarState;
 
         private enum SpaceBarAction
         {

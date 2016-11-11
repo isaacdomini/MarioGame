@@ -23,21 +23,19 @@ namespace MarioGame.Entities
         }
         public override void OnCollide(IEntity otherObject, Sides side, Sides otherSide)
         {
-            if (IsVisible && !(this is Coin))//TODO: This is coin logic should be delegated polymorphically to the coin class
+            if (!IsVisible) return;
+            base.OnCollide(otherObject, side, otherSide);
+            if (otherObject is Mario)
             {
-                base.OnCollide(otherObject, side, otherSide);
-                if (otherObject is Mario)
+                Delete();
+            }
+            if (otherObject is Block)
+            {
+                if (((Block)otherObject).IsVisible)
                 {
-                    Delete();
-                }
-                if (otherObject is Block)
-                {
-                    if (((Block)otherObject).IsVisible == true)
+                    if (side == Sides.Left || side == Sides.Right)
                     {
-                        if (side == Sides.Left || side == Sides.Right)
-                        {
-                            this.FlipHorizontalVelocity();
-                        }
+                        this.FlipHorizontalVelocity();
                     }
                 }
             }

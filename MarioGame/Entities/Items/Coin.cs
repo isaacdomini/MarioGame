@@ -1,4 +1,5 @@
 ﻿using System;
+using MarioGame.Core;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -34,6 +35,11 @@ namespace MarioGame.Entities
             {
                 Delete();
             }
+        }
+
+        public override void OnCollide(IEntity otherObject, Sides side, Sides otherSide)
+        {
+            //intentionally do nothing.
         }
     }
 }
