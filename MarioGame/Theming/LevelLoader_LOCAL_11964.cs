@@ -2,9 +2,7 @@
 using MarioGame.Entities;
 using MarioGame.States;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Media;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -33,11 +31,6 @@ namespace MarioGame.Theming
             var json = File.ReadAllText(tileMapFile);
             var level = JsonConvert.DeserializeObject<Level>(json);
             script.LevelWidth = level.width;
-            script.AudioManager = new AudioManager(game.Content.Load<Song>(level.song));
-            foreach (string sfx in GlobalConstants.SFXFiles)
-            {
-                script.AudioManager.AddSFX(sfx, content.Load<SoundEffect>("sounds\\" + sfx));
-            }
             level.entities.FindAll(e => e.position != null).ForEach(e =>
             {
                 e.position.ForEach(rc =>
@@ -172,7 +165,6 @@ namespace MarioGame.Theming
 
     public class Level
     {
-        public string song { get; set; }
         public int width { get; set; }
         public int height { get; set; }
         public Collection<int> checkpoints { get; set; }

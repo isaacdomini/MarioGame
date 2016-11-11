@@ -26,14 +26,18 @@ namespace MarioGame.Theming
             Debug.Assert(type != null, "type != null");
             return (Entity)Activator.CreateInstance(type, location * GlobalConstants.GridWidth, content, addToEntities);
         }
+<<<<<<< HEAD
 
         public static void AddTileMapToScript(string tileMapFile, Script script, Game1 game)
+=======
+        public static void AddTileMapToScript(string tileMapFile, Script script, ContentManager content)
+>>>>>>> added AudioManaher, fixxed some other crap
         {
 
             var json = File.ReadAllText(tileMapFile);
             var level = JsonConvert.DeserializeObject<Level>(json);
             script.LevelWidth = level.width;
-            script.AudioManager = new AudioManager(game.Content.Load<Song>(level.song));
+            script.AudioManager = new AudioManager(content.Load<Song>(level.song));
             foreach (string sfx in GlobalConstants.SFXFiles)
             {
                 script.AudioManager.AddSFX(sfx, content.Load<SoundEffect>("sounds\\" + sfx));

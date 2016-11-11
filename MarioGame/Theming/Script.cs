@@ -15,6 +15,7 @@ namespace MarioGame.Theming
     public class Script
     {
         private readonly Scene _scene;
+        public AudioManager AudioManager { get; set; }
         public List<Entity> Entities { get; private set; }
         //possibile TODO: cache the getters if performance suffer
         public List<Block> Blocks => Entities.FindAll(e => e is Block).ConvertAll(e => (Block) e);
@@ -24,6 +25,7 @@ namespace MarioGame.Theming
         private GraphicsDeviceManager GraphicsDeviceManager => _scene.Stage.GraphicsDevice;
         private Viewport Viewport => GraphicsDeviceManager.GraphicsDevice.Viewport;
         public float LevelWidth { get; set; }
+        public string BackgroundMusic { get; set; }
         //TODO: clean up below line's code smell
 
         public Script(Scene scene)

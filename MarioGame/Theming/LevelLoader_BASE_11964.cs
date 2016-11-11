@@ -1,10 +1,7 @@
-﻿using MarioGame.Core;
-using MarioGame.Entities;
+﻿using MarioGame.Entities;
 using MarioGame.States;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Media;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -27,28 +24,21 @@ namespace MarioGame.Theming
             return (Entity)Activator.CreateInstance(type, location * GlobalConstants.GridWidth, content, addToEntities);
         }
 
-        public static void AddTileMapToScript(string tileMapFile, Script script, Game1 game)
+        public static void AddTileMapToScript(string tileMapFile, Script script, ContentManager content)
         {
 
             var json = File.ReadAllText(tileMapFile);
             var level = JsonConvert.DeserializeObject<Level>(json);
             script.LevelWidth = level.width;
-            script.AudioManager = new AudioManager(game.Content.Load<Song>(level.song));
-            foreach (string sfx in GlobalConstants.SFXFiles)
-            {
-                script.AudioManager.AddSFX(sfx, content.Load<SoundEffect>("sounds\\" + sfx));
-            }
             level.entities.FindAll(e => e.position != null).ForEach(e =>
             {
                 e.position.ForEach(rc =>
                 {
                 rc.columns.ForEach(c => {
-                    var entity = CreateEntity(e.type, new Vector2(c, rc.row), game.Content, script.AddEntity);
+                    var entity = CreateEntity(e.type, new Vector2(c, rc.row), content, script.AddEntity);
                     if(entity is Mario)
                     {
                         ((Mario)entity).LevelWidth = level.width*GlobalConstants.GridWidth;
-                        ((Mario)entity).SetHiddenRoomEntry(game.EnterHiddenScene);
-                        ((Mario)entity).SetHiddenRoomDeparture(game.ExitHiddenScene);
                     }
                     if(entity is BackgroundItem)
                     {
@@ -92,7 +82,7 @@ namespace MarioGame.Theming
             {
                 e.positionWithHiddenItems.ForEach(instance =>
                 {
-                    var entity = CreateEntity(e.type, new Vector2(instance.column, instance.row), game.Content, script.AddEntity);
+                    var entity = CreateEntity(e.type, new Vector2(instance.column, instance.row), content, script.AddEntity);
                     script.AddEntity(entity);
                     if (e.actionState != null)
                     {
@@ -127,7 +117,7 @@ namespace MarioGame.Theming
                     {
                         while (h.amount-- > 0)
                         {
-                            var hiddenItem = (ContainableHidableEntity)CreateEntity(h.type, new Vector2(instance.column, instance.row), game.Content, script.AddEntity);
+                            var hiddenItem = (ContainableHidableEntity)CreateEntity(h.type, new Vector2(instance.column, instance.row), content, script.AddEntity);
                             ((IContainer)entity).AddContainedItem(hiddenItem);
                             script.AddEntity(hiddenItem);
                             hiddenItem.Hide();
@@ -172,7 +162,6 @@ namespace MarioGame.Theming
 
     public class Level
     {
-        public string song { get; set; }
         public int width { get; set; }
         public int height { get; set; }
         public Collection<int> checkpoints { get; set; }

@@ -182,6 +182,7 @@
     <Compile Include="States\PlayerStates\PowerUpStates\FireStarState.cs" />
     <Compile Include="States\PlayerStates\PowerUpStates\SuperState.cs" />
     <Compile Include="States\State.cs" />
+    <Compile Include="Theming\AudioManager.cs" />
     <Compile Include="Theming\Camera.cs" />
     <Compile Include="Core\GlobalConstants.cs" />
     <Compile Include="Theming\Layer.cs" />

@@ -1,4 +1,5 @@
 ﻿using MarioGame.Entities;
+using MarioGame.Theming;
 using Microsoft.Xna.Framework;
 
 namespace MarioGame.States
@@ -13,6 +14,7 @@ namespace MarioGame.States
         //TODO: need to add in behavior for jumping higher if you hold the jump button down.
         public override void Begin(MarioActionState prevState)
         {
+            script.AudioManager.playEffect("jump");
             Mario.ChangeActionState(StateMachine.JumpingMarioState);
             Mario.SetVelocityToJumping();
             _jumpTimer = .75f;
