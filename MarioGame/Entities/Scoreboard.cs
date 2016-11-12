@@ -29,6 +29,9 @@ namespace MarioGame.Entities
                     //Stage.game1.Reset();
                     ResetScoreboard();
                 }
+                _scoreboard["Points"] = 0;
+                _scoreboard["Time"] = 400;
+                _scoreboard["Coins"] = 0;
             }
         }
         public void ResetScoreboard()
@@ -67,7 +70,7 @@ namespace MarioGame.Entities
         {
             if (_scoreboard["Time"] == 0)
             {
-                //check lives and either restart game or game over screen
+                LoseLife();
             }
             else
             {
@@ -106,7 +109,7 @@ namespace MarioGame.Entities
             }
             else
             {
-                //call method to reset.
+                MarioGame.Entities.Entity.Script.Reset();
             }
         }
 

@@ -5,6 +5,7 @@ using MarioGame.Theming.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
+using MarioGame.Entities;
 
 namespace MarioGame.Core
 {
@@ -16,6 +17,7 @@ namespace MarioGame.Core
         private int _scene;
         private readonly List<Scene> _scenes;
         private static SpriteFont _font;
+        private Scoreboard _scoreboard = new Scoreboard();
         public static SpriteFont Font => _font;
         public Scene Scene => _scenes[_scene - 1];
         public GraphicsDeviceManager Graphics { get; private set; }
@@ -99,6 +101,7 @@ namespace MarioGame.Core
             _scenes.Add(new Scene(new Stage(this)));
             Initialize();
             LoadContent();
+            _scoreboard.InitializeScoreboardList();
         }
         public void PauseCommand()
         {
