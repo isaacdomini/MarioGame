@@ -17,6 +17,7 @@ namespace MarioGame.States
             Goomba.SetVelocityToIdle();
             Goomba.ChangeActionState(StateMachine.DeadState);
             _elapsedMilliseconds = 0;
+            EnemyActionState.deadGoomba = 0;
         }
 
         public override void UpdateEntity(int elapsedMilliseconds)
@@ -26,6 +27,7 @@ namespace MarioGame.States
             {
                 _elapsedMilliseconds = 0;
                 Goomba.Delete();
+                EnemyActionState.deadGoomba = 1;
             }
         }
 

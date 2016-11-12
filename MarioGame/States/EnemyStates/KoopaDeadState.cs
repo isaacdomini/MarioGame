@@ -15,6 +15,7 @@ namespace MarioGame.States
             base.Begin(prevState);
             Koopa.SetVelocityToIdle();
             Koopa.ChangeActionState(StateMachine.DeadState);
+            EnemyActionState.deadKoopa = 1;
         }
         public override void JumpedOn(Sides side)
         {

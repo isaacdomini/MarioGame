@@ -104,8 +104,15 @@ namespace MarioGame.Entities
             MarioActionState.CheckForLevelEdges();
             SetXVelocity(Vector2.Zero);
             _scoreboard.UpdateTimer(elapsedMilliseconds);
+            CheckFallOff(viewport);
         }
-        
+        private void CheckFallOff(Viewport viewport)
+        {
+            if(_position.Y>viewport.Height)
+            {
+                _scoreboard.LoseLife();
+            }
+        }
         public void ChangeActionState(MarioActionState state)
         {
             base.ChangeActionState(state);

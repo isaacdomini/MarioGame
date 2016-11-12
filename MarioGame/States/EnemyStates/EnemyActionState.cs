@@ -10,6 +10,8 @@ namespace MarioGame.States
 {
     public class EnemyActionState : ActionState
     {
+        public static int deadGoomba=1;
+        public static int deadKoopa = 1;
         public EnemyActionState(IEntity entity) : base(entity)
         {
         }
@@ -27,6 +29,12 @@ namespace MarioGame.States
         }
         public virtual void JumpedOn(Sides side)
         {
+            if (deadGoomba == 1 || deadKoopa ==1)
+            {
+                Mario._scoreboard.AddPoint(200);
+                deadGoomba = 0;
+                deadKoopa = 0;
+            }
             ChangeToDead();
         }
         public virtual void ChangeToDead() { }

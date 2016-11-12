@@ -99,7 +99,15 @@ namespace MarioGame.Entities
         }
         public void LoseLife()
         {
-            _scoreboard["Lives"] --;
+            _scoreboard["Lives"]--;
+            if (_scoreboard["Lives"]==0)
+            {
+                //call method to end game
+            }
+            else
+            {
+                //call method to reset.
+            }
         }
 
         //Call this when mario hits the flagpole
