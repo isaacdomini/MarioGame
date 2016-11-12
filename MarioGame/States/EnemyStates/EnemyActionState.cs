@@ -31,7 +31,7 @@ namespace MarioGame.States
         {
             if (deadGoomba == 1 || deadKoopa ==1)
             {
-                Mario._scoreboard.AddPoint(200);
+                Mario.Scoreboard.AddPoint(200);
                 deadGoomba = 0;
                 deadKoopa = 0;
             }

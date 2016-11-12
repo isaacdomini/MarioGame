@@ -18,10 +18,9 @@ namespace MarioGame.Entities
         // Could be useful for casting in certain circumstances
         public MarioPowerUpState MarioPowerUpState => (MarioPowerUpState)PState;
         public MarioActionState MarioActionState => (MarioActionState)AState;
-        private MarioActionStateMachine marioActionStateMachine;
         // TODO: maybe we don't have to give the casted variable a new name, but rather just use the new keyword and the subclass type
         protected MarioSprite MarioSprite => (MarioSprite)Sprite;
-        public static Scoreboard _scoreboard = new Scoreboard();
+        public static Scoreboard Scoreboard = new Scoreboard();
 
         // Velocity variables
         private static readonly Vector2 JumpingVelocity = new Vector2(0, VelocityConstant * -2);
@@ -47,7 +46,7 @@ namespace MarioGame.Entities
 
         public Mario(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content, addToScriptEntities)
         {
-            marioActionStateMachine = new MarioActionStateMachine(this);
+            var marioActionStateMachine = new MarioActionStateMachine(this);
             var marioPowerUpStateMachine = new MarioPowerUpStateMachine(this);
             AState = marioActionStateMachine.IdleMarioState; //TODO: make marioActionState a casted getter of aState?
             PState = marioPowerUpStateMachine.StandardState;
@@ -102,7 +101,7 @@ namespace MarioGame.Entities
             UpdateInvincibilityStatus();
             MarioActionState.CheckForLevelEdges();
             SetXVelocity(Vector2.Zero);
-            _scoreboard.UpdateTimer(elapsedMilliseconds);
+            Scoreboard.UpdateTimer(elapsedMilliseconds);
             CheckFallOff(viewport);
         }
         private void CheckFallOff(Viewport viewport)
@@ -265,26 +264,26 @@ namespace MarioGame.Entities
             if (!item.IsVisible) return;
             if (item is Coin)
             {
-                _scoreboard.AddCoin();
+                Scoreboard.AddCoin();
             }
             else if (item is Star)
             {
                 ChangeToStarState();
-                _scoreboard.AddPoint(1000);
+                Scoreboard.AddPoint(1000);
             }
             else if (item is FireFlower)
             {
                 ChangeToFireState();
-                _scoreboard.AddPoint(1000);
+                Scoreboard.AddPoint(1000);
             }
             else if (item is Mushroom1Up)
             {
-                _scoreboard.AddPoint(1000);
+                Scoreboard.AddPoint(1000);
             }
             else if (item is MushroomSuper)
             {
                 ChangeToSuperState();
-                _scoreboard.AddPoint(1000);
+                Scoreboard.AddPoint(1000);
             }
         }
         
