@@ -18,6 +18,10 @@ namespace MarioGame.Entities
         }
         public void InitializeScoreboardList()
         {
+            if (!_scoreboard.ContainsKey("Mario"))
+                _scoreboard.Add("Mario", 1);
+            else
+                _scoreboard["Mario"] = 1;
             if (!_scoreboard.ContainsKey("Lives"))
             {
                 ResetScoreboard();
@@ -33,6 +37,7 @@ namespace MarioGame.Entities
                 _scoreboard["Time"] = 400;
                 _scoreboard["Coins"] = 0;
             }
+            
         }
         public void ResetScoreboard()
         {
