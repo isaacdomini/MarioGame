@@ -14,7 +14,6 @@ namespace MarioGame.Entities
     public class Mario : PowerUpEntity
     {
         //private float _secondsOfInvincibilityRemaining = 0.0f;
-        public bool Invincible => _secondsOfInvincibilityRemaining > 0 || PState is FireStarState || PState is StandardStarState || PState is SuperStarState;
         // Could be useful for casting in certain circumstances
         public MarioPowerUpState MarioPowerUpState => (MarioPowerUpState)PState;
         public MarioActionState MarioActionState => (MarioActionState)AState;
@@ -30,8 +29,9 @@ namespace MarioGame.Entities
 
         private const int StandardBoundingBoxWidth = 20;
         private const int StandardBoundingBoxHeight = 20;
-        public bool CanBreakBricks => MarioPowerUpState is SuperState || MarioPowerUpState is SuperStarState || MarioPowerUpState is FireState || MarioPowerUpState is FireStarState;
-
+        private bool IsLarge => MarioPowerUpState is SuperState || MarioPowerUpState is SuperStarState || MarioPowerUpState is FireState || MarioPowerUpState is FireStarState;
+        public bool CanBreakBricks => IsLarge;
+        public bool Invincible => _secondsOfInvincibilityRemaining > 0 || PState is FireStarState || PState is StandardStarState || PState is SuperStarState;
         private enum SpaceBarAction
         {
             Walk,
@@ -59,7 +59,7 @@ namespace MarioGame.Entities
         {
             const int sideMargin = 0;
             var topBottomMargin = 0;
-            if (MarioPowerUpState is FireStarState || MarioPowerUpState is SuperState || MarioPowerUpState is FireState || MarioPowerUpState is SuperStarState)
+            if (IsLarge)
             {
                 BoundingBoxSize = new Point(SuperBoundingBoxWidth, SuperBoundingBoxHeight);
             }
