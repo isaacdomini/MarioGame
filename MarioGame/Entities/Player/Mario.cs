@@ -110,7 +110,7 @@ namespace MarioGame.Entities
         {
             if(_position.Y>viewport.Height)
             {
-                _scoreboard.LoseLife();
+                ChangeToDeadState();
             }
         }
         public void ChangeActionState(MarioActionState state)
