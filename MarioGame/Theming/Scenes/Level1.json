@@ -281,6 +281,15 @@
           "columns": [ 1 ]
         }
       ]
+    },
+    {
+      "type": "finishLine",
+      "position": [
+        {
+          "row": 10,
+          "columns": [ 105 ]
+        }
+      ]
     }
   ]
 }
