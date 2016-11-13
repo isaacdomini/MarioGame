@@ -18,7 +18,6 @@ namespace MarioGame.States
             base.Begin(prevState);
             Koopa.SetVelocityToWalk();
             Koopa.ChangeActionState(StateMachine.WalkingState);
-            EnemyActionState.deadKoopa = 1;
         }
         public override void ChangeToDead()
         {

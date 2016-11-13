@@ -22,7 +22,6 @@ namespace MarioGame.States
             Koopa.ChangeActionState(StateMachine.BouncingState);
             Koopa.SetShellVelocityToMoving();
             Koopa._secondsOfInvincibilityRemaining = 50f;
-            EnemyActionState.deadKoopa = 0;
         }
         public override void JumpedOn(Sides side)
         {
