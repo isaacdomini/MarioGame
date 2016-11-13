@@ -1,8 +1,12 @@
 ﻿{
   "width": 110,
   "height": 10,
-  "checkpoints": [ 43, 75],
+<<<<<<< HEAD
+  "checkpoints":  [43, 75],
+=======
+  "checkpoints": [ 25, 40 ],
   "song": "sounds\\level1-1",
+>>>>>>> more audio
   "entities": [
     {
       "type": "Cloud1",

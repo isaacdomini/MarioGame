@@ -132,6 +132,25 @@ namespace MarioGame.Entities
         }
         public void ChangePowerUpState(MarioPowerUpState state)
         {
+            if(!(this.PState is SuperStarState || this.PState is FireStarState || this.PState is StandardStarState))
+            {
+                if (state is SuperState || state is FireState)
+                {
+                    Script.AudioManager.playEffect(GlobalConstants.SFXFiles[AudioManager.SFXEnum.powerup.GetHashCode()]);
+                }
+                else if (state is StandardState)
+                {
+                    Script.AudioManager.playEffect(GlobalConstants.SFXFiles[AudioManager.SFXEnum.powerdown.GetHashCode()]);
+                }
+            }
+            else if(!(state is SuperStarState || state is FireStarState || state is StandardStarState))
+            {
+                Script.AudioManager.StopStarMode();
+            }
+            if(state is SuperStarState || state is FireStarState || state is StandardStarState)
+            {
+                Script.AudioManager.StartStarMode();
+            }
             base.ChangePowerUpState(state);
             LoadBoundingBox();
             MarioSprite.ChangePowerUp(state);//TODO: can we push _marioSprite.changePowerUp inside of base.ChangePowerUpState, or will doing so lose the polymorphism (e.g. will it call AnimatedSprite.changePowerUp rather than _marioSprite.changePowerUp

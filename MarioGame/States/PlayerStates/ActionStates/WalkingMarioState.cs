@@ -14,6 +14,7 @@ namespace MarioGame.States
         {
             Mario.ChangeActionState(StateMachine.WalkingMarioState);
             Mario.SetVelocityToWalk();
+            base.Begin(prevState);
         }
     }
 }

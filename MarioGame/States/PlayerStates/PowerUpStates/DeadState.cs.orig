@@ -14,8 +14,12 @@ namespace MarioGame.States
         {
             Mario.ChangePowerUpState(StateMachine.DeadState);
             Mario.SetVelocityToIdle();
-            Entities.Entity.Script.AudioManager.playEffect(GlobalConstants.SFXFiles[AudioManager.SFXEnum.powerdown.GetHashCode()]);
+<<<<<<< HEAD
             //MarioGame.Entities.Entity.Script.Reset();
+=======
+            Entities.Entity.Script.AudioManager.playEffect(GlobalConstants.SFXFiles[AudioManager.SFXEnum.powerdown.GetHashCode()]);
+            MarioGame.Entities.Entity.Script.Reset();
+>>>>>>> more audio
         }
     }
 }

@@ -109,8 +109,8 @@ namespace MarioGame.Theming.Scenes
             Mario.Scoreboard.drawScoreboard(SpriteBatch);
             
 =======
-                        Mario._scoreboard.drawScoreboard(_spriteBatch);
->>>>>>> added AudioManaher, fixxed some other crap
+                        Mario._scoreboard.drawScoreboard(SpriteBatch);
+>>>>>>> more audio
             if (_drawBox)
             {
                 SpriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Camera.GetViewMatrix(new Vector2(1.0f)));

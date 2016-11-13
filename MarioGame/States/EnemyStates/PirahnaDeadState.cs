@@ -1,4 +1,5 @@
 ﻿using MarioGame.Entities;
+using MarioGame.Theming;
 using Microsoft.Xna.Framework;
 
 namespace MarioGame.States
@@ -15,6 +16,7 @@ namespace MarioGame.States
         public override void Begin(IState prevState)
         {
             pirahna.Delete();
+            Entities.Entity.Script.AudioManager.playEffect(GlobalConstants.SFXFiles[AudioManager.SFXEnum.stomp.GetHashCode()]);
         }
 
         public override void UpdateEntity(int elapsedMilliseconds)
