@@ -97,6 +97,7 @@
     <Compile Include="Entities\IEntity.cs" />
     <Compile Include="Entities\IHidable.cs" />
     <Compile Include="Entities\Items\Coin.cs" />
+    <Compile Include="Entities\Items\finishLine.cs" />
     <Compile Include="Entities\Items\FireFlower.cs" />
     <Compile Include="Entities\Blocks\GreenPipe.cs" />
     <Compile Include="Entities\Items\Item.cs" />
@@ -128,6 +129,7 @@
     <Compile Include="Sprites\Enemies\PirahnaSprite.cs" />
     <Compile Include="Sprites\ISprite.cs" />
     <Compile Include="Sprites\ItemSprites\CoinSprite.cs" />
+    <Compile Include="Sprites\ItemSprites\finishLineSprite.cs" />
     <Compile Include="Sprites\ItemSprites\FireFlowerSprite.cs" />
     <Compile Include="Sprites\HidableSprite.cs" />
     <Compile Include="Sprites\BlockSprites\GreenPipeSprite.cs" />

@@ -26,7 +26,7 @@ namespace MarioGame.Sprites
         protected int RowSetPosition { get; set; }
 
         //each action state uses a set of frames (e.g. frame numbers 7, 8, 9 on the specific row on the sprite sheet
-        protected int FrameSetPosition { get; set; }
+        public int FrameSetPosition { get; set; }
         protected int NumberOfFramesPerRow { get; set; }
         public int FrameWidth { get; private set; }
 

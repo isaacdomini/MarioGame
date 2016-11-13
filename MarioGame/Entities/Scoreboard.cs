@@ -58,6 +58,12 @@ namespace MarioGame.Entities
             else
                 _scoreboard["Time"] = 400;
         }
+
+        internal void AddLife()
+        {
+            _scoreboard["Lives"]++;
+        }
+
         public void drawScoreboard(SpriteBatch batch)
         {
             var scoreLocation = new Vector2(5, 5);
