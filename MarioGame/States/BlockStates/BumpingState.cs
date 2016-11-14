@@ -19,7 +19,7 @@ namespace MarioGame.States.BlockStates.ActionStates
         {
             base.Begin(prevState);
             ((Block)Entity).ChangeActionState(StateMachine.BumpingState);
-            Entities.Entity.Script.AudioManager.playEffect(GlobalConstants.SFXFiles[AudioManager.SFXEnum.bump.GetHashCode()]);
+            //Entities.Entity.Script.AudioManager.playEffect(GlobalConstants.SFXFiles[AudioManager.SFXEnum.bump.GetHashCode()]);
         }
         public override void EndState()
         {

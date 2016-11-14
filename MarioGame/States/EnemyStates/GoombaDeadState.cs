@@ -19,7 +19,7 @@ namespace MarioGame.States
             Goomba.ChangeActionState(StateMachine.DeadState);
             _elapsedMilliseconds = 0;
             Mario.Scoreboard.AddPoint(100);            
-	    Entities.Entity.Script.AudioManager.playEffect(GlobalConstants.SFXFiles[AudioManager.SFXEnum.stomp.GetHashCode()]);
+	    //Entities.Entity.Script.AudioManager.playEffect(GlobalConstants.SFXFiles[AudioManager.SFXEnum.stomp.GetHashCode()]);
         }
 
         public override void UpdateEntity(int elapsedMilliseconds)
