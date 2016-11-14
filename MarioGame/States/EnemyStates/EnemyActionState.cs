@@ -13,10 +13,7 @@ namespace MarioGame.States
         public EnemyActionState(IEntity entity) : base(entity)
         {
         }
-        public override void Begin(IState prevState)
-        {
-            base.Begin(prevState);
-        }
+       
         public virtual void HitBlock()
         {
             ((Entity)Entity).FlipHorizontalVelocity();

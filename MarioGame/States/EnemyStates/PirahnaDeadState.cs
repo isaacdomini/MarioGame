@@ -6,16 +6,14 @@ namespace MarioGame.States
 {
     internal class PirahnaDeadState : PirahnaActionState
     {
-        Pirahna pirahna;
         private int _elapsedMilliseconds;
         public PirahnaDeadState(Pirahna entity, PirahnaStateMachine stateMachine) : base(entity, stateMachine)
         {
             EnemyState = EnemyActionStateEnum.Dead;
-            pirahna = entity;
         }
         public override void Begin(IState prevState)
         {
-            pirahna.Delete();
+            Pirahna.Delete();
             //Entities.Entity.Script.AudioManager.playEffect(GlobalConstants.SFXFiles[AudioManager.SFXEnum.stomp.GetHashCode()]);
         }
 
