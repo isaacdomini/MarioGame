@@ -345,7 +345,6 @@ namespace MarioGame.Entities
                 OnCollideItem((Item)otherObject);
             }
        }
-
         public void SetInvincible(float seconds)
         {
             _secondsOfInvincibilityRemaining = seconds;

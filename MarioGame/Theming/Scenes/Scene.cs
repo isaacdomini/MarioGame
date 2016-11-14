@@ -41,7 +41,7 @@ namespace MarioGame.Theming.Scenes
 
         public virtual void Initialize()
         {
-            Stage.Initialize();
+            Stage.Initialize(this);
             Script.Initialize();
 
             _camera = new Camera(Stage.Game1.GraphicsDevice.Viewport);
@@ -82,7 +82,7 @@ namespace MarioGame.Theming.Scenes
         {
             Script.UpdateItemVisibility(Layers[ActionLayer]);
         }
-        public void Update(GameTime gameTime)
+        public virtual void Update(GameTime gameTime)
         {
             if (!_paused)
             {

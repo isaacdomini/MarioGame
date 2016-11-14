@@ -16,7 +16,7 @@ namespace MarioGame.Theming.Scenes
         }
         public override void Initialize()
         {
-            Stage.Initialize();
+            Stage.Initialize(this);
             Script.Initialize();
 
             _camera = new Camera(Stage.Game1.GraphicsDevice.Viewport);
@@ -30,6 +30,10 @@ namespace MarioGame.Theming.Scenes
                 Stage.Game1.GraphicsDevice.Viewport.Height / 2f);
 
             LevelLoader.AddTileMapToScript("HiddenLevel.json", Script, Stage.Game1);
+        }
+        public override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
         }
     }
 }

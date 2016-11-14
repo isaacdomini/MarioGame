@@ -25,7 +25,7 @@ namespace MarioGame.Theming
 
         public GraphicsDeviceManager GraphicsDevice => Game1.Graphics;
 
-        public void Initialize()
+        public void Initialize(Scene scene)
         {
             _controllers.Add(new KeyboardController());
             _controllers.Add(new GamepadController());
@@ -35,44 +35,44 @@ namespace MarioGame.Theming
             _controllers[1].AddCommand((int) Buttons.Start, new QuitCommand(Game1));
 
             // Adding jump command to controllers
-            _controllers[0].AddCommand((int)Keys.W, new JumpCommand(Game1.Scene.Script));
-            _controllers[0].AddHeldCommand((int)Keys.W, new JumpCommand(Game1.Scene.Script));
-            _controllers[0].AddCommand((int)Keys.Up, new JumpCommand(Game1.Scene.Script));
-            _controllers[0].AddHeldCommand((int)Keys.Up, new JumpCommand(Game1.Scene.Script));
+            _controllers[0].AddCommand((int)Keys.W, new JumpCommand(scene.Script));
+            _controllers[0].AddHeldCommand((int)Keys.W, new JumpCommand(scene.Script));
+            _controllers[0].AddCommand((int)Keys.Up, new JumpCommand(scene.Script));
+            _controllers[0].AddHeldCommand((int)Keys.Up, new JumpCommand(scene.Script));
 
             // Adding movement commands (Needs updated with actual commands)
-            _controllers[0].AddCommand((int)Keys.Left, new MoveLeftCommand(Game1.Scene.Script));
-            _controllers[0].AddHeldCommand((int)Keys.Left, new MoveLeftCommand(Game1.Scene.Script));
-            _controllers[0].AddCommand((int)Keys.A, new MoveLeftCommand(Game1.Scene.Script));
-            _controllers[0].AddHeldCommand((int)Keys.A, new MoveLeftCommand(Game1.Scene.Script));
-            _controllers[0].AddCommand((int)Keys.Right, new MoveRightCommand(Game1.Scene.Script));
-            _controllers[0].AddHeldCommand((int)Keys.Right, new MoveRightCommand(Game1.Scene.Script));
-            _controllers[0].AddCommand((int)Keys.D, new MoveRightCommand(Game1.Scene.Script));
-            _controllers[0].AddHeldCommand((int)Keys.D, new MoveRightCommand(Game1.Scene.Script));
-            _controllers[0].AddCommand((int)Keys.Down, new CrouchCommand(Game1.Scene.Script));
-            _controllers[0].AddCommand((int)Keys.S, new CrouchCommand(Game1.Scene.Script));
-            _controllers[0].AddCommand((int)Keys.Space, new DashOrThrowFireballCommand(Game1.Scene.Script));
+            _controllers[0].AddCommand((int)Keys.Left, new MoveLeftCommand(scene.Script));
+            _controllers[0].AddHeldCommand((int)Keys.Left, new MoveLeftCommand(scene.Script));
+            _controllers[0].AddCommand((int)Keys.A, new MoveLeftCommand(scene.Script));
+            _controllers[0].AddHeldCommand((int)Keys.A, new MoveLeftCommand(scene.Script));
+            _controllers[0].AddCommand((int)Keys.Right, new MoveRightCommand(scene.Script));
+            _controllers[0].AddHeldCommand((int)Keys.Right, new MoveRightCommand(scene.Script));
+            _controllers[0].AddCommand((int)Keys.D, new MoveRightCommand(scene.Script));
+            _controllers[0].AddHeldCommand((int)Keys.D, new MoveRightCommand(scene.Script));
+            _controllers[0].AddCommand((int)Keys.Down, new CrouchCommand(scene.Script));
+            _controllers[0].AddCommand((int)Keys.S, new CrouchCommand(scene.Script));
+            _controllers[0].AddCommand((int)Keys.Space, new DashOrThrowFireballCommand(scene.Script));
 
             // Add power up state commands
-            _controllers[0].AddCommand((int)Keys.Y, new StandardStateCommand(Game1.Scene.Script));
-            _controllers[0].AddCommand((int)Keys.U, new SuperStateCommand(Game1.Scene.Script));
-            _controllers[0].AddCommand((int)Keys.I, new FireStateCommand(Game1.Scene.Script));
-            _controllers[0].AddCommand((int)Keys.O, new DeadStateCommand(Game1.Scene.Script));
+            _controllers[0].AddCommand((int)Keys.Y, new StandardStateCommand(scene.Script));
+            _controllers[0].AddCommand((int)Keys.U, new SuperStateCommand(scene.Script));
+            _controllers[0].AddCommand((int)Keys.I, new FireStateCommand(scene.Script));
+            _controllers[0].AddCommand((int)Keys.O, new DeadStateCommand(scene.Script));
 
             // Add block state commands
-            _controllers[0].AddCommand((int)Keys.B, new BumpOrBreakBrick(Game1.Scene.Script));
-            _controllers[0].AddCommand((int)Keys.H, new ShowHiddenBlock(Game1.Scene.Script));
-            _controllers[0].AddCommand((int)Keys.X, new ChangeQuestionToUsedState(Game1.Scene.Script));
+            _controllers[0].AddCommand((int)Keys.B, new BumpOrBreakBrick(scene.Script));
+            _controllers[0].AddCommand((int)Keys.H, new ShowHiddenBlock(scene.Script));
+            _controllers[0].AddCommand((int)Keys.X, new ChangeQuestionToUsedState(scene.Script));
 
             // Adds commands to game controller
-            _controllers[1].AddCommand((int)Buttons.DPadLeft, new MoveLeftCommand(Game1.Scene.Script));
-            _controllers[1].AddCommand((int)Buttons.DPadDown, new CrouchCommand(Game1.Scene.Script));
-            _controllers[1].AddCommand((int)Buttons.DPadRight, new MoveRightCommand(Game1.Scene.Script));
-            _controllers[1].AddCommand((int)Buttons.B, new DashOrThrowFireballCommand(Game1.Scene.Script));
-            _controllers[1].AddCommand((int)Buttons.A, new JumpCommand(Game1.Scene.Script));
+            _controllers[1].AddCommand((int)Buttons.DPadLeft, new MoveLeftCommand(scene.Script));
+            _controllers[1].AddCommand((int)Buttons.DPadDown, new CrouchCommand(scene.Script));
+            _controllers[1].AddCommand((int)Buttons.DPadRight, new MoveRightCommand(scene.Script));
+            _controllers[1].AddCommand((int)Buttons.B, new DashOrThrowFireballCommand(scene.Script));
+            _controllers[1].AddCommand((int)Buttons.A, new JumpCommand(scene.Script));
 
             //Adds command to show bounding boxes
-            _controllers[0].AddCommand((int)Keys.C, new DrawBoundingBoxes(Game1.Scene.Script));
+            _controllers[0].AddCommand((int)Keys.C, new DrawBoundingBoxes(scene.Script));
 
             // Add pause commands
             _controllers[0].AddCommand((int)Keys.P, new PauseCommand(Game1));
