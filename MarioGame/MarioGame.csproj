@@ -96,6 +96,7 @@
     <Compile Include="Entities\IContainer.cs" />
     <Compile Include="Entities\IEntity.cs" />
     <Compile Include="Entities\IHidable.cs" />
+    <Compile Include="Entities\Items\Checkpoint.cs" />
     <Compile Include="Entities\Items\Coin.cs" />
     <Compile Include="Entities\Items\finishLine.cs" />
     <Compile Include="Entities\Items\FireFlower.cs" />
@@ -128,6 +129,7 @@
     <Compile Include="Sprites\Enemies\KoopaTroopaSprite.cs" />
     <Compile Include="Sprites\Enemies\PirahnaSprite.cs" />
     <Compile Include="Sprites\ISprite.cs" />
+    <Compile Include="Sprites\ItemSprites\CheckpointSprite.cs" />
     <Compile Include="Sprites\ItemSprites\CoinSprite.cs" />
     <Compile Include="Sprites\ItemSprites\finishLineSprite.cs" />
     <Compile Include="Sprites\ItemSprites\FireFlowerSprite.cs" />

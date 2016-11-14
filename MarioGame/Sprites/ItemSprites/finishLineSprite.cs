@@ -30,13 +30,6 @@ namespace MarioGame.Sprites
         {
             AssetName = "finishLine";
         }
-        public override void Draw(SpriteBatch batch)
-        {
-            if (isVisible)
-            {
-                base.Draw(batch);
-            }
-        }
     }
 }
 

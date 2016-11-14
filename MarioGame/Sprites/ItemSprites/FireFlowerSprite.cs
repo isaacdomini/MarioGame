@@ -31,13 +31,6 @@ namespace MarioGame.Sprites
         {
             AssetName = "fireFlower";
         }
-        public override void Draw(SpriteBatch batch)
-        {
-            if (isVisible)
-            {
-                base.Draw(batch);
-            }
-        }
     }
 }
 

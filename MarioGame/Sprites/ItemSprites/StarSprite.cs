@@ -32,13 +32,6 @@ namespace MarioGame.Sprites
         {
             AssetName = "star";
         }
-        public override void Draw(SpriteBatch batch)
-        {
-            if (isVisible)
-            {
-                base.Draw(batch);
-            }
-        }
-    }
+     }
 }
 
