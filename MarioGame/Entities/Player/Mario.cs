@@ -40,20 +40,20 @@ namespace MarioGame.Entities
 
         private SpaceBarAction _spaceBarAction;
         internal float LevelWidth;
-        private int currentCheckpointPosition = 9;
-        private bool _checkpointReached = true; //set true for testing
+        private int _currentCheckpointPosition;
+        private bool _checkpointReached = false; //set true for testing
         public Action EnterHiddenRoom { get; private set; }
 
         public Action ExitHiddenRoom { get; private set; }
-        private MarioActionStateMachine marioActionStateMachine;
-        private MarioPowerUpStateMachine marioPowerUpStateMachine;
+        private readonly MarioActionStateMachine _marioActionStateMachine;
+        private readonly MarioPowerUpStateMachine _marioPowerUpStateMachine;
 
         public Mario(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content, addToScriptEntities)
         {
-            marioActionStateMachine = new MarioActionStateMachine(this);
-            marioPowerUpStateMachine = new MarioPowerUpStateMachine(this);
-            AState = marioActionStateMachine.IdleMarioState; //TODO: make marioActionState a casted getter of aState?
-            PState = marioPowerUpStateMachine.StandardState;
+            _marioActionStateMachine = new MarioActionStateMachine(this);
+            _marioPowerUpStateMachine = new MarioPowerUpStateMachine(this);
+            AState = _marioActionStateMachine.IdleMarioState; //TODO: make marioActionState a casted getter of aState?
+            PState = _marioPowerUpStateMachine.StandardState;
             Direction = Directions.Right;
             _spaceBarAction = SpaceBarAction.Run;
         }
@@ -325,6 +325,11 @@ namespace MarioGame.Entities
                 ChangeToSuperState();
                 Scoreboard.AddPoint(1000);
             }
+            else if (item is Checkpoint)
+            {
+                _currentCheckpointPosition = (int) item.Position.X;
+                _checkpointReached = true;
+            }
         }
         
         public override void OnCollide(IEntity otherObject, Sides side, Sides otherSide)
@@ -368,9 +373,9 @@ namespace MarioGame.Entities
             {
                 if (_checkpointReached)
                 {
-                    moveToLocation(currentCheckpointPosition);
-                    ChangeActionState(marioActionStateMachine.IdleMarioState);
-                    ChangePowerUpState(marioPowerUpStateMachine.StandardState);
+                    MoveToLocation(_currentCheckpointPosition);
+                    ChangeActionState(_marioActionStateMachine.IdleMarioState);
+                    ChangePowerUpState(_marioPowerUpStateMachine.StandardState);
                     //Script.Reset();
                 }
                 else
@@ -384,7 +389,7 @@ namespace MarioGame.Entities
             }
         }
 
-        private void moveToLocation(int xPosition)
+        private void MoveToLocation(int xPosition)
         {
             _position.X = xPosition*GlobalConstants.GridWidth;
         }
