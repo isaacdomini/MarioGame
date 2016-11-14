@@ -80,7 +80,7 @@ namespace MarioGame.Theming.Scenes
         }
         public void UpdateItemVisibility()
         {
-            Script.updateItemVisibility(Layers[ActionLayer]);
+            Script.UpdateItemVisibility(Layers[ActionLayer]);
         }
         public void Update(GameTime gameTime)
         {

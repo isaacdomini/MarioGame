@@ -13,8 +13,8 @@ namespace MarioGame.States
         }
         public override void Begin(IState prevState)
         {
-            Pirahna.Delete();
-            //Entities.Entity.Script.AudioManager.playEffect(GlobalConstants.SFXFiles[AudioManager.SFXEnum.stomp.GetHashCode()]);
+            pirahna.Delete();
+            Entities.Entity.Script.AudioManager.playEffect(GlobalConstants.SFXFiles[AudioManager.SFXEnum.stomp.GetHashCode()]);
         }
 
         public override void UpdateEntity(int elapsedMilliseconds)
