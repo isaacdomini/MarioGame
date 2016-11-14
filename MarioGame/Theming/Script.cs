@@ -69,7 +69,7 @@ namespace MarioGame.Theming
             Entities.ForEach(e => e.Update(Viewport, gameTime.ElapsedGameTime.Milliseconds));
 
         }
-        public void updateItemVisibility(Layer layer)
+        public void UpdateItemVisibility(Layer layer)
         {
             Entities = Entities.FindAll(e => !e.Deleted);
             foreach (Entity e in Entities)
