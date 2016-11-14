@@ -40,7 +40,7 @@ namespace MarioGame.Entities
 
         private SpaceBarAction _spaceBarAction;
         internal float LevelWidth;
-        private int _currentCheckpointPosition;
+        private Vector2 _currentCheckpointPosition;
         private bool _checkpointReached = false; //set true for testing
         public Action EnterHiddenRoom { get; private set; }
 
@@ -327,7 +327,8 @@ namespace MarioGame.Entities
             }
             else if (item is Checkpoint)
             {
-                _currentCheckpointPosition = (int) item.Position.X;
+                _currentCheckpointPosition = item.Position;
+                //_currentCheckpointPosition = (int) item.Position.X;
                 _checkpointReached = true;
             }
         }
@@ -389,9 +390,10 @@ namespace MarioGame.Entities
             }
         }
 
-        private void MoveToLocation(int xPosition)
+        private void MoveToLocation(Vector2 xPosition)
         {
-            _position.X = xPosition*GlobalConstants.GridWidth;
+            xPosition.Y -= 15f;
+            _position = xPosition; //*GlobalConstants.GridWidth;
         }
     }
 
