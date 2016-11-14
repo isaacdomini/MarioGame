@@ -26,11 +26,12 @@ namespace MarioGame.Core
         public Game1()
         {
             var stage = new Stage(this);
+            var hiddenstage = new Stage(this);
 
             Graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            _scenes = new List<Scene> {new Scene(stage), new HiddenScene(stage)};
+            _scenes = new List<Scene> {new Scene(stage), new HiddenScene(hiddenstage)};
             _scene = 1;
         }
 
@@ -43,7 +44,12 @@ namespace MarioGame.Core
         /// </summary>
         protected override void Initialize()
         {
-            _scenes[_scene - 1].Initialize();
+            for (int i = 0; i < _scenes.Count; i++)
+            {
+                _scene = i + 1;
+                _scenes[i].Initialize();
+            }
+            _scene = 1;   
 
             base.Initialize();
         }
@@ -54,7 +60,8 @@ namespace MarioGame.Core
         /// </summary>
         protected override void LoadContent()
         {
-            _scenes[_scene - 1].LoadContent();
+            foreach (Scene scene in _scenes)
+                scene.LoadContent();
             Font = Content.Load<SpriteFont>("ScoreboardFont");
         }
 
