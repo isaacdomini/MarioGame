@@ -291,6 +291,16 @@
           "columns": [ 105 ]
         }
       ]
+    }, 
+      {
+
+      "type": "Checkpoint",
+      "position": [
+        {
+          "row": 11,
+          "columns": [ 43,75 ]
+        }
+      ]
     }
   ]
 }

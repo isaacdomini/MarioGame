@@ -12,7 +12,7 @@ namespace MarioGame.Sprites
     {
         public CheckpointSprite(ContentManager content, Entity entity) : base(content, entity)
         {
-            AssetName = "mushroom1Up";
+            AssetName = "checkpoint";
         }
     }
 }
