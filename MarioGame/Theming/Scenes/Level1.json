@@ -283,7 +283,7 @@
       ]
     },
     {
-      "type": "finishLine",
+      "type": "FinishLine",
       "position": [
         {
           "row": 10,

@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace MarioGame.Entities
 {
-    public class finishLine : Item
+    public class FinishLine : Item
     {
-        public finishLine(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content, addToScriptEntities)
+        public FinishLine(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content, addToScriptEntities)
         {
         }
         public override void OnCollide(IEntity otherObject, Sides side, Sides otherSide)
@@ -32,18 +32,24 @@ namespace MarioGame.Entities
         private void CalculateBonus(int frameNumber)
         {
             int points = 0;
-            if (frameNumber == 0)
-                points = 100;
-            else if (frameNumber == 1)
-                points = 400;
-            else if (frameNumber == 2)
-                points = 800;
-            else if (frameNumber == 3)
-                points = 2000;
-            else if (frameNumber == 4)
+            switch (frameNumber)
             {
-                points = 0;
-                Mario.Scoreboard.AddLife();
+                case 0:
+                    points = 100;
+                    break;
+                case 1:
+                    points = 400;
+                    break;
+                case 2:
+                    points = 800;
+                    break;
+                case 3:
+                    points = 2000;
+                    break;
+                case 4:
+                    points = 0;
+                    Mario.Scoreboard.AddLife();
+                    break;
             }
             Mario.Scoreboard.AddPoint(points);
         }
