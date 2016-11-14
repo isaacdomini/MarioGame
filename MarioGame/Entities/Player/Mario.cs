@@ -24,10 +24,10 @@ namespace MarioGame.Entities
         // Velocity variables
         private static readonly Vector2 JumpingVelocity = new Vector2(0, VelocityConstant * -2);
 
-        private const int SuperBoundingBoxWidth = 20;
+        private const int SuperBoundingBoxWidth = 18;
         private const int SuperBoundingBoxHeight = 36;
 
-        private const int StandardBoundingBoxWidth = 20;
+        private const int StandardBoundingBoxWidth = 14;
         private const int StandardBoundingBoxHeight = 20;
         private bool IsLarge => MarioPowerUpState is SuperState || MarioPowerUpState is SuperStarState || MarioPowerUpState is FireState || MarioPowerUpState is FireStarState;
         public bool CanBreakBricks => IsLarge;
@@ -55,19 +55,32 @@ namespace MarioGame.Entities
         }
 
         
-        protected override void SetUpBoundingBoxProperties()
+        protected override void SetUpBoundingBoxProperties()//TODO: All bounding box logic should really be in sprite classes, not entity classes
         {
-            const int sideMargin = 0;
+            int JumpingBoundingBoxWidth = StandardBoundingBoxWidth + 3;
+            int boxWidth = StandardBoundingBoxWidth, boxHeight = StandardBoundingBoxHeight;
+            int sideMargin = 0;
             var topBottomMargin = 0;
-            if (IsLarge)
+            if (IsLarge)//TODO: This logic perhaps should be handled by the state
             {
-                BoundingBoxSize = new Point(SuperBoundingBoxWidth, SuperBoundingBoxHeight);
+                boxWidth = SuperBoundingBoxWidth;
+                boxHeight = SuperBoundingBoxHeight;
+                sideMargin = 2;
             }
             else
             {
                 BoundingBoxSize = new Point(StandardBoundingBoxWidth, StandardBoundingBoxHeight);
+                if (MarioActionState is JumpingMarioState || MarioActionState is FallingMarioState)
+                {
+                    boxWidth = JumpingBoundingBoxWidth;
+                }
+                else
+                {
+                    sideMargin = 3;
+                }
                 topBottomMargin = 16;
             }
+            BoundingBoxSize = new Point(boxWidth, boxHeight);
             BoundingBoxOffset = new Point(sideMargin, topBottomMargin);
         }
         private void OnInvincibilityEnded()
@@ -114,6 +127,7 @@ namespace MarioGame.Entities
         public void ChangeActionState(MarioActionState state)
         {
             base.ChangeActionState(state);
+            LoadBoundingBox();
             MarioSprite.ChangeActionState(state);
         }
         public void ChangePowerUpState(MarioPowerUpState state)
