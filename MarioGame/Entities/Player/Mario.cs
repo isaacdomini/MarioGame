@@ -143,20 +143,20 @@ namespace MarioGame.Entities
             {
                 if (state is SuperState || state is FireState)
                 {
-                    Script.AudioManager.playEffect(GlobalConstants.SFXFiles[AudioManager.SFXEnum.powerup.GetHashCode()]);
+                    //Script.AudioManager.playEffect(GlobalConstants.SFXFiles[AudioManager.SFXEnum.powerup.GetHashCode()]);
                 }
                 else if (state is StandardState)
                 {
-                    Script.AudioManager.playEffect(GlobalConstants.SFXFiles[AudioManager.SFXEnum.powerdown.GetHashCode()]);
+                    //Script.AudioManager.playEffect(GlobalConstants.SFXFiles[AudioManager.SFXEnum.powerdown.GetHashCode()]);
                 }
             }
             else if(!(state is SuperStarState || state is FireStarState || state is StandardStarState))
             {
-                Script.AudioManager.StopStarMode();
+                //Script.AudioManager.StopStarMode();
             }
             if(state is SuperStarState || state is FireStarState || state is StandardStarState)
             {
-                Script.AudioManager.StartStarMode();
+                //Script.AudioManager.StartStarMode();
             }
             base.ChangePowerUpState(state);
             LoadBoundingBox();
