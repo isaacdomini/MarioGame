@@ -11,11 +11,11 @@ namespace MarioGame.States
             get; protected set;
         }
         protected Mario Mario => (Mario)Entity;
-        private MarioPowerUpStateMachine _stateMachine;
-        protected MarioPowerUpStateMachine StateMachine => _stateMachine;
+        protected MarioPowerUpStateMachine StateMachine { get; }
+
         public MarioPowerUpState(Mario mario, MarioPowerUpStateMachine stateMachine) : base(mario)
         {
-            _stateMachine = stateMachine;
+            StateMachine = stateMachine;
         }
         public virtual void Begin(MarioPowerUpState prevState)
         {
@@ -28,7 +28,6 @@ namespace MarioGame.States
         public virtual void ChangeToDead()
         {
             //_mario.marioPowerUpState.powerUpState = 
-            Mario.Scoreboard.LoseLife();
             StateMachine.DeadState.Begin(this);
         }
         public virtual void ChangeToSuper()

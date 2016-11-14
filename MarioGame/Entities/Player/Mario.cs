@@ -40,6 +40,7 @@ namespace MarioGame.Entities
 
         private SpaceBarAction _spaceBarAction;
         internal float LevelWidth;
+        private int currentCheckpointPosition = 5;
         public Action EnterHiddenRoom { get; private set; }
 
         public Action ExitHiddenRoom { get; private set; }
@@ -110,6 +111,7 @@ namespace MarioGame.Entities
         public override void Update(Viewport viewport, int elapsedMilliseconds)
         {
             base.Update(viewport, elapsedMilliseconds);
+            MarioPowerUpState.UpdateEntity(elapsedMilliseconds);
             MarioActionState.UpdateEntity(elapsedMilliseconds);
             UpdateInvincibilityStatus();
             MarioActionState.CheckForLevelEdges();
@@ -123,6 +125,11 @@ namespace MarioGame.Entities
             {
                 ChangeToDeadState();
             }
+        }
+
+        private void moveToLocation(int xPosition)
+        {
+            _position.X = xPosition*GlobalConstants.GridWidth;
         }
         public void ChangeActionState(MarioActionState state)
         {
