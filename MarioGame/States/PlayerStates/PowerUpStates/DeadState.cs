@@ -15,7 +15,7 @@ namespace MarioGame.States
         public override void Begin(MarioPowerUpState prevState)
         {
             Mario.ChangePowerUpState(StateMachine.DeadState);
-            //Entities.Entity.Script.AudioManager.playEffect(GlobalConstants.SFXFiles[AudioManager.SFXEnum.powerdown.GetHashCode()]);
+            Entities.Entity.Script.AudioManager.playEffect(GlobalConstants.SFXFiles[AudioManager.SFXEnum.powerdown.GetHashCode()]);
             Mario.SetVelocityToJumping();
             millisecondsDead = 0;
             Entities.Mario.Scoreboard.LoseLife();
