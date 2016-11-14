@@ -12,6 +12,7 @@ namespace MarioGame.Entities
     public class Scoreboard
     {
         private static readonly Dictionary<string, int> _scoreboard = new Dictionary<string, int>();
+        public bool HasLives => _scoreboard["Lives"] > 0;
         public Scoreboard() : base()
         {
             InitializeScoreboardList();
@@ -64,7 +65,7 @@ namespace MarioGame.Entities
             _scoreboard["Lives"]++;
         }
 
-        public void drawScoreboard(SpriteBatch batch)
+        public void DrawScoreboard(SpriteBatch batch)
         {
             var scoreLocation = new Vector2(5, 5);
             var spacing = new Vector2(150, 0);
@@ -76,7 +77,7 @@ namespace MarioGame.Entities
             }
             batch.End();
         }
-        public double timeTrack = 0;
+        public double TimeTrack = 0;
         public void UpdateTimer(int elapsedMilliseconds)
         {
             if (_scoreboard["Time"] == 0)
@@ -85,15 +86,15 @@ namespace MarioGame.Entities
             }
             else
             {
-                timeTrack = timeTrack + elapsedMilliseconds * .001;
-                if (timeTrack >= 1.0)
+                TimeTrack = TimeTrack + elapsedMilliseconds * .001;
+                if (TimeTrack >= 1.0)
                 {
                     _scoreboard["Time"] -= 1;
-                    timeTrack = 0;
+                    TimeTrack = 0;
                 }
             }
         }
-        public void checkCoinsForLife()
+        public void CheckCoinsForLife()
         {
             if (_scoreboard["Coins"] != 0 && _scoreboard["Coins"] % 100 == 0)
             {
@@ -105,7 +106,7 @@ namespace MarioGame.Entities
         {
             _scoreboard["Coins"]++;
             _scoreboard["Points"] += 200;
-            checkCoinsForLife();
+            CheckCoinsForLife();
         }
         public void AddPoint(int point)
         {
@@ -114,14 +115,6 @@ namespace MarioGame.Entities
         public void LoseLife()
         {
             _scoreboard["Lives"]--;
-            if (_scoreboard["Lives"]==0)
-            {
-                //call method to end game
-            }
-            else
-            {
-                MarioGame.Entities.Entity.Script.Reset();
-            }
         }
 
         //Call this when mario hits the flagpole

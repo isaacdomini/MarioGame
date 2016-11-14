@@ -105,7 +105,7 @@ namespace MarioGame.Theming.Scenes
         {
             Stage.Draw();
             Layers.ForEach(l => l.Draw(SpriteBatch));
-            Mario.Scoreboard.drawScoreboard(SpriteBatch);
+            Mario.Scoreboard.DrawScoreboard(SpriteBatch);
             
             if (_drawBox)
             {

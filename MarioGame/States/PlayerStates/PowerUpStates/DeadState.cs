@@ -18,6 +18,7 @@ namespace MarioGame.States
             Entities.Entity.Script.AudioManager.playEffect(GlobalConstants.SFXFiles[AudioManager.SFXEnum.powerdown.GetHashCode()]);
             Mario.SetVelocityToJumping();
             millisecondsDead = 0;
+            Entities.Mario.Scoreboard.LoseLife();
         }
 
         public override void UpdateEntity(int elapsedMilliseconds)
@@ -26,8 +27,8 @@ namespace MarioGame.States
             millisecondsDead += elapsedMilliseconds;
             if (millisecondsDead > deadAnimationDuration)
             {
+                Mario.RespawnOrGameOver();
                 millisecondsDead = 0;
-                Entities.Mario.Scoreboard.LoseLife();
             }
 
         }

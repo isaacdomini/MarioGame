@@ -40,15 +40,18 @@ namespace MarioGame.Entities
 
         private SpaceBarAction _spaceBarAction;
         internal float LevelWidth;
-        private int currentCheckpointPosition = 5;
+        private int currentCheckpointPosition = 9;
+        private bool _checkpointReached = true; //set true for testing
         public Action EnterHiddenRoom { get; private set; }
 
         public Action ExitHiddenRoom { get; private set; }
+        private MarioActionStateMachine marioActionStateMachine;
+        private MarioPowerUpStateMachine marioPowerUpStateMachine;
 
         public Mario(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content, addToScriptEntities)
         {
-            var marioActionStateMachine = new MarioActionStateMachine(this);
-            var marioPowerUpStateMachine = new MarioPowerUpStateMachine(this);
+            marioActionStateMachine = new MarioActionStateMachine(this);
+            marioPowerUpStateMachine = new MarioPowerUpStateMachine(this);
             AState = marioActionStateMachine.IdleMarioState; //TODO: make marioActionState a casted getter of aState?
             PState = marioPowerUpStateMachine.StandardState;
             Direction = Directions.Right;
@@ -127,10 +130,7 @@ namespace MarioGame.Entities
             }
         }
 
-        private void moveToLocation(int xPosition)
-        {
-            _position.X = xPosition*GlobalConstants.GridWidth;
-        }
+        
         public void ChangeActionState(MarioActionState state)
         {
             base.ChangeActionState(state);
@@ -360,6 +360,33 @@ namespace MarioGame.Entities
         protected override void LeaveHiddenRooom()
         {
             ExitHiddenRoom();
+        }
+
+        public void RespawnOrGameOver()
+        {
+            if (Scoreboard.HasLives)
+            {
+                if (_checkpointReached)
+                {
+                    moveToLocation(currentCheckpointPosition);
+                    ChangeActionState(marioActionStateMachine.IdleMarioState);
+                    ChangePowerUpState(marioPowerUpStateMachine.StandardState);
+                    //Script.Reset();
+                }
+                else
+                {
+                    Script.Reset();
+                }
+            }
+            else
+            {
+               //TODO: End GAME 
+            }
+        }
+
+        private void moveToLocation(int xPosition)
+        {
+            _position.X = xPosition*GlobalConstants.GridWidth;
         }
     }
 
