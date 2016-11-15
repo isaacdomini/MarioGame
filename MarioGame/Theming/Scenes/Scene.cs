@@ -17,7 +17,7 @@ namespace MarioGame.Theming.Scenes
         protected Camera _camera;
         public Camera Camera => _camera;
         private bool _drawBox=false;
-
+        public float LevelWidth;
         public Script Script { get; }
         protected List<Layer> Layers { get; set; }
         private const int ActionLayer = 2;

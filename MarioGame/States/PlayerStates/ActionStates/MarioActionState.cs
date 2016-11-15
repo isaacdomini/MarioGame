@@ -29,9 +29,9 @@ namespace MarioGame.States
         }
         public void CheckForLevelEdges()
         {
-            if (Mario.Position.X < GlobalConstants.GridWidth||Mario.Position.X>Mario.LevelWidth)
+            if (Mario.Position.X < GlobalConstants.GridWidth||Mario.Position.X>Entities.Entity.Script.LevelWidth*GlobalConstants.GridWidth)
             {
-                Mario.Halt();
+                Mario.HaltX();
             }
         }
 

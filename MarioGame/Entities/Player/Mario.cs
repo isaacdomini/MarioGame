@@ -39,7 +39,6 @@ namespace MarioGame.Entities
         }
 
         private SpaceBarAction _spaceBarAction;
-        internal float LevelWidth;
         private Vector2 _currentCheckpointPosition;
         private bool _checkpointReached = false; //set true for testing
         public Action EnterHiddenRoom { get; private set; }
