@@ -14,6 +14,7 @@ namespace MarioGame.States
         public override void Begin(IState prevState)
         {
             Pirahna.Delete();
+            Mario.Scoreboard.AddPoint(200);
             Entities.Entity.Script.AudioManager.playEffect(GlobalConstants.SFXFiles[AudioManager.SFXEnum.stomp.GetHashCode()]);
         }
 
