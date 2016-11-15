@@ -63,7 +63,7 @@ namespace MarioGame.Entities
                     }
                     
                 }
-                if (!HasItems()) ((BlockActionState)AState).ChangeToUsed();
+                if (!HasItems() && IsVisible) ((BlockActionState)AState).ChangeToUsed();
                 _isVisible = true;
             }
         }

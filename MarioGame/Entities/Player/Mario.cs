@@ -31,8 +31,9 @@ namespace MarioGame.Entities
 
         private const int StandardBoundingBoxWidth = 14;
         private const int StandardBoundingBoxHeight = 20;
+        private bool IsMovingUp => _velocity.Y <= 0;
         private bool IsLarge => MarioPowerUpState is SuperState || MarioPowerUpState is SuperStarState || MarioPowerUpState is FireState || MarioPowerUpState is FireStarState;
-        public bool CanBreakBricks => IsLarge;
+        public bool CanBreakBricks => IsLarge && IsMovingUp;
         public bool Invincible => _secondsOfInvincibilityRemaining > 0 || PState is FireStarState || PState is StandardStarState || PState is SuperStarState;
 
         public bool IsStarState
