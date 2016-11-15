@@ -88,6 +88,12 @@ namespace MarioGame.Entities
             BoundingBoxSize = new Point(boxWidth, boxHeight);
             BoundingBoxOffset = new Point(sideMargin, topBottomMargin);
         }
+
+        internal void SetPosition(int x, int y)
+        {
+            Position = new Vector2(x, y);
+        }
+
         private void OnInvincibilityEnded()
         {
             if(MarioPowerUpState is FireStarState)
