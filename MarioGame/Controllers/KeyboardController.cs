@@ -14,6 +14,7 @@ namespace MarioGame.Controllers
             _previousState = Keyboard.GetState();
             Dictionary = new Dictionary<Keys, ICommand>();
             PauseKeys = new Dictionary<Keys, ICommand>();
+            GameOverKeys = new Dictionary<Keys, ICommand>();
             HeldDictionary = new Dictionary<Keys, ICommand>();
         }
 
@@ -39,6 +40,7 @@ namespace MarioGame.Controllers
         private Dictionary<Keys, ICommand> Dictionary { get; set; }
         public Dictionary<Keys, ICommand> HeldDictionary { get; }
         private Dictionary<Keys, ICommand> PauseKeys { get; set; }
+        private Dictionary<Keys, ICommand> GameOverKeys { get; set; }
 
         public void UpdateInput()
         {
@@ -56,7 +58,7 @@ namespace MarioGame.Controllers
             _previousState = newState;
         }
 
-        public void CheckForResume()
+        public void UpdatePauseInput()
         {
             var newState = Keyboard.GetState();
             ICommand command;
@@ -68,13 +70,34 @@ namespace MarioGame.Controllers
 
             _previousState = newState;
         }
+        public void UpdateGameOverInput()
+        {
+            var newState = Keyboard.GetState();
+            ICommand command;
+            foreach (var key in newState.GetPressedKeys())
+                if (!_previousState.IsKeyDown(key) && GameOverKeys.TryGetValue(key, out command))
+                {
+                    command.Execute();
+                }
 
-        public void AddPauseScreenKeys(int key, ICommand command)
+            _previousState = newState;
+        }
+
+        public void AddPauseScreenCommand(int key, ICommand command)
         {
             var keyList = (Keys[])Enum.GetValues(typeof(Keys));
             foreach (var keys in keyList)
             {
                 if ((int)keys == key) PauseKeys.Add(keys, command);
+            }
+        }
+
+        public void AddGameOverScreenCommand(int key, ICommand command)
+        {
+            var keyList = (Keys[])Enum.GetValues(typeof(Keys));
+            foreach (var keys in keyList)
+            {
+                if ((int)keys == key) GameOverKeys.Add(keys, command);
             }
         }
     }

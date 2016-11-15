@@ -13,6 +13,8 @@ namespace MarioGame.Controllers
         private Dictionary<Buttons, ICommand> Dictionary { get; set; }
         public Dictionary<Buttons, ICommand> HeldDictionary { get; }
         private Dictionary<Buttons, ICommand> PauseScreenKeys { get; set; }
+        private Dictionary<Buttons, ICommand> GameOverScreenKeys { get; set; }
+
 
         public GamepadController()
         {
@@ -20,6 +22,7 @@ namespace MarioGame.Controllers
             Dictionary = new Dictionary<Buttons, ICommand>();
             HeldDictionary = new Dictionary<Buttons, ICommand>();
             PauseScreenKeys = new Dictionary<Buttons, ICommand>();
+            GameOverScreenKeys = new Dictionary<Buttons, ICommand>();
         }
 
         public void AddCommand(int key, ICommand command)
@@ -57,7 +60,7 @@ namespace MarioGame.Controllers
             }
         }
 
-        public void CheckForResume()
+        public void UpdatePauseInput()
         {
             var indeces = new List<PlayerIndex> {PlayerIndex.One, PlayerIndex.Two, PlayerIndex.Three, PlayerIndex.Four};
             foreach (var index in indeces)
@@ -73,11 +76,32 @@ namespace MarioGame.Controllers
                 _previousState = newState;
             }
         }
+        public void UpdateGameOverInput()
+        {
+            var indeces = new List<PlayerIndex> { PlayerIndex.One, PlayerIndex.Two, PlayerIndex.Three, PlayerIndex.Four };
+            foreach (var index in indeces)
+            {
+                var newState = GamePad.GetState(index);
+                if (!newState.IsConnected) continue;
+                ICommand command;
+                foreach (var button in Dictionary.Keys)
+                    if (!_previousState.IsButtonDown(button) && newState.IsButtonDown(button) &&
+                        GameOverScreenKeys.TryGetValue(button, out command))
+                        command.Execute();
 
-        public void AddPauseScreenKeys(int key, ICommand command)
+                _previousState = newState;
+            }
+        }
+
+        public void AddPauseScreenCommand(int key, ICommand command)
         {
             var keyList = new List<Buttons>((Buttons[]) Enum.GetValues(typeof(Buttons)));
             keyList.FindAll(k => (int) k == key).ForEach(k => PauseScreenKeys.Add(k, command));
+        }
+        public void AddGameOverScreenCommand(int key, ICommand command)
+        {
+            var keyList = new List<Buttons>((Buttons[])Enum.GetValues(typeof(Buttons)));
+            keyList.FindAll(k => (int)k == key).ForEach(k => GameOverScreenKeys.Add(k, command));
         }
     }
 }

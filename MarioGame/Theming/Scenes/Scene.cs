@@ -24,12 +24,14 @@ namespace MarioGame.Theming.Scenes
         public Stage Stage { get; }
         public Game1 Game1 => Stage.Game1;
         private bool _paused;
+        private bool _gameOver;
 
         public Scene(Stage stage)
         {
             Stage = stage;
             Script = new Script(this);
             _paused = false;
+            _gameOver = false;
         }
 
 
@@ -84,7 +86,15 @@ namespace MarioGame.Theming.Scenes
         }
         public virtual void Update(GameTime gameTime)
         {
-            if (!_paused)
+            if (_paused)
+            {
+                Stage.UpdatePause();
+
+            }else if (_gameOver)
+            {
+                Stage.UpdateGameOver();
+            }
+            else
             {
                 Stage.Update();
                 Script.Update(gameTime);
@@ -93,10 +103,6 @@ namespace MarioGame.Theming.Scenes
                 //_layers.ForEach(l => Script.updateItemVisibility(l));
                 //camera.Position = new Vector2(camera.Position.X + 1, camera.Position.Y);
                 //camera.LookAt(_script.mario.position);
-            }
-            else
-            {
-                Stage.CheckForResume();
             }
 
         }
@@ -150,6 +156,11 @@ namespace MarioGame.Theming.Scenes
         internal void Pause()
         {
             _paused = !_paused;
+        }
+
+        public void SetToGameOver()
+        {
+            _gameOver = true;
         }
 
     }

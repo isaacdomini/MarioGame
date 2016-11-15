@@ -34,11 +34,15 @@ namespace MarioGame.Theming
             _controllers[0].AddCommand((int)Keys.R, new ResetCommand(Game1));
             _controllers[1].AddCommand((int) Buttons.Start, new QuitCommand(Game1));
 
+
             // Adding jump command to controllers
             _controllers[0].AddCommand((int)Keys.W, new JumpCommand(scene.Script));
             _controllers[0].AddHeldCommand((int)Keys.W, new JumpCommand(scene.Script));
             _controllers[0].AddCommand((int)Keys.Up, new JumpCommand(scene.Script));
             _controllers[0].AddHeldCommand((int)Keys.Up, new JumpCommand(scene.Script));
+            _controllers[0].AddGameOverScreenCommand((int)Keys.R, new ResetCommand(Game1));
+            _controllers[1].AddGameOverScreenCommand((int)Buttons.Start, new QuitCommand(Game1));
+            _controllers[0].AddGameOverScreenCommand((int)Keys.Q, new QuitCommand(Game1));
 
             // Adding movement commands (Needs updated with actual commands)
             _controllers[0].AddCommand((int)Keys.Left, new MoveLeftCommand(scene.Script));
@@ -78,10 +82,10 @@ namespace MarioGame.Theming
             _controllers[0].AddCommand((int)Keys.M, new MuteCommand(scene.Script));
             // Add pause commands
             _controllers[0].AddCommand((int)Keys.P, new PauseCommand(Game1));
-            _controllers[0].AddPauseScreenKeys((int)Keys.P, new PauseCommand(Game1));
+            _controllers[0].AddPauseScreenCommand((int)Keys.P, new PauseCommand(Game1));
 
             _controllers[1].AddCommand((int)Buttons.Back, new PauseCommand(Game1));
-            _controllers[1].AddPauseScreenKeys((int)Buttons.Back, new PauseCommand(Game1));
+            _controllers[1].AddPauseScreenCommand((int)Buttons.Back, new PauseCommand(Game1));
         }
 
         public void Update()
@@ -89,9 +93,13 @@ namespace MarioGame.Theming
             _controllers.ForEach(c => c.UpdateInput());
         }
 
-        internal void CheckForResume()
+        internal void UpdatePause()
         {
-            _controllers.ForEach(c => c.CheckForResume());
+            _controllers.ForEach(c => c.UpdatePauseInput());
+        }
+        internal void UpdateGameOver()
+        {
+            _controllers.ForEach(c => c.UpdateGameOverInput());
         }
     }
 }

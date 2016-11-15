@@ -92,16 +92,18 @@ namespace MarioGame.Theming
         }
         private void UpdateCamera()
         {
-            
-            if(Mario.Position.X >= (GlobalConstants.GridWidth * LevelWidth) - (Viewport.Width / 3.0f))
+            if (Mario != null)
             {
-                _scene.Camera.LookAt(new Vector2((GlobalConstants.GridWidth * LevelWidth) - (Viewport.Width / 3.0f),0));
-                _scene.UpdateItemVisibility();
-            }
-            else if (Mario.Position.X >= Viewport.Width / 3.0f)
-            {
-                _scene.Camera.LookAt(Mario.Position);
-                _scene.UpdateItemVisibility();
+                if (Mario.Position.X >= (GlobalConstants.GridWidth * LevelWidth) - (Viewport.Width / 3.0f))
+                {
+                    _scene.Camera.LookAt(new Vector2((GlobalConstants.GridWidth * LevelWidth) - (Viewport.Width / 3.0f), 0));
+                    _scene.UpdateItemVisibility();
+                }
+                else if (Mario.Position.X >= Viewport.Width / 3.0f)
+                {
+                    _scene.Camera.LookAt(Mario.Position);
+                    _scene.UpdateItemVisibility();
+                }
             }
         }
 

@@ -417,7 +417,8 @@ namespace MarioGame.Entities
             }
             else
             {
-               //TODO: End GAME 
+                //TODO: End GAME 
+                GoToGameOver();
             }
         }
 

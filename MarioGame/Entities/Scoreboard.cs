@@ -117,7 +117,7 @@ namespace MarioGame.Entities
         public void LoseLife()
         {
             _scoreboard["Lives"]--;
-            if (_scoreboard["Lives"] == 0)
+            if (!HasLives)
             {
                 //Stage.game1.Reset();
                 Mario.GoToGameOver();

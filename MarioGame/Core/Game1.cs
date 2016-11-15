@@ -129,6 +129,7 @@ namespace MarioGame.Core
         public void EnterGameOver()
         {
             _scene = 3;
+            Scene.SetToGameOver();
         }
     }
 }

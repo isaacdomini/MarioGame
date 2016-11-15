@@ -7,8 +7,10 @@ namespace MarioGame.Controllers
         void UpdateInput();
 
         void AddCommand(int key, ICommand command);
-        void AddPauseScreenKeys(int key, ICommand command);
+        void AddPauseScreenCommand(int key, ICommand command);
         void AddHeldCommand(int key, ICommand command);
-        void CheckForResume();
+        void AddGameOverScreenCommand(int key, ICommand command);
+        void UpdatePauseInput();
+        void UpdateGameOverInput();
     }
 }
