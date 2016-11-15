@@ -86,8 +86,6 @@ namespace MarioGame.Core
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
             _scenes[_scene - 1].Draw();
             base.Draw(gameTime);
         }
@@ -110,13 +108,17 @@ namespace MarioGame.Core
         {
             Scene.Pause();
         }
-        public void EnterHiddenScene()
+        public void EnterHiddenScene(Mario mario)
         {
+            Scene.Script.RemoveEntity(mario);
             _scene = 2;
+            Scene.Script.AddEntity(mario);
         }
-        public void ExitHiddenScene()
+        public void ExitHiddenScene(Mario mario)
         {
+            Scene.Script.RemoveEntity(mario);
             _scene = 1;
+            Scene.Script.AddEntity(mario);
         }
     }
 }

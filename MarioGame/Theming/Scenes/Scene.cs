@@ -103,7 +103,7 @@ namespace MarioGame.Theming.Scenes
 
         public void Draw()
         {
-            Stage.Draw();
+            DrawBackground();
             Layers.ForEach(l => l.Draw(SpriteBatch));
             Mario.Scoreboard.DrawScoreboard(SpriteBatch);
             
@@ -120,6 +120,12 @@ namespace MarioGame.Theming.Scenes
             }
 
         }
+
+        protected virtual void DrawBackground()
+        {
+            Game1.GraphicsDevice.Clear(Color.CornflowerBlue);
+        }
+
         public void DrawBoundingBoxes()
         {
             _drawBox = !_drawBox;

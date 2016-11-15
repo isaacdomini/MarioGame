@@ -1,73 +1,26 @@
 ﻿{
-  "width": 110,
+  "width": 50,
   "height": 10,
   "checkpoints": [ 43, 75 ],
+  "song": "sounds\\level1-1",
   "entities": [
     {
-      "type": "Cloud1",
-      "backgroundlayer": 0,
+      "type": "GreenPipe",
+      "inverted": "True",
       "position": [
         {
-          "row": 5,
-          "columns": [ 5, 10, 15, 20, 25, 30 ]
+          "row": 10,
+          "columns": [ 4 ]
         }
       ]
     },
     {
       "type": "GreenPipe",
+      "sceneTransport":  "Level1",
       "position": [
         {
-          "row": 1,
-          "columns": [ 1 ]
-        }
-      ]
-    },
-    {
-      "type": "Pirahna",
-      "position": [
-        {
-          "row": 17,
-          "columns": [ 40.5 ]
-        }
-      ]
-    },
-    {
-      "type": "Cloud2",
-      "backgroundlayer": 0,
-      "position": [
-        {
-          "row": 7,
-          "columns": [ 5, 10, 15, 20, 25, 30 ]
-        }
-      ]
-    },
-    {
-      "type": "Hill1",
-      "backgroundlayer": 1,
-      "position": [
-        {
-          "row": 9,
-          "columns": [ 5, 10, 15, 20, 25, 30 ]
-        }
-      ]
-    },
-    {
-      "type": "Bush3",
-      "backgroundlayer": 1,
-      "position": [
-        {
-          "row": 11,
-          "columns": [ 5, 10, 15, 20, 25, 30 ]
-        }
-      ]
-    },
-    {
-      "type": "Hill2",
-      "backgroundlayer": 1,
-      "position": [
-        {
-          "row": 13,
-          "columns": [ 5, 10, 15, 20, 25, 30 ]
+          "row": 10,
+          "columns": [ 10 ]
         }
       ]
     },
@@ -188,97 +141,6 @@
         {
           "row": 18,
           "columns": [ 11 ]
-        }
-      ]
-    },
-
-    {
-      "type": "StepBlock",
-      "position": [
-        {
-          "row": 19,
-          "columns": [ 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90 ]
-        },
-        {
-          "row": 18,
-          "columns": [ 81, 82, 83, 84, 85, 86, 87, 88, 89, 90 ]
-        },
-        {
-          "row": 17,
-          "columns": [ 82, 83, 84, 85, 86, 87, 88, 89, 90 ]
-        },
-        {
-          "row": 16,
-          "columns": [ 83, 84, 85, 86, 87, 88, 89, 90 ]
-        },
-        {
-          "row": 15,
-          "columns": [ 84, 85, 86, 87, 88, 89, 90 ]
-        },
-        {
-          "row": 14,
-          "columns": [ 85, 86, 87, 88, 89, 90 ]
-        },
-        {
-          "row": 13,
-          "columns": [ 86, 87, 88, 89, 90 ]
-        },
-        {
-          "row": 12,
-          "columns": [ 87, 88, 89, 90 ]
-        },
-        {
-          "row": 11,
-          "columns": [ 88, 89, 90 ]
-        },
-        {
-          "row": 10,
-          "columns": [ 89, 90 ]
-        }
-      ]
-    },
-    {
-      "type": "Star",
-      "position": [
-        {
-          "row": 14,
-          "columns": [ 15 ]
-        }
-      ]
-    },
-    {
-      "type": "FireFlower",
-      "position": [
-        {
-          "row": 14,
-          "columns": [ 14 ]
-        }
-      ]
-    },
-    {
-      "type": "Goomba",
-      "position": [
-        {
-          "row": 18,
-          "columns": [ 15 ]
-        }
-      ]
-    },
-    {
-      "type": "KoopaTroopa",
-      "position": [
-        {
-          "row": 18,
-          "columns": [ 25 ]
-        }
-      ]
-    },
-    {
-      "type": "Mario",
-      "position": [
-        {
-          "row": 2,
-          "columns": [ 1 ]
         }
       ]
     }

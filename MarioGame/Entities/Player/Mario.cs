@@ -296,7 +296,15 @@ namespace MarioGame.Entities
             base.OnBlockBottomCollision();
             if (block is GreenPipe)
             {
-                MarioActionState.HitTopOfGreenPipe();
+                MarioActionState.HitTopOfGreenPipe(((GreenPipe)block).SceneTransport, ((GreenPipe)block).Inverted);
+            }
+        }
+        protected override void OnBlockTopCollision(Block block)
+        {
+            base.OnBlockTopCollision();
+            if (block is GreenPipe)
+            {
+                MarioActionState.HitBottomOfGreenPipe(((GreenPipe)block).SceneTransport, ((GreenPipe)block).Inverted);
             }
         }
         private void OnCollideItem(Item item)
@@ -348,23 +356,6 @@ namespace MarioGame.Entities
         public void SetInvincible(float seconds)
         {
             _secondsOfInvincibilityRemaining = seconds;
-        }
-        internal void SetHiddenRoomEntry(Action enterHiddenScene)
-        {
-            EnterHiddenRoom = enterHiddenScene;
-        }
-
-        internal void SetHiddenRoomDeparture(Action exitHiddenScene)
-        {
-            ExitHiddenRoom = exitHiddenScene;
-        }
-        public override void GoToHiddenRoom()
-        {
-            EnterHiddenRoom();
-        }
-        protected override void LeaveHiddenRooom()
-        {
-            ExitHiddenRoom();
         }
 
         public void RespawnOrGameOver()

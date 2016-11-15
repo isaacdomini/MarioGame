@@ -87,11 +87,6 @@ namespace MarioGame.Theming
             _controllers.ForEach(c => c.UpdateInput());
         }
 
-        public void Draw()
-        {
-            GraphicsDevice.GraphicsDevice.Clear(Color.CornflowerBlue);
-        }
-
         internal void CheckForResume()
         {
             _controllers.ForEach(c => c.CheckForResume());

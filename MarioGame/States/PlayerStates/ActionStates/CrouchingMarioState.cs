@@ -1,4 +1,5 @@
 ﻿using MarioGame.Entities;
+using System;
 
 namespace MarioGame.States
 {
@@ -20,9 +21,10 @@ namespace MarioGame.States
             StateMachine.IdleMarioState.Begin(this);
         }
 
-        public override void HitTopOfGreenPipe()
+        public override void HitTopOfGreenPipe(Action<Mario> sceneTransport, bool greenPipeInversion)
         {
-            Mario.GoToHiddenRoom();
+            if (!greenPipeInversion)
+            sceneTransport?.Invoke((Mario)Entity);
         }
     }
 }

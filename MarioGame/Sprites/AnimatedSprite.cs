@@ -37,7 +37,7 @@ namespace MarioGame.Sprites
         protected float TimePerFrame { get; set; }
 
         protected Directions Direction => Entity.Direction;
-        protected SpriteEffects Flipped => Direction == Directions.Right ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+        protected SpriteEffects FlippedHorizontal => Direction == Directions.Right ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
         protected virtual void DefineFrameSets()
         {
@@ -96,7 +96,7 @@ namespace MarioGame.Sprites
         public override void Draw(SpriteBatch batch)
         {
             var sourceRect = new Rectangle(((int)FrameSet[FrameSetPosition]) * FrameWidth, ((int)RowSet[RowSetPosition]) * FrameHeight, FrameWidth, FrameHeight);
-            batch.Draw(texture: Texture, position: Position, sourceRectangle: sourceRect, color: Color.White, effects: Flipped);
+            batch.Draw(texture: Texture, position: Position, sourceRectangle: sourceRect, color: Color.White, effects: FlippedHorizontal);
         }
 
         public virtual void ChangeActionState()

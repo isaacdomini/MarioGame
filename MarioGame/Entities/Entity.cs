@@ -202,7 +202,7 @@ namespace MarioGame.Entities
                     OnBlockSideCollision(side);
                     break;
                 case Sides.Top:
-                    OnBlockTopCollision();
+                    OnBlockTopCollision(block);
                     break;
                 case Sides.Bottom:
                     OnBlockBottomCollision(block);
@@ -225,11 +225,14 @@ namespace MarioGame.Entities
         {
             OnBlockBottomCollision();
         }
-
-        public virtual void OnBlockTopCollision()
+        protected virtual void OnBlockTopCollision()
         {
             _position.Y -= 1.1f * Velocity.Y;
             _velocity.Y = 0;
+        }
+        protected virtual void OnBlockTopCollision(Block block)
+        {
+            OnBlockTopCollision();
         }
 
         protected virtual void OnBlockSideCollision(Sides side) { }

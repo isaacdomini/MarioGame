@@ -31,9 +31,9 @@ namespace MarioGame.Theming.Scenes
 
             LevelLoader.AddTileMapToScript("HiddenLevel.json", Script, Stage.Game1);
         }
-        public override void Update(GameTime gameTime)
+        protected override void DrawBackground()
         {
-            base.Update(gameTime);
+            Game1.GraphicsDevice.Clear(Color.Black);
         }
     }
 }

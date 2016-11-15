@@ -47,12 +47,28 @@ namespace MarioGame.Theming
                     if(entity is Mario)
                     {
                         ((Mario)entity).LevelWidth = level.width*GlobalConstants.GridWidth;
-                        ((Mario)entity).SetHiddenRoomEntry(game.EnterHiddenScene);
-                        ((Mario)entity).SetHiddenRoomDeparture(game.ExitHiddenScene);
+
                     }
                     if(entity is BackgroundItem)
                     {
                         ((BackgroundItem)entity).Layer = e.backgroundlayer;
+                    }
+                    if (entity is GreenPipe)
+                    {
+                        // if e.inverted is not found in json, it is set to false as default
+                        ((GreenPipe)entity).SetInversion(e.inverted);
+                        // Checks to see if green pipe is meant to transport mario somewhere
+                        if (e.sceneTransport != null)
+                        {
+                            if (e.sceneTransport == "HiddenLevel")
+                            {
+                                ((GreenPipe)entity).SetSceneTransport(game.EnterHiddenScene);
+                            }
+                            else if (e.sceneTransport == "Level1")
+                            {
+                                ((GreenPipe)entity).SetSceneTransport(game.ExitHiddenScene);
+                            }
+                        }
                     }
                     if (e.actionState != null)
                     {
@@ -168,6 +184,8 @@ namespace MarioGame.Theming
         public string actionState { get; set; }
         public string backgroundtype { get; set; }
         public int backgroundlayer { get; set; }
+        public bool inverted { get; set; }
+        public string sceneTransport { get; set; }
     }
 
     public class Level
