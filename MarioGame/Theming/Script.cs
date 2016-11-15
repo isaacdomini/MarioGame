@@ -190,5 +190,10 @@ namespace MarioGame.Theming
         {
             _scene.Game1.ResetCommand();
         }
+
+        internal void MuteSounds()
+        {
+            AudioManager.Mute();
+        }
     }
 }
