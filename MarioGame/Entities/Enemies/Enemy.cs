@@ -27,13 +27,11 @@ namespace MarioGame.Entities
             base.OnCollide(otherObject, side, otherSide);
             if (otherObject is Mario)
             {
-                //if (side == Sides.Top)
-                //{
                 if (this is Pirahna && (!(otherObject is SuperStarState) || !(otherObject is StandardStarState)))
                 { }
                 else
                     EnemyActionState.JumpedOn(side);
-                //}
+                EnemyActionState.JumpedOn(side);
             }
             else if (otherObject is Fireball)
             {

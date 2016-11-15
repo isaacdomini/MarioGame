@@ -7,6 +7,7 @@ using MarioGame.Core;
 using MarioGame.Theming;
 using System;
 using System.Collections.Generic;
+using MarioGame.Entities.Items;
 using MarioGame.Entities.Player;
 using MarioGame.Theming.Scenes;
 
@@ -329,6 +330,7 @@ namespace MarioGame.Entities
         private void OnCollideItem(Item item)
         {
             if (!item.IsVisible) return;
+            if (item is PowerUp) Scoreboard.AddPoint(1000);
             if (item is Coin)
             {
                 Scoreboard.AddCoin();
@@ -336,21 +338,18 @@ namespace MarioGame.Entities
             else if (item is Star)
             {
                 ChangeToStarState();
-                Scoreboard.AddPoint(1000);
             }
             else if (item is FireFlower)
             {
                 ChangeToFireState();
-                Scoreboard.AddPoint(1000);
             }
             else if (item is Mushroom1Up)
             {
-                Scoreboard.AddPoint(1000);
+                Scoreboard.AddLife();
             }
             else if (item is MushroomSuper)
             {
                 ChangeToSuperState();
-                Scoreboard.AddPoint(1000);
             }
             else if (item is Checkpoint)
             {

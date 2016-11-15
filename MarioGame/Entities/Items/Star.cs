@@ -1,4 +1,5 @@
 ﻿using System;
+using MarioGame.Entities.Items;
 using MarioGame.Sprites;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -6,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MarioGame.Entities
 {
-    public class Star : Item
+    public class Star : PowerUp
     {
         public Star(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content,addToScriptEntities)
         {
