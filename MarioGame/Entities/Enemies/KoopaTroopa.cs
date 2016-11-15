@@ -62,10 +62,5 @@ namespace MarioGame.Entities
                 TurnLeft();
             }*/
         }
-
-        public override void OnCollide(IEntity otherObject, Sides side, Sides otherSide)
-        {
-            base.OnCollide(otherObject, side, otherSide);
-        }
     }
 }

@@ -4,6 +4,7 @@ using MarioGame.States;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using System;
+using MarioGame.Entities.Player;
 
 namespace MarioGame.Entities
 {
@@ -31,7 +32,11 @@ namespace MarioGame.Entities
                 EnemyActionState.JumpedOn(side);
                 //}
             }
-            if (otherObject is Block)
+            else if (otherObject is Fireball)
+            {
+                EnemyActionState.ChangeToDead();
+            }
+            else if (otherObject is Block)
             {
                 if(side == Sides.Left || side == Sides.Right)
                 {

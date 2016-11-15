@@ -155,6 +155,14 @@ namespace MarioGame.Entities
         //TODO: move this logic into each state class
         public void ChangePowerUpState(MarioPowerUpState state)
         {
+            base.ChangePowerUpState(state);
+            PlaySoundForNewPowerUpState(state);
+            LoadBoundingBox();
+            MarioSprite.ChangePowerUp(state);//TODO: can we push _marioSprite.changePowerUp inside of base.ChangePowerUpState, or will doing so lose the polymorphism (e.g. will it call AnimatedSprite.changePowerUp rather than _marioSprite.changePowerUp
+        }
+
+        public void PlaySoundForNewPowerUpState(MarioPowerUpState state)
+        {
             if(!(PState is SuperStarState || PState is FireStarState || PState is StandardStarState))
             {
                 if (state is SuperState || state is FireState)
@@ -174,9 +182,6 @@ namespace MarioGame.Entities
             {
                 Script.AudioManager.StartStarMode();
             }
-            base.ChangePowerUpState(state);
-            LoadBoundingBox();
-            MarioSprite.ChangePowerUp(state);//TODO: can we push _marioSprite.changePowerUp inside of base.ChangePowerUpState, or will doing so lose the polymorphism (e.g. will it call AnimatedSprite.changePowerUp rather than _marioSprite.changePowerUp
         }
         public void Jump()
         {
@@ -436,6 +441,7 @@ namespace MarioGame.Entities
             var fireball = new Fireball(Position + new Vector2(fireballXDistanceFromMario, fireballYDistanceFromMario), _content, AddToScriptEntities, fireballXVelocity);
             AddToScriptEntities(fireball);
             fireball.Sprite.Load();
+            fireball.LoadBoundingBox();
         }
     }
 
