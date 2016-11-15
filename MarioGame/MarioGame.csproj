@@ -106,6 +106,7 @@
     <Compile Include="Entities\Items\Mushroom1Up.cs" />
     <Compile Include="Entities\Items\MushroomSuper.cs" />
     <Compile Include="Entities\Items\Star.cs" />
+    <Compile Include="Entities\Player\Fireball.cs" />
     <Compile Include="Entities\Player\Mario.cs" />
     <Compile Include="Entities\PowerUpEntity.cs" />
     <Compile Include="Entities\Scoreboard.cs" />
@@ -139,6 +140,7 @@
     <Compile Include="Sprites\ItemSprites\Mushroom1UpSprite.cs" />
     <Compile Include="Sprites\ItemSprites\MushroomSuperSprite.cs" />
     <Compile Include="Sprites\ItemSprites\StarSprite.cs" />
+    <Compile Include="Sprites\Player\FireballSprite.cs" />
     <Compile Include="Sprites\Player\MarioSprite.cs" />
     <Compile Include="Sprites\Sprite.cs" />
     <Compile Include="States\BlockStates\BlockActionState.cs" />

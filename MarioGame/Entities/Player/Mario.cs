@@ -378,11 +378,11 @@ namespace MarioGame.Entities
         {
             ExitHiddenRoom = exitHiddenScene;
         }
-        public override void GoToHiddenRoom()
+        public void GoToHiddenRoom()
         {
             EnterHiddenRoom();
         }
-        protected override void LeaveHiddenRooom()
+        protected void LeaveHiddenRooom()
         {
             ExitHiddenRoom();
         }
