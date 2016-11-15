@@ -254,10 +254,19 @@ namespace MarioGame.Entities
         }
         public override void Halt()
         {
-            _position -= _velocity;
             HaltX();
             HaltY();
             MarioActionState.Halt();
+        }
+        public override void HaltX()
+        {
+            _position.X -= _velocity.X;
+            base.HaltX();
+        }
+        public override void HaltY()
+        {
+            _position.Y -= _velocity.Y;
+            base.HaltY();
         }
 
         protected override void OnCollideHiddenBlock(Block block, Sides side, Sides blockSide)
