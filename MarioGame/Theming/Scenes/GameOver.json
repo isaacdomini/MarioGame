@@ -1,0 +1,8 @@
+﻿{
+  "width": 110,
+  "height": 10,
+  //"checkpoints": [ 43, 75],
+  "song": "sounds\\level1-1",
+  "entities": [
+  ]
+}
