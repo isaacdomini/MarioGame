@@ -16,12 +16,23 @@
     },
     {
       "type": "GreenPipe",
+      "sceneTransport": "HiddenLevel",
       "position": [
         {
           "row": 18,
           "columns": [ 40 ]
         }
       ]
+    },
+    {
+      "type": "GreenPipe",
+      "position": [
+        {
+          "row": 18, 
+          "columns":  [100]
+        }
+      ]
+
     },
     {
       "type": "Pirahna",
@@ -279,7 +290,7 @@
       "position": [
         {
           "row": 1,
-          "columns": [ 1 ]
+          "columns": [ 2 ]
         }
       ]
     },

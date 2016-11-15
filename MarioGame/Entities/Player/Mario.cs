@@ -88,6 +88,12 @@ namespace MarioGame.Entities
             BoundingBoxSize = new Point(boxWidth, boxHeight);
             BoundingBoxOffset = new Point(sideMargin, topBottomMargin);
         }
+
+        internal void SetPosition(int x, int y)
+        {
+            Position = new Vector2(x, y);
+        }
+
         private void OnInvincibilityEnded()
         {
             if(MarioPowerUpState is FireStarState)
@@ -248,10 +254,19 @@ namespace MarioGame.Entities
         }
         public override void Halt()
         {
-            _position -= _velocity;
             HaltX();
             HaltY();
             MarioActionState.Halt();
+        }
+        public override void HaltX()
+        {
+            _position.X -= _velocity.X;
+            base.HaltX();
+        }
+        public override void HaltY()
+        {
+            _position.Y -= _velocity.Y;
+            base.HaltY();
         }
 
         protected override void OnCollideHiddenBlock(Block block, Sides side, Sides blockSide)
