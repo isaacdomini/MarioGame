@@ -18,5 +18,10 @@ namespace MarioGame.States
             ChangeToStandard();
             Mario.SetInvincible(1);
         }
+
+        public override void DashOrThrowFireball()
+        {
+            Mario.Dash();
+        }
     }
 }

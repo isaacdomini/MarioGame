@@ -12,5 +12,9 @@ namespace MarioGame.States
         {
             Mario.ChangePowerUpState(StateMachine.FireState);
         }
+        public override void DashOrThrowFireball()
+        {
+            Mario.ThrowFireball();
+        }
     }
 }

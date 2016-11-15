@@ -214,9 +214,6 @@ namespace MarioGame.Entities
             }
         }
 
-        public virtual void GoToHiddenRoom() { }
-        protected virtual void LeaveHiddenRooom() { }
-
         protected virtual void OnBlockBottomCollision()
         {
             if (Velocity.Y > 0)

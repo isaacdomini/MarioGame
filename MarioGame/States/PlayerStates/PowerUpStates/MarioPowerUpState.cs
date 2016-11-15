@@ -53,5 +53,9 @@ namespace MarioGame.States
         }
         public virtual void OnHitByEnemy() { }
         public virtual void OnInvincibilityEnded() { }
+
+        public virtual void DashOrThrowFireball()
+        {
+        }
     }
 }

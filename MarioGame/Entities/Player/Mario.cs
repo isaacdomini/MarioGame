@@ -7,6 +7,7 @@ using MarioGame.Core;
 using MarioGame.Theming;
 using System;
 using System.Collections.Generic;
+using MarioGame.Entities.Player;
 using MarioGame.Theming.Scenes;
 
 namespace MarioGame.Entities
@@ -23,7 +24,7 @@ namespace MarioGame.Entities
 
         // Velocity variables
         private static readonly Vector2 JumpingVelocity = new Vector2(0, VelocityConstant * -2);
-
+        private static readonly int FireballXSpeed = VelocityConstant*5;
         private const int SuperBoundingBoxWidth = 18;
         private const int SuperBoundingBoxHeight = 36;
 
@@ -49,6 +50,7 @@ namespace MarioGame.Entities
         private readonly MarioActionStateMachine _marioActionStateMachine;
         private readonly MarioPowerUpStateMachine _marioPowerUpStateMachine;
 
+        private readonly ContentManager _content;
         public Mario(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content, addToScriptEntities)
         {
             _marioActionStateMachine = new MarioActionStateMachine(this);
@@ -57,6 +59,8 @@ namespace MarioGame.Entities
             PState = _marioPowerUpStateMachine.StandardState;
             Direction = Directions.Right;
             _spaceBarAction = SpaceBarAction.Run;
+
+            _content = content;
         }
 
         internal override void Init(JEntity e, Game1 game)
@@ -231,25 +235,21 @@ namespace MarioGame.Entities
         //Todo: I don't like that we have a method called DashOrThrowFireball. I think we should have a Dash() method and a throwFireball() method, and which one gets called gets handled in the State classes
         public void DashOrThrowFireball()
         {
-            //TODO: Ricky do this?
-            if (MarioPowerUpState is FireState || MarioPowerUpState is FireStarState)
-            {
-                // TODO: Mario entity adds fireball to scene
+            MarioPowerUpState.DashOrThrowFireball();
+        }
 
-            }
-            else if (MarioPowerUpState is SuperState)
+        public void Dash()
+        {
+            switch (_spaceBarAction)
             {
-                switch (_spaceBarAction)
-                {
-                    case SpaceBarAction.Walk:
-                        _velocity = _velocity / 2;
-                        _spaceBarAction = SpaceBarAction.Run;
-                        break;
-                    case SpaceBarAction.Run:
-                        _velocity = _velocity * 2;
-                        _spaceBarAction = SpaceBarAction.Walk;
-                        break;
-                }
+                case SpaceBarAction.Walk:
+                    _velocity = _velocity / 2;
+                    _spaceBarAction = SpaceBarAction.Run;
+                    break;
+                case SpaceBarAction.Run:
+                    _velocity = _velocity * 2;
+                    _spaceBarAction = SpaceBarAction.Walk;
+                    break;
             }
         }
         
@@ -426,6 +426,16 @@ namespace MarioGame.Entities
         {
             xPosition.Y -= 15f;
             _position = xPosition; //*GlobalConstants.GridWidth;
+        }
+
+        public void ThrowFireball()
+        {
+            var fireballXDistanceFromMario = FacingRight ? GlobalConstants.GridWidth : -1*GlobalConstants.GridWidth;
+            var fireballYDistanceFromMario = GlobalConstants.GridHeight;
+            var fireballXVelocity = FacingRight ? FireballXSpeed : -1*FireballXSpeed;
+            var fireball = new Fireball(Position + new Vector2(fireballXDistanceFromMario, fireballYDistanceFromMario), _content, AddToScriptEntities, fireballXVelocity);
+            AddToScriptEntities(fireball);
+            fireball.Sprite.Load();
         }
     }
 
