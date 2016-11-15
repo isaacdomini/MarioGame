@@ -31,9 +31,16 @@ namespace MarioGame.Entities
 
         private const int StandardBoundingBoxWidth = 14;
         private const int StandardBoundingBoxHeight = 20;
+        private bool IsMovingUp => _velocity.Y <= 0;
         private bool IsLarge => MarioPowerUpState is SuperState || MarioPowerUpState is SuperStarState || MarioPowerUpState is FireState || MarioPowerUpState is FireStarState;
-        public bool CanBreakBricks => IsLarge;
+        public bool CanBreakBricks => IsLarge && IsMovingUp;
         public bool Invincible => _secondsOfInvincibilityRemaining > 0 || PState is FireStarState || PState is StandardStarState || PState is SuperStarState;
+
+        public bool IsStarState
+            =>
+            MarioPowerUpState is StandardStarState || MarioPowerUpState is SuperStarState ||
+            MarioPowerUpState is FireStarState;
+        public bool CanKillPirhana => IsStarState;
         private enum SpaceBarAction
         {
             Walk,
@@ -195,11 +202,7 @@ namespace MarioGame.Entities
         public void Crouch()
         {
             //TODO: make actionState take a StateFactory so the way we check pState and action State below can be consistent
-            if (MarioPowerUpState is StandardState && (MarioActionState).actionState == MarioActionStateEnum.Idle)
-            {
-                MarioActionState.Fall();
-            }
-            else if (!(MarioPowerUpState is DeadState))
+            if (!(MarioPowerUpState is DeadState))
             {
                 MarioActionState.Crouch();
             }
@@ -291,13 +294,7 @@ namespace MarioGame.Entities
         private void OnCollideEnemy(Enemy enemy, Sides side)
         {
             if (Invincible) return;//TODO: Invincible and seconds of invincibility remaining should be handled by mario's state classes.
-            if(enemy is Pirahna && (!(MarioPowerUpState is StandardStarState) || !(MarioPowerUpState is SuperStarState)))
-            {
-                MarioPowerUpState.OnHitByEnemy();
-                Halt();
-                _position -= new Vector2(0, 15);
-            }
-            else if (enemy.IsVisible && side != Sides.Bottom )
+            if (enemy.IsVisible && side != Sides.Bottom )
             {
                 if (enemy._secondsOfInvincibilityRemaining <= 0)
                 {
@@ -354,7 +351,6 @@ namespace MarioGame.Entities
             else if (item is Checkpoint)
             {
                 _currentCheckpointPosition = item.Position;
-                //_currentCheckpointPosition = (int) item.Position.X;
                 _checkpointReached = true;
             }
         }
@@ -379,7 +375,6 @@ namespace MarioGame.Entities
         {
             EnterHiddenRoom = enterHiddenScene;
         }
-
         internal void SetHiddenRoomDeparture(Action exitHiddenScene)
         {
             ExitHiddenRoom = exitHiddenScene;

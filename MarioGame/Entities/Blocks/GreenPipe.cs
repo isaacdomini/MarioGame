@@ -20,6 +20,14 @@ namespace MarioGame.Entities
         {
             base.Init(e, game);
             SetInversion(e.inverted);
+            if (e.transportPosition != null)
+            {
+                float x = (float)(e.transportPosition.columns.ToArray()).GetValue(0);
+                float y = e.transportPosition.row;
+                Vector2 transportPosition = new Vector2(x, y);
+                SetTransportPosition(transportPosition);
+            }
+
             // Checks to see if green pipe is meant to transport mario somewhere
             if (e.sceneTransport != null)
             {
@@ -31,6 +39,7 @@ namespace MarioGame.Entities
                 {
                     SetSceneTransport(game.ExitHiddenScene);
                 }
+
             }
                    
         }

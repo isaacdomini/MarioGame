@@ -37,7 +37,7 @@ namespace MarioGame.Entities
             var mario = otherObject as Mario;
             if (mario == null || side != Sides.Bottom) return;
 
-            if (mario.CanBreakBricks)
+            if (mario.CanBreakBricks && IsVisible)
             {
                 BState.Break();
             }

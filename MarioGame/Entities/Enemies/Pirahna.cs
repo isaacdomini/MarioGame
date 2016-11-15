@@ -54,19 +54,14 @@ namespace MarioGame.Entities
                 }
             }
         }
-        public override void OnCollide(IEntity otherObject, Sides side, Sides otherSide)
-        {
-            base.OnCollide(otherObject, side, otherSide);
-            if (otherObject is Mario)
-            {
-                if (((Mario)otherObject).MarioPowerUpState is StandardStarState || ((Mario)otherObject).MarioPowerUpState is SuperStarState)
-                {
-                    EnemyActionState.JumpedOn(Sides.Top);
-                }
-                //else
-                    //base.OnCollide(otherObject, Sides.Left, Sides.Right);
-            }
 
+        public override void OnCollideMario(Mario mario, Sides side)
+        {
+            if (mario.CanKillPirhana)
+            {
+                EnemyActionState.ChangeToDead();
+            }
         }
+
     }
 }
