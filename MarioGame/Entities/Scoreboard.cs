@@ -74,7 +74,7 @@ namespace MarioGame.Entities
             batch.Begin();
             foreach (var pair in _scoreboard)
             {
-                batch.DrawString(Game1.Font, pair.Key + ": " + pair.Value, scoreLocation, Color.Black);
+                batch.DrawString(Game1.Font, pair.Key + ": " + pair.Value, scoreLocation, Color.White);
                 scoreLocation = scoreLocation + spacing;
             }
             batch.End();

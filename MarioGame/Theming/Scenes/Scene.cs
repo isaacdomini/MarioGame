@@ -107,7 +107,7 @@ namespace MarioGame.Theming.Scenes
 
         }
 
-        public void Draw()
+        public virtual void Draw()
         {
             DrawBackground();
             Layers.ForEach(l => l.Draw(SpriteBatch));

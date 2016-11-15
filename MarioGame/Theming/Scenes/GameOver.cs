@@ -1,14 +1,18 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MarioGame.Core;
+
 
 namespace MarioGame.Theming.Scenes
 {
     class GameOver : Scene
     {
+        public static string displayMessage = "Game Over!";
         public GameOver(Stage stage) : base(stage)
         {
         }
@@ -32,6 +36,14 @@ namespace MarioGame.Theming.Scenes
         protected override void DrawBackground()
         {
             Game1.GraphicsDevice.Clear(Color.Black);
+        }
+
+        public override void Draw()
+        {
+            base.Draw();
+            SpriteBatch.Begin();
+            SpriteBatch.DrawString(Game1.Font, displayMessage , new Vector2(325, 250), Color.White);
+            SpriteBatch.End();
         }
     }
 }
