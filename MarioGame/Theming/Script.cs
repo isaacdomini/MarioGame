@@ -42,6 +42,7 @@ namespace MarioGame.Theming
 
         public void Update(GameTime gameTime)
         {
+            Entity.RegisterScript(this);
             UpdateCamera();
             var entityPairs = new List<int>();
             Entities = Entities.FindAll(e => !e.Deleted);
