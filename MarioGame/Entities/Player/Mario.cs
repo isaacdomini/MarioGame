@@ -148,9 +148,10 @@ namespace MarioGame.Entities
             LoadBoundingBox();
             MarioSprite.ChangeActionState(state);
         }
+        //TODO: move this logic into each state class
         public void ChangePowerUpState(MarioPowerUpState state)
         {
-            if(!(this.PState is SuperStarState || this.PState is FireStarState || this.PState is StandardStarState))
+            if(!(PState is SuperStarState || PState is FireStarState || PState is StandardStarState))
             {
                 if (state is SuperState || state is FireState)
                 {
@@ -283,7 +284,7 @@ namespace MarioGame.Entities
 
         private void OnCollideEnemy(Enemy enemy, Sides side)
         {
-            if (Invincible) return;
+            if (Invincible) return;//TODO: Invincible and seconds of invincibility remaining should be handled by mario's state classes.
             if(enemy is Pirahna && (MarioPowerUpState is StandardState || MarioPowerUpState is SuperState))
             {
                 MarioPowerUpState.OnHitByEnemy();
@@ -400,10 +401,7 @@ namespace MarioGame.Entities
             {
                 if (_checkpointReached)
                 {
-                    MoveToLocation(_currentCheckpointPosition);
-                    ChangeActionState(_marioActionStateMachine.IdleMarioState);
-                    ChangePowerUpState(_marioPowerUpStateMachine.StandardState);
-                    //Script.Reset();
+                    Respawn();
                 }
                 else
                 {
@@ -415,6 +413,13 @@ namespace MarioGame.Entities
                 //TODO: End GAME 
                 GoToGameOver();
             }
+        }
+
+        public void Respawn()
+        {
+            MoveToLocation(_currentCheckpointPosition);
+            ChangeActionState(_marioActionStateMachine.IdleMarioState);
+            ChangePowerUpState(_marioPowerUpStateMachine.StandardState);
         }
 
         private void MoveToLocation(Vector2 xPosition)
