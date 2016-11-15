@@ -34,6 +34,12 @@ namespace MarioGame.Entities
         private bool IsLarge => MarioPowerUpState is SuperState || MarioPowerUpState is SuperStarState || MarioPowerUpState is FireState || MarioPowerUpState is FireStarState;
         public bool CanBreakBricks => IsLarge;
         public bool Invincible => _secondsOfInvincibilityRemaining > 0 || PState is FireStarState || PState is StandardStarState || PState is SuperStarState;
+
+        public bool IsStarState
+            =>
+            MarioPowerUpState is StandardStarState || MarioPowerUpState is SuperStarState ||
+            MarioPowerUpState is FireStarState;
+        public bool CanKillPirhana => IsStarState;
         private enum SpaceBarAction
         {
             Walk,

@@ -22,16 +22,17 @@ namespace MarioGame.Entities
             Position -= Velocity;
             EnemyActionState.Halt();
         }
+
+        public virtual void OnCollideMario(Mario otherObject, Sides side)
+        {
+            EnemyActionState.JumpedOn(side);
+        }
         public override void OnCollide(IEntity otherObject, Sides side, Sides otherSide)
         {
             base.OnCollide(otherObject, side, otherSide);
             if (otherObject is Mario)
             {
-                if (this is Pirahna && (!(otherObject is SuperStarState) || !(otherObject is StandardStarState)))
-                { }
-                else
-                    EnemyActionState.JumpedOn(side);
-                EnemyActionState.JumpedOn(side);
+                OnCollideMario((Mario)otherObject, side);
             }
             else if (otherObject is Fireball)
             {
