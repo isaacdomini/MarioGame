@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MarioGame.Theming;
+using MarioGame.Core;
 
 namespace MarioGame.Entities
 {
@@ -16,6 +18,9 @@ namespace MarioGame.Entities
             floating = true;
             BoxPercentSizeOfEntity = 0f;
         }
-
+        internal override void Init(JEntity e, Game1 Game1)
+        {
+            Layer = e.backgroundlayer; 
+        }
     }
 }

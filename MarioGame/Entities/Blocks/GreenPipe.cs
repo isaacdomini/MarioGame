@@ -1,5 +1,6 @@
 ﻿using System;
 using MarioGame.Core;
+using MarioGame.Theming;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 
@@ -13,6 +14,25 @@ namespace MarioGame.Entities
         public GreenPipe(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content, addToScriptEntities)
         {
             Inverted = false;
+        }
+
+        internal override void Init(JEntity e, Game1 game)
+        {
+            base.Init(e, game);
+            SetInversion(e.inverted);
+            // Checks to see if green pipe is meant to transport mario somewhere
+            if (e.sceneTransport != null)
+            {
+                if (e.sceneTransport == "HiddenLevel")
+                {
+                    SetSceneTransport(game.EnterHiddenScene);
+                }
+                else if (e.sceneTransport == "Level1")
+                {
+                    SetSceneTransport(game.ExitHiddenScene);
+                }
+            }
+                   
         }
 
         internal void SetInversion(bool inverted)

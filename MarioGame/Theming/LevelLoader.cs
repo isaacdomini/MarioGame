@@ -29,7 +29,6 @@ namespace MarioGame.Theming
 
         public static void AddTileMapToScript(string tileMapFile, Script script, Game1 game)
         {
-
             var json = File.ReadAllText(tileMapFile);
             var level = JsonConvert.DeserializeObject<Level>(json);
             script.LevelWidth = level.width;
@@ -42,68 +41,11 @@ namespace MarioGame.Theming
             {
                 e.position.ForEach(rc =>
                 {
-                rc.columns.ForEach(c => {
-                    var entity = CreateEntity(e.type, new Vector2(c, rc.row), game.Content, script.AddEntity);
-                    if (entity is Mario)
-                    {
-                        ((Mario)entity).SetGameOver(game.EnterGameOver);
-                    }
-                    if (entity is BackgroundItem)
-                    {
-                        ((BackgroundItem)entity).Layer = e.backgroundlayer;
-                    }
-                    if (entity is GreenPipe)
-                    {
-                        // if e.inverted is not found in json, it is set to false as default
-                        ((GreenPipe)entity).SetInversion(e.inverted);
-                        // Checks to see if green pipe is meant to transport mario somewhere
-                        if (e.sceneTransport != null)
-                        {
-                            if (e.sceneTransport == "HiddenLevel")
-                            {
-                                ((GreenPipe)entity).SetSceneTransport(game.EnterHiddenScene);
-                            }
-                            else if (e.sceneTransport == "Level1")
-                            {
-                                ((GreenPipe)entity).SetSceneTransport(game.ExitHiddenScene);
-                            }
-                        }
-                        if (e.transportPosition != null)
-                        {
-                            ((GreenPipe)entity).SetTransportPosition(new Vector2(e.transportPosition.columns.First(), e.transportPosition.row));
-                        }
-                    }
-                    if (e.actionState != null)
-                    {
-                        //TODO: make it so that we dont have to check what type each entity is 
-                        if (entity is Block)
-                        {
-                            ((Block)entity).SetBlockActionState(e.actionState);
-                        }
-                    }
-                    if (e.visibility != null)
-                    {
-                        if (entity is Block)
-                        {//TODO: get rid of check for block in case we want to init mario to a certain power up state. also get rid of block power up states.
-                            if (e.visibility == "Hidden")
-                            {
-                                ((Block)entity).Hide();
-                            }
-                            else
-                            {
-                                ((Block)entity).Show();
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if (entity is Block)
-                        {
-                            ((Block)entity).Show();
-                        }
-                    }
-                    script.AddEntity(entity);
-                });
+                    rc.columns.ForEach(c => {
+                        var entity = CreateEntity(e.type, new Vector2(c, rc.row), game.Content, script.AddEntity);
+                        entity.Init(e, game);
+                        script.AddEntity(entity);
+                    });
                 });
             });
 
@@ -112,36 +54,8 @@ namespace MarioGame.Theming
                 e.positionWithHiddenItems.ForEach(instance =>
                 {
                     var entity = CreateEntity(e.type, new Vector2(instance.column, instance.row), game.Content, script.AddEntity);
+                    entity.Init(e, game); 
                     script.AddEntity(entity);
-                    if (e.actionState != null)
-                    {
-                        //TODO: make it so that we dont have to check what type each entity is 
-                        if (entity is Block)
-                        {
-                            ((Block)entity).SetBlockActionState(e.actionState);
-                        }
-                    }
-                    if (e.visibility != null)
-                    {
-                        if (entity is Block)
-                        {//TODO: get rid of check for block in case we want to init mario to a certain power up state. also get rid of block power up states.
-                            if (e.visibility == "Hidden")
-                            {
-                                ((Block)entity).Hide();
-                            }
-                            else
-                            {
-                                ((Block)entity).Show();
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if (entity is Block)
-                        {
-                            ((Block)entity).Show();
-                        }
-                    }
                     instance.hiddenItems.ForEach(h =>
                     {
                         while (h.amount-- > 0)

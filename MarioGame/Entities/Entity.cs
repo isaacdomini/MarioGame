@@ -87,6 +87,10 @@ namespace MarioGame.Entities
 
             AddToScriptEntities = addToScriptEntities;
         }
+        //TODO: get rid of the below stamp coupling of JEntity and Game1
+        internal virtual void Init(JEntity e, Game1 game)
+        {
+        }
         /** must be called after _sprite.Load() because boudningBoxSize reads from _sprite.FrameWidth/Height which aren't set until after _sprite.Load. LoadBoundingBox  is called in Scene. */
         public virtual void LoadBoundingBox()
         {

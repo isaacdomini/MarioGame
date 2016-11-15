@@ -59,6 +59,10 @@ namespace MarioGame.Entities
             _spaceBarAction = SpaceBarAction.Run;
         }
 
+        internal override void Init(JEntity e, Game1 game)
+        {
+            SetGameOver(game.EnterGameOver);
+        }
         
         protected override void SetUpBoundingBoxProperties()//TODO: All bounding box logic should really be in sprite classes, not entity classes
         {

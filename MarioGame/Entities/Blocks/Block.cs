@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using MarioGame.Core;
 using MarioGame.States.BlockStates;
 using MarioGame.States.BlockStates.ActionStates;
+using MarioGame.Theming;
 
 namespace MarioGame.Entities
 {
@@ -25,6 +26,24 @@ namespace MarioGame.Entities
             AState = ActionStateMachine.StandardState;
             floating = true;
         }
+
+        internal override void Init(JEntity e, Game1 game)
+        {
+            base.Init(e, game);
+            if (e.actionState != null)
+            {
+                SetBlockActionState(e.actionState);
+            }
+            if (e.visibility != null && e.visibility == "Hidden")
+            {
+                Hide();
+            }
+            else
+            {
+                Show();
+            }
+        }
+
         public void SetBlockActionState(string state)
         {
             if (state.Equals("UsedBlockState"))
