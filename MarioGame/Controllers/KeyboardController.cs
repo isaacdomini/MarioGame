@@ -7,7 +7,6 @@ namespace MarioGame.Controllers
 {
     public class KeyboardController : IController
     {
-        private KeyboardState _previousState;
 
         public KeyboardController()
         {

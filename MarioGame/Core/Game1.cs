@@ -110,19 +110,19 @@ namespace MarioGame.Core
         {
             Scene.Pause();
         }
-        public void EnterHiddenScene(Mario mario)
+        public void EnterHiddenScene(Mario mario, Vector2 newPosition)
         {
             Scene.Script.RemoveEntity(mario);
             _scene = 2;
             // Set mario to below entrance pipe
-            mario.SetPosition(8 * GlobalConstants.GridWidth, 12 * GlobalConstants.GridHeight);
+            mario.SetPosition(newPosition);
             Scene.Script.AddEntity(mario);
         }
-        public void ExitHiddenScene(Mario mario)
+        public void ExitHiddenScene(Mario mario, Vector2 newPosition)
         {
             Scene.Script.RemoveEntity(mario);
             _scene = 1;
-            mario.SetPosition(100 * GlobalConstants.GridWidth, 15 * GlobalConstants.GridHeight);
+            mario.SetPosition(newPosition);
             mario.Jump();
             Scene.Script.AddEntity(mario);
         }

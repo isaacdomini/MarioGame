@@ -89,9 +89,9 @@ namespace MarioGame.Entities
             BoundingBoxOffset = new Point(sideMargin, topBottomMargin);
         }
 
-        internal void SetPosition(int x, int y)
+        internal void SetPosition(Vector2 newPosition)
         {
-            Position = new Vector2(x, y);
+            Position = newPosition*GlobalConstants.GridHeight;
         }
 
         private void OnInvincibilityEnded()
@@ -306,21 +306,12 @@ namespace MarioGame.Entities
             HaltX();
             MarioActionState.Halt();
         }
-
         protected override void OnBlockBottomCollision(Block block)
         {
             base.OnBlockBottomCollision();
             if (block is GreenPipe)
             {
-                MarioActionState.HitTopOfGreenPipe(((GreenPipe)block).SceneTransport, ((GreenPipe)block).Inverted);
-            }
-        }
-        protected override void OnBlockTopCollision(Block block)
-        {
-            base.OnBlockTopCollision();
-            if (block is GreenPipe)
-            {
-                MarioActionState.HitBottomOfGreenPipe(((GreenPipe)block).SceneTransport, ((GreenPipe)block).Inverted);
+                MarioActionState.HitTopOfGreenPipe(((GreenPipe)block).SceneTransport, ((GreenPipe)block).TransportPosition);
             }
         }
         private void OnCollideItem(Item item)

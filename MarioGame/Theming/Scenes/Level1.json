@@ -17,6 +17,12 @@
     {
       "type": "GreenPipe",
       "sceneTransport": "HiddenLevel",
+      "transportPosition": 
+        {
+          "row": 12,
+          "columns": [ 8 ]
+        }
+      ,
       "position": [
         {
           "row": 18,
@@ -28,11 +34,25 @@
       "type": "GreenPipe",
       "position": [
         {
-          "row": 18, 
-          "columns":  [100]
+          "row": 18,
+          "columns": [ 100 ]
         }
       ]
-
+    },
+    {
+      "type": "GreenPipe",
+      "transportPosition": 
+        {
+          "row": 15,
+          "columns": [ 100 ]
+        }
+      ,
+      "position": [
+        {
+          "row": 18,
+          "columns": [ 2 ]
+        }
+      ]
     },
     {
       "type": "Pirahna",
@@ -45,7 +65,7 @@
     },
     {
       "type": "Cloud2",
-      "backgroundlayer" : 0,
+      "backgroundlayer": 0,
       "position": [
         {
           "row": 7,
@@ -55,7 +75,7 @@
     },
     {
       "type": "Hill1",
-      "backgroundlayer" : 1,
+      "backgroundlayer": 1,
       "position": [
         {
           "row": 9,
@@ -65,7 +85,7 @@
     },
     {
       "type": "Bush3",
-      "backgroundlayer" : 1,
+      "backgroundlayer": 1,
       "position": [
         {
           "row": 11,
@@ -75,7 +95,7 @@
     },
     {
       "type": "Hill2",
-      "backgroundlayer" : 1,
+      "backgroundlayer": 1,
       "position": [
         {
           "row": 13,
@@ -88,7 +108,7 @@
       "visibility": "Hidden",
       "position": [
         {
-          "row": 15,
+          "row": 12,
           "columns": [ 2 ]
         }
       ]
@@ -110,7 +130,7 @@
       "type": "QuestionBlock",
       "positionWithHiddenItems": [
         {
-          "row": 15,
+          "row": 12,
           "column": 3,
           "hiddenItems": [
             {
@@ -203,7 +223,7 @@
         }
       ]
     },
-    
+
     {
       "type": "StepBlock",
       "position": [
@@ -237,7 +257,7 @@
         },
         {
           "row": 12,
-          "columns": [ 87, 88, 89, 90]
+          "columns": [ 87, 88, 89, 90 ]
         },
         {
           "row": 11,
@@ -302,14 +322,14 @@
           "columns": [ 105 ]
         }
       ]
-    }, 
-      {
+    },
+    {
 
       "type": "Checkpoint",
       "position": [
         {
           "row": 11,
-          "columns": [ 43,75 ]
+          "columns": [ 43, 75 ]
         }
       ]
     }

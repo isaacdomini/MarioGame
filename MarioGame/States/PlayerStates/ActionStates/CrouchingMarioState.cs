@@ -1,4 +1,5 @@
 ﻿using MarioGame.Entities;
+using Microsoft.Xna.Framework;
 using System;
 
 namespace MarioGame.States
@@ -21,10 +22,15 @@ namespace MarioGame.States
             StateMachine.IdleMarioState.Begin(this);
         }
 
-        public override void HitTopOfGreenPipe(Action<Mario> sceneTransport, bool greenPipeInversion)
+        public override void HitTopOfGreenPipe(Action<Mario, Vector2> sceneTransport, Vector2 transportPosition)
         {
-            if (!greenPipeInversion)
-            sceneTransport?.Invoke((Mario)Entity);
+            if (sceneTransport != null)
+            sceneTransport.Invoke(Mario, transportPosition);
+            else if (transportPosition != Vector2.Zero)
+            {
+                Mario.SetPosition(transportPosition);
+                Jump();
+            }
         }
     }
 }

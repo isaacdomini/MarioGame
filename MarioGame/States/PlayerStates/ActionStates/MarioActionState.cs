@@ -64,8 +64,7 @@ namespace MarioGame.States
         public virtual void Crouch() {
             StateMachine.CrouchingMarioState.Begin(this);
         }
-        public virtual void HitTopOfGreenPipe(Action<Mario> sceneTransport, bool greenPipeInversion) { }
-        public virtual void HitBottomOfGreenPipe(Action<Mario> sceneTransport, bool greenPipeInversion) { }
+        public virtual void HitTopOfGreenPipe(Action<Mario, Vector2> sceneTransport, Vector2 transportPosition) { }
         public void Halt()
         {
             StateMachine.IdleMarioState.Begin(this);

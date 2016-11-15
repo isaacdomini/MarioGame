@@ -34,7 +34,6 @@ namespace MarioGame.Theming
             _controllers[0].AddCommand((int)Keys.R, new ResetCommand(Game1));
             _controllers[1].AddCommand((int) Buttons.Start, new QuitCommand(Game1));
 
-
             // Adding jump command to controllers
             _controllers[0].AddCommand((int)Keys.W, new JumpCommand(scene.Script));
             _controllers[0].AddHeldCommand((int)Keys.W, new JumpCommand(scene.Script));

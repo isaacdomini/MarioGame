@@ -68,6 +68,10 @@ namespace MarioGame.Theming
                                 ((GreenPipe)entity).SetSceneTransport(game.ExitHiddenScene);
                             }
                         }
+                        if (e.transportPosition != null)
+                        {
+                            ((GreenPipe)entity).SetTransportPosition(new Vector2(e.transportPosition.columns.First(), e.transportPosition.row));
+                        }
                     }
                     if (e.actionState != null)
                     {
@@ -161,6 +165,7 @@ namespace MarioGame.Theming
         public List<float> columns { get; set; }
     }
 
+
     public class HiddenItem
     {
         public string type { get; set; }
@@ -185,6 +190,7 @@ namespace MarioGame.Theming
         public int backgroundlayer { get; set; }
         public bool inverted { get; set; }
         public string sceneTransport { get; set; }
+        public Position transportPosition { get; set; }
     }
 
     public class Level
