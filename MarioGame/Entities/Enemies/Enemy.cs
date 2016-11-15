@@ -29,7 +29,10 @@ namespace MarioGame.Entities
             {
                 //if (side == Sides.Top)
                 //{
-                EnemyActionState.JumpedOn(side);
+                if (this is Pirahna && (!(otherObject is SuperStarState) || !(otherObject is StandardStarState)))
+                { }
+                else
+                    EnemyActionState.JumpedOn(side);
                 //}
             }
             else if (otherObject is Fireball)

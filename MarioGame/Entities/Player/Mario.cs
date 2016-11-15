@@ -290,9 +290,11 @@ namespace MarioGame.Entities
         private void OnCollideEnemy(Enemy enemy, Sides side)
         {
             if (Invincible) return;//TODO: Invincible and seconds of invincibility remaining should be handled by mario's state classes.
-            if(enemy is Pirahna && (MarioPowerUpState is StandardState || MarioPowerUpState is SuperState))
+            if(enemy is Pirahna && (!(MarioPowerUpState is StandardStarState) || !(MarioPowerUpState is SuperStarState)))
             {
                 MarioPowerUpState.OnHitByEnemy();
+                Halt();
+                _position -= new Vector2(0, 15);
             }
             else if (enemy.IsVisible && side != Sides.Bottom )
             {

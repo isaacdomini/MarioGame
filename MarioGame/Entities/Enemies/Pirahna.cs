@@ -34,12 +34,12 @@ namespace MarioGame.Entities
             base.OnCollide(otherObject, side, otherSide);
             if (otherObject is Mario)
             {
-                if (((Mario)otherObject).MarioPowerUpState is StandardStarState || ((Mario)otherObject).MarioPowerUpState is FireState || ((Mario)otherObject).MarioPowerUpState is SuperStarState)
+                if (((Mario)otherObject).MarioPowerUpState is StandardStarState || ((Mario)otherObject).MarioPowerUpState is SuperStarState)
                 {
-                    EnemyActionState.JumpedOn(side);
+                    EnemyActionState.JumpedOn(Sides.Top);
                 }
-                else
-                    base.OnCollide(otherObject, Sides.Left, Sides.Right);
+                //else
+                    //base.OnCollide(otherObject, Sides.Left, Sides.Right);
             }
 
         }
