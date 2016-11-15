@@ -27,11 +27,12 @@ namespace MarioGame.Core
         {
             var stage = new Stage(this);
             var hiddenStage = new Stage(this);
+            var gameOver = new Stage(this);
 
             Graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            _scenes = new List<Scene> {new Scene(stage), new HiddenScene(hiddenStage)};
+            _scenes = new List<Scene> {new Scene(stage), new HiddenScene(hiddenStage), new GameOver(gameOver)};
             _scene = 1;
         }
 
@@ -99,6 +100,7 @@ namespace MarioGame.Core
             _scenes.Clear();
             _scenes.Add(new Scene(new Stage(this)));
             _scenes.Add(new HiddenScene(new Stage(this)));
+            _scenes.Add(new GameOver(new Stage(this)));
             _scene = 1;
             Initialize();
             LoadContent();
@@ -119,6 +121,10 @@ namespace MarioGame.Core
             Scene.Script.RemoveEntity(mario);
             _scene = 1;
             Scene.Script.AddEntity(mario);
+        }
+        public void EnterGameOver()
+        {
+            _scene = 3;
         }
     }
 }

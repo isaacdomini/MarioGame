@@ -20,6 +20,7 @@ namespace MarioGame.Entities
             if (otherObject is Mario)
             {
                 CalculateBonus(Sprite.FrameSetPosition);
+                Mario.Scoreboard.FinishMultiplier();
                 //Right now it restarts on collision, so it doesn't look like mario gets points but he does.
                 //We will switch it to the Game Finished screen once that's been made.
                 MarioGame.Entities.Entity.Script.Reset();

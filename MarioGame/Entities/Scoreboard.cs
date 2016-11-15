@@ -1,4 +1,5 @@
 ﻿using MarioGame.Core;
+using MarioGame.States;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -31,7 +32,8 @@ namespace MarioGame.Entities
             {
                 if (_scoreboard["Lives"] == 0)
                 {
-                    //Stage.game1.Reset();
+               //     //Stage.game1.Reset();
+               //     Mario.GoToGameOver();
                     ResetScoreboard();
                 }
                 _scoreboard["Points"] = 0;
@@ -52,7 +54,7 @@ namespace MarioGame.Entities
                 _scoreboard["Points"] = 0;
             if (!_scoreboard.ContainsKey("Lives"))
                 _scoreboard.Add("Lives", 3);
-            else
+            else if (_scoreboard["Lives"] == 0)
                 _scoreboard["Lives"] = 3;
             if (!_scoreboard.ContainsKey("Time"))
                 _scoreboard.Add("Time", 400);
@@ -115,12 +117,22 @@ namespace MarioGame.Entities
         public void LoseLife()
         {
             _scoreboard["Lives"]--;
+            if (_scoreboard["Lives"] == 0)
+            {
+                //Stage.game1.Reset();
+                Mario.GoToGameOver();
+            }
+            else
+            {
+                ResetScoreboard();
+            }
         }
 
         //Call this when mario hits the flagpole
-        public void FinishMultiplier(int time)
+        public void FinishMultiplier()
         {
-            int multiplier = time / 100 + time%100;
+            int time = _scoreboard["Time"];
+            int multiplier = (time / 100 + time%100)%10;
             _scoreboard["Points"] += time * multiplier;
         }
     }

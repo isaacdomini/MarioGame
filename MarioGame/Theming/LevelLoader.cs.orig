@@ -34,6 +34,7 @@ namespace MarioGame.Theming
             var level = JsonConvert.DeserializeObject<Level>(json);
             script.LevelWidth = level.width;
             script.AudioManager = new AudioManager(game.Content.Load<Song>(level.song), game.Content.Load<Song>("sounds\\star"));
+            
             foreach (string sfx in GlobalConstants.SFXFiles)
             {
                 script.AudioManager.AddSFX(sfx, game.Content.Load<SoundEffect>("sounds\\" + sfx));
@@ -44,8 +45,17 @@ namespace MarioGame.Theming
                 {
                 rc.columns.ForEach(c => {
                     var entity = CreateEntity(e.type, new Vector2(c, rc.row), game.Content, script.AddEntity);
+<<<<<<< HEAD
 
                     if(entity is BackgroundItem)
+=======
+                    if(entity is Mario)
+                    {
+                        ((Mario)entity).LevelWidth = level.width*GlobalConstants.GridWidth;
+                        ((Mario)entity).SetGameOver(game.EnterGameOver);
+                    }
+                    if (entity is BackgroundItem)
+>>>>>>> 5c6a1743e7ff1fb8bedf1c5702c6b28b91a101c7
                     {
                         ((BackgroundItem)entity).Layer = e.backgroundlayer;
                     }

@@ -39,6 +39,7 @@ namespace MarioGame.Entities
         }
 
         private SpaceBarAction _spaceBarAction;
+        internal float LevelWidth;
         private Vector2 _currentCheckpointPosition;
         private bool _checkpointReached = false; //set true for testing
         public Action EnterHiddenRoom { get; private set; }
@@ -358,6 +359,8 @@ namespace MarioGame.Entities
         {
             _secondsOfInvincibilityRemaining = seconds;
         }
+<<<<<<< HEAD
+=======
         internal void SetHiddenRoomEntry(Action enterHiddenScene)
         {
             EnterHiddenRoom = enterHiddenScene;
@@ -383,6 +386,7 @@ namespace MarioGame.Entities
         {
             EnterGameOver = enterGameOver;
         }
+>>>>>>> Start game over screen
 
         public void RespawnOrGameOver()
         {
