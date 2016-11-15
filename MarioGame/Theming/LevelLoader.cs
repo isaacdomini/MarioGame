@@ -44,8 +44,11 @@ namespace MarioGame.Theming
                 {
                 rc.columns.ForEach(c => {
                     var entity = CreateEntity(e.type, new Vector2(c, rc.row), game.Content, script.AddEntity);
-
-                    if(entity is BackgroundItem)
+                    if (entity is Mario)
+                    {
+                        ((Mario)entity).SetGameOver(game.EnterGameOver);
+                    }
+                    if (entity is BackgroundItem)
                     {
                         ((BackgroundItem)entity).Layer = e.backgroundlayer;
                     }
