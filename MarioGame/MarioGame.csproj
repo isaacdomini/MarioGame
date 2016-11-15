@@ -189,6 +189,7 @@
     <Compile Include="Core\GlobalConstants.cs" />
     <Compile Include="Theming\Layer.cs" />
     <Compile Include="Theming\LevelLoader.cs" />
+    <Compile Include="Theming\Scenes\GameOver.cs" />
     <Compile Include="Theming\Scenes\HiddenScene.cs" />
     <Compile Include="Theming\Scenes\Scene.cs" />
     <Compile Include="Theming\Script.cs" />

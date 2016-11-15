@@ -45,6 +45,8 @@ namespace MarioGame.Entities
         public Action EnterHiddenRoom { get; private set; }
 
         public Action ExitHiddenRoom { get; private set; }
+        public static Action EnterGameOver { get; private set; }
+
         private readonly MarioActionStateMachine _marioActionStateMachine;
         private readonly MarioPowerUpStateMachine _marioPowerUpStateMachine;
 
@@ -356,6 +358,31 @@ namespace MarioGame.Entities
         public void SetInvincible(float seconds)
         {
             _secondsOfInvincibilityRemaining = seconds;
+        }
+        internal void SetHiddenRoomEntry(Action enterHiddenScene)
+        {
+            EnterHiddenRoom = enterHiddenScene;
+        }
+
+        internal void SetHiddenRoomDeparture(Action exitHiddenScene)
+        {
+            ExitHiddenRoom = exitHiddenScene;
+        }
+        public override void GoToHiddenRoom()
+        {
+            EnterHiddenRoom();
+        }
+        protected override void LeaveHiddenRooom()
+        {
+            ExitHiddenRoom();
+        }
+        public static void GoToGameOver()
+        {
+            EnterGameOver();
+        }
+        internal void SetGameOver(Action enterGameOver)
+        {
+            EnterGameOver = enterGameOver;
         }
 
         public void RespawnOrGameOver()

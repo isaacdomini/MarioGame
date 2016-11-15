@@ -47,9 +47,11 @@ namespace MarioGame.Theming
                     if(entity is Mario)
                     {
                         ((Mario)entity).LevelWidth = level.width*GlobalConstants.GridWidth;
-
+                        ((Mario)entity).SetHiddenRoomEntry(game.EnterHiddenScene);
+                        ((Mario)entity).SetHiddenRoomDeparture(game.ExitHiddenScene);
+                        ((Mario)entity).SetGameOver(game.EnterGameOver);
                     }
-                    if(entity is BackgroundItem)
+                    if (entity is BackgroundItem)
                     {
                         ((BackgroundItem)entity).Layer = e.backgroundlayer;
                     }
