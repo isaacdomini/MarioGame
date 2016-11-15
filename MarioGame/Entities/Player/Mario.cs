@@ -201,11 +201,7 @@ namespace MarioGame.Entities
         public void Crouch()
         {
             //TODO: make actionState take a StateFactory so the way we check pState and action State below can be consistent
-            if (MarioPowerUpState is StandardState && (MarioActionState).actionState == MarioActionStateEnum.Idle)
-            {
-                MarioActionState.Fall();
-            }
-            else if (!(MarioPowerUpState is DeadState))
+            if (!(MarioPowerUpState is DeadState))
             {
                 MarioActionState.Crouch();
             }
@@ -378,7 +374,6 @@ namespace MarioGame.Entities
         {
             EnterHiddenRoom = enterHiddenScene;
         }
-
         internal void SetHiddenRoomDeparture(Action exitHiddenScene)
         {
             ExitHiddenRoom = exitHiddenScene;

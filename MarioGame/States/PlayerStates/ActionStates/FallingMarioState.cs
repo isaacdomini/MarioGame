@@ -14,7 +14,7 @@ namespace MarioGame.States
         {
             Mario.ChangeActionState(StateMachine.FallingMarioState);
             base.Begin(prevState);
-            //Mario.SetVelocityToFalling();
+            Mario.SetVelocityToFalling();
         }
         public override void Jump()
         {
