@@ -40,27 +40,21 @@ namespace MarioGame.Theming
         }
         public void StartStarMode()
         {
-            if (!_mute)
-            {
                 MediaPlayer.Stop();
                 MediaPlayer.IsRepeating = true;
                 MediaPlayer.Play(_starSong);
-            }
+            
         }
         public void StopStarMode()
         {
-            if (!_mute)
-            {
                 MediaPlayer.Stop();
                 MediaPlayer.IsRepeating = true;
                 MediaPlayer.Play(_backgroundSong);
-            }
+            
 
         }
         public void SFXPlayer(IState state, IState prevState)
         {
-            if (!_mute)
-            {
                 if (state is JumpingMarioState)
                 {
                     playEffect(GlobalConstants.SFXFiles[SFXEnum.jump.GetHashCode()]);
@@ -77,18 +71,13 @@ namespace MarioGame.Theming
                 {
 
                 }
-            }
         }
 
         public void Mute()
         {
             _mute = !_mute;
-            MediaPlayer.Stop();
-            if (!_mute)
-            {
-                MediaPlayer.IsRepeating = true;
-                MediaPlayer.Play(_backgroundSong);
-            }
+            MediaPlayer.Volume = _mute ? 0.0f : 1.0f;
+            
         }
     }
 }
