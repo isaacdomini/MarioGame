@@ -7,6 +7,7 @@ namespace MarioGame.Controllers
 {
     public class KeyboardController : IController
     {
+        private KeyboardState _previousState;
 
         public KeyboardController()
         {
@@ -40,6 +41,7 @@ namespace MarioGame.Controllers
         public Dictionary<Keys, ICommand> HeldDictionary { get; }
         private Dictionary<Keys, ICommand> PauseKeys { get; set; }
         private Dictionary<Keys, ICommand> GameOverKeys { get; set; }
+
 
         public void UpdateInput()
         {

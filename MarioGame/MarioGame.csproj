@@ -239,6 +239,7 @@
     <None Include="Content\obj\Windows\stepblock.mgcontent" />
     <None Include="Content\obj\Windows\usedblock.mgcontent" />
     <None Include="obj\x86\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="Theming\Scenes\GameOver.json" />
     <None Include="Theming\Scenes\HiddenLevel.json" />
     <None Include="Theming\Scenes\Level1.json" />
     <None Include="Theming\Scenes\Level2.json" />
