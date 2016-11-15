@@ -17,7 +17,7 @@ namespace MarioGame.Entities.Player
 
         public override void OnCollide(IEntity otherObject, Sides ownSide, Sides otherSide)
         {
-            if (otherObject is Mario || otherObject is Item) return;
+            if (otherObject is Mario || otherObject is Item || otherObject is BackgroundItem) return;
             Delete();
         }
     }

@@ -104,7 +104,7 @@ namespace MarioGame.Entities
         }
 
         private void OnInvincibilityEnded()
-        {
+        {//TODO: This method's logic should be handled in each power up state's End method
             if(MarioPowerUpState is FireStarState)
             {
                ChangeToFireState();
@@ -162,24 +162,24 @@ namespace MarioGame.Entities
             MarioSprite.ChangePowerUp(state);//TODO: can we push _marioSprite.changePowerUp inside of base.ChangePowerUpState, or will doing so lose the polymorphism (e.g. will it call AnimatedSprite.changePowerUp rather than _marioSprite.changePowerUp
         }
 
-        public void PlaySoundForNewPowerUpState(MarioPowerUpState state)
+        public void PlaySoundForNewPowerUpState(MarioPowerUpState newState)
         {
             if(!(PState is SuperStarState || PState is FireStarState || PState is StandardStarState))
             {
-                if (state is SuperState || state is FireState)
+                if (newState is SuperState || newState is FireState)
                 {
                     Script.AudioManager.playEffect(GlobalConstants.SFXFiles[AudioManager.SFXEnum.powerup.GetHashCode()]);
                 }
-                else if (state is StandardState)
+                else if (newState is StandardState)
                 {
                     Script.AudioManager.playEffect(GlobalConstants.SFXFiles[AudioManager.SFXEnum.powerdown.GetHashCode()]);
                 }
             }
-            else if(!(state is SuperStarState || state is FireStarState || state is StandardStarState))
+            else if(!(newState is SuperStarState || newState is FireStarState || newState is StandardStarState))
             {
                 Script.AudioManager.StopStarMode();
             }
-            if(state is SuperStarState || state is FireStarState || state is StandardStarState)
+            if(newState is SuperStarState || newState is FireStarState || newState is StandardStarState)
             {
                 Script.AudioManager.StartStarMode();
             }

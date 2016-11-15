@@ -105,6 +105,7 @@
     <Compile Include="Entities\Items\Item.cs" />
     <Compile Include="Entities\Items\Mushroom1Up.cs" />
     <Compile Include="Entities\Items\MushroomSuper.cs" />
+    <Compile Include="Entities\Items\PowerUp.cs" />
     <Compile Include="Entities\Items\Star.cs" />
     <Compile Include="Entities\Player\Fireball.cs" />
     <Compile Include="Entities\Player\Mario.cs" />
