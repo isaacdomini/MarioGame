@@ -21,7 +21,7 @@ namespace MarioGame.Entities
         }
 
         public static int warningTime = 30;
-        public static int startTime = 31;
+        public static int startTime = 100;
         public  bool timeWarningCalled = false;
         public void InitializeScoreboardList()
         {
