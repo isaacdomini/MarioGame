@@ -47,10 +47,13 @@ namespace MarioGame.Entities
             }
             else //Not Moving
             {
-                if (!(Script.Mario.Position.X + Script.Mario.Width > Position.X - (Script.Mario.Width/2f) &&
-                        Script.Mario.Position.X < Position.X + Width + (Script.Mario.Width/2f)))
+                if (Script.Mario != null)
                 {
-                    _moving = 1;
+                    if (!(Script.Mario.Position.X + Script.Mario.Width > Position.X - (Script.Mario.Width / 2f) &&
+                        Script.Mario.Position.X < Position.X + Width + (Script.Mario.Width / 2f)))
+                    {
+                        _moving = 1;
+                    }
                 }
             }
         }
