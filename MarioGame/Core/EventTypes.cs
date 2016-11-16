@@ -21,6 +21,8 @@ namespace MarioGame.Core
             Powerup,
             Powerupappear,
             Stomp,
+            BeginStarState,
+            EndStarState,
             Timewarning
     }
 }

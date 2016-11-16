@@ -180,6 +180,7 @@
     <Compile Include="States\PlayerStates\ActionStates\MarioActionState.cs" />
     <Compile Include="States\PlayerStates\ActionStates\MarioActionStateEnum.cs" />
     <Compile Include="States\PlayerStates\ActionStates\MarioActionStateMachine.cs" />
+    <Compile Include="States\PlayerStates\PowerUpStates\MarioBaseStarState.cs" />
     <Compile Include="States\PowerUpState.cs" />
     <Compile Include="States\PlayerStates\PowerUpStates\MarioPowerUpStateEnum.cs" />
     <Compile Include="States\PlayerStates\PowerUpStates\MarioPowerUpState.cs" />

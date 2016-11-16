@@ -46,14 +46,14 @@ namespace MarioGame.Theming
                 effect.CreateInstance().Play();
             }
         }
-        public void StartStarMode()
+        public void StartStarSong()
         {
                 MediaPlayer.Stop();
                 MediaPlayer.IsRepeating = true;
                 MediaPlayer.Play(_starSong);
             
         }
-        public void StopStarMode()
+        public void StopStarSong()
         {
                 MediaPlayer.Stop();
                 MediaPlayer.IsRepeating = true;
@@ -90,7 +90,18 @@ namespace MarioGame.Theming
 
         public void OnEvent(EventTypes eventType)
         {
-            playEffect(eventType.ToString().ToLowerInvariant());
+            switch (eventType)
+            {
+                case EventTypes.BeginStarState:
+                    StartStarSong();
+                    break;
+                case EventTypes.EndStarState:
+                    StopStarSong();
+                    break;
+                default:
+                    playEffect(eventType.ToString().ToLowerInvariant());
+                    break;
+            }
         }
     }
 }

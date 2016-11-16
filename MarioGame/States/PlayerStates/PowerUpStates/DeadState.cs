@@ -13,8 +13,9 @@ namespace MarioGame.States
             PowerUpState = MarioPowerUpStateEnum.Dead;
         }
 
-        public override void Begin(MarioPowerUpState prevState)
+        public override void Begin(IState prevState)
         {
+            base.Begin(prevState);
             Mario.ChangePowerUpState(StateMachine.DeadState);
             Entities.Entity.Script.Announce(EventTypes.Powerdown);
             Mario.SetVelocityToJumping();

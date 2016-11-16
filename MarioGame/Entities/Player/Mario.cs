@@ -185,14 +185,6 @@ namespace MarioGame.Entities
                     Script.Announce(EventTypes.Powerdown);
                 }
             }
-            else if(!(newState is SuperStarState || newState is FireStarState || newState is StandardStarState))
-            {
-                Script.AudioManager.StopStarMode();
-            }
-            if(newState is SuperStarState || newState is FireStarState || newState is StandardStarState)
-            {
-                Script.AudioManager.StartStarMode();
-            }
         }
         public void Jump()
         {

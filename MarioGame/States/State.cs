@@ -21,6 +21,7 @@ namespace MarioGame.States
 
         public virtual void Begin(IState prevState)
         {
+            prevState.EndState();
             PrevState = prevState;
         }
         public virtual void EndState() {}

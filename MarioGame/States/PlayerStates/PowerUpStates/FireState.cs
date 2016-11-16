@@ -8,10 +8,15 @@ namespace MarioGame.States
         {
             PowerUpState = MarioPowerUpStateEnum.Fire;
         }
+        public override void Begin(IState prevState)
+        {
+            base.Begin(prevState);
+            Mario.ChangePowerUpState(StateMachine.FireState);
+        }
         public override void ChangeToStar()
         {
             base.ChangeToStar();
-            Mario.ChangePowerUpState(StateMachine.FireStarState);
+            StateMachine.FireStarState.Begin(this);
         }
         public override void OnHitByEnemy()
         {

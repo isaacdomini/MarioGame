@@ -1,16 +1,21 @@
 ﻿using MarioGame.Entities;
+using MarioGame.States.PlayerStates.PowerUpStates;
 
 namespace MarioGame.States
 {
-    class StandardStarState : MarioPowerUpState
+    class StandardStarState : BaseStarState
     {
         public StandardStarState(Mario entity, MarioPowerUpStateMachine stateMachine) : base(entity, stateMachine)
         {
             PowerUpState = MarioPowerUpStateEnum.StandardStar;
         }
+        public override void Begin(IState prevState)
+        {
+            Mario.ChangePowerUpState(StateMachine.StandardStarState);
+        }
         public override void OnInvincibilityEnded()
         {
-            Mario.ChangePowerUpState(StateMachine.StandardState);
+            StateMachine.StandardState.Begin(this);
         }
     }
 }
