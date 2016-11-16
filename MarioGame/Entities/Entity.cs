@@ -241,7 +241,7 @@ namespace MarioGame.Entities
         {
             if (Velocity.Y > 0)
             {
-                PositionY -= 1.1f*Velocity.Y;
+                PositionY -= Velocity.Y;
                 VelocityY = 0;
             }
         }
@@ -251,8 +251,12 @@ namespace MarioGame.Entities
         }
         protected virtual void OnBlockTopCollision()
         {
-            PositionY -= 1.1f * Velocity.Y;
-            VelocityY = 0;
+            if (VelocityY < 0)
+            {
+                PositionY -= 1.1f * Velocity.Y;
+                VelocityY = 0;
+            }
+
         }
         protected virtual void OnBlockTopCollision(Block block)
         {

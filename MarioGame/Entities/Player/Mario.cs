@@ -305,12 +305,32 @@ namespace MarioGame.Entities
         protected override void OnBlockSideCollision(Sides side)
         {
             if (side == Sides.Right)
-                PositionX -= 2;
+            {
+                OnBlockLeftCollision(side);
+            }
             else
-                PositionX += 2;
-            HaltX();
-            MarioActionState.Halt();
+            {
+                OnBlockRightCollision(side);
+            }
+            
         }
+
+        private void OnBlockRightCollision(Sides blockSide)
+        {
+            if (_velocity.X < 0)
+            {
+                _position.X -= _velocity.X;
+            }
+        }
+
+        private void OnBlockLeftCollision(Sides blockSide)
+        {
+            if (_velocity.X > 0)
+            {
+                _position.X -= _velocity.X;
+            }
+        }
+
         protected override void OnBlockBottomCollision(Block block)
         {
             base.OnBlockBottomCollision();
@@ -436,8 +456,6 @@ namespace MarioGame.Entities
             AddToScriptEntities(fireball);
             fireball.Sprite.Load();
             fireball.LoadBoundingBox();
-
-
         }
     }
 
