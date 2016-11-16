@@ -1,0 +1,10 @@
+Author: Cyriac Domini Thundathil
+Date: 11/15/2016
+Sprint: 4
+File: GreenPipe.cs
+Author of file: Ricky Renner
+Comments:
+I like the use of inverted boolean to make the pipe face up or down. In the init method, there shoudl have been a better way of adding the hidden level than hard coding it into the init method.
+Approximate Number of minutes taken to complete the review: 3 mins
+Hypothetical Change: 
+How about adding an enum with four facing directions so that the pipe can be facing multiple directions? That mmight make it better
