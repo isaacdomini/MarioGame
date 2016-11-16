@@ -129,6 +129,7 @@ namespace MarioGame.Core
         public void EnterGameOver()
         {
             _scene = 3;
+            Scene.Script.Announce(GameOver.Won ? EventTypes.Levelclear : EventTypes.Gameover);
             Scene.SetToGameOver();
         }
     }

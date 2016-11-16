@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using MarioGame.States;
 using MarioGame.Core;
+using MarioGame.Theming;
 
 namespace MarioGame.Entities
 {
@@ -54,6 +55,7 @@ namespace MarioGame.Entities
 
         public virtual void BreakIntoPieces()
         {
+            Script.Announce(EventTypes.Breakblock);
             CreateBlockPieces(_content);
             Delete();
         }

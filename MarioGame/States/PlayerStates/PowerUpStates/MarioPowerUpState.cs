@@ -19,20 +19,19 @@ namespace MarioGame.States
         }
         public virtual void ChangeToStandard()
         {
-            Mario.ChangePowerUpState(StateMachine.StandardState);
+            StateMachine.StandardState.Begin(this);
         }
         public virtual void ChangeToDead()
         {
-            //_mario.marioPowerUpState.powerUpState = 
             StateMachine.DeadState.Begin(this);
         }
         public virtual void ChangeToSuper()
         {
-            Mario.ChangePowerUpState(StateMachine.SuperState);
+            StateMachine.SuperState.Begin(this);
         }
         public virtual void ChangeToFire()
         {
-            Mario.ChangePowerUpState(StateMachine.FireState);
+            StateMachine.FireState.Begin(this);
         }
         public virtual void ChangeToStar() {
             Mario.SetInvincible(10);

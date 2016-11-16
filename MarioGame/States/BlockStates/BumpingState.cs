@@ -30,12 +30,12 @@ namespace MarioGame.States.BlockStates.ActionStates
         }
         public override void ChangeToUsed()
         {
-            this.EndState();
+            EndState();
             StateMachine.UsedState.Begin(this);
         }
         public override void ChangeToStandard()
         {
-            this.EndState();
+            EndState();
             StateMachine.StandardState.Begin(this);
         }
     }

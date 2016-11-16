@@ -98,6 +98,11 @@ namespace MarioGame.Theming
                 case EventTypes.EndStarState:
                     StopStarSong();
                     break;
+                case EventTypes.Gameover:
+                case EventTypes.Levelclear:
+                    MediaPlayer.Stop();
+                    playEffect(eventType.ToString().ToLowerInvariant());
+                    break;
                 default:
                     playEffect(eventType.ToString().ToLowerInvariant());
                     break;

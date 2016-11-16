@@ -15,6 +15,7 @@ namespace MarioGame.States
             base.Begin(prevState);
             Mario.ChangePowerUpState(StateMachine.FireStarState);
         }
+
         public override void OnInvincibilityEnded()
         {
             StateMachine.FireState.Begin(this);

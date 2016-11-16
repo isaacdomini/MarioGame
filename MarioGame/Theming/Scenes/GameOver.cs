@@ -12,7 +12,8 @@ namespace MarioGame.Theming.Scenes
 {
     class GameOver : Scene
     {
-        public static string displayMessage = "Game Over!";
+        public static bool Won { get; set; } = false;
+
         public GameOver(Stage stage) : base(stage)
         {
         }
@@ -41,6 +42,7 @@ namespace MarioGame.Theming.Scenes
         public override void Draw()
         {
             base.Draw();
+            var displayMessage = Won ? "You won" : "You didn't win";
             SpriteBatch.Begin();
             SpriteBatch.DrawString(Game1.Font, displayMessage , new Vector2(325, 250), Color.White);
             SpriteBatch.End();

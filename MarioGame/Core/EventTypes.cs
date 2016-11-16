@@ -16,6 +16,7 @@ namespace MarioGame.Core
             Flagpole,
             Gameover,
             Jump,
+            Levelclear,
             Pipedown,
             Powerdown,
             Powerup,

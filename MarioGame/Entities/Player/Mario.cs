@@ -325,6 +325,7 @@ namespace MarioGame.Entities
             if (item is PowerUp) Scoreboard.AddPoint(1000);
             if (item is Coin)
             {
+                Script.Announce(EventTypes.Coin);
                 Scoreboard.AddCoin();
             }
             else if (item is Star)
@@ -337,6 +338,7 @@ namespace MarioGame.Entities
             }
             else if (item is Mushroom1Up)
             {
+                Script.Announce(EventTypes.OneUp);
                 Scoreboard.AddLife();
             }
             else if (item is MushroomSuper)

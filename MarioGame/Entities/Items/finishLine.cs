@@ -24,7 +24,8 @@ namespace MarioGame.Entities
                 Mario.Scoreboard.FinishMultiplier();
                 //Right now it restarts on collision, so it doesn't look like mario gets points but he does.
                 //We will switch it to the Game Finished screen once that's been made.
-                GameOver.displayMessage = "Finished!";
+                GameOver.Won = true;
+                Script.Announce(EventTypes.Levelclear);
                 Mario.GoToGameOver();
             }
             else
