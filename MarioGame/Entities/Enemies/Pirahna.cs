@@ -57,7 +57,7 @@ namespace MarioGame.Entities
 
         public override void OnCollideMario(Mario mario, Sides side)
         {
-            if (mario.CanKillPirhana)
+            if (mario.CanKillPirahna)
             {
                 EnemyActionState.ChangeToDead();
             }

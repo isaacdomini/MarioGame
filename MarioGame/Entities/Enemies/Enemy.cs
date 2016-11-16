@@ -23,9 +23,18 @@ namespace MarioGame.Entities
             EnemyActionState.Halt();
         }
 
-        public virtual void OnCollideMario(Mario otherObject, Sides side)
+        public virtual void OnCollideMario(Mario mario, Sides side)
         {
-            EnemyActionState.JumpedOn(side);
+
+            if (mario.CanRunOverEnemies)
+            {
+                EnemyActionState.ChangeToDead();
+            }
+            else
+            {
+                EnemyActionState.JumpedOn(side);
+            }
+
         }
         public override void OnCollide(IEntity otherObject, Sides side, Sides otherSide)
         {
