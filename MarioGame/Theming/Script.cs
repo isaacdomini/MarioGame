@@ -33,7 +33,6 @@ namespace MarioGame.Theming
             _scene = scene;
         }
 
-
         public void Initialize()
         {
 		    Entities = new List<Entity>();
