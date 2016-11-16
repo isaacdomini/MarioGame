@@ -13,11 +13,13 @@ namespace MarioGame.Theming.Scenes
     {
         //Texture in order to draw bounding boxes on screen from sprint2
         protected static Texture2D RectanglePixel;
-        protected SpriteBatch SpriteBatch;
-        protected Camera _camera;
-        public Camera Camera => _camera;
+        private SpriteBatch _spriteBatch;
+        protected SpriteBatch SpriteBatch { get { return _spriteBatch; } set { _spriteBatch = value; } }
+        private Camera _camera;
+        public Camera Camera { get { return _camera; } set { _camera = value; } }
         private bool _drawBox=false;
-        public float LevelWidth;
+        private float _levelWidth;
+        public float LevelWidth { get { return _levelWidth; } set { _levelWidth = value; } }
         public Script Script { get; }
         protected List<Layer> Layers { get; set; }
         private const int ActionLayer = 2;
