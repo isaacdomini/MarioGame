@@ -15,17 +15,19 @@ namespace MarioGame.Theming
     {
         private Song _backgroundSong;
         private Song _starSong;
+        private Song _timeEndingSong;
         private static bool _mute;
         private static Dictionary<string, SoundEffect> _dictionary;
         public enum SFXEnum
         { up, breakblock, bump, coin, fireball, flagpole, gameover, jump, pipedown, powerdown, powerup, powerupappear, stomp, timewarning }
 
         private Script _script;
-        public AudioManager(Song song, Song star, Script script)
+        public AudioManager(Song song, Song star, Song timeEnding, Script script)
         {
             _mute = false;
             _backgroundSong = song;
             _starSong = star;
+            _timeEndingSong = timeEnding;
             _dictionary = new Dictionary<string, SoundEffect>();
             MediaPlayer.Play(_backgroundSong);
 
@@ -53,13 +55,17 @@ namespace MarioGame.Theming
                 MediaPlayer.Play(_starSong);
             
         }
+        public void TimeEndingSong()
+        {
+                MediaPlayer.Stop();
+                MediaPlayer.IsRepeating = true;
+                MediaPlayer.Play(_timeEndingSong); 
+        }
         public void StopStarSong()
         {
                 MediaPlayer.Stop();
                 MediaPlayer.IsRepeating = true;
-                MediaPlayer.Play(_backgroundSong);
-            
-
+                MediaPlayer.Play(_backgroundSong); 
         }
         public void SFXPlayer(IState state, IState prevState)
         {
@@ -97,6 +103,9 @@ namespace MarioGame.Theming
                     break;
                 case EventTypes.EndStarState:
                     StopStarSong();
+                    break;
+                case EventTypes.Timewarning:
+                    TimeEndingSong();
                     break;
                 case EventTypes.Gameover:
                 case EventTypes.Levelclear:

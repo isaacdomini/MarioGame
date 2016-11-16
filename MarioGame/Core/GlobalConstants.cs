@@ -16,7 +16,8 @@ namespace MarioGame.Theming
 
         
         public static readonly string[] SFXFiles = Enum.GetNames(typeof(EventTypes)).ToList().
-            FindAll(s => !s.Equals(EventTypes.BeginStarState.ToString()) && !s.Equals(EventTypes.EndStarState.ToString())).
+            FindAll(s => !s.Equals(EventTypes.BeginStarState.ToString()) && !s.Equals(EventTypes.EndStarState.ToString())
+                && !s.Equals(EventTypes.Timewarning.ToString())).
             Select(s => s.ToLowerInvariant()).
             ToArray();
     }

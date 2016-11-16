@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MarioGame.Theming;
 
 namespace MarioGame.Entities
 {
@@ -18,6 +19,10 @@ namespace MarioGame.Entities
         {
             InitializeScoreboardList();
         }
+
+        public static int warningTime = 30;
+        public static int startTime = 31;
+        public  bool timeWarningCalled = false;
         public void InitializeScoreboardList()
         {
             if (!_scoreboard.ContainsKey("Mario"))
@@ -37,7 +42,7 @@ namespace MarioGame.Entities
                     ResetScoreboard();
                 }
                 _scoreboard["Points"] = 0;
-                _scoreboard["Time"] = 400;
+                _scoreboard["Time"] = startTime;
                 _scoreboard["Coins"] = 0;
             }
             
@@ -57,9 +62,9 @@ namespace MarioGame.Entities
             else if (_scoreboard["Lives"] == 0)
                 _scoreboard["Lives"] = 3;
             if (!_scoreboard.ContainsKey("Time"))
-                _scoreboard.Add("Time", 400);
+                _scoreboard.Add("Time", startTime);
             else
-                _scoreboard["Time"] = 400;
+                _scoreboard["Time"] = startTime;
         }
 
         internal void AddLife()
@@ -92,9 +97,14 @@ namespace MarioGame.Entities
                 TimeTrack = TimeTrack + elapsedMilliseconds * .001;
                 if (TimeTrack >= 1.0)
                 {
-                    _scoreboard["Time"] -= 1;
+                    _scoreboard["Time"]--;
                     TimeTrack = 0;
                 }
+            }
+            if (_scoreboard["Time"] < warningTime && !timeWarningCalled)
+            {
+                timeWarningCalled = true;
+                Entity.Script.Announce(EventTypes.Timewarning);
             }
         }
         public void CheckCoinsForLife()

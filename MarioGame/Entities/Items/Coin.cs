@@ -17,6 +17,7 @@ namespace MarioGame.Entities
         public override void LeaveContainer()
         {
             SetYVelocity(new Vector2(0, coinPoppedVelocity));
+            Script.Announce(EventTypes.Coin);
             timeTillDisappear = 10;
             base.LeaveContainer();
         }
