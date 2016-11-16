@@ -17,7 +17,6 @@ namespace MarioGame.Entities
         protected AnimatedSprite _sprite { get; set; }
         
         public float _secondsOfInvincibilityRemaining { get; set; }//TODO: Get this logic out of the base entity class. And also to check if invincible use some Invincible property that returns true if the timer is greater than zero . . .do this to enable the user of the invincibility property to not have knowledge of how invcibility works (e.g. it uses a timer)
-        private ActionState aState;
         public ActionState AState { get; set; }
         private bool _colliding;
         protected bool floating { get; set; }
