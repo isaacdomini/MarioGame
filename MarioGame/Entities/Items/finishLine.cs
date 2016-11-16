@@ -32,7 +32,7 @@ namespace MarioGame.Entities
                 base.OnCollide(otherObject, side, otherSide);
             }
         }
-        private void CalculateBonus(int frameNumber)
+        private static void CalculateBonus(int frameNumber)
         {
             int points = 0;
             switch (frameNumber)
