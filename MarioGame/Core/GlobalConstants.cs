@@ -12,6 +12,23 @@ namespace MarioGame.Theming
         public const int GridWidth = 16;
         public const float MillisecondsPerFrame = 16;
         public const int FramesPerSecond = 5;
-        public static readonly string[] SFXFiles = {"1up","breakblock", "bump", "coin", "fireball", "flagpole","gameover","jumpsmall", "pipedown","powerdown","powerup","powerupappear", "stomp", "timewarning"};
+        public enum EventTypes
+        {
+            OneUp,
+            breakblock,
+            bump,
+            coin,
+            fireball,
+            flagpole,
+            gameover,
+            jump,
+            pipedown,
+            powerdown,
+            powerup,
+            powerupappear,
+            stomp,
+            timewarning
+        }
+    public static readonly string[] SFXFiles = {"1up","breakblock", "bump", "coin", "fireball", "flagpole","gameover","jumpsmall", "pipedown","powerdown","powerup","powerupappear", "stomp", "timewarning"};
     }
 }

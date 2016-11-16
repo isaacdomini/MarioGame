@@ -12,9 +12,10 @@ using MarioGame.Commands;
 
 namespace MarioGame.Theming
 {
-    public class Script
+    public class Script : IPublisher
     {
         private readonly Scene _scene;
+        Dictionary<String, List<ISubscriber>> eventSubscribers;
         public AudioManager AudioManager { get; set; }
         public List<Entity> Entities { get; private set; }
         //possibile TODO: cache the getters if performance suffer
@@ -31,6 +32,7 @@ namespace MarioGame.Theming
         public Script(Scene scene)
         {
             _scene = scene;
+            eventSubscribers = new Dictionary<string, List<ISubscriber>>();
         }
 
         public void Initialize()
@@ -196,6 +198,24 @@ namespace MarioGame.Theming
         internal void MuteSounds()
         {
             AudioManager.Mute();
+        }
+
+        public void Subscribe(string eventName, ISubscriber subscriber)
+        {
+            List<ISubscriber> subscribers;
+            if (!eventSubscribers.ContainsKey(eventName))
+            {
+                eventSubscribers.Add(eventName, new List<ISubscriber>());
+            }
+            eventSubscribers.TryGetValue(eventName, out subscribers);
+            subscribers.Add(subscriber);
+        }
+
+        public void Announce(string eventName)
+        {
+            List<ISubscriber> subscribers;
+            eventSubscribers.TryGetValue(eventName, out subscribers);
+            subscribers?.ForEach(s => s.OnEvent(eventName));
         }
     }
 }

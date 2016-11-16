@@ -66,6 +66,8 @@
     <Compile Include="Controllers\KeyboardController.cs" />
     <Compile Include="Core\Directions.cs" />
     <Compile Include="Core\Game1.cs" />
+    <Compile Include="Core\IPublisher.cs" />
+    <Compile Include="Core\ISubscriber.cs" />
     <Compile Include="Core\Program.cs" />
     <Compile Include="Core\Utils.cs" />
     <Compile Include="Entities\BackgroundItems\Bush3.cs" />

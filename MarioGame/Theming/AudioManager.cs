@@ -1,14 +1,16 @@
-﻿using MarioGame.Entities;
+﻿using MarioGame.Core;
+using MarioGame.Entities;
 using MarioGame.States;
 using MarioGame.States.BlockStates.ActionStates;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
 using System.Collections.Generic;
+using System;
 
 namespace MarioGame.Theming
 {
     
-    public class AudioManager
+    public class AudioManager :ISubscriber
     {
         private Song _backgroundSong;
         private Song _starSong;
@@ -78,6 +80,11 @@ namespace MarioGame.Theming
             _mute = !_mute;
             MediaPlayer.Volume = _mute ? 0.0f : 1.0f;
             
+        }
+
+        public void OnEvent(string eventName)
+        {
+            throw new NotImplementedException();
         }
     }
 }
