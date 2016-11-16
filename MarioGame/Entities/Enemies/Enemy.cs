@@ -25,7 +25,6 @@ namespace MarioGame.Entities
 
         public virtual void OnCollideMario(Mario mario, Sides side)
         {
-
             if (mario.CanRunOverEnemies)
             {
                 EnemyActionState.ChangeToDead();
@@ -34,7 +33,6 @@ namespace MarioGame.Entities
             {
                 EnemyActionState.JumpedOn(side);
             }
-
         }
         public override void OnCollide(IEntity otherObject, Sides side, Sides otherSide)
         {
