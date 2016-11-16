@@ -8,7 +8,7 @@ namespace MarioGame.Core
 {
     public interface ISubscriber
     {
-        void OnEvent(String eventName);
+        void OnEvent(EventTypes eventTypes);
     }
 
 }

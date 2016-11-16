@@ -15,7 +15,7 @@ namespace MarioGame.Theming
     public class Script : IPublisher
     {
         private readonly Scene _scene;
-        Dictionary<String, List<ISubscriber>> eventSubscribers;
+        private readonly Dictionary<EventTypes, List<ISubscriber>> _eventSubscribers;
         public AudioManager AudioManager { get; set; }
         public List<Entity> Entities { get; private set; }
         //possibile TODO: cache the getters if performance suffer
@@ -32,7 +32,7 @@ namespace MarioGame.Theming
         public Script(Scene scene)
         {
             _scene = scene;
-            eventSubscribers = new Dictionary<string, List<ISubscriber>>();
+            _eventSubscribers = new Dictionary<EventTypes, List<ISubscriber>>();
         }
 
         public void Initialize()
@@ -200,22 +200,22 @@ namespace MarioGame.Theming
             AudioManager.Mute();
         }
 
-        public void Subscribe(string eventName, ISubscriber subscriber)
+        public void Announce(EventTypes eventType)
         {
             List<ISubscriber> subscribers;
-            if (!eventSubscribers.ContainsKey(eventName))
-            {
-                eventSubscribers.Add(eventName, new List<ISubscriber>());
-            }
-            eventSubscribers.TryGetValue(eventName, out subscribers);
-            subscribers.Add(subscriber);
+            _eventSubscribers.TryGetValue(eventType, out subscribers);
+            subscribers?.ForEach(s => s.OnEvent(eventType));
         }
 
-        public void Announce(string eventName)
+        public void Subscribe(EventTypes eventType, ISubscriber subscriber)
         {
             List<ISubscriber> subscribers;
-            eventSubscribers.TryGetValue(eventName, out subscribers);
-            subscribers?.ForEach(s => s.OnEvent(eventName));
+            if (!_eventSubscribers.ContainsKey(eventType))
+            {
+                _eventSubscribers.Add(eventType, new List<ISubscriber>());
+            }
+            _eventSubscribers.TryGetValue(eventType, out subscribers);
+            subscribers?.Add(subscriber);
         }
     }
 }

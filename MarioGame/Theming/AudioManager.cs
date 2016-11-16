@@ -82,9 +82,8 @@ namespace MarioGame.Theming
             
         }
 
-        public void OnEvent(string eventName)
+        public void OnEvent(EventTypes eventType)
         {
-            throw new NotImplementedException();
         }
     }
 }

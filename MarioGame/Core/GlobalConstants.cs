@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MarioGame.Core;
 
 namespace MarioGame.Theming
 {
@@ -12,23 +13,8 @@ namespace MarioGame.Theming
         public const int GridWidth = 16;
         public const float MillisecondsPerFrame = 16;
         public const int FramesPerSecond = 5;
-        public enum EventTypes
-        {
-            OneUp,
-            breakblock,
-            bump,
-            coin,
-            fireball,
-            flagpole,
-            gameover,
-            jump,
-            pipedown,
-            powerdown,
-            powerup,
-            powerupappear,
-            stomp,
-            timewarning
-        }
-    public static readonly string[] SFXFiles = {"1up","breakblock", "bump", "coin", "fireball", "flagpole","gameover","jumpsmall", "pipedown","powerdown","powerup","powerupappear", "stomp", "timewarning"};
+
+
+        public static readonly string[] SFXFiles = Enum.GetNames(typeof(EventTypes)).Select(s => s.ToLowerInvariant()).ToArray();
     }
 }
