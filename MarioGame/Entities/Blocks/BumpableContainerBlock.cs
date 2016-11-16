@@ -30,7 +30,7 @@ namespace MarioGame.Entities
             else if (_tickCount == 1)
             {
                 _tickCount = -10;
-                _velocity.Y = 1;
+                VelocityY = 1;
             }
             else if (_tickCount < -1)
             {
@@ -39,7 +39,7 @@ namespace MarioGame.Entities
             else if (_tickCount == -1)
             {
                 _tickCount = 0;
-                _velocity.Y = 0;
+                VelocityY = 0;
                 if (AState is BumpingState) ChangeToStandard();
             }
         }
@@ -51,7 +51,7 @@ namespace MarioGame.Entities
                 if (_tickCount == 0)
                 {
                     _tickCount = 10;
-                    _velocity.Y = -1;
+                    VelocityY = -1;
                 }
                 if (HasItems())
                 {

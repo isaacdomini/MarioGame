@@ -28,20 +28,20 @@ namespace MarioGame.Entities
             switch (_partition)
             {
                 case Partitions.TopLeft:
-                    _velocity.Y = -1 * breakSpeed;
-                    _velocity.X = -1*breakSpeed; //TODO: change xVelocity with speed and direction
+                    VelocityY = -1 * breakSpeed;
+                    VelocityX = -1*breakSpeed; //TODO: change xVelocity with speed and direction
                     break;
                 case Partitions.TopRight:
-                    _velocity.Y = -1 * breakSpeed;
-                    _velocity.X = 1*breakSpeed;
+                    VelocityY = -1 * breakSpeed;
+                    VelocityX = 1*breakSpeed;
                     break;
                 case Partitions.BottomLeft:
-                    _velocity.Y = 1*breakSpeed;
-                    _velocity.X = -1 * breakSpeed;
+                    VelocityY = 1*breakSpeed;
+                    VelocityX = -1 * breakSpeed;
                     break;
                 case Partitions.BottomRight:
-                    _velocity.Y = 1 * breakSpeed;
-                    _velocity.X = 1 * breakSpeed;
+                    VelocityY = 1 * breakSpeed;
+                    VelocityX = 1 * breakSpeed;
                     break;
             }
         }
@@ -59,7 +59,7 @@ namespace MarioGame.Entities
         protected override void OnBlockBottomCollision()
         {
             base.OnBlockBottomCollision();
-            _velocity.X = 0;
+            VelocityX = 0;
         }
     }
 }

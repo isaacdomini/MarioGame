@@ -11,7 +11,7 @@ namespace MarioGame.Entities
     {
         public MushroomSuper(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content,addToScriptEntities)
         {
-            _velocity = -1 * MovingVelocity;
+            Velocity = -1 * MovingVelocity;
         }
 
         public override void Update(Viewport viewport, int elapsedMilliseconds)

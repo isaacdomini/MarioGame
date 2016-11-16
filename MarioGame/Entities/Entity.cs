@@ -45,8 +45,22 @@ namespace MarioGame.Entities
         }
         public bool FacingLeft => Direction == Directions.Left;
         public bool FacingRight => Direction == Directions.Right;
-        protected Vector2 _velocity;
-        public Vector2 Velocity { get { return _velocity; } }
+        private Vector2 _velocity;
+        public float VelocityX
+        {
+            get { return _velocity.X; }
+            set { _velocity.X = value; }
+        }
+        public float VelocityY
+        {
+            get { return _velocity.Y; }
+            set { _velocity.Y = value; }
+        }
+        public Vector2 Velocity
+        {
+            get { return _velocity; }
+            set { _velocity = value; }
+        }
         public static readonly int VelocityConstant = 1;
         private static readonly Vector2 WalkingVelocity = new Vector2(VelocityConstant * 1, 0);
         protected static readonly Vector2 fallingVelocity = new Vector2(0, VelocityConstant * 1);
@@ -122,7 +136,7 @@ namespace MarioGame.Entities
         {
             _position += Velocity;
             if (!floating)
-                _velocity.Y = MathHelper.Clamp(Velocity.Y + .05f, -4, 4);
+                VelocityY = MathHelper.Clamp(Velocity.Y + .05f, -4, 4);
             BoundingBox.Location = Util.VectorToPoint(Position) + BoundingBoxOffset;
             BoxColor = _colliding ? CollidingBoxColor : RegularBoxColor;
             _colliding = false;
@@ -135,12 +149,12 @@ namespace MarioGame.Entities
 
         public virtual void SetXVelocity(Vector2 newVelocity)
         {
-            _velocity.X = newVelocity.X;
+            VelocityX = newVelocity.X;
         }
 
         public virtual void SetYVelocity(Vector2 newVelocity)
         {
-            _velocity.Y = newVelocity.Y;
+            VelocityY = newVelocity.Y;
         }
         public virtual void SetVelocityToIdle()
         {
@@ -228,7 +242,7 @@ namespace MarioGame.Entities
             if (Velocity.Y > 0)
             {
                 PositionY -= 1.1f*Velocity.Y;
-                _velocity.Y = 0;
+                VelocityY = 0;
             }
         }
         protected virtual void OnBlockBottomCollision(Block block)
@@ -238,7 +252,7 @@ namespace MarioGame.Entities
         protected virtual void OnBlockTopCollision()
         {
             PositionY -= 1.1f * Velocity.Y;
-            _velocity.Y = 0;
+            VelocityY = 0;
         }
         protected virtual void OnBlockTopCollision(Block block)
         {

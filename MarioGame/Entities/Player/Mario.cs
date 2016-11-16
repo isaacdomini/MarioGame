@@ -31,7 +31,7 @@ namespace MarioGame.Entities
 
         private const int StandardBoundingBoxWidth = 14;
         private const int StandardBoundingBoxHeight = 20;
-        private bool IsMovingUp => _velocity.Y <= 0;
+        private bool IsMovingUp => VelocityY <= 0;
         private bool IsLarge => MarioPowerUpState is SuperState || MarioPowerUpState is SuperStarState || MarioPowerUpState is FireState || MarioPowerUpState is FireStarState;
         public bool CanBreakBricks => IsLarge && IsMovingUp;
         public bool Invincible => _secondsOfInvincibilityRemaining > 0 || PState is FireStarState || PState is StandardStarState || PState is SuperStarState;
@@ -255,11 +255,11 @@ namespace MarioGame.Entities
             switch (_spaceBarAction)
             {
                 case SpaceBarAction.Walk:
-                    _velocity = _velocity / 2;
+                    Velocity = Velocity / 2;
                     _spaceBarAction = SpaceBarAction.Run;
                     break;
                 case SpaceBarAction.Run:
-                    _velocity = _velocity * 2;
+                    Velocity = Velocity * 2;
                     _spaceBarAction = SpaceBarAction.Walk;
                     break;
             }
@@ -277,12 +277,12 @@ namespace MarioGame.Entities
         }
         public override void HaltX()
         {
-            PositionX -= _velocity.X;
+            PositionX -= VelocityX;
             base.HaltX();
         }
         public override void HaltY()
         {
-            PositionY -= _velocity.Y;
+            PositionY -= VelocityY;
             base.HaltY();
         }
 
