@@ -60,6 +60,7 @@ namespace MarioGame.Entities
         private readonly MarioPowerUpStateMachine _marioPowerUpStateMachine;
 
         private readonly ContentManager _content;
+        private bool onScreen = true;
         public Mario(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content, addToScriptEntities)
         {
             _marioActionStateMachine = new MarioActionStateMachine(this);
@@ -68,8 +69,8 @@ namespace MarioGame.Entities
             PState = _marioPowerUpStateMachine.StandardState;
             Direction = Directions.Right;
             _spaceBarAction = SpaceBarAction.Run;
-
-            _content = content;
+            onScreen = true;
+        _content = content;
         }
 
         internal override void Init(JEntity e, Game1 game)
@@ -148,9 +149,10 @@ namespace MarioGame.Entities
         }
         private void CheckFallOff(Viewport viewport)
         {
-            if(_position.Y>viewport.Height)
+            if(onScreen == true && _position.Y>viewport.Height)
             {
                 ChangeToDeadState();
+                onScreen = false;
             }
         }
 
