@@ -15,6 +15,15 @@
       ]
     },
     {
+      "type": "Pirahna",
+      "position": [
+        {
+          "row": 17,
+          "columns": [ 40.5 ]
+        }
+      ]
+    },
+    {
       "type": "GreenPipe",
       "sceneTransport": "HiddenLevel",
       "transportPosition": 
@@ -41,25 +50,14 @@
     },
     {
       "type": "GreenPipe",
-      "transportPosition": 
-        {
-          "row": 15,
-          "columns": [ 100 ]
-        }
-      ,
+      "transportPosition": {
+        "row": 15,
+        "columns": [ 100 ]
+      },
       "position": [
         {
           "row": 18,
           "columns": [ 2 ]
-        }
-      ]
-    },
-    {
-      "type": "Pirahna",
-      "position": [
-        {
-          "row": 17,
-          "columns": [ 40.5 ]
         }
       ]
     },
