@@ -48,7 +48,7 @@ namespace MarioGame.Entities
             base.Update(viewport, elapsedMilliseconds);
             if (Position.X < 0)
             {
-                _position.X = 0;
+                PositionX = 0;
                 TurnRight();
             }
             if (_secondsOfInvincibilityRemaining > 0)

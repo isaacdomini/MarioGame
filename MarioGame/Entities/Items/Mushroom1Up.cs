@@ -20,8 +20,8 @@ namespace MarioGame.Entities
             {
                 if (!((BlockSprite)Sprite).isVisible)
                 {
-                    BoundingBox.X = (int)_position.X;
-                    BoundingBox.Y = (int)_position.Y;
+                    BoundingBox.X = (int)PositionX;
+                    BoundingBox.Y = (int)PositionY;
                 }
 
             }

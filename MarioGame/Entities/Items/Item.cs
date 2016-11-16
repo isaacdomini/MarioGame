@@ -18,7 +18,7 @@ namespace MarioGame.Entities
 
         public override void LeaveContainer()
         {
-            _position.Y -= _sprite.FrameHeight;
+            PositionY -= _sprite.FrameHeight;
             Show();
         }
         public override void OnCollide(IEntity otherObject, Sides side, Sides otherSide)

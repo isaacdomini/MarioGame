@@ -17,7 +17,16 @@ namespace MarioGame.Theming
             Origin = new Vector2(_viewport.Width / 15.0f, _viewport.Height / 5.0f);
             Zoom = 1.5f;
         }
-
+        public float PositionX
+        {
+            get { return _position.X; }
+            protected set { _position.X = value; }
+        }
+        public float PositionY
+        {
+            get { return _position.Y; }
+            protected set { _position.Y = value; }
+        }
         public Vector2 Position
         {
             get
@@ -30,8 +39,8 @@ namespace MarioGame.Theming
 
                 // If there's a limit set and there's no zoom or rotation clamp the position
                 if (Limits == null || Zoom !=1.0f || Rotation != 0.0f) return;
-                _position.X = MathHelper.Clamp(_position.X, Limits.Value.X, Limits.Value.X + Limits.Value.Width - _viewport.Width);
-                _position.Y = MathHelper.Clamp(_position.Y, Limits.Value.Y, Limits.Value.Y + Limits.Value.Height - _viewport.Height);
+                PositionX = MathHelper.Clamp(PositionX, Limits.Value.X, Limits.Value.X + Limits.Value.Width - _viewport.Width);
+                PositionY = MathHelper.Clamp(PositionY, Limits.Value.Y, Limits.Value.Y + Limits.Value.Height - _viewport.Height);
             }
         }
 

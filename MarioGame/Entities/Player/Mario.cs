@@ -149,7 +149,7 @@ namespace MarioGame.Entities
         }
         private void CheckFallOff(Viewport viewport)
         {
-            if(onScreen == true && _position.Y>viewport.Height)
+            if(onScreen == true && PositionY>viewport.Height)
             {
                 ChangeToDeadState();
                 onScreen = false;
@@ -277,12 +277,12 @@ namespace MarioGame.Entities
         }
         public override void HaltX()
         {
-            _position.X -= _velocity.X;
+            PositionX -= _velocity.X;
             base.HaltX();
         }
         public override void HaltY()
         {
-            _position.Y -= _velocity.Y;
+            PositionY -= _velocity.Y;
             base.HaltY();
         }
 
@@ -307,15 +307,15 @@ namespace MarioGame.Entities
             else
             {
                 Halt();
-                _position -= new Vector2(0, 15);
+                Position -= new Vector2(0, 15);
             }
         }
         protected override void OnBlockSideCollision(Sides side)
         {
             if (side == Sides.Right)
-                _position.X -= 2;
+                PositionX -= 2;
             else
-                _position.X += 2;
+                PositionX += 2;
             HaltX();
             MarioActionState.Halt();
         }
@@ -429,7 +429,7 @@ namespace MarioGame.Entities
         private void MoveToLocation(Vector2 xPosition)
         {
             xPosition.Y -= 15f;
-            _position = xPosition; //*GlobalConstants.GridWidth;
+            Position = xPosition; //*GlobalConstants.GridWidth;
         }
 
         public void ThrowFireball()

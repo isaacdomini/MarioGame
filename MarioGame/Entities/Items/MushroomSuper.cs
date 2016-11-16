@@ -18,8 +18,8 @@ namespace MarioGame.Entities
         {
             if (((MushroomSuperSprite)Sprite).isVisible == false)
             {
-                BoundingBox.X = (int)_position.X;
-                BoundingBox.Y = (int)_position.Y;
+                BoundingBox.X = (int)PositionX;
+                BoundingBox.Y = (int)PositionY;
 
             }
             base.Update(viewport, elapsedMilliseconds);

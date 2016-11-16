@@ -35,13 +35,13 @@ namespace MarioGame.Entities
             AState.UpdateEntity(elapsedMilliseconds);
             if (_moving == 1) //Moving Up
             {
-                _position.Y -= .2f;
+                PositionY -= .2f;
                 if (Position.Y <= _startPos.Y)
                     _moving = 2;
             }
             else if (_moving == 2) //Moving Down
             {
-                _position.Y += .2f;
+                PositionY += .2f;
                 if (Position.Y >= _startPos.Y + 20)
                     _moving = 0;
             }

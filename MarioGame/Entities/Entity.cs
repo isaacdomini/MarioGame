@@ -28,7 +28,17 @@ namespace MarioGame.Entities
         }
         public ActionState CurrentActionState => this.AState;
         //NOTE: Position and _position are deliberately not using the auto-generated property getter set
-        protected Vector2 _position;
+        private Vector2 _position;
+        public float PositionX
+        {
+            get { return _position.X; }
+            protected set { _position.X = value; }
+        }
+        public float PositionY
+        {
+            get { return _position.Y; }
+            protected set { _position.Y = value; }
+        }
         public Vector2 Position
         {
             get { return _position; }
@@ -218,7 +228,7 @@ namespace MarioGame.Entities
         {
             if (Velocity.Y > 0)
             {
-                _position.Y -= 1.1f*Velocity.Y;
+                PositionY -= 1.1f*Velocity.Y;
                 _velocity.Y = 0;
             }
         }
@@ -228,7 +238,7 @@ namespace MarioGame.Entities
         }
         protected virtual void OnBlockTopCollision()
         {
-            _position.Y -= 1.1f * Velocity.Y;
+            PositionY -= 1.1f * Velocity.Y;
             _velocity.Y = 0;
         }
         protected virtual void OnBlockTopCollision(Block block)
