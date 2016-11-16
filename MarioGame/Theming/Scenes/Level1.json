@@ -9,8 +9,48 @@
       "backgroundlayer": 0,
       "position": [
         {
-          "row": 5,
-          "columns": [ 5, 10, 15, 20, 25, 30 ]
+          "row": 4,
+          "columns": [ 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80 ]
+        }
+      ]
+    },
+    {
+      "type": "Cloud2",
+      "backgroundlayer": 0,
+      "position": [
+        {
+          "row": 7,
+          "columns": [ 2, 7, 12, 17, 22, 27, 32, 37, 42, 47, 52, 57, 62, 67, 72, 77 ]
+        }
+      ]
+    },
+    {
+      "type": "Hill1",
+      "backgroundlayer": 1,
+      "position": [
+        {
+          "row": 18,
+          "columns": [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80 ]
+        }
+      ]
+    },
+    {
+      "type": "Hill2",
+      "backgroundlayer": 1,
+      "position": [
+        {
+          "row": 18,
+          "columns": [ 4, 9, 14, 19, 24, 29, 34, 39, 44, 49, 54, 59, 64, 69, 74, 79 ]
+        }
+      ]
+    },
+    {
+      "type": "Bush3",
+      "backgroundlayer": 1,
+      "position": [
+        {
+          "row": 18,
+          "columns": [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80 ]
         }
       ]
     },
@@ -56,48 +96,57 @@
       },
       "position": [
         {
-          "row": 18,
-          "columns": [ 2 ]
+          "row": 8,
+          "columns": [ 15 ]
         }
       ]
     },
     {
-      "type": "Cloud2",
-      "backgroundlayer": 0,
+      "type": "BrickBlock",
+      "actionState": "UsedBlockState",
       "position": [
         {
-          "row": 7,
-          "columns": [ 5, 10, 15, 20, 25, 30 ]
+          "row": 10,
+          "columns": [ 15, 17 ]
         }
       ]
     },
     {
-      "type": "Hill1",
-      "backgroundlayer": 1,
-      "position": [
+      "type": "QuestionBlock",
+      "positionWithHiddenItems": [
         {
-          "row": 9,
-          "columns": [ 5, 10, 15, 20, 25, 30 ]
-        }
-      ]
-    },
-    {
-      "type": "Bush3",
-      "backgroundlayer": 1,
-      "position": [
+          "row": 10,
+          "column": 16,
+          "hiddenItems": [
+            {
+              "type": "Coin",
+              "amount": 2
+            }
+          ]
+        },
         {
-          "row": 11,
-          "columns": [ 5, 10, 15, 20, 25, 30 ]
-        }
-      ]
-    },
-    {
-      "type": "Hill2",
-      "backgroundlayer": 1,
-      "position": [
+          "row": 10,
+          "column": 14,
+          "hiddenItems": [
+            {
+              "type": "Coin",
+              "amount": 1
+            }
+          ]
+        },
         {
-          "row": 13,
-          "columns": [ 5, 10, 15, 20, 25, 30 ]
+          "row": 10,
+          "column": 18,
+          "hiddenItems": [
+            {
+              "type": "Coin",
+              "amount": 3
+            },
+            {
+              "type": "Mushroom1Up",
+              "amount": 1
+            }
+          ]
         }
       ]
     },
@@ -291,6 +340,10 @@
         {
           "row": 18,
           "columns": [ 15 ]
+        },
+        {
+          "row": 9,
+          "columns": [ 14 ]
         }
       ]
     },
@@ -300,6 +353,10 @@
         {
           "row": 18,
           "columns": [ 25 ]
+        },
+        {
+          "row": 10,
+          "columns": [100, 101, 102, 103, 104 105 ]
         }
       ]
     },
