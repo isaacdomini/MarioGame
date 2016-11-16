@@ -394,7 +394,7 @@ namespace MarioGame.Entities
         {
             EnterGameOver();
         }
-        internal void SetGameOver(Action enterGameOver)
+        internal static void SetGameOver(Action enterGameOver)
         {
             EnterGameOver = enterGameOver;
         }
