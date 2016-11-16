@@ -17,6 +17,7 @@ namespace MarioGame.Entities
 
         public Pirahna(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content, addToScriptEntities)
         {
+            BoxPercentSizeOfEntity = .8f;
             var stateMachine = new PirahnaStateMachine(this);
             ChangeActionState(stateMachine.AliveState);
             AState.Begin(AState);
