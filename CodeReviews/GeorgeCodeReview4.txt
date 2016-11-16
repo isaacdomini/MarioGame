@@ -1,0 +1,9 @@
+Author of the code review: Erin George
+Date of the code review: 11/15/16
+Sprint number: 4
+Name of the .cs file being reviewed: Scoreboard.cs
+Author of the .cs file being reviewed: John and me
+Specific comments on code quality: I reviewed this code before John and Cyriac made some last minute changes to it. Upon first look at this file, there are a lot of magic numbers and strings. Almost every time something in the scoreboard is changed, there is a magic number. However, there is a good use of methods to split up functionality. The two longest methods are InitializeScoreboardList() and ResetScoreboard(). Every other method is very short. Even though the previous two methods are longer, they still only perform one major task which is good. If we wanted to make ResetScoreboard() shorter, we can make methods to reset each part of the scoreboard and then in ResetScoreboard() call all of these smaller methods. The main problem I see with the logic of UpdateTimer is that since Update is called every 16ms, then TimeTrack will not equal 1. Instead it will be a little over 1. Because of this, some seconds may seem longer than others because of rounding due to time in the scoreboard being an int. Overall, it is good that the methods are short and perform individual tasks, but there is still room for improvement with magic numbers and a little more simplification.
+Number of minutes taken to complete the review: 20 minutes
+A hypothetical change to make to the game related to file being reviewed and how the current implementation could or could not easily support that change: One change that we talked about doing (and may end up doing before turning this in) was to take scoreboard out of Mario and put it into script. This way it is easier for other entities to utilize the scoreboard methods when necessary.
+
