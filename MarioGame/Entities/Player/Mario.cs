@@ -317,17 +317,17 @@ namespace MarioGame.Entities
 
         private void OnBlockRightCollision(Sides blockSide)
         {
-            if (_velocity.X < 0)
+            if (VelocityX < 0)
             {
-                _position.X -= _velocity.X;
+                PositionX -= VelocityX;
             }
         }
 
         private void OnBlockLeftCollision(Sides blockSide)
         {
-            if (_velocity.X > 0)
+            if (VelocityX > 0)
             {
-                _position.X -= _velocity.X;
+                PositionX -= VelocityX;
             }
         }
 
