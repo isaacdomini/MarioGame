@@ -1,4 +1,5 @@
-﻿using MarioGame.Entities;
+﻿using MarioGame.Core;
+using MarioGame.Entities;
 using MarioGame.Theming;
 
 namespace MarioGame.States
@@ -15,7 +16,7 @@ namespace MarioGame.States
         public override void Begin(MarioPowerUpState prevState)
         {
             Mario.ChangePowerUpState(StateMachine.DeadState);
-            Entities.Entity.Script.AudioManager.playEffect(GlobalConstants.SFXFiles[AudioManager.SFXEnum.powerdown.GetHashCode()]);
+            Entities.Entity.Script.Announce(EventTypes.Powerdown);
             Mario.SetVelocityToJumping();
             millisecondsDead = 0;
             Entities.Mario.Scoreboard.LoseLife();

@@ -1,4 +1,5 @@
-﻿using MarioGame.Entities;
+﻿using MarioGame.Core;
+using MarioGame.Entities;
 using MarioGame.Theming;
 using Microsoft.Xna.Framework;
 
@@ -13,9 +14,10 @@ namespace MarioGame.States
         }
         public override void Begin(IState prevState)
         {
+            //TODO: call base.begin?
             Pirahna.Delete();
             Mario.Scoreboard.AddPoint(200);
-            Entities.Entity.Script.AudioManager.playEffect(GlobalConstants.SFXFiles[AudioManager.SFXEnum.stomp.GetHashCode()]);
+            Entities.Entity.Script.Announce(EventTypes.Stomp);
         }
 
         public override void UpdateEntity(int elapsedMilliseconds)

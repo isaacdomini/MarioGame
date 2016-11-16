@@ -65,6 +65,7 @@
     <Compile Include="Controllers\IController.cs" />
     <Compile Include="Controllers\KeyboardController.cs" />
     <Compile Include="Core\Directions.cs" />
+    <Compile Include="Core\EventTypes.cs" />
     <Compile Include="Core\Game1.cs" />
     <Compile Include="Core\IPublisher.cs" />
     <Compile Include="Core\ISubscriber.cs" />

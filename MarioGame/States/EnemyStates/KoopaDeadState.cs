@@ -16,9 +16,9 @@ namespace MarioGame.States
             base.Begin(prevState);
             Koopa.SetVelocityToIdle();
             Koopa.ChangeActionState(StateMachine.DeadState);
-            Entities.Entity.Script.AudioManager.playEffect(GlobalConstants.SFXFiles[AudioManager.SFXEnum.stomp.GetHashCode()]);
+            Entities.Entity.Script.Announce(EventTypes.Stomp);
             Mario.Scoreboard.AddPoint(100);        
-}
+        }
         public override void JumpedOn(Sides side)
         {
             if (side == Sides.Right)

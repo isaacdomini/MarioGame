@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 namespace MarioGame.Theming
 {
@@ -19,13 +20,18 @@ namespace MarioGame.Theming
         public enum SFXEnum
         { up, breakblock, bump, coin, fireball, flagpole, gameover, jump, pipedown, powerdown, powerup, powerupappear, stomp, timewarning }
 
-        public AudioManager(Song song, Song star)
+        private Script _script;
+        public AudioManager(Song song, Song star, Script script)
         {
             _mute = false;
             _backgroundSong = song;
             _starSong = star;
             _dictionary = new Dictionary<string, SoundEffect>();
             MediaPlayer.Play(_backgroundSong);
+
+            _script = script;
+            Enum.GetValues(typeof(EventTypes)).Cast<EventTypes>().ToList().ForEach(e => script.Subscribe(e, this));
+            //EventTypes.Get   _script.Subscribe();
         }
         public void AddSFX(string effect, SoundEffect sfx)
         {
@@ -84,6 +90,7 @@ namespace MarioGame.Theming
 
         public void OnEvent(EventTypes eventType)
         {
+            playEffect(eventType.ToString().ToLowerInvariant());
         }
     }
 }

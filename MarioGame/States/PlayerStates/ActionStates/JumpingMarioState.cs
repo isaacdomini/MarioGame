@@ -1,4 +1,5 @@
 ﻿using System;
+using MarioGame.Core;
 using MarioGame.Entities;
 using MarioGame.Theming;
 using Microsoft.Xna.Framework;
@@ -19,7 +20,7 @@ namespace MarioGame.States
             Mario.SetVelocityToJumping();
             _jumpTimer = .75f;
             base.Begin(prevState);
-            Entities.Entity.Script.AudioManager.playEffect(GlobalConstants.SFXFiles[AudioManager.SFXEnum.jump.GetHashCode()]);
+            Entities.Entity.Script.Announce(EventTypes.Jump);
         }
 
         public override void EndState()//TODO: currently i dont think this method is getting called correctly. something with a null error about _prevState in state.Begin();

@@ -1,4 +1,5 @@
-﻿using MarioGame.Entities;
+﻿using MarioGame.Core;
+using MarioGame.Entities;
 using MarioGame.Theming;
 using Microsoft.Xna.Framework;
 
@@ -18,8 +19,8 @@ namespace MarioGame.States
             Goomba.SetVelocityToIdle();
             Goomba.ChangeActionState(StateMachine.DeadState);
             _elapsedMilliseconds = 0;
-            Mario.Scoreboard.AddPoint(100);            
-	    Entities.Entity.Script.AudioManager.playEffect(GlobalConstants.SFXFiles[AudioManager.SFXEnum.stomp.GetHashCode()]);
+            Mario.Scoreboard.AddPoint(100);
+            Entities.Entity.Script.Announce(EventTypes.Stomp);
         }
 
         public override void UpdateEntity(int elapsedMilliseconds)

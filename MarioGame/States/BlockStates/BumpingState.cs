@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MarioGame.Core;
 
 namespace MarioGame.States.BlockStates.ActionStates
 {
@@ -19,7 +20,8 @@ namespace MarioGame.States.BlockStates.ActionStates
         {
             base.Begin(prevState);
             ((Block)Entity).ChangeActionState(StateMachine.BumpingState);
-            Entities.Entity.Script.AudioManager.playEffect(GlobalConstants.SFXFiles[AudioManager.SFXEnum.bump.GetHashCode()]);
+
+            Entities.Entity.Script.Announce(EventTypes.Bump);
         }
         public override void EndState()
         {

@@ -178,11 +178,11 @@ namespace MarioGame.Entities
             {
                 if (newState is SuperState || newState is FireState)
                 {
-                    Script.AudioManager.playEffect(GlobalConstants.SFXFiles[AudioManager.SFXEnum.powerup.GetHashCode()]);
+                    Script.Announce(EventTypes.Powerup);
                 }
                 else if (newState is StandardState)
                 {
-                    Script.AudioManager.playEffect(GlobalConstants.SFXFiles[AudioManager.SFXEnum.powerdown.GetHashCode()]);
+                    Script.Announce(EventTypes.Powerdown);
                 }
             }
             else if(!(newState is SuperStarState || newState is FireStarState || newState is StandardStarState))
@@ -434,6 +434,7 @@ namespace MarioGame.Entities
 
         public void ThrowFireball()
         {
+            Script.Announce(EventTypes.Fireball);
             var fireballXDistanceFromMario = FacingRight ? GlobalConstants.GridWidth : -1*GlobalConstants.GridWidth;
             var fireballYDistanceFromMario = GlobalConstants.GridHeight;
             var fireballXVelocity = FacingRight ? FireballXSpeed : -1*FireballXSpeed;
@@ -441,6 +442,8 @@ namespace MarioGame.Entities
             AddToScriptEntities(fireball);
             fireball.Sprite.Load();
             fireball.LoadBoundingBox();
+
+
         }
     }
 

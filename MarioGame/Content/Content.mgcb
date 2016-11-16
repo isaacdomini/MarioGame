@@ -343,12 +343,6 @@
 /processorParam:TextureFormat=Color
 /build:Pirahna.png
 
-#begin sounds/1up.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:sounds/1up.wav
-
 #begin sounds/breakblock.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -384,18 +378,6 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:sounds/gameover.wav
-
-#begin sounds/jumpsmall.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:sounds/jumpsmall.wav
-
-#begin sounds/jumpsuper.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:sounds/jumpsuper.wav
 
 #begin sounds/level1-1.mp3
 /importer:Mp3Importer
@@ -486,4 +468,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:fireball.png
+
+#begin sounds/oneUp.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/oneUp.wav
+
+#begin sounds\jump.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds\jump.wav
 

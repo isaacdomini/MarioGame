@@ -32,7 +32,7 @@ namespace MarioGame.Theming
             var json = File.ReadAllText(tileMapFile);
             var level = JsonConvert.DeserializeObject<Level>(json);
             script.LevelWidth = level.width;
-            script.AudioManager = new AudioManager(game.Content.Load<Song>(level.song), game.Content.Load<Song>("sounds\\star"));
+            script.AudioManager = new AudioManager(game.Content.Load<Song>(level.song), game.Content.Load<Song>("sounds\\star"), script);
             foreach (string sfx in GlobalConstants.SFXFiles)
             {
                 script.AudioManager.AddSFX(sfx, game.Content.Load<SoundEffect>("sounds\\" + sfx));
