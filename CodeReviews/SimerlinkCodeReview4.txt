@@ -5,7 +5,7 @@ Sprint 4
 Title: Scoreboard.Cs
 Authors: Erin George, John Simerlink, Cyriac Thundathil
 
-So first off this class is being used as a property on Mario. Why? Why is part of Mario the scoreboard? This is more cringeworthy then when Ross called Emily Rachel as he was about to marry Rachel. Like this doesn't even make sense.
+So first off this class is being used as a property on Mario. Why? Why is part of Mario the scoreboard? This is more cringeworthy then when Ross called Emily Rachel as he was about to marry Emily. Like this doesn't even make sense.
 
 But going into the actual code:We have some magic numbers. I'd say that isn't the best. For example, we write out the number of lives as "3" several times. What if we want to change the number of starting lives? then we are going to have to change this 3 two times. We should make some variable called numberOfStarting lives, and then that way we only have to change the code in one spot. Same thing with all the other magic numbers. What does TimeTrack mean? What does it stand for? Why is it a double? I couldn't figure out what this meant easily enough in the 4 minutes I spent looking at this file, so I'd say it should be renamed and recasted to something more intuitive.
 
