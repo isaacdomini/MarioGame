@@ -1,0 +1,15 @@
+Author of Code Review: Ricky Renner
+Date: 11/15/2016
+Sprint 4
+Name of File being Reviewed: Entity.cs
+Author(s) of File: Everyone
+
+Over the past four sprints, everyone has added more and more to Entity because it literally is meant to hold just about everything there needs to be known
+about an entity in the Mario game. However, the fields have multiplied as well as the handling methods, and it has become convoluted and hard to read.
+Although it is nice that almost everything there needs to be known about an entity can be found in this class, some of the fields do not apply to all entities.
+For example, ground blocks and step blocks do not have states besides standard states. And blocks for that matter do not face direction or anything like that.
+Also, having an onCollide method checking for block collisions within entity does not seem necessary considering that blocks would never have to check this.
+Overall, this is a nice chunk of code because it becomes a central hub for everything one needs to know about an entity, but some of the code should be taken
+out if it does not apply to all entities.
+
+Time to complete code review: 20 minutes.
