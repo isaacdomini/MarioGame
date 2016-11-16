@@ -27,6 +27,7 @@ namespace MarioGame.Theming
             _backgroundSong = song;
             _starSong = star;
             _dictionary = new Dictionary<string, SoundEffect>();
+            MediaPlayer.Stop();
             MediaPlayer.Play(_backgroundSong);
 
             _script = script;
