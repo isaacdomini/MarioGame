@@ -481,3 +481,9 @@
 /processorParam:Quality=Best
 /build:sounds\jump.wav
 
+#begin sounds/level1-1-Speed.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:sounds/level1-1-Speed.mp3
+

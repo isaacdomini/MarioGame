@@ -225,6 +225,9 @@
     </MonoGameContentReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="bin\Windows\x86\Debug\Content\sounds\gameover.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="bin\Windows\x86\Debug\HiddenLevel.json" />
     <None Include="bin\Windows\x86\Debug\GameOver.json" />
     <None Include="bin\Windows\x86\Debug\Level1.json" />
