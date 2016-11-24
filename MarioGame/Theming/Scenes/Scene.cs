@@ -27,6 +27,7 @@ namespace MarioGame.Theming.Scenes
         public Game1 Game1 => Stage.Game1;
         private bool _paused;
         private bool _gameOver;
+        private bool _mainMenu;
 
         public Scene(Stage stage)
         {
@@ -96,6 +97,10 @@ namespace MarioGame.Theming.Scenes
             {
                 Stage.UpdateGameOver();
             }
+            else if(_mainMenu)
+            {
+                Stage.UpdateMainMenu();
+            }
             else
             {
                 Stage.Update();
@@ -164,6 +169,9 @@ namespace MarioGame.Theming.Scenes
         {
             _gameOver = true;
         }
-
+        public void SetToMainMenu()
+        {
+            _mainMenu = true;
+        }
     }
 }

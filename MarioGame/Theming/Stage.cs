@@ -43,6 +43,12 @@ namespace MarioGame.Theming
             _controllers[1].AddGameOverScreenCommand((int)Buttons.Start, new QuitCommand(Game1));
             _controllers[0].AddGameOverScreenCommand((int)Keys.Q, new QuitCommand(Game1));
 
+            _controllers[0].AddMainMenuScreenCommand((int)Keys.R, new ResetCommand(Game1));
+            _controllers[1].AddMainMenuScreenCommand((int)Buttons.Start, new QuitCommand(Game1));
+            _controllers[0].AddMainMenuScreenCommand((int)Keys.Q, new QuitCommand(Game1));
+            _controllers[0].AddMainMenuScreenCommand((int)Keys.K, new PlayAsMarioCommand(Game1));
+            _controllers[0].AddMainMenuScreenCommand((int)Keys.E, new PlayAsEnemyCommand(Game1));
+
             // Adding movement commands (Needs updated with actual commands)
             _controllers[0].AddCommand((int)Keys.Left, new MoveLeftCommand(scene.Script));
             _controllers[0].AddHeldCommand((int)Keys.Left, new MoveLeftCommand(scene.Script));
@@ -99,6 +105,10 @@ namespace MarioGame.Theming
         internal void UpdateGameOver()
         {
             _controllers.ForEach(c => c.UpdateGameOverInput());
+        }
+        internal void UpdateMainMenu()
+        {
+            _controllers.ForEach(c => c.UpdateMainMenuInput());
         }
     }
 }

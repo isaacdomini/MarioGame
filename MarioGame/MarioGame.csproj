@@ -56,6 +56,8 @@
     <Compile Include="Commands\MoveRightCommand.cs" />
     <Compile Include="Commands\MuteCommand.cs" />
     <Compile Include="Commands\PauseCommand.cs" />
+    <Compile Include="Commands\PlayAsEnemyCommand.cs" />
+    <Compile Include="Commands\PlayAsMarioCommand.cs" />
     <Compile Include="Commands\QuitCommand.cs" />
     <Compile Include="Commands\ResetCommand.cs" />
     <Compile Include="Commands\ScriptCommand.cs" />
@@ -200,6 +202,7 @@
     <Compile Include="Theming\LevelLoader.cs" />
     <Compile Include="Theming\Scenes\GameOver.cs" />
     <Compile Include="Theming\Scenes\HiddenScene.cs" />
+    <Compile Include="Theming\Scenes\MainMenu.cs" />
     <Compile Include="Theming\Scenes\Scene.cs" />
     <Compile Include="Theming\Script.cs" />
     <Compile Include="Theming\Stage.cs" />
@@ -254,6 +257,7 @@
     <None Include="Theming\Scenes\HiddenLevel.json" />
     <None Include="Theming\Scenes\Level1.json" />
     <None Include="Theming\Scenes\Level2.json" />
+    <None Include="Theming\Scenes\MainMenu.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Commands\ItemCommands\" />

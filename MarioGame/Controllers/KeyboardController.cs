@@ -15,6 +15,7 @@ namespace MarioGame.Controllers
             Dictionary = new Dictionary<Keys, ICommand>();
             PauseKeys = new Dictionary<Keys, ICommand>();
             GameOverKeys = new Dictionary<Keys, ICommand>();
+            MainMenuKeys = new Dictionary<Keys, ICommand>();
             HeldDictionary = new Dictionary<Keys, ICommand>();
         }
 
@@ -23,7 +24,7 @@ namespace MarioGame.Controllers
             var keyList = (Keys[])Enum.GetValues(typeof(Keys));
             foreach (var keys in keyList)
             {
-                if ((int) keys == key) Dictionary.Add(keys, command);
+                if ((int) keys == key & !Dictionary.ContainsKey(keys))  Dictionary.Add(keys, command);
             }
 
         }
@@ -33,7 +34,7 @@ namespace MarioGame.Controllers
             var keyList = (Keys[]) Enum.GetValues(typeof(Keys));
             foreach (var keys in keyList)
             {
-                if ((int) keys == key) HeldDictionary.Add(keys, command);
+                if ((int) keys == key & !HeldDictionary.ContainsKey(keys)) HeldDictionary.Add(keys, command);
             }
         }
 
@@ -41,6 +42,7 @@ namespace MarioGame.Controllers
         public Dictionary<Keys, ICommand> HeldDictionary { get; }
         private Dictionary<Keys, ICommand> PauseKeys { get; set; }
         private Dictionary<Keys, ICommand> GameOverKeys { get; set; }
+        private Dictionary<Keys, ICommand> MainMenuKeys { get; set; }
 
 
         public void UpdateInput()
@@ -84,12 +86,25 @@ namespace MarioGame.Controllers
             _previousState = newState;
         }
 
+        public void UpdateMainMenuInput()
+        {
+            var newState = Keyboard.GetState();
+            ICommand command;
+            foreach (var key in newState.GetPressedKeys())
+                if (!_previousState.IsKeyDown(key) && MainMenuKeys.TryGetValue(key, out command))
+                {
+                    command.Execute();
+                }
+
+            _previousState = newState;
+        }
+
         public void AddPauseScreenCommand(int key, ICommand command)
         {
             var keyList = (Keys[])Enum.GetValues(typeof(Keys));
             foreach (var keys in keyList)
             {
-                if ((int)keys == key) PauseKeys.Add(keys, command);
+                if ((int)keys == key & !PauseKeys.ContainsKey(keys)) PauseKeys.Add(keys, command);
             }
         }
 
@@ -98,7 +113,15 @@ namespace MarioGame.Controllers
             var keyList = (Keys[])Enum.GetValues(typeof(Keys));
             foreach (var keys in keyList)
             {
-                if ((int)keys == key) GameOverKeys.Add(keys, command);
+                if ((int)keys == key & !GameOverKeys.ContainsKey(keys)) GameOverKeys.Add(keys, command);
+            }
+        }
+        public void AddMainMenuScreenCommand(int key, ICommand command)
+        {
+            var keyList = (Keys[])Enum.GetValues(typeof(Keys));
+            foreach (var keys in keyList)
+            {
+                if ((int)keys == key & !MainMenuKeys.ContainsKey(keys)) MainMenuKeys.Add(keys, command);
             }
         }
     }

@@ -32,8 +32,9 @@ namespace MarioGame.Core
             Graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            _scenes = new List<Scene> {new Scene(stage), new HiddenScene(hiddenStage), new GameOver(gameOver)};
-            _scene = 1;
+            _scenes = new List<Scene> {new Scene(stage), new HiddenScene(hiddenStage), new GameOver(gameOver), new MainMenu(stage)};
+            //_scene = 1;
+            EnterMainMenu();
         }
 
 
@@ -101,6 +102,24 @@ namespace MarioGame.Core
             _scenes.Add(new Scene(new Stage(this)));
             _scenes.Add(new HiddenScene(new Stage(this)));
             _scenes.Add(new GameOver(new Stage(this)));
+            _scenes.Add(new MainMenu(new Stage(this)));
+            _scene = 1;
+            Initialize();
+            LoadContent();
+            _scoreboard.InitializeScoreboardList();
+        }
+        public void PlayAsMarioCommand()
+        {
+            ResetCommand();
+        }
+        //Right now this does the same as PlayAsMarioCommand()
+        public void PlayAsEnemyCommand()
+        {
+            _scenes.Clear();
+            _scenes.Add(new Scene(new Stage(this)));
+            _scenes.Add(new HiddenScene(new Stage(this)));
+            _scenes.Add(new GameOver(new Stage(this)));
+            _scenes.Add(new MainMenu(new Stage(this)));
             _scene = 1;
             Initialize();
             LoadContent();
@@ -131,6 +150,11 @@ namespace MarioGame.Core
             _scene = 3;
             Scene.Script.Announce(GameOver.Won ? EventTypes.Levelclear : EventTypes.Gameover);
             Scene.SetToGameOver();
+        }
+        public void EnterMainMenu()
+        {
+            _scene = 4;
+            Scene.SetToMainMenu();
         }
     }
 }

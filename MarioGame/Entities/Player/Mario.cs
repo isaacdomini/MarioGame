@@ -55,6 +55,7 @@ namespace MarioGame.Entities
 
         public Action ExitHiddenRoom { get; private set; }
         public static Action EnterGameOver { get; private set; }
+        public static Action EnterMainMenu { get; private set; }
 
         private readonly MarioActionStateMachine _marioActionStateMachine;
         private readonly MarioPowerUpStateMachine _marioPowerUpStateMachine;
@@ -412,7 +413,14 @@ namespace MarioGame.Entities
         {
             EnterGameOver = enterGameOver;
         }
-
+        public static void GoToMainMenu()
+        {
+            EnterMainMenu();
+        }
+        internal static void SetMainMenu(Action enterMainMenu)
+        {
+            EnterMainMenu = enterMainMenu;
+        }
         public void RespawnOrGameOver()
         {
             if (Scoreboard.HasLives)
