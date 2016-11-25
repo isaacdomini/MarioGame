@@ -1,3 +1,4 @@
+using MarioGame.Core;
 using MarioGame.Theming;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,8 @@ namespace MarioGame.Commands
 
         public override void Execute()
         {
-            Script.MakeMarioSuper();
+            if (Game1.playAsMario == true)
+                Script.MakeMarioSuper();
         }
     }
 }

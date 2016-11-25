@@ -23,6 +23,8 @@ namespace MarioGame.Theming
         public List<Item> Items => Entities.FindAll(e => e is Item).ConvertAll(e => (Item) e);
         public List<Enemy> Enemies => Entities.FindAll(e => e is Enemy).ConvertAll(e => (Enemy) e);
         public Mario Mario => (Mario)Entities.Find(e => e is Mario);
+        public EnemyPlayer EnemyPlayer => (EnemyPlayer)Entities.Find(e => e is EnemyPlayer);
+
         private GraphicsDeviceManager GraphicsDeviceManager => _scene.Stage.GraphicsDevice;
         private Viewport Viewport => GraphicsDeviceManager.GraphicsDevice.Viewport;
         public float LevelWidth { get; set; }
@@ -131,6 +133,10 @@ namespace MarioGame.Theming
         {
             Mario.Jump();
         }
+        internal void MakeEnemyPlayerJump()
+        {
+            EnemyPlayer.Jump();
+        }
         internal void MakeMarioCrouch()
         {
             Mario.Crouch();
@@ -143,9 +149,17 @@ namespace MarioGame.Theming
         {
             Mario.MoveLeft();
         }
+        internal void MakeEnemyPlayerMoveLeft()
+        {
+            EnemyPlayer.MoveLeft();
+        }
         internal void MakeMarioMoveRight()
         {
             Mario.MoveRight();
+        }
+        internal void MakeEnemyPlayerMoveRight()
+        {
+            EnemyPlayer.MoveRight();
         }
         internal void MakeMarioFire()
         {

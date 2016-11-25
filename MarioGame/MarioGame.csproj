@@ -112,6 +112,7 @@
     <Compile Include="Entities\Items\MushroomSuper.cs" />
     <Compile Include="Entities\Items\PowerUp.cs" />
     <Compile Include="Entities\Items\Star.cs" />
+    <Compile Include="Entities\Player\EnemyPlayer.cs" />
     <Compile Include="Entities\Player\Fireball.cs" />
     <Compile Include="Entities\Player\Mario.cs" />
     <Compile Include="Entities\PowerUpEntity.cs" />
@@ -148,6 +149,7 @@
     <Compile Include="Sprites\ItemSprites\MushroomSuperSprite.cs" />
     <Compile Include="Sprites\ItemSprites\StarSprite.cs" />
     <Compile Include="Sprites\Player\FireballSprite.cs" />
+    <Compile Include="Sprites\Player\EnemyPlayerSprite.cs" />
     <Compile Include="Sprites\Player\MarioSprite.cs" />
     <Compile Include="Sprites\Sprite.cs" />
     <Compile Include="States\BlockStates\BlockActionState.cs" />
@@ -182,6 +184,10 @@
     <Compile Include="States\PlayerStates\ActionStates\MarioActionState.cs" />
     <Compile Include="States\PlayerStates\ActionStates\MarioActionStateEnum.cs" />
     <Compile Include="States\PlayerStates\ActionStates\MarioActionStateMachine.cs" />
+    <Compile Include="States\PlayerStates\EnemyPlayerStates\EnemyPlayerActionState.cs" />
+    <Compile Include="States\PlayerStates\EnemyPlayerStates\EnemyPlayerDeadState.cs" />
+    <Compile Include="States\PlayerStates\EnemyPlayerStates\EnemyPlayerStateMachine.cs" />
+    <Compile Include="States\PlayerStates\EnemyPlayerStates\EnemyPlayerWalkingState .cs" />
     <Compile Include="States\PlayerStates\PowerUpStates\MarioBaseStarState.cs" />
     <Compile Include="States\PowerUpState.cs" />
     <Compile Include="States\PlayerStates\PowerUpStates\MarioPowerUpStateEnum.cs" />

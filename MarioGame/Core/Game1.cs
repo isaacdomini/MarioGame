@@ -108,13 +108,16 @@ namespace MarioGame.Core
             LoadContent();
             _scoreboard.InitializeScoreboardList();
         }
+        public static bool playAsMario;
         public void PlayAsMarioCommand()
         {
+            playAsMario = true;
             ResetCommand();
         }
         //Right now this does the same as PlayAsMarioCommand()
         public void PlayAsEnemyCommand()
         {
+            playAsMario = false;
             _scenes.Clear();
             _scenes.Add(new Scene(new Stage(this)));
             _scenes.Add(new HiddenScene(new Stage(this)));

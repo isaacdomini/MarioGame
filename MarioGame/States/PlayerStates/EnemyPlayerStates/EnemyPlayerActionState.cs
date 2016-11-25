@@ -3,19 +3,19 @@ using Microsoft.Xna.Framework;
 
 namespace MarioGame.States
 {
-    public class GoombaActionState : EnemyActionState
+    public class EnemyPlayerActionState : EnemyActionState
     {
         public EnemyActionStateEnum EnemyState
         { get; protected set; }
 
-        private Goomba _goomba;
-        protected Goomba Goomba => _goomba;
-        private GoombaStateMachine _stateMachine;
-        protected GoombaStateMachine StateMachine => _stateMachine;
-        public GoombaActionState(Goomba entity, GoombaStateMachine stateMachine) : base(entity)
+        private EnemyPlayer _enemy;
+        protected EnemyPlayer EnemyPlayer => _enemy;
+        private EnemyPlayerStateMachine _stateMachine;
+        protected EnemyPlayerStateMachine StateMachine => _stateMachine;
+        public EnemyPlayerActionState(EnemyPlayer entity, EnemyPlayerStateMachine stateMachine) : base(entity)
         {
             _stateMachine = stateMachine;
-            _goomba = entity;
+            _enemy = entity;
         }
 
         public override void Begin(IState prevState)
@@ -28,24 +28,24 @@ namespace MarioGame.States
         }
         public virtual void MoveLeft()
         {
-            if (Goomba.FacingRight)
+            if (EnemyPlayer.FacingRight)
             {
-                Goomba.TurnLeft();
+                EnemyPlayer.TurnLeft();
             }
             else
             {
-                Goomba.SetXVelocity(Vector2.One * -1.75f);
+                EnemyPlayer.SetXVelocity(Vector2.One * -1.75f);
             }
         }
         public virtual void MoveRight()
         {
-            if (Goomba.FacingLeft)
+            if (EnemyPlayer.FacingLeft)
             {
-                Goomba.TurnRight();
+                EnemyPlayer.TurnRight();
             }
             else
             {
-                Goomba.SetXVelocity(Vector2.One * 1.75f);
+                EnemyPlayer.SetXVelocity(Vector2.One * 1.75f);
             }
         }
         public virtual void Fall()

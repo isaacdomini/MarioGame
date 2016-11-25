@@ -134,7 +134,17 @@ namespace MarioGame.Entities
         }
         public virtual void Update(Viewport viewport, int elapsedMilliseconds)
         {
-            _position += Velocity;
+            if (Game1.playAsMario != true)
+            {
+                if (!(this is Mario))
+                {
+                    _position += Velocity;
+                }
+            }
+            else
+            {
+                _position += Velocity;
+            }
             if (!floating)
                 VelocityY = MathHelper.Clamp(Velocity.Y + .05f, -4, 4);
             BoundingBox.Location = Util.VectorToPoint(Position) + BoundingBoxOffset;
@@ -166,12 +176,12 @@ namespace MarioGame.Entities
         }
         public virtual void SetVelocityToWalk()
         {
-            SetXVelocity(WalkingVelocity);
-            if (FacingLeft)
-            {
+            //SetXVelocity(WalkingVelocity);
+            //if (FacingLeft)
+            //{
                 //TODO: how does below line work
-                SetXVelocity(Velocity * -1);
-            }
+            //    SetXVelocity(Velocity * -1);
+            //}
         }
         public virtual void FlipHorizontalVelocity()
         {

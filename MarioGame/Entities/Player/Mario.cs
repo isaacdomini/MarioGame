@@ -145,8 +145,8 @@ namespace MarioGame.Entities
             UpdateInvincibilityStatus();
             MarioActionState.CheckForLevelEdges();
             SetXVelocity(Vector2.Zero);
-            Scoreboard.UpdateTimer(elapsedMilliseconds);
             CheckFallOff(viewport);
+            Scoreboard.UpdateTimer(elapsedMilliseconds);
         }
         private void CheckFallOff(Viewport viewport)
         {
@@ -175,15 +175,18 @@ namespace MarioGame.Entities
 
         public void PlaySoundForNewPowerUpState(MarioPowerUpState newState)
         {
-            if(!(PState is SuperStarState || PState is FireStarState || PState is StandardStarState))
+            if (Game1.playAsMario == true)
             {
-                if (newState is SuperState || newState is FireState)
+                if (!(PState is SuperStarState || PState is FireStarState || PState is StandardStarState))
                 {
-                    Script.Announce(EventTypes.Powerup);
-                }
-                else if (newState is StandardState)
-                {
-                    Script.Announce(EventTypes.Powerdown);
+                    if (newState is SuperState || newState is FireState)
+                    {
+                        Script.Announce(EventTypes.Powerup);
+                    }
+                    else if (newState is StandardState)
+                    {
+                        Script.Announce(EventTypes.Powerdown);
+                    }
                 }
             }
         }

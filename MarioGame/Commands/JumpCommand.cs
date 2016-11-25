@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MarioGame.Theming;
+using MarioGame.Core;
 
 namespace MarioGame.Commands
 {
@@ -15,7 +16,10 @@ namespace MarioGame.Commands
 
         public override void Execute()
         {
-            Script.MakeMarioJump();
+            if (Game1.playAsMario == true)
+                Script.MakeMarioJump();
+            else
+                Script.MakeEnemyPlayerJump();
         }
     }
 }
