@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarioGame", "MarioGame\MarioGame.csproj", "{D3C7126A-FB72-4833-B170-611423054A43}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExternalAI", "ExternalAI\ExternalAI.csproj", "{629A9CB3-B1BB-4B89-967C-33F4DE56FB80}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,14 @@ Global
 		{D3C7126A-FB72-4833-B170-611423054A43}.Release|Any CPU.ActiveCfg = Release|x86
 		{D3C7126A-FB72-4833-B170-611423054A43}.Release|x86.ActiveCfg = Release|x86
 		{D3C7126A-FB72-4833-B170-611423054A43}.Release|x86.Build.0 = Release|x86
+		{629A9CB3-B1BB-4B89-967C-33F4DE56FB80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{629A9CB3-B1BB-4B89-967C-33F4DE56FB80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{629A9CB3-B1BB-4B89-967C-33F4DE56FB80}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{629A9CB3-B1BB-4B89-967C-33F4DE56FB80}.Debug|x86.Build.0 = Debug|Any CPU
+		{629A9CB3-B1BB-4B89-967C-33F4DE56FB80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{629A9CB3-B1BB-4B89-967C-33F4DE56FB80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{629A9CB3-B1BB-4B89-967C-33F4DE56FB80}.Release|x86.ActiveCfg = Release|Any CPU
+		{629A9CB3-B1BB-4B89-967C-33F4DE56FB80}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
