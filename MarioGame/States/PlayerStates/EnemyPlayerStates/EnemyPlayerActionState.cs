@@ -31,6 +31,7 @@ namespace MarioGame.States
             if (EnemyPlayer.FacingRight)
             {
                 EnemyPlayer.TurnLeft();
+                EnemyPlayer.SetVelocityToIdle();
             }
             else
             {
@@ -42,6 +43,7 @@ namespace MarioGame.States
             if (EnemyPlayer.FacingLeft)
             {
                 EnemyPlayer.TurnRight();
+                EnemyPlayer.SetVelocityToIdle();
             }
             else
             {

@@ -16,10 +16,10 @@ namespace MarioGame.Commands
 
         public override void Execute()
         {
-            if (Game1.playAsMario == true)
+            //if (Game1.playAsMario == true)
                 Script.MakeMarioMoveLeft();
-            else
-                Script.MakeEnemyPlayerMoveLeft();
+            //else
+            //    Script.MakeEnemyPlayerMoveLeft();
         }
     }
 }

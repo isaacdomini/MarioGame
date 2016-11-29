@@ -16,7 +16,8 @@ namespace MarioGame.Entities
         private static readonly Vector2 JumpingVelocity = new Vector2(0, VelocityConstant * -2);
 
         public EnemyPlayer(Vector2 position, ContentManager content, Action<Entity> addToScriptEntities) : base(position, content, addToScriptEntities)
-        { 
+        {
+            BoxPercentSizeOfEntity = 1f;
             var stateMachine = new EnemyPlayerStateMachine(this);
             ChangeActionState(stateMachine.WalkingState);
             AState.Begin(AState);

@@ -176,12 +176,12 @@ namespace MarioGame.Entities
         }
         public virtual void SetVelocityToWalk()
         {
-            //SetXVelocity(WalkingVelocity);
-            //if (FacingLeft)
-            //{
+            SetXVelocity(WalkingVelocity);
+            if (FacingLeft)
+            {
                 //TODO: how does below line work
-            //    SetXVelocity(Velocity * -1);
-            //}
+                SetXVelocity(Velocity * -1);
+            }
         }
         public virtual void FlipHorizontalVelocity()
         {

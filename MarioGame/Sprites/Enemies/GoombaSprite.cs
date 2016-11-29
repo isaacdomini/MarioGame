@@ -12,7 +12,7 @@ namespace MarioGame.Sprites
 {
     public class GoombaSprite : HidableSprite
     {
-        private enum Frames
+        public enum Frames
         {
             //frames are all facing left. 
             Walk = 0,

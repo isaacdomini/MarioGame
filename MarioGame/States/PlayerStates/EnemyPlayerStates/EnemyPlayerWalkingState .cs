@@ -14,7 +14,7 @@ namespace MarioGame.States
         public override void Begin(IState prevState)
         {
             base.Begin(prevState);
-            EnemyPlayer.SetVelocityToWalk();
+            EnemyPlayer.SetVelocityToIdle();
             EnemyPlayer.ChangeActionState(StateMachine.WalkingState);
         }
 

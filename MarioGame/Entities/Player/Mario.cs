@@ -71,7 +71,8 @@ namespace MarioGame.Entities
             Direction = Directions.Right;
             _spaceBarAction = SpaceBarAction.Run;
             onScreen = true;
-        _content = content;
+            _content = content;
+            
         }
 
         internal override void Init(JEntity e, Game1 game)
@@ -93,16 +94,24 @@ namespace MarioGame.Entities
             }
             else
             {
-                BoundingBoxSize = new Point(StandardBoundingBoxWidth, StandardBoundingBoxHeight);
-                if (MarioActionState is JumpingMarioState || MarioActionState is FallingMarioState)
+                if (Game1.playAsMario == true)
                 {
-                    boxWidth = JumpingBoundingBoxWidth;
+                    BoundingBoxSize = new Point(StandardBoundingBoxWidth, StandardBoundingBoxHeight);
+                    if (MarioActionState is JumpingMarioState || MarioActionState is FallingMarioState)
+                    {
+                        boxWidth = JumpingBoundingBoxWidth;
+                    }
+                    else
+                    {
+                        sideMargin = 3;
+                    }
+                    topBottomMargin = 16;
                 }
                 else
                 {
-                    sideMargin = 3;
+                    topBottomMargin = -2;
+                    sideMargin = 0;
                 }
-                topBottomMargin = 16;
             }
             BoundingBoxSize = new Point(boxWidth, boxHeight);
             BoundingBoxOffset = new Point(sideMargin, topBottomMargin);
@@ -139,6 +148,8 @@ namespace MarioGame.Entities
         }
         public override void Update(Viewport viewport, int elapsedMilliseconds)
         {
+            //if (Game1.playAsMario == false)
+            //Delete();
             base.Update(viewport, elapsedMilliseconds);
             MarioPowerUpState.UpdateEntity(elapsedMilliseconds);
             MarioActionState.UpdateEntity(elapsedMilliseconds);

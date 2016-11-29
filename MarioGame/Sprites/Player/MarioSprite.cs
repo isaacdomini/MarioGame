@@ -7,6 +7,7 @@ using System;
 using System.Collections.ObjectModel;
 using static MarioGame.Entities.Entity;
 using MarioGame.States;
+using MarioGame.Core;
 
 namespace MarioGame.Sprites
 {
@@ -48,11 +49,13 @@ namespace MarioGame.Sprites
 
         public MarioSprite(ContentManager content, Entity entity) : base(content, entity)
         {
-            AssetName = "characters_transparent";
-            NumberOfFramesPerRow = 15;
-            //Each state has a frameSet
-            
-            FrameSets = new Dictionary<int, Collection<int>> {
+            if (Game1.playAsMario == true)
+            {
+                AssetName = "characters_transparent";
+                NumberOfFramesPerRow = 15;
+                //Each state has a frameSet
+
+                FrameSets = new Dictionary<int, Collection<int>> {
                 { MarioActionStateEnum.Idle.GetHashCode(), new Collection<int> { Frames.StandingMario.GetHashCode() } },
                 { MarioActionStateEnum.Walking.GetHashCode(), new Collection<int> {Frames.MovingMario1.GetHashCode(), Frames.MovingMario2.GetHashCode(), Frames.MovingMario3.GetHashCode(), Frames.MovingMario2.GetHashCode() } },//TODO: instead of {1, 2, 3} may have to do {1, 2, 3, 2} or something like that
                 { MarioActionStateEnum.Running.GetHashCode(), new Collection<int> {Frames.MovingMario1.GetHashCode(), Frames.MovingMario2.GetHashCode(), Frames.MovingMario3.GetHashCode(), Frames.MovingMario2.GetHashCode() } },//TODO: instead of {1, 2, 3} may have to do {1, 2, 3, 2} or something like that
@@ -64,7 +67,7 @@ namespace MarioGame.Sprites
                 { MarioActionStateEnum.Dead.GetHashCode(), new Collection<int> {Frames.DeadMario.GetHashCode() } }
             };
 
-            RowSets = new Dictionary<int, Collection<int>>
+                RowSets = new Dictionary<int, Collection<int>>
             {
                 {MarioPowerUpStateEnum.Standard.GetHashCode(), new Collection<int> {Rows.Standard.GetHashCode() } },
                 {MarioPowerUpStateEnum.Super.GetHashCode(), new Collection<int> {Rows.Super.GetHashCode() } },
@@ -75,20 +78,53 @@ namespace MarioGame.Sprites
                 {MarioPowerUpStateEnum.Dead.GetHashCode(), new Collection<int> {Rows.Dead.GetHashCode() } }
             };
 
-            FrameSet = FrameSets[MarioActionStateEnum.Idle.GetHashCode()];
+                FrameSet = FrameSets[MarioActionStateEnum.Idle.GetHashCode()];
 
-            RowSet = RowSets[MarioPowerUpStateEnum.Standard.GetHashCode()];
+                RowSet = RowSets[MarioPowerUpStateEnum.Standard.GetHashCode()];
+            }
+            else
+            {
+                AssetName = "regulargoomba";
+                NumberOfFramesPerRow = 3;
+                //Each state has a frameSet
+
+                FrameSets = new Dictionary<int, Collection<int>> {
+                { EnemyActionStateEnum.Walking.GetHashCode(), new Collection<int> { GoombaSprite.Frames.Walk.GetHashCode(), GoombaSprite.Frames.Walk1.GetHashCode() } },
+                { EnemyActionStateEnum.Dead.GetHashCode(), new Collection<int> {GoombaSprite.Frames.Dead.GetHashCode() } }
+            };
+
+                RowSets = new Dictionary<int, Collection<int>>
+            {
+                {MarioPowerUpStateEnum.Standard.GetHashCode(), new Collection<int> {Rows.Super.GetHashCode() } }
+            };
+
+                FrameSet = FrameSets[EnemyActionStateEnum.Walking.GetHashCode()];
+                RowSet = RowSets[MarioPowerUpStateEnum.Standard.GetHashCode()];
+            }
         }
 
         public override void Load(int framesPerSecond )
         {
             base.Load(framesPerSecond);
-            FrameHeight = 40;
+            if (Game1.playAsMario == true)
+                FrameHeight = 40;
+            else
+                FrameHeight = 15;
         }
         public void ChangeActionState(MarioActionState marioActionState)
         {
             base.ChangeActionState();
-            FrameSet = FrameSets[marioActionState.actionState.GetHashCode()];
+            if(Game1.playAsMario==true)
+                FrameSet = FrameSets[marioActionState.actionState.GetHashCode()];
+            else
+            {
+                //if mario is changing to dead
+                int deadEnum = 4;
+                if (marioActionState.actionState.GetHashCode()==deadEnum)
+                    FrameSet = FrameSets[EnemyActionStateEnum.Dead.GetHashCode()];
+                else
+                    FrameSet = FrameSets[EnemyActionStateEnum.Walking.GetHashCode()];
+            }
         }
         public void ChangePowerUp(MarioPowerUpState marioPowerUpState)
         {
