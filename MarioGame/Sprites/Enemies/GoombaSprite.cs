@@ -47,26 +47,26 @@ namespace MarioGame.Sprites
                 };
             }
             else
-                FrameHeight = 3;
+                FrameHeight = 15;
         }
 
         public void ChangeActionState(GoombaActionState goombaActionState)
         {
-            if (Game1.playAsMario == false)
-            {
+            //if (Game1.playAsMario == false)
+            //{
                 FrameSet = FrameSets[goombaActionState.EnemyState.GetHashCode()];
-            }
-            else
-            {
-                if (goombaActionState.EnemyState.GetHashCode() == 0)
-                {
-                    FrameSet = FrameSets[MarioActionStateEnum.Walking.GetHashCode()];
-                }
-                else
-                {
-                    FrameSet = FrameSets[MarioActionStateEnum.Dead.GetHashCode()];
-                }
-            }
+            //}
+            //else
+            //{
+                //if (goombaActionState.EnemyState.GetHashCode() == 0)
+                //{
+                    //FrameSet = FrameSets[MarioActionStateEnum.Walking.GetHashCode()];
+                //}
+                //else
+                //{
+                //    FrameSet = FrameSets[MarioActionStateEnum.Dead.GetHashCode()];
+                //}
+            //}
             FrameSetPosition = 0;
         }
     }

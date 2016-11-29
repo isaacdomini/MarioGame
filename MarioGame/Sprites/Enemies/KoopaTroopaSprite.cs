@@ -41,21 +41,21 @@ namespace MarioGame.Sprites
 
         public void ChangeActionState(KoopaActionState koopaActionState)
         {
-            if (Game1.playAsMario == false)
-            {
+            //if (Game1.playAsMario == false)
+            //{
                 FrameSet = FrameSets[koopaActionState.EnemyState.GetHashCode()];
-            }
-            else
-            {
-                if (koopaActionState.EnemyState.GetHashCode() == 0)
-                {
-                    FrameSet = FrameSets[MarioActionStateEnum.Walking.GetHashCode()];
-                }
-                else
-                {
-                    FrameSet = FrameSets[MarioActionStateEnum.Dead.GetHashCode()];
-                }
-            }
+            //}
+            //else
+            //{
+            //    if (koopaActionState.EnemyState.GetHashCode() == 0)
+            //    {
+            //        FrameSet = FrameSets[MarioActionStateEnum.Walking.GetHashCode()];
+            //    }
+            //    else
+            //    {
+            //        FrameSet = FrameSets[MarioActionStateEnum.Dead.GetHashCode()];
+            //    }
+            //}
             FrameSetPosition = 0;
         }
         public override void Load(int framesPerSecond)
@@ -72,7 +72,7 @@ namespace MarioGame.Sprites
                 };
             }
             else
-                FrameHeight = 10;
+                FrameHeight = 25;
         }
     }
 }
