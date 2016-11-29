@@ -44,7 +44,15 @@ namespace MarioGame.Sprites
             Fire = 4,
             Dead = 5
         }
-
+        public enum GoombaRows
+        {
+            Super = 1,
+            Standard = 0,
+            SuperLuigi = 1,
+            Luigi = 1,
+            Fire = 1,
+            Dead = 1
+        }
         //power up states - standard(small), super(big), fire ,star (invincible), Dead
 
         public MarioSprite(ContentManager content, Entity entity) : base(content, entity)
@@ -84,7 +92,7 @@ namespace MarioGame.Sprites
             }
             else
             {
-                AssetName = "regulargoomba";
+                AssetName = "goombaPlayer";
                 NumberOfFramesPerRow = 3;
                 //Each state has a frameSet
 
@@ -95,8 +103,14 @@ namespace MarioGame.Sprites
 
                 RowSets = new Dictionary<int, Collection<int>>
             {
-                {MarioPowerUpStateEnum.Standard.GetHashCode(), new Collection<int> {Rows.Super.GetHashCode() } }
-            };
+                {MarioPowerUpStateEnum.Standard.GetHashCode(), new Collection<int> {GoombaRows.Standard.GetHashCode() } },
+                {MarioPowerUpStateEnum.Super.GetHashCode(), new Collection<int> {GoombaRows.Super.GetHashCode() } },
+                {MarioPowerUpStateEnum.Fire.GetHashCode(), new Collection<int> {GoombaRows.Fire.GetHashCode() } },
+                {MarioPowerUpStateEnum.SuperStar.GetHashCode(), new Collection<int> {GoombaRows.Fire.GetHashCode(), GoombaRows.SuperLuigi.GetHashCode(), GoombaRows.Super.GetHashCode() } },  //Cycle between various types of mario sprite to give the flashing feel of invincibility
+                {MarioPowerUpStateEnum.StandardStar.GetHashCode(), new Collection<int> {GoombaRows.Luigi.GetHashCode(), GoombaRows.Standard.GetHashCode() } },  //Cycle between various types of mario sprite to give the flashing feel of invincibility
+                {MarioPowerUpStateEnum.FireStar.GetHashCode(), new Collection<int> {GoombaRows.Fire.GetHashCode(), GoombaRows.SuperLuigi.GetHashCode(), GoombaRows.Super.GetHashCode() } },  //Cycle between various types of mario sprite to give the flashing feel of invincibility
+                {MarioPowerUpStateEnum.Dead.GetHashCode(), new Collection<int> {GoombaRows.Dead.GetHashCode() } }
+                };
 
                 FrameSet = FrameSets[EnemyActionStateEnum.Walking.GetHashCode()];
                 RowSet = RowSets[MarioPowerUpStateEnum.Standard.GetHashCode()];
@@ -118,28 +132,32 @@ namespace MarioGame.Sprites
                 FrameSet = FrameSets[marioActionState.actionState.GetHashCode()];
             else
             {
-                //if mario is changing to dead
-                int deadEnum = 4;
-                if (marioActionState.actionState.GetHashCode()==deadEnum)
-                    FrameSet = FrameSets[EnemyActionStateEnum.Dead.GetHashCode()];
-                else
-                    FrameSet = FrameSets[EnemyActionStateEnum.Walking.GetHashCode()];
+                FrameSet = FrameSets[EnemyActionStateEnum.Walking.GetHashCode()];
             }
         }
         public void ChangePowerUp(MarioPowerUpState marioPowerUpState)
         {
             base.ChangePowerUp();
             // Because on the sprite sheet, dead state is a frame set, not a row set
-            if (marioPowerUpState.PowerUpState == MarioPowerUpStateEnum.Dead)
-            {
-                if (Game1.playAsMario == true)
-                    FrameSet = FrameSets[MarioActionStateEnum.Dead.GetHashCode()];
-                else
-                    FrameSet = FrameSets[EnemyActionStateEnum.Dead.GetHashCode()];
                 FrameSetPosition = 0;
-            }
-           
             RowSet = RowSets[marioPowerUpState.PowerUpState.GetHashCode()];
+            if (Game1.playAsMario == true)
+            {
+                FrameSet = FrameSets[marioPowerUpState.PowerUpState.GetHashCode()];
+            }
+            else
+            {
+                if (marioPowerUpState.PowerUpState.Equals(MarioPowerUpStateEnum.Standard))
+                {
+                    FrameSet = FrameSets[0];
+                    RowSet = RowSets[GoombaRows.Standard.GetHashCode()];
+                }
+                else
+                {
+                    FrameSet = FrameSets[1];
+                    RowSet = RowSets[GoombaRows.Super.GetHashCode()];
+                }
+            }
         }
     }
 }

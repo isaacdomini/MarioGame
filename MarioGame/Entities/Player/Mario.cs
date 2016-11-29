@@ -86,7 +86,7 @@ namespace MarioGame.Entities
             int boxWidth = StandardBoundingBoxWidth, boxHeight = StandardBoundingBoxHeight;
             int sideMargin = 0;
             var topBottomMargin = 0;
-            if (IsLarge)//TODO: This logic perhaps should be handled by the state
+            if (IsLarge && Game1.playAsMario==true)//TODO: This logic perhaps should be handled by the state
             {
                 boxWidth = SuperBoundingBoxWidth;
                 boxHeight = SuperBoundingBoxHeight;

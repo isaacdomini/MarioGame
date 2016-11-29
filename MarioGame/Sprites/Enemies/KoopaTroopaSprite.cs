@@ -41,12 +41,15 @@ namespace MarioGame.Sprites
 
         public void ChangeActionState(KoopaActionState koopaActionState)
         {
-            if (koopaActionState.GetHashCode() == EnemyActionStateEnum.Dead.GetHashCode())
+            
+            if (Game1.playAsMario == true)
+                FrameSet = FrameSets[koopaActionState.EnemyState.GetHashCode()];
+            else
             {
-                if (Game1.playAsMario == false)
-                    FrameSet = FrameSets[koopaActionState.EnemyState.GetHashCode()];
-                else
+                if (koopaActionState.GetHashCode() == EnemyActionStateEnum.Dead.GetHashCode())
+                {
                     FrameSet = FrameSets[MarioActionStateEnum.Dead.GetHashCode()];
+                }
             }
             FrameSetPosition = 0;
         }

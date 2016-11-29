@@ -43,7 +43,6 @@ namespace MarioGame.Theming
             _controllers[1].AddGameOverScreenCommand((int)Buttons.Start, new QuitCommand(Game1));
             _controllers[0].AddGameOverScreenCommand((int)Keys.Q, new QuitCommand(Game1));
 
-            _controllers[0].AddMainMenuScreenCommand((int)Keys.R, new ResetCommand(Game1));
             _controllers[1].AddMainMenuScreenCommand((int)Buttons.Start, new QuitCommand(Game1));
             _controllers[0].AddMainMenuScreenCommand((int)Keys.Q, new QuitCommand(Game1));
             _controllers[0].AddMainMenuScreenCommand((int)Keys.K, new PlayAsMarioCommand(Game1));

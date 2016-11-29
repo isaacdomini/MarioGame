@@ -39,8 +39,8 @@ namespace MarioGame.Sprites
             if (Game1.playAsMario == false)
             {
                 FrameHeight = 15;
-                AssetName = "mariorunningright21";
-                NumberOfFramesPerRow = 3;
+                AssetName = "marioSequence";
+                NumberOfFramesPerRow = 4;
                 FrameSets = new Dictionary<int, Collection<int>> {
                 { MarioActionStateEnum.Walking.GetHashCode(), new Collection<int> {MarioSprite.Frames.MovingMario1.GetHashCode(), MarioSprite.Frames.MovingMario2.GetHashCode(), MarioSprite.Frames.MovingMario3.GetHashCode(), MarioSprite.Frames.MovingMario2.GetHashCode() } },//TODO: instead of {1, 2, 3} may have to do {1, 2, 3, 2} or something like that
                 { MarioActionStateEnum.Dead.GetHashCode(), new Collection<int> {MarioSprite.Frames.DeadMario.GetHashCode() } }
@@ -52,14 +52,15 @@ namespace MarioGame.Sprites
 
         public void ChangeActionState(GoombaActionState goombaActionState)
         {
-            if (goombaActionState.GetHashCode() == EnemyActionStateEnum.Dead.GetHashCode())
-            {
-                if (Game1.playAsMario == false)
-                    FrameSet = FrameSets[goombaActionState.EnemyState.GetHashCode()];
-                else
-                    FrameSet = FrameSets[MarioActionStateEnum.Dead.GetHashCode()];
-            }
             FrameSetPosition = 0;
+            if (Game1.playAsMario == true)
+            {
+                FrameSet = FrameSets[goombaActionState.EnemyState.GetHashCode()];
+            }
+            //else
+            //{
+            //    FrameSet = FrameSets[MarioActionStateEnum.Dead.GetHashCode() - 2];
+            //}
         }
     }
 }

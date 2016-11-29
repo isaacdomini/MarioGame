@@ -4,7 +4,7 @@ using MarioGame.States;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net.NetworkInformation;
@@ -95,6 +95,8 @@ namespace MarioGame.Sprites
 
         public override void Draw(SpriteBatch batch)
         {
+            if (this is MarioSprite)
+            { Console.WriteLine("hi"); }
             var sourceRect = new Rectangle(((int)FrameSet[FrameSetPosition]) * FrameWidth, ((int)RowSet[RowSetPosition]) * FrameHeight, FrameWidth, FrameHeight);
             batch.Draw(texture: Texture, position: Position, sourceRectangle: sourceRect, color: Color.White, effects: FlippedHorizontal);
         }
