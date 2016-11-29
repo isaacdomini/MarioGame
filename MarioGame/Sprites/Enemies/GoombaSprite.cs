@@ -52,21 +52,13 @@ namespace MarioGame.Sprites
 
         public void ChangeActionState(GoombaActionState goombaActionState)
         {
-            //if (Game1.playAsMario == false)
-            //{
-                FrameSet = FrameSets[goombaActionState.EnemyState.GetHashCode()];
-            //}
-            //else
-            //{
-                //if (goombaActionState.EnemyState.GetHashCode() == 0)
-                //{
-                    //FrameSet = FrameSets[MarioActionStateEnum.Walking.GetHashCode()];
-                //}
-                //else
-                //{
-                //    FrameSet = FrameSets[MarioActionStateEnum.Dead.GetHashCode()];
-                //}
-            //}
+            if (goombaActionState.GetHashCode() == EnemyActionStateEnum.Dead.GetHashCode())
+            {
+                if (Game1.playAsMario == false)
+                    FrameSet = FrameSets[goombaActionState.EnemyState.GetHashCode()];
+                else
+                    FrameSet = FrameSets[MarioActionStateEnum.Dead.GetHashCode()];
+            }
             FrameSetPosition = 0;
         }
     }

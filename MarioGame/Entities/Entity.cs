@@ -134,17 +134,7 @@ namespace MarioGame.Entities
         }
         public virtual void Update(Viewport viewport, int elapsedMilliseconds)
         {
-            if (Game1.playAsMario != true)
-            {
-                if (!(this is Mario))
-                {
-                    _position += Velocity;
-                }
-            }
-            else
-            {
-                _position += Velocity;
-            }
+           _position += Velocity;
             if (!floating)
                 VelocityY = MathHelper.Clamp(Velocity.Y + .05f, -4, 4);
             BoundingBox.Location = Util.VectorToPoint(Position) + BoundingBoxOffset;
