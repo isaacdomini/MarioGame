@@ -32,6 +32,8 @@ namespace MarioGame.Theming.Scenes
                 Stage.Game1.GraphicsDevice.Viewport.Height / 2f);
             options.Add("Play as Mario (press K)");
             options.Add("Play as Enemy (press E)");
+            options.Add("Watch Hardcoded Mario (press H)");
+
             LevelLoader.AddTileMapToScript("MainMenu.json", Script, Stage.Game1);
         }
         protected override void DrawBackground()
@@ -45,15 +47,23 @@ namespace MarioGame.Theming.Scenes
             SpriteBatch.Begin();
             SpriteBatch.DrawString(Game1.Font, displayMessage, new Vector2(325, 250), Color.White);
             SpriteBatch.End();
-            int offset = 300;
-            int yLoc = 300;
-            int xLoc= 100;
+            int xOffset = 300;
+            int yOffset = 50;
+            int xOrig = 100;
+            int yOrig = 300;
+            int yLoc = yOrig;
+            int xLoc= xOrig;
             foreach (String item in options)
             {
                 SpriteBatch.Begin();
                 SpriteBatch.DrawString(Game1.Font, item, new Vector2(xLoc, yLoc), Color.Blue);
                 SpriteBatch.End();
-                xLoc = xLoc + offset;
+                xLoc = xLoc + xOffset;
+                if (xLoc > LevelWidth)
+                {
+                    xLoc = xOrig;
+                    yLoc += yOffset;
+                }
             }
         }
     }

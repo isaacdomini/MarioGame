@@ -12,11 +12,6 @@ namespace MarioGame.Commands
             Game = game;
         }
 
-        protected GameCommand()
-        {
-            
-        }
-
         public virtual void Execute()
         {
             

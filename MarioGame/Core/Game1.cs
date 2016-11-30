@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
 using MarioGame.Entities;
+using MarioGame.HardcodedAI;
 
 namespace MarioGame.Core
 {
@@ -21,7 +22,10 @@ namespace MarioGame.Core
 
         public Scene Scene => _scenes[_scene - 1];
         public GraphicsDeviceManager Graphics { get; private set; }
-
+        
+        public static bool playAsMario;
+        public bool playAsAI;
+        private KeyPresser _keyPresser;
 
         public Game1()
         {
@@ -77,6 +81,7 @@ namespace MarioGame.Core
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            if (playAsAI) _keyPresser.UpdateKeyPress(gameTime);
             _scenes[_scene - 1].Update(gameTime);
             base.Update(gameTime);
         }
@@ -108,7 +113,7 @@ namespace MarioGame.Core
             LoadContent();
             _scoreboard.InitializeScoreboardList();
         }
-        public static bool playAsMario;
+
         public void PlayAsMarioCommand()
         {
             playAsMario = true;
@@ -128,6 +133,23 @@ namespace MarioGame.Core
             LoadContent();
             _scoreboard.InitializeScoreboardList();
         }
+        public void PlayAsAICommand()
+        {
+            playAsAI = true;
+            playAsMario = true;
+
+            _scenes.Clear();
+            _scenes.Add(new Scene(new Stage(this)));
+            _scenes.Add(new HiddenScene(new Stage(this)));
+            _scenes.Add(new GameOver(new Stage(this)));
+            _scenes.Add(new MainMenu(new Stage(this)));
+            _scene = 1;
+            Initialize();
+            LoadContent();
+            _keyPresser = new KeyPresser(Interpreter.AILoader("HardcodedAI.json"));
+            _scoreboard.InitializeScoreboardList();
+        }
+
         public void PauseCommand()
         {
             Scene.Pause();

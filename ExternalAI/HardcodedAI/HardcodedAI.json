@@ -1,0 +1,12 @@
+﻿{
+  "keyPresses": [
+    {
+      "keys": [ "right" ],
+      "duration": 5000
+    },
+    {
+      "keys": ["up", "right"],
+      "duration": 1500
+    }
+  ]
+}

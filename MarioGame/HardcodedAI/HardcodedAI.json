@@ -1,0 +1,20 @@
+﻿{
+  "keyPresses": [
+    {
+      "keys": [ "right" ],
+      "duration": 470
+    },
+    {
+      "keys": [],
+      "duration": 1000
+    },
+    {
+      "keys": [ "up", "right" ],
+      "duration": 90
+    },
+    {
+      "keys": [ "right" ],
+      "duration": 1000
+    }
+  ]
+}
