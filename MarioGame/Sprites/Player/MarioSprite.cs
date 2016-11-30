@@ -153,6 +153,13 @@ namespace MarioGame.Sprites
                     FrameSet = FrameSets[0];
                     RowSet = RowSets[GoombaRows.Standard.GetHashCode()];
                 }
+                else if(marioPowerUpState.PowerUpState.Equals(MarioPowerUpStateEnum.Dead))
+                {
+                    Dictionary<int, Collection<int>> Frames = new Dictionary<int, Collection<int>> {
+                        { 0, new Collection<int> {2}}}; //deaad frame is 2
+                    FrameSet = Frames[0];
+                    RowSet = RowSets[GoombaRows.Dead.GetHashCode()];
+                }
                 else
                 {
                     FrameSet = FrameSets[1];

@@ -8,3 +8,13 @@ C:\Users\John\Source\Repos\MarioLopezTheSecondOne\MarioLopez\ExternalAI\obj\Debu
 C:\Users\John\Source\Repos\MarioLopezTheSecondOne\MarioLopez\ExternalAI\obj\Debug\ExternalAI.csproj.GenerateResource.Cache
 C:\Users\John\Source\Repos\MarioLopezTheSecondOne\MarioLopez\ExternalAI\obj\Debug\ExternalAI.exe
 C:\Users\John\Source\Repos\MarioLopezTheSecondOne\MarioLopez\ExternalAI\obj\Debug\ExternalAI.pdb
+C:\Users\eegge\Source\Repos\MarioLopez\ExternalAI\bin\Debug\ExternalAI.exe.config
+C:\Users\eegge\Source\Repos\MarioLopez\ExternalAI\bin\Debug\ExternalAI.exe
+C:\Users\eegge\Source\Repos\MarioLopez\ExternalAI\bin\Debug\ExternalAI.pdb
+C:\Users\eegge\Source\Repos\MarioLopez\ExternalAI\bin\Debug\WindowsInput.dll
+C:\Users\eegge\Source\Repos\MarioLopez\ExternalAI\bin\Debug\WindowsInput.xml
+C:\Users\eegge\Source\Repos\MarioLopez\ExternalAI\obj\Debug\ExternalAI.csprojResolveAssemblyReference.cache
+C:\Users\eegge\Source\Repos\MarioLopez\ExternalAI\obj\Debug\ExternalAI.Properties.Resources.resources
+C:\Users\eegge\Source\Repos\MarioLopez\ExternalAI\obj\Debug\ExternalAI.csproj.GenerateResource.Cache
+C:\Users\eegge\Source\Repos\MarioLopez\ExternalAI\obj\Debug\ExternalAI.exe
+C:\Users\eegge\Source\Repos\MarioLopez\ExternalAI\obj\Debug\ExternalAI.pdb

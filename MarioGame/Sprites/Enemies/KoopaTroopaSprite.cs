@@ -48,7 +48,9 @@ namespace MarioGame.Sprites
             {
                 if (koopaActionState.GetHashCode() == EnemyActionStateEnum.Dead.GetHashCode())
                 {
-                    FrameSet = FrameSets[MarioActionStateEnum.Dead.GetHashCode()];
+                    Dictionary<int, Collection<int>> Frames = new Dictionary<int, Collection<int>> {
+                        { 0, new Collection<int> {4}}};
+                    FrameSet = Frames[0];
                 }
             }
             FrameSetPosition = 0;

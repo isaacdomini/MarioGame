@@ -186,8 +186,6 @@ namespace MarioGame.Entities
 
         public void PlaySoundForNewPowerUpState(MarioPowerUpState newState)
         {
-            if (Game1.playAsMario == true)
-            {
                 if (!(PState is SuperStarState || PState is FireStarState || PState is StandardStarState))
                 {
                     if (newState is SuperState || newState is FireState)
@@ -199,7 +197,6 @@ namespace MarioGame.Entities
                         Script.Announce(EventTypes.Powerdown);
                     }
                 }
-            }
         }
         public void Jump()
         {

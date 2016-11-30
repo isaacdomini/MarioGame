@@ -57,10 +57,15 @@ namespace MarioGame.Sprites
             {
                 FrameSet = FrameSets[goombaActionState.EnemyState.GetHashCode()];
             }
-            //else
-            //{
-            //    FrameSet = FrameSets[MarioActionStateEnum.Dead.GetHashCode() - 2];
-            //}
+            else
+            {
+                if(goombaActionState is GoombaDeadState)
+                {
+                    Dictionary<int, Collection<int>> Frames = new Dictionary<int, Collection<int>> {
+                        { 0, new Collection<int> {4}}}; //dead frame is 4
+                    FrameSet=Frames[0];
+                }
+            }
         }
     }
 }
