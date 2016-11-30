@@ -123,7 +123,7 @@ namespace MarioGame.Sprites
             if (Game1.playAsMario == true)
                 FrameHeight = 40;
             else
-                FrameHeight = 15;
+                FrameHeight = 16;
         }
         public void ChangeActionState(MarioActionState marioActionState)
         {

@@ -16,8 +16,7 @@ namespace MarioGame.Commands
 
         public override void Execute()
         {
-            if (Game1.playAsMario == true)
-                Script.MakeMarioDead();
+            Script.MakeMarioDead();
         }
     }
 }
