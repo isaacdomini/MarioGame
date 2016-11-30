@@ -9,6 +9,7 @@ namespace MarioGame.States
     public enum EnemyActionStateEnum
     {
         Walking,
-        Dead
+        Dead,
+        Crouching
     }
 }
