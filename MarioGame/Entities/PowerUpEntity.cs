@@ -11,7 +11,7 @@ namespace MarioGame.Entities
 {
     public class PowerUpEntity : Entity
     {
-        private PowerUpState _pState;
+        public static PowerUpState _pState;
         protected PowerUpState PState { get { return _pState; } set { _pState = value; } }
         internal PowerUpState CurrentPowerUpState => PState;
 
