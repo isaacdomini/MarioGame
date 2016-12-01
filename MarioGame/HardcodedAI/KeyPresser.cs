@@ -57,7 +57,9 @@ namespace MarioGame.HardcodedAI
                 elapsedTime = gameTime.TotalGameTime.Milliseconds - startTime;
                 if (currKeyPress.duration < elapsedTime)
                 {
+                    Console.WriteLine("Elapsed time: " + elapsedTime);
                     keyUp();
+                    _pressing = false;
                 }
             }
 
@@ -78,13 +80,27 @@ namespace MarioGame.HardcodedAI
 
         private void press()
         {
-            currKeyCodes.ForEach(k => input.Keyboard.KeyDown(k));
+            Console.Write("Pressing keys: ");
+            foreach (var keyCode in currKeyCodes)
+            {
+                Console.Write(keyCode.ToString());
+            }
+            Console.WriteLine();
+            //currKeyCodes.ForEach(k => input.Keyboard.KeyDown(k));
   
         }
         private void keyUp()
         {
-            currKeyCodes.ForEach(k => input.Keyboard.KeyUp(k));
-            _pressing = false;
+            Console.Write("Lifting keys: ");
+            foreach (var keyCode in currKeyCodes)
+            {
+                Console.Write(keyCode.ToString());
+            }
+            Console.WriteLine();
+            Console.WriteLine("Key press duration: " + currKeyPress.duration);
+            Console.WriteLine();
+            Console.WriteLine();
+            //currKeyCodes.ForEach(k => input.Keyboard.KeyUp(k));
         }
     }
 
