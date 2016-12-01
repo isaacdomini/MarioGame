@@ -81,7 +81,7 @@ namespace MarioGame.Core
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (playAsAI) _keyPresser.UpdateKeyPress(gameTime);
+            if (playAsAI && !_keyPresser.Done) _keyPresser.UpdateKeyPress(gameTime);
             _scenes[_scene - 1].Update(gameTime);
             base.Update(gameTime);
         }

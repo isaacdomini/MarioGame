@@ -1,6 +1,18 @@
 ﻿{
   "keyPresses": [
     {
+      "keys": [],
+      "duration": 330
+    },
+    {
+      "keys": [ "right" ],
+      "duration": 100
+    },
+    {
+      "keys": [],
+      "duration": 1000
+    },
+    {
       "keys": [ "right" ],
       "duration": 470
     },
@@ -14,7 +26,104 @@
     },
     {
       "keys": [ "right" ],
+      "duration": 1050
+    },
+    {
+      "keys": [],
       "duration": 1000
+    },
+    {
+      "keys": [ "right" ],
+      "duration": 260
+    },
+    {
+      "keys": [],
+      "duration": 1000
+    },
+    {
+      "keys": [ "right" ],
+      "duration": 80
+    },
+    {
+      "keys": [ "up", "right" ],
+      "duration": 150
+    },
+    {
+      "keys": [ "right" ],
+      "duration": 500
+    },
+    {
+      "keys": [],
+      "duration": 1000
+    },
+    {
+      "keys": [ "up", "right" ],
+      "duration": 150
+    },
+    {
+      "keys": [ "right" ],
+      "duration": 1300
+    },
+    {
+      "keys": [],
+      "duration": 200
+    },
+    {
+      "keys": [ "up", "right" ],
+      "duration": 150
+    },
+    {
+      "keys": [ "right" ],
+      "duration": 1400
+    },
+    {
+      "keys": [],
+      "duration": 1000
+    },
+    {
+      "keys": [ "down" ],
+      "duration": 200
+    },
+    {
+      "keys": [],
+      "duration": 500
+    },
+    {
+      "keys": [ "right" ],
+      "duration": 200
+    },
+    {
+      "keys": [ "up", "right" ],
+      "duration": 200
+    },
+    {
+      "keys": [ "right" ],
+      "duration": 1000
+    },
+    {
+      "keys": [],
+      "duration": 500
+    },
+    {
+      "keys": [ "up", "right" ],
+      "duration": 200
+    },
+    {
+      "keys": [ "right" ],
+      "duration": 1300
+    },
+    {
+      "keys": [],
+      "duration": 1000
+    },
+    {
+      "keys": [ "down" ],
+      "duration": 500
+    },
+    {
+      "keys": [ "up", "right" ],
+      "duration": 1200
     }
   ]
 }
+

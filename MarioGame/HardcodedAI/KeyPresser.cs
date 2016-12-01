@@ -19,6 +19,13 @@ namespace MarioGame.HardcodedAI
         private float startTime;
         private float elapsedTime;
         private KeyPress currKeyPress;
+        private static KeyPress nullKeyPress = new KeyPress()
+        {
+            duration = 1000000,
+            keys = new List<string>()
+        };
+        private bool done;
+        public bool Done => done;
         private List<VirtualKeyCode> currKeyCodes => GetKeyCodes(currKeyPress);
         public static IDictionary<string, VirtualKeyCode> keyMap = new Dictionary<string, VirtualKeyCode>()
         {
@@ -38,7 +45,7 @@ namespace MarioGame.HardcodedAI
             {
 
                 _pressing = true;
-                startTime = gameTime.TotalGameTime.Milliseconds;
+                startTime = gameTime.TotalGameTime.Milliseconds + gameTime.TotalGameTime.Seconds*1000;
                 Console.WriteLine("Getting new key press.");
 
                 if (keyPresses.Count > 0)
@@ -49,12 +56,14 @@ namespace MarioGame.HardcodedAI
                 else
                 {
                     Console.WriteLine("No more key presses.");
+                    currKeyPress = nullKeyPress;
+                    done = true;
                 }
 
             }
             else
             {
-                elapsedTime = gameTime.TotalGameTime.Milliseconds - startTime;
+                elapsedTime = gameTime.TotalGameTime.Milliseconds + gameTime.TotalGameTime.Seconds * 1000 - startTime;
                 if (currKeyPress.duration < elapsedTime)
                 {
                     Console.WriteLine("Elapsed time: " + elapsedTime);
@@ -86,7 +95,7 @@ namespace MarioGame.HardcodedAI
                 Console.Write(keyCode.ToString());
             }
             Console.WriteLine();
-            //currKeyCodes.ForEach(k => input.Keyboard.KeyDown(k));
+            currKeyCodes.ForEach(k => input.Keyboard.KeyDown(k));
   
         }
         private void keyUp()
@@ -100,7 +109,7 @@ namespace MarioGame.HardcodedAI
             Console.WriteLine("Key press duration: " + currKeyPress.duration);
             Console.WriteLine();
             Console.WriteLine();
-            //currKeyCodes.ForEach(k => input.Keyboard.KeyUp(k));
+            currKeyCodes.ForEach(k => input.Keyboard.KeyUp(k));
         }
     }
 
