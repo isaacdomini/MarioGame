@@ -1,0 +1,13 @@
+MarioGame/bin/
+MarioGame/obj/
+.vs/
+MarioGame/Content/bin/
+MarioGame/Content/obj/
+<<<<<<< e8fa69898485a03db42ba16114aa7216479cf0fa
+
+ExternalAI/bin/
+ExternalAI/obj/
+=======
+ExternalAI/bin/
+ExternalAI/obj
+>>>>>>> successfully taking screenshots and ability to modify pixels

@@ -29,15 +29,7 @@ namespace ExternalAI
         static void Main()
         {
             input = new InputSimulator();
-            //Thread.Sleep(1000);
-            //input.Keyboard.KeyDown(VirtualKeyCode.VK_D);
-            //Thread.Sleep(1000);
-            //input.Keyboard.KeyUp(VirtualKeyCode.VK_D);
-            //ScreenCapture sc = new ScreenCapture();
-            //// capture entire screen, and save it to a file
-            //Image img = sc.CaptureScreen();
-            //img.Save("C:\\Users\\John\\Source\\Repos\\MarioLopezTheSecondOne\\MarioLopez\\ExternalAI\\img.gif");
-            processScreen();
+<<<<<<< e8fa69898485a03db42ba16114aa7216479cf0fa
 
             Interpreter.AILoader("HardcodedAI.json");
 
@@ -46,8 +38,20 @@ namespace ExternalAI
             //Thread.Sleep(2000);
             //input.Keyboard.KeyUp(VirtualKeyCode.VK_D);
         }
-        public static void processScreen()
+        public static void press(List<VirtualKeyCode> keys, int millisecondsPressed)
         {
+            keys.ForEach(k => input.Keyboard.KeyDown(k));
+            Thread.Sleep(millisecondsPressed);
+            keys.ForEach(k => input.Keyboard.KeyUp(k));
+=======
+            //Thread.Sleep(1000);
+            //input.Keyboard.KeyDown(VirtualKeyCode.VK_D);
+            //Thread.Sleep(1000);
+            //input.Keyboard.KeyUp(VirtualKeyCode.VK_D);
+            //ScreenCapture sc = new ScreenCapture();
+            //// capture entire screen, and save it to a file
+            //Image img = sc.CaptureScreen();
+            //img.Save("C:\\Users\\John\\Source\\Repos\\MarioLopezTheSecondOne\\MarioLopez\\ExternalAI\\img.gif");
             Rectangle bounds = Screen.GetBounds(Point.Empty);
             int leftPos = 2, topPos = 15, width = 1600, height = 1020;
             Rectangle marioScreen = new Rectangle(leftPos, topPos, width, height);
@@ -82,14 +86,9 @@ namespace ExternalAI
 
                 // Unlock the bits
                 bitmap.UnlockBits(bmpData);
-                bitmap.Save("test9.jpg", ImageFormat.Jpeg);
+                bitmap.Save("test7.jpg", ImageFormat.Jpeg);
             }
-        }
-        public static void press(List<VirtualKeyCode> keys, int millisecondsPressed)
-        {
-            keys.ForEach(k => input.Keyboard.KeyDown(k));
-            Thread.Sleep(millisecondsPressed);
-            keys.ForEach(k => input.Keyboard.KeyUp(k));
+>>>>>>> successfully taking screenshots and ability to modify pixels
         }
         static void press(VirtualKeyCode k, int millisecondsPressed)
         {

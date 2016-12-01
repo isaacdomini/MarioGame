@@ -2,7 +2,7 @@
   "keyPresses": [
     {
       "keys": [ "right" ],
-      "duration": 5000
+      "duration": 50
     },
     {
       "keys": ["up", "right"],
