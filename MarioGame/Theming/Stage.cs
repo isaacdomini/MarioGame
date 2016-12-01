@@ -30,6 +30,8 @@ namespace MarioGame.Theming
             _controllers.Add(new KeyboardController());
             _controllers.Add(new GamepadController());
             _controllers[0].AddCommand((int)Keys.Q, new QuitCommand(Game1));
+            //Level Learner Commnand
+            _controllers[0].AddCommand((int)Keys.T, new LevelLearnerCommand(scene.Script));
             //Reset Command
             _controllers[0].AddCommand((int)Keys.R, new ResetCommand(Game1));
             _controllers[1].AddCommand((int) Buttons.Start, new QuitCommand(Game1));

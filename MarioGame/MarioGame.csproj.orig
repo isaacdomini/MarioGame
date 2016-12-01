@@ -44,6 +44,7 @@
     <Compile Include="Commands\BlockCommands\BumpOrBreakBrick.cs" />
     <Compile Include="Commands\BlockCommands\ChangeQuestionToUsedState.cs" />
     <Compile Include="Commands\BlockCommands\ShowHiddenBlock.cs" />
+    <Compile Include="Commands\LevelLearnerCommand.cs" />
     <Compile Include="Commands\CrouchCommand.cs" />
     <Compile Include="Commands\DashOrThrowFireballCommand.cs" />
     <Compile Include="Commands\DeadStateCommand.cs" />
@@ -118,12 +119,9 @@
     <Compile Include="Entities\PowerUpEntity.cs" />
     <Compile Include="Entities\Scoreboard.cs" />
     <Compile Include="GlobalSuppressions.cs" />
-<<<<<<< HEAD
     <Compile Include="HardcodedAI\KeyPresser.cs" />
     <Compile Include="HardcodedAI\Interpreter.cs" />
-=======
-    <Compile Include="LevelLearner\LevelLearner.cs" />
->>>>>>> level learner commands and stater code
+    <Compile Include="LevelLearner\LevelLearner.cs" />    
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sprites\AnimatedSprite.cs" />
     <Compile Include="Sprites\BackgroundItems\Bush2Sprite.cs" />
@@ -236,9 +234,14 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
+<<<<<<< HEAD
     <Reference Include="WindowsInput, Version=0.2.0.0, Culture=neutral, PublicKeyToken=9b287f7dc5073cad, processorArchitecture=MSIL">
       <HintPath>..\packages\WindowsInput.0.2.0.0\lib\net20\WindowsInput.dll</HintPath>
       <Private>True</Private>
+=======
+    <Reference Include="WindowsInput">
+      <HintPath>..\packages\InputSimulator.1.0.4.0\lib\net20\WindowsInput.dll</HintPath>
+>>>>>>> added to thread
     </Reference>
   </ItemGroup>
   <ItemGroup>

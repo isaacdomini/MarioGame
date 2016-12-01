@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using WindowsInput;
+using WindowsInput.Native;
 using MarioGame.Entities;
 
 namespace MarioGame.LevelLearner
@@ -23,7 +26,10 @@ namespace MarioGame.LevelLearner
 
         public void Start()
         {
-            
+            InputSimulator input = new InputSimulator();
+            input.Keyboard.KeyDown(VirtualKeyCode.VK_D);
+            Thread.Sleep(5000);
+            input.Keyboard.KeyUp(VirtualKeyCode.VK_D);
         }
     }
 }

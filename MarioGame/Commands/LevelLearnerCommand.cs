@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using MarioGame.Theming;
 using MarioGame.Core;
@@ -17,7 +18,11 @@ namespace MarioGame.Commands
 
         public override void Execute()
         {
-            LevelLearner.LevelLearner.GetInstance(Script.Mario).Start();
+            new Thread(delegate ()
+            {
+                LevelLearner.LevelLearner.GetInstance(Script.Mario).Start();
+            }).Start();
+            
         }
     }
 }
