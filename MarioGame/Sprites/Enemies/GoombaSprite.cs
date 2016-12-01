@@ -62,7 +62,7 @@ namespace MarioGame.Sprites
                 if(goombaActionState is GoombaDeadState)
                 {
                     Dictionary<int, Collection<int>> Frames = new Dictionary<int, Collection<int>> {
-                        { 0, new Collection<int> {4}}}; //dead frame is 4
+                        { 0, new Collection<int> {3}}}; //dead frame is 3
                     FrameSet=Frames[0];
                 }
             }

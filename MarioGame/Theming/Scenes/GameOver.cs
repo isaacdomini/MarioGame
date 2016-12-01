@@ -21,7 +21,7 @@ namespace MarioGame.Theming.Scenes
         {
             Stage.Initialize(this);
             Script.Initialize();
-
+            GameOver.Won = false;
             Camera = new Camera(Stage.Game1.GraphicsDevice.Viewport);
             Layers = new List<Layer>
             {

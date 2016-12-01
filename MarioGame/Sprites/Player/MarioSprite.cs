@@ -129,12 +129,8 @@ namespace MarioGame.Sprites
         public void ChangeActionState(MarioActionState marioActionState)
         {
             base.ChangeActionState();
-            if(Game1.playAsMario==true)
+            if (Game1.playAsMario == true)
                 FrameSet = FrameSets[marioActionState.actionState.GetHashCode()];
-            else
-            {
-                FrameSet = FrameSets[EnemyActionStateEnum.Walking.GetHashCode()];
-            }
         }
         public void ChangePowerUp(MarioPowerUpState marioPowerUpState)
         {
@@ -155,9 +151,9 @@ namespace MarioGame.Sprites
                 }
                 else if(marioPowerUpState.PowerUpState.Equals(MarioPowerUpStateEnum.Dead))
                 {
-                    Dictionary<int, Collection<int>> Frames = new Dictionary<int, Collection<int>> {
+                    Dictionary<int, Collection<int>> FramesNew = new Dictionary<int, Collection<int>> {
                         { 0, new Collection<int> {2}}}; //deaad frame is 2
-                    FrameSet = Frames[0];
+                    FrameSet = FramesNew[0];
                     RowSet = RowSets[GoombaRows.Dead.GetHashCode()];
                 }
                 else
