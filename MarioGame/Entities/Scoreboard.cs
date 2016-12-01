@@ -85,8 +85,9 @@ namespace MarioGame.Entities
             }
             batch.End();
         }
-        private double _timeTrack = 0;
-        public double TimeTrack { get { return _timeTrack; } set { _timeTrack = value; } }
+
+        public double TimeTrack { get; set; } = 0;
+
         public void UpdateTimer(int elapsedMilliseconds)
         {
             if (_scoreboard["Time"] == 0)
