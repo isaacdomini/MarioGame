@@ -3,6 +3,5 @@ MarioGame/obj/
 .vs/
 MarioGame/Content/bin/
 MarioGame/Content/obj/
-
 ExternalAI/bin/
-ExternalAI/obj/
+ExternalAI/obj
