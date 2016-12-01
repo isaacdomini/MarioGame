@@ -4,5 +4,5 @@ cp MarioGame/Theming/Scenes/Level2.json MarioGame/bin/Windows/x86/Debug/Level2.j
 cp MarioGame/Theming/Scenes/GameOver.json MarioGame/bin/Windows/x86/Debug/GameOver.json
 cp MarioGame/Theming/Scenes/MainMenu.json MarioGame/bin/Windows/x86/Debug/MainMenu.json
 cp ExternalAI/HardcodedAI/HardcodedAI.json ExternalAI/bin/Debug/HardcodedAI.json
-
+cp MarioGame/HardcodedAI/HardcodedAI.json ExternalAI/bin/Debug/HardcodedAI.json
 
