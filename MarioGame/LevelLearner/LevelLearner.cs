@@ -29,9 +29,18 @@ namespace MarioGame.LevelLearner
             return _levelLearner ?? (_levelLearner = new LevelLearner(mario));
         }
 
-        private float GetBestFitness()
+        private int GetBestFitness()
         {
-            return _actionAlleles.Aggregate<KeyActionAllele, float>(0, (current, action) => (action.Fitess > current) ? action.Fitess : current);
+            float result = 0;
+            int resultIndex = 0;
+            int i = 0;
+            foreach (var allele in _actionAlleles)
+            {
+                resultIndex = (allele.Fitess > result) ? i : resultIndex;
+                result = (allele.Fitess > result) ? allele.Fitess : result;
+                i++;
+            }
+            return resultIndex;
         }
 
         public void Start()
@@ -39,20 +48,13 @@ namespace MarioGame.LevelLearner
             _input.Keyboard.KeyDown(VirtualKeyCode.VK_K);
             Thread.Sleep(500);
             _input.Keyboard.KeyUp(VirtualKeyCode.VK_K);
-            float maxFitness = GetBestFitness();
-            if (_actionAlleles.Count > 0)
+            int maxFitnessIndex = GetBestFitness();
+            for (int i = 0; i < maxFitnessIndex--; i++)
             {
-                int currentActionIndex = 0;
-                KeyActionAllele currentActionAllele = _actionAlleles[currentActionIndex];
-                while (currentActionAllele.Fitess<maxFitness)
-                {
-                    currentActionAllele.Act();
-                    currentActionAllele = _actionAlleles[++currentActionIndex];
-                }
+                _actionAlleles[i].Act();
             }
             if (_mario.MarioPowerUpState is DeadState)
             {
-
                 return;
             }
             //int keyIndex1 = new Random().Next(0, Keys.Length);
