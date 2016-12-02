@@ -33,6 +33,7 @@ namespace MarioGame.Theming.Scenes
             options.Add("Play as Mario (press K)");
             options.Add("Play as Enemy (press E)");
             options.Add("Watch Hardcoded Mario (press H)");
+            options.Add("Watch Level Learning AI (press T)");
 
             LevelLoader.AddTileMapToScript("MainMenu.json", Script, Stage.Game1);
         }

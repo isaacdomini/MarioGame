@@ -52,6 +52,7 @@ namespace MarioGame.Theming
             _controllers[0].AddMainMenuScreenCommand((int)Keys.E, new PlayAsEnemyCommand(Game1));
             _controllers[0].AddMainMenuScreenCommand((int)Keys.H, new PlayAsAICommand(Game1));
             _controllers[0].AddMainMenuScreenCommand((int)Keys.M, new MuteCommand(scene.Script));
+            _controllers[0].AddMainMenuScreenCommand((int)Keys.T, new LevelLearnerCommand(scene.Script));
 
             // Adding movement commands (Needs updated with actual commands)
             _controllers[0].AddCommand((int)Keys.Left, new MoveLeftCommand(scene.Script));

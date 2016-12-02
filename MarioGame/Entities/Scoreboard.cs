@@ -59,9 +59,9 @@ namespace MarioGame.Entities
             else
                 _scoreboard["Points"] = 0;
             if (!_scoreboard.ContainsKey("Lives"))
-                _scoreboard.Add("Lives", 100);
+                _scoreboard.Add("Lives", GlobalConstants.MaxLives);
             else if (_scoreboard["Lives"] == 0)
-                _scoreboard["Lives"] = 100;
+                _scoreboard["Lives"] = GlobalConstants.MaxLives;
             if (!_scoreboard.ContainsKey("Time"))
                 _scoreboard.Add("Time", startTime);
             else

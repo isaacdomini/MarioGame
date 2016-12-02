@@ -36,6 +36,9 @@ namespace MarioGame.LevelLearner
 
         public void Start()
         {
+            _input.Keyboard.KeyDown(VirtualKeyCode.VK_K);
+            Thread.Sleep(500);
+            _input.Keyboard.KeyUp(VirtualKeyCode.VK_K);
             float maxFitness = GetBestFitness();
             if (_actionAlleles.Count > 0)
             {

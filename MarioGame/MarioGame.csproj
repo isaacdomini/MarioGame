@@ -122,7 +122,6 @@
     <Compile Include="HardcodedAI\KeyPresser.cs" />
     <Compile Include="HardcodedAI\Interpreter.cs" />
     <Compile Include="LevelLearner\KeyActionAllele.cs" />
-    <Compile Include="LevelLearner\KeyBoardInputManager.cs" />
     <Compile Include="LevelLearner\LevelLearner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sprites\AnimatedSprite.cs" />

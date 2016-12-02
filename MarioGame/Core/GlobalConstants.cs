@@ -13,7 +13,7 @@ namespace MarioGame.Theming
         public const int GridWidth = 16;
         public const float MillisecondsPerFrame = 16;
         public const int FramesPerSecond = 5;
-
+        public const int MaxLives = 3;
         
         public static readonly string[] SFXFiles = Enum.GetNames(typeof(EventTypes)).ToList().
             FindAll(s => !s.Equals(EventTypes.BeginStarState.ToString()) && !s.Equals(EventTypes.EndStarState.ToString())
