@@ -14,27 +14,29 @@ namespace MarioGame.LevelLearner
         private static LevelLearner _levelLearner;
         private readonly Mario _mario;
         private float _previousPosition;
-        private static readonly VirtualKeyCode[] Keys = {VirtualKeyCode.VK_W, VirtualKeyCode.VK_S, VirtualKeyCode.VK_A, VirtualKeyCode.VK_D};
-        private List<KeyActionAllele> _actionAlleles;
+        private static readonly VirtualKeyCode[] Keys = {VirtualKeyCode.VK_A, VirtualKeyCode.VK_S, VirtualKeyCode.VK_W, VirtualKeyCode.VK_D};
+        private readonly List<KeyActionAllele> _actionAlleles;
+        private readonly InputSimulator _input;
         public LevelLearner(Mario mario)
         {
             _mario = mario;
             _previousPosition = _mario.Position.X-100;
             _actionAlleles = new List<KeyActionAllele>();
+            _input = new InputSimulator();
         }
         public static LevelLearner GetInstance(Mario mario)
         {
             return _levelLearner ?? (_levelLearner = new LevelLearner(mario));
         }
 
-        private float getBestFitness()
+        private float GetBestFitness()
         {
             return _actionAlleles.Aggregate<KeyActionAllele, float>(0, (current, action) => (action.Fitess > current) ? action.Fitess : current);
         }
 
         public void Start()
         {
-            float maxFitness = getBestFitness();
+            float maxFitness = GetBestFitness();
             if (_actionAlleles.Count > 0)
             {
                 int currentActionIndex = 0;
@@ -47,33 +49,27 @@ namespace MarioGame.LevelLearner
             }
             if (_mario.MarioPowerUpState is DeadState)
             {
+
                 return;
             }
-            var input = new InputSimulator();
-            int keyIndex1 = new Random().Next(0, Keys.Length);
-            int keyIndex2 = new Random().Next(0, 4);
-            int simulKeys = new Random().Next(0, 2);
+            //int keyIndex1 = new Random().Next(0, Keys.Length);
+            //int keyIndex2 = new Random().Next(0, 4);
+            //int simulKeys = new Random().Next(0, 2);
             while (!(_mario.MarioPowerUpState is DeadState))
             {   
 
                 Console.WriteLine("InLoop");
                 if (_previousPosition >= _mario.Position.X)
                 {
-                    input.Keyboard.KeyUp(Keys[keyIndex1]);
-                    if (simulKeys == 1)
+                    List<VirtualKeyCode> tempKeys = new List<VirtualKeyCode>();
+                    for (int i = 0; i < new Random().Next(0, 3); i++)
                     {
-                        input.Keyboard.KeyUp(Keys[keyIndex2]);
+                        tempKeys.Add(Keys[new Random().Next(0,Keys.Length)]);
                     }
-                    keyIndex1 = new Random().Next(0,4);
-                    keyIndex2 = new Random().Next(0,4);
-                    simulKeys = new Random().Next(0,2);
-                    Console.WriteLine("NoImprovement"+ _previousPosition +" Current:" + _mario.Position.X);
-                    input.Keyboard.KeyDown(Keys[keyIndex1]);
-                    if (simulKeys == 1)
-                    {
-                        input.Keyboard.KeyDown(Keys[keyIndex2]);
-                    }
-                    Thread.Sleep(1000);
+                    KeyActionAllele tempAction = new KeyActionAllele(tempKeys, (new Random().Next(1,5))/2 * 1000, _input);
+                    tempAction.Act();
+                    tempAction.Fitess = _mario.Position.X;
+                    _actionAlleles.Add(tempAction);
 
                 }
                 else

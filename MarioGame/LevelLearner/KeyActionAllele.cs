@@ -16,14 +16,13 @@ namespace MarioGame.LevelLearner
         public float Fitess;
         private InputSimulator _input;
 
-        public KeyActionAllele(List<VirtualKeyCode> keys, int duration, float fitness , InputSimulator input)
+        public KeyActionAllele(List<VirtualKeyCode> keys, int duration, InputSimulator input)
         {
             Keys = keys;
             _duration = duration;
-            Fitess = fitness;
             _input = input;
         }
-
+        
         public void Act()
         {
             Keys.ForEach(key => _input.Keyboard.KeyDown(key));
