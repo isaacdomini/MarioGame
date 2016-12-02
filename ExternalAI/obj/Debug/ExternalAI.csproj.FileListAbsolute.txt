@@ -13,7 +13,6 @@ C:\Users\eegge\Source\Repos\MarioLopez\ExternalAI\bin\Debug\ExternalAI.exe
 C:\Users\eegge\Source\Repos\MarioLopez\ExternalAI\bin\Debug\ExternalAI.pdb
 C:\Users\eegge\Source\Repos\MarioLopez\ExternalAI\bin\Debug\WindowsInput.dll
 C:\Users\eegge\Source\Repos\MarioLopez\ExternalAI\bin\Debug\WindowsInput.xml
-C:\Users\eegge\Source\Repos\MarioLopez\ExternalAI\obj\Debug\ExternalAI.csprojResolveAssemblyReference.cache
 C:\Users\eegge\Source\Repos\MarioLopez\ExternalAI\obj\Debug\ExternalAI.Properties.Resources.resources
 C:\Users\eegge\Source\Repos\MarioLopez\ExternalAI\obj\Debug\ExternalAI.csproj.GenerateResource.Cache
 C:\Users\eegge\Source\Repos\MarioLopez\ExternalAI\obj\Debug\ExternalAI.exe
@@ -28,3 +27,7 @@ C:\Users\Cyriac\Projects\MarioLopez\ExternalAI\bin\Debug\WindowsInput.xml
 C:\Users\Cyriac\Projects\MarioLopez\ExternalAI\obj\Debug\ExternalAI.csprojResolveAssemblyReference.cache
 C:\Users\Cyriac\Projects\MarioLopez\ExternalAI\obj\Debug\ExternalAI.Properties.Resources.resources
 C:\Users\Cyriac\Projects\MarioLopez\ExternalAI\obj\Debug\ExternalAI.csproj.GenerateResource.Cache
+C:\Users\eegge\Source\Repos\MarioLopez\ExternalAI\bin\Debug\Newtonsoft.Json.dll
+C:\Users\eegge\Source\Repos\MarioLopez\ExternalAI\bin\Debug\Newtonsoft.Json.xml
+C:\Users\eegge\Source\Repos\MarioLopez\ExternalAI\bin\Debug\ExternalAI.exe.CodeAnalysisLog.xml
+C:\Users\eegge\Source\Repos\MarioLopez\ExternalAI\bin\Debug\ExternalAI.exe.lastcodeanalysissucceeded

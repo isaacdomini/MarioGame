@@ -6,3 +6,4 @@ Code analysis warnings
 - CA1008 was suppressed because we want the frame to be called the name that it does so that we know specifically which frame is being used. If we changed it to "Zero" then it wouldn't be as easy to know what the koopa actually looks like.
 - CA1823 should be suppressed because it is actually used. When deleted, we are given errors later in the code because the variable it used later.
 - CA1006: we purposefully created the FramSets and RowSets liek this so that we can easily switch frames and animate the sprites by cycling through the collections within the dictionary.
+-CA2214: by changing the methods so they aren't virtual, it causes a lot of errors because the method has to be overwritten by other classes.
