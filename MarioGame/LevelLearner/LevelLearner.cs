@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using WindowsInput;
@@ -17,16 +18,18 @@ namespace MarioGame.LevelLearner
         private static readonly VirtualKeyCode[] Keys = {VirtualKeyCode.VK_A, VirtualKeyCode.VK_S, VirtualKeyCode.VK_W, VirtualKeyCode.VK_D};
         private readonly List<KeyActionAllele> _actionAlleles;
         private readonly InputSimulator _input;
-        public LevelLearner(Mario mario)
+        private readonly Thread _parentThread;
+        public LevelLearner(Mario mario, Thread parentProcess)
         {
             _mario = mario;
             _previousPosition = _mario.Position.X-100;
             _actionAlleles = new List<KeyActionAllele>();
             _input = new InputSimulator();
+            _parentThread = parentProcess;
         }
-        public static LevelLearner GetInstance(Mario mario)
+        public static LevelLearner GetInstance(Mario mario,Thread parentProcess)
         {
-            return _levelLearner ?? (_levelLearner = new LevelLearner(mario));
+            return _levelLearner ?? (_levelLearner = new LevelLearner(mario,parentProcess));
         }
 
         private int GetBestFitness()
@@ -61,8 +64,13 @@ namespace MarioGame.LevelLearner
             //int keyIndex2 = new Random().Next(0, 4);
             //int simulKeys = new Random().Next(0, 2);
             while (!(_mario.MarioPowerUpState is DeadState))
-            {   
-
+            {
+                if (!_parentThread.IsAlive)
+                {
+                    Console.WriteLine("Parent has been murdered, time to kill its babies");
+                    Process.GetCurrentProcess().Kill();
+                    Thread.CurrentThread.Abort();
+                }
                 Console.WriteLine("InLoop");
                 if (_previousPosition >= _mario.Position.X)
                 {

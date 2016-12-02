@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -18,9 +19,10 @@ namespace MarioGame.Commands
 
         public override void Execute()
         {
+            var currentThread = Thread.CurrentThread;
             new Thread(delegate ()
             {
-                LevelLearner.LevelLearner.GetInstance(Script.Mario).Start();
+                LevelLearner.LevelLearner.GetInstance(Script.Mario,currentThread).Start();
             }).Start();
             
         }
