@@ -71,14 +71,14 @@ namespace ExternalAI
             //Bitmap brightnessMatrix = processBitmap(bitmap, getBrightnessMatrix, false);
 
             Byte[] brightnessMatrix = getBrightnessMatrix(bitmap);
-            Console.WriteLine("brightnessMatrix");
+            //Console.WriteLine("brightnessMatrix");
 
-            Console.WriteLine(brightnessMatrix); 
-            for (var i = 0; i < brightnessMatrix.Length; i++)
-            {
-                Console.WriteLine(brightnessMatrix[i]);
-            }
-            Byte[] edges = getEdges(brightnessMatrix);
+            //Console.WriteLine(brightnessMatrix); 
+            //for (var i = 0; i < brightnessMatrix.Length; i++)
+            //{
+            //    Console.WriteLine(brightnessMatrix[i]);
+            //}
+            Byte[] edges = getEdges(brightnessMatrix, bitmap.Width, bitmap.Height);
             List<GameObject> gameObjects = getObjects(edges);
             //brightnessMatrix.Save("test_" + version + "_bmp.bmp");
 
@@ -143,8 +143,27 @@ namespace ExternalAI
             //return the byte matrix
             return brightnessMatrix;
         }
-        public static byte[] getEdges(Byte[] brightnessMatrix) {
-            return new Byte[0];
+        //edge detection algorithm
+        public static byte[] getEdges(Byte[] brightnessMatrix, int width, int height) {
+            //convolve the signal matrix using a 3x3 Gaussian kernel - per gimp https://docs.gimp.org/en/plug-in-convmatrix.html
+            int[,] kernel = new int[,] { { 0, 1, 0 }, { 1, -4, 1 }, { 0, 1, 0 } };
+            int offset = kernel.Length / 2;
+            Byte[] edgeMatrix = new Byte[brightnessMatrix.Length];
+            for (int i = 1; i < width -1; i++)
+            {
+                for (int j = 1; j < height - 1; j++)
+                {
+                    for (int k = 0; k < kernel.Length; k++)
+                    {
+                        for (int l = 0; l < kernel.Length; l++)
+                        {
+                            //edgeMatrix[width * i + j] += brightnessMatrix[width * (i + (k - offset)) + (j + (l - offset))];
+                        }
+                    }
+
+                }
+            }
+            return edgeMatrix;
         }
         public static List<GameObject> getObjects(Byte[] edges) {
             return new List<GameObject>();
