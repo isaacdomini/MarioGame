@@ -21,7 +21,7 @@ namespace MarioGame.Entities
         public MarioActionState MarioActionState => (MarioActionState)AState;
         // TODO: maybe we don't have to give the casted variable a new name, but rather just use the new keyword and the subclass type
         protected MarioSprite MarioSprite => (MarioSprite)Sprite;
-        public static Scoreboard Scoreboard = new Scoreboard();
+        internal static Scoreboard Scoreboard = new Scoreboard();
 
         // Velocity variables
         private static readonly Vector2 JumpingVelocity = new Vector2(0, VelocityConstant * -2);
@@ -318,16 +318,16 @@ namespace MarioGame.Entities
         {
             if (side == Sides.Right)
             {
-                OnBlockLeftCollision(side);
+                OnBlockLeftCollision();
             }
             else
             {
-                OnBlockRightCollision(side);
+                OnBlockRightCollision();
             }
             
         }
 
-        private void OnBlockRightCollision(Sides blockSide)
+        private void OnBlockRightCollision()
         {
             if (VelocityX < 0)
             {
@@ -335,7 +335,7 @@ namespace MarioGame.Entities
             }
         }
 
-        private void OnBlockLeftCollision(Sides blockSide)
+        private void OnBlockLeftCollision()
         {
             if (VelocityX > 0)
             {
@@ -428,7 +428,7 @@ namespace MarioGame.Entities
         {
             EnterMainMenu();
         }
-        internal static void SetMainMenu(Action enterMainMenu)
+        public static void SetMainMenu(Action enterMainMenu)
         {
             EnterMainMenu = enterMainMenu;
         }

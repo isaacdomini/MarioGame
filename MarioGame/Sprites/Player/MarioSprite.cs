@@ -51,7 +51,7 @@ namespace MarioGame.Sprites
             SuperLuigi = 1,
             Luigi = 1,
             Fire = 1,
-            Dead = 1
+            Dead = 2
         }
         //power up states - standard(small), super(big), fire ,star (invincible), Dead
 
@@ -92,14 +92,20 @@ namespace MarioGame.Sprites
             }
             else
             {
-                AssetName = "goombaPlayer";
-                NumberOfFramesPerRow = 3;
+                AssetName = "goombaPlayer2";
+                NumberOfFramesPerRow = 2;
                 //Each state has a frameSet
 
                 FrameSets = new Dictionary<int, Collection<int>> {
-                { EnemyActionStateEnum.Walking.GetHashCode(), new Collection<int> { GoombaSprite.Frames.Walk.GetHashCode(), GoombaSprite.Frames.Walk1.GetHashCode() } },
-                { EnemyActionStateEnum.Dead.GetHashCode(), new Collection<int> {GoombaSprite.Frames.Dead.GetHashCode() } },
-                { EnemyActionStateEnum.Crouching.GetHashCode(), new Collection<int> {GoombaSprite.Frames.Walk.GetHashCode() } }
+                { MarioActionStateEnum.Idle.GetHashCode(), new Collection<int> { GoombaSprite.Frames.Walk.GetHashCode() } },
+                { MarioActionStateEnum.Walking.GetHashCode(), new Collection<int> { GoombaSprite.Frames.Walk.GetHashCode(), GoombaSprite.Frames.Walk1.GetHashCode() } },
+                { MarioActionStateEnum.Running.GetHashCode(), new Collection<int> { GoombaSprite.Frames.Walk.GetHashCode(), GoombaSprite.Frames.Walk1.GetHashCode() } },
+                { MarioActionStateEnum.Crouching.GetHashCode(), new Collection<int> { GoombaSprite.Frames.Walk.GetHashCode() } },
+                { MarioActionStateEnum.Jumping.GetHashCode(), new Collection<int> { GoombaSprite.Frames.Walk.GetHashCode() } },
+                { MarioActionStateEnum.Falling.GetHashCode(), new Collection<int> { GoombaSprite.Frames.Walk.GetHashCode() } },
+                { MarioActionStateEnum.Sitting.GetHashCode(), new Collection<int> { GoombaSprite.Frames.Walk.GetHashCode()} },
+                { MarioActionStateEnum.Swimming.GetHashCode(), new Collection<int> { GoombaSprite.Frames.Walk.GetHashCode()}},
+                { MarioActionStateEnum.Dead.GetHashCode(), new Collection<int> { GoombaSprite.Frames.Dead.GetHashCode()-1 } }
             };
 
                 RowSets = new Dictionary<int, Collection<int>>
@@ -129,39 +135,19 @@ namespace MarioGame.Sprites
         public void ChangeActionState(MarioActionState marioActionState)
         {
             base.ChangeActionState();
-            if (Game1.playAsMario == true)
-                FrameSet = FrameSets[marioActionState.actionState.GetHashCode()];
-            else
-                FrameSet = FrameSets[EnemyActionStateEnum.Walking.GetHashCode()];
+            FrameSet = FrameSets[marioActionState.actionState.GetHashCode()];
         }
         public void ChangePowerUp(MarioPowerUpState marioPowerUpState)
         {
             base.ChangePowerUp();
             // Because on the sprite sheet, dead state is a frame set, not a row set
+            if (marioPowerUpState.PowerUpState == MarioPowerUpStateEnum.Dead)
+            {
+                FrameSet = FrameSets[MarioActionStateEnum.Dead.GetHashCode()];
                 FrameSetPosition = 0;
+            }
+
             RowSet = RowSets[marioPowerUpState.PowerUpState.GetHashCode()];
-            if (Game1.playAsMario == true)
-            {
-                FrameSet = FrameSets[marioPowerUpState.PowerUpState.GetHashCode()];
-            }
-            else
-            {
-                if (marioPowerUpState.PowerUpState.Equals(MarioPowerUpStateEnum.Standard))
-                {
-                    FrameSet = FrameSets[0];
-                    RowSet = RowSets[GoombaRows.Standard.GetHashCode()];
-                }
-                else if(marioPowerUpState.PowerUpState.Equals(MarioPowerUpStateEnum.Dead))
-                {
-                    FrameSet = FrameSets[1];
-                    RowSet = RowSets[GoombaRows.Super.GetHashCode()];
-                }
-                else
-                {
-                    FrameSet = FrameSets[0];
-                    RowSet = RowSets[GoombaRows.Super.GetHashCode()];
-                }
-            }
         }
     }
 }

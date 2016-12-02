@@ -13,7 +13,8 @@ namespace MarioGame.HardcodedAI
 
     public class KeyPresser
     {
-        public Queue<KeyPress> keyPresses;
+        private Queue<KeyPress> _keyPresses;
+        public Queue<KeyPress> keyPresses { get { return _keyPresses; } set { _keyPresses = value; } }
         static InputSimulator input = new InputSimulator();
         private static bool _pressing;
         private float startTime;
@@ -27,7 +28,7 @@ namespace MarioGame.HardcodedAI
         private bool done;
         public bool Done => done;
         private List<VirtualKeyCode> currKeyCodes => GetKeyCodes(currKeyPress);
-        public static IDictionary<string, VirtualKeyCode> keyMap = new Dictionary<string, VirtualKeyCode>()
+        private static IDictionary<string, VirtualKeyCode> keyMap = new Dictionary<string, VirtualKeyCode>()
         {
             { "left", VirtualKeyCode.VK_A},
             { "right", VirtualKeyCode.VK_D},

@@ -21,6 +21,7 @@ namespace MarioGame.Theming
         public enum SFXEnum
         { up, breakblock, bump, coin, fireball, flagpole, gameover, jump, pipedown, powerdown, powerup, powerupappear, stomp, timewarning }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         private Script _script;
         public AudioManager(Song song, Song star, Song timeEnding, Script script)
         {
@@ -67,7 +68,7 @@ namespace MarioGame.Theming
                 MediaPlayer.IsRepeating = true;
                 MediaPlayer.Play(_backgroundSong); 
         }
-        public void SFXPlayer(IState state, IState prevState)
+        public void SFXPlayer(IState state)
         {
                 if (state is JumpingMarioState)
                 {

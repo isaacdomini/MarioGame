@@ -23,8 +23,9 @@ namespace MarioGame.Core
         public Scene Scene => _scenes[_scene - 1];
         public GraphicsDeviceManager Graphics { get; private set; }
         
-        public static bool playAsMario;
-        public bool playAsAI;
+        internal static bool playAsMario;
+        private bool _playAsAI;
+        public bool playAsAI { get { return _playAsAI; } set { _playAsAI = value; } }
         private KeyPresser _keyPresser;
 
         public Game1()

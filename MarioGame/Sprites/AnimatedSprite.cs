@@ -26,9 +26,9 @@ namespace MarioGame.Sprites
         protected int RowSetPosition { get; set; }
 
         //each action state uses a set of frames (e.g. frame numbers 7, 8, 9 on the specific row on the sprite sheet
-        public int FrameSetPosition { get; set; }
+        internal int FrameSetPosition { get; set; }
         protected int NumberOfFramesPerRow { get; set; }
-        public int FrameWidth { get; private set; }
+        internal int FrameWidth { get; private set; }
 
         public int FrameHeight { get; protected set; }
 
@@ -95,6 +95,7 @@ namespace MarioGame.Sprites
 
         public override void Draw(SpriteBatch batch)
         {
+            
             var sourceRect = new Rectangle(((int)FrameSet[FrameSetPosition]) * FrameWidth, ((int)RowSet[RowSetPosition]) * FrameHeight, FrameWidth, FrameHeight);
             batch.Draw(texture: Texture, position: Position, sourceRectangle: sourceRect, color: Color.White, effects: FlippedHorizontal);
         }

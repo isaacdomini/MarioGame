@@ -12,7 +12,7 @@ namespace MarioGame.Theming.Scenes
     public class Scene : IDisposable
     {
         //Texture in order to draw bounding boxes on screen from sprint2
-        protected static Texture2D RectanglePixel;
+        private static Texture2D RectanglePixel;
         private SpriteBatch _spriteBatch;
         protected SpriteBatch SpriteBatch { get { return _spriteBatch; } set { _spriteBatch = value; } }
         private Camera _camera;

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MarioGame.Theming;
+using MarioGame.Theming.Scenes;
 
 namespace MarioGame.Entities
 {
@@ -20,9 +21,11 @@ namespace MarioGame.Entities
             InitializeScoreboardList();
         }
 
-        public static int warningTime = 30;
-        public static int startTime = 100;
-        public  bool timeWarningCalled = false;
+        private static int warningTime = 30;
+        private static int startTime = 100;
+        private bool _timeWarningCalled = false;
+        public bool timeWarningCalled { get { return _timeWarningCalled; } set { _timeWarningCalled = value; } }
+
         public void InitializeScoreboardList()
         {
             if (!_scoreboard.ContainsKey("Player"))
