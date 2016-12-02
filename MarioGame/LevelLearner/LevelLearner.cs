@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading;
 using WindowsInput;
 using WindowsInput.Native;
@@ -19,17 +18,17 @@ namespace MarioGame.LevelLearner
         private readonly List<KeyActionAllele> _actionAlleles;
         private readonly InputSimulator _input;
         private readonly Thread _parentThread;
-        public LevelLearner(Mario mario, Thread parentProcess)
+        public LevelLearner(Mario mario, Thread parentThread)
         {
             _mario = mario;
             _previousPosition = _mario.Position.X-100;
             _actionAlleles = new List<KeyActionAllele>();
             _input = new InputSimulator();
-            _parentThread = parentProcess;
+            _parentThread = parentThread;
         }
-        public static LevelLearner GetInstance(Mario mario,Thread parentProcess)
+        public static LevelLearner GetInstance(Mario mario,Thread parentThread)
         {
-            return _levelLearner ?? (_levelLearner = new LevelLearner(mario,parentProcess));
+            return _levelLearner ?? (_levelLearner = new LevelLearner(mario,parentThread));
         }
 
         private int GetBestFitness()
