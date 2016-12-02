@@ -1,0 +1,8 @@
+Author of Code Review: Erin George
+Date of Code Review: 12/1/16
+Sprint Number: 5
+Name of .cs file: KeyPresser.cs
+Author of .cs file: Ricky
+Comments: Upon first looking at this code, it is well organized. The main thing I saw was the use of Console.WriteLine(). Although this does not affect the code, it does affect the runtime becuase it has to print each line. Since we are no longer debugging, these should be taken out. By having a lot of these variables private, they cannot be accidentally changed or accessed by methods or classes that should not have access to them. These methods are clearly laid out which makes them easier to read. Is there a way in UpdateKeyPRess to not do nested if statements? It is not really bad since it is only one other if statement in the if and else blocks, but it would be great if we could find a way to not have them nested.
+Number of minutes: 15min
+Hypothetical Change: I would definitely take out the print statements because you shouldn't release anything to the user with debug statements in it. I would also try to see if there is a way to simplify the if statement logic.
