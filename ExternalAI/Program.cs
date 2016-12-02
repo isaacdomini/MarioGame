@@ -37,7 +37,16 @@ namespace ExternalAI
             //// capture entire screen, and save it to a file
             //Image img = sc.CaptureScreen();
             //img.Save("C:\\Users\\John\\Source\\Repos\\MarioLopezTheSecondOne\\MarioLopez\\ExternalAI\\img.gif");
-            processScreen();
+            bool quit = false;
+            while (!quit)
+            {
+
+                List<Object> objectsOnScreen = getListOfObjectsFromScreen();
+                DetermineAndMakeNextMove(objectsOnScreen);
+                //if detect certain state - e.g. AI hasn't improved in like 1 hour, quit game
+                quit = true; //for now quit automatically after one detection of the screen
+            }
+            
 
             //Interpreter.AILoader("HardcodedAI.json");
 
@@ -46,25 +55,38 @@ namespace ExternalAI
             //Thread.Sleep(2000);
             //input.Keyboard.KeyUp(VirtualKeyCode.VK_D);
         }
-        public static void processScreen()
+        public static void DetermineAndMakeNextMove(List<Object> objects) { }
+        public static List<Object> getListOfObjectsFromScreen()
         {
             int version = 14;
             Bitmap bitmap = getBitmapFromScreen();
-            // lock the bitmaps bits
-            bitmap = processBitmap(bitmap, makeRed);// makeBitmapRed(bitmap);
-            bitmap.Save("test_" + version + ".jpg", ImageFormat.Jpeg);
-            Console.WriteLine(bitmap.Size);
-            //Bitmap brightnessMatrix = processBitmap(bitmap, getBrightnessMatrix, false);
-            Bitmap grayMap = MakeGrayscale3(bitmap);
+                bitmap = processBitmap(bitmap, makeRed);// makeBitmapRed(bitmap);
+                bitmap.Save("test_" + version + ".jpg", ImageFormat.Jpeg);
+                Console.WriteLine(bitmap.Size);
+                Bitmap grayMap = MakeGrayscale3(bitmap);
+                grayMap.Save("test_" + version + "_gray.jpg", ImageFormat.Jpeg);
             
             //processBitmap(bitmap, printRGBAs);
             //processBitmap(grayMap, printRGBAs);
-            Console.WriteLine(grayMap.Size);
-            grayMap.Save("test_" + version + "_gray.jpg", ImageFormat.Jpeg);
+            //Bitmap brightnessMatrix = processBitmap(bitmap, getBrightnessMatrix, false);
+
+            Byte[] brightnessMatrix = getBrightnessMatrix(bitmap);
+            Console.WriteLine("brightnessMatrix");
+
+            Console.WriteLine(brightnessMatrix); 
+            for (var i = 0; i < brightnessMatrix.Length; i++)
+            {
+                Console.WriteLine(brightnessMatrix[i]);
+            }
+            Byte[] edges = getEdges(brightnessMatrix);
+            List<GameObject> gameObjects = getObjects(edges);
             //brightnessMatrix.Save("test_" + version + "_bmp.bmp");
+
+            List<Object> objects = new List<Object>();
+            return objects;
         }
 
-        public static Bitmap processBitmap(Bitmap bitmap, Func<Byte[], Byte[]> action, bool rgba = true)
+        public static Bitmap processBitmap(Bitmap bitmap, Func<Byte[], Byte[]> action, int bytesPerOutPixel = 4)
         {
             Rectangle rect = new Rectangle(0, 0, bitmap.Width, bitmap.Height);
             BitmapData bmpData = bitmap.LockBits(rect, ImageLockMode.ReadWrite, bitmap.PixelFormat);
@@ -80,16 +102,53 @@ namespace ExternalAI
             // Copy the RGB Values into the array. 
             System.Runtime.InteropServices.Marshal.Copy(ptr, rgbValues, 0, numBytes);
             //modify/use the rgbValues
-            rgbValues = action(rgbValues);
-            numBytes = rgba ? numBytes / 4 : numBytes;
+            byte[] outBytes = action(rgbValues);
             // Copy the RGB values back to the bitmap
-            System.Runtime.InteropServices.Marshal.Copy(rgbValues, 0, ptr, numBytes);
+            int numOutBytes = numBytes * bytesPerOutPixel / 4;
+            System.Runtime.InteropServices.Marshal.Copy(rgbValues, 0, ptr, numOutBytes);
 
             // Unlock the bits
             bitmap.UnlockBits(bmpData);
             return bitmap;
         }
+        public static byte[] getBrightnessMatrix(Bitmap rgbaMatrix)
+        {
+            Rectangle rect = new Rectangle(0, 0, rgbaMatrix.Width, rgbaMatrix.Height);
+            BitmapData bmpData = rgbaMatrix.LockBits(rect, ImageLockMode.ReadWrite, rgbaMatrix.PixelFormat);
 
+            //get the address of the first line
+            IntPtr ptr= bmpData.Scan0;
+
+            //Declare an array to hold the bytes of the rgbaMatrix.
+            //This code is specific to a rgbaMatrix with 32 bits per pixels - 1 byte for each of rgba
+            int numBytes = rgbaMatrix.Width * rgbaMatrix.Height * 4;
+            byte[] rgbValues = new byte[numBytes];
+
+            // Copy the RGB Values into the array. 
+            System.Runtime.InteropServices.Marshal.Copy(ptr, rgbValues, 0, numBytes);
+            //modify/use the rgbValues
+            byte[] brightnessMatrix = new byte[rgbValues.Length / 4];
+            for (int i = 0; i < brightnessMatrix.Length; i += 1)
+            {
+                //Y = .2126 * R^gamma + .7152 * G^gamma + .0722 * B^gamma
+                brightnessMatrix[i] = (byte)(((float)rgbValues[i]) * .0722  + ((float)rgbValues[i + 1]) * .7152 + ((float)rgbValues[i + 2]) * .2126 ); //TODO: Learn linear algebra so that I don't have to manually loop through each element of the matrix. There's gotta be some better way.
+            }
+            
+            // Copy the RGB values back to the rgbaMatrix
+            int numOutBytes = numBytes / 4;
+            System.Runtime.InteropServices.Marshal.Copy(rgbValues, 0, ptr, numOutBytes);
+
+            // Unlock the bits
+            rgbaMatrix.UnlockBits(bmpData);
+            //return the byte matrix
+            return brightnessMatrix;
+        }
+        public static byte[] getEdges(Byte[] brightnessMatrix) {
+            return new Byte[0];
+        }
+        public static List<GameObject> getObjects(Byte[] edges) {
+            return new List<GameObject>();
+        }
         static Bitmap getBitmapFromScreen()
         {
             int leftPos = 2, topPos = 15, width = 1600, height = 1020;
@@ -109,16 +168,24 @@ namespace ExternalAI
             }
             return rgbValues;
         };
-        static Func<byte[], byte[]> getBrightnessMatrix = rgbValues =>
+        static Func<byte[], byte[]> printVal = brightnessVals =>
         {
-            byte[] brightnessMatrix = new byte[rgbValues.Length / 4];
-            for (int i = 0; i +4 < rgbValues.Length; i += 4 * 1)
+            for (int i = 0; i  < brightnessVals.Length; i += 1)
             {
-                //Y = .2126 * R^gamma + .7152 * G^gamma + .0722 * B^gamma
-                brightnessMatrix[i] = (byte)(((float)rgbValues[i]) * .0722 / 255 + ((float)rgbValues[i + 1]) * .7152 / 255+ ((float)rgbValues[i + 2]) * .2126/ 255); //TODO: Learn linear algebra so that I don't have to manually loop through each element of the matrix. There's gotta be some better way.
+                Console.WriteLine(i + ": " + brightnessVals[i]);
             }
-            return brightnessMatrix;
+            return brightnessVals;
         };
+        //static Func<byte[], byte[]> getBrightnessMatrix = rgbValues =>
+        //{
+        //    byte[] brightnessMatrix = new byte[rgbValues.Length / 4];
+        //    for (int i = 0; i +4 < rgbValues.Length; i += 4 * 1)
+        //    {
+        //        //Y = .2126 * R^gamma + .7152 * G^gamma + .0722 * B^gamma
+        //        brightnessMatrix[i] = (byte)(((float)rgbValues[i]) * .0722 / 255 + ((float)rgbValues[i + 1]) * .7152 / 255+ ((float)rgbValues[i + 2]) * .2126/ 255); //TODO: Learn linear algebra so that I don't have to manually loop through each element of the matrix. There's gotta be some better way.
+        //    }
+        //    return brightnessMatrix;
+        //};
         static Action<byte[]> printRGBAs = rgbValues =>
         {
             Console.WriteLine("rgb vals length is " + rgbValues.Length);
