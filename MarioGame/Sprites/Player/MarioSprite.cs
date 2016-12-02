@@ -105,7 +105,7 @@ namespace MarioGame.Sprites
                 { MarioActionStateEnum.Falling.GetHashCode(), new Collection<int> { GoombaSprite.Frames.Walk.GetHashCode() } },
                 { MarioActionStateEnum.Sitting.GetHashCode(), new Collection<int> { GoombaSprite.Frames.Walk.GetHashCode()} },
                 { MarioActionStateEnum.Swimming.GetHashCode(), new Collection<int> { GoombaSprite.Frames.Walk.GetHashCode()}},
-                { MarioActionStateEnum.Dead.GetHashCode(), new Collection<int> { GoombaSprite.Frames.Dead.GetHashCode()-1 } }
+                { MarioActionStateEnum.Dead.GetHashCode(), new Collection<int> { GoombaSprite.Frames.Dead.GetHashCode() } }
             };
 
                 RowSets = new Dictionary<int, Collection<int>>
